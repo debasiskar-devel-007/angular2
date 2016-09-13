@@ -1,3 +1,5 @@
+About f
+
 <form novalidate [formGroup]="loginForm" (ngSubmit)="doLogin(loginForm.value)">
     <input [formControl]="loginForm.controls['email']" type="email" placeholder="email" class="form-control UserLogIn_email">
     <div *ngIf ="loginForm.controls['email'].touched">
@@ -18,12 +20,5 @@
     </div>
     <button type="submit" [disabled]="!loginForm.valid" class="loginbtn" >Login</button>
 </form>
-<br>
-<div> asdsadasd</div>
-<br>
-<nav>
-    <a routerLink="/about" routerLinkActive="active">about</a>
-    <a routerLink="/contact" >contact</a>
-  <!--  <a routerLink="/home" >home</a>-->
-</nav>
-<router-outlet></router-outlet>
+
+<a routerLink="/contacts">Details</a>

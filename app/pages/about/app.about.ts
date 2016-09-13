@@ -3,15 +3,14 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'my-app',
-    //template: '<h1>Component Router</h1> <nav> <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a> <a routerLink="/heroes" routerLinkActive="active">Heroes</a> </nav> <router-outlet></router-outlet>'
-    templateUrl:'app/pages/home/home.html',
+    //template: '<h1>Welcome to my First Angular 2 App </h1>'
+    templateUrl:'app/pages/contact/home.html',
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppComponent {
+export class AppAbout {
     loginForm: FormGroup;
 
     firstName = new FormControl("", Validators.required);

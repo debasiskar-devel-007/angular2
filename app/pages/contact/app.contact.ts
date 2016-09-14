@@ -26,17 +26,13 @@ export class AppContact {
         this.router.navigate(['/about']);
     }
 
-    doLogin(event) {
+    doLogin() {
         //console.log(this.loginForm.value);
         console.log(99);
         alert(67);
-        console.log(event);
-        console.log(event.email);
+        console.log(this.loginForm.value);
+        console.log(this.loginForm.value.email);
     }
 }
 
-function validateEmail(email) {
-    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    //console.log('vali email called');
-    return re.test(email);
-}
+

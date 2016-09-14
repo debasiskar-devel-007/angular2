@@ -4,44 +4,19 @@ import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/dire
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
-import {AppCommonservices} from  '../../services/app.commonservices'
-import {Http, Response} from "@angular/http";
-import {Observable} from "rxjs";
 
 @Component({
     selector: 'my-app',
-    template: '<router-outlet></router-outlet>',
-    providers: [AppCommonservices]
-    //templateUrl:'app/pages/home/home.html',
+    //template: '<h1>Component Router</h1> <nav> <a routerLink="/crisis-center" routerLinkActive="active">Crisis Center</a> <a routerLink="/heroes" routerLinkActive="active">Heroes</a> </nav> <router-outlet></router-outlet>'
+    templateUrl:'app/pages/home/home.html',
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppComponent {
-    items:Array<any>;
+export class AppHome {
     loginForm: FormGroup;
-    http;
 
     firstName = new FormControl("", Validators.required);
 
-    constructor(fb: FormBuilder ,commonservices: AppCommonservices,http:Http) {
-
-        this.items = commonservices.getItems();
-        console.log(this.items);
-        console.log(this.items[0].serverUrl);
-
-        let wikiUrl = this.items[0].serverUrl+'listexpert';
-
-
-
-        http.get(wikiUrl)
-            .subscribe(data => {
-                // /this.data1.response = data.json();
-                console.log(data);
-
-            }, error => {
-                console.log("Oooops!");
-            });
-
-
+    constructor(fb: FormBuilder) {
         this.loginForm = fb.group({
             email: ["", Validators.required],
             password: ["", Validators.required]

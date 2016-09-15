@@ -1,0 +1,147 @@
+@media screen and (max-width:1680px){
+}
+
+
+@media screen and (max-width:1460px){
+  .signup_body_wrapper {margin: 0 auto; width: 100%;}
+  .signupleftblock{width: 56% !important; float: left;}
+  .signuprightblock{width: 44% !important; float: right;}
+  .container-fluid {padding-right: 15px !important;padding-left: 15px !important;}
+  .signupleftblocktop h1 {font-size: 34px;}
+}
+
+
+@media screen and (max-width:1430px) {
+  .signupleftblockbottom h1 {
+    font-size: 25px;
+  }
+}
+
+@media screen and (max-width:1366px){
+  .signupleftblocktop h1 {
+    font-size: 33px;
+  }
+  .signupleftblockmiddle {
+    bottom: 128px;
+  }
+
+}
+
+@media screen and (max-width:1320px){
+  .signupleftblocktop h1 {
+    font-size: 32px;
+  }
+}
+
+
+@media screen and (max-width:1280px){
+  .signupleftblocktop h1 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width:1199px){
+  .signupleftblocktop h1 {
+    font-size: 26px;
+  }
+  .signupleftblockmiddle {
+    bottom: 128px;
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width:1060px){
+  .signupleftblocktop h1 {
+    font-size: 24px;
+  }
+  .signupleftblockmiddle {
+    bottom: 128px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:1058px) {
+  .signupleftblockmiddle {
+    bottom: 151px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:991px) {
+  .signupleftblock{width: 100% !important; float: left;}
+  .signuprightblock{width: 100% !important; float: left;}
+  .signupleftblocktop h1 {
+    font-size: 30px;
+  }
+  .signupleftblockmiddle {
+    bottom: 97px;
+    width: 100%;
+  }
+
+  .signuprightblock .btn-block {
+    width: 90%;
+  }
+
+
+
+
+
+}
+
+@media screen and (max-width:800px) {
+  .signupleftblockmiddle {
+    bottom: 128px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:768px) {
+  .signupleftblockmiddle {
+    bottom: 94px;
+    width: 100%;
+  }
+  .signupleftblockbottom h1 {
+    font-size: 18px;
+  }
+  .signupleftblockbottom h3 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width:740px) {
+  .signupleftblockmiddle {
+    bottom: 93px;
+    width: 100%;
+  }
+}
+
+
+
+@media screen and (max-width:640px) {
+  .signupleftblockmiddle {
+    bottom: 93px;
+    width: 100%;
+  }
+
+}
+
+@media screen and (max-width:610px) {
+  .signupleftblockmiddle {
+    bottom: 118px;
+    width: 100%;
+  }
+}
+
+@media screen and (max-width:590px) {
+  .signupleftblockmiddle {
+    bottom: 120px;
+    width: 100%;
+  }
+}
+@media screen and (max-width:540px) {
+  .signupleftblockmiddle {
+    bottom: 116px;
+    width: 100%;
+  }
+}

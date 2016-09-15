@@ -18,7 +18,7 @@ import {Observable} from "rxjs";
 export class AppComponent {
     items:Array<any>;
     loginForm: FormGroup;
-    http;
+    http:any;
 
     firstName = new FormControl("", Validators.required);
 

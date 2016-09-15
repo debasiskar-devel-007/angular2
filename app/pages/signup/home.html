@@ -1,0 +1,120 @@
+<div class="container-fluid signup_body_wrapper">
+
+    <div class="container-fluid toplogoblock">
+
+        <a href="javascript:void(0)"><img src="images/logo1.png" alt="" class="logo1"/></a>
+        <!--<span class="logodevider"></span>
+
+        <a href="javascript:void(0)"><img src="images/logo2.png" alt=""  class="logo2"/></a>-->
+
+    </div>
+
+
+    <div class="container-fluid signupmiddleblock">
+
+        <div class="row">
+
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 signupleftblock">
+                <div class="signupleftblocktop">
+                    <h1>Our Auctions have the largest inventory in town</h1>
+                    <p>You have made an incredible decision! Ken Garff invites you to join ProBidAuto.com and get personalized catering to buying your next auto. There are literally thousands of autos auctioned in your area every single week.</p>
+                </div>
+                <div class="signupleftblockmiddle">
+                    <p>We are giving you access to the largest inventory in the entire area! What does that mean for you? That means that you can get much closer to the exact vehicle you are looking for and at incredible prices. [name of auto dealer] saves a lot of time and money by picking up a vehicle directly from the auction.</p>
+                </div>
+                <div class="signupleftblockbottom">
+                    <h1>This is the most exciting way to get your next vehicle! </h1>
+                    <h3>And the best way to get the exact one you want!</h3>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 signuprightblock">
+                <div class="signupheading">
+                    <h2>Get signed up for </h2>
+                    <h3>ProBidAuto.com Now!</h3>
+                </div>
+
+                <img src="images/formshadow.png" alt="" class="formshadow"/>
+
+                <form novalidate [formGroup]="signupform" (ngSubmit)="dosubmit(signupform.value)" name="sihnupform" >
+                    <div class="signupform_wrapper">
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First name"/>
+                            <span *ngIf ="signupform.controls['fname'].touched && !signupform.controls['fname'].valid" class="help-inline">First Name is Required !</span>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['lname']" type="text" class="form-control" placeholder="Last name"/>
+                            <!-- <span class="help-inline">Please correct the error</span>-->
+                            <span *ngIf ="signupform.controls['lname'].touched && !signupform.controls['lname'].valid" class="help-inline">First Name is Required !</span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" [formControl]="signupform.controls['phone']" type="text" class="form-control" placeholder="Telephone number"/>
+                            <!-- <span class="help-inline">Please correct the error</span>-->
+                            <span *ngIf ="signupform.controls['phone'].touched && !signupform.controls['phone'].valid" class="help-inline">First Name is Required !</span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input type="text" [formControl]="signupform.controls['email']" type="email" class="form-control" placeholder="Email address"/>
+                            <!-- <span class="help-inline">Please correct the error</span>-->
+                            <span *ngIf ="signupform.controls['email'].touched && !signupform.controls['email'].valid" class="help-inline">First Name is Required !</span>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['zip']" type="text" class="form-control" placeholder="Zip Code"/>
+                            <!-- <span class="help-inlzine">Please correct the error</span>-->
+                            <span *ngIf =" signupform.controls['zip'].touched && !signupform.controls['zip'].valid" class="help-inline">First Name is Required !</span>
+                        </div>
+
+
+                        <div class="form-group_chakebox signupcheckbox">
+                            <input id="checkbox1" type="checkbox" name="checkbox1" [formControl]="signupform.controls['term']" value="2" /><label for="checkbox1"></label><span (click)="myModal.open()"  >Accept Terms And Conditions</span>
+                            <span *ngIf ="signupform.controls['term'].touched && !signupform.controls['term'].valid" class="help-inline">You must agree with Terms & Conditions</span>
+
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                    <div class="btn-block"><input type="button" value="let’s get you started" class="subbtn"/> </div>
+                </form>
+            </div>
+
+            <div class="clearfix"></div>
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<div class="row">
+    <modal #myModal>
+        <modal-header class="modelheader">
+            <h1>Terms and conditions</h1>
+        </modal-header>
+        <modal-content class="modelcontent">
+            <h3>What is Lorem Ipsum?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+            <h3>Why do we use it?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+            <h3>Where does it come from?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+            <h3>Where can I get some?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+        </modal-content>
+        <modal-footer class="modelfooter">
+            <button class="btn btn-primary btnclose" (click)="myModal.close()">close</button>
+        </modal-footer>
+    </modal>
+</div>

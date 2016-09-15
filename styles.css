@@ -1,145 +1,371 @@
-/* Master Styles */
-h1 {
-  color: #369; 
-  font-family: Arial, Helvetica, sans-serif;   
-  font-size: 250%;
+
+@font-face {
+  font-family:'MyriadPro-Bold';
+  src: url('../fonts/MyriadPro-Bold_gdi.eot');
+  src: url('../fonts/MyriadPro-Bold_gdi.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/MyriadPro-Bold_gdi.woff') format('woff'),
+  url('../fonts/MyriadPro-Bold_gdi.ttf') format('truetype'),
+  url('../fonts/MyriadPro-Bold_gdi.svg#MyriadPro-Bold') format('svg');
+  font-weight: 700;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-25CA;
 }
-h2, h3 { 
-  color: #444;
-  font-family: Arial, Helvetica, sans-serif;   
-  font-weight: lighter;
+
+
+
+@font-face {
+  font-family:'MyriadPro-Semibold';
+  src: url('../fonts/MyriadPro-Semibold_gdi.eot');
+  src: url('../fonts/MyriadPro-Semibold_gdi.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/MyriadPro-Semibold_gdi.woff') format('woff'),
+  url('../fonts/MyriadPro-Semibold_gdi.ttf') format('truetype'),
+  url('../fonts/MyriadPro-Semibold_gdi.svg#MyriadPro-Semibold') format('svg');
+  font-weight: 600;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-25CA;
 }
-body { 
-  margin: 2em; 
+@font-face {
+  font-family:'MyriadPro-Regular';
+  src: url('../fonts/MyriadPro-Regular_gdi.eot');
+  src: url('../fonts/MyriadPro-Regular_gdi.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/MyriadPro-Regular_gdi.woff') format('woff'),
+  url('../fonts/MyriadPro-Regular_gdi.ttf') format('truetype'),
+  url('../fonts/MyriadPro-Regular_gdi.svg#MyriadPro-Regular') format('svg');
+  font-weight: 400;
+  font-style: normal;
+  font-stretch: normal;
+  unicode-range: U+0020-25CA;
 }
-body, input[text], button { 
-  color: #888; 
-  font-family: Cambria, Georgia; 
+body{padding: 0px; margin: 0px; overflow-x: hidden; background:url(../images/carbg.jpg) no-repeat center top; background-size: cover; background-attachment: fixed;}
+*{padding: 0px; margin: 0px;}
+a{text-decoration: none; outline: none;}
+a:hover{text-decoration: none; outline: none; color: inherit;}
+a:visited{text-decoration: none; outline: none; color: inherit;}
+a:focus{text-decoration: none; outline: none; color: inherit;}
+ul,li{list-style: none;}
+p{padding: 0px; margin: 0px;}
+
+h1,h2,h3,h4.h5,h6{ margin: 0px; padding: 0px;}
+
+.container-fluid{ padding-left:0!important; padding-right:0!important; }
+
+.container{ padding-left:0!important; padding-right:0!important;  }
+.row{ padding-left:0!important; padding-right:0!important; margin-left:0!important; margin-right:0!important;  }
+
+.signup_body_wrapper{ margin: 0 auto; width: 1440px; padding-bottom: 50px;}
+
+.toplogoblock{ margin: 23px 0; }
+
+.toplogoblock .logo1{ margin: 0px; display: inline-block; float: left;}
+
+.toplogoblock .logo2{ margin: 15px 0 0 0; display: inline-block; float: left;}
+
+.toplogoblock .logodevider{ width: 1px; background: #c8c4c4; height: 72px; margin: 0 15px; display: block; float: left;}
+
+.signupleftblock{ padding-left:0!important; padding-right:0!important; margin-left:0!important; margin-right:0!important; min-height: 696px !important; background: url(../images/signup_leftimg.jpg)no-repeat; position: relative;}
+.signupleftblocktop{background-color: rgba(0, 0, 0, 0.8); width: 100%; padding: 19px;}
+.signupleftblocktop h1{margin: 0px; padding: 0px 0 0 0; font-family:'MyriadPro-Semibold'; text-transform: uppercase; text-align: left; font-size: 37px; color: #fb4a32; line-height: 27px;}
+.signupleftblocktop p{margin: 0px; padding: 9px 0 0 0; font-family:'MyriadPro-Regular'; text-align: left; font-size: 18px; color: #fff;}
+
+.signupleftblockmiddle{ background: rgba(252,252,252,1); width: 406px;
+  background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,252,252,1)), color-stop(100%, rgba(175,178,179,1)));
+  background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+  background: -o-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+  background: -ms-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+  background: linear-gradient(to bottom, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#afb2b3', GradientType=0 ); padding: 19px;position: absolute; bottom: 97px;}
+.signupleftblockmiddle p{margin: 0px; padding: 0px; font-family:'MyriadPro-Regular'; text-align: left; font-size: 18px; color: #090909;text-shadow: 0px 1px 2px rgba(150, 150, 150, 1);-moz-text-shadow: 0px 1px 2px rgba(150, 150, 150, 1);-webkit-text-shadow: 0px 1px 2px rgba(150, 150, 150, 1);}
+
+.signupleftblockbottom{background-color: rgba(0, 0, 0, 0.8); width: 100%; padding: 19px;position: absolute; bottom: 0px;}
+.signupleftblockbottom h1{margin: 0px; padding: 0px 0 0 0; font-family:'MyriadPro-Bold'; text-transform: uppercase; text-align: left; font-size: 26px; color: #fb4a32; line-height: 27px;}
+.signupleftblockbottom h3{margin: 0px; padding: 12px 0 0 0; font-family:'MyriadPro-Regular'; text-transform: uppercase; text-align: left; font-size: 22px; color: #fff;}
+
+
+
+.signuprightblock{ margin: 0px; padding: 0px;
+  background: rgba(140,139,73,1);
+  background: -moz-linear-gradient(-45deg, rgba(140,139,73,1) 0%, rgba(166,132,126,1) 100%);
+  background: -webkit-gradient(left top, right bottom, color-stop(0%, rgba(140,139,73,1)), color-stop(100%, rgba(166,132,126,1)));
+  background: -webkit-linear-gradient(-45deg, rgba(140,139,73,1) 0%, rgba(166,132,126,1) 100%);
+  background: -o-linear-gradient(-45deg, rgba(140,139,73,1) 0%, rgba(166,132,126,1) 100%);
+  background: -ms-linear-gradient(-45deg, rgba(140,139,73,1) 0%, rgba(166,132,126,1) 100%);
+  background: linear-gradient(135deg, rgba(140,139,73,1) 0%, rgba(166,132,126,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8c8b49', endColorstr='#a6847e', GradientType=1 ); padding: 0px 0 15px 0!important; margin: 0px!important;
 }
-a {
+
+
+.signupheading{
+  background: rgba(252,252,252,1);
+  background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,252,252,1)), color-stop(100%, rgba(175,178,179,1)));
+  background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+  background: -o-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+  background: -ms-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+  background: linear-gradient(to bottom, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#afb2b3', GradientType=0 ); padding: 20px 0 25px 0 ;
+}
+
+.signupheading div{ background: url("../images/lockicon.png") no-repeat 36px 6px; }
+
+.formshadow{ display: block; margin: 0 auto; max-width: 90%; }
+
+.signupheading h2{ margin: 0px; padding: 0px;  font-family:'MyriadPro-Bold'; text-align: center; font-size: 40px; color: #fb4a32; text-transform: uppercase; }
+
+
+
+.loginbox h1{ margin: 0px; padding: 5px 0px;  font-family:'MyriadPro-Bold'; text-align: center; font-size: 40px; color: #fb4a32; text-transform: uppercase; background: url("../images/lockicon.png") no-repeat 144px 4px; background-size: 40px; }
+
+
+
+.signupheading h3{ margin: 0px; padding: 5px 0 0 0; font-family:'MyriadPro-Bold'; text-align: center; font-size: 28px; color: #000000;}
+
+.signupform_wrapper{ padding-left: 56px; padding-right: 56px; margin-top: 6px; padding-bottom: 0px; min-height: 394px;}
+
+.signupform_wrapper .form-group{ width: 100%; margin: 14px 0; background: #afa288; border-radius: 4px; padding: 2px; box-shadow: 0 0 6px #615b42;}
+
+.signupform_wrapper .form-group .form-control{ width: 100%; background: #412f25; height: 50px; margin: 0px; border: none; border-radius: 0px; font-family:'MyriadPro-Regular'; font-size: 16px; color: #fff; box-shadow: none;}
+
+
+.signupform_wrapper .form-group .form-control3{ width: 100%; background: #412f25; height: 50px; margin: 0px; border: none; border-radius: 0px; font-family:'MyriadPro-Regular'; font-size: 16px; color: #fff; box-shadow: none;}
+
+
+.signupform_wrapper   select {
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  appearance: none;
+  background: #412f25 url("../images/selectboxbg.png") no-repeat!important; background-position: right top!important; border: none!important; outline: none!important; padding: 0 9px;
+}
+
+.signupform_wrapper   select option{ padding: 0 9px;}
+
+.signupform_wrapper .form-group ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #fff!important; opacity: 10;
+}
+.signupform_wrapper .form-group ::-moz-placeholder { /* Firefox 19+ */
+  color: #fff!important; opacity: 10;
+}
+.signupform_wrapper .form-group :-ms-input-placeholder { /* IE 10+ */
+  color: #fff!important; opacity: 10;
+}
+.signupform_wrapper .form-group :-moz-placeholder { /* Firefox 18- */
+  color: #fff!important; opacity: 10;
+}
+
+.signupform_wrapper .form-group .form-control2{ width: 100%; background: #412f25; height: 70px; resize: none; margin: 0px; border: none; border-radius: 0px; font-family:'MyriadPro-Regular'; font-size: 16px; color: #fff; box-shadow: none; padding: 5px 12px 5px 12px;}
+
+
+.signuprightblock .btn-block{ background: url("../images/btnbg1.png"); width: 390px; height: 100px; display: block; margin: 16px auto; padding: 6px; box-shadow: 0 0 6px #615b42;}
+
+.signuprightblock .btn-block a{ text-decoration: none; outline: none;}
+.signuprightblock .btn-block .subbtn{
+  background: rgba(0,0,0,1);
+  background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%);
+  background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(48%, rgba(38,38,38,1)), color-stop(52%, rgba(47,47,47,1)), color-stop(100%, rgba(66,66,68,1)));
+  background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%);
+  background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%);
+  background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%);
+  background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#424244', GradientType=0 ); display: block; width: 100%; height: 100%; border: none; cursor: pointer; font-size: 30px; color: #fff;
+  text-transform: uppercase;  font-family:'MyriadPro-Semibold'; text-shadow: 0 0 4px #000; text-decoration: none;
+}
+
+.form-group_chakebox{ margin-top: 26px;}
+
+.form-group_chakebox input[type=checkbox]:not(old){
+  width   : 18px;
+  margin  : 0;
+  padding : 0;
+  opacity : 0; cursor: pointer;
+}
+
+.form-group_chakebox input[type=checkbox]:not(old) + label{
+  display      : inline-block;
+  margin-left  : -18px;
+  padding-left : 22px;
+  background   : url("../images/chakebox1.png") no-repeat 0 0;
+  line-height  : 18px;
+}
+
+
+.signupcheckbox input[type=checkbox]:not(old) + label{
+  display      : inline-block;
+  margin-left  : 0px !important;
+  padding-left : 22px;
+  background   : url("../images/chakebox1.png") no-repeat 0 0;
+  line-height  : 18px;
+}
+
+
+.form-group_chakebox input[type=checkbox]:not(old):checked + label{
+  background-position : 0 -18px;
+}
+
+.form-group_chakebox label{cursor: pointer; font-weight: normal;   font-family:'MyriadPro-Regular'; color: #000; }
+
+
+
+.form-group_chakebox2{ margin-top: 18px;}
+
+.form-group_chakebox2 input[type=checkbox]:not(old){
+  width   : 18px;
+  margin  : 0;
+  padding : 0;
+  opacity : 0; cursor: pointer;
+}
+
+.form-group_chakebox2 input[type=checkbox]:not(old) + label{
+  display      : inline-block;
+  margin-left  : -18px;
+  padding-left : 22px;
+  background   : url("../images/chakebox1.png") no-repeat 0 0;
+  line-height  : 18px;
+}
+
+
+.form-group_chakebox2 input[type=checkbox]:not(old):checked + label{
+  background-position : 0 -18px;
+}
+
+.form-group_chakebox2 label{cursor: pointer; font-weight: normal;   font-family:'MyriadPro-Regular'; color: #000; }
+
+
+
+.signupform_wrapper .help-inline{ font-size: 12px; color: #ff0000; padding: 1px 4px 0 4px;}
+
+
+.signuprightblock h6{ margin: 0; padding:0; font-size: 18px; color: #fe3419; font-family:'MyriadPro-Bold'; text-transform: uppercase; text-align: center;}
+
+.signuprightblock h5{ margin: 10px 0 0 0; padding:14px 0; font-size: 18px; color: #fefefe;  font-family:'MyriadPro-Semibold';   background:#272727  url("../images/lockicon2.png") no-repeat 75px center; text-align: center; }
+
+.signuprightblock h4{ margin: 0; padding:10px 0 12px 0; font-size: 24px; color: #fefefe;  font-family:'MyriadPro-Bold';  background:#fb4a32; text-align: center; text-transform: uppercase; }
+
+.signuprightblock .labelclass{ margin: 5px 0 0 0; padding:0; font-size: 16px; color: #ff1e00; font-family:'MyriadPro-Regular'; padding: 10px 0 14px 0; }
+
+
+.signuprightblock  .form-group2 span{ color: #fff; padding-right: 10px; font-family:'MyriadPro-Semibold'; }
+
+
+.signupform_wrapper .form-group4{ width: 48%; float: left; margin:  0; background: #afa288; border-radius: 4px; padding: 2px; box-shadow: 0 0 6px #615b42;}
+
+.signupform_wrapper .form-group4 .form-control3{ width: 100%; background: #412f25; height: 50px; margin: 0px; border: none; border-radius: 0px; font-family:'MyriadPro-Regular'; font-size: 16px; color: #fff; box-shadow: none;}
+
+
+
+.signupform_wrapper .form-group5{ width: 48%; float: right; margin: 0; background: #afa288; border-radius: 4px; padding: 2px; box-shadow: 0 0 6px #615b42;}
+
+.signupform_wrapper .form-group5 .form-control3{ width: 100%; background: #412f25; height: 50px; margin: 0px; border: none; border-radius: 0px; font-family:'MyriadPro-Regular'; font-size: 16px; color: #fff; box-shadow: none;}
+
+.toplogoblocklogin{ margin: 23px 0; width: 550px; }
+
+
+.loginbox{ width: 500px!important; display: block!important; margin: 25px auto!important; float: none!important;}
+
+
+.forgottext{ text-align:  center; padding:12px 0 14px 0; font-family:'MyriadPro-Regular'; font-size: 16px; color: #000;}
+
+.forgottext a{color: #000; padding: 0 5px;}
+
+.forgottext a:hover{color: #fff; text-decoration: none;}
+
+
+
+
+.btn-blocklogin {
+  background: rgba(0, 0, 0, 0) url("../images/btnbg1.png") repeat scroll 0 0;
+  box-shadow: 0 0 6px #615b42;
+  display: block;
+
+  height: 70px; margin: 15px auto;
+
+  padding: 6px;
+  width: 200px;
+}
+
+.btn-blocklogin a{ text-decoration: none!important;}
+
+.btn-blocklogin .loginbtn {
+  background: rgba(0, 0, 0, 0) linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(38, 38, 38, 1) 48%, rgba(47, 47, 47, 1) 52%, rgba(66, 66, 68, 1) 100%) repeat scroll 0 0;
+  border: medium none;
+  color: #fff;
   cursor: pointer;
-  cursor: hand;
-}
-button {
-  font-family: Arial;
-  background-color: #eee;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
-}
-button:hover {
-  background-color: #cfd8dc;
-}
-button:disabled {
-  background-color: #eee;
-  color: #aaa; 
-  cursor: auto;
+  display: block;
+  font-family: "MyriadPro-Semibold";
+  font-size: 30px;
+  height: 100%;
+  text-shadow: 0 0 4px #000;
+  text-transform: uppercase;
+  width: 100%;
 }
 
-/* Navigation link styles */
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #eee;
-  border-radius: 4px;
+.loader{position: absolute; top:49%; left: 41%;}
+.signupcheckbox label{width: 18px; height: 18px;}
+.signupcheckbox label, .signupcheckbox span{display: inline-block; float: left; cursor: pointer;}
+
+
+/*---model popup---*/
+
+.modelheader{
+    background: rgba(252,252,252,1) !important;
+    background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%) !important;
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,252,252,1)), color-stop(100%, rgba(175,178,179,1))) !important;
+    background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%) !important;
+    background: -o-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%) !important;
+    background: -ms-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%) !important;
+    background: linear-gradient(to bottom, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#afb2b3', GradientType=0 ) !important; padding: 20px 0 25px 0; text-align: center;
 }
-nav a:visited, a:link {
-  color: #607D8B;
-}
-nav a:hover {
-  color: #039be5;
-  background-color: #CFD8DC;
-}
-nav a.router-link-active {
-  color: #039be5;
+.modelheader h1{
+    margin: 0px;
+    padding: 0px;
+    font-size: 24px;
+    text-transform: uppercase;
+    word-wrap: break-word;
 }
 
-/* items class */
-.items {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 24em;
+.modelcontent{}
+.modelcontent h3{margin: 0px;
+    padding: 0px 0 5px 0;
+    font-family: 'MyriadPro-Bold';
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 20px;
+    color: #fb4a32;
+    line-height: 27px;
 }
-.items li {
-  cursor: pointer;
-  position: relative;
-  left: 0;
-  background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
-}
-.items li:hover {
-  color: #607D8B;
-  background-color: #DDD;
-  left: .1em;
-}
-.items li.selected:hover {
-  background-color: #BBD8DC;
-  color: white;
-}
-.items .text {
-  position: relative;
-  top: -3px;
-}
-.items {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 24em;
-}
-.items li {
-  cursor: pointer;
-  position: relative;
-  left: 0;
-  background-color: #EEE;
-  margin: .5em;
-  padding: .3em 0;
-  height: 1.6em;
-  border-radius: 4px;
-}
-.items li:hover {
-  color: #607D8B;
-  background-color: #DDD;
-  left: .1em;
-}
-.items li.selected {
-  background-color: #CFD8DC;
-  color: white;
+.modelcontent p{margin: 0px;
+    padding: 0px;
+    font-family: 'MyriadPro-Regular';
+    text-align: left;
+    font-size: 18px;
+    color: #090909;
 }
 
-.items li.selected:hover {
-  background-color: #BBD8DC;
+.modelfooter .btnclose {
+    background: rgba(0,0,0,1);
+    background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(48%, rgba(38,38,38,1)), color-stop(52%, rgba(47,47,47,1)), color-stop(100%, rgba(66,66,68,1)));
+    background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%);
+    background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%);
+    background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%);
+    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#424244', GradientType=0 );
+    display: block;
+    width: 100px;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'MyriadPro-Semibold';
+    text-shadow: 0 0 4px #000;
+    text-decoration: none;
+    float: right;
 }
-.items .text {
-  position: relative;
-  top: -3px;
-}
-.items .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #607D8B;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
-}
+.modal-header .close{background-color: #fb4a32; opacity: 1; height: 24px; width: 24px; color: #fff;}
 
-/* everywhere else */
-* { 
-  font-family: Arial, Helvetica, sans-serif; 
-}
-
-.s2{
-  color: #039be5;}

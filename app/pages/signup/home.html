@@ -36,7 +36,7 @@
 
                 <img src="images/formshadow.png" alt="" class="formshadow"/>
 
-                <form novalidate [formGroup]="signupform" (ngSubmit)="dosubmit(signupform.value)" name="sihnupform" >
+                <form novalidate [formGroup]="signupform" (ngSubmit)="doLogin(loginForm.value)"  name="sihnupform" >
                     <div class="signupform_wrapper">
                         <div class="form-group">
                             <input [formControl]="signupform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First name"/>
@@ -48,20 +48,20 @@
                         <div class="form-group">
                             <input [formControl]="signupform.controls['lname']" type="text" class="form-control" placeholder="Last name"/>
                             <!-- <span class="help-inline">Please correct the error</span>-->
-                            <span *ngIf ="signupform.controls['lname'].touched && !signupform.controls['lname'].valid" class="help-inline">First Name is Required !</span>
+                            <span *ngIf ="signupform.controls['lname'].touched && !signupform.controls['lname'].valid" class="help-inline">Last Name is Required !</span>
                         </div>
 
                         <div class="form-group">
                             <input type="text" [formControl]="signupform.controls['phone']" type="text" class="form-control" placeholder="Telephone number"/>
                             <!-- <span class="help-inline">Please correct the error</span>-->
-                            <span *ngIf ="signupform.controls['phone'].touched && !signupform.controls['phone'].valid" class="help-inline">First Name is Required !</span>
+                            <span *ngIf ="signupform.controls['phone'].touched && !signupform.controls['phone'].valid" class="help-inline">Phone is Required !</span>
                         </div>
 
 
                         <div class="form-group">
                             <input type="text" [formControl]="signupform.controls['email']" type="email" class="form-control" placeholder="Email address"/>
                             <!-- <span class="help-inline">Please correct the error</span>-->
-                            <span *ngIf ="signupform.controls['email'].touched && !signupform.controls['email'].valid" class="help-inline">First Name is Required !</span>
+                            <span *ngIf ="signupform.controls['email'].touched && !signupform.controls['email'].valid" class="help-inline">Email is Required and must be valid !</span>
                         </div>
 
 
@@ -69,7 +69,7 @@
                         <div class="form-group">
                             <input [formControl]="signupform.controls['zip']" type="text" class="form-control" placeholder="Zip Code"/>
                             <!-- <span class="help-inlzine">Please correct the error</span>-->
-                            <span *ngIf =" signupform.controls['zip'].touched && !signupform.controls['zip'].valid" class="help-inline">First Name is Required !</span>
+                            <span *ngIf =" signupform.controls['zip'].touched && !signupform.controls['zip'].valid" class="help-inline">Zip is Required !</span>
                         </div>
 
 
@@ -81,7 +81,9 @@
                         </div>
 
                     </div>
-                    <div class="btn-block"><input type="button" value="let’s get you started" class="subbtn"/> </div>
+                    <div class="btn-block">
+                        <button (click)="submitform()" type="button" value="let’s get you started" class="subbtn">let’s get you started</button>
+                    </div>
                 </form>
             </div>
 

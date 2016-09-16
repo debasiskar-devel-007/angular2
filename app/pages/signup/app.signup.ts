@@ -4,6 +4,9 @@ import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/dire
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import {Routes, RouterModule, Router} from '@angular/router';
 import {ModalModule} from "ng2-modal";
+import {Control} from '@angular/common';
+import {Headers,Http} from "@angular/http";
+import {AppCommonservices} from  '../../services/app.commonservices'
 
 
 @Component({
@@ -16,42 +19,98 @@ export class AppSignup {
     // /@ViewChild(Modal) modal;
     signupform: FormGroup;
     myModal :ModalModule;
+    data:any;
+    http:Http;
+    items:any;
+    serverUrl:any;
+    commonservices:AppCommonservices;
 
-    firstName = new FormControl("", Validators.required);
-    private router: Router;
 
-    constructor(fb: FormBuilder  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ) {
+
+        this.items = commonservices.getItems();
+        this.http=http;
+        console.log(this.items);
+        console.log(this.items[0].serverUrl);
+
+        this.serverUrl = this.items[0].serverUrl;
 
         this.signupform = fb.group({
             fname: ["", Validators.required],
             lname: ["", Validators.required],
-            email: ["", Validators.required],
+            email: ["", AppSignup.validateEmail],
             phone: ["", Validators.required],
             zip: ["", Validators.required],
-            term: ["", Validators.required]
+            term: ["", AppSignup.validateTerms]
         });
 
         //this.router.navigate(['/about']);
     }
 
-    dosubmit() {
-        //console.log(this.loginForm.value);
-        console.log(99);
-        alert(67);
-        console.log(this.signupform.value);
-        console.log(this.signupform.value.email);
-    }
 
-    opentermsandconditions(){
-        //$('#termsandcondition').modal('show');
-        //secondModal.open();
-        //this.myModal.open();
+    static validateTerms(control: Control){
 
-        $('#termsmodal').click();
-
-
+        console.log('34324324');
+        console.log(control.value);
+        if(control.value==false){
+            return { 'isTermsChecked': true };
+        }
+        //let appsignupobj=new AppSignup();
+        // /console.log(appsignupobj.signupform.value.term);
 
     }
+
+    static validateEmail(control: Control){
+
+        console.log('34324324');
+        console.log(control.value);
+        if (control.value=='' || !control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+
+            return { 'invalidEmailAddress': true };
+        }
+        //let appsignupobj=new AppSignup();
+        // /console.log(appsignupobj.signupform.value.term);
+
+    }
+    submitform(){
+        //this.signupform.set;
+        let x:any;
+        console.log(this.signupform.value.term);
+
+        for(x in this.signupform.controls){
+            this.signupform.controls[x].markAsTouched();
+
+        }
+        console.log(this.signupform.dirty);
+        this.signupform.markAsDirty();
+        //this.signupform.controls['fname'].markAsTouched();
+        console.log(this.signupform.dirty);
+        console.log(this.signupform.valid);
+        console.log(this.signupform.errors);
+        if(this.signupform.valid){
+
+            //var headers = new Headers();
+            //headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+            //this.items = this.commonservices.getItems();
+            let link = this.serverUrl+'adddealer';
+            var submitdata = this.signupform.value;
+            console.log(this.items);
+
+            this.http.post(link,submitdata)
+                .subscribe(data => {
+                    // /this.data1.response = data.json();
+                    console.log(data);
+
+
+                }, error => {
+                    console.log("Oooops!");
+                });
+
+            //this.navCtrl.push(ProfilePage);
+        }
+    }
+
 }
 
 

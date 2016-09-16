@@ -25,7 +25,7 @@ export class AppHome {
 
     doLogin() {
         //console.log(this.loginForm.value);
-        console.log(99);
+        console.log(66687);
         alert(67);
         console.log(this.loginForm.value);
         console.log(this.loginForm.value.email);

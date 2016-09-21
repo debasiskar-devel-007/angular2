@@ -4,7 +4,7 @@ import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/dire
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import {Routes, RouterModule, Router} from '@angular/router';
 import {ModalModule} from "ng2-modal";
-import {Control} from '@angular/common';
+//import {Control} from '@angular/common';
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 
@@ -48,7 +48,7 @@ export class AppSignup {
     }
 
 
-    static validateTerms(control: Control){
+    static validateTerms(control: FormControl){
 
         console.log('34324324');
         console.log(control.value);
@@ -60,7 +60,7 @@ export class AppSignup {
 
     }
 
-    static validateEmail(control: Control){
+    static validateEmail(control: FormControl){
 
         console.log('34324324');
         console.log(control.value);

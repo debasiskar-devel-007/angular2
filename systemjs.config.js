@@ -23,6 +23,7 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       "ng2-modal": "node_modules/ng2-modal",
+      "ng2-popover": "node_modules/ng2-popover",
 
 
       // other libraries
@@ -42,7 +43,8 @@
         main: './index.js',
         defaultExtension: 'js'
       },
-      "ng2-modal": { "main": "index.js", "defaultExtension": "js" }
+      "ng2-modal": { "main": "index.js", "defaultExtension": "js" },
+      "ng2-popover": { "main": "index.js", "defaultExtension": "js" }
     }
   });
 })(this);

@@ -12,19 +12,20 @@
 
     <div class="container-fluid signupmiddleblock">
 
-        <div class="row">
 
             <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 signupleftblock">
                 <div class="signupleftblocktop">
                     <h1>Our Auctions have the largest inventory in town</h1>
                     <p>You have made an incredible decision! Ken Garff invites you to join ProBidAuto.com and get personalized catering to buying your next auto. There are literally thousands of autos auctioned in your area every single week.</p>
                 </div>
-                <div class="signupleftblockmiddle">
+                <div class="signupleftblockmiddlewrapper">
+                    <div class="signupleftblockmiddle">
                     <p>We are giving you access to the largest inventory in the entire area! What does that mean for you? That means that you can get much closer to the exact vehicle you are looking for and at incredible prices. [name of auto dealer] saves a lot of time and money by picking up a vehicle directly from the auction.</p>
                 </div>
-                <div class="signupleftblockbottom">
+                     <div class="signupleftblockbottom">
                     <h1>This is the most exciting way to get your next vehicle! </h1>
                     <h3>And the best way to get the exact one you want!</h3>
+                </div>
                 </div>
             </div>
 
@@ -39,29 +40,45 @@
                 <form novalidate [formGroup]="signupform" (ngSubmit)="doLogin(loginForm.value)"  name="sihnupform" >
                     <div class="signupform_wrapper">
                         <div class="form-group">
-                            <input [formControl]="signupform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First name"/>
-                            <span *ngIf ="signupform.controls['fname'].touched && !signupform.controls['fname'].valid" class="help-inline">First Name is Required !</span>
+                            <input [formControl]="signupform.controls['username']" name="username"  type="text" class="form-control" placeholder="User Name"/>
+                            <span  *ngIf ="signupform.controls['username'].touched && !signupform.controls['username'].valid" class="help-inline">User Name is Required ! <img src="images/iconquestion.png"></span>
+
+
 
 
                         </div>
 
                         <div class="form-group">
-                            <input [formControl]="signupform.controls['lname']" type="text" class="form-control" placeholder="Last name"/>
-                            <!-- <span class="help-inline">Please correct the error</span>-->
-                            <span *ngIf ="signupform.controls['lname'].touched && !signupform.controls['lname'].valid" class="help-inline">Last Name is Required !</span>
+                            <input [formControl]="signupform.controls['password']" name="password"  type="password" class="form-control" placeholder="Password"/>
+                            <span *ngIf ="signupform.controls['password'].touched && !signupform.controls['password'].valid" class="help-inline">Password  is Required !<img src="images/iconquestion.png"></span>
+
+
                         </div>
 
                         <div class="form-group">
-                            <input type="text" [formControl]="signupform.controls['phone']" type="text" class="form-control" placeholder="Telephone number"/>
+                            <input [formControl]="signupform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First Name"/>
+                            <span *ngIf ="signupform.controls['fname'].touched && !signupform.controls['fname'].valid" class="help-inline">First Name is Required !<img src="images/iconquestion.png"></span>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['lname']" type="text" class="form-control" placeholder="Last Name"/>
                             <!-- <span class="help-inline">Please correct the error</span>-->
-                            <span *ngIf ="signupform.controls['phone'].touched && !signupform.controls['phone'].valid" class="help-inline">Phone is Required !</span>
+                            <span *ngIf ="signupform.controls['lname'].touched && !signupform.controls['lname'].valid" class="help-inline">Last Name is Required !<img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" [formControl]="signupform.controls['phone']" type="text" class="form-control" placeholder="Telephone Number"/>
+                            <!-- <span class="help-inline">Please correct the error</span>-->
+                            <span *ngIf ="signupform.controls['phone'].touched && !signupform.controls['phone'].valid" class="help-inline">Phone is Required !<img src="images/iconquestion.png"></span>
                         </div>
 
 
                         <div class="form-group">
-                            <input type="text" [formControl]="signupform.controls['email']" type="email" class="form-control" placeholder="Email address"/>
+                            <input type="text" [formControl]="signupform.controls['email']" type="email" class="form-control" placeholder="Email Address"/>
                             <!-- <span class="help-inline">Please correct the error</span>-->
-                            <span *ngIf ="signupform.controls['email'].touched && !signupform.controls['email'].valid" class="help-inline">Email is Required and must be valid !</span>
+                            <span *ngIf ="signupform.controls['email'].touched && !signupform.controls['email'].valid" class="help-inline">Email is Required and must be valid !<img src="images/iconquestion.png"></span>
                         </div>
 
 
@@ -69,12 +86,12 @@
                         <div class="form-group">
                             <input [formControl]="signupform.controls['zip']" type="text" class="form-control" placeholder="Zip Code"/>
                             <!-- <span class="help-inlzine">Please correct the error</span>-->
-                            <span *ngIf =" signupform.controls['zip'].touched && !signupform.controls['zip'].valid" class="help-inline">Zip is Required !</span>
+                            <span *ngIf =" signupform.controls['zip'].touched && !signupform.controls['zip'].valid" class="help-inline">Zip is Required !<img src="images/iconquestion.png"></span>
                         </div>
 
 
                         <div class="form-group_chakebox signupcheckbox">
-                            <input id="checkbox1" type="checkbox" name="checkbox1" [formControl]="signupform.controls['term']" value="2" /><label for="checkbox1"></label><span (click)="myModal.open()"  >Accept Terms And Conditions</span>
+                            <input id="checkbox1" type="checkbox" name="checkbox1" [formControl]="signupform.controls['term']" value="2"/><label for="checkbox1"></label><span (click)="myModal.open()"  >Accept Terms And Conditions</span>
                             <span *ngIf ="signupform.controls['term'].touched && !signupform.controls['term'].valid" class="help-inline">You must agree with Terms & Conditions</span>
 
                             <div class="clearfix"></div>
@@ -90,7 +107,6 @@
             <div class="clearfix"></div>
         </div>
 
-    </div>
 
 
 </div>
@@ -119,4 +135,16 @@
             <button class="btn btn-primary btnclose" (click)="myModal.close()">close</button>
         </modal-footer>
     </modal>
+</div>
+
+<div class="hide" popover="content to be shown in the popover"
+     popoverTitle="Popover header"
+     popoverPlacement="top"
+     [popoverOnHover]="true"
+     [popoverCloseOnClickOutside]="false"
+     [popoverCloseOnMouseOutside]="false"
+     [popoverDisabled]="false"
+     [popoverAnimation]="true"
+     [popoverDismissTimeout]="100000000000">
+    element on which this popover is applied.
 </div>

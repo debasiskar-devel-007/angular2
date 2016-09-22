@@ -11,7 +11,7 @@ import { AppSignup }  from './pages/signup/app.signup';
 const appRoutes: Routes = [
     { path: 'contact', component: AppContact },
     { path: 'about', component: AppAbout },
-    { path: '', component: AppHome  },
+    { path: '', component: AppSignup  },
     { path: 'signup', component: AppSignup  }
 ];
 

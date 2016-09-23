@@ -24,6 +24,7 @@
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       "ng2-modal": "node_modules/ng2-modal",
       "ng2-popover": "node_modules/ng2-popover",
+      'angular2-cookie':'npm:angular2-cookie',
 
 
       // other libraries
@@ -44,7 +45,11 @@
         defaultExtension: 'js'
       },
       "ng2-modal": { "main": "index.js", "defaultExtension": "js" },
-      "ng2-popover": { "main": "index.js", "defaultExtension": "js" }
+      "ng2-popover": { "main": "index.js", "defaultExtension": "js" },
+      'angular2-cookie': {
+        main: './core.js',
+        defaultExtension: 'js'
+      }
     }
   });
 })(this);

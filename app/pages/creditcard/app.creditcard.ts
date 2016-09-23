@@ -6,18 +6,16 @@ import {Routes, RouterModule, Router} from '@angular/router';
 import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
-import {CookieService} from 'angular2-cookie/core';
-
 
 
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/signup/home.html',
+    templateUrl:'app/pages/creditcard/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppSignup {
+export class AppCreditcard {
     // /@ViewChild(Modal) modal;
     signupform: FormGroup;
     myModal :ModalModule;
@@ -26,14 +24,12 @@ export class AppSignup {
     items:any;
     serverUrl:any;
     commonservices:AppCommonservices;
-    private userInfo:CookieService;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ) {
 
         this.items = commonservices.getItems();
         this.http=http;
-        this.userInfo=userInfo;
         console.log(this.items);
         console.log(this.items[0].serverUrl);
 
@@ -44,10 +40,10 @@ export class AppSignup {
             password: ["", Validators.required],
             fname: ["", Validators.required],
             lname: ["", Validators.required],
-            email: ["", AppSignup.validateEmail],
+            email: ["", AppCreditcard.validateEmail],
             phone: ["", Validators.required],
             zip: ["", Validators.required],
-            term: ["", AppSignup.validateTerms]
+            term: ["", AppCreditcard.validateTerms]
         });
 
         //this.router.navigate(['/about']);
@@ -107,14 +103,6 @@ export class AppSignup {
                 .subscribe(data => {
                     // /this.data1.response = data.json();
                     console.log(data);
-
-                    this.signupform.value.password='';
-                    this.userInfo.put('userInfo', this.signupform.value);
-                    console.log(this.userInfo.get('userInfo'));
-
-                    //this.local = new Storage(LocalStorageService);
-                   // this.local.set('userinfo', JSON.stringify(data.json()));
-                    //console.logthis.local.get('userinfo');
 
 
                 }, error => {

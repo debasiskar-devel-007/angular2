@@ -38,7 +38,7 @@
   font-stretch: normal;
   unicode-range: U+0020-25CA;
 }
-body{padding: 0px; margin: 0px; overflow-x: hidden; background:url(../images/carbg.jpg) no-repeat center top; background-size: cover; background-attachment: fixed;}
+body{padding: 0px; margin: 0px;}
 *{padding: 0px; margin: 0px;}
 a{text-decoration: none; outline: none;}
 a:hover{text-decoration: none; outline: none; color: inherit;}
@@ -64,6 +64,10 @@ h1,h2,h3,h4.h5,h6{ margin: 0px; padding: 0px;}
 
 .toplogoblock .logodevider{ width: 1px; background: #c8c4c4; height: 72px; margin: 0 15px; display: block; float: left;}
 
+
+.signupwrapperblock{ overflow-x: hidden; background:url(../images/carbg.jpg) no-repeat center top; background-size: cover; background-attachment: fixed;}
+
+.creditcardwrapperblock{background-color:#FBF2E1; width: 100%;}
 
 .signupmiddleblock{width:100%; position: relative; display: flex;}
 
@@ -435,4 +439,125 @@ h1,h2,h3,h4.h5,h6{ margin: 0px; padding: 0px;}
     float: right;
 }
 .modal-header .close{background-color: #fb4a32; opacity: 1; height: 24px; width: 24px; color: #fff;}
+
+
+
+
+/*-CreditCard--*/
+
+
+.creditcardleftblock{ padding-left:0!important; padding-right:0!important; margin-left:0!important; margin-right:0!important; position: relative; flex: 2; float: left !important;}
+.creditcardleftblocktop{background-color: rgba(0, 0, 0, 0.8); width: 100%; padding: 19px;}
+.creditcardleftblocktop h1{margin: 0px; padding: 0px 0 0 0; font-family:'MyriadPro-Semibold'; text-transform: uppercase; text-align: left; font-size: 37px; color: #fb4a32; line-height: 27px;}
+.creditcardleftblocktop p{margin: 0px; padding: 9px 0 0 0; font-family:'MyriadPro-Regular'; text-align: left; font-size: 18px; color: #fff;}
+.creditcardleftblocktop strong{font-weight: normal; color: #fb4a32; text-transform: uppercase;}
+.creditcardleftblocktop span{font-weight: normal; color: #fb4a32;}
+
+.creditcardleftblockmiddle{ background: rgba(252,252,252,1); width: 100%; padding: 22px 19px;
+    background: -moz-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,252,252,1)), color-stop(100%, rgba(175,178,179,1)));
+    background: -webkit-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+    background: -o-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+    background: -ms-linear-gradient(top, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+    background: linear-gradient(to bottom, rgba(252,252,252,1) 0%, rgba(175,178,179,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#afb2b3', GradientType=0 );}
+
+.creditcardleftblockbottom{width: 100%;height: 902px; overflow: hidden;}
+.creditcardleftblockbottom img{width: 101%;}
+
+.creditcardleftblockmiddle .panel {
+    margin-bottom: 0px;
+}
+.creditcardleftblocktop h1 {
+    line-height: normal;
+}
+
+.creditcardleftblockmiddle .panel-heading {
+    padding: 10px 10px;
+    font-family: 'MyriadPro-Semibold';
+    color:#ff1f01 !important;
+    font-size: 29px;
+    background-color: #dedfdf !important;
+    border: 1px solid #b7afaf !important;
+}
+
+.creditcardleftblockmiddle .panel>.table>tbody>tr td{
+    width: 50%;
+    float: left;
+}
+
+.creditcardleftblockmiddle .panel>.table>tbody>tr td:nth-child(2n+0){
+    text-align: right !important;
+    float: right;
+}
+
+.creditcardleftblockmiddle .panel>.table-responsive:last-child>.table:last-child, .panel>.table:last-child {
+    border-bottom: 0px !important;
+}
+
+.creditcardleftblockmiddle .table-striped>tbody>tr{
+    border-bottom: 1px solid #b7afaf !important;
+    display: block;
+}
+.creditcardleftblockmiddle .table>tbody>tr>td, .creditcardleftblockmiddle .table>tbody>tr>th, .creditcardleftblockmiddle .table>tfoot>tr>td, .creditcardleftblockmiddle .table>tfoot>tr>th, .creditcardleftblockmiddle .table>thead>tr>td, .creditcardleftblockmiddle .table>thead>tr>th {
+    padding: 12px 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+    font-family: 'MyriadPro-Regular';
+    font-size: 16px;
+    color:#090909 !important;
+}
+
+.creditcardleftblockmiddle .table>tbody>tr:last-of-type{
+    font-weight: bold !important;
+}
+
+.creditcardleftblockmiddle  .table-striped>tbody>tr{
+    border-bottom: 1px solid #b7afaf !important;
+}
+.creditcardleftblockmiddle table{border: 1px solid #b7afaf !important;}
+.creditcardleftblockmiddle  .table-striped>tbody>tr:nth-of-type(odd) {
+    background-color: #dedfdf !important;
+    width: 100%;
+    float: left;
+}
+
+.creditcardleftblockmiddle  .table-striped>tbody>tr:nth-of-type(even) {
+    background-color: #edeaea !important;
+    width: 100%;
+    float: left;
+}
+
+
+.form-group_chakebox2 input[type=checkbox]:not(old) {
+    width: 18px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.creditcardcheckbox label, .creditcardcheckbox span {
+    display: inline-block;
+    float: left;
+    cursor: pointer;
+}
+
+.creditcardcheckbox input[type=checkbox]:not(old) + label {
+    display: inline-block;
+    margin-left: 0px !important;
+    padding-left: 22px;
+    background: url("../images/chakebox1.png") no-repeat 0 0;
+    line-height: 18px;
+}
+
+.creditcardcheckbox label {
+    width: 18px;
+    height: 18px;
+}
+
+.form-group_chakebox2 input[type=checkbox]:not(old):checked + label {
+    background-position: 0 -18px;
+}
 

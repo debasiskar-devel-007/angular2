@@ -6,13 +6,15 @@ import { AppAbout }  from './pages/about/app.about';
 import { AppComponent }  from './pages/home/app.component';
 import { AppHome }  from './pages/home/app.home';
 import { AppSignup }  from './pages/signup/app.signup';
+import { AppCreditcard }  from './pages/creditcard/app.creditcard';
 
 
 const appRoutes: Routes = [
     { path: 'contact', component: AppContact },
     { path: 'about', component: AppAbout },
     { path: '', component: AppSignup  },
-    { path: 'signup', component: AppSignup  }
+    { path: 'signup', component: AppSignup  },
+    { path: 'creditcard', component: AppCreditcard  }
 ];
 
 

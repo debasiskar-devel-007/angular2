@@ -58,6 +58,7 @@
                 </div>
 
                 <div class="col-lg-4 col-md-4 col-xs-6 col-sm-6 signuprightblock">
+                    <form novalidate [formGroup]="signupform" (ngSubmit)="doLogin(loginForm.value)"  name="sihnupform" >
                     <div class="signupheading">
                         <div>
                             <h2>final step</h2>
@@ -75,65 +76,62 @@
                     <div class="signupform_wrapper" style="min-height: inherit; margin: 26px 0; min-height: 933px;">
 
                         <div class="form-group">
-                            <input class="form-control" placeholder="First name" type="text">
-                             <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>
+                            <input [formControl]="signupform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First Name"/>
+                            <span  *ngIf ="signupform.controls['fname'].touched && !signupform.controls['fname'].valid" class="help-inline">First Name is Required ! <img src="images/iconquestion.png"></span>
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control" placeholder="Last name" type="text">
-                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                            <input [formControl]="signupform.controls['lname']" name="lname"  type="text" class="form-control" placeholder="Last Name"/>
+                            <span  *ngIf ="signupform.controls['lname'].touched && !signupform.controls['lname'].valid" class="help-inline">Last Name is Required ! <img src="images/iconquestion.png"></span>
                         </div>
 
                         <div class="form-group">
-                            <textarea rows="" cols="" class="form-control2" placeholder="Address"></textarea>
-                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
-                        </div>
-
-
-                        <div class="form-group">
-                            <input class="form-control" placeholder="City" type="text">
-                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
-                        </div>
-
-
-
-                        <div class="form-group">
-                            <select class="form-control3">
-                                <option>State</option>
-                                <option>State</option>
-                                <option>State</option>
-                                <option>State</option>
-
-                            </select>
-                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                            <input [formControl]="signupform.controls['address']" name="address"  type="text" class="form-control" placeholder="Address"/>
+                            <span  *ngIf ="signupform.controls['address'].touched && !signupform.controls['address'].valid" class="help-inline">Address is Required ! <img src="images/iconquestion.png"></span>
                         </div>
 
 
                         <div class="form-group">
-                            <input class="form-control" placeholder="Zip Code" type="text">
-                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                            <input [formControl]="signupform.controls['city']" name="city"  type="text" class="form-control" placeholder="City"/>
+                            <span  *ngIf ="signupform.controls['city'].touched && !signupform.controls['city'].valid" class="help-inline">City is Required ! <img src="images/iconquestion.png"></span>
                         </div>
 
 
 
                         <div class="form-group">
-                            <input class="form-control" placeholder="Phone" type="text">
+
+                           <!-- <select [formControl]="signupform.controls['state']" name="state" >
+                                <option *ngFor="obj of getusastates" [value]="obj.value">{{obj.name}}</option>
+                            </select>-->
                             <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                        </div>
+
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['zip']" name="zip"  type="text" class="form-control" placeholder="Zip Code"/>
+                            <span  *ngIf ="signupform.controls['zip'].touched && !signupform.controls['zip'].valid" class="help-inline">Zip is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['phone']" name="phone"  type="text" class="form-control" placeholder="Phone"/>
+                            <span  *ngIf ="signupform.controls['phone'].touched && !signupform.controls['phone'].valid" class="help-inline">Phone is Required ! <img src="images/iconquestion.png"></span>
                         </div>
 
                         <div class="form-group">
-                            <input class="form-control" placeholder="Email" type="text">
-                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                            <input [formControl]="signupform.controls['email']" name="email"  type="text" class="form-control" placeholder="Email"/>
+                            <span  *ngIf ="signupform.controls['email'].touched && !signupform.controls['email'].valid" class="help-inline">Email is Required ! <img src="images/iconquestion.png"></span>
                         </div>
 
 
 
-                        <div class="form-group_chakebox2 creditcardcheckbox">
-                            <input id="checkbox2" name="checkbox2" value="2" type="checkbox">
-                            <label for="checkbox2"></label>
-                            <span>Use my billing address as my ship-to address</span>
-                            <div class="clearfix"></div>
-                        </div>
+                        <!--<div class="form-group_chakebox2 creditcardcheckbox">-->
+                            <!--<input id="checkbox2" name="checkbox2" value="2" type="checkbox">-->
+                            <!--<label for="checkbox2"></label>-->
+                            <!--<span>Use my billing address as my ship-to address</span>-->
+                            <!--<div class="clearfix"></div>-->
+                        <!--</div>-->
 
                         <div class="labelclass">Pay with Credit or Debit Card</div>
 
@@ -146,10 +144,10 @@
 
 
 
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <input class="form-control" placeholder="Card Type" type="text">
-                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
-                        </div>
+                            &lt;!&ndash; <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>&ndash;&gt;
+                        </div>-->
 
 
 
@@ -200,6 +198,7 @@
 
                     </div>
                     <div class="btn-block"><a href="retailcustomer.html"><input value="let’s get you started" class="subbtn" type="button"> </a></div>
+                        </form>
                 </div>
 
 

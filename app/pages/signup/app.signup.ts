@@ -10,6 +10,7 @@ import {CookieService} from 'angular2-cookie/core';
 
 
 
+
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
@@ -27,12 +28,14 @@ export class AppSignup {
     serverUrl:any;
     commonservices:AppCommonservices;
     private userInfo:CookieService;
+    private router: Router;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router) {
 
         this.items = commonservices.getItems();
         this.http=http;
+        this.router=router;
         this.userInfo=userInfo;
         console.log(this.items);
         console.log(this.items[0].serverUrl);
@@ -109,8 +112,9 @@ export class AppSignup {
                     console.log(data);
 
                     this.signupform.value.password='';
-                    this.userInfo.put('userInfo', this.signupform.value);
-                    console.log(this.userInfo.get('userInfo'));
+                    this.userInfo.putObject('userInfo', this.signupform.value);
+                    console.log(this.userInfo.getObject('userInfo'));
+                    this.router.navigate(['/creditcard']);
 
                     //this.local = new Storage(LocalStorageService);
                    // this.local.set('userinfo', JSON.stringify(data.json()));

@@ -6,6 +6,7 @@ import {Routes, RouterModule, Router} from '@angular/router';
 import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
+import {CookieService} from 'angular2-cookie/core';
 
 
 @Component({
@@ -22,29 +23,41 @@ export class AppCreditcard {
     data:any;
     http:Http;
     items:any;
+    getusastates:any;
     serverUrl:any;
+    private userInfo:CookieService;
     commonservices:AppCommonservices;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService  ) {
 
         this.items = commonservices.getItems();
+        //this.getusastates = commonservices.getusastates();
         this.http=http;
         console.log(this.items);
+        console.log(this.getusastates);
+        this.userInfo=userInfo;
         console.log(this.items[0].serverUrl);
 
         this.serverUrl = this.items[0].serverUrl;
 
         this.signupform = fb.group({
-            username: ["", Validators.required],
-            password: ["", Validators.required],
-            fname: ["", Validators.required],
-            lname: ["", Validators.required],
-            email: ["", AppCreditcard.validateEmail],
-            phone: ["", Validators.required],
-            zip: ["", Validators.required],
-            term: ["", AppCreditcard.validateTerms]
+            username: [this.userInfo.getObject('userInfo').username, Validators.required],
+            address: ["", Validators.required],
+            city: ["", Validators.required],
+            fname: [this.userInfo.getObject('userInfo').fname, Validators.required],
+            lname: [this.userInfo.getObject('userInfo').lname, Validators.required],
+            email: [this.userInfo.getObject('userInfo').email, AppCreditcard.validateEmail],
+            phone: [this.userInfo.getObject('userInfo').phone, Validators.required],
+            zip: [this.userInfo.getObject('userInfo').zip, Validators.required],
+            //term: ["", AppCreditcard.validateTerms]
         });
+
+
+        console.log(this.userInfo.getObject('userInfo'));
+        console.log(this.userInfo.getObject('userInfo').username);
+
+
 
         //this.router.navigate(['/about']);
     }
@@ -95,7 +108,7 @@ export class AppCreditcard {
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'adddealer';
+            let link = this.serverUrl+'updatedealer';
             var submitdata = this.signupform.value;
             console.log(this.items);
 

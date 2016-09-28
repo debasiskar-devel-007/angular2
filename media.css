@@ -13,6 +13,8 @@
   .creditcardleftblock{width: 56% !important; float: left;}
   .signuprightblock{width: 44% !important; float: right;}
 
+  .creditcardleftblockbottom{width: 100%;height: 768px; overflow: hidden;}
+
 }
 
 
@@ -21,7 +23,7 @@
     font-size: 25px;
   }
   .creditcardleftblockbottom img {width: 131% !important;}
-  .creditcardleftblockbottom {width: 100%;height: 858px;overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%;height: 768px;overflow: hidden;}
 }
 
 @media screen and (max-width:1366px){
@@ -59,7 +61,20 @@
     width: 100%;
   }
   .creditcardleftblockbottom img {width: 170% !important;}
+
   .creditcardleftblockbottom {width: 100%; overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%; height:768px; overflow: hidden;}
+  .creditcardleftblocktop h1 {
+    font-size: 30px;
+  }
+}
+
+@media screen and (max-width:1168px) {
+  .creditcardleftblockbottom {width: 100%; height:743px; overflow: hidden;}
+}
+
+@media screen and (max-width:1159px) {
+  .creditcardleftblockbottom {width: 100%; height:742px; overflow: hidden;}
 }
 
 
@@ -75,7 +90,6 @@
     bottom: 128px;
     width: 100%;
   }
-  .creditcardleftblockbottom {width: 100%; height: 830px; overflow: hidden;}
 }
 
 @media screen and (max-width:1058px) {
@@ -83,7 +97,15 @@
     bottom: 151px;
     width: 100%;
   }
-  .creditcardleftblockbottom img {width: 185% !important;}
+  .creditcardleftblockbottom img {width: 145% !important;}
+  .creditcardleftblockbottom {height: 740px;}
+}
+
+@media screen and (max-width:1024px) {
+
+  .creditcardleftblockbottom img {
+    width: 150% !important;
+  }
 }
 
 @media screen and (max-width:991px) {
@@ -124,6 +146,8 @@
   .signupleftblocktop h1 {
     line-height: 34px !important;
   }
+
+
 
 }
 

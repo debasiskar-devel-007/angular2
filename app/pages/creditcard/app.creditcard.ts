@@ -23,6 +23,8 @@ export class AppCreditcard {
     data:any;
     http:Http;
     items:any;
+    getExpyears:any;
+    expMonths:any;
     getusastates:any;
     serverUrl:any;
     private userInfo:CookieService;
@@ -32,6 +34,8 @@ export class AppCreditcard {
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService  ) {
 
         this.items = commonservices.getItems();
+        this.getExpyears = commonservices.getExpyears();
+        this.expMonths = commonservices.getMonths();
         //this.getusastates = commonservices.getusastates();
         this.http=http;
         console.log(this.items);
@@ -41,10 +45,26 @@ export class AppCreditcard {
 
         this.serverUrl = this.items[0].serverUrl;
 
+        this.http.get(this.serverUrl+'getusastates')
+            .subscribe(data => {
+                console.log(data);
+               this.getusastates=data.json();
+                console.log(this.getusastates);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
         this.signupform = fb.group({
             username: [this.userInfo.getObject('userInfo').username, Validators.required],
             address: ["", Validators.required],
+            state: ["", Validators.required],
+            expmonth: ["", Validators.required],
             city: ["", Validators.required],
+            expyear: ["", Validators.required],
+            ccno: ["", Validators.required],
+            cvv: ["", Validators.required],
             fname: [this.userInfo.getObject('userInfo').fname, Validators.required],
             lname: [this.userInfo.getObject('userInfo').lname, Validators.required],
             email: [this.userInfo.getObject('userInfo').email, AppCreditcard.validateEmail],
@@ -55,7 +75,7 @@ export class AppCreditcard {
 
 
         console.log(this.userInfo.getObject('userInfo'));
-        console.log(this.userInfo.getObject('userInfo').username);
+        //console.log(this.userInfo.getObject('userInfo').username);
 
 
 
@@ -87,6 +107,18 @@ export class AppCreditcard {
         // /console.log(appsignupobj.signupform.value.term);
 
     }
+
+    static validateState(control: FormControl){
+
+        console.log(control.value+'stateval');
+        if (control.value=='') {
+
+            return { 'invalidState': true };
+        }
+        //let appsignupobj=new AppSignup();
+        // /console.log(appsignupobj.signupform.value.term);
+
+    }
     submitform(){
         //this.signupform.set;
         let x:any;
@@ -100,7 +132,7 @@ export class AppCreditcard {
         this.signupform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
         console.log(this.signupform.dirty);
-        console.log(this.signupform.valid);
+        console.log(this.signupform.valid+'valid');
         console.log(this.signupform.errors);
         if(this.signupform.valid){
 
@@ -110,7 +142,7 @@ export class AppCreditcard {
             //this.items = this.commonservices.getItems();
             let link = this.serverUrl+'updatedealer';
             var submitdata = this.signupform.value;
-            console.log(this.items);
+            console.log(this.signupform.value);
 
             this.http.post(link,submitdata)
                 .subscribe(data => {

@@ -73,7 +73,7 @@
                     <h5>Secure 128-bit ssl Connection</h5>
 
                     <h4>billing address</h4>
-                    <div class="signupform_wrapper" style="min-height: inherit; margin: 26px 0; min-height: 933px;">
+                    <div class="signupform_wrapper" style="min-height: inherit; margin: 26px 0 26px 0px; min-height: 794px;">
 
                         <div class="form-group">
                             <input [formControl]="signupform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First Name"/>
@@ -100,10 +100,11 @@
 
                         <div class="form-group">
 
-                           <!-- <select [formControl]="signupform.controls['state']" name="state" >
-                                <option *ngFor="obj of getusastates" [value]="obj.value">{{obj.name}}</option>
-                            </select>-->
-                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                            <select class="form-control3" [formControl]="signupform.controls['state']" name="state" >
+                                <option value="" selected="selected">Select Your State</option>
+                                <option *ngFor="let obj of getusastates" [value]="obj.abbreviation">{{obj.name}}</option>
+                            </select>
+                            <span  *ngIf ="signupform.controls['state'].touched && !signupform.controls['state'].valid" class="help-inline spanalign">State is Required ! <img src="images/iconquestion.png"></span>
                         </div>
 
 
@@ -153,51 +154,46 @@
 
 
                         <div class="form-group">
-                            <select class="form-control3">
-                                <option>CC#</option>
-                                <option>CC#</option>
-                                <option>CC#</option>
-                                <option>CC#</option>
-
-                            </select>
+                            <input [formControl]="signupform.controls['ccno']" name="ccno" class="form-control" placeholder="CC#" type="text">
                             <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                            <span  *ngIf ="signupform.controls['ccno'].touched && !signupform.controls['ccno'].valid" class="help-inline">CC# is Required ! <img src="images/iconquestion.png"></span>
                         </div>
 
 
 
                         <div class="form-group4">
-                            <select class="form-control3">
-                                <option>Exp Month   </option>
-                                <option>Exp Month   </option>
-                                <option>Exp Month   </option>
-                                <option>Exp Month   </option>
+                            <select class="form-control3" [formControl]="signupform.controls['expmonth']" name="expmonth">
+                                <option value="" selected="selected">Exp Month</option>
+                                <option *ngFor="let obj of expMonths" [value]="obj.value">{{obj.value}}</option>
 
                             </select>
                             <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
                         </div>
 
                         <div class="form-group5">
-                            <select class="form-control3">
-                                <option>Exp Year  </option>
-                                <option>Exp Year  </option>
-                                <option>Exp Year  </option>
-                                <option>Exp Year  </option>
+                            <select class="form-control3" [formControl]="signupform.controls['expyear']" name="expyear">
+                                <option value="" selected="selected">Exp Year</option>
+                                <option *ngFor="let obj of getExpyears" [value]="obj.value">{{obj.value}}</option>
 
                             </select>
                             <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
-                        </div>
 
+                        </div>
+                        <div class="help-inlinesub">
+                        <span  *ngIf ="(signupform.controls['expyear'].touched  && !signupform.controls['expyear'].valid) ||( signupform.controls['expmonth'].touched && !signupform.controls['expyear'].valid)" class="help-inline">Card Exp Year and Month is Required ! <img src="images/iconquestion.png"></span>
+</div>
                         <div class="clearfix"></div>
 
 
                         <div class="form-group">
-                            <input class="form-control" placeholder="CVV" type="text">
+                            <input [formControl]="signupform.controls['cvv']" name="cvv" class="form-control" placeholder="CVV" type="text">
                             <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                            <span  *ngIf ="signupform.controls['cvv'].touched && !signupform.controls['cvv'].valid" class="help-inline">Cvv is Required ! <img src="images/iconquestion.png"></span>
                         </div>
 
 
                     </div>
-                    <div class="btn-block"><a href="retailcustomer.html"><input value="let’s get you started" class="subbtn" type="button"> </a></div>
+                    <div class="btn-block"><input (click)="submitform()"  value="let’s get you started" class="subbtn" type="button"> </div>
                         </form>
                 </div>
 

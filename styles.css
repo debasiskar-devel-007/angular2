@@ -38,6 +38,7 @@
   font-stretch: normal;
   unicode-range: U+0020-25CA;
 }
+html, body{height:100%;}
 body{padding: 0px; margin: 0px;}
 *{padding: 0px; margin: 0px;}
 a{text-decoration: none; outline: none;}
@@ -65,11 +66,36 @@ h1,h2,h3,h4.h5,h6{ margin: 0px; padding: 0px;}
 .toplogoblock .logodevider{ width: 1px; background: #c8c4c4; height: 72px; margin: 0 15px; display: block; float: left;}
 
 
-.signupwrapperblock{ overflow-x: hidden; background:url(../images/carbg.jpg) no-repeat center top; background-size: cover; background-attachment: fixed;}
+.signinwrapperblock{
+    overflow-x: hidden;
+    background:url(../images/carbg.jpg) no-repeat center center fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.signupwrapperblock{
+    overflow-x: hidden;
+    background:url(../images/carbg.jpg) no-repeat center top;
+    min-width: 100%;
+    min-height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    background-attachment: fixed;
+}
 
 .creditcardwrapperblock{background-color:#FBF2E1; width: 100%;}
 
 .signupmiddleblock{width:100%; position: relative; display: flex;}
+
+.signinmiddleblock{width:100%; position: relative;}
 
 .signupleftblock{ padding-left:0!important; padding-right:0!important; margin-left:0!important; margin-right:0!important;float: left !important;   min-height: 813px; flex: 2;background: url(../images/signup_leftimg.jpg) no-repeat left top; background-size: cover;}
 
@@ -187,7 +213,22 @@ h1,h2,h3,h4.h5,h6{ margin: 0px; padding: 0px;}
 
 
 
-.loginbox h1{ margin: 0px; padding: 5px 0px;  font-family:'MyriadPro-Bold'; text-align: center; font-size: 40px; color: #fb4a32; text-transform: uppercase; background: url("../images/lockicon.png") no-repeat 144px 4px; background-size: 40px; }
+/*.loginbox h1{ margin: 0px; padding: 5px 0px;  font-family:'MyriadPro-Bold'; text-align: center; font-size: 40px; color: #fb4a32; text-transform: uppercase; background: url("../images/lockicon.png") no-repeat 144px 4px; background-size: 40px; }*/
+
+.loginbox h1 {
+    margin: 0px;
+    padding: 5px 0px;
+    font-family: 'MyriadPro-Bold';
+    text-align: center;
+    font-size: 40px;
+    color: #fb4a32;
+    text-transform: uppercase;
+    background: url("../images/lockicon.png") no-repeat;
+    background-size: 40px;
+    padding-right: 6px;
+    width: 235px;
+    margin: 0 auto;
+}
 
 
 

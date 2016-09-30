@@ -7,6 +7,8 @@ import { AppComponent }  from './pages/home/app.component';
 import { AppHome }  from './pages/home/app.home';
 import { AppSignup }  from './pages/signup/app.signup';
 import { AppCreditcard }  from './pages/creditcard/app.creditcard';
+import {AppdealerloginComponents} from "./pages/dealerlogin/app.dealerlogincomponent";
+import {AppDealerlogin} from "./pages/dealerlogin/app.dealerlogin";
 
 
 const appRoutes: Routes = [
@@ -14,7 +16,8 @@ const appRoutes: Routes = [
     { path: 'about', component: AppAbout },
     { path: '', component: AppSignup  },
     { path: 'signup', component: AppSignup  },
-    { path: 'creditcard', component: AppCreditcard  }
+    { path: 'creditcard', component: AppCreditcard  },
+    { path: 'dealerlogin', component: AppDealerlogin  }
 ];
 
 

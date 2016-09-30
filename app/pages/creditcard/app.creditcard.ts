@@ -147,7 +147,7 @@ export class AppCreditcard {
             this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();
-                    console.log(data);
+                    console.log(data[0]);
 
 
                 }, error => {

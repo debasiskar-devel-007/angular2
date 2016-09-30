@@ -16,13 +16,15 @@ import {AppCommonservices} from  './services/app.commonservices';
 import { AppContact }  from './pages/contact/app.contact';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "ng2-modal";
+import {AppdealerloginComponents} from "./pages/dealerlogin/app.dealerlogincomponent";
+import {AppDealerlogin} from "./pages/dealerlogin/app.dealerlogin";
 
 
 
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule],
-  declarations: [ AppComponent ,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard],
+  declarations: [ AppComponent ,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin],
   providers: [
     appRoutingProviders,CookieService
   ],

@@ -133,6 +133,13 @@
     display: block;
     position: inherit;
   }
+
+  .signinmiddleblock {
+    display: block;
+    position: inherit;
+  }
+
+
   .signupleftblockmiddlewrapper {
     position: absolute;
     bottom: 0;

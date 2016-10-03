@@ -26,6 +26,6 @@ import {ModalModule} from "ng2-modal";
   providers: [
     appRoutingProviders,CookieService
   ],
-  bootstrap: [AppSignupComponents]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -10,9 +10,16 @@ import { AppCreditcard }  from './pages/creditcard/app.creditcard';
 
 
 const appRoutes: Routes = [
-    { path: 'contact', component: AppContact },
-    { path: 'about', component: AppAbout },
-    { path: '', component: AppSignup  },
+    { path: 'contact', component: AppContact,outlet:'contact' },
+    { path: 'about', component: AppAbout  },
+    { path: 'home', component: AppHome  },
+    {path: 'home',
+        component: AppHome,
+        outlet:'home'
+
+    },
+    { path: 'homecomponent', component: AppHome },
+    { path: '', component: AppSignup},
     { path: 'signup', component: AppSignup  },
     { path: 'creditcard', component: AppCreditcard  }
 ];

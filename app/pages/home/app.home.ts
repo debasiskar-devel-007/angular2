@@ -3,7 +3,8 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { ActivatedRoute } from '@angular/router';
+import {  Router,
+    ActivatedRoute , ActivatedRouteSnapshot }  from '@angular/router';
 
 @Component({
     selector: 'my-app',
@@ -13,10 +14,12 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AppHome {
     loginForm: FormGroup;
+    router:Router;
 
     firstName = new FormControl("", Validators.required);
 
-    constructor(fb: FormBuilder) {
+    constructor(fb: FormBuilder, router:Router) {
+        this.router=router;
         this.loginForm = fb.group({
             email: ["", Validators.required],
             password: ["", Validators.required]
@@ -29,6 +32,10 @@ export class AppHome {
         alert(67);
         console.log(this.loginForm.value);
         console.log(this.loginForm.value.email);
+    }
+
+    allroute(){
+        this.router.navigateByUrl('/about(contact:contact//home:home)');
     }
 }
 

@@ -1,11 +1,18 @@
 export class AppCommonservices {
     items:Array<any>;
     //http:Http;
-
+    url:any
     constructor() {
         //this.http=http;
+
+        if(window.location.hostname=='localhost'){
+            this.url= 'http://localhost:8001/';
+        }
+        else{
+            this.url= 'http://influxiq.com:8001/';
+        }
         this.items = [
-            { serverUrl: 'http://localhost:8001/' },
+            { serverUrl: this.url },
             { name: 'Pascal Precht' },
             { n2: 'thoughtram' }
         ];

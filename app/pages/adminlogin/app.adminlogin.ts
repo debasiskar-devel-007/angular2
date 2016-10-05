@@ -12,13 +12,13 @@ import {CookieService} from 'angular2-cookie/core';
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/dealerlogin/home.html',
+    templateUrl:'app/pages/adminlogin/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppDealerlogin {
+export class AppAdminlogin{
     // /@ViewChild(Modal) modal;
-    dealerloginform: FormGroup;
+    adminloginform: FormGroup;
     myModal :ModalModule;
     data:any;
     http:Http;
@@ -36,7 +36,7 @@ export class AppDealerlogin {
         this.http=http;
         this.router=router;
 
-        this.dealerloginform = fb.group({
+        this.adminloginform = fb.group({
 
             //term: ["", AppCreditcard.validateTerms]
             username: ["", Validators.required],
@@ -52,16 +52,16 @@ export class AppDealerlogin {
         let x:any;
    //     console.log(this.dealerloginform.value.term);
 
-        for(x in this.dealerloginform.controls){
-            this.dealerloginform.controls[x].markAsTouched();
+        for(x in this.adminloginform.controls){
+            this.adminloginform.controls[x].markAsTouched();
 
         }
        // console.log(this.dealerloginform.dirty);
-        this.dealerloginform.markAsDirty();
+        this.adminloginform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
-       if(this.dealerloginform.valid){
+       if(this.adminloginform.valid){
             let link = this.serverUrl+'usercheck';
-            var submitdata = this.dealerloginform.value;
+            var submitdata = this.adminloginform.value;
 
             this.http.post(link,submitdata)
                 .subscribe(data => {

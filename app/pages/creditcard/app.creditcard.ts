@@ -29,6 +29,7 @@ export class AppCreditcard {
     serverUrl:any;
     private userInfo:CookieService;
     commonservices:AppCommonservices;
+    userinfo:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService  ) {
@@ -37,10 +38,11 @@ export class AppCreditcard {
         this.getExpyears = commonservices.getExpyears();
         this.expMonths = commonservices.getMonths();
         //this.getusastates = commonservices.getusastates();
+        this.userinfo=this.userInfo.getObject('userInfo');
         this.http=http;
         console.log(this.items);
         console.log(this.getusastates);
-        this.userInfo=userInfo;
+       // this.userInfo=userInfo;
         console.log(this.items[0].serverUrl);
 
         this.serverUrl = this.items[0].serverUrl;
@@ -57,7 +59,7 @@ export class AppCreditcard {
             });
 
         this.signupform = fb.group({
-            username: [this.userInfo.getObject('userInfo').username, Validators.required],
+            username: [this.userinfo, Validators.required],
             address: ["", Validators.required],
             state: ["", Validators.required],
             expmonth: ["", Validators.required],
@@ -65,11 +67,11 @@ export class AppCreditcard {
             expyear: ["", Validators.required],
             ccno: ["", Validators.required],
             cvv: ["", Validators.required],
-            fname: [this.userInfo.getObject('userInfo').fname, Validators.required],
-            lname: [this.userInfo.getObject('userInfo').lname, Validators.required],
-            email: [this.userInfo.getObject('userInfo').email, AppCreditcard.validateEmail],
-            phone: [this.userInfo.getObject('userInfo').phone, Validators.required],
-            zip: [this.userInfo.getObject('userInfo').zip, Validators.required],
+            fname: [this.userinfo.fname, Validators.required],
+            lname: [this.userinfo.lname, Validators.required],
+            email: [this.userinfo.email, AppCreditcard.validateEmail],
+            phone: [this.userinfo.phone, Validators.required],
+            zip: [this.userinfo.zip, Validators.required],
             //term: ["", AppCreditcard.validateTerms]
         });
 

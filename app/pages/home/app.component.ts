@@ -10,7 +10,10 @@ import {Observable} from "rxjs";
 
 @Component({
     selector: 'my-app',
+/*
     template: '<router-outlet></router-outlet>',
+*/
+    template: '<router-outlet name="dealerheader"></router-outlet><router-outlet></router-outlet><router-outlet name="dealerfooter"></router-outlet>',
     providers: [AppCommonservices]
     //templateUrl:'app/pages/home/home.html',
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]

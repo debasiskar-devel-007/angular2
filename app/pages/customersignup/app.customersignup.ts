@@ -14,13 +14,13 @@ import {CookieService} from 'angular2-cookie/core';
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/signup/home.html',
+    templateUrl:'app/pages/customersignup/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppSignup {
+export class AppCustomersignup {
     // /@ViewChild(Modal) modal;
-    signupform: FormGroup;
+    customersignupform: FormGroup;
     myModal :ModalModule;
     data:any;
     http:Http;
@@ -42,15 +42,15 @@ export class AppSignup {
 
         this.serverUrl = this.items[0].serverUrl;
 
-        this.signupform = fb.group({
+        this.customersignupform = fb.group({
             username: ["", Validators.required],
             password: ["", Validators.required],
             fname: ["", Validators.required],
             lname: ["", Validators.required],
-            email: ["", AppSignup.validateEmail],
+            email: ["", AppCustomersignup.validateEmail],
             phone: ["", Validators.required],
             zip: ["", Validators.required],
-            term: ["", AppSignup.validateTerms]
+            term: ["", AppCustomersignup.validateTerms]
         });
 
         //this.router.navigate(['/about']);
@@ -84,26 +84,26 @@ export class AppSignup {
     submitform(){
         //this.signupform.set;
         let x:any;
-        console.log(this.signupform.value.term);
+        console.log(this.customersignupform.value.term);
 
-        for(x in this.signupform.controls){
-            this.signupform.controls[x].markAsTouched();
+        for(x in this.customersignupform.controls){
+            this.customersignupform.controls[x].markAsTouched();
 
         }
-        console.log(this.signupform.dirty);
-        this.signupform.markAsDirty();
+        console.log(this.customersignupform.dirty);
+        this.customersignupform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
-        console.log(this.signupform.dirty);
-        console.log(this.signupform.valid);
-        console.log(this.signupform.errors);
-        if(this.signupform.valid){
+        console.log(this.customersignupform.dirty);
+        console.log(this.customersignupform.valid);
+        console.log(this.customersignupform.errors);
+        if(this.customersignupform.valid){
 
             //var headers = new Headers();
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
             let link = this.serverUrl+'adddealer';
-            var submitdata = this.signupform.value;
+            var submitdata = this.customersignupform.value;
             console.log(this.items);
 
             this.http.post(link,submitdata)
@@ -111,8 +111,8 @@ export class AppSignup {
                     // /this.data1.response = data.json();
                     console.log(data);
 
-                    this.signupform.value.password='';
-                    this.userInfo.putObject('userInfo', this.signupform.value);
+                    this.customersignupform.value.password='';
+                    this.userInfo.putObject('userInfo', this.customersignupform.value);
                     console.log(this.userInfo.getObject('userInfo'));
                     this.router.navigate(['/creditcard']);
 

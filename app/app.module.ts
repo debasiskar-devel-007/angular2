@@ -6,6 +6,7 @@ import { AppHome }  from './pages/home/app.home';
 import { AppAbout }  from './pages/about/app.about';
 import { AppSignup }  from './pages/signup/app.signup';
 import { AppSignupComponents }  from './pages/signup/app.signupcomponent';
+import { AppCustomersignup }  from './pages/customersignup/app.customersignup';
 import { AppCreditcard }  from './pages/creditcard/app.creditcard';
 import { HttpModule, JsonpModule } from '@angular/http';
 import {PopoverModule} from "ng2-popover";
@@ -18,16 +19,23 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "ng2-modal";
 import {AppdealerloginComponents} from "./pages/dealerlogin/app.dealerlogincomponent";
 import {AppDealerlogin} from "./pages/dealerlogin/app.dealerlogin";
+import {AppDealerheader} from "./pages/dealerheader/app.dealerheader";
+import {AppDealerfooter} from "./pages/dealerfooter/app.dealerfooter";
+import {AppDealerdashboard} from "./pages/dealerdashboard/app.dealerdashboard";
+import {AppAdminlogin} from "./pages/adminlogin/app.adminlogin";
+import { AppadminloginComponents }  from './pages/adminlogin/app.adminlogincomponent';
+import {AppCustomerlogin} from "./pages/customerlogin/app.customerlogin";
+import { AppcustomerloginComponents }  from './pages/customerlogin/app.customerlogincomponent';
 
 
 
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule],
-  declarations: [ AppComponent ,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin],
+  declarations: [ AppComponent ,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents],
   providers: [
     appRoutingProviders,CookieService
   ],
-  bootstrap: [AppSignupComponents]
+  bootstrap: [AppComponent]
 })
 export class AppModule { }

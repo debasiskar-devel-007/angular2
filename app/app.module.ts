@@ -7,6 +7,7 @@ import { AppAbout }  from './pages/about/app.about';
 import { AppSignup }  from './pages/signup/app.signup';
 import { AppSignupComponents }  from './pages/signup/app.signupcomponent';
 import { AppCustomersignup }  from './pages/customersignup/app.customersignup';
+import { AppCustomersignupComponents }  from './pages/customersignup/app.customersignupcomponent';
 import { AppCreditcard }  from './pages/creditcard/app.creditcard';
 import { HttpModule, JsonpModule } from '@angular/http';
 import {PopoverModule} from "ng2-popover";
@@ -26,16 +27,21 @@ import {AppAdminlogin} from "./pages/adminlogin/app.adminlogin";
 import { AppadminloginComponents }  from './pages/adminlogin/app.adminlogincomponent';
 import {AppCustomerlogin} from "./pages/customerlogin/app.customerlogin";
 import { AppcustomerloginComponents }  from './pages/customerlogin/app.customerlogincomponent';
+import { AppAdminheader }  from './pages/adminheader/app.adminheader';
+import { AppAdminfooter }  from './pages/adminfooter/app.adminfooter';
+import { AppAdmindashboard }  from './pages/admindashboard/app.admindashboard';
+import { AppAddadmin }  from './pages/addadmin/app.addadmin';
+import { AppAdminlist }  from './pages/adminlist/app.adminlist';
 
 
 
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule],
-  declarations: [ AppComponent ,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomersignupComponents,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents],
   providers: [
     appRoutingProviders,CookieService
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { } 

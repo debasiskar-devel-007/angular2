@@ -13,7 +13,7 @@ import {Observable} from "rxjs";
 /*
     template: '<router-outlet></router-outlet>',
 */
-    template: '<router-outlet name="dealerheader"></router-outlet><router-outlet></router-outlet><router-outlet name="dealerfooter"></router-outlet>',
+    template: '<router-outlet name="dealerheader"></router-outlet><router-outlet name="adminheader"></router-outlet><router-outlet></router-outlet><router-outlet name="dealerfooter"></router-outlet><router-outlet name="adminfooter"></router-outlet>',
     providers: [AppCommonservices]
     //templateUrl:'app/pages/home/home.html',
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]

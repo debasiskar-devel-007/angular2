@@ -1,4 +1,4 @@
-   <div class="container-fluid cusdashboardblock1">
+ <div class="container-fluid cusdashboardblock1">
     <div class="container cusdashboardblock1inner">
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerleft">
@@ -9,6 +9,7 @@
                     <button type="button" class="btn btn-info collapsebtn" data-toggle="collapse" data-target="#demo"> <img src="images/dropdownmenu1.png" alt=""/></button>
                 </div>
             </div>
+
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerright cusdashboardblock1innerrightsml">
                 <div class="badgelists">
                     <a href = "#"><span class = "badge">3</span><img src="images/admicon-message.png">Messages</a>
@@ -17,14 +18,14 @@
                 </div>
                 <div class = "customersignout dropdown">
                     <a type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
-                        <img src="images/img_customersignup_car.png" class="imgadminimg"> <label class="lblsignupcustomer">Test Dealer</label> <span class = "caret"></span>
+                        <img src="images/img_adminsignup.png" class="imgadminimg"> <label class="lblsignupcustomer">Test Admin</label> <span class = "caret"></span>
                     </a>
                     <div class = "dropdown-menu dropdown-menucuscom" aria-labelledby = "dropdownMenu1">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                            <img src="images/img_customersignup_car.png" class="imgadminimg">
+                            <img src="images/img_adminsignup.png" class="imgadminimg">
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                            <label class="lblsignupcustomer">Test Dealer</label>
+                            <label class="lblsignupcustomer">Test Admin</label>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                             <a href = "#" class="btn btn-default btnlogout">
@@ -38,17 +39,19 @@
     </div>
 </div>
 
+
 <div class="container-fluid menublockdiv">
-    <div id="demo" class="collapse">
+    <div id="demo" class="collapse in">
         <div class="container collapsediv">
             <img src="images/menuarrow.png" alt="" class="menuarrowimg2"/>
         </div>
         <div class="collapsedivmenu" >
             <!--<img src="images/demomenu.png" alt="" style="display: block; margin: 0 auto;"/>-->
             <ul>
+                <li><a (click)="adminlist()"><img src="images/admicon-manageadmin.png">Manage Admin</a></li>
                 <li><a><img src="images/admicon-managecustomer.png">Manage Customer Portal</a></li>
                 <li><a><img src="images/admicon-broadcastprefer.png">Manage Broadcast Preferences</a></li>
-                <li><a><img src="images/admicon-opencontact.png">Manage Open Contract</a></li>
+                <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
                 <li><a><img src="images/admicon-manageaution.png">Manage Auctions</a></li>
                 <li><a><img src="images/admicon-subscription.png">Manage Subscriptions</a></li>
                 <li><a><img src="images/admicon-sharemedia.png">Share Media</a></li>
@@ -58,4 +61,6 @@
         </div>
     </div>
 </div>
+
+
 

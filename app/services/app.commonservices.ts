@@ -1,7 +1,7 @@
 export class AppCommonservices {
     items:Array<any>;
     //http:Http;
-    url:any
+url:any
     constructor() {
         //this.http=http;
 

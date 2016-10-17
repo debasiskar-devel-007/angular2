@@ -1,4 +1,29 @@
+@media screen and (max-width:1880px){
+
+
+}
+
+
+@media screen and (max-width:1780px){
+
+
+}
+
+
 @media screen and (max-width:1680px){
+  .cusdashboardblock1inner {
+    width: 100% !important;
+    margin: 0 auto;
+  }
+  .cusdashboardblock2 .cusdashboardblock2inner {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .cusdashboardblock2inner .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+
 }
 
 
@@ -6,7 +31,7 @@
   .signup_body_wrapper {margin: 0 auto; width: 100%;}
   .signupleftblock{width: 56% !important; float: left;}
   .signuprightblock{width: 44% !important; float: right;}
-  .container-fluid {padding-right: 15px !important;padding-left: 15px !important;}
+  /*.container-fluid {padding-right: 15px !important;padding-left: 15px !important;}*/
   .signupleftblocktop h1 {font-size: 34px;}
 
   .creditcardleftblockbottom img {width: 127%;}
@@ -14,7 +39,10 @@
   .signuprightblock{width: 44% !important; float: right;}
 
   .creditcardleftblockbottom{width: 100%;height: 768px; overflow: hidden;}
-
+  .cusdashboardblock9 .cusdashboardblock9inner {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 
@@ -34,7 +62,15 @@
     bottom: 128px;
   }
   .creditcardleftblockbottom img {width: 137% !important;}
-
+  .block1box1 h4 {
+    font-size: 15px;
+  }
+  .block1box1 h5 {
+    font-size: 16px;
+  }
+  .block1box1 .btnview a {
+    font-size: 14px;
+  }
 }
 
 @media screen and (max-width:1320px){
@@ -53,6 +89,8 @@
 }
 
 @media screen and (max-width:1199px){
+
+
   .signupleftblocktop h1 {
     font-size: 26px;
   }
@@ -67,6 +105,97 @@
   .creditcardleftblocktop h1 {
     font-size: 30px;
   }
+
+  [class*="col-"] {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .auctioninventorysinglelist [class*="col-"] {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+
+  .cusdashboardblock2innerleft {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+    background-color: transparent;
+  }
+  .cusdashboardblock2innerleft img{width: 100%;}
+  .cusdashboardblock2innerright {
+    width: 100%;
+    float: none;
+    margin-top: 12px !important;
+    background-color: transparent;
+  }
+  .cusdashboardblock2innerright img{width: 100%;}
+  .cusdashboardblock2innerleft{height: auto;}
+  .cusdashboardblock2innerright{height: auto;}
+
+  .cusdashboardblock2 .cusdashboardblock2inner h2 {
+    margin: 0 15px;
+  }
+  .cusdashboardblock5 .cusdashboardblock5inner h2 {
+    margin: 0 15px;
+  }
+  .logo {
+    text-align: center;
+    float: none;
+    width: 570px;
+    margin: 0 auto;
+  }
+  .collapsedivmenu ul li {
+    display: block;
+    padding: 10px 10px;
+    width: 100%;
+    float: left;
+
+  }
+
+  .cusdashboardblock1innerright {
+    padding: 0px;
+    width: 100% !important;
+    float: left !important;
+  }
+  .cusdashboardblock1innerrightsml{
+    width: 54% !important;
+    margin: 0 auto !important;
+    display: block;
+    float: none !important;
+    text-align: center;
+  }
+  [class*="col-"] {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .block1box {
+    margin-bottom: 30px;
+  }
+  .recentrsvpsinglelist .imgwrapper {
+    width: none;
+  }
+  .recentcussinglelist .imgwrapper {
+    width: none;
+  }
+  .block1box1 .btnview {
+    width: 190px;
+  }
+
+  .recentrsvpsinglelist .imgwrapper {
+    width: auto;
+  }
+
+  .recentcussinglelist .imgwrapper {
+    width: auto;
+  }
 }
 
 @media screen and (max-width:1168px) {
@@ -80,6 +209,10 @@
 
 @media screen and (max-width:1100px) {
   .creditcardleftblockbottom img {width: 175% !important;}
+  .cusdashboardblock1innerrightsml {
+    width: 59% !important;
+  }
+
 }
 
 @media screen and (max-width:1060px){
@@ -106,9 +239,15 @@
   .creditcardleftblockbottom img {
     width: 150% !important;
   }
+  .cusdashboardblock1innerrightsml {
+    width: 63% !important;
+  }
 }
 
 @media screen and (max-width:991px) {
+  .auctioninventorysinglelist .table{margin-bottom:19px;}
+  .inventorymactsinglelist .table{margin-bottom:19px;}
+
   .signupleftblock{width: 100% !important; float: left; height: 800px;}
   .signuprightblock{width: 100% !important; float: left;}
   .signupleftblocktop h1 {
@@ -138,7 +277,9 @@
     display: block;
     position: inherit;
   }
-
+  .block1box {
+    height: auto;
+  }
 
   .signupleftblockmiddlewrapper {
     position: absolute;
@@ -153,8 +294,28 @@
   .signupleftblocktop h1 {
     line-height: 34px !important;
   }
+  .cusdashboardblock1innerrightsml {
+    width: 64% !important;
+  }
+  .block1box {
+    height: auto;
+  }
 
 
+  .block1box1 .btnview {
+    bottom: -56px;
+  }
+
+  .equal, .equal > div[class*="col-"] {
+    display: block;
+  }
+
+  .recentrsvpsinglelist .imgwrapper {
+    width: 65px;
+  }
+  .recentcussinglelist .imgwrapper {
+    width: 65px;
+  }
 
 }
 
@@ -163,9 +324,61 @@
     bottom: 128px;
     width: 100%;
   }
+  .cusdashboardblock1innerrightsml {
+    width: 81% !important;
+  }
 }
 
+
+@media (min-width: 768px) {
+  #page-wrapper {
+    position: inherit;
+    margin: 0px;
+    padding: 0 30px;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    z-index: 1;
+    position: absolute;
+    width: 250px;
+    margin-top: 51px;
+  }
+  .navbar-top-links .dropdown-messages,
+  .navbar-top-links .dropdown-tasks,
+  .navbar-top-links .dropdown-alerts {
+    margin-left: auto;
+  }
+
+}
+
+
+
 @media screen and (max-width:768px) {
+
+  /*--DealerDashboard-*/
+
+  .auctioninventorysinglelist .imgouter {
+    width: 100%;
+  }
+  .inventorymatchsinglelist .imgouter {
+    width: 100%;
+  }
+
+
+  .imgouter .imgwrapper {
+    margin: 0 auto;
+    display: block;
+    width: auto;
+  }
+
+  /*---*/
+
+
+
+
   .signupleftblockmiddle {
     bottom: 94px;
     width: 100%;
@@ -176,6 +389,12 @@
   .signupleftblockbottom h3 {
     font-size: 16px;
   }
+  .cusdashboardblock1innerright {
+    padding: 0px;
+    width: 100% !important;
+    float: right !important;
+  }
+
 }
 
 @media screen and (max-width:740px) {
@@ -201,6 +420,16 @@
     bottom: 118px;
     width: 100%;
   }
+
+  .logodevider {
+    margin: 0 11px;
+  }
+  .logo {
+    text-align: center;
+    float: none;
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width:590px) {
@@ -208,24 +437,52 @@
     bottom: 120px;
     width: 100%;
   }
+
 }
 @media screen and (max-width:540px) {
   .signupleftblockmiddle {
     bottom: 116px;
     width: 100%;
   }
-  .signupheading div {background: url("../images/lockicon.png") no-repeat center top; padding-top: 80px;}
-  .signuprightblock h5 {background: #272727 url("../images/lockicon2.png") no-repeat center top 8px; padding-top: 50px; margin: 10px 0 0 0;}
+  .signupheading div {background: url("images/lockicon.png") no-repeat center top; padding-top: 80px;}
+  .signuprightblock h5 {background: #272727 url("images/lockicon2.png") no-repeat center top 8px; padding-top: 50px; margin: 10px 0 0 0;}
   .signupform_wrapper {padding-left: 15px;padding-right: 15px;}
   .signupform_wrapper .form-group span {
     right: -3px;
+  }
+
+  .logodevider {
+    background: #565555 none repeat scroll 0 0;
+    display: inline-block;
+    float: none;
+    height: 1px;
+    margin: 5px;
+    width: 100%;
   }
 }
 
 @media screen and (max-width:480px) {
   .creditcardleftblockbottom img {width: 100%;}
   .signuprightblock .btn-block .subbtn {font-size: 20px;}
-
+  .cusdashboardblock1inner .badgelists a {
+    display: inline-block;
+    font-family: 'open_sansregular';
+    font-size: 13px;
+    color: #fff;
+    width: 100%;
+    margin-right: 0px;
+    text-align: left;
+    height: 37px;
+    display: block;
+  }
+  .cusdashboardblock3links a {
+    font-family: 'open_sanssemibold';
+    font-size: 14px;
+    line-height: 16px;
+    display: block;
+    margin: 0 0 2px 0px;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width:320px) {

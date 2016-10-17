@@ -60,7 +60,7 @@ export class AppAdminlogin{
         this.adminloginform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
        if(this.adminloginform.valid){
-            let link = this.serverUrl+'usercheck';
+            let link = this.serverUrl+'admincheck';
             var submitdata = this.adminloginform.value;
 
             this.http.post(link,submitdata)
@@ -73,7 +73,7 @@ export class AppAdminlogin{
                     if(res.length>0){
                         console.log('Login successfully');
                         this.loginerror=1;
-                        this.router.navigateByUrl('/dealerdashboard(dealerheader:dealerheader//dealerfooter:dealerfooter)');
+                        this.router.navigateByUrl('/admindashboard(adminheader:adminheader//adminfooter:adminfooter)');
                     }
                     else{
                         console.log('Invalid username/password');
@@ -88,8 +88,11 @@ export class AppAdminlogin{
         }
     }
 
-    goSignup(){
-        this.router.navigateByUrl('/signup');
+    goadmindashboard(){
+        this.router.navigateByUrl('/admindashboard(adminheader:adminheader//adminfooter:adminfooter)');
+    }
+    addadmin(){
+        this.router.navigateByUrl('/addadmin(adminheader:adminheader//adminfooter:adminfooter)')
     }
 
 }

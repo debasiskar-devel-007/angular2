@@ -15,9 +15,14 @@ import {AppDealerfooter} from "./pages/dealerfooter/app.dealerfooter";
 import {AppDealerdashboard} from "./pages/dealerdashboard/app.dealerdashboard";
 import {AppAdminlogin} from "./pages/adminlogin/app.adminlogin";
 import {AppCustomerlogin} from "./pages/customerlogin/app.customerlogin";
-alert(window.location.hostname);
+import {AppAdminheader} from "./pages/adminheader/app.adminheader";
+import {AppAdminfooter} from "./pages/adminfooter/app.adminfooter";
+import {AppAdmindashboard} from "./pages/admindashboard/app.admindashboard";
+import {AppAddadmin} from "./pages/addadmin/app.addadmin";
+import {AppAdminlist} from "./pages/adminlist/app.adminlist";
+//alert(window.location.hostname);
 const checkutl=AppAdminlogin;
-alert(checkutl);
+//alert(checkutl);
 
 /*if(window.location.hostname=='probidtech.influxiq.com'){
     const checkutl=AppAdminlogin;
@@ -34,7 +39,7 @@ alert(checkutl);
 }*/
 
 
-alert(checkutl);
+
 const appRoutes: Routes = [
    // { path: '/**',component: AppComponent},
     //{ path: '/*',component: AppComponent},
@@ -50,6 +55,11 @@ const appRoutes: Routes = [
     { path: 'customersignup',component: AppCustomersignup},
     { path: 'adminlogin',component: AppAdminlogin},
     { path: 'customerlogin',component: AppCustomerlogin},
+    { path: 'adminheader',component: AppAdminheader,outlet:'adminheader'},
+    { path: 'adminfooter',component: AppAdminfooter,outlet:'adminfooter'},
+    { path: 'admindashboard',component: AppAdmindashboard},
+    { path: 'addadmin',component: AppAddadmin},
+    { path: 'adminlist',component: AppAdminlist},
 
 ];
 

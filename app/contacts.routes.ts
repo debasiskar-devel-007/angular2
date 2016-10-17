@@ -19,7 +19,9 @@ import {AppAdminheader} from "./pages/adminheader/app.adminheader";
 import {AppAdminfooter} from "./pages/adminfooter/app.adminfooter";
 import {AppAdmindashboard} from "./pages/admindashboard/app.admindashboard";
 import {AppAddadmin} from "./pages/addadmin/app.addadmin";
+import {AppAddfaq} from "./pages/addfaq/app.addfaq";
 import {AppAdminlist} from "./pages/adminlist/app.adminlist";
+import {AppFaq} from "./pages/faq/app.faq";
 //alert(window.location.hostname);
 const checkutl=AppAdminlogin;
 //alert(checkutl);
@@ -59,7 +61,9 @@ const appRoutes: Routes = [
     { path: 'adminfooter',component: AppAdminfooter,outlet:'adminfooter'},
     { path: 'admindashboard',component: AppAdmindashboard},
     { path: 'addadmin',component: AppAddadmin},
+    { path: 'addfaq',component: AppAddfaq},
     { path: 'adminlist',component: AppAdminlist},
+    { path: 'faq',component: AppFaq},
 
 ];
 

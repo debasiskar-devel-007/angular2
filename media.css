@@ -1,6 +1,9 @@
-@media screen and (max-width:1880px){
+@media screen and (max-width:1900px){
 
-
+  .collapsedivmenu ul {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 
@@ -12,7 +15,7 @@
 
 @media screen and (max-width:1680px){
   .cusdashboardblock1inner {
-    width: 100% !important;
+    width: 96% !important;
     margin: 0 auto;
   }
   .cusdashboardblock2 .cusdashboardblock2inner {
@@ -23,7 +26,11 @@
     padding-left: 15px !important;
     padding-right: 15px !important;
   }
-
+  .collapsedivmenu ul {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .page-wrapper .blockmaininner{width:100%; margin: 0 auto;}
 }
 
 
@@ -43,6 +50,7 @@
     width: 100%;
     margin: 0 auto;
   }
+
 }
 
 
@@ -71,6 +79,10 @@
   .block1box1 .btnview a {
     font-size: 14px;
   }
+  .collapsedivmenu ul {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width:1320px){
@@ -86,9 +98,20 @@
     font-size: 30px;
   }
   .creditcardleftblockbottom img {width: 155% !important;}
+  .collapsebtn {margin: 30px 0 0 5px;}
 }
 
 @media screen and (max-width:1199px){
+  .block1box1 h4{font-size: 18px;}
+  .block1box1 h5{font-size: 20px;}
+
+
+  .cusdashboardblock1inner [class*="col-"] {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+
 
 
   .signupleftblocktop h1 {
@@ -144,27 +167,25 @@
   .cusdashboardblock5 .cusdashboardblock5inner h2 {
     margin: 0 15px;
   }
-  .logo {
+ /* .logo {
     text-align: center;
     float: none;
     width: 570px;
     margin: 0 auto;
-  }
+  }*/
   .collapsedivmenu ul li {
     display: block;
     padding: 10px 10px;
     width: 100%;
-    float: left;
 
   }
 
   .cusdashboardblock1innerright {
     padding: 0px;
     width: 100% !important;
-    float: left !important;
   }
   .cusdashboardblock1innerrightsml{
-    width: 54% !important;
+    width: 100% !important;
     margin: 0 auto !important;
     display: block;
     float: none !important;
@@ -185,9 +206,7 @@
   .recentcussinglelist .imgwrapper {
     width: none;
   }
-  .block1box1 .btnview {
-    width: 190px;
-  }
+
 
   .recentrsvpsinglelist .imgwrapper {
     width: auto;
@@ -196,6 +215,23 @@
   .recentcussinglelist .imgwrapper {
     width: auto;
   }
+  .collapsedivmenu ul li {
+    display: block;
+    padding: 10px 10px;
+    width: 100%;
+
+  }
+
+  .signinmiddleblock {
+    width: 90%;
+    margin: 0 auto !important;
+  }
+  .signinmiddleblock [class*="col-"] {
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+
 }
 
 @media screen and (max-width:1168px) {
@@ -209,10 +245,6 @@
 
 @media screen and (max-width:1100px) {
   .creditcardleftblockbottom img {width: 175% !important;}
-  .cusdashboardblock1innerrightsml {
-    width: 59% !important;
-  }
-
 }
 
 @media screen and (max-width:1060px){
@@ -238,9 +270,6 @@
 
   .creditcardleftblockbottom img {
     width: 150% !important;
-  }
-  .cusdashboardblock1innerrightsml {
-    width: 63% !important;
   }
 }
 
@@ -294,17 +323,14 @@
   .signupleftblocktop h1 {
     line-height: 34px !important;
   }
-  .cusdashboardblock1innerrightsml {
-    width: 64% !important;
-  }
   .block1box {
     height: auto;
   }
 
 
-  .block1box1 .btnview {
+/*  .block1box1 .btnview {
     bottom: -56px;
-  }
+  }*/
 
   .equal, .equal > div[class*="col-"] {
     display: block;
@@ -316,7 +342,19 @@
   .recentcussinglelist .imgwrapper {
     width: 65px;
   }
-
+  .leftwrap{
+    width: 100% !important;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .middlewrap{
+    width: 100% !important;
+    text-align: center;
+  }
+  .rightwrap{
+    width: 100% !important;
+    text-align: center;
+  }
 }
 
 @media screen and (max-width:800px) {
@@ -324,9 +362,7 @@
     bottom: 128px;
     width: 100%;
   }
-  .cusdashboardblock1innerrightsml {
-    width: 81% !important;
-  }
+
 }
 
 
@@ -425,8 +461,6 @@
     margin: 0 11px;
   }
   .logo {
-    text-align: center;
-    float: none;
     width: 100%;
     margin: 0 auto;
   }
@@ -437,6 +471,11 @@
     bottom: 120px;
     width: 100%;
   }
+  .toplogoblocklogin {
+    margin: 23px 0;
+    width: 90%;
+  }
+
 
 }
 @media screen and (max-width:540px) {
@@ -483,6 +522,32 @@
     margin: 0 0 2px 0px;
     text-align: center;
   }
+  .block1box1 h4 {
+    font-size: 16px;
+  }
+  .customersignout .btn {
+    display: inline-block;
+    padding: 0px 12px 12px 0px;
+  }
+}
+@media screen and (max-width:400px) {
+  .loginbox h1 {
+    padding: 5px 50px;
+    font-size: 28px;
+    background-size: 32px;
+    padding-right: 6px;
+    width: 231px;
+    margin: 0 auto;
+  }
+  .toplogoblock .logodevider {
+    width: 100%;
+    height: 1px;
+    margin: 15px auto;
+  }
+  .toplogoblock .logo2 {
+    margin: 0px 0 0 0;
+  }
+
 }
 
 @media screen and (max-width:320px) {

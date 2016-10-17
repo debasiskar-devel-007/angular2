@@ -1,16 +1,16 @@
  <div class="container-fluid cusdashboardblock1">
     <div class="container cusdashboardblock1inner">
         <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerleft">
+            <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerleft">
                 <div class="logo">
                     <a href="dashboard2.html">  <img src="images/adminlogo.png" alt="adminlogo" class="adminlogo"/></a>
-                    <div class="logodevider"></div>
-                    <img src="images/carlogo2.png" alt="adminlogo" class="adminlogo2"/>
+                    <!--<div class="logodevider"></div>
+                    <img src="images/carlogo2.png" alt="adminlogo" class="adminlogo2"/>-->
                     <button type="button" class="btn btn-info collapsebtn" data-toggle="collapse" data-target="#demo"> <img src="images/dropdownmenu1.png" alt=""/></button>
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerright cusdashboardblock1innerrightsml">
+            <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerright cusdashboardblock1innerrightsml">
                 <div class="badgelists">
                     <a href = "#"><span class = "badge">3</span><img src="images/admicon-message.png">Messages</a>
                     <a href = "#"><span class = "badge">1</span><img src="images/admicon-notification.png">Notifications</a>
@@ -41,7 +41,7 @@
 
 
 <div class="container-fluid menublockdiv">
-    <div id="demo" class="collapse in">
+    <div id="demo" class="collapse">
         <div class="container collapsediv">
             <img src="images/menuarrow.png" alt="" class="menuarrowimg2"/>
         </div>
@@ -56,7 +56,7 @@
                 <li><a><img src="images/admicon-subscription.png">Manage Subscriptions</a></li>
                 <li><a><img src="images/admicon-sharemedia.png">Share Media</a></li>
                 <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
-                <li><a><img src="images/admicon-faq.png">Faq's</a></li>
+                <li><a (click)="faq()"><img src="images/admicon-faq.png">Faq's</a></li>
             </ul>
         </div>
     </div>

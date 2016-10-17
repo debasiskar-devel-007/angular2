@@ -31,14 +31,16 @@ import { AppAdminheader }  from './pages/adminheader/app.adminheader';
 import { AppAdminfooter }  from './pages/adminfooter/app.adminfooter';
 import { AppAdmindashboard }  from './pages/admindashboard/app.admindashboard';
 import { AppAddadmin }  from './pages/addadmin/app.addadmin';
+import { AppAddfaq }  from './pages/addfaq/app.addfaq';
 import { AppAdminlist }  from './pages/adminlist/app.adminlist';
+import { AppFaq }  from './pages/faq/app.faq';
 
 
 
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomersignupComponents,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomersignupComponents,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq],
   providers: [
     appRoutingProviders,CookieService
   ],

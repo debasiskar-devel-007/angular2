@@ -1,5 +1,5 @@
 <div class="signinwrapperblock">
-    <div class="container-fluid signup_body_wrapper">
+    <div class="container-fluid signup_body_wrapper adminsignup_body_wrapper">
         <div class="container-fluid toplogoblock toplogoblocklogin">
             <a href="javascript:void(0)"><img src="images/logo1.png" alt="" class="logo1"/></a>
             <!--<span class="logodevider"></span>
@@ -17,7 +17,7 @@
                         <div class="signupform_wrapper" style="min-height: inherit; padding-bottom: 10px; padding-top: 0px; margin-top: 0px;">
 
 
-                            <span class="error" *ngIf="loginerror==0">Invalid username/password</span>
+                            <span class="error" *ngIf="loginerror==0">Username/Password you have entered is invalid</span>
 
                             <div class="form-group">
                                 <input [formControl]="adminloginform.controls['username']" name="username" type="text" class="form-control" placeholder="User Name"/>
@@ -45,8 +45,8 @@
                             <input (click)="submitform()" type="button" value="Submit" class="loginbtn"/>
                         </div>
                         <div class="forgottext">
-                            <a href="javascript:void(0)">Forget Password?</a> ·
-                            <a (click)="goSignup()" href="javascript:void(0)">Sign up</a>
+                            <a href="javascript:void(0)">Forgot Password?</a>
+
                         </div>
                     </div>
                     <div class="clearfix"></div>
@@ -55,5 +55,4 @@
         </div>
     </div>
 </div>
-<button type="button" value="Go to admindashbaord" (click)="goadmindashboard()">Go to admindashboard</button>
-<button type="button" value="Add admin" (click)="addadmin()">Add admin</button>
+

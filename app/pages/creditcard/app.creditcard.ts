@@ -38,7 +38,7 @@ export class AppCreditcard {
         this.getExpyears = commonservices.getExpyears();
         this.expMonths = commonservices.getMonths();
         //this.getusastates = commonservices.getusastates();
-        this.userinfo=this.userInfo.getObject('userInfo');
+        this.userinfo=userInfo.getObject('userInfo');
         this.http=http;
         console.log(this.items);
         console.log(this.getusastates);
@@ -59,7 +59,7 @@ export class AppCreditcard {
             });
 
         this.signupform = fb.group({
-            username: [this.userinfo, Validators.required],
+            username: [this.userinfo.username, Validators.required],
             address: ["", Validators.required],
             state: ["", Validators.required],
             expmonth: ["", Validators.required],
@@ -76,7 +76,7 @@ export class AppCreditcard {
         });
 
 
-        console.log(this.userInfo.getObject('userInfo'));
+        //console.log(this.userInfo.getObject('userInfo'));
         //console.log(this.userInfo.getObject('userInfo').username);
 
 

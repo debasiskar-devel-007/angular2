@@ -113,7 +113,7 @@ export class AppSignup {
 
                     this.signupform.value.password='';
                     this.userInfo.putObject('userInfo', this.signupform.value);
-                    console.log(this.userInfo.getObject('userInfo'));
+                    //console.log(this.userInfo.getObject('userInfo'));
                     this.router.navigate(['/creditcard']);
 
                     //this.local = new Storage(LocalStorageService);

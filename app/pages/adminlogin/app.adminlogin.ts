@@ -27,14 +27,18 @@ export class AppAdminlogin{
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
+    private userdetails:CookieService;
+    userDetails:any;
 
-
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router ) {
 
         this.items = commonservices.getItems();
         this.serverUrl=this.items[0].serverUrl;
+        this.userdetails=userdetails;
+        this.userDetails=userdetails.getObject('userdetails');
         this.http=http;
         this.router=router;
+
 
         this.adminloginform = fb.group({
 
@@ -43,6 +47,12 @@ export class AppAdminlogin{
             password: ["", Validators.required]
 
         });
+
+        if(typeof(this.userDetails)!='undefined'){
+            this.router.navigateByUrl('/admindashboard(adminheader:adminheader//adminfooter:adminfooter)');
+            return;
+        }
+
     }
 
 
@@ -65,18 +75,24 @@ export class AppAdminlogin{
 
             this.http.post(link,submitdata)
                 .subscribe(data => {
-                    // /this.data1.response = data.json();
+                   // this.data1.response = data.json();
 
                     console.log(data.json());
 
                 var res=data.json();
                     if(res.length>0){
+console.log();
+                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'admin',userfullname:res[0].fname+' '+res[0].lname}
+
                         console.log('Login successfully');
+                        this.userdetails.putObject('userdetails', userdet);
                         this.loginerror=1;
-                        this.router.navigateByUrl('/admindashboard(adminheader:adminheader//adminfooter:adminfooter)');
+                       this.router.navigateByUrl('/admindashboard(adminheader:adminheader//adminfooter:adminfooter)');
+
+
                     }
                     else{
-                        console.log('Invalid username/password');
+                        console.log('UsernameInvalid username/password');
                         this.loginerror=0;
                     }
 

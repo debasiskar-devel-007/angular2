@@ -64,7 +64,7 @@ export class AppAddadmin {
             state: ["", Validators.required],
             phone: ["", Validators.required],
             zip: ["", Validators.required],
-            is_active: ["", AppAddadmin.validateTerms]
+            is_active: [""]
         });
 
         //this.router.navigate(['/about']);

@@ -7,7 +7,6 @@ import { AppAbout }  from './pages/about/app.about';
 import { AppSignup }  from './pages/signup/app.signup';
 import { AppSignupComponents }  from './pages/signup/app.signupcomponent';
 import { AppCustomersignup }  from './pages/customersignup/app.customersignup';
-import { AppCustomersignupComponents }  from './pages/customersignup/app.customersignupcomponent';
 import { AppCreditcard }  from './pages/creditcard/app.creditcard';
 import { HttpModule, JsonpModule } from '@angular/http';
 import {PopoverModule} from "ng2-popover";
@@ -34,13 +33,14 @@ import { AppAddadmin }  from './pages/addadmin/app.addadmin';
 import { AppAddfaq }  from './pages/addfaq/app.addfaq';
 import { AppAdminlist }  from './pages/adminlist/app.adminlist';
 import { AppFaq }  from './pages/faq/app.faq';
+import { AppCustomercreditcard }  from './pages/customercreditcard/app.customercreditcard';
 
 
 
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomersignupComponents,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq],
   providers: [
     appRoutingProviders,CookieService
   ],

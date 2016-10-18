@@ -27,16 +27,16 @@ export class AppCustomersignup {
     items:any;
     serverUrl:any;
     commonservices:AppCommonservices;
-    private userInfo:CookieService;
+    private customerInfo:CookieService;
     private router: Router;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,customerInfo:CookieService ,router: Router) {
 
         this.items = commonservices.getItems();
         this.http=http;
         this.router=router;
-        this.userInfo=userInfo;
+        this.customerInfo=customerInfo;
         console.log(this.items);
         console.log(this.items[0].serverUrl);
 
@@ -52,90 +52,47 @@ export class AppCustomersignup {
             zip: ["", Validators.required],
             term: ["", AppCustomersignup.validateTerms]
         });
-
-        //this.router.navigate(['/about']);
     }
 
 
     static validateTerms(control: FormControl){
 
-        console.log('34324324');
-        console.log(control.value);
         if(control.value==false){
             return { 'isTermsChecked': true };
         }
-        //let appsignupobj=new AppSignup();
-        // /console.log(appsignupobj.signupform.value.term);
-
     }
 
     static validateEmail(control: FormControl){
 
-        console.log('34324324');
-        console.log(control.value);
         if (control.value=='' || !control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
 
             return { 'invalidEmailAddress': true };
         }
-        //let appsignupobj=new AppSignup();
-        // /console.log(appsignupobj.signupform.value.term);
-
     }
     submitform(){
-        //this.signupform.set;
         let x:any;
-        console.log(this.customersignupform.value.term);
 
         for(x in this.customersignupform.controls){
             this.customersignupform.controls[x].markAsTouched();
-
         }
-        console.log(this.customersignupform.dirty);
         this.customersignupform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
-        console.log(this.customersignupform.dirty);
-        console.log(this.customersignupform.valid);
-        console.log(this.customersignupform.errors);
         if(this.customersignupform.valid){
 
-            //var headers = new Headers();
-            //headers.append('Content-Type', 'application/x-www-form-urlencoded');
-
-            //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'adddealer';
+            let link = this.serverUrl+'addcustomer';
             var submitdata = this.customersignupform.value;
-            console.log(this.items);
 
             this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();
-                    console.log(data);
-
                     this.customersignupform.value.password='';
-                    this.userInfo.putObject('userInfo', this.customersignupform.value);
-                    console.log(this.userInfo.getObject('userInfo'));
-                    this.router.navigate(['/creditcard']);
-
-                    //this.local = new Storage(LocalStorageService);
-                   // this.local.set('userinfo', JSON.stringify(data.json()));
-                    //console.logthis.local.get('userinfo');
-
-
+                    this.customerInfo.putObject('customerInfo', this.customersignupform.value);
+                    this.router.navigate(['/customercreditcard']);
                 }, error => {
                     console.log("Oooops!");
                 });
-
-            //this.navCtrl.push(ProfilePage);
         }
     }
-    allroute(){
-        this.router.navigateByUrl('/signup(dealerheader:dealerheader//dealerfooter:dealerfooter)');
-
-    }
-    godashboard(){
-        this.router.navigateByUrl('/dealerdashboard(dealerheader:dealerheader//dealerfooter:dealerfooter)')
-    }
-
 }
 
 

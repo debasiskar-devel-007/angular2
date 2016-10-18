@@ -25,24 +25,52 @@ export class AppAdminheader {
     items:any;
     serverUrl:any;
     commonservices:AppCommonservices;
-    loginerror:any;
     private router: Router;
+    loginerror:any;
+    userDetails:any;
+    coockieData:CookieService;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router   ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router  ) {
 
+//console.log(userdetails);
+        this.coockieData=userdetails;
         this.router=router;
+        this.userDetails=userdetails.getObject('userdetails');
+       // console.log(userdetails.getObject('userdetails'));
+       // console.log(this.userDetails.username);
+        if(typeof(this.userDetails)=='undefined'){
+            this.router.navigateByUrl('/adminlogin');
+            return;
+        }
+
+/*
+        if(typeof(this.userDetails)!='undefined'){
+            this.router.navigateByUrl('/admindashboard(adminheader:adminheader//adminfooter:adminfooter)');
+            return;
+        }
+*/
+
     }
 
+    logout(){
 
-    adminlist(){
-        this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
-
-    }
-    addadmin(){
-        this.router.navigateByUrl('/addadmin(adminheader:adminheader//adminfooter:adminfooter)');
+        this.coockieData.removeAll();
+        this.router.navigateByUrl('/adminlogin');
 
     }
+    getUserFullname(){
+        this.userDetails=this.coockieData.getObject('userdetails');
+        if(typeof(this.userDetails)!='undefined'){
+            return this.userDetails.userfullname;
+        }
+        else{
+            return '';
+        }
+    }
+     adminlist(){
+         this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+     }
 
 }
 

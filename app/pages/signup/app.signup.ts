@@ -29,6 +29,7 @@ export class AppSignup {
     commonservices:AppCommonservices;
     private userInfo:CookieService;
     private router: Router;
+    ckeditorContent:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router) {
@@ -41,6 +42,8 @@ export class AppSignup {
         console.log(this.items[0].serverUrl);
 
         this.serverUrl = this.items[0].serverUrl;
+
+        this.ckeditorContent = `<p>My HTML</p>`;
 
         this.signupform = fb.group({
             username: ["", Validators.required],

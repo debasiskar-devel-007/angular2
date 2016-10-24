@@ -16,12 +16,12 @@ import {AppCommonservices} from  './services/app.commonservices';
 import { AppContact }  from './pages/contact/app.contact';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "ng2-modal";
-
+import { CKEditorModule } from 'ng2-ckeditor';
 
 
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
-    JsonpModule,ModalModule,PopoverModule],
+    JsonpModule,ModalModule,PopoverModule,CKEditorModule],
   declarations: [ AppComponent ,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard],
   providers: [
     appRoutingProviders,CookieService

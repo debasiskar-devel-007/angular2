@@ -25,6 +25,7 @@
       "ng2-modal": "node_modules/ng2-modal",
       "ng2-popover": "node_modules/ng2-popover",
       'angular2-cookie':'npm:angular2-cookie',
+      "ng2-ckeditor": "npm:ng2-ckeditor",
 
 
       // other libraries
@@ -49,7 +50,11 @@
       'angular2-cookie': {
         main: './core.js',
         defaultExtension: 'js'
-      }
+      },
+        "ng2-ckeditor": {
+            "main": "lib/index.js",
+            "defaultExtension": "js",
+        },
     }
   });
 })(this);

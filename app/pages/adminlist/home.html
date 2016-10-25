@@ -1,0 +1,75 @@
+
+<div class="page-wrapper adminlist">
+    <div class="blockmaininner">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 adminlistmessageblock">
+                <!--<div *ngFor="let item1 of messages">-->
+                    <!--<p *ngIf="typeof(messages)!='undefined' " class="bg-success">{{messages.message}}.</p>-->
+                <div [innerHtml]="messages"></div>
+                    <!--<p class="bg-warning">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p class="bg-danger">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
+               <!-- </div>-->
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="adminlistblock">
+                    <div class="adminlistheader">
+                        <h2><span>Admin</span> listing</h2>
+                        <div class="addbtnwrapper">
+                            <a><button class="addbtn" type="button" value="Add admin" (click)="addadmin()">Add admin</button></a>
+                        </div>
+                    </div>
+                    <div class="adminlistlists table-responsive">
+                        <input [(ngModel)]="query" placeholder="type in search term">
+                        <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>City</th>
+                                <th>State</th>
+                                <th>Address</th>
+                                <th>Zip</th>
+                                <th>Phone</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr  *ngFor="let item of data|filter:query|paginate: { itemsPerPage: 10, currentPage: p }">
+                                <td>{{item.fname}}</td>
+                                <td>{{item.lname}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.city}}</td>
+                                <td>{{item.state}}</td>
+
+                                <td>{{item.address}}</td>
+                                <td>{{item.zip}}</td>
+                                <td>{{item.phone}}</td>
+                                <td><a href="javascript:void(0)" (click)="changeStatus(item)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>
+                                <td>
+                                    <div class="actionbtns">
+                                        <a [routerLink]="['/editadmin', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
+                                        <a><button class="btndelete" type="button" (click)="deleterow({id:item._id})"  value="Delete">Delete</button></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 paginationwrapper">
+               <span>Page 1 of 8</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+</div>
+<!-- /#page-wrapper -->
+

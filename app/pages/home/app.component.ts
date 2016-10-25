@@ -64,8 +64,13 @@ export class AppComponent {
 
     getMessages(){
         let messages: any = this.cookeiservice.getObject('cmessages');
-        this.cookeiservice.remove('messages');
-        return messages;
+        this.cookeiservice.remove('cmessages');
+        if(typeof (messages)!='undefined'){
+            if(messages.type=='success')return '<p class="bg-success">'+messages.message+'</p>';
+            if(messages.type=='warning')return '<p class="bg-warning">'+messages.message+'</p>';
+            if(messages.type=='error')return '<p class="bg-danger">'+messages.message+'</p>';
+        }
+        return '';
     }
     putmessages(message:string,type:string){
         //let messages:Array<any>;
@@ -76,14 +81,14 @@ export class AppComponent {
 
             let mval = {message: message, type: type};
             let messages: any;
-            messages[0]=mval;
+            messages=mval;
             this.cookeiservice.putObject('cmessages',messages);
 
         }else{
             console.log('yes');
             let messages: any = this.cookeiservice.getObject('cmessages');
             let mval = {message: message, type: type};
-            messages[messages.length+1]=mval;
+            messages[Math.random().toString().replace('.','')+Math.random().toString().replace('.','')]=mval;
             this.cookeiservice.putObject('cmessages',messages);
 
         }

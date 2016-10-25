@@ -176,8 +176,8 @@ export class AppEditadmin implements OnInit, OnDestroy{
             this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();
-                    this.appcomponent.putmessages(this.admindetails.username+' updated successfully','success');
-                    this.appcomponent.putmessages(this.admindetails.username+' updated successfully ......','success');
+                    this.appcomponent.putmessages('Admin user '+this.admindetails.username+' updated successfully','success');
+                    //this.appcomponent.putmessages(this.admindetails.username+' updated successfully ......','success');
 
                     this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
 

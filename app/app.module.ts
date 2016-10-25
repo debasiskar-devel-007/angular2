@@ -13,6 +13,7 @@ import {PopoverModule} from "ng2-popover";
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { Observable } from 'rxjs/Observable';
 import {AppCommonservices} from  './services/app.commonservices';
+import {searchPipe} from  './services/search.pipe';
 
 import { AppContact }  from './pages/contact/app.contact';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
@@ -42,7 +43,7 @@ import {Ng2PaginationModule} from 'ng2-pagination';
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule,Ng2PaginationModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe],
   providers: [
     appRoutingProviders,CookieService
   ],

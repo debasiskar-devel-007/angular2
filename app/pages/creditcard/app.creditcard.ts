@@ -38,12 +38,12 @@ export class AppCreditcard {
         this.getExpyears = commonservices.getExpyears();
         this.expMonths = commonservices.getMonths();
         //this.getusastates = commonservices.getusastates();
+        this.userinfo=userInfo.getObject('userInfo');
         this.http=http;
         console.log(this.items);
         console.log(this.getusastates);
-        this.userInfo=userInfo;
+       // this.userInfo=userInfo;
         console.log(this.items[0].serverUrl);
-        this.userinfo=this.userInfo.getObject('userInfo');
 
         this.serverUrl = this.items[0].serverUrl;
 
@@ -76,7 +76,7 @@ export class AppCreditcard {
         });
 
 
-        console.log(this.userInfo.getObject('userInfo'));
+        //console.log(this.userInfo.getObject('userInfo'));
         //console.log(this.userInfo.getObject('userInfo').username);
 
 
@@ -149,7 +149,7 @@ export class AppCreditcard {
             this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();
-                    console.log(data);
+                    console.log(data[0]);
 
 
                 }, error => {

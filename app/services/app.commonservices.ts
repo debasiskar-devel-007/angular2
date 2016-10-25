@@ -1,11 +1,22 @@
+//import {CookieService} from 'angular2-cookie/core';
+import {type} from "os";
 export class AppCommonservices {
     items:Array<any>;
+    //private cookeiservice:CookieService;
     //http:Http;
-
+url:any
     constructor() {
         //this.http=http;
+        //this.cookeiservice=cookeiservice;
+
+        if(window.location.hostname=='localhost'){
+            this.url= 'http://localhost:8001/';
+        }
+        else{
+            this.url= 'http://influxiq.com:8001/';
+        }
         this.items = [
-            { serverUrl: 'http://localhost:8001/' },
+            { serverUrl: this.url },
             { name: 'Pascal Precht' },
             { n2: 'thoughtram' }
         ];
@@ -14,6 +25,7 @@ export class AppCommonservices {
     getItems() {
         return this.items;
     }
+
 
     getExpyears(){
         let   expYears=[

@@ -1,4 +1,24 @@
 About f
 
-<router-outlet></router-outlet>
-<router-outlet name="contact"></router-outlet>
+<form novalidate [formGroup]="loginForm" (ngSubmit)="doLogin(loginForm.value)">
+    <input [formControl]="loginForm.controls['email']" type="email" placeholder="email" class="form-control UserLogIn_email">
+    <div *ngIf ="loginForm.controls['email'].touched">
+        <div *ngIf ="!loginForm.controls['email'].valid" class = "alert alert-danger">
+            <strong>Email is required</strong>
+        </div>
+    </div>
+    <div *ngIf ="!verifyemail">
+        <div *ngIf ="!verifyemail" class = "alert alert-danger">
+            <strong>Email must be valid</strong>
+        </div>
+    </div>
+    <input [formControl]="loginForm.controls['password']" type="password" placeholder="password" class="form-control UserLogIn_email">
+    <div *ngIf ="loginForm.controls['password'].touched">
+        <div *ngIf ="!loginForm.controls['password'].valid" class = "alert alert-danger">
+            <strong>Password  is required</strong>
+        </div>
+    </div>
+    <button type="submit" [disabled]="!loginForm.valid" class="loginbtn" >Login</button>
+</form>
+
+<a routerLink="/contacts">Details</a>

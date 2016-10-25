@@ -23,7 +23,7 @@ export class AppContact {
             password: ["", Validators.required]
         });
 
-        //this.router.navigate(['/about']);
+        this.router.navigate(['/about']);
     }
 
     doLogin() {

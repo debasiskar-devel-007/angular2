@@ -29,7 +29,6 @@ export class AppSignup {
     commonservices:AppCommonservices;
     private userInfo:CookieService;
     private router: Router;
-    ckeditorContent:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router) {
@@ -42,8 +41,6 @@ export class AppSignup {
         console.log(this.items[0].serverUrl);
 
         this.serverUrl = this.items[0].serverUrl;
-
-        this.ckeditorContent = `<p>My HTML</p>`;
 
         this.signupform = fb.group({
             username: ["", Validators.required],
@@ -113,10 +110,9 @@ export class AppSignup {
                 .subscribe(data => {
                     // /this.data1.response = data.json();
                     console.log(data);
-
                     this.signupform.value.password='';
                     this.userInfo.putObject('userInfo', this.signupform.value);
-                    console.log(this.userInfo.getObject('userInfo'));
+                    //console.log(this.userInfo.getObject('userInfo'));
                     this.router.navigate(['/creditcard']);
 
                     //this.local = new Storage(LocalStorageService);
@@ -130,6 +126,13 @@ export class AppSignup {
 
             //this.navCtrl.push(ProfilePage);
         }
+    }
+    allroute(){
+        this.router.navigateByUrl('/signup(dealerheader:dealerheader//dealerfooter:dealerfooter)');
+
+    }
+    godashboard(){
+        this.router.navigateByUrl('/dealerdashboard(dealerheader:dealerheader//dealerfooter:dealerfooter)')
     }
 
 }

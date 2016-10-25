@@ -100,7 +100,8 @@
 
                         </div>
                         <div class="btn-block">
-                            <button (click)="submitform()" type="button" value="let’s get you started" class="subbtn">let’s get you started</button>
+                            <button (click)="submitform()" type="button" value="let’s get you --started" class="subbtn">let’s get you started</button>
+
                         </div>
                     </form>
                 </div>
@@ -109,17 +110,9 @@
             </div>
 
 
-        <ckeditor
-                [(ngModel)]="ckeditorContent"
-                [config]="{uiColor: '#99000'}"
-                (change)="onChange($event)"
-                (ready)="onReady($event)"
-                (blur)="onBlur($event)"
-                debounce="500">
-        </ckeditor>
 
     </div>
-
+    <button type="button" value="Go to dashbaord" (click)="godashboard()">Go to dashboard</button>
 
     <div class="row">
         <modal #myModal>
@@ -158,5 +151,4 @@
         element on which this popover is applied.
     </div>
 </div>
-
 

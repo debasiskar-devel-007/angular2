@@ -1,19 +1,71 @@
+@media screen and (max-width:1900px){
+
+  .collapsedivmenu ul {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+
+@media screen and (max-width:1780px){
+
+
+}
+
+
 @media screen and (max-width:1680px){
+  .cusdashboardblock1inner {
+    width: 96% !important;
+    margin: 0 auto;
+  }
+  .cusdashboardblock2 .cusdashboardblock2inner {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .cusdashboardblock2inner .container {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+  }
+  .collapsedivmenu ul {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .page-wrapper .blockmaininner{margin: 0 auto;
+    display: block;
+    width: 100%;
+    clear: both;}
+  .adminlist .blockmaininner {
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    clear: both;
+  }
+  .adminsignup_body_wrapper .toplogoblocklogin {
+    margin: 46px auto 0px auto;
+    width: 90%;
+    display: block;
+    text-align: left;
+    float: none !important;
+  }
 }
 
 
 @media screen and (max-width:1460px){
   .signup_body_wrapper {margin: 0 auto; width: 100%;}
   .signupleftblock{width: 56% !important; float: left;}
-  .signuprightblock{width: 44% !important; float: right;}
-  .container-fluid {padding-right: 15px !important;padding-left: 15px !important;}
+  .signuprightblock{float: right;}
+  /*.container-fluid {padding-right: 15px !important;padding-left: 15px !important;}*/
   .signupleftblocktop h1 {font-size: 34px;}
 
   .creditcardleftblockbottom img {width: 127%;}
   .creditcardleftblock{width: 56% !important; float: left;}
   .signuprightblock{width: 44% !important; float: right;}
 
-  .creditcardleftblockbottom{width: 100%;height: 768px; overflow: hidden;}
+  .creditcardleftblockbottom{width: 100%;height: 864px; overflow: hidden;}
+  .cusdashboardblock9 .cusdashboardblock9inner {
+    width: 100%;
+    margin: 0 auto;
+  }
 
 }
 
@@ -22,8 +74,10 @@
   .signupleftblockbottom h1 {
     font-size: 25px;
   }
-  .creditcardleftblockbottom img {width: 131% !important;}
-  .creditcardleftblockbottom {width: 100%;height: 768px;overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%;height: 864px;overflow: hidden;}
+  .creditcardleftblockbottom img {
+    width: 120% !important;
+  }
 }
 
 @media screen and (max-width:1366px){
@@ -34,7 +88,19 @@
     bottom: 128px;
   }
   .creditcardleftblockbottom img {width: 137% !important;}
-
+  .block1box1 h4 {
+    font-size: 15px;
+  }
+  .block1box1 h5 {
+    font-size: 16px;
+  }
+  .block1box1 .btnview a {
+    font-size: 14px;
+  }
+  .collapsedivmenu ul {
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width:1320px){
@@ -50,9 +116,22 @@
     font-size: 30px;
   }
   .creditcardleftblockbottom img {width: 155% !important;}
+  .collapsebtn {margin: 30px 0 0 5px;}
 }
 
 @media screen and (max-width:1199px){
+  .block1box1 h4{font-size: 18px;}
+  .block1box1 h5{font-size: 20px;}
+
+
+  .cusdashboardblock1inner [class*="col-"] {
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+
+
+
+
   .signupleftblocktop h1 {
     font-size: 26px;
   }
@@ -63,20 +142,176 @@
   .creditcardleftblockbottom img {width: 170% !important;}
 
   .creditcardleftblockbottom {width: 100%; overflow: hidden;}
-  .creditcardleftblockbottom {width: 100%; height:768px; overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%; height:864px; overflow: hidden;}
   .creditcardleftblocktop h1 {
     font-size: 30px;
+  }
+
+  [class*="col-"] {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .auctioninventorysinglelist [class*="col-"] {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+
+
+  .cusdashboardblock2innerleft {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+    background-color: transparent;
+  }
+  .cusdashboardblock2innerleft img{width: 100%;}
+  .cusdashboardblock2innerright {
+    width: 100%;
+    float: none;
+    margin-top: 12px !important;
+    background-color: transparent;
+  }
+  .cusdashboardblock2innerright img{width: 100%;}
+  .cusdashboardblock2innerleft{height: auto;}
+  .cusdashboardblock2innerright{height: auto;}
+
+  .cusdashboardblock2 .cusdashboardblock2inner h2 {
+    margin: 0 15px;
+  }
+  .cusdashboardblock5 .cusdashboardblock5inner h2 {
+    margin: 0 15px;
+  }
+ /* .logo {
+    text-align: center;
+    float: none;
+    width: 570px;
+    margin: 0 auto;
+  }*/
+  .collapsedivmenu ul li {
+    display: block;
+    padding: 10px 10px;
+    width: 100%;
+
+  }
+
+  .cusdashboardblock1innerright {
+    padding: 0px;
+    width: 100% !important;
+  }
+  .cusdashboardblock1innerrightsml{
+    width: 100% !important;
+    margin: 0 auto !important;
+    display: block;
+    float: none !important;
+    text-align: center;
+  }
+  .signupmiddleblock [class*="col-"] {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+
+
+
+  [class*="col-"] {
+    padding-left: 15px !important;
+    padding-right: 15px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .block1box {
+    margin-bottom: 30px;
+  }
+  .recentrsvpsinglelist .imgwrapper {
+    width: none;
+  }
+  .recentcussinglelist .imgwrapper {
+    width: none;
+  }
+
+
+  .recentrsvpsinglelist .imgwrapper {
+    width: auto;
+  }
+
+  .recentcussinglelist .imgwrapper {
+    width: auto;
+  }
+  .collapsedivmenu ul li {
+    display: block;
+    padding: 10px 10px;
+    width: 100%;
+
+  }
+
+  .signinmiddleblock {
+    width: 90%;
+    margin: 0 auto !important;
+  }
+  .signinmiddleblock [class*="col-"] {
+    margin: 0 auto !important;
+    padding: 0 !important;
+  }
+
+.adminleftlogo .logo {
+  margin: 0 auto;
+  display: block;
+  width: 300px;
+}
+
+  .rightwrap {
+    padding: 6px 5px;
+    float: right !important;
+    width: 55px !important;
+  }
+  .leftwrap {
+    padding: 0px 5px !important;
+    float: left;
+  }
+  .smlsignoutsection {
+    margin: 0 auto;
+    display: block;
+    float: none;
+    text-align: center;
+    width: 582px;
+  }
+  .addadmin .signupmiddleblock [class*="col-"] {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .collapsedivmenu ul li {
+    display: inline-block;
+    padding: 0 12px;
+    margin: 4px auto 2px auto;
+  }
+  .adminsignup_body_wrapper .toplogoblocklogin {
+    margin: 23px auto;
+    width: 266px;
+    display: block;
+    text-align: center;
+    float: none !important;
   }
 }
 
 @media screen and (max-width:1168px) {
-  .creditcardleftblockbottom {width: 100%; height:743px; overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%; height:864px; overflow: hidden;}
 }
 
 @media screen and (max-width:1159px) {
-  .creditcardleftblockbottom {width: 100%; height:742px; overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%; height:864px; overflow: hidden;}
 }
 
+@media screen and (max-width:1125px) {
+  .creditcardleftblockbottom {width: 100%; height:838px; overflow: hidden;}
+}
 
 @media screen and (max-width:1100px) {
   .creditcardleftblockbottom img {width: 175% !important;}
@@ -97,18 +332,21 @@
     bottom: 151px;
     width: 100%;
   }
-  .creditcardleftblockbottom img {width: 145% !important;}
-  .creditcardleftblockbottom {height: 740px;}
+  .creditcardleftblockbottom img {width: 157% !important;}
+  .creditcardleftblockbottom {height: 837px;}
 }
 
 @media screen and (max-width:1024px) {
 
   .creditcardleftblockbottom img {
-    width: 150% !important;
+    width: 161% !important;
   }
 }
 
 @media screen and (max-width:991px) {
+  .auctioninventorysinglelist .table{margin-bottom:19px;}
+  .inventorymactsinglelist .table{margin-bottom:19px;}
+
   .signupleftblock{width: 100% !important; float: left; height: 800px;}
   .signuprightblock{width: 100% !important; float: left;}
   .signupleftblocktop h1 {
@@ -133,6 +371,15 @@
     display: block;
     position: inherit;
   }
+
+  .signinmiddleblock {
+    display: block;
+    position: inherit;
+  }
+  .block1box {
+    height: auto;
+  }
+
   .signupleftblockmiddlewrapper {
     position: absolute;
     bottom: 0;
@@ -146,9 +393,45 @@
   .signupleftblocktop h1 {
     line-height: 34px !important;
   }
+  .block1box {
+    height: auto;
+  }
 
 
+/*  .block1box1 .btnview {
+    bottom: -56px;
+  }*/
 
+  .equal, .equal > div[class*="col-"] {
+    display: block;
+  }
+
+  .recentrsvpsinglelist .imgwrapper {
+    width: 65px;
+  }
+  .recentcussinglelist .imgwrapper {
+    width: 65px;
+  }
+  .leftwrap {
+    text-align: center !important;
+    margin: 10px auto 10px auto !important;
+    display: block !important;
+    float: none !important;
+  }
+  .middlewrap{
+    width: 100% !important;
+    text-align: center;
+  }
+  .rightwrap{
+    width: 100% !important;
+    text-align: center;
+  }
+  .faqblockwrapper .panel-heading h4.panel-title .headertxtwrap {
+    text-align: center;
+  }
+  .faqblockwrapper .panel-default>.panel-heading+.panel-collapse>.panel-body p {
+    text-align: center;
+  }
 }
 
 @media screen and (max-width:800px) {
@@ -156,9 +439,59 @@
     bottom: 128px;
     width: 100%;
   }
+
 }
 
+
+@media (min-width: 768px) {
+  #page-wrapper {
+    position: inherit;
+    margin: 0px;
+    padding: 0 30px;
+  }
+
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    z-index: 1;
+    position: absolute;
+    width: 250px;
+    margin-top: 51px;
+  }
+  .navbar-top-links .dropdown-messages,
+  .navbar-top-links .dropdown-tasks,
+  .navbar-top-links .dropdown-alerts {
+    margin-left: auto;
+  }
+
+}
+
+
+
 @media screen and (max-width:768px) {
+
+  /*--DealerDashboard-*/
+
+  .auctioninventorysinglelist .imgouter {
+    width: 100%;
+  }
+  .inventorymatchsinglelist .imgouter {
+    width: 100%;
+  }
+
+
+  .imgouter .imgwrapper {
+    margin: 0 auto;
+    display: block;
+    width: auto;
+  }
+
+  /*---*/
+
+
+
+
   .signupleftblockmiddle {
     bottom: 94px;
     width: 100%;
@@ -169,6 +502,12 @@
   .signupleftblockbottom h3 {
     font-size: 16px;
   }
+  .cusdashboardblock1innerright {
+    padding: 0px;
+    width: 100% !important;
+    float: right !important;
+  }
+
 }
 
 @media screen and (max-width:740px) {
@@ -176,6 +515,7 @@
     bottom: 93px;
     width: 100%;
   }
+
 }
 
 
@@ -186,7 +526,13 @@
     width: 100%;
   }
   .creditcardleftblockbottom img {width: 150%;}
-
+  .smlsignoutsection {
+    margin: 0 auto;
+    display: block;
+    float: none;
+    text-align: center;
+    width: 100%;
+  }
 }
 
 @media screen and (max-width:610px) {
@@ -194,6 +540,11 @@
     bottom: 118px;
     width: 100%;
   }
+
+  .logodevider {
+    margin: 0 11px;
+  }
+
 }
 
 @media screen and (max-width:590px) {
@@ -201,27 +552,159 @@
     bottom: 120px;
     width: 100%;
   }
+  .toplogoblocklogin {
+    margin: 23px 0;
+    width: 90%;
+  }
+
+  .faqblockwrapper .panel-heading h4.panel-title .headertxtwrap span {
+    line-height: normal;
+  }
 }
 @media screen and (max-width:540px) {
   .signupleftblockmiddle {
     bottom: 116px;
     width: 100%;
   }
-  .signupheading div {background: url("../images/lockicon.png") no-repeat center top; padding-top: 80px;}
-  .signuprightblock h5 {background: #272727 url("../images/lockicon2.png") no-repeat center top 8px; padding-top: 50px; margin: 10px 0 0 0;}
+  .signupheading div {background: url("images/lockicon.png") no-repeat center top; padding-top: 80px;}
+  .signuprightblock h5 {background: #272727 url("images/lockicon2.png") no-repeat center top 8px; padding-top: 50px; margin: 10px 0 0 0;}
   .signupform_wrapper {padding-left: 15px;padding-right: 15px;}
   .signupform_wrapper .form-group span {
     right: -3px;
+  }
+
+  .logodevider {
+    background: #565555 none repeat scroll 0 0;
+    display: inline-block;
+    float: none;
+    height: 1px;
+    margin: 5px;
+    width: 100%;
   }
 }
 
 @media screen and (max-width:480px) {
   .creditcardleftblockbottom img {width: 100%;}
   .signuprightblock .btn-block .subbtn {font-size: 20px;}
-
+  .cusdashboardblock1inner .badgelists a {
+    display: inline-block;
+    font-family: 'open_sansregular';
+    font-size: 13px;
+    color: #fff;
+    width: 100%;
+    margin-right: 0px;
+    text-align: left;
+    height: 37px;
+    display: block;
+  }
+  .cusdashboardblock3links a {
+    font-family: 'open_sanssemibold';
+    font-size: 14px;
+    line-height: 16px;
+    display: block;
+    margin: 0 0 2px 0px;
+    text-align: center;
+  }
+  .block1box1 h4 {
+    font-size: 16px;
+  }
+  .customersignout .btn {
+    display: inline-block;
+    padding: 10px;
+  }
+  .faqblockwrapper .panel-heading h4.panel-title .headertxtwrap {
+    padding: 6px 14px;
+  }
+  .signupform_wrapper .help-inline span {
+    margin-top: 52px;
+    margin-right: 15px;
+    width: 183px;
+    top: 0px;
+    right: 0px !important;
+  }
+}
+@media screen and (max-width:400px) {
+  .loginbox h1 {
+    padding: 5px 50px;
+    font-size: 28px;
+    background-size: 32px;
+    padding-right: 6px;
+    width: 231px;
+    margin: 0 auto;
+  }
+  .toplogoblock .logodevider {
+    width: 100%;
+    height: 1px;
+    margin: 15px auto;
+  }
+  .toplogoblock .logo2 {
+    margin: 0px 0 0 0;
+  }
+  .adminlogo {
+    width: 240px;
+    margin: 0 auto;
+  }
 }
 
 @media screen and (max-width:320px) {
   .creditcardleftblockbottom img {width: 100%;}
   .signuprightblock .btn-block .subbtn {font-size: 16px;}
+}
+
+
+@media (min-width: 992px){
+  .addadminblock .form-inline .signupform_wrapper .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    width: 49%;
+    margin-right: 1%;
+  }
+  .addadminblock .form-inline .signupform_wrapper .form-group:nth-child(even) {
+    margin-right: 0px;
+  }
+  .addadminblock .signupform_wrapper .form-group span {
+    float: right;
+    position: absolute;
+    top: 0px;
+    right: -3px;
+  }
+  .addadminblock .signupform_wrapper .help-inline span {
+    margin-top: 18px;
+    top: 0px;
+    right: 62px !important;
+    position: absolute;
+  }
+}
+
+@media (max-width: 991px) {
+  .addadminblock .form-inline .signupform_wrapper .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    width: 100%;
+    margin-right: 0px;
+  }
+  .addadminblock .signupform_wrapper .form-group span {
+    float: right;
+    position: absolute;
+    top: 0px;
+    right: -3px;
+  }
+  .addadminblock .submitwrap {
+    width: 127px;
+    text-align: right;
+    padding: 20px 0px;
+    margin-top: -48px;
+    float: right;
+  }
+  .addadminblock .submitwrap .subbtn {
+    margin-right: 0px !important;
+  }
+  .addadminblock .submitwrap {
+    margin-top: 0px;
+  }
+  .addadminblock .signupform_wrapper .help-inline span {
+    right: 0px !important;
+  }
 }

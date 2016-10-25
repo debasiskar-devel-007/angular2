@@ -7,14 +7,11 @@ import { Routes, RouterModule } from '@angular/router';
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/about/home.html',
+    templateUrl:'app/pages/contact/home.html',
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
 export class AppAbout {
     loginForm: FormGroup;
-    adminheader:boolean=true;
-    adminfooter:boolean=true;
-    isClassVisible:boolean=false;
 
     firstName = new FormControl("", Validators.required);
 
@@ -23,7 +20,6 @@ export class AppAbout {
             email: ["", Validators.required],
             password: ["", Validators.required]
         });
-
     }
 
     doLogin() {

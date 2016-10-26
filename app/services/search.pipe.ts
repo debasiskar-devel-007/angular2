@@ -4,20 +4,18 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class searchPipe implements PipeTransform {
     item:any;
     transform(items:any, filter:any) {
-        console.log(items);
-        console.log(filter);
         if(filter)
-            return items.filter(item =>
-
-            for(let key in item){
-            if((typeof item[key]==='string' || item[key] instanceof String) &&
-                (item[key].toString().toLowerCase().indexOf(filter.toString().toLowerCase())!== -1)){
-                return true;
+            {
+                return items.filter(itemc);
+                function itemc(item:any) {
+                    for (let key in item) {
+                        if ((typeof item[key] === 'string' || item[key] instanceof String) &&
+                            (item[key].toString().toLowerCase().indexOf(filter.toString().toLowerCase()) !== -1)) {
+                            return true;
+                        }
+                    }
+                }
             }
-
-        }
-
-            );
 
         return items;
     }

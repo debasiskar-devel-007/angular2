@@ -22,25 +22,27 @@
                             <a><button class="addbtn" type="button" value="Add admin" (click)="addadmin()">Add admin</button></a>
                         </div>
                     </div>
-                    <div class="adminlistlists table-responsive">
-                        <input [(ngModel)]="query" placeholder="type in search term">
-                        <table class="table table-striped">
+                    <div class="adminlistlists">
+                        <div class="searchbox"><input [(ngModel)]="query" placeholder="type in search term"></div>
+                        <div class=" table-responsive">
+                            <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>City</th>
+                                <th>First Name <b [ngClass]="getSortClass('fname')" (click)="manageSorting('fname')" ></b></th>
+                                <th>Last Name <b [ngClass]="getSortClass('lname')" (click)="manageSorting('lname')" ></b></th>
+                                <th>Email <b [ngClass]="getSortClass('email')" (click)="manageSorting('email')" ></b></th>
+                                <th>City<b [ngClass]="getSortClass('city')" (click)="manageSorting('city')" ></b></th>
                                 <th>State</th>
                                 <th>Address</th>
                                 <th>Zip</th>
                                 <th>Phone</th>
-                                <th>Status</th>
+                                <th>Status <b [ngClass]="getSortClass('is_active')" (click)="manageSorting('is_active')" ></b></th>
+                                <th>Date Added <b [ngClass]="getSortClass('added_on')" (click)="manageSorting('added_on')" ></b></th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr  *ngFor="let item of data|filter:query|paginate: { itemsPerPage: 10, currentPage: p }">
+                            <tr  *ngFor="let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p }">
                                 <td>{{item.fname}}</td>
                                 <td>{{item.lname}}</td>
                                 <td>{{item.email}}</td>
@@ -51,6 +53,7 @@
                                 <td>{{item.zip}}</td>
                                 <td>{{item.phone}}</td>
                                 <td><a href="javascript:void(0)" (click)="changeStatus(item)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>
+                                <td>{{convertunixtodate(item.added_on)}}</td>
                                 <td>
                                     <div class="actionbtns">
                                         <a [routerLink]="['/editadmin', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
@@ -60,11 +63,12 @@
                             </tr>
                             </tbody>
                         </table>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-lg-12 col-md-12 paginationwrapper">
-               <span>Page 1 of 8</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+               <span>Page {{p}} of 8</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
             </div>
         </div>
         <!-- /.row -->

@@ -1443,23 +1443,16 @@ ul.inboxlists{padding:0px; margin:0px;}
 
 
 /*---Admin Dashboard---------*/
-
-.adminlistblock{
-    padding: 0px;
-    background-color: #2b2c2c !important;
-    height: auto;
-    border-top: 5px solid #555555;
-    margin-top: 30px;
-}
-.adminlistheader{
-    padding: 10px;
-}
+.adminlistmessageblock{margin-top: 19px;}
+.adminlistmessageblock p{padding: 12px;font-family: 'MyriadPro-Regular';font-size: 20px; text-align:left;}
+.adminlistmessageblock p.bg-success{background-color: #5acf5a; color: #fff;}
+.adminlistmessageblock p.bg-warning{background-color: #d3b83b; color: #fff;}
+.adminlistmessageblock p.bg-danger{background-color: #e76958; color: #fff;}
+.adminlistblock{padding: 0px; background-color: #2b2c2c !important; height: auto; border-top: 5px solid #555555; margin-top: 19px;}
+.adminlistheader{padding: 10px;}
 .adminlistheader h2{color: #fefefe;font-family: 'MyriadPro-Regular';font-size: 20px; text-align:left;display: inline-block;margin-top: 0px; margin-bottom: 0px; line-height: 45px;}
-
 .adminlistheader h2 span{color:#02e402;}
-
 .adminlistlists{margin:0; padding:0;}
-
 .adminlistlists .table>thead{
     background: -moz-linear-gradient(270deg, rgba(27,26,26,1) 0%, rgba(1,2,4,1) 100%); /* ff3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(27,26,26,1)), color-stop(100%, rgba(1,2,4,1))); /* safari4+,chrome */
@@ -1472,40 +1465,73 @@ ul.inboxlists{padding:0px; margin:0px;}
     border-top:1px solid #0c1527;
     border-bottom:1px solid #0c1527;
 }
-.adminlistlists .table>thead>tr>th {
-    padding: 8px;
-    line-height: 1.42857143;
-    vertical-align: top;
-    border-top: 1px solid #ddd;
-    color:#bbbfc0;
-    font-family: 'open_sanssemibold';
-    font-size: 14px;
-}
-
+.adminlistlists .table>thead>tr>th {padding: 8px; line-height: 1.42857143; vertical-align: top;border-top: 1px solid #ddd; color:#bbbfc0; font-family: 'open_sanssemibold';   font-size: 14px;}
 .adminlistheader .addbtnwrapper{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;float: right;}
 .adminlistheader .addbtn{color: #fff; cursor:pointer; background: #019901; padding: 10px 15px;}
-
-.adminlistlists .table>tbody>tr>td, .adminlistlists .table>tbody>tr>th, .adminlistlists .table>tfoot>tr>td, .table>tfoot>tr>th, .adminlistlists .table>thead>tr>td, .adminlistlists .table>thead>tr>th{
-    padding: 14px 8px !important;
-}
-
-.adminlistlists .table>tbody>tr:nth-child(even){
-    color:#fff;
-}
-
-.adminlistlists .table>tbody>tr:nth-child(even) a,
-.adminlistlists .table>tbody>tr:nth-child(even) a:hover{
-    color:#fff;
-    text-decoration: none;
-}
-.adminlistlists .table>tbody>tr:nth-child(odd) a, .adminlistlists .table>tbody>tr:nth-child(odd) a:hover{
-    color:#000;
-    text-decoration: none;
-}
-
+.adminlistlists .table>tbody>tr>td, .adminlistlists .table>tbody>tr>th, .adminlistlists .table>tfoot>tr>td, .table>tfoot>tr>th, .adminlistlists .table>thead>tr>td, .adminlistlists .table>thead>tr>th{padding: 14px 8px !important;}
+.adminlistlists .table>tbody>tr:nth-child(even){ color:#fff;}
+.adminlistlists .table>tbody>tr:nth-child(even) a, .adminlistlists .table>tbody>tr:nth-child(even) a:hover{color:#fff; text-decoration: none;}
+.adminlistlists .table>tbody>tr:nth-child(odd) a, .adminlistlists .table>tbody>tr:nth-child(odd) a:hover{color:#000;text-decoration: none;}
+.actionbtns{text-align: center;}
 .btnaction{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;float: right;}
 .btnedit{color: #fff; cursor:pointer; background: #2b2c2c; padding: 10px 15px;}
 .btndelete{color: #fff; cursor:pointer; background: #ff3317; padding: 10px 15px;}
+
+
+.adminlistlists input{
+    position: absolute;
+    top: 34px;
+    right: 135px;
+    padding: 9px;
+    width: 260px;
+    background: #b8b9b9 url(images/iconsearch.png) no-repeat right 11px center;
+    font-family: 'open_sansregular';
+    font-size: 14px;
+    border-radius: 0px;
+    color: rgb(85, 85, 85);
+
+}
+
+.adminlistlists input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: rgb(85, 85, 85);
+}
+.adminlistlists input::-moz-placeholder { /* Firefox 19+ */
+    color: rgb(85, 85, 85);
+}
+.adminlistlists input:-ms-input-placeholder { /* IE 10+ */
+    color: rgb(85, 85, 85);
+}
+.adminlistlists input:-moz-placeholder { /* Firefox 18- */
+    color: rgb(85, 85, 85);
+}
+
+.adminlistlists .caret-up {
+    width: 0;
+    height: 0;
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-bottom: 4px solid;
+
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+.adminlistlists .caret-down {
+    width: 0;
+    height: 0;
+    border-left: 4px solid rgba(0, 0, 0, 0);
+    border-right: 4px solid rgba(0, 0, 0, 0);
+    border-top: 4px solid;
+    display: inline-block;
+    margin-left: 4px;
+    vertical-align: middle;
+}
+/*.caret.caret-reversed {
+    border-top-width: 0;
+    border-bottom: 4px solid #000000;
+}*/
+
+
 
 /*---
 .cusactivity{

@@ -33,6 +33,9 @@ export class AppAdminlist {
     id:any;
     item:any;
     private messages:any;
+    p:any;
+    orderbyquery:any;
+    orderbytype:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
@@ -43,6 +46,9 @@ export class AppAdminlist {
         console.log(this.messages);
         this.serverUrl = this.items[0].serverUrl;
         let link = this.serverUrl+'adminlist';
+        this.p=1;
+        this.orderbyquery='fname';
+        this.orderbytype=-1;
         // alert(link);
        this.http.get(link)
             .subscribe(data1 => {
@@ -107,6 +113,38 @@ addadmin(){
 
 
 }
+    getSortClass(value:any){
+        console.log(value);
+        if(this.orderbyquery==value && this.orderbytype==-1) {
+            console.log('caret-up');
+            return 'caret-up'
+        }
+
+        if(this.orderbyquery==value && this.orderbytype==1) {
+            console.log('caret-up');
+            return 'caret-down'
+        }
+        return 'caret-up caret-down'
+    }
+    manageSorting(value:any){
+        console.log(value);
+        if(this.orderbyquery==value && this.orderbytype==-1) {
+            this.orderbytype=1;
+            return;
+        }
+        if(this.orderbyquery==value && this.orderbytype==1) {
+            this.orderbytype=-1;
+            return;
+        }
+
+        this.orderbyquery=value;
+        this.orderbytype=-1;
+    }
+
+    convertunixtodate(value:any){
+
+        return this.commonservices.convertunixtodate(value);
+    }
 
 
 }

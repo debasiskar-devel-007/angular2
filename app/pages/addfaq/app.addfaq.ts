@@ -7,6 +7,7 @@ import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
+//import { CKEditorModule } from 'ng2-ckeditor';
 
 
 
@@ -20,7 +21,7 @@ import {CookieService} from 'angular2-cookie/core';
 })
 export class AppAddfaq {
     // /@ViewChild(Modal) modal;
-    addadminform: FormGroup;
+    faqform: FormGroup;
     myModal :ModalModule;
     data:any;
     http:Http;
@@ -30,11 +31,14 @@ export class AppAddfaq {
     commonservices:AppCommonservices;
     private userInfo:CookieService;
     private router: Router;
+    ckeditorContent:any;
+
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router) {
 
         this.items = commonservices.getItems();
+        this.ckeditorContent = '';
         this.http=http;
         this.router=router;
         this.userInfo=userInfo;
@@ -53,21 +57,21 @@ export class AppAddfaq {
                 console.log("Oooops!");
             });
 
-        this.addadminform = fb.group({
+        this.faqform = fb.group({
             title: ["", Validators.required],
-            password: ["", Validators.required],
-            fname: ["", Validators.required],
-            lname: ["", Validators.required],
-            email: ["", AppAddfaq.validateEmail],
-            address: ["", Validators.required],
-            city: ["", Validators.required],
-            state: ["", Validators.required],
-            phone: ["", Validators.required],
-            zip: ["", Validators.required],
+            body: ["", Validators.required],
+            priority: ["", Validators.required],
             is_active: ["", AppAddfaq.validateTerms]
         });
 
         //this.router.navigate(['/about']);
+    }
+
+    onChange(event:any){
+        //alert(99);
+        //(<FormControl>this.addadminform.controls['body']).updateValue(this.ckeditorContent);
+        this.faqform.patchValue({body: this.ckeditorContent})
+
     }
 
 
@@ -91,20 +95,25 @@ export class AppAddfaq {
     }
     submitform(){
         let x:any;
-        for(x in this.addadminform.controls){
-            this.addadminform.controls[x].markAsTouched();
+        console.log(this.faqform.controls['title'].touched);
+        for(x in this.faqform.controls){
+            console.log(this.faqform.controls[x]);
+            this.faqform.controls[x].markAsTouched();
 
         }
-        console.log(this.addadminform.dirty);
-        this.addadminform.markAsDirty();
-        if(this.addadminform.valid){
+        console.log(this.faqform.valid);
+        console.log(this.faqform.controls['title'].valid);
+        console.log(this.faqform.controls['title'].touched);
+        this.faqform.markAsDirty();
+        if(this.faqform.valid){
+            alert('valid');
 
             //var headers = new Headers();
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'addadmin';
-            var submitdata = this.addadminform.value;
+            let link = this.serverUrl+'addfaq';
+            var submitdata = this.faqform.value;
             this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();

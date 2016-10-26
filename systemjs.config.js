@@ -26,6 +26,7 @@
       "ng2-popover": "node_modules/ng2-popover",
       'angular2-cookie':'npm:angular2-cookie',
       'ng2-pagination':'npm:ng2-pagination',
+      "ng2-ckeditor": "npm:ng2-ckeditor",
 
 
       // other libraries
@@ -53,7 +54,11 @@
       },
       'ng2-pagination':{
         "main": "index.js", "defaultExtension": "js"
-      }
+      },
+      "ng2-ckeditor": {
+        "main": "lib/index.js",
+        "defaultExtension": "js",
+      },
     }
   });
 })(this);

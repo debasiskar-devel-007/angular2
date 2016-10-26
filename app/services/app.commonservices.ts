@@ -103,8 +103,8 @@ url:any
         return expMonths;
     }
     convertunixtodate(unix_tm:any) {
-        var dt = new Date(unix_tm*1000);
-        return (dt.getHours() + '/' + dt.getMinutes() + '/' + dt.getSeconds() + ' -- ' + dt );
+        var dt = new Date(unix_tm);
+        return  dt.getMonth()+'/'+dt.getDate()+'/'+dt.getFullYear() ;
 
     }
 

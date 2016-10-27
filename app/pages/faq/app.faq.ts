@@ -29,6 +29,8 @@ export class AppFaq {
     private userInfo:CookieService;
     id:any;
     item:any;
+    p:any;
+    pagec:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router  ) {
         this.router = router;
@@ -36,7 +38,17 @@ export class AppFaq {
         this.router = router;
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl + 'adminlist';
+        let link = this.serverUrl + 'faqlist';
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.data = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                console.log(this.data);
+                this.pagec=Math.ceil(this.data.length / 10);
+
+            }, error => {
+                console.log("Oooops!");
+            });
         // alert(link);
 
 

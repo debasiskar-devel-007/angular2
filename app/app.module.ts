@@ -34,6 +34,7 @@ import { AppAdmindashboard }  from './pages/admindashboard/app.admindashboard';
 import { AppAddadmin }  from './pages/addadmin/app.addadmin';
 import { AppEditadmin }  from './pages/editadmin/app.editadmin';
 import { AppAddfaq }  from './pages/addfaq/app.addfaq';
+import { AppAddFaqByAdmin }  from './pages/addfaqbyadmin/app.addfaqbyadmin';
 import { AppAdminlist }  from './pages/adminlist/app.adminlist';
 import { AppFaq }  from './pages/faq/app.faq';
 import { AppCustomercreditcard }  from './pages/customercreditcard/app.customercreditcard';
@@ -45,7 +46,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule,Ng2PaginationModule,CKEditorModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin],
   providers: [
     appRoutingProviders,CookieService
   ],

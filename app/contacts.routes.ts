@@ -21,6 +21,7 @@ import {AppAdmindashboard} from "./pages/admindashboard/app.admindashboard";
 import {AppAddadmin} from "./pages/addadmin/app.addadmin";
 import {AppEditadmin} from "./pages/editadmin/app.editadmin";
 import {AppAddfaq} from "./pages/addfaq/app.addfaq";
+import {AppAddFaqByAdmin} from "./pages/addfaqbyadmin/app.addfaqbyadmin";
 import {AppAdminlist} from "./pages/adminlist/app.adminlist";
 import {AppFaq} from "./pages/faq/app.faq";
 import {AppCustomercreditcard} from "./pages/customercreditcard/app.customercreditcard";
@@ -66,6 +67,7 @@ const appRoutes: Routes = [
     { path: 'admindashboard',component: AppAdmindashboard},
     { path: 'addadmin',component: AppAddadmin},
     { path: 'addfaq',component: AppAddfaq},
+    { path: 'addfaqbyadmin',component: AppAddFaqByAdmin},
     { path: 'adminlist',component: AppAdminlist},
     { path: 'faq',component: AppFaq},
     { path: 'editadmin/:id', component: AppEditadmin },

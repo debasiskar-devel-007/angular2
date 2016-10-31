@@ -39,6 +39,7 @@ export class AppFaq {
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
         let link = this.serverUrl + 'faqlist';
+        this.p=1;
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();

@@ -1,8 +1,22 @@
+@media screen and (min-width:1930px){
+  .bannerbottomblockrightwrapper {
+    background-color: #fb4a32;
+    height: 398px;
+    width: 580px;
+    position: relative;
+    float: right;
+  }
+}
+
 @media screen and (max-width:1900px){
 
   .collapsedivmenu ul {
     width: 100%;
     margin: 0 auto;
+  }
+  .bannerbottomblockright h2 {
+    font-size: 34px;
+    line-height: 46px;
   }
 }
 
@@ -14,6 +28,22 @@
 
 
 @media screen and (max-width:1680px){
+  .bannerbottomblockrightwrapper {
+    background-color: #fb4a32;
+    height: 398px;
+    width: 586px;
+    position: relative;
+    float: right;
+  }
+
+  .bannerbottomblockrightwrapper {
+    background-color: #fb4a32;
+    height: 398px;
+    width: 610px;
+    position: relative;
+    float: right;
+  }
+
   .cusdashboardblock1inner {
     width: 96% !important;
     margin: 0 auto;
@@ -49,8 +79,15 @@
   }
 }
 
+@media screen and (max-width:1500px) {
+  .headeruserinfo .list-inline>li:nth-child(3n+0) {
+    margin-top: 10px;
+  }
+}
+
 
 @media screen and (max-width:1460px){
+  .btnedit {padding: 10px 13px;}
   .signup_body_wrapper {margin: 0 auto; width: 100%;}
   .signupleftblock{width: 56% !important; float: left;}
   .signuprightblock{float: right;}
@@ -81,6 +118,7 @@
 }
 
 @media screen and (max-width:1366px){
+  .btnedit {padding: 10px 10px;}
   .signupleftblocktop h1 {
     font-size: 33px;
   }
@@ -101,6 +139,8 @@
     width: 100%;
     margin: 0 auto;
   }
+  .bannerbottomblock{height: auto;}
+  .bannerbottomblockleft{height: auto;}
 }
 
 @media screen and (max-width:1320px){
@@ -108,10 +148,24 @@
     font-size: 32px;
   }
   .creditcardleftblockbottom img {width: 142% !important;}
+  .btnedit {
+    padding: 10px 8px;
+  }
 }
 
 
 @media screen and (max-width:1280px){
+  .btnedit {
+    padding: 10px 5px;
+    font-size: 12px !important;
+  }
+  .postauctionactivitylist .list-group-item {
+    display: inline-flex;
+  }
+  .postauctionactivitylist .list-group-item p {
+    line-height: 22px;
+  }
+
   .signupleftblocktop h1 {
     font-size: 30px;
   }
@@ -120,6 +174,11 @@
 }
 
 @media screen and (max-width:1199px){
+  .btnedit {padding: 10px 13px;}
+  .bannerbottomblock {height: auto;}
+  .inventorysinglelist:nth-child(2n+2) {margin-bottom: 9px;}
+  .inventorysinglelist:nth-child(2n+2):last-of-type {margin-bottom: 0px;}
+
   .block1box1 h4{font-size: 18px;}
   .block1box1 h5{font-size: 20px;}
 
@@ -147,7 +206,7 @@
     font-size: 30px;
   }
 
-  [class*="col-"] {
+  /*[class*="col-"] {
     padding-left: 15px !important;
     padding-right: 15px !important;
     margin-left: 0 !important;
@@ -159,7 +218,7 @@
     margin-right: 0 !important;
     padding-left: 0px !important;
     padding-right: 0px !important;
-  }
+  }*/
 
 
   .cusdashboardblock2innerleft {
@@ -217,14 +276,14 @@
   }
 
 
-
+/*
 
   [class*="col-"] {
     padding-left: 15px !important;
     padding-right: 15px !important;
     margin-left: 0 !important;
     margin-right: 0 !important;
-  }
+  }*/
   .block1box {
     margin-bottom: 30px;
   }
@@ -314,6 +373,7 @@
 }
 
 @media screen and (max-width:1100px) {
+
   .creditcardleftblockbottom img {width: 175% !important;}
 }
 
@@ -324,6 +384,9 @@
   .signupleftblockmiddle {
     bottom: 128px;
     width: 100%;
+  }
+  .blockcontentinfo .imgbox .btnwrapper .btnedit {
+    font-size: 11px;
   }
 }
 
@@ -341,9 +404,74 @@
   .creditcardleftblockbottom img {
     width: 161% !important;
   }
+  .btnedit {
+    padding: 10px 13px;
+  }
+
 }
 
 @media screen and (max-width:991px) {
+  .headeruserinfo {
+    padding: 0px 0px 0px 0px !important;
+    text-align: center;
+  }
+
+  .btnedit {
+    padding: 10px 11px !important;
+  }
+  .postauctionactivitylist .list-group-item {
+    line-height: 44px;
+  }
+
+
+  .bannerbottomblockright {
+    height: auto;
+    background-image: none;
+    background:#fb4a32;
+    position: inherit;
+    left: 0px;
+    right: 0px;
+    width:100%;
+  }
+
+  .bannerbottomblockleft {
+    overflow: inherit;
+  }
+  .bannerbottomblockrightwrapper {
+    position: inherit;
+    float: none;
+    padding-top: 400px !important;
+    color: #fff;
+    display: block;
+    background-color:transparent;
+  }
+
+  .bannerbottomblockrightwrapper {
+    background-color: #fb4a32;
+    height: auto;
+    width: 100%;
+    position: relative;
+    float: right;
+  }
+
+  .inventoryrecentbidblock .inventorysinglelist .imgbox ul li {
+    width: 48%;
+    margin: 0;
+    padding: 0;
+  }
+  .inventorysinglelist .table{margin-bottom:19px;}
+  .inventorymactsinglelist .table{margin-bottom:19px;}
+
+
+  .adminlistlists input {
+    position: absolute;
+    top: 15px;
+  }
+
+  .addadminblock .form-group_chakebox {
+    margin-bottom: 8px;
+  }
+
   .auctioninventorysinglelist .table{margin-bottom:19px;}
   .inventorymactsinglelist .table{margin-bottom:19px;}
 
@@ -471,6 +599,15 @@
 
 @media screen and (max-width:768px) {
 
+  .automatchimgwrapper{
+    display:block;
+    margin:0 auto;
+  }
+  .automatchimgwrapper2{
+    display:block;
+    margin:0 auto;
+  }
+
   /*--DealerDashboard-*/
 
   .auctioninventorysinglelist .imgouter {
@@ -480,12 +617,20 @@
     width: 100%;
   }
 
+  .inventorymatchsinglelist .imgouter .imgwrapper {
+    margin: 0 auto;
+    display: block;
+    width: auto;
+  }
+
+  /*
 
   .imgouter .imgwrapper {
     margin: 0 auto;
     display: block;
     width: auto;
   }
+  */
 
   /*---*/
 
@@ -509,6 +654,20 @@
   }
 
 }
+
+@media screen and (max-width:767px) {
+
+  .inventorysinglelist:nth-child(n+1) {margin-bottom: 9px;}
+  .inventorysinglelist:nth-child(n+1):last-of-type {margin-bottom: 0px;}
+  .postauctionactivitylist input {
+    position: inherit !important;
+    top: 0px !important;
+    left: 0 !important;;
+    width: 100% !important;
+    right: 0px !important;;
+  }
+}
+
 
 @media screen and (max-width:740px) {
   .signupleftblockmiddle {
@@ -545,6 +704,15 @@
     margin: 0 11px;
   }
 
+  .adminlistlists input {
+    position: inherit !important;
+    top: 0 !important;
+    left: 0;
+    width: 100%;
+  }
+
+
+
 }
 
 @media screen and (max-width:590px) {
@@ -580,6 +748,14 @@
     height: 1px;
     margin: 5px;
     width: 100%;
+  }
+
+  .loader{position: absolute; top:49%; left: 15px;}
+  .headeruserinfo  .list-inline>li:nth-child(2n+0) {
+    margin-top: 10px;
+  }
+  .headeruserinfo  .list-inline>li:nth-child(1) {
+    margin-top: 10px;
   }
 }
 
@@ -649,6 +825,7 @@
 @media screen and (max-width:320px) {
   .creditcardleftblockbottom img {width: 100%;}
   .signuprightblock .btn-block .subbtn {font-size: 16px;}
+  .inventorysinglelist .imgouter {margin: 0 auto; width: 100%; float: none;}
 }
 
 
@@ -660,6 +837,7 @@
     width: 49%;
     margin-right: 1%;
   }
+
   .addadminblock .form-inline .signupform_wrapper .form-group:nth-child(even) {
     margin-right: 0px;
   }
@@ -675,9 +853,35 @@
     right: 62px !important;
     position: absolute;
   }
+  .addfaqblock .form-inline .signupform_wrapper .form-group {
+    display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+    width:49%;
+    margin-right: 1%;
+  }
 }
 
 @media (max-width: 991px) {
+  .adminlistlists input {
+    position: absolute;
+    top: 15px;
+  }
+  .bannerbottomblockright {
+    padding: 10px 40px 10px 40px;
+  }
+  .bannerbottomblockright h4 {
+    margin-top: 20px;
+  }
+
+  .bannerbottomblockrightwrapper {
+    padding-top: 19px !important;
+  }
+  .postauctionactivitylist input {
+    position: absolute;
+    top: 15px;
+  }
+
   .addadminblock .form-inline .signupform_wrapper .form-group {
     display: inline-block;
     margin-bottom: 0;

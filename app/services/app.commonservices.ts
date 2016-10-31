@@ -10,7 +10,7 @@ url:any
         //this.cookeiservice=cookeiservice;
 
         if(window.location.hostname=='localhost'){
-            this.url= 'http://localhost:8001/';
+            this.url= 'http://influxiq.com:8001/';
         }
         else{
             this.url= 'http://influxiq.com:8001/';

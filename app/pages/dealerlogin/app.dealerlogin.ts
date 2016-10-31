@@ -27,6 +27,8 @@ export class AppDealerlogin {
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
+    private userInfo:CookieService;
+    private userdetails:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router ) {
@@ -35,6 +37,8 @@ export class AppDealerlogin {
         this.serverUrl=this.items[0].serverUrl;
         this.http=http;
         this.router=router;
+        this.userInfo=userInfo;
+        this.userdetails=userInfo.getObject('userdetails');
 
         this.dealerloginform = fb.group({
 
@@ -71,7 +75,10 @@ export class AppDealerlogin {
 
                 var res=data.json();
                     if(res.length>0){
+                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'dealer',userfullname:res[0].fname+' '+res[0].lname}
+
                         console.log('Login successfully');
+                        this.userInfo.putObject('userdetails', userdet);
                         this.loginerror=1;
                         this.router.navigateByUrl('/dealerdashboard(dealerheader:dealerheader//dealerfooter:dealerfooter)');
                     }

@@ -27,6 +27,8 @@ export class AppCustomerlogin{
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
+    private userInfo:CookieService;
+    private userdetails:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router ) {
@@ -35,6 +37,9 @@ export class AppCustomerlogin{
         this.serverUrl=this.items[0].serverUrl;
         this.http=http;
         this.router=router;
+        this.userInfo=userInfo;
+        //this.userdetails=userdetails;
+        this.userdetails=userInfo.getObject('userdetails');
 
         this.customerloginform = fb.group({
 
@@ -60,7 +65,7 @@ export class AppCustomerlogin{
         this.customerloginform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
        if(this.customerloginform.valid){
-            let link = this.serverUrl+'usercheck';
+            let link = this.serverUrl+'customercheck';
             var submitdata = this.customerloginform.value;
 
             this.http.post(link,submitdata)
@@ -71,6 +76,10 @@ export class AppCustomerlogin{
 
                 var res=data.json();
                     if(res.length>0){
+                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'customer',userfullname:res[0].fname+' '+res[0].lname}
+
+                        console.log('Login successfully');
+                        this.userInfo.putObject('userdetails', userdet);
                         console.log('Login successfully');
                         this.loginerror=1;
                         this.router.navigateByUrl('/dealerdashboard(dealerheader:dealerheader//dealerfooter:dealerfooter)');

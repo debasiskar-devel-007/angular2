@@ -2,7 +2,7 @@ import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation} from
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
-import {Routes, RouterModule, Router} from '@angular/router';
+import {Routes, RouterModule, Router, ActivatedRoute} from '@angular/router';
 import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
@@ -17,7 +17,7 @@ import {CookieService} from 'angular2-cookie/core';
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppAddFaqByAdmin {
+export class AppEditFaqbyAdmin {
     // /@ViewChild(Modal) modal;
     addadminform: FormGroup;
     myModal :ModalModule;
@@ -30,10 +30,12 @@ export class AppAddFaqByAdmin {
     private userInfo:any;
     private router: Router;
     ckeditorContent:any;
+    private sub: any;
+    faqdetails:any;
+    id:any;
 
 
-
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router,private route: ActivatedRoute) {
 
         this.ckeditorContent = '';
         this.items = commonservices.getItems();
@@ -56,16 +58,39 @@ export class AppAddFaqByAdmin {
                 console.log("Oooops!");
             });
 
-        console.log(this.userInfo);
-        console.log(this.userInfo.userrole);
-
         this.addadminform = fb.group({
             title: ["", Validators.required],
             priority: ["", Validators.required],
             body: ["", Validators.required],
             addedby: [this.userInfo.username, Validators.required],
-            addedusertype: [this.userInfo.userrole, Validators.required],
+            addedusertype: ["admin", Validators.required],
             is_active: [""]
+        });
+
+        this.sub = this.route.params.subscribe(params => {
+            this.id = params['id']; // (+) converts string 'id' to a number
+            let ids={id:this.id};
+            this.http.post(this.serverUrl+'getfaqdetailsbyid',ids)
+                .subscribe(data => {
+                    console.log(data);
+                    this.faqdetails=data.json()[0];
+                    this.addadminform = fb.group({
+                        title: [this.faqdetails.title, Validators.required],
+                        _id: [this.faqdetails._id, Validators.required],
+                        priority: [this.faqdetails.priority, Validators.required],
+                        body: [this.faqdetails.body, Validators.required],
+                        addedby: [this.userInfo.username, Validators.required],
+                        addedusertype: [this.faqdetails.addedusertype, Validators.required],
+                        is_active: [this.faqdetails.is_active]
+                    });
+                    this.ckeditorContent = this.faqdetails.body;
+
+
+                }, error => {
+                    console.log("Oooops!");
+                });
+
+            // In a real app: dispatch action to load the details here.
         });
 
         //this.router.navigate(['/about']);
@@ -110,7 +135,7 @@ export class AppAddFaqByAdmin {
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'addfaq';
+            let link = this.serverUrl+'updatefaqs';
             var submitdata = this.addadminform.value;
             console.log(submitdata);
             this.http.post(link,submitdata)

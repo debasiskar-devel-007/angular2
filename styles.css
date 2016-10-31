@@ -2330,7 +2330,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .rightwrap{
     padding: 12px 5px;
     float: right !important;
-    width: 62px !important;
+    width:130px !important;
 }
 
 
@@ -2759,3 +2759,14 @@ ul.inboxlists{padding:0px; margin:0px;}
 .headeruserinfo ul li span{font-size: 16px; line-height: 18px;}
 .headeruserinfo ul li .btnactive{background-color: #019901 !important; line-height: 18px;}
 .headeruserinfo ul li .btninactive{background-color: #ccc; color: #555656; line-height: 18px;}
+
+
+.faxsearchbox input{
+    background: #b8b9b9 url("../images/iconsearch.png") no-repeat scroll 98% 50%;
+    border-radius: 0;
+    color: rgb(85, 85, 85);
+    font-family: "open_sansregular";
+    font-size: 14px;
+    padding: 9px;
+    width: 260px; float:right;  margin-bottom: 10px;
+}

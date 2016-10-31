@@ -64,7 +64,7 @@ export class AppEditadmin implements OnInit, OnDestroy{
 
         this.sub = this.route.params.subscribe(params => {
             this.id = params['id']; // (+) converts string 'id' to a number
-           let ids={id:this.id};
+            let ids={id:this.id};
             this.http.post(this.serverUrl+'editadmin',ids)
                 .subscribe(data => {
                     console.log(data);

@@ -22,8 +22,10 @@ import {AppAddadmin} from "./pages/addadmin/app.addadmin";
 import {AppEditadmin} from "./pages/editadmin/app.editadmin";
 import {AppAddfaq} from "./pages/addfaq/app.addfaq";
 import {AppAddFaqByAdmin} from "./pages/addfaqbyadmin/app.addfaqbyadmin";
+import {AppEditFaqbyAdmin} from "./pages/editfaqbyadmin/app.editfaqbyadmin";
 import {AppAdminlist} from "./pages/adminlist/app.adminlist";
 import {AppFaq} from "./pages/faq/app.faq";
+import {AppDealerFaq} from "./pages/dealerfaq/app.faq";
 import {AppCustomercreditcard} from "./pages/customercreditcard/app.customercreditcard";
 //alert(window.location.hostname);
 const checkutl=AppAdminlogin;
@@ -70,7 +72,9 @@ const appRoutes: Routes = [
     { path: 'addfaqbyadmin',component: AppAddFaqByAdmin},
     { path: 'adminlist',component: AppAdminlist},
     { path: 'faq',component: AppFaq},
+    { path: 'dealerfaq',component: AppDealerFaq},
     { path: 'editadmin/:id', component: AppEditadmin },
+    { path: 'editfaq/:id', component: AppEditFaqbyAdmin },
 
 ];
 

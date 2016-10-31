@@ -16,7 +16,7 @@ import {AppComponent} from "../home/app.component";
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppFaq {
+export class AppDealerFaq {
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
@@ -28,7 +28,7 @@ export class AppFaq {
     loginerror:any;
     private router: Router;
     private userdetails:CookieService;
-    private userInfo:CookieService;
+    private userInfo:any;
     id:any;
     item:any;
     p:any;
@@ -43,7 +43,7 @@ export class AppFaq {
         this.router = router;
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl + 'faqlist';
+        let link = this.serverUrl + 'dealerfaqlist';
         this.p=1;
         this.userInfo=userdetails.getObject('userdetails');
         this.orderbyquery='added_on';

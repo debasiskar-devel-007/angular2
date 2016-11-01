@@ -38,7 +38,7 @@ import { AppEditFaqbyAdmin }  from './pages/editfaqbyadmin/app.editfaqbyadmin';
 import { AppAddFaqByAdmin }  from './pages/addfaqbyadmin/app.addfaqbyadmin';
 import { AppAdminlist }  from './pages/adminlist/app.adminlist';
 import { AppFaq }  from './pages/faq/app.faq';
-import { AppDealerFaq }  from './pages/dealerfaq/app.faq';
+import { AppDealerFaq }  from './pages/dealerfaq/app.faqs';
 import { AppCustomercreditcard }  from './pages/customercreditcard/app.customercreditcard';
 import {Ng2PaginationModule} from 'ng2-pagination';
 import { CKEditorModule } from 'ng2-ckeditor';

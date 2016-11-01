@@ -28,7 +28,7 @@ export class AppFaq {
     loginerror:any;
     private router: Router;
     private userdetails:CookieService;
-    private userInfo:CookieService;
+    private userInfo:any;
     id:any;
     item:any;
     p:any;
@@ -43,16 +43,19 @@ export class AppFaq {
         this.router = router;
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl + 'faqlist';
+
         this.p=1;
         this.userInfo=userdetails.getObject('userdetails');
+        let link='';
+        if(this.userInfo.userrole=='admin') link = this.serverUrl + 'faqlist';
+        if(this.userInfo.userrole=='dealer') link = this.serverUrl + 'systemfaqlist';
         this.orderbyquery='added_on';
         this.orderbytype=-1;
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
-                console.log(this.data);
+                console.log(this.data.length);
                 this.pagec=Math.ceil(this.data.length / 10);
 
             }, error => {

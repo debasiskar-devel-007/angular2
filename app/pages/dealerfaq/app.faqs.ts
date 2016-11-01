@@ -27,8 +27,9 @@ export class AppDealerFaq {
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
-    private userdetails:CookieService;
+
     private userInfo:any;
+    private userdetails:CookieService;
     id:any;
     item:any;
     p:any;
@@ -52,7 +53,7 @@ export class AppDealerFaq {
             .subscribe(data1 => {
                 this.data = data1.json();
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
-                console.log(this.data);
+                console.log(this.data.length);
                 this.pagec=Math.ceil(this.data.length / 10);
 
             }, error => {

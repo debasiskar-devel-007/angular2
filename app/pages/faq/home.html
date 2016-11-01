@@ -27,11 +27,11 @@
                                             <div class="col-lg-5 col-md-5 col-sm-12 col-sm-12 headertxtwrap"><span>{{item.title}}</span></div>
                                             <div class="col-lg-5 col-md-5 col-sm-12 col-sm-12 headeruserinfo">
                                                 <ul class="list-inline" *ngIf="userInfo.userrole=='dealer' || userInfo.userrole=='admin'">
-                                                    <li><span>Added by: <b style="text-transform: capitalize;"> {{item.addedusertype}}</b></span></li>
-                                                    <li>
-                                                        <span *ngIf="item.addedusertype =='admin' ">User Added: <b style="text-transform: capitalize;">{{item.userdetails[0].fname}} {{item.userdetails[0].lname}}</b></span></li>
+                                                    <!--<li><span>Added by: <b style="text-transform: capitalize;"> {{item.addedusertype}}</b></span></li>-->
+                                                    <li *ngIf=" (userInfo.userrole=='dealer' && item.addedby==userInfo.username)|| userInfo.userrole=='admin'">
+                                                        <!--<span *ngIf="item.addedusertype =='admin' ">User Added: <b style="text-transform: capitalize;">{{item.userdetails[0].fname}} {{item.userdetails[0].lname}}</b></span></li>
                                                     <span *ngIf="item.addedusertype =='dealer' ">User Added: <b style="text-transform: capitalize;">{{item.dealerdetails[0].fname}} {{item.dealerdetails[0].lname}}</b></span>
-                                                    <li *ngIf=" (userInfo.userrole=='dealer' && item.addedby==userInfo.username)|| userInfo.userrole=='admin'" >
+                                                    <li *ngIf=" (userInfo.userrole=='dealer' && item.addedby==userInfo.username)|| userInfo.userrole=='admin'" >-->
                                                         <button *ngIf="item.is_active==1" (click)="updatefaqstatus(0,item)" class="btn btn-default btnactive" type="button" value="Active">Active</button>
                                                         <button *ngIf="item.is_active!=1 " (click)="updatefaqstatus(1,item)"  class="btn btn-default btninactive" type="button" value="Inactive">Inactive</button>
                                                     </li>

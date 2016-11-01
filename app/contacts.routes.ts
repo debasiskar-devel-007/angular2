@@ -25,7 +25,7 @@ import {AppAddFaqByAdmin} from "./pages/addfaqbyadmin/app.addfaqbyadmin";
 import {AppEditFaqbyAdmin} from "./pages/editfaqbyadmin/app.editfaqbyadmin";
 import {AppAdminlist} from "./pages/adminlist/app.adminlist";
 import {AppFaq} from "./pages/faq/app.faq";
-import {AppDealerFaq} from "./pages/dealerfaq/app.faq";
+import {AppDealerFaq} from "./pages/dealerfaq/app.faqs";
 import {AppCustomercreditcard} from "./pages/customercreditcard/app.customercreditcard";
 //alert(window.location.hostname);
 const checkutl=AppAdminlogin;

@@ -26,7 +26,7 @@
                                             </div>
                                             <div class="col-lg-5 col-md-5 col-sm-12 col-sm-12 headertxtwrap"><span>{{item.title}}</span></div>
                                             <div class="col-lg-5 col-md-5 col-sm-12 col-sm-12 headeruserinfo">
-                                                <ul class="list-inline" *ngIf="userInfo.userrole=='dealer' || userInfo.userrole=='admin'">
+                                                <!--<ul class="list-inline" *ngIf="userInfo.userrole=='dealer' || userInfo.userrole=='admin'">
                                                     <li><span>Added by: <b style="text-transform: capitalize;"> {{item.addedusertype}}</b></span></li>
                                                     <li>
                                                         <span *ngIf="item.addedusertype =='admin' ">User Added: <b style="text-transform: capitalize;">{{item.userdetails[0].fname}} {{item.userdetails[0].lname}}</b></span></li>
@@ -35,7 +35,7 @@
                                                         <button *ngIf="item.is_active==1" (click)="updatefaqstatus(0,item)" class="btn btn-default btnactive" type="button" value="Active">Active</button>
                                                         <button *ngIf="item.is_active!=1 " (click)="updatefaqstatus(1,item)"  class="btn btn-default btninactive" type="button" value="Inactive">Inactive</button>
                                                     </li>
-                                                </ul>
+                                                </ul>-->
                                             </div>
                                             <div *ngIf="userInfo.userrole=='dealer' || userInfo.userrole=='admin'" class="col-lg-1 col-md-1 col-sm-12 col-sm-12 rightwrap">
 

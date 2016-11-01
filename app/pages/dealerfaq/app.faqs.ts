@@ -44,9 +44,12 @@ export class AppDealerFaq {
         this.router = router;
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl + 'dealerfaqlist';
+
         this.p=1;
         this.userInfo=userdetails.getObject('userdetails');
+        let link='';
+        if(this.userInfo.userrole=='dealer') link = this.serverUrl + 'dealerfaqlist?dealerid='+this.userInfo.username;
+        if(this.userInfo.userrole=='customer') link = this.serverUrl + 'dealerfaqlist?dealerid=customer';
         this.orderbyquery='added_on';
         this.orderbytype=-1;
         this.http.get(link)
@@ -70,8 +73,10 @@ export class AppDealerFaq {
     }
 
     updatefaqstatus(val:any,item:any){
+        console.log(this.userInfo);
+        console.log(this.userInfo.userrole);
 
-        let link1 = this.serverUrl + 'updatefaqstatus?id='+item._id+'&value='+val;
+        let link1 = this.serverUrl + 'updatefaqstatus?is_system=0&type='+this.userInfo.userrole+'&id='+item._id+'&value='+val;
         //this.p=1;
         this.http.get(link1)
             .subscribe(data2 => {

@@ -48,6 +48,12 @@ export class AppCustomerlogin{
             password: ["", Validators.required]
 
         });
+        console.log(this.userdetails);
+
+        if(typeof(this.userdetails)!='undefined'){
+            this.router.navigateByUrl('/customerdashboard(customerheader:customerheader//adminfooter:adminfooter)');
+            return;
+        }
     }
 
 
@@ -82,7 +88,7 @@ export class AppCustomerlogin{
                         this.userInfo.putObject('userdetails', userdet);
                         console.log('Login successfully');
                         this.loginerror=1;
-                        this.router.navigateByUrl('/dealerdashboard(dealerheader:dealerheader//dealerfooter:dealerfooter)');
+                        this.router.navigateByUrl('/customerdashboard(customerheader:customerheader//dealerfooter:dealerfooter)');
                     }
                     else{
                         console.log('Invalid username/password');

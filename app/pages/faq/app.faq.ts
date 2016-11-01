@@ -71,16 +71,17 @@ export class AppFaq {
 
     }
 
-    updatefaqstatus(val:any,item:any){
+    updatefaqstatus(val:any,item:any,i:any){
 
-        let link1 = this.serverUrl + 'updatefaqstatus?id='+item._id+'&value='+val;
+        let link1 = this.serverUrl + 'updatefaqstatus?is_system=1&type='+this.userInfo.userrole+'&id='+item._id+'&value='+val;
         //this.p=1;
         this.http.get(link1)
             .subscribe(data2 => {
-                this.data = data2.json();
+                //this.data = data2.json();
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
-                //console.log(this.data);
-                this.pagec=Math.ceil(this.data.length / 10);
+                console.log(this.data[i]);
+                //this.pagec=Math.ceil(this.data.length / 10);
+                this.data[i].is_active=val;
 
             }, error => {
                 console.log("Oooops!");

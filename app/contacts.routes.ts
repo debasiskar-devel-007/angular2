@@ -18,6 +18,7 @@ import {AppCustomerlogin} from "./pages/customerlogin/app.customerlogin";
 import {AppAdminheader} from "./pages/adminheader/app.adminheader";
 import {AppAdminfooter} from "./pages/adminfooter/app.adminfooter";
 import {AppAdmindashboard} from "./pages/admindashboard/app.admindashboard";
+import {AppCustomerdashboard} from "./pages/customerdashboard/app.customerdashboard";
 import {AppAddadmin} from "./pages/addadmin/app.addadmin";
 import {AppEditadmin} from "./pages/editadmin/app.editadmin";
 import {AppAddfaq} from "./pages/addfaq/app.addfaq";
@@ -27,6 +28,7 @@ import {AppAdminlist} from "./pages/adminlist/app.adminlist";
 import {AppFaq} from "./pages/faq/app.faq";
 import {AppDealerFaq} from "./pages/dealerfaq/app.faqs";
 import {AppCustomercreditcard} from "./pages/customercreditcard/app.customercreditcard";
+import {AppCustomerheader  }  from './pages/customerheader/app.customerheader';
 //alert(window.location.hostname);
 const checkutl=AppAdminlogin;
 //alert(checkutl);
@@ -65,8 +67,10 @@ const appRoutes: Routes = [
     { path: 'adminlogin',component: AppAdminlogin},
     { path: 'customerlogin',component: AppCustomerlogin},
     { path: 'adminheader',component: AppAdminheader,outlet:'adminheader'},
+    { path: 'customerheader',component: AppCustomerheader,outlet:'customerheader'},
     { path: 'adminfooter',component: AppAdminfooter,outlet:'adminfooter'},
     { path: 'admindashboard',component: AppAdmindashboard},
+    { path: 'customerdashboard',component: AppCustomerdashboard},
     { path: 'addadmin',component: AppAddadmin},
     { path: 'addfaq',component: AppAddfaq},
     { path: 'addfaqbyadmin',component: AppAddFaqByAdmin},

@@ -32,8 +32,8 @@
                                                         <!--<span *ngIf="item.addedusertype =='admin' ">User Added: <b style="text-transform: capitalize;">{{item.userdetails[0].fname}} {{item.userdetails[0].lname}}</b></span></li>
                                                     <span *ngIf="item.addedusertype =='dealer' ">User Added: <b style="text-transform: capitalize;">{{item.dealerdetails[0].fname}} {{item.dealerdetails[0].lname}}</b></span>
                                                     <li *ngIf=" (userInfo.userrole=='dealer' && item.addedby==userInfo.username)|| userInfo.userrole=='admin'" >-->
-                                                        <button *ngIf="item.is_active==1" (click)="updatefaqstatus(0,item)" class="btn btn-default btnactive" type="button" value="Active">Active</button>
-                                                        <button *ngIf="item.is_active!=1 " (click)="updatefaqstatus(1,item)"  class="btn btn-default btninactive" type="button" value="Inactive">Inactive</button>
+                                                        <button *ngIf="item.is_active==1" (click)="updatefaqstatus(0,item,i)" class="btn btn-default btnactive" type="button" value="Active">Active</button>
+                                                        <button *ngIf="item.is_active!=1 " (click)="updatefaqstatus(1,item,i)"  class="btn btn-default btninactive" type="button" value="Inactive">Inactive</button>
                                                     </li>
                                                 </ul>
                                             </div>

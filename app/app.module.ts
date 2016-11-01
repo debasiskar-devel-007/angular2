@@ -29,8 +29,10 @@ import { AppadminloginComponents }  from './pages/adminlogin/app.adminlogincompo
 import {AppCustomerlogin} from "./pages/customerlogin/app.customerlogin";
 import { AppcustomerloginComponents }  from './pages/customerlogin/app.customerlogincomponent';
 import { AppAdminheader }  from './pages/adminheader/app.adminheader';
+import {AppCustomerheader  }  from './pages/customerheader/app.customerheader';
 import { AppAdminfooter }  from './pages/adminfooter/app.adminfooter';
 import { AppAdmindashboard }  from './pages/admindashboard/app.admindashboard';
+import { AppCustomerdashboard }  from './pages/customerdashboard/app.customerdashboard';
 import { AppAddadmin }  from './pages/addadmin/app.addadmin';
 import { AppEditadmin }  from './pages/editadmin/app.editadmin';
 import { AppAddfaq }  from './pages/addfaq/app.addfaq';
@@ -48,7 +50,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule,Ng2PaginationModule,CKEditorModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerdashboard],
   providers: [
     appRoutingProviders,CookieService
   ],

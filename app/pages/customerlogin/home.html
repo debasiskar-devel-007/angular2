@@ -2,7 +2,7 @@
 
 <div class="container-fluid signup_body_wrapper">
 
-    <div class="container-fluid toplogoblock toplogoblocklogin">
+    <div class="container-fluid toplogoblock toplogoblocklogin" style="text-align: left; display: block; width: auto; margin-top: 46px;">
 
         <a href="javascript:void(0)"><img src="images/logo1.png" alt="" class="logo1"/></a>
         <span class="logodevider"></span>
@@ -20,9 +20,9 @@
             <form novalidate [formGroup]="customerloginform" name="loginform1">
 
             <div class="col-lg-4 col-md-4 col-xs-6 col-sm-6 signuprightblock loginbox">
-                <div class="signupheading" style="padding-bottom: 22px;">
+                <div class="signupheading" style="padding-bottom: 22px; ">
 
-                    <h1>Customer Login </h1>
+                    <h1 style="padding-left: 30px;">Customer Login </h1>
 
                 </div>
 
@@ -55,11 +55,11 @@
 
 
                 </div>
-                <div class="btn-blocklogin" style="margin-top: 10px;"> <input (click)="submitform()" type="button" value="Submit" class="loginbtn"/>
+                <div class="btn-blocklogin" style="margin-top: 10px;"> <input (click)="submitform()" type="button" value="Submit" class="loginbtn"/></div>
 
 
-                <div class="forgottext"> <a href="javascript:void(0)">Forgotten Password?</a> ·  <a (click)="goSignup()" href="javascript:void(0)">Sign up your account</a></div>
-            </div>
+
+                <div class="forgottext" style="width: 100%;"> <a href="javascript:void(0)">Forgotten Password?</a> ·  <a (click)="goSignup()" href="javascript:void(0)">Sign up your account</a></div>
 
 
 

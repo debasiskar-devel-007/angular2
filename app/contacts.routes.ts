@@ -30,7 +30,7 @@ import {AppDealerFaq} from "./pages/dealerfaq/app.faqs";
 import {AppCustomercreditcard} from "./pages/customercreditcard/app.customercreditcard";
 import {AppCustomerheader  }  from './pages/customerheader/app.customerheader';
 //alert(window.location.hostname);
-const checkutl=AppAdminlogin;
+const checkutl=AppDealerlogin;
 //alert(checkutl);
 
 if(window.location.hostname=='probidtech.influxiq.com'){
@@ -47,6 +47,7 @@ if(window.location.hostname=='probidtech.influxiq.com'){
     const checkutl=AppSignup;
 }
 
+alert(checkutl);
 
 
 const appRoutes: Routes = [

@@ -23,7 +23,17 @@
     <script src="systemjs.config.js"></script>
 
     <script>
-      System.import('app').catch(function(err){ console.error(err); });
+      //System.import('app').catch(function(err){ console.error(err); });
+
+      /*System.config({
+          packages: {
+              app: {
+                  format: 'register',
+                  defaultExtension: 'js'
+              }
+          }
+      });*/
+      System.import('app/main').then(null, console.error.bind(console));
     </script>
 
   </head>
@@ -31,7 +41,11 @@
   <body>
     <my-app>
       <div class="loader">
-       <img src="images/loading-bar.gif">
+
+          <img src="images/logo1.png" style="display: block; margin: 10px auto;">
+
+
+       <img src="images/processing.gif" style="display: block; margin: 10px auto;">
       </div>
     </my-app>
   </body>

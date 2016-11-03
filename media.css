@@ -307,10 +307,6 @@
     width: 90%;
     margin: 0 auto !important;
   }
-  .signinmiddleblock [class*="col-"] {
-    margin: 0 auto !important;
-    padding: 0 !important;
-  }
 
 .adminleftlogo .logo {
   margin: 0 auto;
@@ -568,6 +564,7 @@
 
 
 @media (min-width: 768px) {
+
   #page-wrapper {
     position: inherit;
     margin: 0px;
@@ -594,7 +591,9 @@
 
 
 @media screen and (max-width:768px) {
-
+    .toplogoblock .logo1{ display: block; margin: 5px auto; float: none; margin-bottom: 20px;}
+    .toplogoblock .logo2{ display: block; margin: 5px auto; float: none;}
+    .toplogoblock .logodevider{ display: none;}
   .automatchimgwrapper{
     display:block;
     margin:0 auto;
@@ -786,12 +785,12 @@
   }
 }
 @media screen and (max-width:400px) {
-  .loginbox h1 {
-    padding: 5px 50px;
+  .loginbox h1 { background-position: center top;
+    padding:45px 4px 0px 4px!important;
     font-size: 28px;
     background-size: 32px;
-    padding-right: 6px;
-    width: 231px;
+
+    width: 100%;
     margin: 0 auto;
   }
   .toplogoblock .logodevider {

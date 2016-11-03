@@ -26,28 +26,34 @@ import {AppAddFaqByAdmin} from "./pages/addfaqbyadmin/app.addfaqbyadmin";
 import {AppEditFaqbyAdmin} from "./pages/editfaqbyadmin/app.editfaqbyadmin";
 import {AppAdminlist} from "./pages/adminlist/app.adminlist";
 import {AppFaq} from "./pages/faq/app.faq";
-import {AppDealerFaq} from "./pages/dealerfaq/app.faqs";
+//import {AppDealerFaq} from "./pages//app.faqs";
+import {AppDealerWebsiteLogin} from "./pages/dealerwebsitelogin/dealerwebsitelogin";
 import {AppCustomercreditcard} from "./pages/customercreditcard/app.customercreditcard";
 import {AppCustomerheader  }  from './pages/customerheader/app.customerheader';
+import {AppDealerFaq} from "./pages/dealerfaq/app.faqs";
 //alert(window.location.hostname);
-const checkutl=AppDealerlogin;
-//alert(checkutl);
 
+//alert(checkutl);
+var checkutl:any='';
 if(window.location.hostname=='probidtech.influxiq.com'){
-    const checkutl=AppAdminlogin;
+     checkutl=AppAdminlogin;
 }
- if(window.location.hostname=='probiddealer.influxiq.com'){
-    const checkutl=AppSignup;
-}
+
 
  if(window.location.hostname=='probidcustomer.influxiq.com'){
-    const checkutl=AppCustomersignup;
+     checkutl=AppCustomerlogin;
 }
  if(window.location.hostname=='localhost'){
-    const checkutl=AppSignup;
+     checkutl=AppSignup;
 }
 
-alert(checkutl);
+if(window.location.hostname=='probiddealer.influxiq.com'){
+     //alert(7);
+     checkutl=AppDealerWebsiteLogin;
+}
+if(checkutl=='')  checkutl=AppDealerlogin;
+//alert(checkutl);
+//alert(5);
 
 
 const appRoutes: Routes = [
@@ -78,6 +84,8 @@ const appRoutes: Routes = [
     { path: 'adminlist',component: AppAdminlist},
     { path: 'faq',component: AppFaq},
     { path: 'dealerfaq',component: AppDealerFaq},
+    { path: 'dealerwebsitelogin',component: AppDealerWebsiteLogin},
+    { path: 'dealerautologin/:id',component: AppDealerWebsiteLogin},
     { path: 'editadmin/:id', component: AppEditadmin },
     { path: 'editfaq/:id', component: AppEditFaqbyAdmin },
 

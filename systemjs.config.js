@@ -23,6 +23,10 @@
       '@angular/router': 'npm:@angular/router/bundles/router.umd.js',
       '@angular/forms': 'npm:@angular/forms/bundles/forms.umd.js',
       "ng2-modal": "node_modules/ng2-modal",
+      "ng2-popover": "node_modules/ng2-popover",
+      'angular2-cookie':'npm:angular2-cookie',
+      'ng2-pagination':'npm:ng2-pagination',
+      "ng2-ckeditor": "npm:ng2-ckeditor",
 
 
       // other libraries
@@ -42,7 +46,19 @@
         main: './index.js',
         defaultExtension: 'js'
       },
-      "ng2-modal": { "main": "index.js", "defaultExtension": "js" }
+      "ng2-modal": { "main": "index.js", "defaultExtension": "js" },
+      "ng2-popover": { "main": "index.js", "defaultExtension": "js" },
+      'angular2-cookie': {
+        main: './core.js',
+        defaultExtension: 'js'
+      },
+      'ng2-pagination':{
+        "main": "index.js", "defaultExtension": "js"
+      },
+      "ng2-ckeditor": {
+        "main": "lib/index.js",
+        "defaultExtension": "js",
+      },
     }
   });
 })(this);

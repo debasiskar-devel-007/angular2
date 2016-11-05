@@ -4,15 +4,18 @@ import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/dire
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import {Routes, RouterModule, Router} from '@angular/router';
 import {ModalModule} from "ng2-modal";
-//import {Control} from '@angular/common';
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
+import {CookieService} from 'angular2-cookie/core';
+
+
 
 
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
     templateUrl:'app/pages/signup/home.html',
+    providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
 export class AppSignup {
@@ -24,18 +27,24 @@ export class AppSignup {
     items:any;
     serverUrl:any;
     commonservices:AppCommonservices;
+    private userInfo:CookieService;
+    private router: Router;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router) {
 
         this.items = commonservices.getItems();
         this.http=http;
+        this.router=router;
+        this.userInfo=userInfo;
         console.log(this.items);
         console.log(this.items[0].serverUrl);
 
         this.serverUrl = this.items[0].serverUrl;
 
         this.signupform = fb.group({
+            username: ["", Validators.required],
+            password: ["", Validators.required],
             fname: ["", Validators.required],
             lname: ["", Validators.required],
             email: ["", AppSignup.validateEmail],
@@ -101,6 +110,14 @@ export class AppSignup {
                 .subscribe(data => {
                     // /this.data1.response = data.json();
                     console.log(data);
+                    this.signupform.value.password='';
+                    this.userInfo.putObject('userInfo', this.signupform.value);
+                    //console.log(this.userInfo.getObject('userInfo'));
+                    this.router.navigate(['/creditcard']);
+
+                    //this.local = new Storage(LocalStorageService);
+                   // this.local.set('userinfo', JSON.stringify(data.json()));
+                    //console.logthis.local.get('userinfo');
 
 
                 }, error => {
@@ -109,6 +126,13 @@ export class AppSignup {
 
             //this.navCtrl.push(ProfilePage);
         }
+    }
+    allroute(){
+        this.router.navigateByUrl('/signup(dealerheader:dealerheader//dealerfooter:dealerfooter)');
+
+    }
+    godashboard(){
+        this.router.navigateByUrl('/dealerdashboard(dealerheader:dealerheader//dealerfooter:dealerfooter)')
     }
 
 }

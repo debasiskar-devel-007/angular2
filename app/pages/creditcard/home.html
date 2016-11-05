@@ -1,0 +1,210 @@
+<div class="creditcardwrapperblock">
+    <div class="container-fluid signup_body_wrapper">
+
+        <div class="container-fluid toplogoblock">
+
+            <a href="javascript:void(0)"><img src="images/logo1.png" alt="" class="logo1"></a>
+            <!--<span class="logodevider"></span>
+
+            <a href="javascript:void(0)"><img src="images/logo2.png" alt="" class="logo2"></a> style="background: #d0d2d2;"-->
+
+        </div>
+
+
+        <div class="container-fluid signupmiddleblock">
+
+            <div class="row">
+
+                <div class="col-lg-8 col-md-8 col-xs-6 col-sm-6 creditcardleftblock">
+                    <div class="creditcardleftblocktop">
+                        <h1>Get unlimited access to cars that interest you</h1>
+                        <p>This is a onetime charge and you will get unlimited access to the <strong>ProBidAuto.com</strong> portal and access to thousands of autos through <span>Ken Garff.</span></p>
+                    </div>
+                    <div class="creditcardleftblockmiddle">
+                        <div class="panel panel-default">
+                            <!-- Default panel contents -->
+                            <div class="panel-heading">Order Summary</div>
+                            <!-- Table -->
+                            <table class="table table-striped table-responsive">
+                                <tbody>
+                                <tr>
+                                    <td>Package :</td>
+                                    <td>ProBid Membership</td>
+                                </tr>
+                                <tr>
+                                    <td>Sub-total :</td>
+                                    <td>$19.95</td>
+                                </tr>
+                                <!--<tr>
+                                    <td>Shipping :</td>
+                                    <td>FREE</td>
+                                </tr>
+                                <tr>
+                                    <td>Sales Tax :</td>
+                                    <td>$0</td>
+                                </tr>-->
+                                <tr>
+                                    <td>Total:</td>
+                                    <td>$19.95</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="creditcardleftblockbottom">
+                        <img src="images/signup_leftimg2.jpg" alt="">
+                    </div>
+                    <!--<img src="images/signup_leftimg2.jpg" alt=""/>-->
+                </div>
+
+                <div class="col-lg-4 col-md-4 col-xs-6 col-sm-6 signuprightblock">
+                    <form novalidate [formGroup]="signupform" (ngSubmit)="doLogin(loginForm.value)"  name="sihnupform" >
+                    <div class="signupheading">
+                        <div>
+                            <h2>final step</h2>
+                            <h3>Billing Information</h3>
+                        </div>
+                    </div>
+
+                    <img src="images/formshadow.png" alt="" class="formshadow">
+
+
+                    <h6>Payment information</h6>
+                    <h5>Secure 128-bit ssl Connection</h5>
+
+                    <h4>billing address</h4>
+                    <div class="signupform_wrapper" style="min-height: inherit; margin: 26px 0 26px 0px; min-height: 794px;">
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First Name"/>
+                            <span  *ngIf ="signupform.controls['fname'].touched && !signupform.controls['fname'].valid" class="help-inline">First Name is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['lname']" name="lname"  type="text" class="form-control" placeholder="Last Name"/>
+                            <span  *ngIf ="signupform.controls['lname'].touched && !signupform.controls['lname'].valid" class="help-inline">Last Name is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['address']" name="address"  type="text" class="form-control" placeholder="Address"/>
+                            <span  *ngIf ="signupform.controls['address'].touched && !signupform.controls['address'].valid" class="help-inline">Address is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['city']" name="city"  type="text" class="form-control" placeholder="City"/>
+                            <span  *ngIf ="signupform.controls['city'].touched && !signupform.controls['city'].valid" class="help-inline">City is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+
+
+                        <div class="form-group">
+
+                            <select class="form-control3" [formControl]="signupform.controls['state']" name="state" >
+                                <option value="" selected="selected">Select Your State</option>
+                                <option *ngFor="let obj of getusastates" [value]="obj.abbreviation">{{obj.name}}</option>
+                            </select>
+                            <span  *ngIf ="signupform.controls['state'].touched && !signupform.controls['state'].valid" class="help-inline spanalign">State is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['zip']" name="zip"  type="text" class="form-control" placeholder="Zip Code"/>
+                            <span  *ngIf ="signupform.controls['zip'].touched && !signupform.controls['zip'].valid" class="help-inline">Zip is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['phone']" name="phone"  type="text" class="form-control" placeholder="Phone"/>
+                            <span  *ngIf ="signupform.controls['phone'].touched && !signupform.controls['phone'].valid" class="help-inline">Phone is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['email']" name="email"  type="text" class="form-control" placeholder="Email"/>
+                            <span  *ngIf ="signupform.controls['email'].touched && !signupform.controls['email'].valid" class="help-inline">Email is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+
+
+                        <!--<div class="form-group_chakebox2 creditcardcheckbox">-->
+                            <!--<input id="checkbox2" name="checkbox2" value="2" type="checkbox">-->
+                            <!--<label for="checkbox2"></label>-->
+                            <!--<span>Use my billing address as my ship-to address</span>-->
+                            <!--<div class="clearfix"></div>-->
+                        <!--</div>-->
+
+                        <div class="labelclass">Pay with Credit or Debit Card</div>
+
+                        <div class="form-group2">
+                            <span>We Accept</span>
+                            <img src="images/card.png" alt="">
+                            <div class="clearfix"></div>
+                        </div>
+
+
+
+
+                        <!--<div class="form-group">
+                            <input class="form-control" placeholder="Card Type" type="text">
+                            &lt;!&ndash; <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>&ndash;&gt;
+                        </div>-->
+
+
+
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['ccno']" name="ccno" class="form-control" placeholder="CC#" type="text">
+                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                            <span  *ngIf ="signupform.controls['ccno'].touched && !signupform.controls['ccno'].valid" class="help-inline">CC# is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+
+
+                        <div class="form-group4">
+                            <select class="form-control3" [formControl]="signupform.controls['expmonth']" name="expmonth">
+                                <option value="" selected="selected">Exp Month</option>
+                                <option *ngFor="let obj of expMonths" [value]="obj.value">{{obj.value}}</option>
+
+                            </select>
+                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                        </div>
+
+                        <div class="form-group5">
+                            <select class="form-control3" [formControl]="signupform.controls['expyear']" name="expyear">
+                                <option value="" selected="selected">Exp Year</option>
+                                <option *ngFor="let obj of getExpyears" [value]="obj.value">{{obj.value}}</option>
+
+                            </select>
+                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+
+                        </div>
+                        <div class="help-inlinesub">
+                        <span  *ngIf ="(signupform.controls['expyear'].touched  && !signupform.controls['expyear'].valid) ||( signupform.controls['expmonth'].touched && !signupform.controls['expyear'].valid)" class="help-inline">Card Exp Year and Month is Required ! <img src="images/iconquestion.png"></span>
+</div>
+                        <div class="clearfix"></div>
+
+
+                        <div class="form-group">
+                            <input [formControl]="signupform.controls['cvv']" name="cvv" class="form-control" placeholder="CVV" type="text">
+                            <!-- <span class="help-inline">Please correct the error <img src="images/iconquestion.png"></span>-->
+                            <span  *ngIf ="signupform.controls['cvv'].touched && !signupform.controls['cvv'].valid" class="help-inline">Cvv is Required ! <img src="images/iconquestion.png"></span>
+                        </div>
+
+
+                    </div>
+                    <div class="btn-block"><input (click)="submitform()"  value="let’s get you started" class="subbtn" type="button"> </div>
+                        </form>
+                </div>
+
+
+                <div class="clearfix"></div>
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+</div>

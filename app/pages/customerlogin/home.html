@@ -1,0 +1,79 @@
+<div class="signinwrapperblock">
+
+<div class="container-fluid signup_body_wrapper">
+
+    <div class="container-fluid toplogoblock toplogoblocklogin" style="text-align: left; display: block; width: auto; margin-top: 46px;">
+
+        <a href="javascript:void(0)"><img src="images/logo1.png" alt="" class="logo1"/></a>
+        <span class="logodevider"></span>
+
+        <a href="javascript:void(0)"><img src="images/logo2.png" alt=""  class="logo2"/></a>
+
+    </div>
+
+
+
+    <div class="container-fluid signinmiddleblock">
+
+        <div class="row">
+
+            <form novalidate [formGroup]="customerloginform" name="loginform1">
+
+            <div class="col-lg-4 col-md-4 col-xs-6 col-sm-6 signuprightblock loginbox">
+                <div class="signupheading" style="padding-bottom: 22px; ">
+
+                    <h1 style="padding-left: 30px;">Customer Login </h1>
+
+                </div>
+
+                <img src="images/formshadow.png" alt="" class="formshadow"/>
+
+                <div class="signupform_wrapper" style="min-height: inherit; padding-bottom: 10px; padding-top: 0px; margin-top: 0px;">
+
+
+                    <span class="error" *ngIf="loginerror==0">Invalid username/password</span>
+
+                    <div class="form-group">
+                        <input [formControl]="customerloginform.controls['username']" name="username" type="text" class="form-control" placeholder="User Name"/>
+                        <span *ngIf="customerloginform.controls['username'].touched &&  !customerloginform.controls['username'].valid" class="help-inline">Username is Required ! <img src="images/iconquestion.png"></span>
+                        <!-- <span class="help-inline">Please correct the error</span>-->
+
+                    </div>
+
+                    <div class="form-group">
+                        <input [formControl]="customerloginform.controls['password']" name="password" type="password" class="form-control" placeholder="Password"/>
+                      <span *ngIf="customerloginform.controls['password'].touched && !customerloginform.controls['password'].valid" class="help-inline">Password is Required !<img src="images/iconquestion.png"></span>
+                        <!-- <span class="help-inline">Please correct the error</span>-->
+                        <span></span>
+                    </div>
+
+
+
+
+
+
+
+
+                </div>
+                <div class="btn-blocklogin" style="margin-top: 10px;"> <input (click)="submitform()" type="button" value="Submit" class="loginbtn"/></div>
+
+
+
+                <div class="forgottext" style="width: 100%;"> <a href="javascript:void(0)">Forgotten Password?</a> ·  <a (click)="goSignup()" href="javascript:void(0)">Sign up your account</a></div>
+
+
+
+
+
+
+            <div class="clearfix"></div>
+        </div>
+            </form>
+
+
+
+    </div>
+
+</div>
+
+</div>

@@ -120,7 +120,6 @@ export class AppCreditcard {
         }
         //let appsignupobj=new AppSignup();
         // /console.log(appsignupobj.signupform.value.term);
-
     }
     submitform(){
         //this.signupform.set;
@@ -150,8 +149,8 @@ export class AppCreditcard {
             this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();
-                    console.log(data[0]);
-                    //window.location.href = 'http://'+this.userinfo.username+'.probidauto.com';
+                    console.log(data[0]);//dealerautologin/fdsfkj
+                    window.location.href = 'http://'+this.userinfo.username+'.probidauto.com/dealerautologin/'+this.userinfo.username;
 
 
                 }, error => {

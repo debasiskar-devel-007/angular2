@@ -14,7 +14,7 @@ import {CookieService} from "angular2-cookie/services/cookies.service";
 /*
     template: '<router-outlet></router-outlet>',
 */
-    template: '<router-outlet name="dealerheader"><router-outlet name="customerheader">' +
+    template: '<router-outlet name="dealerheader"></router-outlet><router-outlet name="customerheader">' +
     '</router-outlet><router-outlet name="adminheader"></router-outlet><router-outlet></router-outlet><router-outlet name="dealerfooter"></router-outlet><router-outlet name="adminfooter"><router-outlet name="customerfooter"></router-outlet>',
     providers: [AppCommonservices]
     //templateUrl:'app/pages/home/home.html',

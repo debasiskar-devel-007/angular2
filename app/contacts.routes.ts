@@ -31,6 +31,8 @@ import {AppDealerWebsiteLogin} from "./pages/dealerwebsitelogin/dealerwebsitelog
 import {AppCustomercreditcard} from "./pages/customercreditcard/app.customercreditcard";
 import {AppCustomerheader  }  from './pages/customerheader/app.customerheader';
 import {AppDealerFaq} from "./pages/dealerfaq/app.faqs";
+import {AppDealerlist} from "./pages/dealerlist/app.dealerlist";
+import {AppAddsharelink} from "./pages/addsharelink/app.addsharelink";
 //alert(window.location.hostname);
 
 //alert(checkutl);
@@ -70,7 +72,6 @@ const appRoutes: Routes = [
     { path: 'dealerdashboard',component: AppDealerdashboard},
     { path: 'customersignup',component: AppCustomersignup},
     { path: 'customercreditcard',component: AppCustomercreditcard},
-
     { path: 'adminlogin',component: AppAdminlogin},
     { path: 'customerlogin',component: AppCustomerlogin},
     { path: 'adminheader',component: AppAdminheader,outlet:'adminheader'},
@@ -82,12 +83,14 @@ const appRoutes: Routes = [
     { path: 'addfaq',component: AppAddfaq},
     { path: 'addfaqbyadmin',component: AppAddFaqByAdmin},
     { path: 'adminlist',component: AppAdminlist},
+    { path: 'dealerlist',component: AppDealerlist},
     { path: 'faq',component: AppFaq},
     { path: 'dealerfaq',component: AppDealerFaq},
     { path: 'dealerwebsitelogin',component: AppDealerWebsiteLogin},
     { path: 'dealerautologin/:id',component: AppDealerWebsiteLogin},
     { path: 'editadmin/:id', component: AppEditadmin },
     { path: 'editfaq/:id', component: AppEditFaqbyAdmin },
+    { path: 'addsharelink', component:AppAddsharelink}
 
 ];
 

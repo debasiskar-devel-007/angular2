@@ -25,33 +25,47 @@ export class AppSignup {
     data:any;
     http:Http;
     items:any;
+    static serverUrl:any;
     serverUrl:any;
     commonservices:AppCommonservices;
+    static instance:AppSignup;
     private userInfo:CookieService;
     private router: Router;
+    showloader:any;
+    loginerror:any;
+    static isCreating:Boolean = false;
+    static fb:FormBuilder;
+    static http:Http;
+    fb:FormBuilder;
+    static  commonservices:AppCommonservices;
+    static  userInfo:CookieService;
+    static  router:Router;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router) {
+        if (!AppSignup.isCreating) {
 
-        this.items = commonservices.getItems();
-        this.http=http;
-        this.router=router;
-        this.userInfo=userInfo;
-        console.log(this.items);
-        console.log(this.items[0].serverUrl);
+            this.items = commonservices.getItems();
+            this.http = http;
+            this.router = router;
+            this.userInfo = userInfo;
+            console.log(this.items);
+            console.log(this.items[0].serverUrl);
+            this.showloader = false;
 
-        this.serverUrl = this.items[0].serverUrl;
+            this.serverUrl = this.items[0].serverUrl;
 
-        this.signupform = fb.group({
-            username: ["", Validators.required],
-            password: ["", Validators.required],
-            fname: ["", Validators.required],
-            lname: ["", Validators.required],
-            email: ["", AppSignup.validateEmail],
-            phone: ["", Validators.required],
-            zip: ["", Validators.required],
-            term: ["", AppSignup.validateTerms]
-        });
+            this.signupform = fb.group({
+                username: ["", AppSignup.validateUsername],
+                password: ["", Validators.required],
+                fname: ["", Validators.required],
+                lname: ["", Validators.required],
+                email: ["", AppSignup.validateEmail],
+                phone: ["", Validators.required],
+                zip: ["", Validators.required],
+                term: ["", AppSignup.validateTerms]
+            });
+        }
 
         //this.router.navigate(['/about']);
     }
@@ -59,8 +73,8 @@ export class AppSignup {
 
     static validateTerms(control: FormControl){
 
-        console.log('34324324');
-        console.log(control.value);
+        //console.log('34324324');
+        //console.log(control.value);
         if(control.value==false){
             return { 'isTermsChecked': true };
         }
@@ -71,12 +85,46 @@ export class AppSignup {
 
     static validateEmail(control: FormControl){
 
-        console.log('34324324');
-        console.log(control.value);
+        //console.log('34324324');
+        //console.log(control.value);
         if (control.value=='' || !control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
 
             return { 'invalidEmailAddress': true };
         }
+        //let appsignupobj=new AppSignup();
+        // /console.log(appsignupobj.signupform.value.term);
+
+    }
+    static validateUsername(control: FormControl){
+
+        console.log('34324324');
+        console.log(control.value);
+        let username={username:control.value};
+        if (control.value=='') {
+
+            return { 'invalidEmailAddress': true };
+        }
+        /*if (AppSignup.instance == null) {
+            AppSignup.isCreating = true;
+            AppSignup.instance = new AppSignup(AppSignup.fb , AppSignup.http ,AppSignup.commonservices ,AppSignup.userInfo ,AppSignup.router);
+            AppSignup.isCreating = false;
+        }
+
+
+         let link1= AppSignup.serverUrl+'dealercheck';
+        AppSignup.http.post(link1,username)
+             .subscribe(data2 => {
+                  let data3:any = data2.json();
+                 console.log(data3);
+                 if(data3.length>0){
+                     //this.loginerror=1;
+                 }
+                 else{
+                     //this.loginerror=0;
+                 }
+             }, error => {
+                 console.log("Oooops!");
+             });*/
         //let appsignupobj=new AppSignup();
         // /console.log(appsignupobj.signupform.value.term);
 
@@ -90,13 +138,11 @@ export class AppSignup {
             this.signupform.controls[x].markAsTouched();
 
         }
-        console.log(this.signupform.dirty);
         this.signupform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
-        console.log(this.signupform.dirty);
-        console.log(this.signupform.valid);
-        console.log(this.signupform.errors);
+         //this.showloader=true;
         if(this.signupform.valid){
+            this.showloader=true;
 
             //var headers = new Headers();
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
@@ -104,10 +150,10 @@ export class AppSignup {
             //this.items = this.commonservices.getItems();
             let link = this.serverUrl+'adddealer';
             var submitdata = this.signupform.value;
-            console.log(this.items);
 
             this.http.post(link,submitdata)
                 .subscribe(data => {
+                    this.showloader=false;
                     // /this.data1.response = data.json();
                     console.log(data);
                     this.signupform.value.password='';

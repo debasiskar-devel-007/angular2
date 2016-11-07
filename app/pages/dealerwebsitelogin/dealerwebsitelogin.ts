@@ -41,22 +41,22 @@ export class AppDealerWebsiteLogin{
         this.http=http;
         this.router=router;
 
-        if(window.location.hostname!='probiddealer.influxiq.com'){
+        //if(window.location.hostname!='probiddealer.influxiq.com'){
+            //alert(9);
 
             this.sub = this.route.params.subscribe(params => {
                 //this.id = params['id']; // (+) converts string 'id' to a number
                 console.log(params);
                 //alert(window.parent.location);
-                if(params['id'].length>4){
+                if(typeof (params['id'])!='undefined'){
 
                     this.router.navigateByUrl('/dealerdashboard(dealerheader:dealerheader//dealerfooter:dealerfooter)');
-
+                    return;
                 }
-
 
                 // In a real app: dispatch action to load the details here.
             });
-        }
+        //}
 
 
         this.adminloginform = fb.group({

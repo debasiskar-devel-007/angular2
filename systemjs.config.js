@@ -28,6 +28,9 @@
       'ng2-pagination':'npm:ng2-pagination',
       "ng2-ckeditor": "npm:ng2-ckeditor",
 
+      'ng2-slim-loading-bar': 'node_modules/ng2-slim-loading-bar',
+
+
 
       // other libraries
       'rxjs':                       'npm:rxjs',
@@ -59,6 +62,7 @@
         "main": "lib/index.js",
         "defaultExtension": "js",
       },
+      'ng2-slim-loading-bar':  { main: 'index.js',  defaultExtension: 'js' },
     }
   });
 })(this);

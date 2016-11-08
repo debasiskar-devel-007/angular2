@@ -41,7 +41,7 @@ export class AppDealerWebsiteLogin{
         this.http=http;
         this.router=router;
 
-        //if(window.location.hostname!='probiddealer.influxiq.com'){
+        if(window.location.hostname!='probiddealer.influxiq.com'){
             //alert(9);
 
             this.sub = this.route.params.subscribe(params => {
@@ -50,14 +50,43 @@ export class AppDealerWebsiteLogin{
                 //alert(window.parent.location);
                 if(typeof (params['id'])!='undefined'){
 
-                    this.router.navigateByUrl('/dealerdashboard(dealerheader:dealerheader//dealerfooter:dealerfooter)');
+                    let link = this.serverUrl+'dealerautologin';
+                    var submitdata = {username:params['id']};
+
+                    this.http.post(link,submitdata)
+                        .subscribe(data => {
+                            // this.data1.response = data.json();
+
+                            console.log(data.json());
+
+                            var res=data.json();
+                            if(res.length>0){
+                                console.log();
+                                var userdet={username:res[0].username,useremail:res[0].email,userrole:'dealer',userfullname:res[0].fname+' '+res[0].lname}
+
+                                console.log('Login successfully');
+                                this.userdetails.putObject('userdetails', userdet);
+                                this.loginerror=1;
+                                this.router.navigateByUrl('/dealerdashboard(dealerheader:dealerheader//dealerfooter:dealerfooter)');
+                                //window.location.href="http://"+res[0].username+".probidauto.com/#/dealerautologin/"+res[0]._id;
+
+
+                            }
+                            else{
+                                console.log('UsernameInvalid username/password');
+                                this.loginerror=0;
+                            }
+
+                        }, error => {
+                            console.log("Oooops!");
+                        });
+
                     return;
                 }
 
                 // In a real app: dispatch action to load the details here.
             });
-        //}
-
+        }
 
         this.adminloginform = fb.group({
 
@@ -101,13 +130,13 @@ export class AppDealerWebsiteLogin{
                 var res=data.json();
                     if(res.length>0){
 console.log();
-                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'admin',userfullname:res[0].fname+' '+res[0].lname}
+                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'dealer',userfullname:res[0].fname+' '+res[0].lname}
 
                         console.log('Login successfully');
                         this.userdetails.putObject('userdetails', userdet);
                         this.loginerror=1;
                         //this.router.navigateByUrl('/admindashboard(adminheader:adminheader//adminfooter:adminfooter)');
-                        window.location.href="http://"+res[0].username+".probidauto.com/#/dealerautologin/"+res[0]._id;
+                        window.location.href="http://"+res[0].username+".probidauto.com/#/dealerautologin/"+res[0].username;
 
 
                     }

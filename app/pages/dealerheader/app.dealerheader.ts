@@ -25,12 +25,33 @@ export class AppDealerheader {
     items:any;
     serverUrl:any;
     commonservices:AppCommonservices;
+    private router: Router;
     loginerror:any;
+    userDetails:any;
+    coockieData:CookieService;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router  ) {
 
+        this.coockieData=userdetails;
+        this.router=router;
+        this.userDetails=userdetails.getObject('userdetails');
 
+    }
+    logout(){
+
+        this.coockieData.removeAll();
+        this.router.navigateByUrl('/dealerlogin');
+
+    }
+    getUserFullname(){
+        this.userDetails=this.coockieData.getObject('userdetails');
+        if(typeof(this.userDetails)!='undefined'){
+            return this.userDetails.userfullname;
+        }
+        else{
+            return '';
+        }
     }
 
 

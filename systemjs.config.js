@@ -27,9 +27,8 @@
       'angular2-cookie':'npm:angular2-cookie',
       'ng2-pagination':'npm:ng2-pagination',
       "ng2-ckeditor": "npm:ng2-ckeditor",
-
-      'ng2-slim-loading-bar': 'node_modules/ng2-slim-loading-bar',
-
+      'ng2-uploader': 'npm:ng2-uploader',
+      'angular2-clipboard': 'npm:angular2-clipboard@1.0.0',
 
 
       // other libraries
@@ -62,7 +61,15 @@
         "main": "lib/index.js",
         "defaultExtension": "js",
       },
-      'ng2-slim-loading-bar':  { main: 'index.js',  defaultExtension: 'js' },
+      'ng2-uploader': {
+        main: 'ng2-uploader.js',
+        defaultExtension: 'js'
+      },
+
+      'clipboard':{
+        defaultExtension: 'js'
+      }
+
     }
   });
 })(this);

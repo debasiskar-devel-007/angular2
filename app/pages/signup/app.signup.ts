@@ -56,7 +56,7 @@ export class AppSignup {
             this.serverUrl = this.items[0].serverUrl;
 
             this.signupform = fb.group({
-                username: ["", AppSignup.validateUsername],
+                username: ["", this.validateUsername.bind(this)],
                 password: ["", Validators.required],
                 fname: ["", Validators.required],
                 lname: ["", Validators.required],
@@ -95,7 +95,10 @@ export class AppSignup {
         // /console.log(appsignupobj.signupform.value.term);
 
     }
-    static validateUsername(control: FormControl){
+
+
+
+     validateUsername(control: FormControl){
 
         console.log('34324324');
         console.log(control.value);
@@ -104,27 +107,27 @@ export class AppSignup {
 
             return { 'invalidEmailAddress': true };
         }
-        /*if (AppSignup.instance == null) {
+       /* if (AppSignup.instance == null) {
             AppSignup.isCreating = true;
             AppSignup.instance = new AppSignup(AppSignup.fb , AppSignup.http ,AppSignup.commonservices ,AppSignup.userInfo ,AppSignup.router);
             AppSignup.isCreating = false;
-        }
+        }*/
 
 
-         let link1= AppSignup.serverUrl+'dealercheck';
-        AppSignup.http.post(link1,username)
+         let link1= this.serverUrl+'dealercheck';
+        this.http.post(link1,username)
              .subscribe(data2 => {
                   let data3:any = data2.json();
+                 console.log(data2);
                  console.log(data3);
-                 if(data3.length>0){
-                     //this.loginerror=1;
+                 console.log(data3.length);
+                 if(data3.length==0){
+                     return { 'invalidEmailAddress': true };
                  }
-                 else{
-                     //this.loginerror=0;
-                 }
+
              }, error => {
                  console.log("Oooops!");
-             });*/
+             });
         //let appsignupobj=new AppSignup();
         // /console.log(appsignupobj.signupform.value.term);
 

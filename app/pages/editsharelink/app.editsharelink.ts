@@ -1,8 +1,11 @@
-import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation,OnInit, NgZone} from '@angular/core';
+import {
+    Component, NgModule, ViewChild, ViewContainerRef, ViewEncapsulation, OnInit, NgZone,
+    OnDestroy
+} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
-import {Routes, RouterModule, Router} from '@angular/router';
+import {Routes, RouterModule, Router, ActivatedRoute} from '@angular/router';
 import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
@@ -15,11 +18,11 @@ import {CookieService} from 'angular2-cookie/core';
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/addsharelink/home.html',
+    templateUrl:'app/pages/editsharelink/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppAddsharelink implements OnInit{
+export class AppEditsharelink implements OnInit, OnDestroy{
     // /@ViewChild(Modal) modal;
     private zone: NgZone;
     private basicOptions: Object;
@@ -36,10 +39,14 @@ export class AppAddsharelink implements OnInit{
     private userInfo:CookieService;
     private router: Router;
     uploadedfilesrc:any;
+    id: number;
+    private sub: any;
+    sharemediadetails: any;
+    text:any;
 
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,userInfo:CookieService ,router: Router,private route: ActivatedRoute) {
 
         this.items = commonservices.getItems();
         this.http=http;
@@ -47,8 +54,16 @@ export class AppAddsharelink implements OnInit{
         this.userInfo=userInfo;
         console.log(this.items);
         console.log(this.items[0].serverUrl);
-
+        this.text='trtrtrtrt';
         this.serverUrl = this.items[0].serverUrl;
+ /*       this.sharemediadetails={
+            name:"",
+            description: "",
+            url: "",
+            filename: "",
+            priority: "",
+            is_public: ""
+        }*/
         this.addsharelinkform = fb.group({
             name: ["", Validators.required],
             description: ["", Validators.required],
@@ -57,6 +72,32 @@ export class AppAddsharelink implements OnInit{
             priority: ["", Validators.required],
             is_public: [""]
         });
+        this.sub = this.route.params.subscribe(params => {
+            this.id = params['id']; // (+) converts string 'id' to a number
+            let ids={id:this.id};
+            this.http.post(this.serverUrl+'editsharemedia',ids)
+                .subscribe(data => {
+                    console.log(data);
+                    this.sharemediadetails=data.json()[0];
+                    this.uploadedfilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.sharemediadetails.filename;
+                    this.addsharelinkform = fb.group({
+                        name: [this.sharemediadetails.name, Validators.required],
+                        _id: [this.sharemediadetails._id, Validators.required],
+                        description: [this.sharemediadetails.description, Validators.required],
+                        url: [this.sharemediadetails.url, Validators.required],
+                        filename: [this.sharemediadetails.filename, Validators.required],
+                        priority: [this.sharemediadetails.priority, Validators.required],
+                        is_public: [this.sharemediadetails.is_public, Validators.required]
+                    });
+
+
+                }, error => {
+                    console.log("Oooops!");
+                });
+
+            // In a real app: dispatch action to load the details here.
+        });
+
 
         //this.router.navigate(['/about']);
     }
@@ -67,6 +108,15 @@ export class AppAddsharelink implements OnInit{
         this.basicOptions = {
             url: this.serverUrl+'uploads'
         };
+        this.sub = this.route.params.subscribe(params => {
+            this.id = params['id']; // (+) converts string 'id' to a number
+            console.log((this.id));
+
+            // In a real app: dispatch action to load the details here.
+        });
+    }
+    ngOnDestroy() {
+        this.sub.unsubscribe();
     }
 
     handleUpload(data: any): void {
@@ -101,7 +151,7 @@ export class AppAddsharelink implements OnInit{
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'addsharemedia';
+            let link = this.serverUrl+'updatesharemedia';
             var submitdata = this.addsharelinkform.value;
             console.log(submitdata);
             console.log(link);

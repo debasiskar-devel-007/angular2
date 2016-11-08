@@ -47,13 +47,24 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import {AppDealerWebsiteLogin} from "./pages/dealerwebsitelogin/dealerwebsitelogin";
 import {AppDealerlist} from "./pages/dealerlist/app.dealerlist";
 import {AppAddsharelink} from "./pages/addsharelink/app.addsharelink";
+import { AppEditsharelink }  from './pages/editsharelink/app.editsharelink';
+import {AppAuctioninventoryview} from "./pages/auctioninventoryview/app.auctioninventoryview";
+import {AppInventorymatches} from "./pages/inventorymatches/app.inventorymatches";
+import {AppPostauctionactivity} from "./pages/postauctionactivity/app.postauctionactivity";
+import {AppRecentbidagreement} from "./pages/recentbidagreement/app.recentbidagreement";
+import {AppSharemedia} from "./pages/sharemedia/app.sharemedia";
+import {AppUpcomingauctions} from "./pages/upcomingauctions/app.upcomingauctions";
+import {AppAppFinance} from "./pages/finance/app.finance";
+import {AppRetailcustomerconnect} from "./pages/retailcustomerconnect/app.retailcustomerconnect";
+import { UPLOAD_DIRECTIVES } from 'ng2-uploader/ng2-uploader';
+//import { ClipboardModule }  from 'angular2-clipboard';
 
 
 
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule,Ng2PaginationModule,CKEditorModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppAppFinance,AppRetailcustomerconnect,UPLOAD_DIRECTIVES],
   providers: [
     appRoutingProviders,CookieService
   ],

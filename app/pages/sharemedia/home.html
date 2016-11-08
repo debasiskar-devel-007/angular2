@@ -1,0 +1,222 @@
+<div class="body-inner">
+<div class="page-wrapper page-wrapper-inner">
+    <div class="blockmaininner">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 adminlistmessageblock">
+                <!--<div *ngFor="let item1 of messages">-->
+                <!--<p *ngIf="typeof(messages)!='undefined' " class="bg-success">{{messages.message}}.</p>-->
+                <div [innerHtml]="messages"></div>
+                <!--<p class="bg-warning">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p class="bg-danger">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
+                <!-- </div>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="pageheader"><span>Share</span> Links</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+        <!-- .row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 sharelinks">
+                <div class="inventorymatchblock">
+                    <div class="inventorymatchheader">
+                        <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h4>
+                    </div>
+                    <div class="inventorylistswrapper">
+                        <div class="row">
+                            <!--row start-->
+                            <div class="searchbox"><input [(ngModel)]="query" placeholder="Search "></div>
+                            <div><a [routerLink]="['/addsharelink']"><button class="addbtn" type="button">Add Share Media</button></a></div>
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist" *ngFor="let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id">
+                                <div class="row">
+                                    <div class="actionbtns" style="text-align: right;">
+                                        <a [routerLink]="['/editsharelink', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
+                                        <a><button class="btndelete" type="button" (click)="deleterow(item)"  value="Delete">Delete</button></a>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 sharelinkssinglelistleft">
+                                        <div class="sharelinksimgwarpper">
+                                            <img *ngIf="item.filename" src="{{sharefilesrc}}{{item.filename}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
+                                        <h2>{{item.name}}</h2>
+                                        <p><input type="text" placeholder="{{item.url}}"></p>
+                                        <h3>Advance Options</h3>
+                                        <ul class="list-inline">
+                                            <li>
+                                                <div>
+                                                    <span class='st_email_large' displayText='Email'></span>
+                                                    <span class='st_facebook_large' displayText='Facebook'></span>
+                                                    <span class='st_twitter_large' displayText='Tweet'></span>
+                                                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                                                    <span class='st_pinterest_large' displayText='Pinterest'></span>
+                                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
+                                                </div>
+                                            </li>
+
+                                          <!--  <li><a>  <button class="btnsend" type="button">Copy Link</button></a></li>-->
+                                            <li><a>  <!--<button class="btn btn-default" type="button" ngIIclipboard [cbContent]="text">copy</button>--></a></li>
+                                            <li><a><button class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
+
+
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        <p>{{item.description}}</p>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--row end-->
+
+                            <!--row start-->
+  <!--                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist">
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 sharelinkssinglelistleft">
+                                        <div class="sharelinksimgwarpper">
+                                            <img src="images/signup_leftimg2.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
+                                        <h2>Home</h2>
+                                        <p><input type="text" placeholder="www.google.com"></p>
+                                        <h3>Advance Options</h3>
+                                        <ul class="list-inline">
+                                            <li>
+                                                <div>
+                                                    <span class='st_email_large' displayText='Email'></span>
+                                                    <span class='st_facebook_large' displayText='Facebook'></span>
+                                                    <span class='st_twitter_large' displayText='Tweet'></span>
+                                                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                                                    <span class='st_pinterest_large' displayText='Pinterest'></span>
+                                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
+                                                </div>
+                                            </li>
+                                            <li><a><button class="btnsend" type="button" value="Edit">Copy Links</button></a></li>
+                                            <li><a><button class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        <p>www.google.com</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            &lt;!&ndash;row end&ndash;&gt;
+                            &lt;!&ndash;row start&ndash;&gt;
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist">
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 sharelinkssinglelistleft">
+                                        <div class="sharelinksimgwarpper">
+                                            <img src="images/signup_leftimg2.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
+                                        <h2>Home</h2>
+                                        <p><input type="text" placeholder="www.google.com"></p>
+                                        <h3>Advance Options</h3>
+                                        <ul class="list-inline">
+                                            <li>
+                                                <div>
+                                                    <span class='st_email_large' displayText='Email'></span>
+                                                    <span class='st_facebook_large' displayText='Facebook'></span>
+                                                    <span class='st_twitter_large' displayText='Tweet'></span>
+                                                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                                                    <span class='st_pinterest_large' displayText='Pinterest'></span>
+                                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
+                                                </div>
+                                            </li>
+                                            <li><a><button class="btnsend" type="button" value="Edit">Copy Links</button></a></li>
+                                            <li><a><button class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        <p>www.google.com</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            &lt;!&ndash;row end&ndash;&gt;
+                            &lt;!&ndash;row start&ndash;&gt;
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist">
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 sharelinkssinglelistleft">
+                                        <div class="sharelinksimgwarpper">
+                                            <img src="images/signup_leftimg2.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
+                                        <h2>Home</h2>
+                                        <p><input type="text" placeholder="www.google.com"></p>
+                                        <h3>Advance Options</h3>
+                                        <ul class="list-inline">
+                                            <li>
+                                                <div>
+                                                    <span class='st_email_large' displayText='Email'></span>
+                                                    <span class='st_facebook_large' displayText='Facebook'></span>
+                                                    <span class='st_twitter_large' displayText='Tweet'></span>
+                                                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                                                    <span class='st_pinterest_large' displayText='Pinterest'></span>
+                                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
+                                                </div>
+                                            </li>
+                                            <li><a><button class="btnsend" type="button" value="Edit">Copy Links</button></a></li>
+                                            <li><a><button class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        <p>www.google.com</p>
+
+                                    </div>
+                                </div>
+                            </div>
+                            &lt;!&ndash;row end&ndash;&gt;
+                            &lt;!&ndash;row start&ndash;&gt;
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist">
+                                <div class="row">
+                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 sharelinkssinglelistleft">
+                                        <div class="sharelinksimgwarpper">
+                                            <img src="images/signup_leftimg2.jpg">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
+                                        <h2>Home</h2>
+                                        <p><input type="text" placeholder="www.google.com"></p>
+                                        <h3>Advance Options</h3>
+                                        <ul class="list-inline">
+                                            <li>
+                                                <div>
+                                                    <span class='st_email_large' displayText='Email'></span>
+                                                    <span class='st_facebook_large' displayText='Facebook'></span>
+                                                    <span class='st_twitter_large' displayText='Tweet'></span>
+                                                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                                                    <span class='st_pinterest_large' displayText='Pinterest'></span>
+                                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
+                                                </div>
+                                            </li>
+                                            <li><a><button class="btnsend" type="button" value="Edit">Copy Links</button></a></li>
+                                            <li><a><button class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        <p>www.google.com</p>
+
+                                    </div>
+                                </div>
+                            </div>-->
+                            <!--row end-->
+
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 paginationwrapper">
+                        <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+    </div>
+</div>
+<!-- /#page-wrapper -->
+</div>
+

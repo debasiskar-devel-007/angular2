@@ -33,6 +33,15 @@ import {AppCustomerheader  }  from './pages/customerheader/app.customerheader';
 import {AppDealerFaq} from "./pages/dealerfaq/app.faqs";
 import {AppDealerlist} from "./pages/dealerlist/app.dealerlist";
 import {AppAddsharelink} from "./pages/addsharelink/app.addsharelink";
+import {AppAuctioninventoryview} from "./pages/auctioninventoryview/app.auctioninventoryview";
+import {AppInventorymatches} from "./pages/inventorymatches/app.inventorymatches";
+import {AppPostauctionactivity} from "./pages/postauctionactivity/app.postauctionactivity";
+import {AppRecentbidagreement} from "./pages/recentbidagreement/app.recentbidagreement";
+import {AppSharemedia} from "./pages/sharemedia/app.sharemedia";
+import {AppUpcomingauctions} from "./pages/upcomingauctions/app.upcomingauctions";
+import {AppAppFinance} from "./pages/finance/app.finance";
+import {AppRetailcustomerconnect} from "./pages/retailcustomerconnect/app.retailcustomerconnect";
+import {AppEditsharelink} from "./pages/editsharelink/app.editsharelink";
 //alert(window.location.hostname);
 
 //alert(checkutl);
@@ -90,7 +99,16 @@ const appRoutes: Routes = [
     { path: 'dealerautologin/:id',component: AppDealerWebsiteLogin},
     { path: 'editadmin/:id', component: AppEditadmin },
     { path: 'editfaq/:id', component: AppEditFaqbyAdmin },
-    { path: 'addsharelink', component:AppAddsharelink}
+    { path: 'addsharelink', component:AppAddsharelink},
+    { path: 'editsharelink/:id', component: AppEditsharelink },
+    { path: 'auctioninventoryview', component:AppAuctioninventoryview},
+    { path: 'inventorymatches', component:AppInventorymatches},
+    { path: 'postauctionactivity', component:AppPostauctionactivity},
+    { path: 'recentbidagreement', component:AppRecentbidagreement},
+    { path: 'sharemedia', component:AppSharemedia},
+    { path: 'upcomingauctions', component:AppUpcomingauctions},
+    { path: 'finance', component:AppAppFinance},
+    { path: 'retailcustomerconnect', component:AppRetailcustomerconnect},
 
 ];
 

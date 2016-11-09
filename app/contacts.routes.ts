@@ -42,6 +42,14 @@ import {AppUpcomingauctions} from "./pages/upcomingauctions/app.upcomingauctions
 import {AppAppFinance} from "./pages/finance/app.finance";
 import {AppRetailcustomerconnect} from "./pages/retailcustomerconnect/app.retailcustomerconnect";
 import {AppEditsharelink} from "./pages/editsharelink/app.editsharelink";
+import {AppBannersizelist} from "./pages/bannersizelist/app.bannersizelist";
+import {AppAddbannersize} from "./pages/addbannersize/app.addbannersize";
+import {AppEditbannersize} from "./pages/editbannersize/app.editbannersize";
+import {AppAddbanner} from "./pages/addbanner/app.addbanner";
+import {AppBannerlist} from "./pages/bannerlist/app.bannerlist";
+import {AppEditbanner} from "./pages/editbanner/app.editbanner";
+import {AppViewcustomers} from "./pages/viewcustomers/app.viewcustomers";
+import {AppViewrsvp} from "./pages/viewrsvp/app.viewrsvp";
 //alert(window.location.hostname);
 
 //alert(checkutl);
@@ -109,6 +117,14 @@ const appRoutes: Routes = [
     { path: 'upcomingauctions', component:AppUpcomingauctions},
     { path: 'finance', component:AppAppFinance},
     { path: 'retailcustomerconnect', component:AppRetailcustomerconnect},
+    { path: 'bannersizelist', component:AppBannersizelist},
+    { path: 'addbannersize', component:AppAddbannersize},
+    { path: 'editbannersize/:id', component: AppEditbannersize },
+    { path: 'addbanner', component:AppAddbanner},
+    { path: 'bannerlist', component:AppBannerlist},
+    { path: 'editbanner/:id', component:AppEditbanner},
+    { path: 'viewcustomers', component:AppViewcustomers},
+    { path: 'viewrsvp', component:AppViewrsvp},
 
 ];
 

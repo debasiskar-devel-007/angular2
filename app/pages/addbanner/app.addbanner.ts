@@ -1,4 +1,4 @@
-import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation,OnInit, NgZone} from '@angular/core';
+import {Component, NgModule, ViewChild, ViewContainerRef, ViewEncapsulation, OnInit, NgZone} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
@@ -11,26 +11,27 @@ import {CookieService} from 'angular2-cookie/core';
 
 
 
-
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/addsharelink/home.html',
+    templateUrl:'app/pages/addbanner/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppAddsharelink implements OnInit{
+export class AppAddbanner implements OnInit{
     // /@ViewChild(Modal) modal;
     private zone: NgZone;
     private basicOptions: Object;
     private progress: number = 0;
     private response: any = {};
-    addsharelinkform: FormGroup;
+
+    addbannerform: FormGroup;
     myModal :ModalModule;
     data:any;
     http:Http;
     items:any;
-    getusastates:any;
+    getbannersizelist:any;
+    getsharemedialist:any;
     serverUrl:any;
     commonservices:AppCommonservices;
     private userInfo:CookieService;
@@ -49,18 +50,42 @@ export class AppAddsharelink implements OnInit{
         console.log(this.items[0].serverUrl);
 
         this.serverUrl = this.items[0].serverUrl;
-        this.addsharelinkform = fb.group({
-            name: ["", Validators.required],
-            description: ["", Validators.required],
-            url: ["", Validators.required],
+        this.http.get(this.serverUrl+'getbannersizelist')
+            .subscribe(data => {
+                console.log(data);
+                this.getbannersizelist=data.json();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+       this.http.get(this.serverUrl+'sharemedialist')
+            .subscribe(data => {
+                console.log(data);
+                this.getsharemedialist=data.json();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+
+        this.addbannerform = fb.group({
+            bannername: ["", Validators.required],
+            bannersize: ["", Validators.required],
+            sharelink: ["", Validators.required],
             filename: ["", Validators.required],
             priority: ["", Validators.required],
-            is_public: [""]
+            is_active: [""]
         });
 
         //this.router.navigate(['/about']);
     }
 
+
+    static validateTerms(control: FormControl){
+        if(control.value==false){
+            return { 'isTermsChecked': true };
+        }
+     }
 
     ngOnInit() {
         this.zone = new NgZone({ enableLongStackTrace: false });
@@ -69,9 +94,7 @@ export class AppAddsharelink implements OnInit{
         };
     }
 
-    handleUpload(data: any): void
-    {
-
+    handleUpload(data: any): void {
         //console.log(data.progress.percent);
         this.zone.run(() => {
             this.response = data;
@@ -81,38 +104,32 @@ export class AppAddsharelink implements OnInit{
                 //console.log(data.response.json());
                 //console.log(data.response.filename);
                 if(typeof (data.response)!='undefined') {
-                    this.addsharelinkform.patchValue({filename: data.response});
+                    this.addbannerform.patchValue({filename: data.response});
                     this.uploadedfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + data.response;
                 }
             }
         });
     }
 
-
     submitform(){
         let x:any;
-        for(x in this.addsharelinkform.controls){
-            this.addsharelinkform.controls[x].markAsTouched();
+        for(x in this.addbannerform.controls){
+            this.addbannerform.controls[x].markAsTouched();
 
         }
-       // console.log(this.addsharelinkform.dirty);
-        this.addsharelinkform.markAsDirty();
-        if(this.addsharelinkform.valid){
+        this.addbannerform.markAsDirty();
+        if(this.addbannerform.valid){
 
             //var headers = new Headers();
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'addsharemedia';
-            var submitdata = this.addsharelinkform.value;
-            console.log(submitdata);
-            console.log(link);
+            let link = this.serverUrl+'addbanner';
+            var submitdata = this.addbannerform.value;
             this.http.post(link,submitdata)
                 .subscribe(data => {
-                    console.log(344444);
-                   // this.data = data.json();
-                    //console.log(this.data);
-                    this.router.navigateByUrl('/sharemedia(adminheader:adminheader//adminfooter:adminfooter)')
+                    // /this.data1.response = data.json();
+                    this.router.navigateByUrl('/bannerlist(adminheader:adminheader//adminfooter:adminfooter)')
 
                 }, error => {
                     console.log("Oooops!");

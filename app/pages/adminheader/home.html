@@ -58,7 +58,16 @@
                 <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
                 <li><a><img src="images/admicon-manageaution.png">Manage Auctions</a></li>
                 <li><a><img src="images/admicon-subscription.png">Manage Subscriptions</a></li>
-                <li><a><img src="images/admicon-sharemedia.png">Share Media</a></li>
+                <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="images/admicon-sharemedia.png">Manage Share Link <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a [routerLink]="['/sharemedia']">Share Link</a></li>
+                        <li><a [routerLink]="['/bannerlist']">Manage Banner</a></li>
+                        <li><a [routerLink]="['/bannersizelist']">Manage Banner Sizes</a></li>
+
+                    </ul>
+
+
+                </li>
                 <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
                 <li ><a (click)="faq()"><img src="images/admicon-faq.png">Faq's</a></li>
 

@@ -44,7 +44,8 @@ export class AppDealerFaq {
         this.router = router;
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
-
+        console.log('router-----');
+        console.log(this.router);
         this.p=1;
         this.userInfo=userdetails.getObject('userdetails');
         let link='';

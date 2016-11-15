@@ -24,22 +24,27 @@ export class AppCustomercreditcard {
     http:Http;
     items:any;
     getExpyears:any;
+
     expMonths:any;
     getusastates:any;
     serverUrl:any;
     private customerInfo:CookieService;
     commonservices:AppCommonservices;
     customerinfo:any;
+    private router: Router;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router ) {
 
         this.items = commonservices.getItems();
         this.getExpyears = commonservices.getExpyears();
         this.expMonths = commonservices.getMonths();
         //this.getusastates = commonservices.getusastates();
         this.customerinfo=customerInfo.getObject('customerInfo');
+        console.log(this.customerinfo)
+        this.customerInfo=customerInfo;
         this.http=http;
+        this.router = router;
         this.serverUrl = this.items[0].serverUrl;
 
         this.http.get(this.serverUrl+'getusastates')
@@ -52,7 +57,7 @@ export class AppCustomercreditcard {
             }, error => {
                 console.log("Oooops!");
             });
-
+console.log(this.customerinfo.username);
         this.customercreditform = fb.group({
             username: [this.customerinfo.username, Validators.required],
             address: ["", Validators.required],
@@ -67,7 +72,7 @@ export class AppCustomercreditcard {
             email: [this.customerinfo.email, AppCustomercreditcard.validateEmail],
             phone: [this.customerinfo.phone, Validators.required],
             zip: [this.customerinfo.zip, Validators.required],
-            //term: ["", AppCreditcard.validateTerms]
+            term: [this.customerinfo.term]
         });
     }
 
@@ -114,11 +119,14 @@ export class AppCustomercreditcard {
             //this.items = this.commonservices.getItems();
             let link = this.serverUrl+'updatecustomer';
             var submitdata = this.customercreditform.value;
-            console.log(link);
+            console.log(submitdata);
            this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();
-                    console.log(data[0]);
+                    console.log(this.customercreditform.value);
+                    this.customerInfo.putObject('customerInfo',this.customercreditform.value);
+                    this.router.navigateByUrl('/retailcustomerconnect');
+                   // this.router.navigate(['/retailcustomerconnect']);
 
 
                 }, error => {

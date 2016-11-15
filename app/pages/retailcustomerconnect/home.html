@@ -1,5 +1,4 @@
-
-<div class="container-fluid re_signup_body_wrapper2">
+<div class="container-fluid re_signup_body_wrapper2" xmlns="http://www.w3.org/1999/html">
 
     <div class="container-fluid re_toplogoblock">
 
@@ -85,79 +84,100 @@
 
         <h2>Please give us your information so that we can be ready to present vehicles right away!</h2>
         <div class="retailform_sec">
-            <form action="">
-
+            <form novalidate [formGroup]="customersignupform"   name="customersignup">
+                <input [formControl]="customersignupform.controls['username']" name="username" type="hidden" class="form-control" placeholder="*User name "/>
                 <div class="form-group1">
-                    <input type="text" class="form-control" placeholder="*First name "/>
+                    <input [formControl]="customersignupform.controls['fname']" name="fname" type="text" class="form-control" placeholder="*First name "/>
+
+                    <span *ngIf ="customersignupform.controls['fname'].touched && !customersignupform.controls['fname'].valid" class="help-inline">First name  is Required !<img src="images/iconquestion.png"></span>
                 </div>
 
                 <div class="form-group2">
-                    <input type="text" class="form-control" placeholder="*Last name "/>
+                    <input [formControl]="customersignupform.controls['lname']" name="lname" type="text" class="form-control" placeholder="*Last name "/>
+                    <span *ngIf="customersignupform.controls['lname'].touched && !customersignupform.controls['lname'].valid" class="help-inline">Last name  is Required !<img src="images/iconquestion.png"></span>
                 </div>
 
                 <div class="form-group1">
-                    <input type="text" class="form-control" placeholder="*Email	 "/>
+                    <input type="text" [formControl]="customersignupform.controls['email']" name="email" type="email" class="form-control" placeholder="Email Address"/>
+                    <!-- <span class="help-inline">Please correct the error</span>-->
+                    <span *ngIf ="customersignupform.controls['email'].touched && !customersignupform.controls['email'].valid" class="help-inline">Email is Required and must be valid !<img src="images/iconquestion.png"></span>
                 </div>
 
                 <div class="form-group2">
-                    <input type="text" class="form-control" placeholder="*Confirm Email	 "/>
+
+                    <input type="text" [formControl]="customersignupform.controls['confirm_email']" name="confirm_email" type="email" class="form-control" placeholder="Confirm Email"/>
+                    <!-- <span class="help-inline">Please correct the error</span>-->
+
                 </div>
 
                 <div class="form-group1">
-                    <input type="text" class="form-control" placeholder="Company Name "/>
+
+                    <input [formControl]="customersignupform.controls['company_name']" name="company_name" type="text" class="form-control" placeholder="*Company name "/>
+
                 </div>
 
                 <div class="form-group3">
-                    <input type="text" class="form-control" placeholder="*Phone	 "/>
+
+                    <input [formControl]="customersignupform.controls['phone']" name="phone" type="text" class="form-control" placeholder="*Phone "/>
+                    <span *ngIf="customersignupform.controls['phone'].touched && !customersignupform.controls['phone'].valid" class="help-inline">Phone  is Required !<img src="images/iconquestion.png"></span>
                 </div>
 
                 <div class="form-group4">
-                    <input type="text" class="form-control" placeholder="*Alt Ph.	 "/>
+
+                    <input [formControl]="customersignupform.controls['alt_phone']" name="alt_phone" type="text" class="form-control" placeholder="*Alt Ph."/>
+
                 </div>
 
                 <div class="form-group1">
-                    <textarea rows="" cols=""  class="form-control2" placeholder="*Address"></textarea>
+                    <input [formControl]="customersignupform.controls['address']" name="address" type="text" class="form-control" placeholder="*Addesss "/>
+                    <!--<textarea rows="" cols="" [formControl]="customersignupform.controls['address']" name="address"  class="form-control" placeholder="*Address"/></textarea>-->
+                    <span *ngIf="customersignupform.controls['address'].touched && !customersignupform.controls['address'].valid" class="help-inline">*Address  is Required !<img src="images/iconquestion.png"></span>
                 </div>
 
                 <div class="form-group2">
-                    <textarea rows="" cols=""  class="form-control2" placeholder="*Address Line 2	"></textarea>
+                    <input [formControl]="customersignupform.controls['addressline2']" name="addressline2" type="text" class="form-control" placeholder="*Addesss Line2"/>
+                    <!--<textarea rows="" cols="" [formControl]="customersignupform.controls['addressline2']" name="addressline2" class="form-control" placeholder="*Address Line2"/></textarea>-->
                 </div>
 
 
 
                 <div class="form-group1">
-                    <input type="text" class="form-control" placeholder="*City	 "/>
+
+                    <input [formControl]="customersignupform.controls['city']" name="city" type="text" class="form-control" placeholder="*City "/>
+                    <span *ngIf="customersignupform.controls['city'].touched && !customersignupform.controls['city'].valid" class="help-inline">City  is Required !<img src="images/iconquestion.png"></span>
                 </div>
 
                 <div class="form-group2">
 
 
-                    <select class="form-contro3">
-                        <option>State</option>
-                        <option>State</option>
-                        <option>State</option>
+                    <select [formControl]="customersignupform.controls['state']" name="state" class="form-contro3">
+                        <option value="" selected="selected">Select Your State</option>
+                        <option *ngFor="let obj of getusastates" [value]="obj.abbreviation">{{obj.name}}</option>
                     </select>
+                    <span  *ngIf ="customersignupform.controls['state'].touched && !customersignupform.controls['state'].valid" class="help-inline spanalign">State is Required ! <img src="images/iconquestion.png"></span>
                 </div>
 
-                <div class="form-group1">
+                <!--<div class="form-group1">
                     <select class="form-contro3">
                         <option>Country	</option>
                         <option>Country	</option>
                         <option>Country	</option>
                     </select>
-                </div>
+                </div>-->
 
                 <div class="form-group2">
-                    <input type="text" class="form-control" placeholder="*Zip Code "/>
+                    <input [formControl]="customersignupform.controls['zip']" name="zip" type="text" class="form-control" placeholder="*Zip Code  "/>
+                    <span *ngIf="customersignupform.controls['zip'].touched && !customersignupform.controls['zip'].valid" class="help-inline">City  is Required !<img src="images/iconquestion.png"></span>
+
                 </div>
                 <div class="clearfix"></div>
 
-                <div class="left_chakebox">   <input id="checkbox3" type="checkbox" name="checkbox" value="2"><label for="checkbox3"></label><span>By clicking this box, I agree that I have read and agree to the <a href="javascript:void(0)">Terms of Services</a> and <a href="javascript:void(0)">Privacy Policy</a>. </span>
+                <div class="left_chakebox"> <input id="checkbox3" type="checkbox" name="term" [formControl]="customersignupform.controls['term']" value="2"/>   <!--<input  id="checkbox3" type="checkbox" name="checkbox" value="2">--><label for="checkbox3"></label><span>By clicking this box, I agree that I have read and agree to the <a (click)="termsModal.open()" >Terms of Services</a> and <a (click)="privacyModal.open()" >Privacy Policy</a>. </span>
                     <div class="clearfix"></div>
                 </div>
 
 
-                <div class="btn-block2"><input type="button" value="Submit" class="subbtn2"/> </div>
+                <div class="btn-block2"><input (click)="submitform()" type="button" value="Submit" class="subbtn2"/> </div>
 
                 <div class="clearfix"></div>
 
@@ -1221,7 +1241,7 @@
     <input type="button" class="bo_btn1" value="SAVE"/>
     <input type="button" class="bo_btn2" value="BACK"/>
 
-    <a href="javascript:void(0)"> <input type="button" class="bo_btn3" value="NEXT"/></a>
+    <a (click)="goto()" href="javascript:void(0)"> <input  type="button" class="bo_btn3" value="NEXT"/></a>
     <div class="clearfix"></div>
 </div>
 
@@ -1237,3 +1257,53 @@
 </div>
 
 <div class="retailcopyright">&copy;  Copyright 2016 ken garff - All Rights Reserved </div>
+
+<div class="row">
+    <modal #termsModal>
+        <modal-header class="modelheader">
+            <h1>Terms and conditions</h1>
+        </modal-header>
+        <modal-content class="modelcontent">
+            <h3>What is Lorem Ipsum?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+            <h3>Why do we use it?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+            <h3>Where does it come from?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+            <h3>Where can I get some?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+        </modal-content>
+        <modal-footer class="modelfooter">
+            <button class="btn btn-primary btnclose" (click)="myModal.close()">close</button>
+        </modal-footer>
+    </modal>
+</div>
+
+<div class="row">
+    <modal #privacyModal>
+        <modal-header class="modelheader">
+            <h1>Privacy Policy</h1>
+        </modal-header>
+        <modal-content class="modelcontent">
+            <h3>What is Lorem Ipsum?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+            <h3>Why do we use it?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+            <h3>Where does it come from?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+            <h3>Where can I get some?</h3>
+            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+            <br>
+        </modal-content>
+        <modal-footer class="modelfooter">
+            <button class="btn btn-primary btnclose" (click)="myModal.close()">close</button>
+        </modal-footer>
+    </modal>
+</div>

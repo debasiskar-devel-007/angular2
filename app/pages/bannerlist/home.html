@@ -14,16 +14,16 @@
         </div>
         <!-- /.row -->
         <div class="row">
-            <div class="col-lg-12 col-md-12">
+            <div class="col-lg-12 col-md-12 bannerlistblock">
                 <div class="adminlistblock">
                     <div class="adminlistheader">
                         <h2><span>Banner</span> listing</h2>
                         <div class="addbtnwrapper">
-                             <a [routerLink]="['/addbanner']"><button class="addbtn" type="button" value="Add banner size">Add banner</button></a>
+                             <a [routerLink]="['/addbanner']"><button class="addbtn" type="button" value="Add banner size">Add Banner</button></a>
                         </div>
                     </div>
                     <div class="adminlistlists" >
-                        <div class="searchbox" ><input [(ngModel)]="query" style="right: 198px;" placeholder="Search "></div>
+                        <div class="searchbox" ><input [(ngModel)]="query" placeholder="Search "></div>
                         <div class=" table-responsive">
                             <table class="table table-striped">
                             <thead>
@@ -62,6 +62,7 @@
                                     </div>
                                 </td>
                             </tr>
+
                             </tbody>
                         </table>
                         </div>

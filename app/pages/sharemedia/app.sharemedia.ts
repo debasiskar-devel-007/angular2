@@ -1,4 +1,4 @@
-import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation} from '@angular/core';
+import {Component, NgModule, ViewChild, ViewContainerRef, ViewEncapsulation, Renderer, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
@@ -21,6 +21,8 @@ import {AppComponent} from "../home/app.component";
 export class AppSharemedia{
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
+    // /@ViewChild('lgModal') sharemediaModal;
+
     myModal :ModalModule;
     data:any;
     http:Http;
@@ -40,8 +42,15 @@ export class AppSharemedia{
     sharefilesrc:any;
     appcomponent:AppComponent;
     tempdata:Array<any>;
+    userdetails:any;
+    bannerdata:any;
+    bannerfilesrc:any;
+    //sharemediaModal:any;
+    @ViewChild('all_m')
+    private allMElementRef:any;
+    private mediaid:any;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
+    constructor(@Inject(Renderer) private renderer: Renderer,fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
         this.http=http;
         this.router=router;
@@ -50,17 +59,34 @@ export class AppSharemedia{
         this.items = commonservices.getItems();
         this.messages = appcomponent.getMessages();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl+'sharemedialist';
+        //this.userInfo=userInfo;
+        this.userdetails=userInfo.getObject('userdetails');
+        let link='';
+        if(this.userdetails.userrole=='admin')link = this.serverUrl+'sharemedialist';
+        if(this.userdetails.userrole=='dealer')link = this.serverUrl+'sharemedialistdealer';
         this.p=1;
         this.orderbyquery='priority';
         this.orderbytype=-1;
-       this.http.get(link)
+        this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
-                console.log(this.data);
+              //  console.log(this.data);
                 this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
                 this.pagec=Math.ceil(this.data.length / 10);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+      let  bannerlink = this.serverUrl+'bannerlistactive';
+        console.log(bannerlink);
+        this.http.get(bannerlink)
+            .subscribe(data2 => {
+                this.bannerdata = data2.json();
+
+                this.bannerfilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+              //  this.pagec=Math.ceil(this.data.length / 10);
 
             }, error => {
                 console.log("Oooops!");
@@ -74,14 +100,11 @@ export class AppSharemedia{
 
         let link= this.serverUrl+'deletesharemedia';
         let id=dealerrow;
-        console.log(link);
-        console.log(id);
         this.http.post(link,id)
             .subscribe(data1 => {
                 // this.data = data1.json();
                 //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
                 var index = this.data.indexOf(id.id);
-                console.log(index);
                 //let tempdata:Array<any>;
                 let x:any;
                 for(x in this.data){
@@ -92,7 +115,7 @@ export class AppSharemedia{
                         window.location.reload();
                     }
                 }
-                console.log(this.data);
+               // console.log(this.data);
                 //this.data=this.tempdata;
                 //this.data.splice(index, 1);
                 this.appcomponent.putmessages('share media '+dealerrow.name+' deleted successfully','success');
@@ -132,20 +155,20 @@ export class AppSharemedia{
 
 }
     getSortClass(value:any){
-        console.log(value);
+        //console.log(value);
         if(this.orderbyquery==value && this.orderbytype==-1) {
             console.log('caret-up');
             return 'caret-up'
         }
 
         if(this.orderbyquery==value && this.orderbytype==1) {
-            console.log('caret-up');
+           // console.log('caret-up');
             return 'caret-down'
         }
         return 'caret-up-down'
     }
     manageSorting(value:any){
-        console.log(value);
+       // console.log(value);
         if(this.orderbyquery==value && this.orderbytype==-1) {
             this.orderbytype=1;
             return;
@@ -159,6 +182,16 @@ export class AppSharemedia{
         this.orderbytype=-1;
     }
 
+    bannerModal(mediaid:any){
+        //let shareid=sharemediaid;
+       // $('#sharemediaModal').myModal('show');
+       // sharemediaModal.open();
+      //  $('#sharemediaModal').modal('show');
+        //alert(mediaid);
+        this.mediaid=mediaid;
+        this.renderer.invokeElementMethod(this.allMElementRef.nativeElement, 'click', []);
+        //sharemediaModal.open();
+    }
 
 
 

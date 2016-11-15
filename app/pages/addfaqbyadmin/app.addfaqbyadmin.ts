@@ -116,7 +116,8 @@ export class AppAddFaqByAdmin {
             this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();
-                    this.router.navigateByUrl('/faq(adminheader:adminheader//adminfooter:adminfooter)')
+                    if(this.userInfo.userrole=='admin')this.router.navigateByUrl('/faq(adminheader:adminheader//adminfooter:adminfooter)');
+                    if(this.userInfo.userrole=='dealer')this.router.navigateByUrl('/dealerfaq(dealerheader:dealerheader//dealerfooter:dealerfooter)');
 
                 }, error => {
                     console.log("Oooops!");

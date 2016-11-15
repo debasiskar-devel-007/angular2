@@ -75,8 +75,8 @@ export class AppAddbannersize {
                     console.log(344444);
                    // this.data = data.json();
                     //console.log(this.data);
-                    this.router.navigateByUrl('/bannersizelist');
-                    //this.router.navigateByUrl('/sharemedia(adminheader:adminheader//adminfooter:adminfooter)');
+                   // this.router.navigateByUrl('/bannersizelist');
+                    this.router.navigateByUrl('/sharemedia(adminheader:adminheader//adminfooter:adminfooter)');
 
                 }, error => {
                     console.log("Oooops!");

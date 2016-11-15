@@ -1,13 +1,3 @@
-@media screen and (min-width:1930px){
-  .bannerbottomblockrightwrapper {
-    background-color: #fb4a32;
-    height: 398px;
-    width: 580px;
-    position: relative;
-    float: right;
-  }
-}
-
 @media screen and (max-width:1900px){
 
   .collapsedivmenu ul {
@@ -21,28 +11,7 @@
 }
 
 
-@media screen and (max-width:1780px){
-
-
-}
-
-
 @media screen and (max-width:1680px){
-  .bannerbottomblockrightwrapper {
-    background-color: #fb4a32;
-    height: 398px;
-    width: 586px;
-    position: relative;
-    float: right;
-  }
-
-  .bannerbottomblockrightwrapper {
-    background-color: #fb4a32;
-    height: 398px;
-    width: 610px;
-    position: relative;
-    float: right;
-  }
 
   .cusdashboardblock1inner {
     width: 100% !important;
@@ -83,11 +52,14 @@
   .headeruserinfo .list-inline>li:nth-child(3n+0) {
     margin-top: 10px;
   }
+  .applicantclient span {
+    line-height: 20px;
+  }
 }
 
 
 @media screen and (max-width:1460px){
-  .btnedit {padding: 10px 13px;}
+  /*  .btnedit {padding: 10px 13px;}*/
   .signup_body_wrapper {margin: 0 auto; width: 100%;}
   .signupleftblock{width: 56% !important; float: left;}
   .signuprightblock{float: right;}
@@ -98,7 +70,7 @@
   .creditcardleftblock{width: 56% !important; float: left;}
   .signuprightblock{width: 44% !important; float: right;}
 
-  .creditcardleftblockbottom{width: 100%;height: 864px; overflow: hidden;}
+  .creditcardleftblockbottom{width: 100%;height: 783px; overflow: hidden;}
   .cusdashboardblock9 .cusdashboardblock9inner {
     width: 100%;
     margin: 0 auto;
@@ -111,14 +83,15 @@
   .signupleftblockbottom h1 {
     font-size: 25px;
   }
-  .creditcardleftblockbottom {width: 100%;height: 864px;overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%;height: 783px;overflow: hidden;}
   .creditcardleftblockbottom img {
     width: 120% !important;
   }
+
 }
 
 @media screen and (max-width:1366px){
-  .btnedit {padding: 10px 10px;}
+  /* .btnedit {padding: 10px 10px;}*/
   .signupleftblocktop h1 {
     font-size: 33px;
   }
@@ -148,35 +121,28 @@
     font-size: 32px;
   }
   .creditcardleftblockbottom img {width: 142% !important;}
-  .btnedit {
-    padding: 10px 8px;
-  }
 }
 
 
 @media screen and (max-width:1280px){
 
-  .cusdashboardblock1innerleft{ width: 400px!important;}
-  .btnedit {
-    padding: 10px 5px;
-    font-size: 12px !important;
-  }
+  .cusdashboardblock1innerleft{ width: 568px!important;}
+  /* .btnedit {
+     padding: 10px 5px;
+     font-size: 12px !important;
+   }*/
   .postauctionactivitylist .list-group-item {
     display: inline-flex;
   }
-  .postauctionactivitylist .list-group-item p {
-    line-height: 22px;
-  }
-
   .signupleftblocktop h1 {
     font-size: 30px;
   }
   .creditcardleftblockbottom img {width: 155% !important;}
-/*  .collapsebtn {margin: 30px 0 0 5px;}*/
+  /*  .collapsebtn {margin: 30px 0 0 5px;}*/
 }
 
 @media screen and (max-width:1199px){
-  .btnedit {padding: 10px 13px;}
+  /*  .btnedit {padding: 10px 13px;}*/
   .bannerbottomblock {height: auto;}
   .inventorysinglelist:nth-child(2n+2) {margin-bottom: 9px;}
   .inventorysinglelist:nth-child(2n+2):last-of-type {margin-bottom: 0px;}
@@ -185,13 +151,20 @@
   .block1box1 h5{font-size: 20px;}
 
 
-/*  .cusdashboardblock1inner [class*="col-"] {
-    margin-left: auto !important;
-    margin-right: auto !important;
-  }*/
+  /*  .cusdashboardblock1inner [class*="col-"] {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }*/
 
-
-
+  .financingblock2 .checkplease .currentemploymentthird1 {
+    padding-left: 0px !important;
+    display: inline-block;
+    float: none;
+    text-align: center;
+  }
+  .financingblock2 .inputcheck label {
+    margin-left: 0px;
+  }
 
   .signupleftblocktop h1 {
     font-size: 26px;
@@ -203,7 +176,7 @@
   .creditcardleftblockbottom img {width: 170% !important;}
 
   .creditcardleftblockbottom {width: 100%; overflow: hidden;}
-  .creditcardleftblockbottom {width: 100%; height:864px; overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%; height:783px; overflow: hidden;}
   .creditcardleftblocktop h1 {
     font-size: 30px;
   }
@@ -246,18 +219,18 @@
   .cusdashboardblock5 .cusdashboardblock5inner h2 {
     margin: 0 15px;
   }
- /* .logo {
-    text-align: center;
-    float: none;
-    width: 570px;
-    margin: 0 auto;
-  }*/
-/*  .collapsedivmenu ul li {
-    display: block;
-    padding: 10px 10px;
-    width: 100%;
+  /* .logo {
+     text-align: center;
+     float: none;
+     width: 570px;
+     margin: 0 auto;
+   }*/
+  /*  .collapsedivmenu ul li {
+      display: block;
+      padding: 10px 10px;
+      width: 100%;
 
-  }*/
+    }*/
 
 
   .cusdashboardblock1innerrightsml{
@@ -275,22 +248,22 @@
   }
 
 
-/*
+  /*
 
-  [class*="col-"] {
-    padding-left: 15px !important;
-    padding-right: 15px !important;
-    margin-left: 0 !important;
-    margin-right: 0 !important;
-  }*/
+    [class*="col-"] {
+      padding-left: 15px !important;
+      padding-right: 15px !important;
+      margin-left: 0 !important;
+      margin-right: 0 !important;
+    }*/
   .block1box {
     margin-bottom: 30px;
   }
   .recentrsvpsinglelist .imgwrapper {
-    width: none;
+    width: inherit;
   }
   .recentcussinglelist .imgwrapper {
-    width: none;
+    width: inherit;
   }
 
 
@@ -308,11 +281,11 @@
     margin: 0 auto !important;
   }
 
-.adminleftlogo .logo {
-  margin: 0 auto;
-  display: block;
-  width: 300px;
-}
+  .adminleftlogo .logo {
+    margin: 0 auto;
+    display: block;
+    width: 300px;
+  }
 
   .rightwrap {
     padding: 6px 5px;
@@ -336,11 +309,11 @@
     margin-left: 0 !important;
     margin-right: 0 !important;
   }
-/*  .collapsedivmenu ul li {
-    display: inline-block;
-    padding: 0 12px;
-    margin: 4px auto 2px auto;
-  }*/
+  /*  .collapsedivmenu ul li {
+      display: inline-block;
+      padding: 0 12px;
+      margin: 4px auto 2px auto;
+    }*/
   .adminsignup_body_wrapper .toplogoblocklogin {
     margin: 23px auto;
     width: 266px;
@@ -351,15 +324,15 @@
 }
 
 @media screen and (max-width:1168px) {
-  .creditcardleftblockbottom {width: 100%; height:864px; overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%; height:783px; overflow: hidden;}
 }
 
 @media screen and (max-width:1159px) {
-  .creditcardleftblockbottom {width: 100%; height:864px; overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%; height:783px; overflow: hidden;}
 }
 
 @media screen and (max-width:1125px) {
-  .creditcardleftblockbottom {width: 100%; height:838px; overflow: hidden;}
+  .creditcardleftblockbottom {width: 100%; height:757px; overflow: hidden;}
 }
 
 @media screen and (max-width:1100px) {
@@ -386,7 +359,7 @@
     width: 100%;
   }
   .creditcardleftblockbottom img {width: 157% !important;}
-  .creditcardleftblockbottom {height: 837px;}
+  .creditcardleftblockbottom {height: 756px;}
 }
 
 @media screen and (max-width:1024px) {
@@ -394,13 +367,41 @@
   .creditcardleftblockbottom img {
     width: 161% !important;
   }
-  .btnedit {
-    padding: 10px 13px;
-  }
+  /* .btnedit {
+     padding: 10px 13px;
+   }*/
 
 }
 
 @media screen and (max-width:991px) {
+  .amountres{text-align: right; float: right; margin-right: 10px;}
+  .residencytype span{padding-left: 10px !important;}
+  .financingblock2wrapperinner .form-group {margin: 0px 0px;}
+  .grossmonthlyincome1 .txtpad{
+    margin-left: 10px;
+  }
+  .checkplease{ width: 100%;}
+  .lbltextdiv { width: 100%; float: none; text-align: center!important;}
+  .lbltextdiv span { width: 100%; float: none; text-align: center!important;}
+
+  .checkpleaseinput{ width: 288px!important;
+    margin: 0 auto!important;
+    float: none;}
+
+  .checkpleaseinput span {
+    line-height: 16px;
+    text-align: left;
+    width: 190px;
+    float: left;
+    padding: 2px 0 0 10px;
+  }
+
+  .applicantclient input[type=checkbox]:not(old) + label, .applicantclient input[type=radio]:not(old) + label{
+    margin-left: 0px;
+  }
+
+
+  .retailformblock2single{ width: 33.3%!important;}
 
   .footerwrapper{padding-top: 16px; padding-bottom: 22px;}
   .headeruserinfo {
@@ -408,9 +409,9 @@
     text-align: center;
   }
 
-  .btnedit {
-    padding: 10px 11px !important;
-  }
+  /* .btnedit {
+     padding: 10px 11px !important;
+   }*/
   .postauctionactivitylist .list-group-item {
     line-height: 44px;
   }
@@ -428,22 +429,6 @@
 
   .bannerbottomblockleft {
     overflow: inherit;
-  }
-  .bannerbottomblockrightwrapper {
-    position: inherit;
-    float: none;
-    padding-top: 400px !important;
-    color: #fff;
-    display: block;
-    background-color:transparent;
-  }
-
-  .bannerbottomblockrightwrapper {
-    background-color: #fb4a32;
-    height: auto;
-    width: 100%;
-    position: relative;
-    float: right;
   }
 
   .inventoryrecentbidblock .inventorysinglelist .imgbox ul li {
@@ -518,9 +503,9 @@
   }
 
 
-/*  .block1box1 .btnview {
-    bottom: -56px;
-  }*/
+  /*  .block1box1 .btnview {
+      bottom: -56px;
+    }*/
 
   .equal, .equal > div[class*="col-"] {
     display: block;
@@ -591,9 +576,9 @@
 
 
 @media screen and (max-width:768px) {
-    .toplogoblock .logo1{ display: block; margin: 5px auto; float: none; margin-bottom: 20px;}
-    .toplogoblock .logo2{ display: block; margin: 5px auto; float: none;}
-    .toplogoblock .logodevider{ display: none;}
+  .toplogoblock .logo1{ display: block; margin: 5px auto; float: none; margin-bottom: 20px;}
+  .toplogoblock .logo2{ display: block; margin: 5px auto; float: none;}
+  .toplogoblock .logodevider{ display: none;}
   .automatchimgwrapper{
     display:block;
     margin:0 auto;
@@ -755,6 +740,21 @@
 }
 
 @media screen and (max-width:480px) {
+  .inventoryrecentbidblock .blockheaderinfo .blockname{
+    width: 100%;
+    float: left;
+  }
+  .inventoryrecentbidblock .blockheaderinfo .blockdate{
+    width: 100%;
+    float: left;
+  }
+
+  .postauctionamain .postauctioncctivityheader .addbtnwrapper2 {
+    float: none;
+    text-align: center;
+    display: block;
+  }
+
   .creditcardleftblockbottom img {width: 100%;}
   .signuprightblock .btn-block .subbtn {font-size: 20px;}
 
@@ -823,6 +823,7 @@
     margin-right: 1%;
   }
 
+
   .addadminblock .form-inline .signupform_wrapper .form-group:nth-child(even) {
     margin-right: 0px;
   }
@@ -859,9 +860,7 @@
     margin-top: 20px;
   }
 
-  .bannerbottomblockrightwrapper {
-    padding-top: 19px !important;
-  }
+
   .postauctionactivitylist input {
     position: absolute;
     top: 15px;
@@ -1018,9 +1017,7 @@
   .cusdashboardblock1innerleft{ width: 100%!important; }
 
   .cusdashboardblock1innerleft .logo{ width:100%; margin:0 auto; text-align:center; margin-top:10px; margin-bottom:15px!important;}
-  .cusdashboardblock1innerleft .logo img{ display:block!important; margin:0 auto!important; float:none!important;}
-
-
+  .cusdashboardblock1innerleft .logo img{ display:block!important; margin:0 auto!important; float:none!important; padding-bottom: 20px !important;}
   .cusdashboardblock1innerleft .collapsebtn{ display:none!important;}
 
   .cusdashboardblock1innerright .collapsebtn{ display:block!important; margin:0px auto!important; width:20px!important; float:none!important; position:inherit!important}
@@ -1065,7 +1062,7 @@
   .copyright{ text-align: center!important; float: none!important;}
 
   .cusdashboardblock1innerleft{ width:100%!important;  float:none!important; }
-  .cusdashboardblock1innerright{ width:100%!important;  float:none!important; padding-bottom: 10px; padding-top: 15px;}
+  .cusdashboardblock1innerright{ width:100%!important;  float:none!important; padding-bottom: 10px; padding-top: 0px;}
 
   .badgelists{
     float: none!important; margin:0 auto!important; text-align:center!important; width:100%!important;}
@@ -1110,3 +1107,1930 @@
 
 
 /*customer dashboard*/
+
+
+
+
+
+
+
+
+
+/*---Dealerdashboardpage-----*/
+@media screen and (max-width:1900px){
+  .bannerbottomblockright h2 {font-size: 34px;line-height: 46px;}
+}
+@media screen and (max-width:1680px){
+  .page-wrapper .blockmaininner{margin: 0 auto;width: 100%;}
+  .bannerbottomblockrightwrapper {background-color: #fb4a32;height: 398px;width: 610px;position: relative;float: right;}
+
+}
+
+@media screen and (max-width: 1460px){
+  .inventorysinglelistblock2 .customerstatus label {font-size: 11px;}
+  .inventorysinglelist .imgouter .imgwrapper {width: 225px;}
+  .inventorymatchblock .inventorysinglelistblock3col1{
+    padding-right: 0px;
+    padding-left: 0px;
+  }
+}
+@media screen and (max-width: 1300px){
+  .inventorysinglelist .imgouter .imgwrapper {width: 200px;}
+}
+
+@media screen and (max-width: 1366px){
+  .block1box1 h4 {font-size: 15px !important;;}
+  .inventorysinglelistblock3col1 {padding-right: 15px !important;;padding-left: 15px !important;;width: 100% !important;}
+  .inventorysinglelistblock3 .imgouter {float: none !important;;	margin:0 auto !important;}
+
+}
+@media screen and (min-width:1200px) and (max-width:1366px) {
+  .inventorysinglelistblock2 .customerstatus label {
+    font-size: 11px;
+  }
+  .inventorysinglelistblock3col3 .actionbtns {
+    text-align: center;
+    width: 100%;
+  }
+  .inventorysinglelistblock3col2 .example {
+    display: block !important;
+    float: none !important;
+    margin-top: 10px;
+    width: 213px !important;
+    text-align: center;
+    margin: 0 auto !important;
+  }
+
+  .inventorysinglelistblock3col3 .actionbtns button {
+    margin-bottom: 10px;
+    width: 49%;
+    font-size: 13px !important;
+  }
+
+
+  .inventorysinglelistblock3col1 .actionbtns {
+    text-align: center;
+    width: 100%;
+  }
+
+  .inventorysinglelistblock3col1 .actionbtns button {
+    margin-bottom: 10px;
+    width: 49%;
+  }
+
+
+  .inventorysinglelistblock3col3 .actionbtns{
+    text-align: center;
+  }
+  .inventorysinglelistblock3col2 {
+    width: 96% !important;
+    margin: 0 auto !important;
+  }
+  .inventorysinglelistblock3col2 .example {
+    width: 192px;
+    display: block;
+    margin: 0 auto;
+    float: none;
+    text-align: center;
+  }
+  .inventorysinglelistblock3col3{
+    width:100% !important;
+  }
+
+}
+
+
+@media screen and (max-width:1280px){
+  .inventorysinglelist .imgouter .imgwrapper {
+    width: 190px;
+  }
+
+  .cusdashboardblock1innerleft .logo a{
+    margin-bottom: 20px;
+  }
+
+
+  .postauctionactivitylist .list-group-item {
+    display: inline-flex;
+  }
+
+  .postauctionactivitylist .list-group-item {
+    padding: 17px 10px 15px 10px;
+  }
+  .postauctionactivitylist .list-group-item p{
+    padding: 0px 0px;
+  }
+
+  .blockcontentinfo .imgbox .btnwrapper .btnedit {
+    font-size: 11px;
+    width: 92px;
+  }
+  .recentbidagreementmain .blockcontentinfo .imgbox .btnwrapper .btnedit {
+    width: 92px;
+    font-size: 11px;
+  }
+
+
+}
+
+
+@media screen and (max-width:1199px) {
+  .logodevider{
+    display: none;
+  }
+
+
+  .inventorylistswrapper .bootstrap-select.makedropdown {
+    position: inherit;
+    top: 0;
+    right: 0;
+    margin: 0px 0px 15px 0px;
+  }
+  .inventorylistswrapper .bootstrap-select.modeldropdown {
+    position: inherit;
+    top: 0;
+    right: 0;
+    margin: 0px 0px 15px 0px;
+  }
+  .inventorylistswrapper .bootstrap-select.auctiondropdown {
+    position: inherit;
+    top: 0;
+    right: 0;
+    margin: 0px 0px 15px 0px;
+  }
+  .inventorylistswrapper .bootstrap-select.yeardropdown {
+    position: inherit;
+    top: 0;
+    right: 0;
+    margin: 0px 0px 15px 0px;
+  }
+  .auctioninventoryblock .inventorylistswrapper input {
+    position: inherit;
+    top: 0;
+    right: 0;
+    margin: 0px 0px 15px 0px;
+  }
+  .auctioninventoryblock .searchbox{width: 47%; float: right;}
+
+  .inventorymatchblock .inventorylistswrapper .searchbox input {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    margin: 0px 0px 15px 0px;
+  }
+
+
+
+  .inventorylistswrapper .searchbox input {
+    width: 100%;
+  }
+  .inventorymatchblock .searchbox{width: 360px; float:none;}
+
+  .inventorysinglelistblock3col22{
+    width:100% !important;
+    display: block;
+    float: none;
+  }
+  .recentrsvpsinglelist span {
+    font-size: 11px;
+  }
+  .recentcussinglelist span {
+    font-size: 11px;
+  }
+  .inventorysinglelistblock3col2 .example {
+    padding-left: auto;
+    margin: 0 auto;
+    width: 98%;
+  }
+  .inventorysinglelistblock3col2 {
+    padding-top: 8px;
+  }
+  .inventorysinglelist .imgouter .imgwrapper {
+    width: 260px;
+  }
+
+  .block1box {
+    margin-bottom: 30px;
+  }
+
+  .cusdashboardblock3 {
+    margin-top: 0px;
+  }
+
+  .recentrsvpsinglelist, .recentcussinglelist {
+    padding-left: 9px;
+    padding-right: 9px;
+  }
+
+  .recentrsvpsinglelist .imgwrapper {
+    width: auto;
+    height: 50px;
+  }
+
+  .recentcussinglelist .imgwrapper {
+    width: auto;
+    height: 50px;
+  }
+
+  .inventorysinglelist:nth-child(2n+2) {
+    margin-bottom: 9px;
+  }
+
+  .inventorysinglelistblock3col2 {
+    padding-left: 15px;
+  }
+
+  .inventorysinglelistblock3col2 .example {
+    display: block !important;
+    float: none !important;
+    margin-top: 10px;
+    width: 198px !important;
+    text-align: center;
+    margin: 0 auto !important;
+  }
+
+
+  .bannerbottomblock {
+    height: auto;
+  }
+
+  .dealerlists .adminlistlists input {
+    position: absolute;
+  }
+  .financingblock2wrapper [class*="col-"].pleasecheckdiv{
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+  }
+  .financingblock2wrapperinner, .financingblock2wrapperinnerwrapper {
+    padding-top: 3px !important;
+    padding-bottom: 5px;
+  }
+  .residencytyperadio input[type=checkbox]:not(old) + label, .residencytyperadio input[type=radio]:not(old) + label {
+    font-size: 17px;
+  }
+  .margintop26 {
+    margin: 0px auto;
+    padding: 0px;
+  }
+  .margintop30{margin-top:0px; float:none; margin-bottom:20px;}
+}
+@media screen and (max-width: 1100px) {
+
+  .RSVPActivity .daterange {
+    position: inherit;
+    top: 0px;
+    right: 0px;
+    margin-top: 13px;
+  }
+
+  /*.RSVPActivity .adminlistlists input {
+    position: inherit;
+    top: 0px;
+    right: 0px;
+    margin-bottom: 15px;
+    margin-left: 12px;
+  }*/
+  .RSVPActivity .addbtnwrapper{position: absolute; top: 18px; right: 15px;}
+}
+@media (max-width: 1024px) {
+  .cusdashboardblock1innerright {
+    width: 100% !important;
+    float: none !important;
+    padding-bottom: 5px;
+    padding-top: 0px;
+  }
+
+
+}
+@media (max-width: 991px) {
+
+  .auctioninventoryblock .searchbox {
+    width: 100%;
+    float: none;
+    text-align: center;
+  }
+  .inventorymatchblock .inventorylistswrapper .searchbox input {
+    position: inherit;
+    top: 0px;
+    right: 0px;
+    margin: 0px 0px 15px 0px;
+  }
+  .auctioninventoryreview .auctioninventoryblock .inventorylistswrapper {
+    padding: 15px;
+    text-align: center;
+  }
+  /*
+    .auctioninventoryblock .inventorylistswrapper .searchbox input {
+      width: 100%;
+    }*/
+
+
+  .inventorysinglelistblock3col3 .actionbtns {
+    text-align: center;
+  }
+  .inventorymatchblock .inventorysinglelistblock3col3{
+    padding-right: 5px;
+    padding-left: 5px;
+    text-align: center;
+  }
+  .inventorysinglelistblock3col1 {
+    padding-right: 5px !important;
+    padding-left: 5px !important;
+    width: 100% !important;
+  }
+  .inventorymatchblock .inventorylistswrapper .bootstrap-select.matchesdropdown {
+    position: inherit;
+    top: 0px;
+    right: 0px;
+    width: 22%;
+  }
+
+  .inventorymatchblock .inventorylistswrapper .searchbox {
+    width: 71%;
+    float: right;
+  }
+
+  .inventorysinglelistblock3col3 .actionbtns .btnedit{
+    font-size: 13px;
+  }
+  .postauctioncctivityheader .addbtnwrapper2 {
+    float: right;
+  }
+
+  .bannerbottomblockleft {
+    background: url(../images/img-bannerbottomblock.jpg) no-repeat left top;
+  }
+
+
+  .postauctionamain .postauctioncctivityheader .daterange {
+    position: inherit;
+    top: 0px;
+    right: 0px;
+  }
+
+  .postauctionamain .postauctioncctivityheader .addbtnwrapper2 {
+    position: absolute;
+    top: 77px;
+    right: 15px;
+  }
+
+  .daterange {
+    position: absolute;
+    top: 18px;
+  }
+
+  .adminlistlists input {
+    top: 17px;
+  }
+
+  .equal, .equal > div[class*="col-"] {
+    display: block;
+  }
+
+  .recentrsvpsinglelist .imgwrapper {
+    width: 65px;
+    height: 65px;
+  }
+
+  .recentcussinglelist .imgwrapper {
+    width: 65px;
+    height: 65px;
+  }
+
+  .inventorysinglelist .table {
+    margin-bottom: 19px;
+  }
+
+  .inventorylistswrapper .bootstrap-select.matchesdropdown {
+    position: relative;
+    top: 0;
+    right: 0;
+    margin: 0px 0px 15px 0px;
+  }
+
+  .inventorymatchblock .inventorylistswrapper .searchbox input {
+    width: 100%;
+    position: inherit;
+    top: 0;
+    margin: 0px 0px 15px 0px;
+  }
+
+  .inventorymatchblock .inventorysinglelist .inventorysinglelistblock3col1 .imgouter {
+    margin: 0 auto;
+    float: none;
+    width: 66px !important;
+    overflow: hidden;
+  }
+  .inventorysinglelist .imgwrapper img {
+    width: 100%;
+    height: auto;
+  }
+
+  .inventorymatchblock .inventorysinglelist .imgouter {
+    margin: 0 auto;
+    float: none;
+    width: 100%;
+  }
+
+  .inventorysinglelistblock .imgbox {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+
+  .inventorylistswrapper input {
+    top: 17px;
+  }
+
+  .postauctionactivitylist .list-group-item {
+    line-height: 44px;
+  }
+
+  .bannerbottomblockright {
+    padding: 10px 40px 10px 40px;
+  }
+
+  .bannerbottomblockright h4 {
+    margin-top: 20px;
+  }
+
+  .bannerbottomblockrightwrapper {
+    padding-top: 19px !important;
+  }
+
+  .bannerbottomblockright {
+    height: auto;
+    background-image: none;
+    background: #fb4a32;
+    position: inherit;
+    left: 0px;
+    right: 0px;
+    width: 100%;
+  }
+
+  .bannerbottomblockleft {
+    overflow: inherit;
+  }
+
+  .bannerbottomblockrightwrapper {
+    position: inherit;
+    float: none;
+    padding-top: 400px !important;
+    color: #fff;
+    display: block;
+    background-color: transparent;
+  }
+
+  .bannerbottomblockrightwrapper {
+    height: auto;
+    width: 100%;
+    position: inherit;
+    height: auto;
+    float: none;
+  }
+
+  .blockcontentinfo .imgbox .imgouter {
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  .sharelinkssinglelistleft {
+    padding-left: 15px;
+  }
+  .sharelinks .sharelinksimgwarpper {
+    display: block;
+    margin: 0 auto;
+  }
+  .sharelinkssinglelistright {
+    padding-right: 0px;
+    text-align: center;
+  }
+  .sharelinks .btnsend {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sharelinks .btnedit {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .sharelinks h2 {
+    margin-top: 10px;
+  }
+  .sharelinks .sharelinksimgwarpper {
+    height: auto;
+  }
+  .sharelinkssinglelistright ul{width: 90%; margin-left:auto; margin-right:auto; display:block}
+  .sharelinkssinglelistright ul li{float:none; display:block; margin-bottom:20px;}
+  .inventorymatch .inventorylistswrapper .bootstrap-select.matchesdropdown {right: 0;}
+  .inventorylistswrapper .bootstrap-select.matchesdropdown {position: inherit; top: 0px; right: 0px;}
+  .postauctioncctivityheader .addbtnwrapper2 {
+    float: right;
+    position: absolute;
+    top: 23px;
+    right: 24px;
+  }
+  .financingblock2wrapperinner {
+    max-width: 96%;
+    margin: 0px auto;
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
+
+  .financingblock2wrapper [class*="col-"] {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+    margin-bottom: 10px;
+  }
+  .currentemploymenthalf2{
+    margin-bottom: 0px !important;
+  }
+  .financingblock2wrapper [class*="col-"].paymenttype, .financingblock2wrapper [class*="col-"].paymenttype1, .financingblock2wrapper [class*="col-"].selfemployee, .financingblock2wrapper [class*="col-"].selfemployee1,
+  .financingblock2wrapper [class*="col-"].grossmonthlyincome, .financingblock2wrapper [class*="col-"].grossmonthlyincome1, .financingblock2wrapper [class*="col-"].grossmonthlyincomeblock, .financingblock2wrapper [class*="col-"].financialshalf2, .financingblock2wrapper [class*="col-"].pleaselistother, .financingblock2wrapper [class*="col-"].financecheck1radio, .financingblock2wrapper [class*="col-"].savingsaccount1div, .financingblock2wrapper [class*="col-"].currentemploymentsingle, .financingblock2wrapper [class*="col-"].pleasecheckdiv, .financingblock2wrapper [class*="col-"].financialshalf1, .financingblock2wrapper [class*="col-"].textareamargin, .financingblock2wrapper [class*="col-"].modelyear, .financingblock2wrapper [class*="col-"].currentemploymentmonths, .financingblock2wrapper [class*="col-"].vehiclepurchased, .financingblock2wrapper [class*="col-"].Stateblock, .financingblock2wrapper [class*="col-"].currentemploymentsinglewrapper{
+    margin-bottom: 0px !important;
+  }
+
+  .checkplease .lbltextdiv {
+    margin-bottom: 0px !important;
+  }
+
+  .bankname{
+    margin-bottom:10px !important;
+  }
+  .margintop{
+    margin-top: 0px !important;
+  }
+  .financingblock2 .message {
+    font-size: 16px !important;
+    line-height: 20px;
+  }
+
+  .financingblock2 .checkherediv {
+    max-width: 80px;
+    float: left;
+    margin-bottom: 0px;
+  }
+
+  .financingblock2wrapperinner input, .financingblock2wrapperinner select{
+    height: auto;
+  }
+  .margintop26{
+    margin:7px auto;
+    padding: 0px;
+  }
+
+  .margintop26 .financingblock2wrapper [class*="col-"] {
+    margin-bottom: 0px !important;
+  }
+  .ftrfinance h5 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+  }
+
+  .ftrfinance .btnfinacefooterlist {
+    margin-bottom: 0px;
+    margin-top: 20px;
+  }
+  .checkplease {
+    padding: 0px 0 10px 0;
+  }
+  .financingblock2wrapperinnerwrapper{padding-top: 10px;}
+  .financingblock2 .financingblock2wrapper h3 {
+    padding: 7px 5px 10px 5px;
+    font-size: 24px;
+  }
+
+}
+
+@media (max-width: 860px) {
+  .daterange {
+    position: inherit;
+    top: 0px;
+    right: 0px;
+    margin-top: 15px;
+  }
+  .customerstatus .example.list-inline>li:nth-child(1) {
+    width: 100%;
+    text-align: center;
+  }
+
+  .recentbidagreementmain .inventorylistswrapper .customerstatus input {
+    display: none;
+  }
+
+  .chakebox1box input[type=checkbox]:not(old) + label, .chakebox1box input[type=radio ]:not(old) + label, .chakebox2box input[type=checkbox]:not(old) + label, .chakebox2box input[type=radio   ]:not(old) + label,.chakebox3box input[type=checkbox]:not(old) + label, .chakebox3box input[type=radio   ]:not(old) + label {
+    margin-left: 0px;
+    padding-left: 24px;
+  }
+
+  .customerstatus .example.list-inline>li:nth-child(2) {
+    width: 33.33%;
+  }
+  .customerstatus .example.list-inline>li:nth-child(3) {
+    width: 33.33%;
+  }
+  .customerstatus .example.list-inline>li:nth-child(4) {
+    width: 33.33%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .inventorysinglelistblock2 .customerstatus label {
+    font-size: 14px;
+  }
+
+  .inventorylistswrapper .searchbox input {
+    position: inherit;
+    top: 0;
+    right: 0;
+    margin: 0px 0px 15px 0px;
+  }
+  .upcomingauctions .adminlistlists input {
+    position: inherit;
+    top: 0px;
+    right: 0px;
+    margin-bottom: 15px;
+    margin-left: 0px;
+    width:100%;
+  }
+
+  .inventoryrecentbidblock .inventorylistswrapper .searchbox input {
+    position: inherit;
+    top: 0;
+    width: 100%;
+    margin: 0px 0px 15px 0px;
+  }
+
+  .inventoryrecentbidblock .inventorylistswrapper .searchbox input {
+    width: 100% !important;
+  }
+
+  .inventorylistswrapper input {
+    position: inherit;
+  }
+
+  .ftrfinance img {
+    max-width: 100%;
+  }
+
+  .inventorysinglelist:nth-child(n+1) {
+    margin-bottom: 9px;
+  }
+
+  .inventorysinglelist .imgouter {
+    margin: 0 auto;
+    float: none !important;
+    width: 206px !important;
+    margin-bottom: 6px;
+  }
+
+  .inventorysinglelistblock3col3 .actionbtns button {
+    margin-bottom: 10px;
+    width: 49%;
+  }
+
+  .inventorysinglelistblock3col4 .actionbtns button {
+    margin-bottom: 10px;
+    width: 49%;
+  }
+
+  .inventorysinglelistblock3col1 .actionbtns button {
+    margin-bottom: 10px;
+    width: 49%;
+  }
+
+  .bannerbottomblock {
+    background-color: #fb4a32;
+    height: auto;
+    width: 100%;
+    margin-top: 30px;
+  }
+
+  .bannerbottomblockrightwrapper {
+    padding-top: 395px;
+  }
+
+  .bannerbottomblockrightwrapper {
+    background: none !important;
+  }
+
+  .bannerbottomblockrightwrapper {
+    width: 100%;
+  }
+
+  .bannerbottomblockright {
+    width: 100%;
+    height: auto;
+    background-image: none;
+    position: inherit;
+    left: 0px;
+    background-color: #fb4a32;
+  }
+
+  .RSVPActivity .searchbox input {
+    position: inherit;
+    top: 0;
+    margin: 0px 0px 15px 0px;
+  }
+
+  .RSVPActivity .adminlistlists input {
+    width: 100%;
+  }
+  .financingblock2 .divdivider {
+    margin: 10px 0 10px 0px;
+  }
+}
+
+@media (min-width: 730px) {
+  .daterangepicker .ranges {
+    width: auto;
+  }
+
+  .daterangepicker.ltr .ranges {
+    float: left;
+  }
+
+  .daterangepicker.rtl .ranges {
+    float: right;
+  }
+
+  .daterangepicker .calendar.left {
+    clear: none !important;
+  }
+}
+
+
+
+
+@media (max-width: 600px) {
+  .customerstatus .example.list-inline > li {
+    font-size: 13px;
+    width: 100%;
+  }
+
+  .inventorysinglelist .imgouter {
+    width: 180px !important;
+  }
+
+  .postauctionamain .postauctioncctivityheader .addbtnwrapper2 {
+    position: absolute;
+    top: 105px;
+    right: 15px;
+  }
+
+
+  .postauctionamain .postauctionactivitylist {
+    margin-top: 23px;
+  }
+  .RSVPActivity .daterange li:first-of-type {
+    width:100%;
+    margin-bottom: 11px;
+  }
+  .postauctioncctivityblock .daterange li:first-of-type {
+    width:100%;
+    margin-bottom: 11px;
+  }
+  .inventorysinglelistblock2 .customerstatus label {
+    font-size: 14px;
+  }
+}
+
+
+
+@media (max-width: 540px) {
+  .inventorysinglelist .imgouter {
+    width: 168px !important;
+  }
+
+  .inventorymatchblock .inventorylistswrapper .bootstrap-select.matchesdropdown {
+    width: 22%;
+  }
+
+  .inventorymatchblock .inventorylistswrapper .searchbox {
+    width: 66%;
+  }
+  .financingblock2 .coapplicationdiv span {
+    display: inline-block;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .customerstatus .example.list-inline>li:nth-child(2) {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+  .customerstatus .example.list-inline>li:nth-child(3) {
+    width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .customerstatus .example.list-inline>li:nth-child(4) {
+    width: 100%;
+
+  }
+
+  .recentbidagreementmain .blockcontentinfo .imgbox .btnwrapper .btnedit {
+    width: 100px;
+  }
+
+
+  .postauctionamain .postauctioncctivityheader .addbtnwrapper2 {
+    position: inherit;
+    top: 0px;
+    right: 0px;
+  }
+  .badgelists a{margin-bottom: 20px;}
+  .customersignout{
+    margin-top: 0px !important;
+  }
+  .inventorymatchblock .inventorylistswrapper .searchbox {
+    width: 100%;
+  }
+  .inventorymatchblock .inventorylistswrapper .bootstrap-select.matchesdropdown {
+    width: 100%;
+  }
+  .inventorylistswrapper .bootstrap-select.matchesdropdown .btndropdown {
+    margin: 0 auto;
+    display: block;
+    float: none;
+  }
+  .auctioninventoryblock .inventorylistswrapper {
+    padding: 0px 15px 15px 15px;
+    text-align: center;
+  }
+  .RSVPActivity .daterange li:first-of-type {
+    width: 100%;
+    margin-bottom: 11px;
+    text-align: center;
+  }
+  .postauctioncctivityblock .daterange li:first-of-type {
+    width: 100%;
+    margin-bottom: 11px;
+    text-align: center;
+  }
+
+  .postauctionactivitylist .list-group-item img {
+    max-width: 100%;
+    height: 43px;
+  }
+  .postauctionactivitylist .list-group-item{
+    line-height: normal;
+  }
+  .postauctioncctivityheader .addbtnwrapper2 .viewallblack {
+    padding: 6px 0px;
+  }
+  .postauctioncctivityblock .daterange{
+    text-align: center;
+  }
+
+  .inventoryrecentbidheader h2 {
+    font-size: 20px;
+  }
+
+  .adminlistheader h2 {
+    font-size: 20px;
+  }
+  .upcomingauctions  .adminlistheader h2 {
+    font-size: 20px;
+  }
+
+  .inventorymatchheader h2 {
+    font-size: 20px;
+  }
+
+  .auctioninventoryheader h2 {
+    font-size: 20px;
+  }
+
+  .recentcusheader h2 {
+    font-size: 20px;
+  }
+
+  .recentrsvpheader h2 {
+    font-size: 20px;
+  }
+
+  .yourinboxheader h2 {
+    font-size: 20px;
+  }
+
+  .cusdashboardblock3 h2 {
+    font-size: 20px;
+  }
+
+  .postauctioncctivityheader h2 {
+    font-size: 20px;
+  }
+
+  .customeractivity h2 {
+    font-size: 20px;
+  }
+
+  .inventoryrecentbidblock .inventorysinglelist .imgbox ul li {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 19px;
+  }
+
+  .inventoryrecentbidblock .inventorysinglelist .imgbox ul li:last-of-type {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 0px;
+  }
+
+  .blockcontentinfo .imgbox .imgouter {
+    margin: 0 auto 15px auto;
+  }
+
+  .cusdashboardblock3links a {
+    font-family: 'open_sanssemibold';
+    font-size: 14px;
+    line-height: 16px;
+    display: block;
+    margin: 0 0 2px 0px;
+    text-align: center;
+  }
+
+  .inventorysinglelistblock3col3 .actionbtns button {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .inventorysinglelistblock3col1 .actionbtns button {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .inventorysinglelist .imgouter {
+    width: 180px !important;
+  }
+
+  .preogressright {
+    padding-left: 5px;
+  }
+
+  .cusdashboardblock3links a {
+    margin-bottom: 10px;
+  }
+
+  .cusdashboardblock3links a:last-of-type {
+    margin-bottom: 10px;
+  }
+  .daterange input {
+    width: 109px;
+    padding-left: 30px;
+  }
+
+
+  .postauctioncctivityblock .daterange input {
+    width: 109px;
+    padding-left: 30px;
+  }
+  .RSVPActivity .daterange li {
+    color: #fff;
+    width: 49%;
+  }
+  .RSVPActivity .daterange li input {
+    width: 100%;
+  }
+  .postauctioncctivityblock .daterange li {
+    color: #333;
+    width: 49%;
+  }
+  .postauctioncctivityblock .daterange li input {
+    width: 100%;
+  }
+  .postauctioncctivityheader h2 {
+    font-size: 18px;
+  }
+  .financingblock2wrapper [class*="col-"].checkheredivbottom span {
+    width: 72% !important;
+  }
+}
+@media(max-width:400px) {
+  .postauctioncctivityheader .addbtnwrapper2 {
+    float: none;
+    position: inherit;
+    top: 0;
+    right: 0;
+    text-align: center;
+    display: block;
+  }
+  .postauctioncctivityheader.customeractivity .addbtnwrapper2 {
+    float: right;
+    position: inherit;
+    top: 0;
+    right: 0;
+    text-align: center;
+    display: block;
+  }
+  .postauctioncctivityheader h2 {
+    font-size: 15px;
+  }
+  .postauctioncctivityheader.customeractivity .addbtnwrapper2 {
+    float: none;
+    position: inherit;
+    top: 0;
+    right: 0;
+    text-align: center;
+    display: block;
+  }
+  .otherliquidassetstxt{
+    width:100%;
+    display:block;
+  }
+  .liquidassetsinputwrapper{
+    width:100%;
+  }
+  .liquidassetsinput {
+    width: 100% !important;
+    float: left;
+  }
+}
+
+
+
+
+
+@media(max-width:320px) {
+  .inventoryrecentbidheader h2 {
+    font-size: 13px;
+  }
+
+
+  .adminlistheader {
+    padding: 10px 10px 0px 10px;
+  }
+
+}
+
+
+/*@media(max-width:320px){}*/
+/*---end of Dealerdashboardpage-----*/
+
+/*---------cd newcss----------------*/
+
+
+@media(max-width:1560px) {
+
+  .setmaxbid input[type="text"]{ width:130px;}
+
+  .newtablediv td h3{ font-size:14px; line-height:20px;}
+
+
+}
+
+@media(max-width:1500px) {
+  .newtablediv td .edmunds {
+    margin: 0 6px;
+    width: 55px;
+  }
+
+  .setmaxbid strong{ font-size:14px;}
+  .newtablediv td label{ font-size:14px;}
+
+  .newtablediv td h3{ padding:5px;}
+
+  .setmaxbid {
+    border-left: 1px solid #acadae;
+    margin-left: 15px;
+    padding-left: 15px;
+  }
+
+
+  .newtablediv  td h2{font-size: 14px!important;
+    line-height: 25px!important;}
+}
+
+@media(max-width:1340px) {
+
+  .customerdashboard_block2_body .cd_block2_link1{ font-size:14px; padding-left:53px;}
+  .customerdashboard_block2_body .cd_block2_link2{ font-size:14px; padding-left:53px;}
+
+}
+
+
+@media(max-width:1199px) {
+
+  .newtablediv { padding:25px 0!important; display:block; width:100%; margin:0px;}
+
+  .newtablediv tbody,.newtablediv tr{display:block; width:100%;}
+  .newtablediv td{ display:block; width:100%; text-align:center; padding:0 0 0 0;}
+
+  .newtablediv td h2{ font-size:20px!important; float:none!important; line-height:24px!important; text-align:center!important; display:block!important;}
+
+  .setmaxbid{ border:none; padding:0px; width:310px; margin:0 auto; float:none; display:block; margin-top:9px;}
+
+  .newtablediv td h3{ background:#2c2c2c; text-align:center; padding:10px; font-family: "open_sanssemibold"; font-size:18px; color:#fff; line-height:24px; margin:0 auto;  float:none; width:200px; margin-top:19px; }
+
+  .customerdashboard_block2_body .cd_block2_link1 {
+    float: none;
+    margin: 0 auto;
+    width: 285px;
+    display: block;
+    font-size: 16px;
+  }
+
+  .customerdashboard_block2_body .cd_block2_link2{ font-size:16px;}
+
+  .new_cd_chakebox{ width:200px; margin:0 auto; text-align:center; margin-top:15px;}
+  .newtablediv td .edmunds{ margin:0 auto; float:none; margin-top:18px!important;  margin-bottom:15px!important; display:inline-block;}
+}
+
+@media(max-width:800px) {
+  .customerdashboard_block2_body .cd_block2_link1{ padding-left:0px; text-align:center; width:250px;}
+  .customerdashboard_block2_body .cd_block2_link2{ padding-left:0px; text-align:center; width:250px;}
+}
+
+@media(max-width:400px) {
+
+  .customerdashboard_block2 td strong{ display:block; margin:0 auto; text-align:center; padding-bottom:5px;}
+
+  .setmaxbid{ width:190px;}
+
+  .setmaxbid strong{ float:none; display:block; margin:0 auto;}
+
+
+
+}
+
+/*---------cd newcss----------------*/
+
+/*---------retailcustomer css----------------*/
+
+
+@media(max-width:1199px) {
+
+  .retailmainbannerblock .container h3{ font-size:32px;}
+
+  .retailmainbannerblock .container h3 span{ display:block;}
+
+  .retailmainbannerblock .container h2{ margin-top:15%;}
+
+  .re_signup_body_wrapper2{ margin: 0 auto; width: 98%; }
+
+  .retailbannerblock2_text1 .retailbannerblock2_text1_left{ width:100%;}
+  .retailbannerblock2_text1 .retailbannerblock2_text1_right{ width:100%; padding-left:0px;}
+
+  .retailbannerblock2_text2{ text-align:center;}
+
+  .retailformblock1part1 span{ display:block; margin:0 auto; text-align:center; width:100%; line-height:30px;}
+
+  .retailformblock1part1  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:10px; width:100px; float:none; overflow:hidden; padding-top:5px;}
+
+  .retailformblock1part2  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:10px; width:100px; float:none; overflow:hidden; padding-top:5px;}
+
+  .retailformblock1part2 span{ display:block; margin:0 auto; text-align:center; width:100%; line-height:30px;}
+
+  .form-inline .form-group{ display:block; width:100%;}
+
+  .retailformblock1part3innerblock1 h3{ text-align:center;}
+  .retailformblock1part3innerblock2 h3{ text-align:center;}
+  .retailformblock1part3innerblock5 h3{ text-align:center;}
+
+  .retailformblock2wrapperinner .btn-link {  margin:25px auto;}
+
+
+  .retailformblock2wrapperinner h3{ text-align:center;}
+
+  .retailformblock2wrapperinnerpart2 h4{ text-align:center;}
+
+  .retailformblock3wrapperinner h3{ text-align:center;}
+
+  .retailformblock3single{ width:309px!important;}
+
+  .retailformblock1part3innerblock3 h3{ text-align:center;}
+
+  .retailformblock1part3innerblock4 h3{ text-align:center;}
+
+  .retailformblock1part3innerblock41 input[type="checkbox"]:not(old) + label, .retailformblock1part3innerblock41 input[type="radio"]:not(old) + label{ font-size:14px;}
+
+  .retailformblock1part3innerblock3wrapper input[type="checkbox"]:not(old) + label, .retailformblock1part3innerblock3wrapper input[type="radio"]:not(old) + label{ font-size:14px;}
+
+  .retailformblock4wrapperinner h3{ text-align:center;}
+
+  .retailformblock4single{ width:309px!important;}
+
+  .retailformblock5wrapper{width: 100%; margin: 0 auto;}
+  .retailformblock5part1{ width:90%!important;}
+
+  .retailformblock5part1 span{ display:block; text-align:center;}
+
+  .retailformblock5part1  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:0; width:100px; float:none; overflow:hidden; padding-top:0;}
+
+  .retailformblock5part1 .re_checkbox-inline label{ margin: 0 10px !important;}
+
+}
+@media(max-width:1024px) {
+  .liquidassetsinput {
+    width: 166px;
+    float: right;
+  }
+}
+
+@media(max-width:991px) {
+  .financingblock2wrapper [class*="col-"].pleaselistother{margin-bottom: 10px;}
+
+  .ftrfinance p {margin-bottom: 0px;}
+
+  .financingblock2wrapperinner{
+    padding-top: 20px !important;
+  }
+  .applicantclient input[type=checkbox]:not(old), .applicantclient input[type=radio]:not(old) {
+    width: 0px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+  }
+
+  .applicantclient span {
+    line-height: 16px;
+    width: 85%;
+    padding-left: 10px;
+  }
+  .sharelinkssinglelistright ul li .btnsend {
+    margin: 0px;
+    float: left;
+    width: 49%;
+    margin-right: 1%;
+  }
+  .lbltext {
+    text-align: left !important;
+  }
+  .sharelinkssinglelistright ul li .btnedit {
+    margin: 0px;
+    float: right;
+    width: 49%;
+    margin-right: 0%;
+  }
+  .re_new_textheading{  padding: 25px 10px;}
+  .retailmainbannerblock .container h2{ margin-top:20%;}
+
+  .re_toplogoblock{ margin: 23px auto; width: 100%; float: none; text-align:center; }
+
+  .re_toplogoblock .re_logo1{ margin: 0px auto; display: block; float: none; margin-bottom:30px;}
+
+  .re_toplogoblock .re_logo2{ margin: 0 auto; display: block; float: none;}
+
+  .logodevider{ display:none;}
+
+  .re_topsocialblock{ width: 165px; float: none; margin:30px auto; margin-bottom: 30px;}
+  .retailformwrapper h2{ line-height:28px; text-align:center;}
+
+  .left_chakebox{ margin-top:34px; width: 100%; float: none;}
+
+  .retailform_sec .btn-block2{ float:none; margin:0 auto; margin-top:16px;}
+
+  .retailformblock1part1,.retailformblock1part2{ padding-top:20px;}
+
+  .retailformblock1part3innerblock21 .re_newtextright{ border-top:solid 1px #ccc; margin-top:15px; padding-top:15px;}
+
+  .retailformblock1part3innerblock11{ margin-left:auto!important; margin-right:auto!important;}
+  .retailformblock1part3innerblock2{ margin-left:auto!important; margin-right:auto!important;}
+
+  .retailformblock1part3innerblock2:nth-child(2){ padding-left:0px;}
+
+  .retailformblock1part3innerblock1:nth-child(1){ padding-right:0px;}
+
+  .retailformblock1part3innerblock51 .table > tbody > tr > td, .retailformblock1part3innerblock51 .table > tfoot > tr > td, .retailformblock1part3innerblock51 .table > thead > tr > td{   padding: 20px 16px !important;}
+
+  .retailformblock1part3innerblock51 .table > thead > tr > th{   padding: 20px 16px !important;}
+
+  .retailformblock1part3innerblock51 input[type="checkbox"]:not(old) + label, .retailformblock1part3innerblock51 input[type="radio"]:not(old) + label{ font-size:15px;}
+
+  .retailformblock3single {
+    width: 236px !important;
+  }
+  .retailformblock4single{ width:236px!important;}
+  .QuestionsCommentsdiv{padding-top: 7px !important;    padding-bottom: 10px !important;}
+  .policydiv{padding-top: 7px !important;    padding-bottom: 0px !important;}
+  .financingblock2wrapper [class*="col-"].QuestionsCommentstextarea{margin-bottom: 0px;}
+}
+
+@media(max-width:767px) {
+  .financingblock2wrapper [class*="col-"].vehicleplandiv {margin-bottom: 0px;}
+  .financingblock2wrapper [class*="col-"].coapplicationdiv {margin-bottom: 10px;}
+  .financingblock2wrapper [class*="col-"].cooperativeradio1div {margin-bottom: 0px;}
+  .financingblock2wrapper [class*="col-"].checkheredivbottom span {width: 70%;}
+  .financingblock2wrapper .margintop [class*="col-"]{margin-bottom: 0px;}
+
+  .financingblock2wrapperinner.paddingtop26{padding-top: 5px !important;}
+  .financingblock2 .financingblock2wrapper h3 div {margin-top: 2px;}
+
+  .financingblock2 .financingblock2wrapper h3 {
+    height: auto;
+  }
+  .retailbannerblock2_text1{ margin-left:15px!important; margin-right:15px!important;}
+
+  .retailbannerblock2_text2{ margin-left:15px!important; margin-right:15px!important;}
+
+  .left_chakebox span{ width:220px; }
+
+  .left_chakebox{ margin:0 auto; margin-top:14px; width: 268px; float: none;}
+
+  .retailformblock1wrapper{ margin-left:15px!important; margin-right:15px!important;}
+
+  .retailformblock2wrapperinner{ margin-left:0px !important; margin-right:0px !important; padding-left:0px !important; padding-right:0px !important;}
+  .retailformblock2wrapper{ margin-left:15px !important; margin-right:15px !important;}
+  .retailformblock2wrapper .row{ margin-left:0px !important; margin-right:0px; padding-left:0px !important; padding-right:0px !important;}
+
+  .retailformblock2wrapper{ margin-left:0px !important; margin-right:0px !important; }
+
+
+  .retailformblock2{ padding-left:15px !important; padding-right:15px !important; width:auto; }
+
+  .retailformblock3{ padding-left:15px!important; padding-right:15px!important; width:auto;}
+
+  .retailformblock3single {
+    margin: 1% !important;
+    width: 31.3% !important;
+  }
+
+
+  .retailformblock4single{  margin: 1% !important;
+    width: 31.3% !important;}
+  .retailformblock3single img{ max-width:100%;}
+
+  .retailformblock1part3innerblock3:nth-child(1){padding-left: 0px !important; padding-right: 0px!important;}
+  .retailformblock1part3innerblock3:nth-child(2){padding-right: 0px !important; padding-left: 0px!important;}
+  .retailformblock1part3innerblock3:nth-child(3){padding-left: 0px !important; padding-right: 0px!important;}
+  .retailformblock1part3innerblock3:nth-child(4){padding-right: 0px !important; padding-left: 0px!important;}
+
+
+  .retailformblock1part3innerblock4:nth-child(1){padding-left: 0px !important; padding-right: 0px!important;}
+  .retailformblock1part3innerblock4:nth-child(2){padding-right: 0px !important; padding-left: 0px!important;}
+  .retailformblock1part3innerblock4:nth-child(3){padding-left: 0px !important; padding-right: 0px!important;}
+  .retailformblock1part3innerblock4:nth-child(4){padding-right: 0px !important; padding-left: 0px!important;}
+
+  .retailformblock4{ padding-left:15px!important; padding-right:15px; width:auto!important; margin: 0 auto!important;}
+
+  .retailformblock4singlewrapperimg{ width:50px;}
+
+  .retailformblock4singlewrapper p{ font-size:16px; line-height:16px;}
+
+  .retailformblock5part1{ width:96%!important;}
+}
+
+
+@media(max-width:690px) {
+  /*.retailformblock1part3innerblock51 .table > tbody > tr > td, .retailformblock1part3innerblock51 .table > tfoot > tr > td, .retailformblock1part3innerblock51 .table > thead > tr > td{   padding: 20px 16px !important; display:block; border-bottom:solid 1px #9c9c9c; text-align:center;}
+
+  .retailformblock1part3innerblock51 .table > thead > tr > th{ display:none; }
+
+  .retailformblock1part3innerblock51 .table > tbody > tr > td:nth-child(3n+1){ text-align:center;}
+
+  .retailformblock1part3innerblock51 .table > tbody > tr > td:nth-child(3n+3){ text-align:center;}
+
+  .retailformblock1part3innerblock51 strong{ display:block; padding-bottom:10px;}*/
+
+}
+
+
+@media(max-width:660px) {
+  .retailmainbannerblock .container h2{ width:100%; font-size:26px; margin-top:24%;}
+  .retailbannerblock2_text1 .retailbannerblock2_text1_right .reuldiv{ width:100%;}
+  .financingblock2 .checkplease .currentemploymentthird2 {float: none; text-align: center; }
+
+  .checkheredivbottom span {
+    width: 60%;
+  }
+
+}
+
+@media(max-width:540px) {
+  .retailformblock3single {
+    margin: 1% !important;
+    width: 48% !important;
+  }
+  .retailformblock4single{  margin: 1% !important; width: 48% !important;}
+
+  .ftrfinance {
+    width: 100% !important;
+  }
+  .applicantclient input[type=checkbox]:not(old) + label, .applicantclient input[type=radio]:not(old) + label {
+    margin-left: 0px;
+  }
+  .checkpleaseinput span {
+    float: left;
+    display: inline-block;
+    width: 225px;
+  }
+  .financingblock2wrapper [class*="col-"].checkheredivbottom span {width: 44%; line-height: 20px;
+  }
+}
+
+
+@media(max-width:510px) {
+  .checkheredivbottom span {
+    line-height: 20px;
+  }
+}
+
+@media(max-width:480px) {
+  .retailbannerblock2_text1 .retailbannerblock2_text1_right .reuldiv li {
+    width: 100%;
+    float: none;
+    padding-right: 0px;
+    padding-right: 0px;
+    text-align: center;
+    border: none;
+  }
+
+  .retailbannerblock2_text1 .retailbannerblock2_text1_right .reuldiv li:first-of-type {
+    border-right: none;
+    padding-right: 0;
+  }
+
+  .retailbannerblock2_text1 .retailbannerblock2_text1_right .reuldiv li:last-of-type {
+    padding-left: 0;
+    padding-top: 20px;
+  }
+
+  .retailbannerblock2_text1 .retailbannerblock2_text1_right h3 {
+    width: 100%;
+    font-size: 26px;
+  }
+
+  .retailform_sec .form-group1 {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 8px;
+  }
+
+  .retailform_sec .form-group2 {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 8px;
+  }
+
+  .retailform_sec .form-group3 {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 8px;
+  }
+
+  .retailform_sec .form-group4 {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+    margin-bottom: 8px;
+  }
+
+  .sharelinkssinglelistright ul li .btnsend {
+    float: none;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10px;
+  }
+
+  .sharelinkssinglelistright ul li .btnedit {
+    float: none;
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 0px;
+  }
+  .ftrfinance input {
+    width: 100%;
+    margin: 0 auto;
+  }
+  .checkplease {
+    width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+
+
+  .btnfinacefooterlist {
+    width: 98%;
+    margin: 0 auto;
+  }
+  .btnfinacefooterlist .bo_btn2 {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .btnfinacefooterlist .bo_btn3 {
+    width: 100%;
+  }
+  .financingblock2 .checkherediv {width: 100%; display: block; max-width:inherit;}
+  .checkheredivbottom input{display:none;}
+  .checkheredivbottom span {line-height: 20px;width: 80%;}
+  .badgelists a:last-child {
+    margin-bottom: 0px;
+  }
+
+}
+
+
+@media(max-width:460px) {
+
+  .retailbottomformgroup .bo_btn1{ float:none; margin:0 auto; display:block;}
+
+  .retailbottomformgroup .bo_btn2{ float:none; margin:15px auto!important; display:block;}
+
+  .retailbottomformgroup .bo_btn3{ float:none; margin:0 auto; display:block;}
+  .retailbottomformgroup{ width:100%;}
+
+  .retailcopyright{ padding-left:5px; padding-right:5px;}
+
+}
+
+@media(max-width:400px) {
+  .retailformblock3single {
+    margin: 1% !important;
+    width: 98% !important;
+  }
+  .retailformblock4single{  margin: 1% !important;
+    width: 98% !important;}
+
+  .retailformblock1part3innerblock1 span{ width:60%; line-height:18px;}
+  .prevresidentradiodiv span {width: 228px;line-height: 20px;}
+  .otherliquidassetstxt{display:inline-block; floatl:left;}
+}
+
+@media(max-width:380px) {
+  .amountres{
+    line-height:20px;
+  }
+  .checkpleaseinput span {
+    float: left;
+    display: inline-block;
+    width: 80%;
+  }
+}
+
+
+
+
+
+
+
+
+
+/*------------view customer-------------*/
+
+@media screen and (min-width: 1300px) and (max-width: 1666px) {
+  .viewcustomers .inventorysinglelist{width:20% !important; float:left !important;}
+  .viewcustomers .inventorysinglelist:nth-child(5n+5) {
+    margin-bottom:9px;
+  }
+}
+
+
+@media screen and (min-width: 1200px) and (max-width: 1299px) {
+  .viewcustomers .inventorysinglelist{width:25% !important; float:left !important;}
+  .viewcustomers .inventorysinglelist:nth-child(4n+4) {
+    margin-bottom:9px;
+  }
+}
+
+@media(max-width:991px) {
+  .viewcustomers .logininfo p {display: block; float: none;}
+
+}
+@media(max-width:625px) {
+  .viewcustomers .inventorymatchblock .inventorylistswrapper .searchbox {
+    width: 100%;
+    float: right;
+  }
+  .sharelinks .sharelinkssearch {width: 100%; display: block; float: none; margin: 0 auto; text-align: center;}
+  .sharelinks .sharelinkssearch.list-inline>li {display: block;}
+  .sharelinks .inventorymatchblock .inventorylistswrapper .sharelinkssearch .searchbox {width:100%;}
+  .sharelinkssearchbutton{width:100%; display: block; text-align: center;}
+  .sharelinks .sharelinkssearch .list-inline>li { display: inline-block; padding-right: 5px; padding-left: 5px;
+    width: 100%;}
+  .sharelinks .sharelinksimgwarpper {
+    width: 100% !important;
+  }
+}
+
+
+@media(max-width:480px) {
+  .viewcustomers .blockcontentinfo .infobox{width:100%; display:block;}
+  .viewcustomers .blockcontentinfo .imgbox {
+    width: 100%;
+    display: block;
+    text-align: center;
+  }
+  .sharelinks .inventorymatchblock .inventorylistswrapper .searchbox input {
+    width: 100%;
+    position: inherit;
+  }
+
+
+  .sharelinkssinglelist .sharelinkssinglelistleft{ padding-right: 0px; padding-left: 0px;}
+
+}
+
+@media(max-width:1280px) {
+  .viewcustomers .blockcontentinfo .imgbox .btnwrapper .btnedit {
+    width: 78px;
+  }
+}
+
+
+/*------------end of view customer-------------*/
+
+
+
+/*---viewRSVP--*/
+@media(max-width:1100px) {
+  .RSVPActivity.viewrsvpinner .daterange {
+    margin-top: 0px;
+  }
+}
+
+@media(max-width:991px) {
+  .RSVPActivity.viewrsvpinner .daterange {
+    position: inherit;
+    top: 0;
+    right: 0;
+    margin-top: 13px !important;
+  }
+}
+@media(max-width:768px) {
+  .viewrsvpinner .viewrsvpinnerheader{
+    padding: 0px;
+  }
+
+  .RSVPActivity.viewrsvpinner .list-inline>li{
+    padding-right: 0px !important;
+  }
+
+  .RSVPActivity.viewrsvpinner .adminlistlists input {
+    width: 360px;
+    position: absolute;
+    top: 15px;
+    right: 15px;
+  }
+}
+
+@media(max-width:480px) {
+  .RSVPActivity.viewrsvpinner .adminlistlists input {
+    width: 100%;
+  }
+}
+
+/*---End viewRSVP--*/
+
+
+
+
+
+/*---mail inbox--*/
+
+
+/*---End mail inbox--*/
+
+
+
+
+@media(max-width:768px) {
+  .bannersizelistblock .adminlistlists input {
+    position: inherit !important;
+    top: 0 !important;
+    left: 0;
+    width: 100%;
+  }
+  .adminlistmainblock .adminlistlists input {
+    position: inherit !important;
+    top: 0 !important;
+    left: 0;
+    width: 100%;
+  }
+
+  .dealerlistman .adminlistlists input {
+    position: inherit !important;
+    top: 0 !important;
+    left: 0;
+    width: 100%;
+  }
+  .bannerlistblock .adminlistlists input {
+    position: inherit !important;
+    top: 0 !important;
+    left: 0;
+    width: 100%;
+  }
+  .readmailinboxwrapper .btn {
+    margin-bottom: 10px;
+  }
+  .mailinbox .row-eq-height {
+    display: block;
+  }
+}
+
+@media(max-width:480px) {
+  .bannersizelistblock .adminlistheader .addbtnwrapper {
+    display: block;
+    float: none !important;
+    text-align: center;
+    margin: 10px auto;
+  }
+  .adminlistmainblock .adminlistheader .addbtnwrapper {
+    display: block;
+    float: none !important;
+    text-align: center;
+    margin: 10px auto;
+  }
+  .bannerlistblock .adminlistheader .addbtnwrapper {
+    display: block;
+    float: none !important;
+    text-align: center;
+    margin: 10px auto;
+  }
+  .readmailinboxwrapper .btn {
+    margin-bottom: 10px;
+    width: 100%;
+  }
+
+  .readmailheadercontrol {
+    display: block;
+    width: 100%;
+    float: left;
+    text-align: center;
+  }
+}
+
+
+
+
+
+/*---CustomerProfile--*/
+
+@media(max-width:1800px) {
+  .btnviewdetails {
+    font-size: 12px;
+  }
+}
+@media(max-width:1520px) {
+  .activitylists ul li.list-group-item p {
+    float: left;
+    width: 56%;
+  }
+  .custoomerinfoblockright .control-label {
+    font-size: 13px;
+  }
+
+  .custoomerinfoblockright .control-data {
+    font-size: 13px;
+  }
+  .custoomerinfoblockleft .custoomerinfoonline ul li{font-size: 11px;}
+  .custoomerinfoblockright .onlineblock1 .btnsendmsg{padding: 6px 5px 5px 5px;}
+  .custoomerinfobtn ul li span {margin-right: 4px;}
+  .custoomerinfoonline .onlineblock1 img.icon-online {
+    width: 20px;
+    height: 20px;
+  }
+  .custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper {
+    width: 80px;
+    vertical-align: middle;
+    padding-top: 0%;
+    height: 247px;
+  }
+}
+
+@media(max-width:1366px) {
+
+  .custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper {
+    width: 45px;
+  }
+}
+
+
+@media(max-width:1280px) {
+  .custoomerinfoblockright .onlineblock1 .btnsendmsg {
+    font-size: 11px;
+  }
+  .custoomerinfoblockright .chatblock1 .btnwrite {
+    font-size: 11px;
+  }
+}
+
+@media(max-width:1199px) {
+  .custoomerinfowrapper .auctioninventoryblock {
+    margin-top: 30px;
+  }
+  .custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper {
+    width: 140px;
+    vertical-align: top;
+    padding-top: 26%;
+    height: 247px;
+  }
+
+}
+
+
+@media(max-width:991px) {
+  .custoomerinfowrapper .inventorysinglelist .imgwrapper img {
+    max-width: 100% !important;
+    height: auto;
+    width: initial;
+  }
+}
+
+@media(max-width:768px) {
+  .custoomerinfoblockleft .custoomerinfopic{
+    margin:0 auto;
+    display:block;
+    text-align:center;
+  }
+  .custoomerinfoblockleft {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+  }
+  .custoomerinfoblockright .form-horizontal .form-group {
+    margin-right: 0px;
+    margin-left: 0px;
+  }
+  .custoomerinfoblockright .control-label {
+    width: 100%;
+    float: none;
+    margin: 0px auto;
+    text-align: center;
+    font-family: 'myriadpro-regular';
+    font-size: 14px;
+    color: #6f6f6f;
+    font-weight: normal;
+  }
+
+  .custoomerinfoblockright .control-data {
+    width: 100%;
+    float: none;
+    margin: 0px auto;
+    text-align: center;
+  }
+  .custoomerinfoblockright {
+    padding-right: 0px !important;
+    padding-left: 0px !important;
+  }
+  .custoomerinfoonline{
+    text-align:center;
+  }
+  .custoomerinfobtn {
+    float: none;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+  }
+
+
+
+
+  .custoomerinfoonline ul li {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-bottom: 10px;
+  }
+  .custoomerinfobtn ul li {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-bottom:10px;
+  }
+  .custoomerinfoonline ul li {
+    font-size: 13px;
+  }
+
+  .custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper {
+    width: inherit;
+    vertical-align: top;
+    padding-top: 21px;
+  }
+
+}
+
+@media(max-width:600px) {
+
+  .activitylists .list-group-item .activitywarpper {
+    display: block;
+    float: none;
+    margin: 0 auto;
+    margin-bottom:5px;
+  }
+  .activitylists ul li.list-group-item p {
+    float: none;
+    width: 100%;
+    text-align: center;
+    margin-bottom:5px;
+  }
+  .activitylists ul li span {
+    float: none;
+    margin: 0 auto;
+    text-align: center;
+    display: block;
+  }
+  .activitylists ul.socialicon {
+    width: 100%;
+    float: none;
+    padding: 0px !important;
+    margin: 0 auto;
+    display: block;
+    text-align: center;
+  }
+}
+/*---End CustomerProfile--*/

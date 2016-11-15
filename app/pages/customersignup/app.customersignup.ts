@@ -29,7 +29,9 @@ export class AppCustomersignup {
     commonservices:AppCommonservices;
     private customerInfo:CookieService;
     private router: Router;
-
+    customerinfo:any;
+    terms:any;
+    coockieData:CookieService;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,customerInfo:CookieService ,router: Router) {
 
@@ -37,12 +39,14 @@ export class AppCustomersignup {
         this.http=http;
         this.router=router;
         this.customerInfo=customerInfo;
-        console.log(this.items);
-        console.log(this.items[0].serverUrl);
 
         this.serverUrl = this.items[0].serverUrl;
-
+        var parts = location.hostname.split('.');
+        var sndleveldomain = parts[0];
+       // console.log(parts);
+        console.log(sndleveldomain);
         this.customersignupform = fb.group({
+            dealerusername: [sndleveldomain, Validators.required],
             username: ["", Validators.required],
             password: ["", Validators.required],
             fname: ["", Validators.required],
@@ -81,11 +85,19 @@ export class AppCustomersignup {
 
             let link = this.serverUrl+'addcustomer';
             var submitdata = this.customersignupform.value;
-
+    console.log(submitdata);
             this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();
                     this.customersignupform.value.password='';
+                    if(this.customersignupform.value.term==true){
+                          this.terms=1;
+                    }
+                    else {
+                          this.terms=0;
+                    }
+                    this.customersignupform.value.term=this.terms;
+                   // console.log(this.customersignupform.value.term);
                     this.customerInfo.putObject('customerInfo', this.customersignupform.value);
                     this.router.navigate(['/customercreditcard']);
                 }, error => {

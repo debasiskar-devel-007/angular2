@@ -6,12 +6,24 @@
   System.config({
     paths: {
       // paths serve as alias
-      'npm:': 'node_modules/'
+      'npm:': 'node_modules/',
+      'npm4:': '/',
+      //'npm:': 'https://unpkg.com/',
+      'npm1:': 'https://unpkg.com/'
     },
     // map tells the System loader where to look for things
     map: {
       // our app is within the app folder
       app: 'app',
+
+
+      //// angular bundles
+      /*'@angular/core': 'npm1:@angular/core/bundles/core.umd.js',
+      '@angular/common': 'npm1:@angular/common/bundles/common.umd.js',
+      '@angular/compiler': 'npm1:@angular/compiler/bundles/compiler.umd.js',
+      '@angular/platform-browser': 'npm1:@angular/platform-browser/bundles/platform-browser.umd.js',
+      '@angular/platform-browser-dynamic': 'npm1:@angular/platform-browser-dynamic/bundles/platform-browser-dynamic.umd.js',
+      '@angular/forms': 'npm1:@angular/forms/bundles/forms.umd.js',*/
 
       // angular bundles
       '@angular/core': 'npm:@angular/core/bundles/core.umd.js',
@@ -28,7 +40,12 @@
       'ng2-pagination':'npm:ng2-pagination',
       "ng2-ckeditor": "npm:ng2-ckeditor",
       'ng2-uploader': 'npm:ng2-uploader',
-      'angular2-clipboard': 'npm:angular2-clipboard@1.0.0',
+      //'angular2-clipboard': 'npm:angular2-clipboard',
+      //'clipboard': 'npm1:clipboard/dist/clipboard.js',
+      //'angular2-clipboard': 'https://unpkg.com/:angular2-clipboard',
+      'clipboard': 'clipboard.js',
+      //'clipboard': 'https://cdn.rawgit.com/zenorocha/clipboard.js/master/dist/clipboard.js',
+
 
 
       // other libraries
@@ -65,10 +82,14 @@
         main: 'ng2-uploader.js',
         defaultExtension: 'js'
       },
-
-      'clipboard':{
+      'angular2-clipboard': {
+        main: 'index.js',
         defaultExtension: 'js'
-      }
+      },
+
+      /*'clipboard':{
+        defaultExtension: 'js'
+      }*/
 
     }
   });

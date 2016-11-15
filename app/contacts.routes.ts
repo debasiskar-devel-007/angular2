@@ -50,6 +50,18 @@ import {AppBannerlist} from "./pages/bannerlist/app.bannerlist";
 import {AppEditbanner} from "./pages/editbanner/app.editbanner";
 import {AppViewcustomers} from "./pages/viewcustomers/app.viewcustomers";
 import {AppViewrsvp} from "./pages/viewrsvp/app.viewrsvp";
+import {AppWritemail} from "./pages/writemail/app.writemail";
+import {AppReadmessage} from "./pages/readmessage/app.readmessage";
+import {AppMailinbox} from "./pages/mailinbox/app.mailinbox";
+import {AppCustomerprofile} from "./pages/customerprofile/app.customerprofile";
+import {AppAddaffiliate} from "./pages/addaffiliate/app.addaffiliate";
+import {AppAffiliatelist} from "./pages/affiliatelist/app.affiliatelist";
+import {AppEditaffiliate} from "./pages/editaffiliate/app.editaffiliate";
+import {AppAffiliatelogin} from "./pages/affiliatelogin/app.affiliatelogin";
+import {AppAffiliateheader} from "./pages/affiliateheader/app.affiliateheader";
+import {AppAffiliatefooter} from "./pages/affiliatefooter/app.affiliatefooter";
+import {AppAffiliatedashboard} from "./pages/affiliatedashboard/app.affiliatedashboard";
+import {AppAuctionbidding} from "./pages/auctionbidding/app.auctionbidding";
 //alert(window.location.hostname);
 
 //alert(checkutl);
@@ -125,6 +137,19 @@ const appRoutes: Routes = [
     { path: 'editbanner/:id', component:AppEditbanner},
     { path: 'viewcustomers', component:AppViewcustomers},
     { path: 'viewrsvp', component:AppViewrsvp},
+    { path: 'writemail', component:AppWritemail},
+    { path: 'readmessage', component:AppReadmessage},
+    { path: 'mailinbox', component:AppMailinbox},
+    { path: 'customerprofile', component:AppCustomerprofile},
+    { path: 'addaffiliate', component:AppAddaffiliate},
+    { path: 'affiliatelist', component:AppAffiliatelist},
+    { path: 'editaffiliate/:id', component:AppEditaffiliate},
+    { path: 'affiliatelogin', component:AppAffiliatelogin},
+    { path: 'affiliateheader', component:AppAffiliateheader,outlet:'affiliateheader'},
+    { path: 'affiliatefooter', component:AppAffiliatefooter,outlet:'affiliatefooter'},
+    { path: 'affiliatedashboard', component:AppAffiliatedashboard},
+    { path: 'auctionbidding', component:AppAuctionbidding},
+
 
 ];
 

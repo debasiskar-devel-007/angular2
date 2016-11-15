@@ -43,7 +43,10 @@ export class AppFaq {
         this.router = router;
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
-
+        console.log('router-----');
+        console.log(this.router);
+        console.log(this.router.url);
+        console.log('-----------------');
         this.p=1;
         this.userInfo=userdetails.getObject('userdetails');
         let link='';
@@ -54,6 +57,10 @@ export class AppFaq {
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
+
+                //console.log(this.router.urlTree.firstChild(this.router.urlTree.root));
+
+                //console.log(this.router.routerState);
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
                 console.log(this.data.length);
                 this.pagec=Math.ceil(this.data.length / 10);

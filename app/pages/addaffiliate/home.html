@@ -1,0 +1,120 @@
+<div class="page-wrapper addadmin">
+    <div class="blockmaininner">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="pageheader"><span>Add</span> Affiliate</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 addadminblock">
+                <form novalidate [formGroup]="addaffiliateform"   name="addaffiliate"  class="form-inline">
+                    <div class="signupform_wrapper">
+                        <div class="form-group">
+                            <input [formControl]="addaffiliateform.controls['username']" name="username"  type="text" class="form-control" placeholder="User Name"/>
+                            <span  *ngIf ="addaffiliateform.controls['username'].touched && !addaffiliateform.controls['username'].valid" class="help-inline"><span class="errormsgtxt">User Name is Required !</span> <img src="images/iconquestion.png"></span>
+
+
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addaffiliateform.controls['password']" name="password"  type="password" class="form-control" placeholder="Password"/>
+                            <span *ngIf ="addaffiliateform.controls['password'].touched && !addaffiliateform.controls['password'].valid" class="help-inline"><span class="errormsgtxt">Password  is Required !</span><img src="images/iconquestion.png"></span>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addaffiliateform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First Name"/>
+                            <span *ngIf ="addaffiliateform.controls['fname'].touched && !addaffiliateform.controls['fname'].valid" class="help-inline"><span class="errormsgtxt">First Name is Required !</span><img src="images/iconquestion.png"></span>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addaffiliateform.controls['lname']" type="text" class="form-control" placeholder="Last Name"/>
+                            <!-- <span class="help-inline">Please correct the error</span>-->
+                            <span *ngIf ="addaffiliateform.controls['lname'].touched && !addaffiliateform.controls['lname'].valid" class="help-inline"><span class="errormsgtxt">Last Name is Required !</span><img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" [formControl]="addaffiliateform.controls['email']" type="email" class="form-control" placeholder="Email Address"/>
+                            <!-- <span class="help-inline">Please correct the error</span>-->
+                            <span *ngIf ="addaffiliateform.controls['email'].touched && !addaffiliateform.controls['email'].valid" class="help-inline"><span class="errormsgtxt">Email is Required and must be valid !</span><img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea [formControl]="addaffiliateform.controls['address']" name="address" class="form-control" placeholder="Address">
+                            </textarea>
+                            <!--<input/>-->
+                            <span  *ngIf ="addaffiliateform.controls['address'].touched && !addaffiliateform.controls['address'].valid" class="help-inline"><span class="errormsgtxt">Address is Required !</span> <img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addaffiliateform.controls['city']" name="city"  type="text" class="form-control" placeholder="City"/>
+                            <span  *ngIf ="addaffiliateform.controls['city'].touched && !addaffiliateform.controls['city'].valid" class="help-inline"><span class="errormsgtxt">City is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+
+                            <select class="form-control3" [formControl]="addaffiliateform.controls['state']" name="state" >
+                                <option value="" selected="selected"><span class="errormsgtxt">Select Your State</span></option>
+                                <option *ngFor="let obj of getusastates" [value]="obj.name">{{obj.name}}</option>
+                            </select>
+                            <span  *ngIf ="addaffiliateform.controls['state'].touched && !addaffiliateform.controls['state'].valid" class="help-inline spanalign"><span class="errormsgtxt">State is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addaffiliateform.controls['zip']" name="zip"  type="text" class="form-control" placeholder="Zip Code"/>
+                            <span  *ngIf ="addaffiliateform.controls['zip'].touched && !addaffiliateform.controls['zip'].valid" class="help-inline"><span class="errormsgtxt">Zip is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addaffiliateform.controls['phone']" name="phone"  type="text" class="form-control" placeholder="Phone"/>
+                            <span  *ngIf ="addaffiliateform.controls['phone'].touched && !addaffiliateform.controls['phone'].valid" class="help-inline"><span class="errormsgtxt">Phone is Required !</span> <img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
+
+                        <div class="row uploadrow" style="padding:0; margin: 0 0 15px 0;">
+
+
+                            <div class="col-md-6" style="padding: 0px;">
+                        <div class="form-group_chakebox signupcheckbox">
+                            <input id="checkbox1" type="checkbox" name="checkbox1" [formControl]="addaffiliateform.controls['is_active']" value="1"/><label for="checkbox1"></label><span>Is Active</span>
+                            <span *ngIf ="addaffiliateform.controls['is_active'].touched && !addaffiliateform.controls['is_active'].valid" class="help-inline">You must select checkbox</span>
+                            <div class="clearfix"></div>
+                        </div>
+                        </div>
+
+                            <div class="col-md-6" style="padding-right: 10px; margin-top: 15px;">
+                        <div class="submitwrap"  style="margi: 0px; margin-top: 0px;  padding: 0px;">
+                            <button (click)="submitform()" type="button" value="Submit" class="subbtn">Submit</button>
+                        </div>
+                        </div>
+
+                    </div>
+
+
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+
+      </div>
+    </div>
+<div>ffsdfsdffds</div>
+
+<input id="foo" value="https://github.com/zenorocha/clipboard.js.git">
+
+<!-- Trigger -->
+<button class="btn" data-clipboard-target="#foo">
+    Copy
+</button>

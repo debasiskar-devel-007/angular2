@@ -28,11 +28,15 @@
                     <div class="inventorylistswrapper">
                         <div class="row">
                             <!--row start-->
-                            <div class="searchbox"><input [(ngModel)]="query" placeholder="Search "></div>
-                            <div><a [routerLink]="['/addsharelink']"><button class="addbtn" type="button">Add Share Media</button></a></div>
+                            <ul class="list-inline sharelinkssearch">
+                                <li><div class="searchbox"><input [(ngModel)]="query" placeholder="Search "></div></li>
+                                <li *ngIf="userdetails.userrole=='admin'"> <div class="sharelinkssearchbutton"><a [routerLink]="['/addsharelink']"><button class="addbtn" type="button">Add Share Media</button></a></div></li>
+                            </ul>
+                            <div class="clearfix"></div>
+
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist" *ngFor="let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id">
                                 <div class="row">
-                                    <div class="actionbtns" style="text-align: right;">
+                                    <div *ngIf="userdetails.userrole=='admin'" class="actionbtns" style="text-align: right;">
                                         <a [routerLink]="['/editsharelink', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
                                         <a><button class="btndelete" type="button" (click)="deleterow(item)"  value="Delete">Delete</button></a>
                                     </div>
@@ -59,7 +63,8 @@
 
                                           <!--  <li><a>  <button class="btnsend" type="button">Copy Link</button></a></li>-->
                                             <li><a>  <!--<button class="btn btn-default" type="button" ngIIclipboard [cbContent]="text">copy</button>--></a></li>
-                                            <li><a><button class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
+                                          <!-- <li><a><button (click)="sharemediaModal.open()" class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>-->
+                                           <li><a><button (click)="bannerModal(item._id)" class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
 
 
                                         </ul>
@@ -215,8 +220,128 @@
             </div>
         </div>
         <!-- /.row -->
+
+
+            <modal #sharemediaModal class="mainmodal">
+                <modal-header class="modelheader">
+                    <h1 class="shareh1title">Share Home</h1>
+                </modal-header>
+                <modal-content class="modelcontent">
+                    <div *ngFor="let banner of bannerdata">
+                         <div *ngIf="banner.sharelink==mediaid" class="sharebanner_wrapper">
+
+                             <div class="sharebanner_wrapper_bannertext">
+
+                                 <label><span>Banner Name:</span> {{banner.bannername}}</label>
+
+                                 <label *ngFor="let itembannersize of banner.bannersizedetails1"><div *ngIf="itembannersize._id==banner.bannersize"><span>Banner Size:</span> {{itembannersize.sizename}}</div></label>
+
+                             </div>
+
+                        <div class="sharebanner_wrapper_banner"><img src="{{bannerfilesrc}}{{banner.filename}}" alt="#"></div>
+
+
+
+                        <div class="clearfix"></div>
+
+
+                            <div class="sharebanner_textarea" *ngFor="let itembannersize of banner.bannersizedetails1">
+                               <div *ngIf="itembannersize._id==banner.bannersize">
+                                <textarea readonly="readonly"><a href="probid.influxiq.com/customersignup"><img src="{{bannerfilesrc}}{{banner.filename}}" height="{{itembannersize.height}}" width="{{itembannersize.width}}"></a></textarea>
+                            </div>
+
+                            </div>
+
+                             <div class="sharebanner_btnwrapper">
+
+                                 <input type="button" value="Grab Code" class="grabcodebanner">
+                             </div>
+                        </div>
+
+                    </div>
+                    <div *ngIf="bannerdata==0">No Banner Found !</div>
+
+                    <!--<div class="sharebanner_wrapper">
+
+                        <div class="sharebanner_wrapper_banner"><img src="http://www.gettyimages.pt/gi-resources/images/Homepage/Hero/PT/PT_hero_42_153645159.jpg" alt="#"></div>
+
+                        <div class="sharebanner_wrapper_bannertext">
+
+                            <label><span>Banner Name:</span> Banner 1</label>
+
+                            <label><span>Banner Size:</span> 23</label>
+
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
+                        <div class="sharebanner_textarea">
+                            <textarea></textarea>
+                            <input type="button" value="Grab Code" class="grabcodebanner">
+                        </div>
+
+
+                    </div>
+                    <div class="sharebanner_wrapper">
+
+                        <div class="sharebanner_wrapper_banner"><img src="http://www.hd-wallpapersdownload.com/script/bulk-upload/desktop-free-images-nature-dowload.jpg" alt="#"></div>
+
+                        <div class="sharebanner_wrapper_bannertext">
+
+                            <label><span>Banner Name:</span> Banner 1</label>
+
+                            <label><span>Banner Size:</span> 23</label>
+
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
+                        <div class="sharebanner_textarea">
+                            <textarea></textarea>
+                            <input type="button" value="Grab Code" class="grabcodebanner">
+                        </div>
+
+
+                    </div>
+                    <div class="sharebanner_wrapper">
+
+                        <div class="sharebanner_wrapper_banner"><img src="http://cf.broadsheet.ie/wp-content/uploads/2016/04/tracyjohnsonhummingbirds8.jpg" alt="#"></div>
+
+                        <div class="sharebanner_wrapper_bannertext">
+
+                            <label><span>Banner Name:</span> Banner 1</label>
+
+                            <label><span>Banner Size:</span> 23</label>
+
+                        </div>
+
+                        <div class="clearfix"></div>
+
+
+                        <div class="sharebanner_textarea">
+                            <textarea></textarea>
+
+
+                            <input type="button" value="Grab Code" class="grabcodebanner">
+
+                        </div>
+
+
+                    </div>-->
+
+                </modal-content>
+                <modal-footer class="modelfooter">
+                    <button class="btn btn-primary btnclose" (click)="sharemediaModal.close()">close</button>
+                </modal-footer>
+            </modal>
+
     </div>
 </div>
 <!-- /#page-wrapper -->
+
+
+    <button #all_m (click)="sharemediaModal.open()" class="btnedit hide" type="button" value="Edit">Grab Banner</button>
 </div>
 

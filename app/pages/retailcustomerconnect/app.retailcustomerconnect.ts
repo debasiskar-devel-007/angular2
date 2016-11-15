@@ -22,6 +22,7 @@ export class AppRetailcustomerconnect {
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
+    customersignupform: FormGroup;
     data:any;
     http:Http;
     items:any;
@@ -29,18 +30,17 @@ export class AppRetailcustomerconnect {
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
-    private userInfo:CookieService;
+    private customerInfo:CookieService;
     id:any;
     item:any;
     private messages:any;
-    p:any;
-    pagec:any;
-    orderbyquery:any;
-    orderbytype:any;
     appcomponent:AppComponent;
     tempdata:Array<any>;
+    customerinfo:any;
+    getusastates:any;
+    coockieData:CookieService;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
         this.http=http;
         this.router=router;
@@ -48,119 +48,91 @@ export class AppRetailcustomerconnect {
         this.commonservices=commonservices;
         this.items = commonservices.getItems();
         this.messages = appcomponent.getMessages();
+        this.customerinfo=customerInfo.getObject('customerInfo');
+        console.log(this.customerinfo);
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl+'dealerlist';
-        this.p=1;
-        this.orderbyquery='fname';
-        this.orderbytype=-1;
-       this.http.get(link)
-            .subscribe(data1 => {
-                this.data = data1.json();
-                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
-                this.pagec=Math.ceil(this.data.length / 10);
+        this.http.get(this.serverUrl+'getusastates')
+            .subscribe(data => {
+                //console.log(data);
+                this.getusastates=data.json();
+
+                console.log(this.getusastates);
+
 
             }, error => {
                 console.log("Oooops!");
             });
 
+        this.customersignupform = fb.group({
+            username: [this.customerinfo.username, Validators.required],
+            fname: [this.customerinfo.fname, Validators.required],
+            lname: [this.customerinfo.lname, Validators.required],
+            email: [this.customerinfo.email, Validators.required],
+            //email: [this.customerinfo.email, AppRetailcustomerconnect.validateEmail()],
+            confirm_email: [''],
+            phone: [this.customerinfo.phone, Validators.required],
+            address: [this.customerinfo.address, Validators.required],
+            addressline2: [''],
+            city: [this.customerinfo.city, Validators.required],
+            zip: [this.customerinfo.zip, Validators.required],
+            company_name: [''],
+            alt_phone: [''],
+            state: [this.customerinfo.state, Validators.required],
+            term: [this.customerinfo.term]
+          //  term: ["this.customerinfo.term", AppRetailcustomerconnect.validateTerms]
+        });
+
+
     }
 
+    static validateTerms(control: FormControl){
 
-    deleterow(dealerrow:any){
-        //console.log(adminid);
-
-        let link= this.serverUrl+'deletedealer';
-        let id=dealerrow;
-        this.http.post(link,id)
-            .subscribe(data1 => {
-                // this.data = data1.json();
-                //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
-                var index = this.data.indexOf(id.id);
-                console.log(index);
-                //let tempdata:Array<any>;
-                let x:any;
-                for(x in this.data){
-                    console.log(this.data[x]._id);
-                    console.log('this.data[x]._id');
-                    console.log(dealerrow._id);
-                    if(dealerrow._id==this.data[x]._id) {
-                        console.log(x+'.......'+this.data.length);
-                        delete this.data.x;
-                        this.data.splice(x, 1);
-                        console.log(this.data.length);
-                        //this.router.navigate(['adminlist']);
-                        window.location.reload();
-                    }
-                }
-                console.log(this.data);
-                //this.data=this.tempdata;
-                //this.data.splice(index, 1);
-                this.appcomponent.putmessages('Dealer user '+dealerrow.username+' deleted successfully','success');
-                //console.log(this.data);
-
-            }, error => {
-                console.log("Oooops!");
-            });
-
-
-        // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
-    }
-
-   changeStatus(item:any){
-    var idx = this.data.indexOf(item);
-    if(this.data[idx].is_active==1){
-        var is_active=0;
-    }
-    else{
-        var is_active=1;
-    }
-   let stat={id:item._id,is_active:is_active};
-       let link= this.serverUrl+'dealerstatuschange';
-       this.http.post(link,stat)
-           .subscribe(data1 => {
-               // this.data = data1.json();
-               //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
-               if(this.data[idx].is_active == 0){
-                   this.data[idx].is_active = 1;
-               }else{
-                   this.data[idx].is_active = 0;
-               }
-           }, error => {
-               console.log("Oooops!");
-           });
-
-
-}
-    getSortClass(value:any){
-        console.log(value);
-        if(this.orderbyquery==value && this.orderbytype==-1) {
-            console.log('caret-up');
-            return 'caret-up'
+        if(control.value==false){
+            return { 'isTermsChecked': true };
         }
-
-        if(this.orderbyquery==value && this.orderbytype==1) {
-            console.log('caret-up');
-            return 'caret-down'
-        }
-        return 'caret-up-down'
-    }
-    manageSorting(value:any){
-        console.log(value);
-        if(this.orderbyquery==value && this.orderbytype==-1) {
-            this.orderbytype=1;
-            return;
-        }
-        if(this.orderbyquery==value && this.orderbytype==1) {
-            this.orderbytype=-1;
-            return;
-        }
-
-        this.orderbyquery=value;
-        this.orderbytype=-1;
     }
 
+    static validateEmail(control: FormControl){
+
+        if (control.value=='' || !control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+
+            return { 'invalidEmailAddress': true };
+        }
+    }
+    submitform(){
+        console.log(this.customersignupform.value);
+        let x:any;
+        for(x in this.customersignupform.controls){
+            console.log(5555);
+            this.customersignupform.controls[x].markAsTouched();
+
+        }
+        this.customersignupform.markAsDirty();
+        //this.signupform.controls['fname'].markAsTouched();
+        if(this.customersignupform.valid){
+            console.log(8788686876);
+             //var headers = new Headers();
+            //headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+            //this.items = this.commonservices.getItems();
+            let link = this.serverUrl+'updatecustomer2';
+            var submitdata = this.customersignupform.value;
+            console.log(link);
+            this.http.post(link,submitdata)
+                .subscribe(data => {
+                    // /this.data1.response = data.json();
+                    // console.log(data[0]);
+                   // this.customerInfo.putObject('customerInfo',this.customersignupform.value);
+                   // this.coockieData.removeAll();
+                    this.router.navigateByUrl('/retailcustomerconnect');
+                    // this.router.navigate(['/retailcustomerconnect']);
 
 
+                }, error => {
+                    console.log("Oooops!");
+                });
+        }
+    }
 
 }
 

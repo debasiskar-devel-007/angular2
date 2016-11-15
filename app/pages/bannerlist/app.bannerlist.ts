@@ -52,7 +52,7 @@ export class AppBannerlist {
         this.serverUrl = this.items[0].serverUrl;
         let link = this.serverUrl+'bannerlist';
         this.p=1;
-        this.orderbyquery='bannername';
+        this.orderbyquery='priority';
         this.orderbytype=-1;
         this.http.get(link)
             .subscribe(data1 => {

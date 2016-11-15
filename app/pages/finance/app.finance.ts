@@ -160,7 +160,10 @@ export class AppAppFinance {
     }
 
 
+    gotologin(){
+        this.router.navigateByUrl('/customerlogin');
 
+    }
 
 }
 

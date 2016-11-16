@@ -819,13 +819,10 @@
     display: inline-block;
     margin-bottom: 0;
     vertical-align: middle;
-    width: 49%;
-    margin-right: 1%;
-  }
-
-
-  .addadminblock .form-inline .signupform_wrapper .form-group:nth-child(even) {
-    margin-right: 0px;
+    width: 48%;
+    margin-right: 1% !important;
+    margin-left: 1% !important;
+    float: left;
   }
   .addadminblock .signupform_wrapper .form-group span {
     float: right;
@@ -1323,7 +1320,7 @@
   }
 
   .recentrsvpsinglelist .imgwrapper {
-    width: auto;
+    width: 65px;
     height: 50px;
   }
 
@@ -1373,6 +1370,11 @@
     padding: 0px;
   }
   .margintop30{margin-top:0px; float:none; margin-bottom:20px;}
+  .custoomerinfowrapper .inboxlists .btnreply {
+    margin-bottom: 13px !important;
+  }
+
+
 }
 @media screen and (max-width: 1100px) {
 
@@ -1535,6 +1537,7 @@
   .inventorysinglelistblock .imgbox {
     padding-right: 0px !important;
     padding-left: 0px !important;
+    margin-bottom: 15px;
   }
 
   .inventorylistswrapper input {
@@ -1700,6 +1703,7 @@
 
 }
 
+
 @media (max-width: 860px) {
   .daterange {
     position: inherit;
@@ -1718,7 +1722,7 @@
 
   .chakebox1box input[type=checkbox]:not(old) + label, .chakebox1box input[type=radio ]:not(old) + label, .chakebox2box input[type=checkbox]:not(old) + label, .chakebox2box input[type=radio   ]:not(old) + label,.chakebox3box input[type=checkbox]:not(old) + label, .chakebox3box input[type=radio   ]:not(old) + label {
     margin-left: 0px;
-    padding-left: 24px;
+    padding-left: 28px;
   }
 
   .customerstatus .example.list-inline>li:nth-child(2) {
@@ -2148,6 +2152,14 @@
     width: 100% !important;
     float: left;
   }
+
+  .addadmin .addadminblock .submitwrap {
+    text-align: center;
+    float: none;
+    margin: 0 auto;
+    display: block;
+  }
+
 }
 
 
@@ -2262,7 +2274,12 @@
 
 
 @media(max-width:1199px) {
-
+  .retailformblock1part1 .re_checkbox-inline span {
+    margin-top: -4px;
+  }
+  .retailformblock1part2 {
+    text-align: center;
+  }
   .retailmainbannerblock .container h3{ font-size:32px;}
 
   .retailmainbannerblock .container h3 span{ display:block;}
@@ -2276,14 +2293,36 @@
 
   .retailbannerblock2_text2{ text-align:center;}
 
-  .retailformblock1part1 span{ display:block; margin:0 auto; text-align:center; width:100%; line-height:30px;}
+  .retailformblock1part1 span{display: block;
+    margin: 0 auto;
+    text-align: center;
+    /* width: 100%; */
+    line-height:30px;
+  float: none;
+  }
 
-  .retailformblock1part1  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:10px; width:100px; float:none; overflow:hidden; padding-top:5px;}
+  .retailformblock1part1 .re_checkbox_inlinediv {
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 100px;
+    float: none;
+    overflow: hidden;
+    padding-top: 0px;
 
-  .retailformblock1part2  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:10px; width:100px; float:none; overflow:hidden; padding-top:5px;}
+  }
+  .retailformblock1part1 {
+    text-align: center;
+  }
 
-  .retailformblock1part2 span{ display:block; margin:0 auto; text-align:center; width:100%; line-height:30px;}
 
+  .retailformblock1part2  .re_checkbox_inlinediv{ display:inline-block; margin:0 auto; margin-top:10px; width:100px; float:none; overflow:hidden; padding-top:5px;}
+
+  .retailformblock1part2 span{ display:block; margin:0 auto; text-align:center; line-height:30px;
+    float: none;}
+  .retailformblock1part2 .re_checkbox-inline span {
+    margin-top: -4px;
+  }
   .form-inline .form-group{ display:block; width:100%;}
 
   .retailformblock1part3innerblock1 h3{ text-align:center;}
@@ -2314,13 +2353,21 @@
   .retailformblock4single{ width:309px!important;}
 
   .retailformblock5wrapper{width: 100%; margin: 0 auto;}
-  .retailformblock5part1{ width:90%!important;}
+  .retailformblock5part1{ width:90%!important; text-align: center;}
 
-  .retailformblock5part1 span{ display:block; text-align:center;}
+  .retailformblock5part1 span{ display:block; text-align:center; margin-bottom: 10px;float: none;}
 
-  .retailformblock5part1  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:0; width:100px; float:none; overflow:hidden; padding-top:0;}
+  .retailformblock5part1  .re_checkbox_inlinediv{
+    display: inline-block;
+    margin: 0 auto;
+    margin-top: 0;
+    width: 100px;
+    float: none;
+    overflow: hidden;
+    padding-top: 0;
+  }
 
-  .retailformblock5part1 .re_checkbox-inline label{ margin: 0 10px !important;}
+ /* .retailformblock5part1 .re_checkbox-inline label{ margin: 0 10px !important;}*/
 
 }
 @media(max-width:1024px) {
@@ -2328,9 +2375,13 @@
     width: 166px;
     float: right;
   }
+  .retailformblock1part1 .re_checkbox-inline span {
+    margin-top: -4px;
+  }
 }
 
 @media(max-width:991px) {
+
   .financingblock2wrapper [class*="col-"].pleaselistother{margin-bottom: 10px;}
 
   .ftrfinance p {margin-bottom: 0px;}
@@ -2407,6 +2458,9 @@
   .QuestionsCommentsdiv{padding-top: 7px !important;    padding-bottom: 10px !important;}
   .policydiv{padding-top: 7px !important;    padding-bottom: 0px !important;}
   .financingblock2wrapper [class*="col-"].QuestionsCommentstextarea{margin-bottom: 0px;}
+  .retailformblock1part2 {
+    text-align: center;
+  }
 }
 
 @media(max-width:767px) {
@@ -2867,8 +2921,26 @@
   .btnviewdetails {
     font-size: 12px;
   }
+  .custoomerinfowrapper .yourinboxblock .inboxlists li {
+    padding: 0px 0px 0px 0px;
+  }
+
 }
+
+@media(max-width:1666px) {
+  .custoomerinfowrapper .yourinboxblock .inboxlists li .btnreply{
+    margin-bottom: 17px !important;
+  }
+}
+
+
 @media(max-width:1520px) {
+
+  .custoomerinfowrapper .btnreply {
+    margin-bottom: 4px;
+  }
+
+
   .activitylists ul li.list-group-item p {
     float: left;
     width: 56%;
@@ -2876,7 +2948,10 @@
   .custoomerinfoblockright .control-label {
     font-size: 13px;
   }
-
+  .btnsendrsvp, .btnviewdetails {
+    font-size: 11px;
+    padding: 6px 2px 5px 2px;
+  }
   .custoomerinfoblockright .control-data {
     font-size: 13px;
   }
@@ -2887,42 +2962,134 @@
     width: 20px;
     height: 20px;
   }
-  .custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper {
+  .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper {
     width: 80px;
     vertical-align: middle;
     padding-top: 0%;
-    height: 247px;
+    height: 220px;
+  }
+  .custoomerinfowrapper .recentrsvpsinglelist p {
+    font-size: 11px;
+    padding: 6px 0px 6px 0px;
+  }
+  .custoomerinfowrapper .recentrsvpsinglelist .imgwrapper {
+    width: 100%;
+  }
+  .custoomerinfowrapper .postauctioncctivityheader li span{display: none;}
+  .custoomerinfowrapper .postauctioncctivityheader li{padding-right: 0px; padding-left: 0px;}
+  .custoomerinfowrapper .postauctioncctivityheader .daterange {right: 142px;}
+}
+@media(max-width:1400px) {
+  .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper {
+    vertical-align: middle;
+    padding-top: 0%;
+    width: 115px;
+    height: 130px;
   }
 }
 
+
 @media(max-width:1366px) {
 
-  .custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper {
+  .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper {
     width: 45px;
+  }
+  .custoomerinfowrapper .postauctioncctivityheader h2 {
+    font-size: 17px;
+  }
+  .custoomerinfowrapper .recentrsvpsinglelist .imgwrapper {
+    width: 100%;
+    height: 63px;
+  }
+
+  .custoomerinfowrapper .inboxlists li {
+    padding: 11px 0px 0px 0px;
+  }
+
+}
+
+@media(max-width:1320px) {
+  .custoomerinfowrapper .recentrsvpsinglelist .imgwrapper {
+    width: 100%;
+    height: 50px;
   }
 }
 
 
 @media(max-width:1280px) {
+  .custoomerinfowrapper .inboxlists li {
+    padding: 19px 0px 0px 0px;
+  }
+
+  .custoomerinfowrapper .activitylists ul li {
+    padding: 8px 0px 9px 0px !important;
+  }
+
+
   .custoomerinfoblockright .onlineblock1 .btnsendmsg {
     font-size: 11px;
   }
   .custoomerinfoblockright .chatblock1 .btnwrite {
     font-size: 11px;
   }
+  .custoomerinfowrapper .yourinboxblock .yourinboxheader h2 {
+    font-size: 17px;
+  }
+
+  .custoomerinfowrapper .recentrsvpheader h2 {
+    font-size: 17px;
+  }
+  .custoomerinfowrapper .recentrsvpsinglelist .imgwrapper {
+    width: 100%;
+    height: 56px;
+  }
+
 }
 
 @media(max-width:1199px) {
+  .custoomerinfowrapper .postauctioncctivityheader li span {
+    display: block;
+  }
+  .custoomerinfowrapper .inboxlists li {
+    padding: 11px 0px 0px 0px;
+  }
+
+  .custoomerinfowrapper .inboxlists li p {
+    margin: 0 0 0px;
+    padding: 11px 0px 5px 0px;
+  }
+
+
+  .custoomerinfowrapper .recentrsvpsinglelist .imgwrapper {
+    width: 65px;
+  }
   .custoomerinfowrapper .auctioninventoryblock {
     margin-top: 30px;
   }
-  .custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper {
-    width: 140px;
-    vertical-align: top;
-    padding-top: 26%;
-    height: 247px;
-  }
 
+  .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper {
+    width: 200px;
+    vertical-align: top;
+    padding-top: 10%;
+    height: 215px;
+  }
+  .custoomerinfowrapper .auctioninventoryblock .progressleft {
+    padding-left: 0px !important;
+    padding-top: 0px;
+  }
+  .custoomerinfowrapper .auctioninventoryblock .progressright {
+    padding-right: 0px !important;
+    padding-top: 0px;
+  }
+  .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .table {
+    margin-bottom: 8px;
+  }
+  .custoomerinfowrapper .yourinboxblock {
+    margin-top: 20px;
+  }
+  .custoomerinfowrapper .recentrsvpblock {
+    margin-top: 20px;
+  }
 }
 
 
@@ -2931,6 +3098,32 @@
     max-width: 100% !important;
     height: auto;
     width: initial;
+  }
+  .custoomerinfowrapper .postauctioncctivityheader .daterange {
+    position: absolute;
+    top: 9px;
+    right: 156px;
+  }
+  .custoomerinfowrapper .postauctioncctivityheader .addbtnwrapper2 {
+    top: 16px;
+  }
+}
+
+@media(max-width:840px) {
+  .custoomerinfowrapper .postauctioncctivityheader .daterange {
+    position: inherit;
+    top: 0px;
+    right: 0px;
+    margin: 10px auto 10px auto;
+    display: block;
+    text-align: center;
+  }
+  .custoomerinfowrapper .postauctioncctivityheader .addbtnwrapper2 {
+    float: none;
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center !important;
+    display: block;
   }
 }
 
@@ -2953,10 +3146,8 @@
     float: none;
     margin: 0px auto;
     text-align: center;
-    font-family: 'myriadpro-regular';
-    font-size: 14px;
-    color: #6f6f6f;
-    font-weight: normal;
+    display: block;
+    text-align: center !important;
   }
 
   .custoomerinfoblockright .control-data {
@@ -2998,8 +3189,6 @@
 
   .custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper {
     width: inherit;
-    vertical-align: top;
-    padding-top: 21px;
   }
 
 }
@@ -3033,4 +3222,35 @@
     text-align: center;
   }
 }
+
+@media(max-width:480px) {
+  .btnsendrsvp, .btnviewdetails {font-size: 13px;padding: 6px 4px 5px 4px;}
+  .custoomerinfowrapper .auctioninventoryblock .viewdetail ul{text-align:center;}
+  .custoomerinfowrapper .auctioninventoryblock .infobox {padding-left: 0px !important; padding-right: 0px !important;}
+  .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter {
+    width: 180px !important;
+  }
+}
+
+@media(max-width:360px) {
+  .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter {
+    width: 100%!important;
+  }
+}
+@media(max-width:320px) {
+  .btnsendrsvp, .btnviewdetails {
+    font-size: 13px;
+    padding: 6px 4px 5px 4px;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .custoomerinfowrapper .auctioninventoryblock .infobox .viewdetail ul li {
+    padding-right: 0px;
+    padding-left: 0px;
+    display: block;
+  }
+
+}
+
+
 /*---End CustomerProfile--*/

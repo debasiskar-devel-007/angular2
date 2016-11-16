@@ -62,6 +62,15 @@ import {AppAffiliateheader} from "./pages/affiliateheader/app.affiliateheader";
 import {AppAffiliatefooter} from "./pages/affiliatefooter/app.affiliatefooter";
 import {AppAffiliatedashboard} from "./pages/affiliatedashboard/app.affiliatedashboard";
 import {AppAuctionbidding} from "./pages/auctionbidding/app.auctionbidding";
+import {AppAddmembershippackage} from "./pages/addmembershippackage/app.addmembershippackage";
+import {AppMerbershippackagelist} from "./pages/merbershippackagelist/app.merbershippackagelist";
+import {AppEditmembershippackage} from "./pages/editmembershippackage/app.editmembershippackage";
+import {AppPackage} from "./pages/package/app.package";
+import {AppAuctionlist} from "./pages/auctionlist/app.auctionlist";
+import {AppAddauction} from "./pages/addauction/app.addauction";
+import {AppEditauction} from "./pages/editauction/app.editauction";
+import {AppAddcar} from "./pages/addcar/app.addcar";
+import {AppCarlist} from "./pages/carlist/app.carlist";
 //alert(window.location.hostname);
 
 //alert(checkutl);
@@ -149,6 +158,15 @@ const appRoutes: Routes = [
     { path: 'affiliatefooter', component:AppAffiliatefooter,outlet:'affiliatefooter'},
     { path: 'affiliatedashboard', component:AppAffiliatedashboard},
     { path: 'auctionbidding', component:AppAuctionbidding},
+    { path: 'addmembershippackage', component: AppAddmembershippackage},
+    { path: 'merbershippackagelist', component: AppMerbershippackagelist},
+    { path: 'editmembershippackage/:id', component: AppEditmembershippackage},
+    { path: 'package', component: AppPackage},
+    { path: 'auctionlist', component: AppAuctionlist},
+    { path: 'addauction', component: AppAddauction},
+    { path: 'editauction/:id', component: AppEditauction},
+    { path: 'addcar', component: AppAddcar},
+    { path: 'carlist', component: AppCarlist},
 
 
 ];

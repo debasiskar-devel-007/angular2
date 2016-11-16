@@ -1,0 +1,159 @@
+<div class="page-wrapper addmembershippackage addadmin">
+    <div class="blockmaininner">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="pageheader"><span>Add</span> Car</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row addsharelinkblock">
+            <div class="col-lg-12 addadminblock">
+                    <div class="signupform_wrapper">
+
+                        <form novalidate [formGroup]="addcarform"   name="addcar"  class="form-inline">
+                            <input type="hidden" name="username" [formControl]="addcarform.controls['username']">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+
+                                    <select class="form-control3" [formControl]="addcarform.controls['auction']" name="auction" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Your Auction</span></option>
+                                        <option *ngFor="let obj1 of auctionlist" [value]="obj1._id">{{obj1.name}}</option>
+                                    </select>
+                                    <span  *ngIf ="addcarform.controls['auction'].touched && !addcarform.controls['auction'].valid" class="help-inline spanalign"><span class="errormsgtxt">Auction is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['doctype']" name="doctype"  type="text" class="form-control" placeholder="Doc"/>
+                                    <span  *ngIf ="addcarform.controls['doctype'].touched && !addcarform.controls['doctype'].valid" class="help-inline"><span class="errormsgtxt">Doc type is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['odometer']" name="odometer"  type="text" class="form-control" placeholder="Odometer"/>
+                                    <span  *ngIf ="addcarform.controls['odometer'].touched && !addcarform.controls['odometer'].valid" class="help-inline"><span class="errormsgtxt">Odometer is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['highlights']" name="highlights"  type="text" class="form-control" placeholder="Highlights"/>
+                                    <span  *ngIf ="addcarform.controls['highlights'].touched && !addcarform.controls['highlights'].valid" class="help-inline"><span class="errormsgtxt">Highlights is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['primary_damage']" name="highlights"  type="text" class="form-control" placeholder="rimary Damage"/>
+                                    <span  *ngIf ="addcarform.controls['primary_damage'].touched && !addcarform.controls['primary_damage'].valid" class="help-inline"><span class="errormsgtxt">Primary Damage is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['secondary_damage']" name="secondary_damage"  type="text" class="form-control" placeholder="Secondary Damage"/>
+                                    <span  *ngIf ="addcarform.controls['secondary_damage'].touched && !addcarform.controls['primary_damage'].valid" class="help-inline"><span class="errormsgtxt">Secondary Damage is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['est_retail_value']" name="est_retail_value"  type="text" class="form-control" placeholder="Est. Retail Value"/>
+                                    <span  *ngIf ="addcarform.controls['est_retail_value'].touched && !addcarform.controls['est_retail_value'].valid" class="help-inline"><span class="errormsgtxt">Est. Retail Value is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['vin']" name="vin"  type="text" class="form-control" placeholder="Vin"/>
+                                    <span  *ngIf ="addcarform.controls['vin'].touched && !addcarform.controls['vin'].valid" class="help-inline"><span class="errormsgtxt">Vin is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['body_style']" name="body_style"  type="text" class="form-control" placeholder="Body Style"/>
+                                    <span  *ngIf ="addcarform.controls['body_style'].touched && !addcarform.controls['body_style'].valid" class="help-inline"><span class="errormsgtxt">Body Style is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['color']" name="color"  type="text" class="form-control" placeholder="Color"/>
+                                    <span  *ngIf ="addcarform.controls['color'].touched && !addcarform.controls['color'].valid" class="help-inline"><span class="errormsgtxt">Color is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['engine_type']" name="engine_type"  type="text" class="form-control" placeholder="Engine Type"/>
+                                    <span  *ngIf ="addcarform.controls['engine_type'].touched && !addcarform.controls['engine_type'].valid" class="help-inline"><span class="errormsgtxt">Engine Type is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['drive']" name="drive"  type="text" class="form-control" placeholder="Drive"/>
+                                    <span  *ngIf ="addcarform.controls['drive'].touched && !addcarform.controls['drive'].valid" class="help-inline"><span class="errormsgtxt">Drive is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['cylinder']" name="cylinder"  type="text" class="form-control" placeholder="Cylinder"/>
+                                    <span  *ngIf ="addcarform.controls['cylinder'].touched && !addcarform.controls['cylinder'].valid" class="help-inline"><span class="errormsgtxt">Cylinder is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['fuel']" name="fuel"  type="text" class="form-control" placeholder="Fuel"/>
+                                    <span  *ngIf ="addcarform.controls['fuel'].touched && !addcarform.controls['fuel'].valid" class="help-inline"><span class="errormsgtxt">Fuel is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['keys']" name="keys"  type="text" class="form-control" placeholder="Keys"/>
+                                    <span  *ngIf ="addcarform.controls['keys'].touched && !addcarform.controls['keys'].valid" class="help-inline"><span class="errormsgtxt">Keys is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['priority']" name="priority"  type="text" class="form-control" placeholder="Priority"/>
+                                    <span  *ngIf ="addcarform.controls['priority'].touched && !addcarform.controls['priority'].valid" class="help-inline"><span class="errormsgtxt">Priority is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" [formControl]="addcarform.controls['filename']" name="filename" class="form-control" placeholder="Filename"/>
+                                    <span *ngIf ="addcarform.controls['filename'].touched && !addcarform.controls['filename'].valid" class="help-inline"><span class="errormsgtxt">Filename is Required !</span><img src="images/iconquestion.png"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group hide">
+                                    <textarea [formControl]="addcarform.controls['notes']" name="notes" class="form-control form-control-textarea" placeholder="Notes">
+                                    </textarea>
+                                   <!-- <span *ngIf ="addcarform.controls['description'].touched && !addcarform.controls['description'].valid" class="help-inline"><span class="errormsgtxt">Description is Required !</span><img src="images/iconquestion.png"></span>-->
+                                </div>
+
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-12">
+                                <div class="browsefileblock">
+                                    <input type="file"
+                                           ngFileSelect
+                                           [options]="basicOptions"
+                                           (onUpload)="handleUpload($event)">
+                                    <!--<div class="responsceclass">
+                                        Response: {{ response | json }}
+                                    </div>-->
+                                    <div>
+                                        Uploading: {{ progress }}%
+                                    </div>
+                                    <div *ngIf="uploadedfilesrc" class="browsefileblockimg">
+                                        <img src="{{uploadedfilesrc}}" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row uploadrow">
+                            <div class="col-md-6">
+                                <div class="form-group_chakebox signupcheckbox">
+                                    <input id="checkbox1" type="checkbox" name="is_public" [formControl]="addcarform.controls['is_active']" value="1"/><label for="checkbox1"></label><span>Is Active?</span>
+                                    <span *ngIf ="addcarform.controls['is_active'].touched && !addcarform.controls['is_active'].valid" class="help-inline">You must select checkbox</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <!--<div class="form-group">
+                            <input [formControl]="addcarform.controls['imageurl']" name="imageurl"  type="text" class="form-control" placeholder="Image Url"/>
+                            <span  *ngIf ="addcarform.controls['imageurl'].touched && !addcarform.controls['imageurl'].valid" class="help-inline"><span class="errormsgtxt">Image Url is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>-->
+                        </form>
+                    </div>
+
+
+
+                <ckeditor
+                        [(ngModel)]="ckeditorContent"
+                        [config]="{uiColor: '#272727'}"
+                        (change)="onChange($event)"
+                        (blur)="onBlur($event)"
+                        debounce="500">
+                </ckeditor>
+                <span *ngIf ="addcarform.controls['notes'].touched && !addcarform.controls['notes'].valid" class="help-inline2"><span class="errormsgtxt">Notes  is Required !</span><img src="images/iconquestion.png"></span>
+                <div class="col-md-12">
+                    <div class="submitwrap">
+                        <button (click)="submitform1()" type="button" value="Submit" class="subbtn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       </div>
+    </div>

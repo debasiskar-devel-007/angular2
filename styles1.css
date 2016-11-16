@@ -105,7 +105,7 @@
 .auctionbidding_block1_left_box_left  .ab_scar{ background:#fff; width:19%; padding:1px; float:left; margin:4px 0.5%;}
 .auctionbidding_block1_left_box_left  .ab_scar img{ width:100%;}
 
-.auctionbidding_block1_left_box_right{ background:#e2e2e2; padding:0px 0 10px 0; margin: 0!important;}
+.auctionbidding_block1_left_box_right{ background:#e2e2e2; padding:0px 0 10px 0!important; margin: 0!important;}
 .auctionbidding_block1_left_box_right .nav-tabs li{ width:50%;}
 .auctionbidding_block1_left_box_right .nav-tabs li a{ width:100%; display:block; background:#3f4041!important; text-align:center; font-size:16px; color:#9a9a9a!important; text-transform:uppercase; font-family: 'open_sanssemibold'; margin:0px; padding:0px; border-radius:0px; line-height:44px; border:none!important;}
 
@@ -116,7 +116,7 @@
 .auctionbidding_block1_left_box_right .nav-tabs a:hover{ background:#e2e2e2;   color:#525252; margin:0px;  border-radius:0px;}
 
 .auctionbidding_block1_right{ padding-left:10px!important;}
-.auctionbidding_block2table{ margin:0px; padding:0;}
+.auctionbidding_block2table{ margin:0px!important; padding:0!important;}
 
 
 .auctionbiddingblock2topbg1{ background:#fb4a32; margin-bottom:17px; height:49px;}
@@ -136,7 +136,7 @@
 
 .auctionbidding_block2table b{ font-weight:normal; font-size:12px; color:#6f6f6f; display:block;}
 
-.auctionbidding_block2table td{ padding:10px 14px;}
+.auctionbidding_block2table td{ padding:9.8px 14px;}
 
 
 .auctionbidding_upcomingblock{ background:#e2e2e2; margin-top:12px; padding:12px;}
@@ -292,7 +292,7 @@
 .ad_tab_bottomblock h3{ display:inline-block; float:right; background:#3f4041; padding:25px 8px; margin:0 20px 0 5px; font-size:22px; color:#45c500; text-transform:uppercase; font-family: 'open_sanssemibold';}
 
 
-.ad_toptable_profile td{ padding:10px; vertical-align:top;}
+.ad_toptable_profile td{ padding:3px 10px; vertical-align:top;}
 
 .ad_toptable_profile tr{ border-bottom:solid 1px #ccc;}
 
@@ -308,7 +308,42 @@
 /*-----------------------Auction  bidding--------------------------*/
 /*-----------------------Auction  bidding--------------------------*/
 /*-----------------------Auction  bidding--------------------------*/
+@media(max-width:1680px) {
+.auctionbidding_block2table td{ padding:8px 14px;}
 
+    .ad_toptable_profile td {
+        padding: 2px 10px;
+        vertical-align: top;
+    }
+
+    .ad_tab_bottomblock h3{  padding: 14px 8px;}
+    .ad_tab_bottomblock h2{  padding: 14px 20px;}
+
+    .ad_toptable_profile td li{ margin-bottom: 2px; font-size: 13px;}
+}
+
+@media(max-width:1600px) {
+
+    .auctionbidding_tabtop1 h4{ margin: 12px 0;}
+
+    .auctionbidding_tabtop1 ul li{ margin-bottom: 2px;}
+
+    .auctionbidding_tabtop1{ min-height: 388px;}
+}
+
+
+@media(max-width:1360px) {
+
+    .auctionbidding_tabtop1{ min-height: 448px;}
+
+    .auctionbidding_block2table td {
+        padding: 12px 14px;
+    }
+
+    .auctionbiddingblock2topbg2 {
+        padding: 21px 14px;
+    }
+}
 @media(max-width:1580px) {
     .ad_tab_bottomblock h2{ padding:10px; width:100%; text-align:center; float:none; padding-bottom:20px;}
 

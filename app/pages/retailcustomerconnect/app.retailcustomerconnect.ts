@@ -9,6 +9,7 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
+//import {SimplePageScroll} from 'ng2-simple-page-scroll';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class AppRetailcustomerconnect {
     //dealerloginform: FormGroup;
     myModal :ModalModule;
     customersignupform: FormGroup;
+    customersignupupdateform: FormGroup;
     data:any;
     http:Http;
     items:any;
@@ -50,6 +52,7 @@ export class AppRetailcustomerconnect {
         this.messages = appcomponent.getMessages();
         this.customerinfo=customerInfo.getObject('customerInfo');
         console.log(this.customerinfo);
+        this.customerInfo=customerInfo;
         this.serverUrl = this.items[0].serverUrl;
         this.http.get(this.serverUrl+'getusastates')
             .subscribe(data => {
@@ -82,6 +85,16 @@ export class AppRetailcustomerconnect {
           //  term: ["this.customerinfo.term", AppRetailcustomerconnect.validateTerms]
         });
 
+        this.customersignupupdateform = fb.group({
+            username: [this.customerinfo.username, Validators.required],
+            send_mail: ['', Validators.required],
+            retail_calculator: ['', Validators.required],
+            purchase_time: ['', Validators.required],
+            base_price: ['', Validators.required],
+            color_opiton: ['', Validators.required],
+            upcoming_auction: ['', Validators.required],
+        });
+
 
     }
 
@@ -103,16 +116,12 @@ export class AppRetailcustomerconnect {
         console.log(this.customersignupform.value);
         let x:any;
         for(x in this.customersignupform.controls){
-            console.log(5555);
             this.customersignupform.controls[x].markAsTouched();
 
         }
         this.customersignupform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
         if(this.customersignupform.valid){
-            console.log(8788686876);
-             //var headers = new Headers();
-            //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
             let link = this.serverUrl+'updatecustomer2';
@@ -122,7 +131,7 @@ export class AppRetailcustomerconnect {
                 .subscribe(data => {
                     // /this.data1.response = data.json();
                     // console.log(data[0]);
-                   // this.customerInfo.putObject('customerInfo',this.customersignupform.value);
+                    this.customerInfo.putObject('customerInfo',this.customersignupform.value);
                    // this.coockieData.removeAll();
                     this.router.navigateByUrl('/retailcustomerconnect');
                     // this.router.navigate(['/retailcustomerconnect']);
@@ -132,6 +141,41 @@ export class AppRetailcustomerconnect {
                     console.log("Oooops!");
                 });
         }
+    }
+    updateformsubmit(){
+        let x:any;
+        for(x in this.customersignupupdateform.controls){
+            this.customersignupupdateform.controls[x].markAsTouched();
+
+        }
+        this.customersignupupdateform.markAsDirty();
+        //this.signupform.controls['fname'].markAsTouched();
+        if(this.customersignupupdateform.valid){
+
+            //var headers = new Headers();
+            //headers.append('Content-Type', 'application/x-www-form-urlencoded');
+
+            //this.items = this.commonservices.getItems();
+            let link = this.serverUrl+'updatecustomer';
+            var submitdata = this.customersignupupdateform.value;
+            console.log(submitdata);
+           /* this.http.post(link,submitdata)
+                .subscribe(data => {
+                    // /this.data1.response = data.json();
+                    console.log(this.customersignupupdateform.value);
+                   // this.customerInfo.putObject('customerInfo',this.customersignupupdateform.value);
+                    this.router.navigateByUrl('/retailcustomerconnect');
+                    // this.router.navigate(['/retailcustomerconnect']);
+
+
+                }, error => {
+                    console.log("Oooops!");
+                });*/
+        }
+    }
+
+    goto(){
+       this.router.navigate(['/finance']) ;
     }
 
 }

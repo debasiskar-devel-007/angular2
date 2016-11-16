@@ -1832,14 +1832,15 @@ ul.inboxlists{padding:0px; margin:0px;}
 
 .addadminblock {padding: 10px; background-color: #858687 !important; height: auto; border-top: 5px solid #47c900; margin-top: 0px;}
 .addfaqblock {padding: 10px; background-color: #858687 !important; height: auto; border-top: 5px solid #47c900; margin-top: 0px;}
+.addadminblock{float: left;}
 .addfaqblock .submitwrap {width: 127px; text-align: right;padding: 20px 0px; margin-top: 0px !important; float: right; z-index: 9; position: relative;}
 .addadminblock .signupform_wrapper { padding-left: 0px;padding-right: 0px; margin-top: 6px; padding-bottom: 0px; min-height: inherit; height: auto; width: 100%; display: inline-block;}
 .addfaq .addfaqblock .signupform_wrapper {padding-left: 0px;padding-right: 0px;margin-top: 6px;padding-bottom: 0px;min-height: inherit;height: auto;width: 100%; display: inline-block;}
 .addadminblock .signupform_wrapper .form-group {width: 100%; margin: 14px 0; border-radius: 4px;}
-.addadminblock .signupform_wrapper .form-group input{background: #272727;box-shadow: 0 0 6px #615b42; padding: 2px; }
+.addadminblock .signupform_wrapper .form-group input{background: #272727;box-shadow: 0 0 6px #615b42; padding: 6px 8px; }
 .addadminblock .signupform_wrapper .form-group img {width: 50px; height: 52px; margin: 0; background: #eff4f8; padding: 13px 17px; box-shadow: 0 0 6px #615b42; margin-left: 6px;}
-.addadminblock .signupform_wrapper select {-webkit-appearance: none; -moz-appearance: none; appearance: none; background: #272727 url(./images/selectboxbg.png) no-repeat!important; background-position: right top!important;  border: none!important; outline: none!important; padding: 0 9px;}
-.addadminblock .signupform_wrapper .form-group .form-control {width: 100%; background: #272727; height: 50px; margin: 0px; border: none; border-radius: 0px;font-family: 'MyriadPro-Regular';font-size: 16px; color: #cbcccd; box-shadow: none;}
+.addadminblock .signupform_wrapper select {-webkit-appearance: none; -moz-appearance: none; appearance: none; background: #272727 url(./images/selectboxbg.png) no-repeat!important; background-position: right top!important;  border: none!important; outline: none!important; padding: 0 9px;font-family: 'MyriadPro-Regular'; font-size: 16px; color: #fff !important; box-shadow: none; font-weight: normal !important;}
+.addadminblock .signupform_wrapper .form-group .form-control {width: 100%; background: #272727; height: 50px; margin: 0px; border: none; border-radius: 0px;font-family: 'MyriadPro-Regular';font-size: 16px; color: #fff; box-shadow: none;}
 
 .addadminblock .signupform_wrapper .form-group .form-control-textarea { height: 50px; resize:none;}
 
@@ -1851,7 +1852,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .addadminblock .signupform_wrapper .form-group  input:-moz-placeholder { /* Firefox 18- */width: 94%;}
 .addadminblock .submitwrap{width: 127px; text-align: right; padding: 20px 0px; margin-top: -61px; float: right; z-index: 9; position: relative;}
 .addadminblock .submitwrap .subbtn{ margin-right: 0px !important; padding: 8px 30px; font-family: 'open_sanssemibold'; font-size: 14px; line-height: 16px; background: #eff4f8; color: #000; cursor: pointer; border-radius: 1px; cursor: pointer; text-transform: uppercase; text-decoration: none;}
-.addadminblock .form-group_chakebox {margin-top: 15px;}
+.addadminblock .form-group_chakebox {margin-left: 1%; padding-top: 0px !important; float: left;}
 .addadminblock .signupform_wrapper .help-inline span {right: 35px !important; text-align: right;}
 .adminlistblock .table {margin-bottom: 0px;}
 
@@ -5096,22 +5097,24 @@ ul.inboxlists{padding:0px; margin:0px;}
 
 .retailformblock1{background-color: #efeeed; padding: 30px 0px;}
 .retailformblock1wrapper{ margin: 0 auto; padding:0px;}
-.retailformblock1part1{background-color: #3a3838; width: 100%; padding: 8px 16px; }
-.retailformblock1part1 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff; font-weight: normal; }
+.retailformblock1part1{background-color: #3a3838; width: 100%; padding: 8px 16px;    text-align: left; }
+.retailformblock1part1 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff; font-weight: normal; float: left; margin-right: 14px; }
 
-.retailformblock1part1 .re_checkbox-inline{ margin-top: -8px!important;}
+
+/*.retailformblock1part1 .re_checkbox-inline{ margin-top: -8px!important;}
 .retailformblock1part1 .re_checkbox-inline label span{margin: 0px;}
-.retailformblock1part1 .re_checkbox-inline label{margin: 0px 0px 0 0 !important;  font-family: 'myriadpro-regular'; font-weight: normal; font-size: 24px; color:#fff !important; text-transform: uppercase;}
+.retailformblock1part1 .re_checkbox-inline label{margin: 0px 0px 0 0 !important;  font-family: 'myriadpro-regular'; font-weight: normal; font-size: 24px; color:#fff !important; text-transform: uppercase;}*/
 
 
 .retailformblock1part2{background-color: #7c7c7d; width: 100%; padding: 8px 16px;  margin-top: 2px;}
-.retailformblock1part2 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff;font-weight: normal;}
+.retailformblock1part2 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff;font-weight: normal; float: left; margin-right: 14px !important;}
 
+/*
 .retailformblock1part2 .re_checkbox-inline{ margin-top: -8px!important;}
 
 
 .retailformblock1part2 .re_checkbox-inline label span{margin: 0px;}
-.retailformblock1part2 .re_checkbox-inline label{margin: 0px 0px 0 0 !important; font-family: 'myriadpro-regular'; font-weight: normal; font-size: 24px; color:#fff !important; text-transform: uppercase;}
+.retailformblock1part2 .re_checkbox-inline label{margin: 0px 0px 0 0 !important; font-family: 'myriadpro-regular'; font-weight: normal; font-size: 24px; color:#fff !important; text-transform: uppercase;}*/
 
 .retailformblock3,.retailformblock4{ padding-left:0px; padding-right:0px; margin-left:0px; margin-right:0px;}
 .retailformblock2wrapper{ margin: 0 auto;}
@@ -5182,11 +5185,11 @@ ul.inboxlists{padding:0px; margin:0px;}
 .retailformblock1part3innerblock51 input[type=checkbox]:not(old) + label,
 .retailformblock1part3innerblock51 input[type=radio ]:not(old) + label {
     display: inline-block;
-    margin-left: -32px;
+/*    margin-left: -32px;*/
     padding-left: 32px;
     background: url('../images/re_checkbox3.png') no-repeat 0 0;
     line-height: 18px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: normal;
 }
 
@@ -5204,6 +5207,8 @@ ul.inboxlists{padding:0px; margin:0px;}
     padding: 20px 27px;
     font-family: "myriadpro-regular"; font-weight: normal;
 }
+.retailformblock1part3innerblock51 .table>tbody>tr>td div input[type=radio]{display: none;}
+
 .retailformblock1part3innerblock51 { margin-bottom:0px!important; }
 .retailformblock1part3innerblock51 .table>tbody>tr>td,
 .retailformblock1part3innerblock51 .table>tfoot>tr>td,
@@ -5271,7 +5276,8 @@ ul.inboxlists{padding:0px; margin:0px;}
 .retailformblock1part3innerblock6single{padding-right: 0px !important; padding-left: 0px!important;}
 
 
-.retailformblock1part3innerblock21 label{font-family: "myriadpro-regular";font-size: 16px; font-style: normal; font-variant: normal; font-weight: 500;width: 88%;}
+/*.retailformblock1part3innerblock21 label{font-family: "myriadpro-regular";font-size: 16px; font-style: normal; font-variant: normal; font-weight: 500;width: 88%;}*/
+
 .retailformblock1part3innerblock21 strong{font-family: "myriadpro-regular";font-size: 16px; font-style: normal; font-variant: normal; font-weight: 500;}
 .retailformblock1part3innerblock21 .form-control{padding-left: 28px; background: url("../images/searchicon.png") no-repeat 0 7px; font-family: Arial, Helvetica, sans-serif; text-transform:uppercase; font-size: 16px; font-style: normal; font-variant: normal; color:#343333; font-weight: 500; border-bottom: 1px solid #ccc;  box-shadow:none !important; -moz-box-shadow:none; -webkit-box-shadow:none;border-radius: 0px; border-top: 0px solid #ccc;border-left:0px solid #ccc; border-right: 0px solid #ccc;}
 
@@ -5300,7 +5306,7 @@ input[type=radio]:not(old):checked + label{background-position : 0 -18px;}
 
 .retailformblock1part1 label span { margin-right: 4px;}
 .retailformblock1part2 label span {margin-right: 4px;}
-
+/*
 .retailformblock1part1 label {
     text-transform: uppercase;
     margin-right: 0px;
@@ -5312,7 +5318,9 @@ input[type=radio]:not(old):checked + label{background-position : 0 -18px;}
 }
 .retailformblock1part2 span {
     margin-right: 0px;
-}
+}*/
+
+
 .re_checkbox-inline+.re_checkbox-inline, .radio-inline+.radio-inline {
     margin-top: 0;
     margin-left: 0px !important;
@@ -5323,7 +5331,8 @@ input[type=radio]:not(old):checked + label{background-position : 0 -18px;}
 .retailformblock2wrapperinner{padding-left: 0px !important; padding-right: 6px !important;}
 .retailformblock2wrapperinnerwrapper{border:1px solid #bfbebd; border-top:0px !important; min-height: 572px;}
 .retailformblock2wrapperinner{padding-left: 0px;}
-.retailformblock2wrapperinnerpart21{padding: 8px 24px;}
+.retailformblock2wrapperinnerpart21{padding: 8px 24px;margin-bottom: 21px;}
+.retailformblock2wrapperinnerpart2 .retailformblock2wrapperinnerpart21:first-of-type {margin-bottom: 0px;}
 .retailformblock2wrapperinnerpart2{padding-right: 0px;}
 .retailformblock2wrapperinnerpart21 .list-group-item{border:0px;}
 .retailformblock2wrapperinnerpart2 h4 {    background-color: #272727;
@@ -5422,8 +5431,9 @@ a .btnviewall {
     font-variant: normal;
     font-weight: 500;
     color:#838485;
+    float: right;
 }
-.retailformblock2wrapperinnerpart21 label {
+/*.retailformblock2wrapperinnerpart21 span {
     font-family: "MyriadPro-Semibold";
     font-size: 18px;
     font-style: normal;
@@ -5431,7 +5441,7 @@ a .btnviewall {
     font-weight: 500;
     width: 88%;
     color:#1f1f1e;
-}
+}*/
 
 
 .retailformblock3single{padding-top: 39px; padding-bottom: 39px; background-color: #efeeed; width: 100%;}
@@ -5537,7 +5547,8 @@ a .btnviewall {
 .retailformblock5{ padding: 0px 0px;}
 .retailformblock5wrapper{width: 1192px; margin: 0 auto;}
 .retailformblock5part1{background-color: #3a3838;width: 1130px; margin:0 auto; padding: 8px 16px 8px 16px;}
-.retailformblock5part1 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff; font-weight: normal; }
+.retailformblock5part1 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff; font-weight: normal;
+    float: left;}
 
 .retailformblock5part1 .re_checkbox-inline{ margin-top: -8px!important;}
 .retailformblock5part1 .re_checkbox-inline label span{margin: 0px;}
@@ -5667,7 +5678,7 @@ a .btnviewall {
     text-transform: uppercase;}
 
 
-.re_checkbox_inlinediv{ display:inline;}
+.re_checkbox_inlinediv{ display:inline; float: left; margin-top: 8px;}
 
 .retailformblock1part3innerblock51 strong{ display:none;}
 
@@ -6619,7 +6630,7 @@ a .btnviewall {
 .sharelinkssinglelistright ul li .btnedit{margin:0px;}
 .sharelinkssinglelistright p{display:block;}
 .sharelinkssinglelist .actionbtns{margin-bottom: 10px;}
-.sharelinkssinglelist .actionbtns a{display: inline-block;}
+.sharelinkssinglelist .actionbtns button{display: inline-block;}
 .sharelinkssearch{margin-top: 0; margin-bottom: 0px;}
 
 /*---End sharelinks--*/
@@ -7356,9 +7367,9 @@ a:focus, a:hover {
 .writemailinboxwrapper .box-footer .btndiscard{background-color:#fa513f !important; color: #fff !important;
     text-transform: capitalize;
     padding: 8px 40px;
-   /* -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
-    -moz-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
-    box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);*/
+    /* -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
+     -moz-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
+     box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);*/
     font-family: 'MyriadPro-Regular';
     font-size: 14px;
     text-align: center;
@@ -7550,13 +7561,37 @@ a:focus, a:hover {
 
 
 /*---custoomerinfo--*/
+.custoomerinfowrapper .inventorysinglelist .customerstatus .chakebox2box input[type=checkbox]:not(old),.custoomerinfowrapper .inventorysinglelist .customerstatus .chakebox2box input[type=radio ]:not(old) {
+    width: 28px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    display: none;
+}
+
+.custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(1) {
+    width: 24%;
+}
+
+.custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(2) {
+    width: 28%;
+}
+.custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(3) {
+    width: 31%;
+}
+
+.custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(4) {
+    width: 16%;
+}
 .custoomerinfo .yourinboxblock{padding:12px; background-color:#e2e2e2; width:100%; margin-top:0px;}
 .custoomerinfoblockleft{padding-left:0px !important;}
 .custoomerinfoblockright{padding-right: 0px !important; }
 .custoomerinfopic{padding: 3px;background-color: #fff; width: 139px; height: 139px; overflow: hidden; display: table-cell; vertical-align: middle; text-align: center;}
 .custoomerinfowrapper .row-eq-height {display: block;}
 
-.custoomerinfoblockright .control-label{width:30%; float:left; padding:0px; margin:0px; text-align:left;font-family:'myriadpro-regular'; font-size:14px; color:#6f6f6f;font-weight: normal;}
+.custoomerinfowrapper .inboxlists li p {margin: 0 0 0px;}
+
+.custoomerinfoblockright .control-label{width:30%; float:left; padding:0px; margin:0px; text-align:left !important; font-family:'myriadpro-regular'; font-size:14px; color:#6f6f6f;font-weight: normal;}
 .custoomerinfoblockright .control-data{width:70%; float:right; padding:0px; margin:0px; text-align:left;font-family:'open_sanssemibold'; font-size:14px; color:#494949;}
 
 .custoomerinfoblockright .control-data .form-control-static {padding-top: 0px;padding-bottom: 0px;margin-bottom: 0; min-height: 26px;}
@@ -7595,6 +7630,11 @@ a:focus, a:hover {
     height: 30px;
     border: none !important;
 }
+.custoomerinfoonline .chatblock1 img{
+    border: none !important;
+    outline: none !important;
+}
+
 
 .btnwrite {
     color: #fff;
@@ -7640,10 +7680,10 @@ a:focus, a:hover {
     padding: 12px;}
 .activitylists ul li {     line-height: 20px;
     width: 100%;
-    padding: 13px 0px !important;
+    padding: 13px 0px 12px 0px !important;
     float: left;
     border-bottom: 1px solid #e1e1e1 !important;
-    border-radius: none;
+    border-radius: 0px;
     margin-bottom: 0;
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -7682,35 +7722,35 @@ a:focus, a:hover {
     padding: 10px 10px;
 }
 .custoomerinfowrapper .postauctioncctivityheader .daterange { position: absolute; top: 39px; right: 156px;}
-.custoomerinfowrapper .inboxlists li {
+.custoomerinfowrapper .auctioninventoryblock .inboxlists li {
     display: inline-block;
     padding: 8px 0px 0px 0px;
     width: 100%;
 }
 
-.custoomerinfowrapper .btnreply {
-    margin-bottom: 5px;
+.custoomerinfowrapper .auctioninventoryblock .btnreply {
+    margin-bottom: 4px !important;
 }
-.custoomerinfowrapper .inboxlists li p {
+.custoomerinfowrapper .auctioninventoryblock .inboxlists li p {
     padding: 0px 0px 0px 0px;
 }
 .custoomerinfowrapper .auctioninventoryblock {
     margin-top: 0px;
 }
-.custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper {
-    width: 115px;
+.custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper {
+    width: 155px;
     vertical-align: top;
     padding-top: 45%;
     height: 215px;
 }
 
-.custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper .auctionimg {
+.custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper .auctionimg {
     vertical-align: bottom;
     padding-top: 21px;
 }
 
-.custoomerinfowrapper .infobox .viewdetail{padding: 8px 0px !important;}
-.custoomerinfowrapper .infobox .viewdetail ul li{padding-right: 1px; padding-left: 1px; }
+.custoomerinfowrapper .auctioninventoryblock .infobox .viewdetail{padding: 8px 0px !important;}
+.custoomerinfowrapper .auctioninventoryblock .infobox .viewdetail ul li{padding-right: 0px; padding-left: 0px; }
 .btnsendrsvp{
     color: #575757;
     cursor: pointer;
@@ -7718,7 +7758,7 @@ a:focus, a:hover {
     -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     -moz-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
-    padding: 6px 4px 5px 4px;
+    padding: 6px 3px 5px 3px;
     border: none;
     font-size:13px;
     text-transform:uppercase;
@@ -7731,18 +7771,354 @@ a:focus, a:hover {
     -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     -moz-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
-    padding: 6px 4px 5px 4px;
+    padding: 6px 3px 5px 3px;
     border: none;
     font-size:13px;
     text-transform:uppercase;
 }
 
-.custoomerinfowrapper .progressleft{padding-left:0px !important;}
-.custoomerinfowrapper .progressright{padding-right:0px !important;}
-.custoomerinfowrapper .progressleft .progress {margin-bottom: 0px;}
-.custoomerinfowrapper .inventorysinglelistblock .table>tbody>tr>td, .custoomerinfowrapper .inventorysinglelistblock .page-wrapper .table>tfoot>tr>td, .custoomerinfowrapper .inventorysinglelistblock .table>thead>tr>td {
+.custoomerinfowrapper .auctioninventoryblock .progressleft{padding-left:0px !important;}
+.custoomerinfowrapper .auctioninventoryblock .progressright{padding-right:0px !important;}
+.custoomerinfowrapper .auctioninventoryblock .progressleft .progress {margin-bottom: 0px;}
+.custoomerinfowrapper .auctioninventoryblock .inventorysinglelistblock .table>tbody>tr>td, .custoomerinfowrapper .auctioninventoryblock .inventorysinglelistblock .page-wrapper .table>tfoot>tr>td, .custoomerinfowrapper .auctioninventoryblock .inventorysinglelistblock .table>thead>tr>td {
     vertical-align: middle;
     padding: 6px 0px !important;
 }
 
+.custoomerinfowrapper .inboxlists .btnreply {
+    margin-bottom: 4px !important;
+}
+
+.custoomerinfowrapper .inventoryrecentbidblock .inventorysinglelist .inventorysinglelistblock {
+    padding: 15px 15px 0px 15px;
+}
+
+
+
+
+
 /*---End custoomerinfo--*/
+
+
+
+.addadmin .addadminblock .submitwrap { width: 127px; text-align: right; float: right; z-index: 9; position: relative; margin-top: -28px; padding: 0px 1% 15px 0px;}
+
+
+
+
+.retailformblock1part1 .re_checkbox-inline input[type=checkbox]:not(old), .retailformblock1part1 .re_checkbox-inline input[type=radio]:not(old){
+    width   : 20px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0; cursor: pointer;
+    display: none;
+}
+
+.retailformblock1part1 .re_checkbox-inline input[type=checkbox]:not(old) + label, .retailformblock1part1 .re_checkbox-inline input[type=radio]:not(old) + label{
+    display      : inline-block;
+    margin-left  : 0;
+    padding-left : 28px;
+    background   : url("images/re_chakebox2.png") no-repeat 0 0;
+    line-height  : 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.retailformblock1part1 .re_checkbox-inline input[type=checkbox]:not(old):checked + label,.retailformblock1part1 .re_checkbox-inline input[type=radio]:not(old):checked + label{
+    background-position : 0 -20px;
+}
+
+.retailformblock1part1 .re_checkbox-inline label{ width:20px; height:20px; float:left;}
+.retailformblock1part1 .re_checkbox-inline span{cursor: pointer; font-weight: normal;   font-family:'MyriadPro-Regular'; color: #fff; font-size: 26px; display:inline-block; float:left;    margin-top: -8px;}
+
+
+
+
+
+.retailformblock1part2 .re_checkbox-inline input[type=checkbox]:not(old), .retailformblock1part2 .re_checkbox-inline input[type=radio]:not(old){
+    width   : 20px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0; cursor: pointer;
+    display: none;
+}
+
+.retailformblock1part2 .re_checkbox-inline input[type=checkbox]:not(old) + label, .retailformblock1part2 .re_checkbox-inline input[type=radio]:not(old) + label{
+    display      : inline-block;
+    margin-left  : 0;
+    padding-left : 28px;
+    background   : url("images/re_chakebox2.png") no-repeat 0 0;
+    line-height  : 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.retailformblock1part2 .re_checkbox-inline input[type=checkbox]:not(old):checked + label,.retailformblock1part2 .re_checkbox-inline input[type=radio]:not(old):checked + label{
+    background-position : 0 -20px;
+}
+
+.retailformblock1part2 .re_checkbox-inline label{ width:20px; height:20px; float:left;}
+.retailformblock1part2 .re_checkbox-inline span{cursor: pointer; font-weight: normal;   font-family:'MyriadPro-Regular'; color: #fff; font-size: 26px; display:inline-block; float:left;    margin-top: -8px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.retailformblock1part3innerblock1single input[type=checkbox]:not(old),
+.retailformblock1part3innerblock1single input[type=radio]:not(old){
+    width   : 20px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0; cursor: pointer;
+    display: none;
+}
+
+.retailformblock1part3innerblock1single input[type=checkbox]:not(old) + label, .retailformblock1part3innerblock1single input[type=radio]:not(old) + label{
+    display      : inline-block;
+    margin-left  : 0;
+    padding-left : 28px;
+    background   : url("images/re_chakebox2.png") no-repeat 0 0;
+    line-height  : 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.retailformblock1part3innerblock1single input[type=checkbox]:not(old):checked + label,.retailformblock1part3innerblock1single input[type=radio]:not(old):checked + label{
+    background-position : 0 -20px;
+}
+
+.retailformblock1part3innerblock1single label{ width:20px; height:20px; float:left;}
+
+
+
+
+
+.re_newtextleft .retailformblock1part3innerblock2single input[type=checkbox]:not(old),
+.re_newtextleft .retailformblock1part3innerblock2single input[type=radio]:not(old){
+    width   : 20px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0; cursor: pointer;
+    display: none;
+}
+
+.re_newtextleft .retailformblock1part3innerblock2single input[type=checkbox]:not(old) + label,
+.re_newtextleft .retailformblock1part3innerblock2single input[type=radio]:not(old) + label{
+    display      : inline-block;
+    margin-left  : 0;
+    padding-left : 28px;
+    background   : url("images/re_chakebox2.png") no-repeat 0 0;
+    line-height  : 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.re_newtextleft .retailformblock1part3innerblock2single input[type=checkbox]:not(old):checked + label,.re_newtextleft .retailformblock1part3innerblock2single input[type=radio]:not(old):checked + label{
+    background-position : 0 -20px;
+}
+
+.re_newtextleft .retailformblock1part3innerblock2single label{ width:20px; height:20px; float:left;}
+.re_newtextleft .retailformblock1part3innerblock2single span{
+    font-family: "myriadpro-regular";
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    display: inline-block;
+    float: left;
+}
+
+
+
+
+
+.retailformblock2wrapperinnerpart21 input[type=checkbox]:not(old),
+.retailformblock2wrapperinnerpart21 input[type=radio]:not(old){
+    width   : 20px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0; cursor: pointer;
+    display: none;
+}
+
+.retailformblock2wrapperinnerpart21 input[type=checkbox]:not(old) + label,
+.retailformblock2wrapperinnerpart21 input[type=radio]:not(old) + label{
+    display      : inline-block;
+    margin-left  : 0;
+    padding-left : 28px;
+    background   : url("images/re_chakebox2.png") no-repeat 0 0;
+    line-height  : 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.retailformblock2wrapperinnerpart21 input[type=checkbox]:not(old):checked + label,.retailformblock2wrapperinnerpart21 input[type=radio]:not(old):checked + label{
+    background-position : 0 -20px;
+}
+
+.retailformblock2wrapperinnerpart21 label{ width:20px; height:20px; float:left;}
+.retailformblock2wrapperinnerpart21 span{
+    display: inline-block;
+    float: left;
+    font-family: "myriadpro-regular";
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+    width:84%;
+}
+
+
+
+
+
+
+
+.inputtag input[type=checkbox]:not(old),
+.inputtag input[type=radio]:not(old){
+    width   : 20px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0; cursor: pointer;
+    display: none;
+}
+
+.inputtag input[type=checkbox]:not(old) + label,
+.inputtag input[type=radio]:not(old) + label{
+    display      : inline-block;
+    margin-left  : 0;
+    padding-left : 28px;
+    background   : url("images/re_chakebox2.png") no-repeat 0 0;
+    line-height  : 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.inputtag input[type=checkbox]:not(old):checked + label,.inputtag input[type=radio]:not(old):checked + label{
+    background-position : 0 -20px;
+}
+
+.inputtag label{ width:20px; height:20px; float:left;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.retailformblock1part3innerblock3 .retailformblock1part3innerblock3single input[type=checkbox]:not(old),
+.retailformblock1part3innerblock3 .retailformblock1part3innerblock3single input[type=radio]:not(old){
+    width   : 20px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0; cursor: pointer;
+    display: none;
+}
+
+.retailformblock1part3innerblock3 .retailformblock1part3innerblock3single input[type=checkbox]:not(old) + label,
+.retailformblock1part3innerblock3 .retailformblock1part3innerblock3single input[type=radio]:not(old) + label{
+    display      : inline-block;
+    margin-left  : 0;
+    padding-left : 28px;
+    background   : url("images/re_chakebox2.png") no-repeat 0 0;
+    line-height  : 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.retailformblock1part3innerblock3 .retailformblock1part3innerblock3single input[type=checkbox]:not(old):checked + label,.retailformblock1part3innerblock3 .retailformblock1part3innerblock3single input[type=radio]:not(old):checked + label{
+    background-position : 0 -20px;
+}
+
+.retailformblock1part3innerblock3 .retailformblock1part3innerblock3single label{ width:20px; height:20px; float:left;}
+.retailformblock1part3innerblock3 .retailformblock1part3innerblock3single span{
+    display: inline-block;
+    float: left;
+    font-family: "myriadpro-regular";
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+}
+
+
+
+
+
+.retailformblock1part3innerblock4 .retailformblock1part3innerblock4single input[type=checkbox]:not(old),
+.retailformblock1part3innerblock4 .retailformblock1part3innerblock4single input[type=radio]:not(old){
+    width   : 20px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0; cursor: pointer;
+    display: none;
+}
+
+.retailformblock1part3innerblock4 .retailformblock1part3innerblock4single input[type=checkbox]:not(old) + label,
+.retailformblock1part3innerblock4 .retailformblock1part3innerblock4single input[type=radio]:not(old) + label{
+    display      : inline-block;
+    margin-left  : 0;
+    padding-left : 28px;
+    background   : url("images/re_chakebox2.png") no-repeat 0 0;
+    line-height  : 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.retailformblock1part3innerblock4 .retailformblock1part3innerblock4single input[type=checkbox]:not(old):checked + label,.retailformblock1part3innerblock4 .retailformblock1part3innerblock4single input[type=radio]:not(old):checked + label{
+    background-position : 0 -20px;
+}
+
+.retailformblock1part3innerblock4 .retailformblock1part3innerblock4single label{ width:20px; height:20px; float:left;}
+.retailformblock1part3innerblock4 .retailformblock1part3innerblock4single span{
+    display: inline-block;
+    float: left;
+    font-family: "myriadpro-regular";
+    font-size: 16px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 500;
+}
+
+
+
+
+
+.retailformblock5part1 .re_checkbox-inline input[type=checkbox]:not(old), .retailformblock5part1 .re_checkbox-inline input[type=radio]:not(old){
+    width   : 20px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0; cursor: pointer;
+    display: none;
+}
+
+.retailformblock5part1 .re_checkbox-inline input[type=checkbox]:not(old) + label, .retailformblock5part1 .re_checkbox-inline input[type=radio]:not(old) + label{
+    display      : inline-block;
+    margin-left  : 0;
+    padding-left : 28px;
+    background   : url("images/re_chakebox2.png") no-repeat 0 0;
+    line-height  : 20px;
+    height: 20px;
+    width: 20px;
+}
+
+.retailformblock5part1 .re_checkbox-inline input[type=checkbox]:not(old):checked + label,.retailformblock5part1 .re_checkbox-inline input[type=radio]:not(old):checked + label{
+    background-position : 0 -20px;
+}
+
+.retailformblock5part1 .re_checkbox-inline label{ width:20px; height:20px; float:left;}
+.retailformblock5part1 .re_checkbox-inline span{cursor: pointer; font-weight: normal;   font-family:'MyriadPro-Regular'; color: #fff; font-size: 26px; display:inline-block; float:left;    margin-top: 4px;}

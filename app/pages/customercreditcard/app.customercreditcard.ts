@@ -21,6 +21,7 @@ export class AppCustomercreditcard {
     customercreditform: FormGroup;
     myModal :ModalModule;
     data:any;
+
     http:Http;
     items:any;
     getExpyears:any;
@@ -32,6 +33,8 @@ export class AppCustomercreditcard {
     commonservices:AppCommonservices;
     customerinfo:any;
     private router: Router;
+    package_image:any;
+    details1:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router ) {
@@ -54,6 +57,18 @@ export class AppCustomercreditcard {
                 console.log(this.getusastates);
 
 
+            }, error => {
+                console.log("Oooops!");
+            });
+        var parts = location.hostname.split('.');
+        var sndleveldomain = parts[0];
+
+        let ids = {username: sndleveldomain};
+        this.http.post(this.serverUrl + 'editdealerbyusername', ids)
+            .subscribe(data => {
+                this.details1 = data.json()[0];
+                console.log(this.details1);
+                this.package_image="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/"+this.details1.filename;
             }, error => {
                 console.log("Oooops!");
             });

@@ -102,6 +102,16 @@ url:any
 
         return expMonths;
     }
+
+    getCardtype(){
+        let cardtype=[
+            {"value":"Master"},
+            {"value":"Visa"}
+
+
+        ];
+        return cardtype;
+    }
     convertunixtodate(unix_tm:any) {
         var dt = new Date(unix_tm);
         return  dt.getMonth()+'/'+dt.getDate()+'/'+dt.getFullYear() ;

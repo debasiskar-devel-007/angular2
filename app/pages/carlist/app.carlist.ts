@@ -84,7 +84,7 @@ export class AppCarlist{
     deleterow(dealerrow:any){
         //console.log(adminid);
 
-        let link= this.serverUrl+'deleteauction';
+        let link= this.serverUrl+'deletecar';
         let id=dealerrow;
         this.http.post(link,id)
             .subscribe(data1 => {
@@ -104,7 +104,7 @@ export class AppCarlist{
                 // console.log(this.data);
                 //this.data=this.tempdata;
                 //this.data.splice(index, 1);
-                this.appcomponent.putmessages('share media '+dealerrow.name+' deleted successfully','success');
+                this.appcomponent.putmessages('Car '+dealerrow.doctype+' deleted successfully','success');
                 //console.log(this.data);
 
             }, error => {
@@ -124,7 +124,7 @@ export class AppCarlist{
             var is_active=1;
         }
         let stat={id:item._id,is_active:is_active};
-        let link= this.serverUrl+'auctionstatuschange';
+        let link= this.serverUrl+'carstatuschange';
         this.http.post(link,stat)
             .subscribe(data1 => {
                 // this.data = data1.json();

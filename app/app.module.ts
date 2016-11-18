@@ -19,7 +19,7 @@ import {OrderBy} from  './services/orderby';
 import { AppContact }  from './pages/contact/app.contact';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {ModalModule} from "ng2-modal";
-import {AppdealerloginComponents} from "./pages/dealerlogin/app.dealerlogincomponent";
+
 import {AppDealerlogin} from "./pages/dealerlogin/app.dealerlogin";
 import {AppDealerheader} from "./pages/dealerheader/app.dealerheader";
 import {AppDealerfooter} from "./pages/dealerfooter/app.dealerfooter";
@@ -86,6 +86,9 @@ import {AppAddauction} from "./pages/addauction/app.addauction";
 import {AppEditauction} from "./pages/editauction/app.editauction";
 import {AppAddcar} from "./pages/addcar/app.addcar";
 import {AppCarlist} from "./pages/carlist/app.carlist";
+import {AppCustomersignupstep1} from "./pages/customersignupstep1/app.customersignupstep1";
+import {AppOrderdetails} from "./pages/orderdetails/app.orderdetails";
+import {AppDealerprofile} from "./pages/dealerprofile/app.dealerprofile";
 //import {Clipboard} from 'clipboard';
 
 
@@ -94,7 +97,7 @@ import {AppCarlist} from "./pages/carlist/app.carlist";
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule,Ng2PaginationModule,CKEditorModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppdealerloginComponents,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppAppFinance,AppRetailcustomerconnect,AppBannersizelist,AppAddbannersize,AppEditbannersize,AppAddbanner,AppBannerlist,AppEditbanner,AppViewcustomers,AppViewrsvp,AppWritemail,AppReadmessage,AppMailinbox,AppCustomerprofile,AppAddaffiliate,AppAffiliatelist,AppEditaffiliate,AppAffiliatelogin,AppAffiliatefooter,AppAffiliateheader,AppAffiliatedashboard,AppAddmembershippackage,AppMerbershippackagelist,AppAuctionbidding,AppEditmembershippackage,AppPackage,AppAuctionlist,AppAddauction,AppEditauction,AppAddcar,AppCarlist,UPLOAD_DIRECTIVES],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppAppFinance,AppRetailcustomerconnect,AppBannersizelist,AppAddbannersize,AppEditbannersize,AppAddbanner,AppBannerlist,AppEditbanner,AppViewcustomers,AppViewrsvp,AppWritemail,AppReadmessage,AppMailinbox,AppCustomerprofile,AppAddaffiliate,AppAffiliatelist,AppEditaffiliate,AppAffiliatelogin,AppAffiliatefooter,AppAffiliateheader,AppAffiliatedashboard,AppAddmembershippackage,AppMerbershippackagelist,AppAuctionbidding,AppEditmembershippackage,AppPackage,AppAuctionlist,AppAddauction,AppEditauction,AppAddcar,AppCarlist,AppCustomersignupstep1,AppOrderdetails,AppDealerprofile,UPLOAD_DIRECTIVES],
   providers: [
     appRoutingProviders,CookieService
   ],

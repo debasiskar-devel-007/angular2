@@ -64,6 +64,7 @@ export class AppAuctionlist{
         this.p=1;
         this.orderbyquery='priority';
         this.orderbytype=-1;
+
         var link=this.serverUrl+'auctionlist'
         this.http.get(link)
             .subscribe(data1 => {
@@ -104,7 +105,7 @@ export class AppAuctionlist{
                 // console.log(this.data);
                 //this.data=this.tempdata;
                 //this.data.splice(index, 1);
-                this.appcomponent.putmessages('share media '+dealerrow.name+' deleted successfully','success');
+                this.appcomponent.putmessages('Auction '+dealerrow.name+' deleted successfully','success');
                 //console.log(this.data);
 
             }, error => {

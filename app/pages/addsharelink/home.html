@@ -52,7 +52,7 @@
                                 <!--<div class="responsceclass">
                                     Response: {{ response | json }}
                                 </div>-->
-                                <div>
+                                <div *ngIf="progress">
                                     Uploading: {{ progress }}%
                                 </div>
                                 <div *ngIf="uploadedfilesrc" style="width:300px;margin:10px 0;border:1px solid #ccc;padding:4px;">

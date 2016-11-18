@@ -201,14 +201,17 @@
             <form class="form-inline">
                 <div class="form-group">
                     <span>Can we send you text and email alerts when we find you a match?</span>
-                    <div class="re_checkbox_inlinediv"> <label class="re_checkbox-inline">
-                        <input [formControl]="customersignupupdateform.controls['send_mail']" id="homeblock3part1" type="radio" name="send_mail" value="1" checked="checked"><label for="homeblock3part1"><span></span>YES</label>
-                    </label></div>
+                    <div class="re_checkbox_inlinediv">
+                        <div class="re_checkbox-inline">
+                            <input [formControl]="customersignupupdateform.controls['send_mail']" id="homeblock3part1" type="radio" name="send_mail" value="1" checked="checked"><label for="homeblock3part1"></label><span>YES</span>
+                    </div>
+                    </div>
 
                     <div class="re_checkbox_inlinediv">
-                        <label class="re_checkbox-inline">
-                            <input [formControl]="customersignupupdateform.controls['send_mail']" id="homeblock3part2" type="radio" name="send_mail" value="2"><label for="homeblock3part2"><span></span>NO</label>
-                        </label>
+                        <div class="re_checkbox-inline">
+                            <input [formControl]="customersignupupdateform.controls['send_mail']" id="homeblock3part2" type="radio" name="send_mail" value="2"><label for="homeblock3part2"></label>
+                            <span>NO</span>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -217,12 +220,19 @@
             <form class="form-inline">
                 <div class="form-group">
                     <span>Would you like to use the smart retail calculator during your window of engagement?</span>
-                    <div class="re_checkbox_inlinediv"><label class="re_checkbox-inline">
-                        <input [formControl]="customersignupupdateform.controls['retail_calculator']" id="homeblock3part3" type="radio" name="retail_calculator" value="3" checked="checked"><label for="homeblock3part3"><span></span>YES</label>
-                    </label></div>
-                    <div class="re_checkbox_inlinediv"><label class="re_checkbox-inline">
-                        <input [formControl]="customersignupupdateform.controls['retail_calculator']" id="homeblock3part4" type="radio" name="retail_calculator" value="4"><label for="homeblock3part4"><span></span>NO</label>
-                    </label></div>
+                    <div class="re_checkbox_inlinediv">
+                        <div class="re_checkbox-inline">
+                            <input [formControl]="customersignupupdateform.controls['retail_calculator']" id="homeblock3part3" type="radio" name="retail_calculator" value="3" checked="checked">
+                            <label for="homeblock3part3"></label>
+                            <span>YES</span>
+                        </div>
+                    </div>
+                    <div class="re_checkbox_inlinediv">
+                        <div class="re_checkbox-inline">
+                        <input [formControl]="customersignupupdateform.controls['retail_calculator']" id="homeblock3part4" type="radio" name="retail_calculator" value="4">
+                            <label for="homeblock3part4"></label><span>NO</span>
+                        </div>
+                    </div>
                 </div>
             </form>
         </div>
@@ -256,7 +266,9 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single">
-                                    <input [formControl]="customersignupupdateform.controls['purchase_time']" id="radio6" type="radio" name="purchase_time" value="6"><label for="radio6"></label><span>Just want to see what is available</span>
+                                    <input [formControl]="customersignupupdateform.controls['purchase_time']" id="radio6" type="radio" name="purchase_time" value="6">
+                                    <label for="radio6"></label>
+                                    <span>Just want to see what is available</span>
                                     <div class="clearfix"></div>
                                 </div>
                             </div>
@@ -273,22 +285,34 @@
                                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 re_newtextleft">
 
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio7" type="radio" name="base_price" value="1" checked="checked"><label for="radio7"><span><span></span></span>15k or less</label>
+                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio7" type="radio" name="base_price" value="1" checked="checked">
+                                        <label for="radio7"></label>
+                                        <span>15k or less</span>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio8" type="radio" name="base_price" value="2"><label for="radio8"><span><span></span></span>$15k to $25k</label>
+                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio8" type="radio" name="base_price" value="2">
+                                        <label for="radio8"></label>
+                                        <span>$15k to $25k</span>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio9" type="radio" name="base_price" value="3"><label for="radio9"><span><span></span></span>$25k to $35k</label>
+                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio9" type="radio" name="base_price" value="3">
+                                        <label for="radio9"></label>
+                                        <span>$25k to $35k</span>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio10" type="radio" name="base_price" value="4" checked="checked"><label for="radio10"><span><span></span></span>$35k to $45k</label>
+                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio10" type="radio" name="base_price" value="4" checked="checked">
+                                        <label for="radio10"></label>
+                                        <span>$35k to $45k</span>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio11" type="radio" name="base_price" value="5"><label for="radio11"><span><span></span></span>$45k to $55k</label>
+                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio11" type="radio" name="base_price" value="5">
+                                        <label for="radio11"></label>
+                                        <span>$45k to $55k</span>
                                     </div>
                                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio12" type="radio" name="base_price" value="6"><label for="radio12"><span><span></span></span>55k or more</label>
+                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio12" type="radio" name="base_price" value="6">
+                                        <label for="radio12"></label>
+                                        <span>55k or more</span>
                                     </div>
                                 </div>
 
@@ -482,39 +506,39 @@
                                 </div>
                             </div>
                             <div class="retailformblock2wrapperinnerpart21">
-                                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="auction1" type="checkbox" name="upcoming_auction" value="1" checked="checked"><label for="auction1">Ford</label> <strong>(12)</strong>
+                                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="auction1" type="checkbox" name="upcoming_auction" value="1" checked="checked"><label for="auction1"></label> <span>Ford</span><strong>(12)</strong>
                             </div>
                             <div class="retailformblock2wrapperinnerpart21">
-                                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="auction2" type="checkbox" name="upcoming_auction" value="1"><label for="auction2">Chevrolet</label> <strong>(05)</strong>
+                                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="auction2" type="checkbox" name="upcoming_auction" value="1"><label for="auction2"></label><span>Chevrolet</span> <strong>(05)</strong>
                             </div>
                             <div class="retailformblock2wrapperinnerpart21">
-                                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="auction3" type="checkbox" name="upcoming_auction" value="1"><label for="auction3">Toyota</label> <strong>(17)</strong>
+                                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="auction3" type="checkbox" name="upcoming_auction" value="1"><label for="auction3"></label><span>Toyota</span> <strong>(17)</strong>
                             </div>
                             <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction4" type="checkbox" name="auction4" value="1"><label for="auction4">Nissan</label> <strong>(03)</strong>
+                                <input id="auction4" type="checkbox" name="auction4" value="1"><label for="auction4"></label><span>Nissan</span> <strong>(03)</strong>
                             </div>
                             <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction5" type="checkbox" name="auction5" value="1"><label for="auction5">Honda</label> <strong>(20)</strong>
+                                <input id="auction5" type="checkbox" name="auction5" value="1"><label for="auction5"></label><span>Honda</span> <strong>(20)</strong>
                             </div>
                             <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction6" type="checkbox" name="auction6" value="1"><label for="auction6">Jeep</label> <strong>(01)</strong>
+                                <input id="auction6" type="checkbox" name="auction6" value="1"><label for="auction6"></label><span>Jeep</span> <strong>(01)</strong>
                             </div>
                             <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction7" type="checkbox" name="auction7" value="1"><label for="auction7">Fiat</label> <strong>(11)</strong>
+                                <input id="auction7" type="checkbox" name="auction7" value="1"><label for="auction7"></label><span>Fiat</span> <strong>(11)</strong>
                             </div>
                             <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction8" type="checkbox" name="auction8" value="1"><label for="auction8">Hyundai</label> <strong>(16)</strong>
-                            </div>
-
-                            <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction9" type="checkbox" name="auction9" value="1"><label for="auction9">Jaguar</label> <strong>(05)</strong>
+                                <input id="auction8" type="checkbox" name="auction8" value="1"><label for="auction8"></label><span>Hyundai</span> <strong>(16)</strong>
                             </div>
 
                             <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction10" type="checkbox" name="auction10" value="1"><label for="auction10">Land Rover</label> <strong>(03)</strong>
+                                <input id="auction9" type="checkbox" name="auction9" value="1"><label for="auction9"></label><span>Jaguar</span> <strong>(05)</strong>
+                            </div>
+
+                            <div class="retailformblock2wrapperinnerpart21">
+                                <input id="auction10" type="checkbox" name="auction10" value="1"><label for="auction10"></label><span>Land Rover</span> <strong>(03)</strong>
                             </div>
                             <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction11" type="checkbox" name="auction11" value="1"><label for="auction11">Mazda</label> <strong>(15)</strong>
+                                <input id="auction11" type="checkbox" name="auction11" value="1"><label for="auction11"></label><span>Mazda</span> <strong>(15)</strong>
                             </div>
 
                             <a href="javascript:void(0)"><button type="button" class="btn btn-link text-left pull-left btnseeall">see all makes</button></a>
@@ -756,31 +780,49 @@
             <div class="retailformblock1part3innerblock31">
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox5" type="checkbox" name="checkbox" value="1" checked="checked"><label for="checkbox5"><span></span>2017</label>
+                        <input id="checkbox5" type="checkbox" name="checkbox" value="1" checked="checked">
+                        <label for="checkbox5"></label>
+                        <span>2017</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox6" type="checkbox" name="checkbox" value="1"><label for="checkbox6"><span></span>2016</label>
+                        <input id="checkbox6" type="checkbox" name="checkbox" value="1">
+                        <label for="checkbox6"></label>
+                        <span>2016</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox7" type="checkbox" name="checkbox" value="1"><label for="checkbox7"><span></span>2015</label>
+                        <input id="checkbox7" type="checkbox" name="checkbox" value="1">
+                        <label for="checkbox7"></label>
+                        <span>2015</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox8" type="checkbox" name="checkbox" value="1"><label for="checkbox8"><span></span>2014</label>
+                        <input id="checkbox8" type="checkbox" name="checkbox" value="1">
+                        <label for="checkbox8"></label>
+                        <span>2014</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox9" type="checkbox" name="checkbox" value="1"><label for="checkbox9"><span></span>2013</label>
+                        <input id="checkbox9" type="checkbox" name="checkbox" value="1">
+                        <label for="checkbox9"></label>
+                        <span>2013</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox10" type="checkbox" name="checkbox" value="1"><label for="checkbox10"><span></span>2012</label>
+                        <input id="checkbox10" type="checkbox" name="checkbox" value="1">
+                        <label for="checkbox10"></label>
+                        <span>2012</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox11" type="checkbox" name="checkbox" value="1"><label for="checkbox11"><span></span>2011</label>
+                        <input id="checkbox11" type="checkbox" name="checkbox" value="1">
+                        <label for="checkbox11"></label>
+                        <span>2011</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox12" type="checkbox" name="checkbox" value="1"><label for="checkbox12"><span></span>2010</label>
+                        <input id="checkbox12" type="checkbox" name="checkbox" value="1">
+                        <label for="checkbox12"></label>
+                        <span>2010</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox13" type="checkbox" name="checkbox" value="1"><label for="checkbox13"><span></span>Before 2010</label>
+                        <input id="checkbox13" type="checkbox" name="checkbox" value="1">
+                        <label for="checkbox13"></label>
+                        <span>Before 2010</span>
                     </div>
                 </div>
             </div>
@@ -792,34 +834,34 @@
             <div class="retailformblock1part3innerblock41">
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox14" type="checkbox" name="checkbox1" value="1" checked="checked"><label for="checkbox14"><span></span>Any Mileage</label>
+                        <input id="checkbox14" type="checkbox" name="checkbox1" value="1" checked="checked"><label for="checkbox14"></label><span>Any Mileage</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox15" type="checkbox" name="checkbox1" value="1"><label for="checkbox15"><span></span>Under 15,000</label>
+                        <input id="checkbox15" type="checkbox" name="checkbox1" value="1"><label for="checkbox15"></label><span>Under 15,000</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox16" type="checkbox" name="checkbox1" value="1"><label for="checkbox16"><span></span>Under 30,000</label>
+                        <input id="checkbox16" type="checkbox" name="checkbox1" value="1"><label for="checkbox16"></label><span>Under 30,000</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox17" type="checkbox" name="checkbox1" value="1"><label for="checkbox17"><span></span>Under 45,000</label>
+                        <input id="checkbox17" type="checkbox" name="checkbox1" value="1"><label for="checkbox17"></label><span>Under 45,000</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox18" type="checkbox" name="checkbox1" value="1"><label for="checkbox18"><span></span>Under 60,000</label>
+                        <input id="checkbox18" type="checkbox" name="checkbox1" value="1"><label for="checkbox18"></label><span>Under 60,000</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox19" type="checkbox" name="checkbox1" value="1"><label for="checkbox19"><span></span>Under 75,000</label>
+                        <input id="checkbox19" type="checkbox" name="checkbox1" value="1"><label for="checkbox19"></label><span>Under 75,000</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox20" type="checkbox" name="checkbox1" value="1"><label for="checkbox20"><span></span>Under 100,000</label>
+                        <input id="checkbox20" type="checkbox" name="checkbox1" value="1"><label for="checkbox20"></label><span>Under 100,000</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox21" type="checkbox" name="checkbox1" value="1"><label for="checkbox21"><span></span>Under 150,000</label>
+                        <input id="checkbox21" type="checkbox" name="checkbox1" value="1"><label for="checkbox21"></label><span>Under 150,000</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox22" type="checkbox" name="checkbox1" value="1"><label for="checkbox22"><span></span>Under 200,000</label>
+                        <input id="checkbox22" type="checkbox" name="checkbox1" value="1"><label for="checkbox22"></label><span>Under 200,000</span>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox23" type="checkbox" name="checkbox1" value="1"><label for="checkbox23"><span></span> Over 200,000</label>
+                        <input id="checkbox23" type="checkbox" name="checkbox1" value="1"><label for="checkbox23"></label><span>Over 200,000</span>
                     </div>
                 </div>
             </div>
@@ -1213,16 +1255,18 @@
                 <div class="form-group">
                     <span>Would you like to fill out an application now to see if you qualify for financing?</span>
                     <div class="re_checkbox_inlinediv">
-
-                        <label class="re_checkbox-inline">
-                            <input id="retailformblock51" type="radio" name="radio" value="1" checked="checked"><label for="retailformblock51"><span></span>YES</label>
-                        </label>
+                        <div class="re_checkbox-inline">
+                            <input id="retailformblock51" type="radio" name="radio" value="1" checked="checked">
+                            <label for="retailformblock51"></label>
+                            <span>YES</span>
+                        </div>
                     </div>
                     <div class="re_checkbox_inlinediv">
-
-                        <label class="re_checkbox-inline">
-                            <input id="retailformblock52" type="radio" name="radio" value="2"><label for="retailformblock52"><span></span>NO</label>
-                        </label>
+                        <div class="re_checkbox-inline">
+                            <input id="retailformblock52" type="radio" name="radio" value="2">
+                            <label for="retailformblock52"></label>
+                            <span>NO</span>
+                        </div>
                     </div>
                 </div>
             </form>

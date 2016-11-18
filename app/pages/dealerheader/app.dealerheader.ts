@@ -28,14 +28,23 @@ export class AppDealerheader {
     private router: Router;
     loginerror:any;
     userDetails:any;
+    uploadedfilesrc:any;
     coockieData:CookieService;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router  ) {
-
+       // this.uploadedfilesrc='';
         this.coockieData=userdetails;
         this.router=router;
         this.userDetails=userdetails.getObject('userdetails');
+       // images/img_customersignup_car.png
+        console.log(this.userDetails.filename);
+        if(this.userDetails.filename!=undefined){
+            this.uploadedfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.userDetails.filename;
+        }
+        else{
+            this.uploadedfilesrc= 'images/img_customersignup_car.png';
+        }
 
     }
     logout(){

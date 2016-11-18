@@ -8,7 +8,7 @@ import { AppHome }  from './pages/home/app.home';
 import { AppSignup }  from './pages/signup/app.signup';
 import { AppCustomersignup }  from './pages/customersignup/app.customersignup';
 import { AppCreditcard }  from './pages/creditcard/app.creditcard';
-import {AppdealerloginComponents} from "./pages/dealerlogin/app.dealerlogincomponent";
+
 import {AppDealerlogin} from "./pages/dealerlogin/app.dealerlogin";
 import {AppDealerheader} from "./pages/dealerheader/app.dealerheader";
 import {AppDealerfooter} from "./pages/dealerfooter/app.dealerfooter";
@@ -71,6 +71,9 @@ import {AppAddauction} from "./pages/addauction/app.addauction";
 import {AppEditauction} from "./pages/editauction/app.editauction";
 import {AppAddcar} from "./pages/addcar/app.addcar";
 import {AppCarlist} from "./pages/carlist/app.carlist";
+import {AppCustomersignupstep1} from "./pages/customersignupstep1/app.customersignupstep1";
+import {AppOrderdetails} from "./pages/orderdetails/app.orderdetails";
+import {AppDealerprofile} from "./pages/dealerprofile/app.dealerprofile";
 //alert(window.location.hostname);
 
 //alert(checkutl);
@@ -167,6 +170,9 @@ const appRoutes: Routes = [
     { path: 'editauction/:id', component: AppEditauction},
     { path: 'addcar', component: AppAddcar},
     { path: 'carlist', component: AppCarlist},
+    { path: 'customersignupstep1', component: AppCustomersignupstep1},
+    { path: 'orderdetails/:id', component: AppOrderdetails},
+    { path: 'dealerprofile', component: AppDealerprofile},
 
 
 ];

@@ -93,7 +93,7 @@ console.log(this.userInfo);
     onChange(event:any){
         //alert(99);
         //(<FormControl>this.addadminform.controls['body']).updateValue(this.ckeditorContent);
-        this.addauctionform.patchValue({description: this.ckeditorContent})
+        this.addauctionform.patchValue({description: this.ckeditorContent});
 
     }
 

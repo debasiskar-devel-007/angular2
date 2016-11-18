@@ -21,6 +21,7 @@ export class AppCustomerheader {
     //dealerloginform: FormGroup;
     myModal :ModalModule;
     data:any;
+    data2:any;
     http:Http;
     items:any;
     serverUrl:any;
@@ -29,16 +30,46 @@ export class AppCustomerheader {
     loginerror:any;
     userDetails:any;
     coockieData:CookieService;
+    package_image:any;
+    details1:any;
+    details12:any;
+
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router  ) {
 
 //console.log(userdetails);
+        this.details12='';
         this.coockieData=userdetails;
+        this.items = commonservices.getItems();
         this.router=router;
         this.userDetails=userdetails.getObject('userdetails');
+        this.serverUrl = this.items[0].serverUrl;
        // console.log(userdetails.getObject('userdetails'));
-       // console.log(this.userDetails.username);
+        console.log(this.userDetails.username);
+        this.http=http;
+        let idss = {username: this.userDetails.username};
+        this.http.post(this.serverUrl + 'editdcustomerbyusername', idss)
+            .subscribe(data2 => {
+                this.details12 = data2.json()[0];
+
+                console.log(this.details12.dealerusername);
+                let ids = {username: this.details12.dealerusername};
+                this.http.post(this.serverUrl + 'editdealerbyusername', ids)
+                    .subscribe(data => {
+                        this.details1 = data.json()[0];
+                        console.log(this.details1);
+                        console.log(this.details1.filename);
+                        this.package_image="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/"+this.details1.filename;
+                    }, error => {
+                        console.log("Oooops!");
+                    });
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        console.log(this.details12.dealerusername);
+
         if(typeof(this.userDetails)=='undefined'){
             this.router.navigateByUrl('/adminlogin');
             return;

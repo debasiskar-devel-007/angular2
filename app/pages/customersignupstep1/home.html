@@ -1,20 +1,12 @@
 <div class="signupwrapperblock">
     <div class="container-fluid signup_body_wrapper">
-
         <div class="container-fluid toplogoblock">
-
             <a href="javascript:void(0)"><img src="images/logo1.png" alt="" class="logo1"/></a>
-            <span class="logodevider"></span>
-
-            <!--<a href="javascript:void(0)"><img src="images/logo2.png" alt=""  class="logo2"/></a>-->
-            <a href="javascript:void(0)"><img src="{{package_image}}" alt=""  class="logo2"/></a>
-
+            <!--<span class="logodevider"></span>
+            <a href="javascript:void(0)"><img src="images/logo2.png" alt=""  class="logo2"/></a>-->
         </div>
 
-
         <div class="container-fluid signupmiddleblock">
-
-
                 <div class="col-lg-8 col-md-8 col-xs-6 col-sm-6 signupleftblock">
                     <div class="signupleftblocktop">
                         <h1>Our Auctions have the largest inventory in town</h1>
@@ -40,83 +32,39 @@
                     <img src="images/formshadow.png" alt="" class="formshadow"/>
 
                     <form novalidate [formGroup]="customersignupform" (ngSubmit)="doLogin(loginForm.value)"  name="sihnupform" >
-                        <input [formControl]="customersignupform.controls['dealerusername']" name="dealerusername"  type="hidden" class="form-control" placeholder="DealerUser Name"/>
                         <div class="signupform_wrapper">
-                            <div class="form-group">
-
-                                <input [formControl]="customersignupform.controls['username']" name="username"  type="text" class="form-control" placeholder="User Name"/>
-
-                                <span  *ngIf ="customersignupform.controls['username'].touched && !customersignupform.controls['username'].valid" class="help-inline">User Name is Required ! <img src="images/iconquestion.png"></span>
-
-
-
-
-                            </div>
-
-                            <div class="form-group">
-                                <input [formControl]="customersignupform.controls['password']" name="password"  type="password" class="form-control" placeholder="Password"/>
-                                <span *ngIf ="customersignupform.controls['password'].touched && !customersignupform.controls['password'].valid" class="help-inline">Password  is Required !<img src="images/iconquestion.png"></span>
-
-
-                            </div>
-
                             <div class="form-group">
                                 <input [formControl]="customersignupform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First Name"/>
                                 <span *ngIf ="customersignupform.controls['fname'].touched && !customersignupform.controls['fname'].valid" class="help-inline">First Name is Required !<img src="images/iconquestion.png"></span>
 
 
                             </div>
-
                             <div class="form-group">
                                 <input [formControl]="customersignupform.controls['lname']" type="text" class="form-control" placeholder="Last Name"/>
                                 <!-- <span class="help-inline">Please correct the error</span>-->
                                 <span *ngIf ="customersignupform.controls['lname'].touched && !customersignupform.controls['lname'].valid" class="help-inline">Last Name is Required !<img src="images/iconquestion.png"></span>
                             </div>
-
                             <div class="form-group">
                                 <input type="text" [formControl]="customersignupform.controls['phone']" type="text" class="form-control" placeholder="Telephone Number"/>
                                 <!-- <span class="help-inline">Please correct the error</span>-->
                                 <span *ngIf ="customersignupform.controls['phone'].touched && !customersignupform.controls['phone'].valid" class="help-inline">Phone is Required !<img src="images/iconquestion.png"></span>
                             </div>
-
-
                             <div class="form-group">
-                                <input type="text" [formControl]="customersignupform.controls['email']" type="email" class="form-control" placeholder="Email Address"/>
-                                <!-- <span class="help-inline">Please correct the error</span>-->
-                                <span *ngIf ="customersignupform.controls['email'].touched && !customersignupform.controls['email'].valid" class="help-inline">Email is Required and must be valid !<img src="images/iconquestion.png"></span>
+                                <textarea [formControl]="customersignupform.controls['addresss']" name="addresss" class="form-control" placeholder="Address" maxlength="1000">
+                                </textarea>
+                                <span *ngIf ="customersignupform.controls['addresss'].touched && !customersignupform.controls['addresss'].valid" class="help-inline">Address is Required !<img src="images/iconquestion.png"></span>
+
+
                             </div>
-
-
-
-                            <div class="form-group">
-                                <input [formControl]="customersignupform.controls['zip']" type="text" class="form-control" placeholder="Zip Code"/>
-                                <!-- <span class="help-inlzine">Please correct the error</span>-->
-                                <span *ngIf =" customersignupform.controls['zip'].touched && !customersignupform.controls['zip'].valid" class="help-inline">Zip is Required !<img src="images/iconquestion.png"></span>
-                            </div>
-
-
-                            <div class="form-group_chakebox signupcheckbox">
-                                <input id="checkbox1" type="checkbox" name="checkbox1" [formControl]="customersignupform.controls['term']" value="2"/><label for="checkbox1"></label><span (click)="myModal.open()"  >Accept Terms And Conditions</span>
-                                <span *ngIf ="customersignupform.controls['term'].touched && !customersignupform.controls['term'].valid" class="help-inline">You must agree with Terms & Conditions</span>
-
-                                <div class="clearfix"></div>
-                            </div>
-
                         </div>
                         <div class="btn-block">
                             <button (click)="submitform()" type="button" value="let’s get you --started" class="subbtn">let’s get you started</button>
-
                         </div>
                     </form>
                 </div>
-
                 <div class="clearfix"></div>
             </div>
-
-
-
     </div>
-
 
     <div class="row">
         <modal #myModal>

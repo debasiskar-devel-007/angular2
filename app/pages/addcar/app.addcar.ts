@@ -81,7 +81,7 @@ console.log(this.userInfo);
             is_active: [''],
             priority: ['', Validators.required],
             filename: ['', Validators.required],
-            auction: ['', Validators.required],
+                 auctionid: ['', Validators.required],
 
         });
 

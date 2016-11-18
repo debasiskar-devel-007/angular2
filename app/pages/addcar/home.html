@@ -17,11 +17,11 @@
                             <div class="col-md-12">
                                 <div class="form-group">
 
-                                    <select class="form-control3" [formControl]="addcarform.controls['auction']" name="auction" >
+                                    <select class="form-control3" [formControl]="addcarform.controls['auctionid']" name="auctionid" >
                                         <option value="" selected="selected"><span class="errormsgtxt">Select Your Auction</span></option>
                                         <option *ngFor="let obj1 of auctionlist" [value]="obj1._id">{{obj1.name}}</option>
                                     </select>
-                                    <span  *ngIf ="addcarform.controls['auction'].touched && !addcarform.controls['auction'].valid" class="help-inline spanalign"><span class="errormsgtxt">Auction is Required ! </span><img src="images/iconquestion.png"></span>
+                                    <span  *ngIf ="addcarform.controls['auctionid'].touched && !addcarform.controls['auctionid'].valid" class="help-inline spanalign"><span class="errormsgtxt">Auction is Required ! </span><img src="images/iconquestion.png"></span>
                                 </div>
                                 <div class="form-group">
                                     <input [formControl]="addcarform.controls['doctype']" name="doctype"  type="text" class="form-control" placeholder="Doc"/>
@@ -108,7 +108,7 @@
                                     <!--<div class="responsceclass">
                                         Response: {{ response | json }}
                                     </div>-->
-                                    <div>
+                                    <div *ngIf="progress">
                                         Uploading: {{ progress }}%
                                     </div>
                                     <div *ngIf="uploadedfilesrc" class="browsefileblockimg">

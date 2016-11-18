@@ -14,16 +14,15 @@ import {CookieService} from 'angular2-cookie/core';
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/customersignup/home.html',
+    templateUrl:'app/pages/customersignupstep1/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppCustomersignup {
+export class AppCustomersignupstep1 {
     // /@ViewChild(Modal) modal;
     customersignupform: FormGroup;
     myModal :ModalModule;
     data:any;
-
     http:Http;
     items:any;
     serverUrl:any;
@@ -32,8 +31,6 @@ export class AppCustomersignup {
     private router: Router;
     customerinfo:any;
     terms:any;
-    package_image:any;
-    details1:any;
     coockieData:CookieService;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,customerInfo:CookieService ,router: Router) {
@@ -46,28 +43,19 @@ export class AppCustomersignup {
         this.serverUrl = this.items[0].serverUrl;
         var parts = location.hostname.split('.');
         var sndleveldomain = parts[0];
-        let ids = {username: sndleveldomain};
-        this.http.post(this.serverUrl + 'editdealerbyusername', ids)
-            .subscribe(data => {
-                this.details1 = data.json()[0];
-                console.log(this.details1);
-                this.package_image="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/"+this.details1.filename;
-            }, error => {
-                console.log("Oooops!");
-            });
-
        // console.log(parts);
-       // console.log(sndleveldomain);
+        console.log(sndleveldomain);
         this.customersignupform = fb.group({
-            dealerusername: [sndleveldomain, Validators.required],
-            username: ["", Validators.required],
-            password: ["", Validators.required],
+           // dealerusername: [sndleveldomain, Validators.required],
+           // username: ["", Validators.required],
+           // password: ["", Validators.required],
             fname: ["", Validators.required],
             lname: ["", Validators.required],
-            email: ["", AppCustomersignup.validateEmail],
+           // email: ["", AppCustomersignupstep1.validateEmail],
             phone: ["", Validators.required],
-            zip: ["", Validators.required],
-            term: ["", AppCustomersignup.validateTerms]
+            address: ["", Validators.required],
+            //zip: ["", Validators.required],
+            ///term: ["", AppCustomersignup.validateTerms]
         });
     }
 

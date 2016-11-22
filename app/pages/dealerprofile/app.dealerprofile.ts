@@ -27,6 +27,7 @@ export class AppDealerprofile implements OnInit{
     private zone: NgZone;
     private basicOptions: Object;
     private progress: number = 0;
+    private progress1: number = 0;
     private response: any = {};
 
     addadminform: FormGroup;
@@ -46,6 +47,10 @@ export class AppDealerprofile implements OnInit{
     uploadedfilesrc:any;
     userinfo:any;
     file_name:any;
+    banner:any;
+    websiteurl:any;
+    description:any;
+    uploadedbannersrc:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,router: Router ,private route: ActivatedRoute,appcomponent:AppComponent,userInfo:CookieService) {
@@ -57,7 +62,10 @@ export class AppDealerprofile implements OnInit{
         this.serverUrl = this.items[0].serverUrl;
         this.userInfo=userInfo;
         this.userinfo=userInfo.getObject('userdetails');
+        this.websiteurl='';
+        this.description='';
         this.file_name='';
+        this.banner='';
 
        console.log(this.userinfo);
        console.log(this.serverUrl+'editdealer');
@@ -75,6 +83,15 @@ export class AppDealerprofile implements OnInit{
                     else{
                         this.file_name='';
                     }
+                    if(this.dealerprofiledetails.banner!=undefined) {
+                        this.uploadedbannersrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.dealerprofiledetails.banner;
+                        this.banner=this.dealerprofiledetails.banner;
+                    }
+                    else{
+                        this.banner='';
+                    }
+
+
                     this.addadminform = fb.group({
                         username: [this.dealerprofiledetails.username, Validators.required],
                         //password: ["", Validators.required],
@@ -88,7 +105,10 @@ export class AppDealerprofile implements OnInit{
                         phone: [this.dealerprofiledetails.phone, Validators.required],
                         zip: [this.dealerprofiledetails.zip, Validators.required],
                         is_active: [this.dealerprofiledetails.is_active],
-                        filename: [this.file_name]
+                        filename: [this.file_name],
+                        banner: [this.banner],
+                        description: [this.dealerprofiledetails.description],
+                        websiteurl: [this.dealerprofiledetails.websiteurl],
                     });
 
 
@@ -109,7 +129,7 @@ console.log(this.getusastates);
                 console.log("Oooops!");
             });
 
-        this.addadminform = fb.group({
+         this.addadminform = fb.group({
             //password: ["", Validators.required],
            // username: [this.dealerprofiledetails.username, Validators.required],
             fname: ['', Validators.required],
@@ -120,8 +140,11 @@ console.log(this.getusastates);
             state: ["", Validators.required],
             phone: ["", Validators.required],
             zip: ["", Validators.required],
+             description: [""],
+            websiteurl: [""],
             is_active: [""],
             filename: [""],
+            banner: [""],
         });
 
         //this.router.navigate(['/about']);
@@ -137,6 +160,26 @@ console.log(this.getusastates);
             url: this.serverUrl+'uploads'
         };
     }
+
+    handleUploadbanner(data: any): void
+    {
+
+        //console.log(data.progress.percent);
+        this.zone.run(() => {
+            this.response = data;
+            this.progress1 = data.progress.percent ;
+            if(data.progress.percent==100){
+                console.log(data.response);
+                //console.log(data.response.json());
+                //console.log(data.response.filename);
+                if(typeof (data.response)!='undefined') {
+                    this.addadminform.patchValue({banner: data.response});
+                    this.uploadedbannersrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + data.response;
+                }
+            }
+        });
+    }
+
 
     handleUpload(data: any): void
     {
@@ -156,8 +199,6 @@ console.log(this.getusastates);
             }
         });
     }
-
-
     static validateTerms(control: FormControl){
         if(control.value==false){
             return { 'isTermsChecked': true };
@@ -199,7 +240,7 @@ console.log(this.getusastates);
 
                     console.log(userdet);
                     this.userInfo.putObject('userdetails', userdet);
-                    window.location.reload();
+                   // window.location.reload();
 
                 }, error => {
                     console.log("Oooops!");

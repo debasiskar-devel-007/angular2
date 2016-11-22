@@ -64,13 +64,25 @@
                             <input [formControl]="addadminform.controls['zip']" name="zip"  type="text" class="form-control" placeholder="Zip Code"/>
                             <span  *ngIf ="addadminform.controls['zip'].touched && !addadminform.controls['zip'].valid" class="help-inline"><span class="errormsgtxt">Zip is Required ! </span><img src="images/iconquestion.png"></span>
                         </div>
-
                         <div class="form-group">
                             <input [formControl]="addadminform.controls['phone']" name="phone"  type="text" class="form-control" placeholder="Phone"/>
                             <span  *ngIf ="addadminform.controls['phone'].touched && !addadminform.controls['phone'].valid" class="help-inline"><span class="errormsgtxt">Phone is Required !</span> <img src="images/iconquestion.png"></span>
                         </div>
                         <div class="form-group">
+                            <input [formControl]="addadminform.controls['description']" name="description"  type="text" class="form-control" placeholder="Description"/>
+                           <!-- <span  *ngIf ="addadminform.controls['description'].touched && !addadminform.controls['description'].valid" class="help-inline"><span class="errormsgtxt">Description is Required !</span> <img src="images/iconquestion.png"></span>-->
+                        </div>
+                        <div class="form-group">
+                            <input [formControl]="addadminform.controls['websiteurl']" name="websiteurl"  type="text" class="form-control" placeholder="Website Url"/>
+                           <!-- <span  *ngIf ="addadminform.controls['websiteurl'].touched && !addadminform.controls['websiteurl'].valid" class="help-inline"><span class="errormsgtxt">Website Url is Required !</span> <img src="images/iconquestion.png"></span>-->
+                        </div>
+
+                        <div class="form-group">
                             <input type="hidden" [formControl]="addadminform.controls['filename']" name="filename" class="form-control" placeholder="Filename"/>
+                            <!--&lt;!&ndash;<span *ngIf ="addadminform.controls['filename'].touched && !addadminform.controls['filename'].valid" class="help-inline"><span class="errormsgtxt">Filename is Required !</span><img src="images/iconquestion.png"></span>&ndash;&gt;-->
+                        </div>
+                        <div class="form-group">
+                            <input type="hidden" [formControl]="addadminform.controls['banner']" name="banner" class="form-control" placeholder="Banner"/>
                             <!--&lt;!&ndash;<span *ngIf ="addadminform.controls['filename'].touched && !addadminform.controls['filename'].valid" class="help-inline"><span class="errormsgtxt">Filename is Required !</span><img src="images/iconquestion.png"></span>&ndash;&gt;-->
                         </div>
                         <div class="form-group_chakebox signupcheckbox">
@@ -82,9 +94,10 @@
                     </div>
                     <div class="col-md-12">
                         <div class="browsefileblock">
+                            <label>Upload Logo</label>
                             <input type="file"
                                    ngFileSelect
-                                   [options]="basicOptions"
+                                    [options]="basicOptions"
                                    (onUpload)="handleUpload($event)">
                             <!--<div class="responsceclass">
                                 Response: {{ response | json }}
@@ -94,6 +107,26 @@
                             </div>
                             <div *ngIf="uploadedfilesrc" class="browsefileblockimg">
                                 <img src="{{uploadedfilesrc}}" >
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="browsefileblock">
+                            <label>Upload Banner</label>
+                            <input type="file"
+
+                                   ngFileSelect
+                                   [options]="basicOptions"
+                                   (onUpload)="handleUploadbanner($event)">
+                            <!--<div class="responsceclass">
+                                Response: {{ response | json }}
+                            </div>-->
+                            <div *ngIf="progress1">
+                                Uploading: {{ progress1 }}%
+                            </div>
+                            <div *ngIf="uploadedbannersrc" class="browsefileblockimg">
+                                <img src="{{uploadedbannersrc}}" >
                             </div>
                         </div>
                     </div>

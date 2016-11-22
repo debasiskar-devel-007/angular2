@@ -8,12 +8,13 @@
     <div class="container-fluid customerdashboard_block1">
         <div class="row row-eq-height">
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 customerdashboard_block1_left">
-                <h2>Mas Bro's </h2>
+                <h2>{{name}} </h2>
 
                 <div class="cd_b1_left_imgbox">
 
-                    <img src="images/autofairlogo.png"  alt="#" class="autofairlogo"/>
-                    <img src="images/cd_img1.jpg" class="cd_img1" />
+                    <!--<img src="images/autofairlogo.png"  alt="#" class="autofairlogo"/>-->
+                   <img style="max-width: 100%;width:auto;max-height:247px" src="{{banner_image}}" class="cd_img1" />
+                  <!--  <img src="images/cd_img1.jpg" class="cd_img1" />-->
 
                     <h3>THEIR dealership</h3>
 
@@ -40,18 +41,16 @@
                 <div class="row row-eq-height">
 
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-                        <h3>ABOUT Mas Bro's</h3>
-                        <h4>Lorem ipsum dolor sit amet, consectetuer
-                            adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.</h4>
+                        <h3>ABOUT {{name}}</h3>
+                        <h4>{{description}}</h4>
 
                     </div>
 
                     <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
                         <h3>Dealership's Address</h3>
-                        <h5>The Honorable Luke Todd (Dear Mr. Ambassador:)
-                            1755 Blake St., Suite
-                            #450
-                            Denver, Colorado 80202</h5>
+                        <h5>{{address1}}<br/>
+                            {{city}},{{state}}<br/>
+                            {{zip}}</h5>
 
                     </div>
 
@@ -64,19 +63,19 @@
 
                     <li>
                         <strong>Phone</strong>
-                        <span ><a href="tel:+62 857 123 4567">+62 857 123 4567 </a></span>
+                        <span ><a href="tel:+{{phone}}">+{{phone}} </a></span>
                     </li>
 
 
                     <li>
                         <strong> Email</strong>
-                        <span><a href="mailto:first.last@example.com"> first.last@example.com</a></span>
+                        <span><a href="mailto:{{email}}"> {{email}}</a></span>
                     </li>
 
 
                     <li>
                         <strong> Website</strong>
-                        <span><a href="  http://ariecupu.com" target="_blank">  http://ariecupu.com</a></span>
+                        <span><a href="{{websiteurl}}" target="_blank">{{websiteurl}}</a></span>
                     </li>
                     <div class="clearfix"></div>
                 </ul>

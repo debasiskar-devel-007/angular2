@@ -1,4 +1,4 @@
-<div class="page-wrapper addadmin">
+<div class="page-wrapper editlink addbanner addadmin">
     <div class="blockmaininner">
         <div class="row">
             <div class="col-lg-12">
@@ -9,72 +9,79 @@
         <!-- /.row -->
         <div class="row">
             <div class="col-lg-12 addadminblock">
-                <form novalidate [formGroup]="addbannerform"   name="addbannerform"  class="form-inline">
+                <form novalidate [formGroup]="addbannerform" name="addbannerform" class="form-inline">
                     <div class="signupform_wrapper">
-                        <div class="form-group">
-                            <input [formControl]="addbannerform.controls['bannername']" name="bannername"  type="text" class="form-control" placeholder="Banner Name"/>
-                            <span  *ngIf ="addbannerform.controls['bannername'].touched && !addbannerform.controls['bannername'].valid" class="help-inline"><span class="errormsgtxt">Banner Name is Required !</span> <img src="images/iconquestion.png"></span>
+                        <div class="row">
+                           <div class="col-md-12">
+                             <div class="form-group">
+                                <input [formControl]="addbannerform.controls['bannername']" name="bannername"  type="text" class="form-control" placeholder="Banner Name"/>
+                                <span  *ngIf ="addbannerform.controls['bannername'].touched && !addbannerform.controls['bannername'].valid" class="help-inline"><span class="errormsgtxt">Banner Name is Required !</span> <img src="images/iconquestion.png"></span>
 
 
 
 
-                        </div>
-
-                         <div class="form-group">
-
-                            <select class="form-control3" [formControl]="addbannerform.controls['bannersize']" name="bannersize" >
-                                <option value="" selected="selected"><span class="errormsgtxt">Select Your Banner Size</span></option>
-                                <option *ngFor="let obj1 of getbannersizelist" [value]="obj1._id">{{obj1.sizename}}</option>
-                            </select>
-                            <span  *ngIf ="addbannerform.controls['bannersize'].touched && !addbannerform.controls['bannersize'].valid" class="help-inline spanalign"><span class="errormsgtxt">Banner size is Required ! </span><img src="images/iconquestion.png"></span>
-                        </div>
-                        <div class="form-group">
-
-                            <select class="form-control3" [formControl]="addbannerform.controls['sharelink']" name="sharelink" >
-                                <option value="" selected="selected"><span class="errormsgtxt">Select Your Share Link</span></option>
-                                <option *ngFor="let obj of getsharemedialist" [value]="obj._id">{{obj.name}}</option>
-                            </select>
-                            <span  *ngIf ="addbannerform.controls['sharelink'].touched && !addbannerform.controls['sharelink'].valid" class="help-inline spanalign"><span class="errormsgtxt">Share link is Required ! </span><img src="images/iconquestion.png"></span>
-                        </div>
-
-                        <div class="form-group">
-                            <input [formControl]="addbannerform.controls['priority']" name="priority"  type="text" class="form-control" placeholder="Priority"/>
-                            <span  *ngIf ="addbannerform.controls['priority'].touched && !addbannerform.controls['priority'].valid" class="help-inline"><span class="errormsgtxt">Priority is Required ! </span><img src="images/iconquestion.png"></span>
-                        </div>
-
-
-                            <input type="hidden" [formControl]="addbannerform.controls['filename']" name="filename" class="form-control" placeholder="Filename"/>
-                            <span *ngIf ="addbannerform.controls['filename'].touched && !addbannerform.controls['filename'].valid" class="help-inline"><span class="errormsgtxt">Filename is Required !</span><img src="images/iconquestion.png"></span>
-
-                        <div class="browsefileblock">
-                            <input type="file"
-                                   ngFileSelect
-                                   [options]="basicOptions"
-                                   (onUpload)="handleUpload($event)">
-                            <!--<div class="responsceclass">
-                                Response: {{ response | json }}
-                            </div>-->
-                            <div *ngIf="progress">
-                                Uploading: {{ progress }}%
                             </div>
-                            <div *ngIf="uploadedfilesrc" style="width:300px;margin:10px 0;border:1px solid #ccc;padding:4px;">
-                                <img style="width: 100%;display: block;"  src="{{uploadedfilesrc}}" >
+                             <div class="form-group">
+
+                                <select class="form-control3" [formControl]="addbannerform.controls['bannersize']" name="bannersize" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Your Banner Size</span></option>
+                                    <option *ngFor="let obj1 of getbannersizelist" [value]="obj1._id">{{obj1.sizename}}</option>
+                                </select>
+                                <span  *ngIf ="addbannerform.controls['bannersize'].touched && !addbannerform.controls['bannersize'].valid" class="help-inline spanalign"><span class="errormsgtxt">Banner size is Required ! </span><img src="images/iconquestion.png"></span>
                             </div>
-                        </div>
-                        <div class="form-group_chakebox signupcheckbox">
-                            <input id="checkbox1" type="checkbox" name="checkbox1" [formControl]="addbannerform.controls['is_active']" value="1"/><label for="checkbox1"></label><span>Is Active</span>
-                            <span *ngIf ="addbannerform.controls['is_active'].touched && !addbannerform.controls['is_active'].valid" class="help-inline">You must select checkbox</span>
+                             <div class="form-group">
+
+                                <select class="form-control3" [formControl]="addbannerform.controls['sharelink']" name="sharelink" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Your Share Link</span></option>
+                                    <option *ngFor="let obj of getsharemedialist" [value]="obj._id">{{obj.name}}</option>
+                                </select>
+                                <span  *ngIf ="addbannerform.controls['sharelink'].touched && !addbannerform.controls['sharelink'].valid" class="help-inline spanalign"><span class="errormsgtxt">Share link is Required ! </span><img src="images/iconquestion.png"></span>
+                            </div>
+                             <div class="form-group">
+                                <input [formControl]="addbannerform.controls['priority']" name="priority"  type="text" class="form-control" placeholder="Priority"/>
+                                <span  *ngIf ="addbannerform.controls['priority'].touched && !addbannerform.controls['priority'].valid" class="help-inline"><span class="errormsgtxt">Priority is Required ! </span><img src="images/iconquestion.png"></span>
+                            </div>
+                             <div class="form-group">
+                                <input type="hidden" [formControl]="addbannerform.controls['filename']" name="filename" class="form-control" placeholder="Filename"/>
+                                <span *ngIf ="addbannerform.controls['filename'].touched && !addbannerform.controls['filename'].valid" class="help-inline"><span class="errormsgtxt">Filename is Required !</span><img src="images/iconquestion.png"></span>
+                             </div>
+                           </div>
                             <div class="clearfix"></div>
+                            <div class="col-md-12">
+                                <div class="browsefileblock" style="padding-left: 15px; padding-right: 15px; margin-top: 14px;">
+                                    <input type="file"
+                                           ngFileSelect
+                                           [options]="basicOptions"
+                                           (onUpload)="handleUpload($event)">
+                                    <!--<div class="responsceclass">
+                                        Response: {{ response | json }}
+                                    </div>-->
+                                    <div *ngIf="progress">
+                                        Uploading: {{ progress }}%
+                                    </div>
+                                    <div *ngIf="uploadedfilesrc" class="browsefileblockimg">
+                                        <img src="{{uploadedfilesrc}}" >
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-
-                    </div>
-                    <div class="submitwrap">
-                        <button (click)="submitform()" type="button" value="Submit" class="subbtn">Submit</button>
+                        <div class="row uploadrow">
+                            <div class="col-md-6">
+                                <div class="form-group_chakebox signupcheckbox">
+                                    <input id="checkbox1" type="checkbox" name="checkbox1" [formControl]="addbannerform.controls['is_active']" value="1"/><label for="checkbox1"></label><span>Is Active</span>
+                                    <span *ngIf ="addbannerform.controls['is_active'].touched && !addbannerform.controls['is_active'].valid" class="help-inline">You must select checkbox</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="submitwrap">
+                                    <button (click)="submitform()" type="button" value="Submit" class="subbtn">Submit</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
         </div>
-
-
     </div>
 </div>

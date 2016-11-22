@@ -172,7 +172,10 @@
                 </div>
                 <div class="clearfix"></div>
 
-                <div class="left_chakebox"> <input id="checkbox3" type="checkbox" name="term" [formControl]="customersignupform.controls['term']" value="2"/>   <!--<input  id="checkbox3" type="checkbox" name="checkbox" value="2">--><label for="checkbox3"></label><span>By clicking this box, I agree that I have read and agree to the <a (click)="termsModal.open()" >Terms of Services</a> and <a (click)="privacyModal.open()" >Privacy Policy</a>. </span>
+                <div class="left_chakebox"> <input id="checkbox3" type="checkbox" name="term" [formControl]="customersignupform.controls['term']" value="2"/>
+
+                    <!--<input  id="checkbox3" type="checkbox" name="checkbox" value="2">--><label for="checkbox3"></label><span>By clicking this box, I agree that I have read and agree to the <a (click)="termsModal.open()" >Terms of Services</a> and <a (click)="privacyModal.open()" >Privacy Policy</a>. </span>
+                    <span *ngIf ="customersignupform.controls['term'].touched && !customersignupform.controls['term'].valid" class="help-inline">You must agree with Terms & Conditions</span>
                     <div class="clearfix"></div>
                 </div>
 
@@ -198,12 +201,13 @@
 <div class="container-fluid retailformblock1" >
     <div class="container retailformblock1wrapper">
         <div class="retailformblock1part1">
-            <form class="form-inline">
+
                 <div class="form-group">
                     <span>Can we send you text and email alerts when we find you a match?</span>
                     <div class="re_checkbox_inlinediv">
                         <div class="re_checkbox-inline">
                             <input [formControl]="customersignupupdateform.controls['send_mail']" id="homeblock3part1" type="radio" name="send_mail" value="1" checked="checked"><label for="homeblock3part1"></label><span>YES</span>
+
                     </div>
                     </div>
 
@@ -213,11 +217,12 @@
                             <span>NO</span>
                         </div>
                     </div>
+                    <span *ngIf ="customersignupupdateform.controls['send_mail'].touched && !customersignupupdateform.controls['send_mail'].valid" class="help-inline">You must check  one</span>
                 </div>
-            </form>
+
         </div>
         <div class="retailformblock1part2">
-            <form class="form-inline">
+
                 <div class="form-group">
                     <span>Would you like to use the smart retail calculator during your window of engagement?</span>
                     <div class="re_checkbox_inlinediv">
@@ -234,7 +239,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+
         </div>
         <div class="retailformblock1part3">
             <div class="row">
@@ -1251,7 +1256,7 @@
 <div class="container-fluid retailformblock5">
     <div class="retailformblock5wrapper">
         <div class="retailformblock5part1">
-            <form class="form-inline">
+
                 <div class="form-group">
                     <span>Would you like to fill out an application now to see if you qualify for financing?</span>
                     <div class="re_checkbox_inlinediv">
@@ -1269,7 +1274,7 @@
                         </div>
                     </div>
                 </div>
-            </form>
+
         </div>
     </div>
 </div>

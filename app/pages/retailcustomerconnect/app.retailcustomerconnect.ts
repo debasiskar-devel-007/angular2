@@ -81,8 +81,7 @@ export class AppRetailcustomerconnect {
             company_name: [''],
             alt_phone: [''],
             state: [this.customerinfo.state, Validators.required],
-            term: [this.customerinfo.term]
-          //  term: ["this.customerinfo.term", AppRetailcustomerconnect.validateTerms]
+            term: [this.customerinfo.term, AppRetailcustomerconnect.validateTerms]
         });
 
         this.customersignupupdateform = fb.group({
@@ -98,7 +97,9 @@ export class AppRetailcustomerconnect {
 
     }
 
-    static validateTerms(control: FormControl){
+
+     static validateTerms(control: FormControl){
+         console.log('test');
 
         if(control.value==false){
             return { 'isTermsChecked': true };

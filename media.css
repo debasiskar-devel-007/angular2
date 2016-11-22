@@ -2299,6 +2299,15 @@
 
 @media(max-width:1199px) {
 
+    .cusdashboardblock1innerleft .logo a {
+        display: block!important;
+        width: 256px;
+        height: 72px;
+        overflow: hidden;
+        margin: 0 auto;
+        display: block;
+        text-align: center;
+    }
     .newtablediv { padding:25px 0!important; display:block; width:100%; margin:0px;}
 
     .newtablediv tbody,.newtablediv tr{display:block; width:100%;}

@@ -770,6 +770,9 @@ h1,h2,h3,h4.h5,h6{ margin: 0px; padding: 0px;}
 
 
 .adminlogo {float: left!important; display: inline-block!important;}
+.cusdashboardblock1innerleft .logo a{float: left!important; display: inline-block!important; width: 256px;  height: 72px;
+    overflow: hidden; float: left;}
+.cusdashboardblock1innerleft .logo a img{max-width: 100%;}
 .adminlogo, .adminlogo2 {max-width: 100%;}
 .adminlogo2 {
     display: inline-block !important;

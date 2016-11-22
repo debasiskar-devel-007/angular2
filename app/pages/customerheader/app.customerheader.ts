@@ -40,6 +40,7 @@ export class AppCustomerheader {
 
 //console.log(userdetails);
         this.details12='';
+        this.details1='';
         this.coockieData=userdetails;
         this.items = commonservices.getItems();
         this.router=router;
@@ -60,7 +61,10 @@ export class AppCustomerheader {
                         this.details1 = data.json()[0];
                         console.log(this.details1);
                         console.log(this.details1.filename);
-                        this.package_image="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/"+this.details1.filename;
+                       // if(this.userDetails.filename!=undefined) {
+                            this.package_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.filename;
+                       // }
+
                     }, error => {
                         console.log("Oooops!");
                     });

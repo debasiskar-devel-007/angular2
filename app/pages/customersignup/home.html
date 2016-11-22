@@ -4,9 +4,10 @@
         <div class="container-fluid toplogoblock">
 
             <a href="javascript:void(0)"><img src="images/logo1.png" alt="" class="logo1"/></a>
-            <!--<span class="logodevider"></span>
+            <span class="logodevider"></span>
 
-            <a href="javascript:void(0)"><img src="images/logo2.png" alt=""  class="logo2"/></a>-->
+            <!--<a href="javascript:void(0)"><img src="images/logo2.png" alt=""  class="logo2"/></a>-->
+            <a href="javascript:void(0)"><img src="{{package_image}}" alt=""  class="logo2"/></a>
 
         </div>
 
@@ -39,9 +40,12 @@
                     <img src="images/formshadow.png" alt="" class="formshadow"/>
 
                     <form novalidate [formGroup]="customersignupform" (ngSubmit)="doLogin(loginForm.value)"  name="sihnupform" >
+                        <input [formControl]="customersignupform.controls['dealerusername']" name="dealerusername"  type="hidden" class="form-control" placeholder="DealerUser Name"/>
                         <div class="signupform_wrapper">
                             <div class="form-group">
+
                                 <input [formControl]="customersignupform.controls['username']" name="username"  type="text" class="form-control" placeholder="User Name"/>
+
                                 <span  *ngIf ="customersignupform.controls['username'].touched && !customersignupform.controls['username'].valid" class="help-inline">User Name is Required ! <img src="images/iconquestion.png"></span>
 
 

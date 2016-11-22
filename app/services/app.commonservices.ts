@@ -1,12 +1,16 @@
+//import {CookieService} from 'angular2-cookie/core';
+import {type} from "os";
 export class AppCommonservices {
     items:Array<any>;
+    //private cookeiservice:CookieService;
     //http:Http;
 url:any
     constructor() {
         //this.http=http;
+        //this.cookeiservice=cookeiservice;
 
         if(window.location.hostname=='localhost'){
-            this.url= 'http://localhost:8001/';
+            this.url= 'http://influxiq.com:8001/';
         }
         else{
             this.url= 'http://influxiq.com:8001/';
@@ -21,6 +25,7 @@ url:any
     getItems() {
         return this.items;
     }
+
 
     getExpyears(){
         let   expYears=[
@@ -97,6 +102,23 @@ url:any
 
         return expMonths;
     }
+
+    getCardtype(){
+        let cardtype=[
+            {"value":"Master"},
+            {"value":"Visa"}
+
+
+        ];
+        return cardtype;
+    }
+    convertunixtodate(unix_tm:any) {
+        var dt = new Date(unix_tm);
+        return  dt.getMonth()+'/'+dt.getDate()+'/'+dt.getFullYear() ;
+
+    }
+
+
 
 
 

@@ -40,6 +40,7 @@
 
                     <form novalidate [formGroup]="signupform" (ngSubmit)="doLogin(loginForm.value)"  name="sihnupform" >
                         <div class="signupform_wrapper">
+                            <span class="error" *ngIf="loginerror==0">Username already exists</span>
                             <div class="form-group">
                                 <input [formControl]="signupform.controls['username']" name="username"  type="text" class="form-control" placeholder="User Name"/>
                                 <span  *ngIf ="signupform.controls['username'].touched && !signupform.controls['username'].valid" class="help-inline">User Name is Required ! <img src="images/iconquestion.png"></span>
@@ -152,3 +153,16 @@
     </div>
 </div>
 
+<div class="loaderinner" *ngIf="showloader">
+
+ <div class="inner_loder_box">  <img src="images/lodinglogo.png" style="display: block; margin: 10px auto; padding-bottom: 10px;">
+
+
+    <img src="images/processing.gif" style="display: block; margin: 10px auto; border-radius: 100px;">
+
+
+     <h2 style="margin:0; padding: 10px 0; text-align: center; color: #fff; font-size: 26px;">Creating your Profile...</h2>
+
+ </div>
+
+</div>

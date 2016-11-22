@@ -8,6 +8,17 @@ RewriteRule ^ - [L]
 
 # Rewrite everything else to index.html to allow html5 state links
 RewriteRule ^ index.html [L]
+<IfModule mod_expires.c>
+   # Enable expirations.
+   ExpiresActive On
+
+   # Cache all files for 2 weeks after access (A).
+   ExpiresDefault A1209600
+
+  <FilesMatch (\.js|\.html)$>
+     ExpiresActive Off
+  </FilesMatch>
+ </IfModule>
 
 
 

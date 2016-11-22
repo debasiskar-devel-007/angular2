@@ -7,6 +7,7 @@ import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
+import {AppComponent} from "../home/app.component";
 
 @Component({
     selector: 'my-app',
@@ -26,27 +27,115 @@ export class AppFaq {
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
-    private userInfo:CookieService;
+    private userdetails:CookieService;
+    private userInfo:any;
     id:any;
     item:any;
+    p:any;
+    pagec:any;
+    orderbyquery:any;
+    orderbytype:any;
+    appcomponent:AppComponent;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router ,appcomponent:AppComponent ) {
         this.router = router;
         this.http = http;
         this.router = router;
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl + 'adminlist';
+        console.log('router-----');
+        console.log(this.router);
+        console.log(this.router.url);
+        console.log('-----------------');
+        this.p=1;
+        this.userInfo=userdetails.getObject('userdetails');
+        let link='';
+        if(this.userInfo.userrole=='admin') link = this.serverUrl + 'faqlist';
+        if(this.userInfo.userrole=='dealer') link = this.serverUrl + 'systemfaqlist';
+        this.orderbyquery='added_on';
+        this.orderbytype=-1;
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.data = data1.json();
+
+                //console.log(this.router.urlTree.firstChild(this.router.urlTree.root));
+
+                //console.log(this.router.routerState);
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                console.log(this.data.length);
+                this.pagec=Math.ceil(this.data.length / 10);
+
+            }, error => {
+                console.log("Oooops!");
+            });
         // alert(link);
 
 
     }
 
     faq(){
-    this.router.navigateByUrl('/faq(adminheader:adminheader//adminfooter:adminfooter)');
+        this.router.navigateByUrl('/faq(adminheader:adminheader//adminfooter:adminfooter)');
 
-}
+    }
 
+    updatefaqstatus(val:any,item:any,i:any){
+
+        let link1 = this.serverUrl + 'updatefaqstatus?is_system=1&type='+this.userInfo.userrole+'&id='+item._id+'&value='+val;
+        //this.p=1;
+        this.http.get(link1)
+            .subscribe(data2 => {
+                //this.data = data2.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                console.log(this.data[i]);
+                //this.pagec=Math.ceil(this.data.length / 10);
+                this.data[i].is_active=val;
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+
+    }
+
+    deletefaq(adminid:any){
+        //console.log(adminid);
+
+        let link= this.serverUrl+'deletefaq';
+        let id=adminid;
+        this.http.post(link,id)
+            .subscribe(data1 => {
+                // this.data = data1.json();
+                //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
+                var index = this.data.indexOf(id.id);
+                console.log(index);
+                //let tempdata:Array<any>;
+                let x:any;
+                for(x in this.data){
+                    console.log(this.data[x]._id);
+                    console.log('this.data[x]._id');
+                    console.log(adminid._id);
+                    if(adminid._id==this.data[x]._id) {
+                        console.log(x+'.......'+this.data.length);
+                        delete this.data.x;
+                        this.data.splice(x, 1);
+                        console.log(this.data.length);
+                        //this.router.navigate(['adminlist']);
+                        window.location.reload();
+                    }
+                }
+                console.log(this.data);
+                //this.data=this.tempdata;
+                //this.data.splice(index, 1);
+                this.appcomponent.putmessages('Faq '+adminid.title+' deleted successfully','success');
+                //console.log(this.data);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+
+        // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
+    }
 
 
 }

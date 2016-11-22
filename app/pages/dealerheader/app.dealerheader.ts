@@ -25,12 +25,42 @@ export class AppDealerheader {
     items:any;
     serverUrl:any;
     commonservices:AppCommonservices;
+    private router: Router;
     loginerror:any;
+    userDetails:any;
+    uploadedfilesrc:any;
+    coockieData:CookieService;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router  ) {
+       // this.uploadedfilesrc='';
+        this.coockieData=userdetails;
+        this.router=router;
+        this.userDetails=userdetails.getObject('userdetails');
+       // images/img_customersignup_car.png
+        console.log(this.userDetails.filename);
+        if(this.userDetails.filename!=undefined){
+            this.uploadedfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.userDetails.filename;
+        }
+        else{
+            this.uploadedfilesrc= 'images/img_customersignup_car.png';
+        }
 
+    }
+    logout(){
 
+        this.coockieData.removeAll();
+        this.router.navigateByUrl('/dealerlogin');
+
+    }
+    getUserFullname(){
+        this.userDetails=this.coockieData.getObject('userdetails');
+        if(typeof(this.userDetails)!='undefined'){
+            return this.userDetails.userfullname;
+        }
+        else{
+            return '';
+        }
     }
 
 

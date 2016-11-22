@@ -72,6 +72,10 @@ export class AppAdminheader {
          this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
      }
 
+    faq(){
+        this.router.navigateByUrl('/faq(adminheader:adminheader//adminfooter:adminfooter)')
+    }
+
 }
 
 

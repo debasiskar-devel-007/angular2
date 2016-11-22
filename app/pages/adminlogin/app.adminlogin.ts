@@ -87,7 +87,7 @@ console.log();
                         console.log('Login successfully');
                         this.userdetails.putObject('userdetails', userdet);
                         this.loginerror=1;
-                       this.router.navigateByUrl('/admindashboard(adminheader:adminheader//adminfooter:adminfooter)');
+                        this.router.navigateByUrl('/admindashboard(adminheader:adminheader//adminfooter:adminfooter)');
 
 
                     }

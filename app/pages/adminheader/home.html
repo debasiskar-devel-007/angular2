@@ -35,6 +35,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <button type="button" class="btn btn-info collapsebtn" data-toggle="collapse" data-target="#demo"> <img src="images/dropdownmenu1.png" alt=""/></button>
                 </div>
             </div>
         </div>
@@ -44,7 +46,7 @@
 
 <div class="container-fluid menublockdiv">
     <div id="demo" class="collapse">
-        <div class="container collapsediv">
+        <div class="container-fluid collapsediv">
             <img src="images/menuarrow.png" alt="" class="menuarrowimg2"/>
         </div>
         <div class="collapsedivmenu" >
@@ -56,9 +58,35 @@
                 <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
                 <li><a><img src="images/admicon-manageaution.png">Manage Auctions</a></li>
                 <li><a><img src="images/admicon-subscription.png">Manage Subscriptions</a></li>
-                <li><a><img src="images/admicon-sharemedia.png">Share Media</a></li>
+                <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="images/admicon-sharemedia.png">Manage Share Link <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a [routerLink]="['/sharemedia']">Share Link</a></li>
+                        <li><a [routerLink]="['/bannerlist']">Manage Banner</a></li>
+                        <li><a [routerLink]="['/bannersizelist']">Manage Banner Sizes</a></li>
+
+                    </ul>
+
+
+                </li>
                 <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
-                <li><a (click)="faq()"><img src="images/admicon-faq.png">Faq's</a></li>
+                <li ><a (click)="faq()"><img src="images/admicon-faq.png">Faq's</a></li>
+
+                <li class="dropdown">   <a href="javascript:void(0)" class="dropdown-toggle" type="button" data-toggle="dropdown"> Demo  <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                     <li><a href="javascript:void(0)">Demo1</a></li>
+                        <li><a href="javascript:void(0)">Demo2</a></li>
+                        <li><a href="javascript:void(0)">Demo3</a></li>
+
+                </ul>
+
+                </li>
+                <li ><a [routerLink]="['/dealerlist']">Dealers</a></li>
+                <li ><a [routerLink]="['/merbershippackagelist']">Manage Membership Package</a></li>
+                <li ><a [routerLink]="['/auctionlist']">Manage Auction</a></li>
+                <li ><a [routerLink]="['/membershiporderreport']">Membership Order Report</a></li>
+
+
+
             </ul>
         </div>
     </div>

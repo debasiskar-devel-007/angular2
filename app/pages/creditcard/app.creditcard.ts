@@ -30,14 +30,15 @@ export class AppCreditcard {
     private userInfo:CookieService;
     commonservices:AppCommonservices;
     userinfo:any;
+    private router: Router;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService ,router: Router ) {
 
         this.items = commonservices.getItems();
         this.getExpyears = commonservices.getExpyears();
         this.expMonths = commonservices.getMonths();
-        //this.getusastates = commonservices.getusastates();
+        this.router=router;
         this.userinfo=userInfo.getObject('userInfo');
         this.http=http;
         console.log(this.items);
@@ -119,7 +120,6 @@ export class AppCreditcard {
         }
         //let appsignupobj=new AppSignup();
         // /console.log(appsignupobj.signupform.value.term);
-
     }
     submitform(){
         //this.signupform.set;
@@ -149,7 +149,8 @@ export class AppCreditcard {
             this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();
-                    console.log(data[0]);
+                    console.log(data[0]);//dealerautologin/fdsfkj
+                    window.location.href = 'http://'+this.userinfo.username+'.probidauto.com/#/dealerautologin/'+this.userinfo.username;
 
 
                 }, error => {

@@ -1,24 +1,104 @@
 <div class="page-wrapper addadmin">
     <div class="blockmaininner">
-        <div class="container-fluid signup_body_wrapper">
-            <!--<div class="container-fluid toplogoblock">
-                <a href="javascript:void(0)"><img src="images/logo1.png" alt="" class="logo1"/></a>
-                &lt;!&ndash;<span class="logodevider"></span>
-                <a href="javascript:void(0)"><img src="images/logo2.png" alt=""  class="logo2"/></a>&ndash;&gt;
-            </div>-->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="pageheader"><span>Add</span> Admin</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 addadminblock">
+                <form novalidate [formGroup]="addadminform" (ngSubmit)="doLogin(loginForm.value)"  name="addadminform"  class="form-inline">
+                    <div class="signupform_wrapper">
+                        <div class="form-group">
+                            <input [formControl]="addadminform.controls['username']" name="username"  type="text" class="form-control" placeholder="User Name"/>
+                            <span  *ngIf ="addadminform.controls['username'].touched && !addadminform.controls['username'].valid" class="help-inline"><span class="errormsgtxt">User Name is Required !</span> <img src="images/iconquestion.png"></span>
+
+
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addadminform.controls['password']" name="password"  type="password" class="form-control" placeholder="Password"/>
+                            <span *ngIf ="addadminform.controls['password'].touched && !addadminform.controls['password'].valid" class="help-inline"><span class="errormsgtxt">Password  is Required !</span><img src="images/iconquestion.png"></span>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addadminform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First Name"/>
+                            <span *ngIf ="addadminform.controls['fname'].touched && !addadminform.controls['fname'].valid" class="help-inline"><span class="errormsgtxt">First Name is Required !</span><img src="images/iconquestion.png"></span>
+
+
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addadminform.controls['lname']" type="text" class="form-control" placeholder="Last Name"/>
+                            <!-- <span class="help-inline">Please correct the error</span>-->
+                            <span *ngIf ="addadminform.controls['lname'].touched && !addadminform.controls['lname'].valid" class="help-inline"><span class="errormsgtxt">Last Name is Required !</span><img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" [formControl]="addadminform.controls['email']" type="email" class="form-control" placeholder="Email Address"/>
+                            <!-- <span class="help-inline">Please correct the error</span>-->
+                            <span *ngIf ="addadminform.controls['email'].touched && !addadminform.controls['email'].valid" class="help-inline"><span class="errormsgtxt">Email is Required and must be valid !</span><img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <textarea [formControl]="addadminform.controls['address']" name="address" class="form-control" placeholder="Address">
+                            </textarea>
+                            <!--<input/>-->
+                            <span  *ngIf ="addadminform.controls['address'].touched && !addadminform.controls['address'].valid" class="help-inline"><span class="errormsgtxt">Address is Required !</span> <img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addadminform.controls['city']" name="city"  type="text" class="form-control" placeholder="City"/>
+                            <span  *ngIf ="addadminform.controls['city'].touched && !addadminform.controls['city'].valid" class="help-inline"><span class="errormsgtxt">City is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+
+                            <select class="form-control3" [formControl]="addadminform.controls['state']" name="state" >
+                                <option value="" selected="selected"><span class="errormsgtxt">Select Your State</span></option>
+                                <option *ngFor="let obj of getusastates" [value]="obj.name">{{obj.name}}</option>
+                            </select>
+                            <span  *ngIf ="addadminform.controls['state'].touched && !addadminform.controls['state'].valid" class="help-inline spanalign"><span class="errormsgtxt">State is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addadminform.controls['zip']" name="zip"  type="text" class="form-control" placeholder="Zip Code"/>
+                            <span  *ngIf ="addadminform.controls['zip'].touched && !addadminform.controls['zip'].valid" class="help-inline"><span class="errormsgtxt">Zip is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <input [formControl]="addadminform.controls['phone']" name="phone"  type="text" class="form-control" placeholder="Phone"/>
+                            <span  *ngIf ="addadminform.controls['phone'].touched && !addadminform.controls['phone'].valid" class="help-inline"><span class="errormsgtxt">Phone is Required !</span> <img src="images/iconquestion.png"></span>
+                        </div>
+
+                        <div class="form-group_chakebox signupcheckbox">
+                            <input id="checkbox1" type="checkbox" name="checkbox1" [formControl]="addadminform.controls['is_active']" value="1"/><label for="checkbox1"></label><span>Is Active</span>
+                            <span *ngIf ="addadminform.controls['is_active'].touched && !addadminform.controls['is_active'].valid" class="help-inline">You must select checkbox</span>
+                            <div class="clearfix"></div>
+                        </div>
+
+                    </div>
+                    <div class="submitwrap">
+                        <button (click)="submitform()" type="button" value="Submit" class="subbtn">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+ <!--       <div class="container-fluid signup_body_wrapper">
             <div class="container-fluid signupmiddleblock">
-
-
-
                 <div class="col-lg-4 col-md-4 col-xs-6 col-sm-6 signuprightblock">
                     <div class="signupheading">
                         <h2>Add Admin</h2>
-
                     </div>
-
                     <img src="images/formshadow.png" alt="" class="formshadow"/>
-
-                    <form novalidate [formGroup]="addadminform" (ngSubmit)="doLogin(loginForm.value)"  name="addadminform" >
+                   <form novalidate [formGroup]="addadminform" (ngSubmit)="doLogin(loginForm.value)"  name="addadminform" >
                         <div class="signupform_wrapper">
                             <div class="form-group">
                                 <input [formControl]="addadminform.controls['username']" name="username"  type="text" class="form-control" placeholder="User Name"/>
@@ -31,27 +111,27 @@
 
                             <div class="form-group">
                                 <input [formControl]="addadminform.controls['password']" name="password"  type="password" class="form-control" placeholder="Password"/>
-                                <span *ngIf ="addadminform.controls['password'].touched && !addadminform.controls['password'].valid" class="help-inline">Password  is Required !<img src="images/iconquestion.png"></span>
+                                <span *ngIf ="addadminform.controls['password'].touched && !addadminform.controls['password'].valid" class="help-inline"><span class="errormsgtxt">Password  is Required !</span><img src="images/iconquestion.png"></span>
 
 
                             </div>
 
                             <div class="form-group">
                                 <input [formControl]="addadminform.controls['fname']" name="fname"  type="text" class="form-control" placeholder="First Name"/>
-                                <span *ngIf ="addadminform.controls['fname'].touched && !addadminform.controls['fname'].valid" class="help-inline">First Name is Required !<img src="images/iconquestion.png"></span>
+                                <span *ngIf ="addadminform.controls['fname'].touched && !addadminform.controls['fname'].valid" class="help-inline"><span class="errormsgtxt">First Name is Required !</span><img src="images/iconquestion.png"></span>
 
 
                             </div>
 
                             <div class="form-group">
                                 <input [formControl]="addadminform.controls['lname']" type="text" class="form-control" placeholder="Last Name"/>
-                                <!-- <span class="help-inline">Please correct the error</span>-->
-                                <span *ngIf ="addadminform.controls['lname'].touched && !addadminform.controls['lname'].valid" class="help-inline">Last Name is Required !<img src="images/iconquestion.png"></span>
+                                &lt;!&ndash; <span class="help-inline">Please correct the error</span>&ndash;&gt;
+                                <span *ngIf ="addadminform.controls['lname'].touched && !addadminform.controls['lname'].valid" class="help-inline"><span class="errormsgtxt">Last Name is Required !</span><img src="images/iconquestion.png"></span>
                             </div>
                             <div class="form-group">
                                 <input type="text" [formControl]="addadminform.controls['email']" type="email" class="form-control" placeholder="Email Address"/>
-                                <!-- <span class="help-inline">Please correct the error</span>-->
-                                <span *ngIf ="addadminform.controls['email'].touched && !addadminform.controls['email'].valid" class="help-inline">Email is Required and must be valid !<img src="images/iconquestion.png"></span>
+                                &lt;!&ndash; <span class="help-inline">Please correct the error</span>&ndash;&gt;
+                                <span *ngIf ="addadminform.controls['email'].touched && !addadminform.controls['email'].valid" class="help-inline"><span class="errormsgtxt">Email is Required and must be valid !</span><img src="images/iconquestion.png"></span>
                             </div>
 
 
@@ -59,13 +139,13 @@
 
                             <div class="form-group">
                                 <input [formControl]="addadminform.controls['address']" name="address"  type="text" class="form-control" placeholder="Address"/>
-                                <span  *ngIf ="addadminform.controls['address'].touched && !addadminform.controls['address'].valid" class="help-inline">Address is Required ! <img src="images/iconquestion.png"></span>
+                                <span  *ngIf ="addadminform.controls['address'].touched && !addadminform.controls['address'].valid" class="help-inline"><span class="errormsgtxt">Address is Required !</span> <img src="images/iconquestion.png"></span>
                             </div>
 
 
                             <div class="form-group">
                                 <input [formControl]="addadminform.controls['city']" name="city"  type="text" class="form-control" placeholder="City"/>
-                                <span  *ngIf ="addadminform.controls['city'].touched && !addadminform.controls['city'].valid" class="help-inline">City is Required ! <img src="images/iconquestion.png"></span>
+                                <span  *ngIf ="addadminform.controls['city'].touched && !addadminform.controls['city'].valid" class="help-inline"><span class="errormsgtxt">City is Required ! </span><img src="images/iconquestion.png"></span>
                             </div>
 
 
@@ -73,23 +153,23 @@
                             <div class="form-group">
 
                                 <select class="form-control3" [formControl]="addadminform.controls['state']" name="state" >
-                                    <option value="" selected="selected">Select Your State</option>
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Your State</span></option>
                                     <option *ngFor="let obj of getusastates" [value]="obj.name">{{obj.name}}</option>
                                 </select>
-                                <span  *ngIf ="addadminform.controls['state'].touched && !addadminform.controls['state'].valid" class="help-inline spanalign">State is Required ! <img src="images/iconquestion.png"></span>
+                                <span  *ngIf ="addadminform.controls['state'].touched && !addadminform.controls['state'].valid" class="help-inline spanalign"><span class="errormsgtxt">State is Required ! </span><img src="images/iconquestion.png"></span>
                             </div>
 
 
                             <div class="form-group">
                                 <input [formControl]="addadminform.controls['zip']" name="zip"  type="text" class="form-control" placeholder="Zip Code"/>
-                                <span  *ngIf ="addadminform.controls['zip'].touched && !addadminform.controls['zip'].valid" class="help-inline">Zip is Required ! <img src="images/iconquestion.png"></span>
+                                <span  *ngIf ="addadminform.controls['zip'].touched && !addadminform.controls['zip'].valid" class="help-inline"><span class="errormsgtxt">Zip is Required ! </span><img src="images/iconquestion.png"></span>
                             </div>
 
 
 
                             <div class="form-group">
                                 <input [formControl]="addadminform.controls['phone']" name="phone"  type="text" class="form-control" placeholder="Phone"/>
-                                <span  *ngIf ="addadminform.controls['phone'].touched && !addadminform.controls['phone'].valid" class="help-inline">Phone is Required ! <img src="images/iconquestion.png"></span>
+                                <span  *ngIf ="addadminform.controls['phone'].touched && !addadminform.controls['phone'].valid" class="help-inline"><span class="errormsgtxt">Phone is Required !</span> <img src="images/iconquestion.png"></span>
                             </div>
                             <div class="form-group_chakebox signupcheckbox">
                                 <input id="checkbox1" type="checkbox" name="checkbox1" [formControl]="addadminform.controls['is_active']" value="1"/><label for="checkbox1"></label><span>Is Active</span>
@@ -100,14 +180,12 @@
 
                         </div>
                         <div class="btn-block">
-                            <button (click)="submitform()" type="button" value="let’s get you --started" class="subbtn">let’s get you started</button>
-
+                            <button (click)="submitform()" type="button" value="let’s get you &#45;&#45;started" class="subbtn">let’s get you started</button>
                         </div>
                     </form>
                 </div>
-
                 <div class="clearfix"></div>
             </div>
         </div>
     </div>
-</div>
+</div>-->

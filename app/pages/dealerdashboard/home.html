@@ -249,15 +249,16 @@
                     </div>
                     <div class="recentrsvplists">
                         <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
+                            <div *ngFor="let item of details" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
                                 <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
+                                    <img *ngIf="item.filename" src="{{filesrc}}{{item.filename}}">
+                                    <img *ngIf="!item.filename" src="images/logo_61.png">
                                 </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Yesterday</span>
+                                <p>{{item.fname}} {{item.lname}}</p>
+                                <span [innerHtml]="commonservices.convertunixtodate(item.added_on)"></span>
                                 <span class="inactive"></span>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
+                           <!-- <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
                                 <div class="imgwrapper">
                                     <img src="images/inboximgleft.jpg">
                                 </div>
@@ -309,7 +310,7 @@
                                 </div>
                                 <p>Lorem ipsum.</p>
                                 <span>Yesterday</span>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

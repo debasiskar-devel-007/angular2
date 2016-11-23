@@ -80,6 +80,12 @@ export class AppCarlist{
 
     }
 
+    cartrackby(index:any, item:any) {
+        console.log(item._id);
+        console.log('car id');
+        return true;
+        //return item._id;
+    }
 
     deleterow(dealerrow:any){
         //console.log(adminid);

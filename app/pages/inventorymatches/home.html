@@ -6,22 +6,28 @@
         <div class="inventorymatchblock">
             <div class="inventorymatchheader">
                 <h2><span>Inventory</span> Matches</h2>
+                <ul class="list-inline">
+                    <li>
+                        <div class="btn-group bootstrap-select matchesdropdown">
+                            <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                <span class="selecttext">Matches by %</span>&nbsp;<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu open" role="menu">
+                                <li class="selected">
+                                    <a><span class="text">Above 50%</span></a></li>
+                                <li>
+                                    <a><span class="text">Above 60%</span></a></li>
+                                <li>
+                                    <a><span class="text">Above 70%</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><div class="searchbox"><input placeholder="Search by Make, Model, Auction, Year, Keyword"></div></li>
+                </ul>
             </div>
             <div class="inventorylistswrapper">
-                <div class="btn-group bootstrap-select matchesdropdown">
-                    <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
-                        <span class="selecttext">Matches by %</span>&nbsp;<span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu open" role="menu">
-                        <li class="selected">
-                            <a><span class="text">Above 50%</span></a></li>
-                        <li>
-                            <a><span class="text">Above 60%</span></a></li>
-                        <li>
-                            <a><span class="text">Above 70%</span></a></li>
-                    </ul>
-                </div>
-                <div class="searchbox"><input placeholder="Search by Make, Model, Auction, Year, Keyword"></div>
+
+
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
                         <div class="inventorysinglelistblock">

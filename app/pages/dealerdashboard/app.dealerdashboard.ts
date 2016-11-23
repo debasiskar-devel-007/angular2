@@ -2,7 +2,7 @@ import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation} from
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
-import {Routes, RouterModule, Router} from '@angular/router';
+import {Routes, RouterModule, Router, ActivatedRoute} from '@angular/router';
 import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
@@ -26,9 +26,35 @@ export class AppDealerdashboard {
     serverUrl:any;
     commonservices:AppCommonservices;
     loginerror:any;
+    private router: Router;
+    private userInfo:any;
+    details:any;
+    username:any;
+    filesrc:any;
+
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router) {
+        this.router=router;
+        this.http=http;
+        this.router=router;
+        this.commonservices=commonservices;
+        this.items = commonservices.getItems();
+        this.serverUrl = this.items[0].serverUrl;
 
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService  ) {
+        this.userInfo=userInfo.getObject('userdetails');
+        this.username = this.userInfo.username; // (+) converts string 'id' to a number
+        console.log(this.username);
+        let ids={dealerusername:this.username};
+        this.http.post(this.serverUrl+'getcustomerbyusername',ids)
+            .subscribe(data => {
+                this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.details=data.json();
+                console.log(this.details);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
 
 
     }

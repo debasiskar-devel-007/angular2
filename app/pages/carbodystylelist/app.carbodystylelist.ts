@@ -1,4 +1,4 @@
-import {Component, NgModule, ViewChild, ViewContainerRef, ViewEncapsulation, Renderer, Inject} from '@angular/core';
+import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
@@ -9,22 +9,20 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
-import {DomSanitizer} from "@angular/platform-browser";
 
 
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/auctionlist/home.html',
+    templateUrl:'app/pages/carbodystylelist/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppAuctionlist{
+export class AppCarbodystylelist {
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
-    // /@ViewChild('lgModal') sharemediaModal;
-
     myModal :ModalModule;
+    data:any;
     http:Http;
     items:any;
     serverUrl:any;
@@ -39,18 +37,11 @@ export class AppAuctionlist{
     pagec:any;
     orderbyquery:any;
     orderbytype:any;
-    sharefilesrc:any;
     appcomponent:AppComponent;
     tempdata:Array<any>;
-    userdetails:any;
-    data:any;
     filesrc:any;
-    //sharemediaModal:any;
-    @ViewChild('all_m')
-    private allMElementRef:any;
-    private mediaid:any;
 
-    constructor(@Inject(Renderer) private renderer: Renderer,fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent,private _sanitizer: DomSanitizer  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
         this.http=http;
         this.router=router;
@@ -59,25 +50,21 @@ export class AppAuctionlist{
         this.items = commonservices.getItems();
         this.messages = appcomponent.getMessages();
         this.serverUrl = this.items[0].serverUrl;
-        //this.userInfo=userInfo;
-        this.userdetails=userInfo.getObject('userdetails');
+        let link = this.serverUrl+'carbodystylelist';
         this.p=1;
-        this.orderbyquery='priority';
+        this.orderbyquery='name';
         this.orderbytype=-1;
-
-        var link=this.serverUrl+'auctionlist'
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
-                //  console.log(this.data);
-                this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                console.log(this.data);
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 this.pagec=Math.ceil(this.data.length / 10);
 
             }, error => {
                 console.log("Oooops!");
             });
-
 
     }
 
@@ -85,27 +72,25 @@ export class AppAuctionlist{
     deleterow(dealerrow:any){
         //console.log(adminid);
 
-        let link= this.serverUrl+'deleteauction';
+        let link= this.serverUrl+'deletecarbodystyle';
         let id=dealerrow;
         this.http.post(link,id)
             .subscribe(data1 => {
                 // this.data = data1.json();
                 //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
                 var index = this.data.indexOf(id.id);
+                console.log(index);
                 //let tempdata:Array<any>;
                 let x:any;
                 for(x in this.data){
                     if(dealerrow._id==this.data[x]._id) {
-                        console.log(x+'.......'+this.data.length);
                         delete this.data.x;
                         this.data.splice(x, 1);
-                       // window.location.reload();
+                        window.location.reload();
                     }
                 }
-                // console.log(this.data);
-                //this.data=this.tempdata;
-                //this.data.splice(index, 1);
-                this.appcomponent.putmessages('Auction '+dealerrow.name+' deleted successfully','success');
+                console.log(this.data);
+                 this.appcomponent.putmessages('Car body style '+dealerrow.name+' deleted successfully','success');
                 //console.log(this.data);
 
             }, error => {
@@ -115,7 +100,6 @@ export class AppAuctionlist{
 
         // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
     }
-
     changeStatus(item:any){
         var idx = this.data.indexOf(item);
         if(this.data[idx].is_active==1){
@@ -125,7 +109,7 @@ export class AppAuctionlist{
             var is_active=1;
         }
         let stat={id:item._id,is_active:is_active};
-        let link= this.serverUrl+'auctionstatuschange';
+        let link= this.serverUrl+'carbodystylestatuschange';
         this.http.post(link,stat)
             .subscribe(data1 => {
                 // this.data = data1.json();
@@ -141,21 +125,22 @@ export class AppAuctionlist{
 
 
     }
-    getSortClass(value:any){
-        //console.log(value);
+
+     getSortClass(value:any){
+        console.log(value);
         if(this.orderbyquery==value && this.orderbytype==-1) {
             console.log('caret-up');
             return 'caret-up'
         }
 
         if(this.orderbyquery==value && this.orderbytype==1) {
-            // console.log('caret-up');
+            console.log('caret-up');
             return 'caret-down'
         }
         return 'caret-up-down'
     }
     manageSorting(value:any){
-        // console.log(value);
+        console.log(value);
         if(this.orderbyquery==value && this.orderbytype==-1) {
             this.orderbytype=1;
             return;
@@ -169,16 +154,6 @@ export class AppAuctionlist{
         this.orderbytype=-1;
     }
 
-    bannerModal(mediaid:any){
-        //let shareid=sharemediaid;
-        // $('#sharemediaModal').myModal('show');
-        // sharemediaModal.open();
-        //  $('#sharemediaModal').modal('show');
-        //alert(mediaid);
-        this.mediaid=mediaid;
-        this.renderer.invokeElementMethod(this.allMElementRef.nativeElement, 'click', []);
-        //sharemediaModal.open();
-    }
 
 
 

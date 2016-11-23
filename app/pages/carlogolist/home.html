@@ -17,37 +17,39 @@
             <div class="col-lg-12 col-md-12 bannersizelistblock">
                 <div class="adminlistblock">
                     <div class="adminlistheader">
-                        <h2><span>Color</span> listing</h2>
+                        <h2><span>Car Logo</span> listing</h2>
                         <ul class="list-inline">
                             <li><div class="searchbox" ><input [(ngModel)]="query" placeholder="Search "></div></li>
-                            <li>
-                                <div class="addbtnwrapper">
-                                    <a [routerLink]="['/addcolor']"><button class="addbtn" type="button" value="Add color">Add Color </button></a>
-                                </div>
+                            <li><div class="addbtnwrapper">
+                                <a [routerLink]="['/addcarlogo']"><button class="addbtn" type="button" value="Add car logo">Add Car Logo </button></a>
+                            </div>
                             </li>
                         </ul>
+
                     </div>
                     <div class="adminlistlists" >
                         <div class=" table-responsive">
                             <table class="table table-striped">
                             <thead>
                             <tr>
-                              <!--  <th>Base Price</th>-->
-                               <th>Base Price <b [ngClass]="getSortClass('color')" (click)="manageSorting('color')" ></b></th>
-                               <th>Priority <b [ngClass]="getSortClass('priority')" (click)="manageSorting('priority')" ></b></th>
+                                <th>Name <b [ngClass]="getSortClass('name')" (click)="manageSorting('name')" ></b></th>
+                                <th>Logo</th>
+                                <th>Priority <b [ngClass]="getSortClass('prioriry')" (click)="manageSorting('prioriry')" ></b></th>
+                               <!-- <th>Base Price <b [ngClass]="getSortClass('baseprice')" (click)="manageSorting('baseprice')" ></b></th>-->
                                 <th>Status <b [ngClass]="getSortClass('is_active')" (click)="manageSorting('is_active')" ></b></th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr  *ngFor="let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id">
-                                <td>{{item.color}}</td>
+                                <td>{{item.name}}</td>
+                                <td><div *ngIf="filesrc" style="text-align:center;width:200px;height:150px;margin:10px 0;border:1px solid #ccc;padding:4px;"><img  style="max-width: 100%;max-height:100%;" *ngIf="item.logo" src="{{filesrc}}{{item.logo}}"></div></td>
                                 <td>{{item.priority}}</td>
                                 <td><a href="javascript:void(0)" class="{{(item.is_active==1) ? 'btninactive' : 'btndelete'}}" (click)="changeStatus(item)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>
 
                                 <td>
                                     <div class="actionbtns">
-                                        <a [routerLink]="['/editcolor', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
+                                        <a [routerLink]="['/editcarlogo', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
                                         <a><button class="btndelete" type="button" (click)="deleterow(item)"  value="Delete">Delete</button></a>
                                     </div>
                                 </td>

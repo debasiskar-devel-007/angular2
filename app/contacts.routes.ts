@@ -30,6 +30,7 @@ import {AppFaq} from "./pages/faq/app.faq";
 import {AppDealerWebsiteLogin} from "./pages/dealerwebsitelogin/dealerwebsitelogin";
 import {AppCustomercreditcard} from "./pages/customercreditcard/app.customercreditcard";
 import {AppCustomerheader  }  from './pages/customerheader/app.customerheader';
+import {AppCustomerfooter  }  from './pages/customerfooter/app.customerfooter';
 import {AppDealerFaq} from "./pages/dealerfaq/app.faqs";
 import {AppDealerlist} from "./pages/dealerlist/app.dealerlist";
 import {AppAddsharelink} from "./pages/addsharelink/app.addsharelink";
@@ -71,6 +72,7 @@ import {AppAddauction} from "./pages/addauction/app.addauction";
 import {AppEditauction} from "./pages/editauction/app.editauction";
 import {AppAddcar} from "./pages/addcar/app.addcar";
 import {AppCarlist} from "./pages/carlist/app.carlist";
+import {AppEditcar} from "./pages/editcar/app.editcar";
 import {AppCustomersignupstep1} from "./pages/customersignupstep1/app.customersignupstep1";
 import {AppOrderdetails} from "./pages/orderdetails/app.orderdetails";
 import {AppDealerprofile} from "./pages/dealerprofile/app.dealerprofile";
@@ -83,6 +85,13 @@ import {AppBasepricelist} from "./pages/basepricelist/app.basepricelist";
 import {AppEditbaseprice} from "./pages/editbaseprice/app.editbaseprice";
 import {AppColorlist} from "./pages/colorlist/app.colorlist";
 import {AppAddcolor} from "./pages/addcolor/app.addcolor";
+import {AppEditcolor} from "./pages/editcolor/app.editcolor";
+import {AppAddcarlogo} from "./pages/addcarlogo/app.addcarlogo";
+import {AppCarlogolist} from "./pages/carlogolist/app.carlogolist";
+import {AppEditcarlogo} from "./pages/editcarlogo/app.editcarlogo";
+import {AppAddcarbodystyle} from "./pages/addcarbodystyle/app.addcarbodystyle";
+import {AppCarbodystylelist} from "./pages/carbodystylelist/app.carbodystylelist";
+import {AppEditcarbodystyle} from "./pages/editcarbodystyle/app.editcarbodystyle";
 //alert(window.location.hostname);
 
 //alert(checkutl);
@@ -126,6 +135,7 @@ const appRoutes: Routes = [
     { path: 'customerlogin',component: AppCustomerlogin},
     { path: 'adminheader',component: AppAdminheader,outlet:'adminheader'},
     { path: 'customerheader',component: AppCustomerheader,outlet:'customerheader'},
+    { path: 'customerfooter',component: AppCustomerfooter,outlet:'customerfooter'},
     { path: 'adminfooter',component: AppAdminfooter,outlet:'adminfooter'},
     { path: 'admindashboard',component: AppAdmindashboard},
     { path: 'customerdashboard',component: AppCustomerdashboard},
@@ -179,6 +189,7 @@ const appRoutes: Routes = [
     { path: 'editauction/:id', component: AppEditauction},
     { path: 'addcar', component: AppAddcar},
     { path: 'carlist', component: AppCarlist},
+    { path: 'editcar/:id', component: AppEditcar},
     { path: 'customersignupstep1', component: AppCustomersignupstep1},
     { path: 'orderdetails/:id', component: AppOrderdetails},
     { path: 'dealerprofile', component: AppDealerprofile},
@@ -191,6 +202,13 @@ const appRoutes: Routes = [
     { path: 'editbaseprice/:id', component: AppEditbaseprice},
     { path: 'colorlist', component: AppColorlist},
     { path: 'addcolor', component: AppAddcolor},
+    { path: 'editcolor/:id', component: AppEditcolor},
+    { path: 'addcarlogo', component: AppAddcarlogo},
+    { path: 'carlogolist', component: AppCarlogolist},
+    { path: 'editcarlogo/:id', component: AppEditcarlogo},
+    { path: 'addcarbodystyle', component: AppAddcarbodystyle},
+    { path: 'carbodystylelist', component: AppCarbodystylelist},
+    { path: 'editcarbodystyle/:id', component: AppEditcarbodystyle},
 
 
 ];

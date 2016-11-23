@@ -7,7 +7,7 @@
                     <span class="logodevider"></span>
 
                     <!--<a href="javascript:void(0)"><img src="images/logo2.png" alt=""  class="logo2"/></a>-->
-                    <a href="javascript:void(0)"><img src="{{package_image}}" alt=""  class="adminlogo"/></a>
+                    <a href="javascript:void(0)"><img src="{{uploadedfilesrc}}" alt=""  class="adminlogo"/></a>
                     <button type="button" class="btn btn-info collapsebtn" data-toggle="collapse" data-target="#demo"> <img src="images/dropdownmenu1.png" alt=""/></button>
                     <div class="clearfix"></div>
                 </div>
@@ -25,11 +25,11 @@
                 </div>
                 <div class = "customersignout dropdown">
                     <a type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
-                        <img src="images/img_customersignup_car.png" class="imgadminimg"> <label class="lblsignupcustomer">{{getUserFullname()}}</label> <span class = "caret"></span>
+                        <img src="{{customerimage}}" class="imgadminimg"> <label class="lblsignupcustomer">{{getUserFullname()}}</label> <span class = "caret"></span>
                     </a>
                     <div class = "dropdown-menu dropdown-menucuscom" aria-labelledby = "dropdownMenu1">
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                            <img src="images/img_customersignup_car.png" class="imgadminimg">
+                            <a (click)="customerimageuploadModal.open()"><img  src="{{customerimage}}" class="imgadminimg"></a>
                         </div>
                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
                             <label class="lblsignupcustomer">{{getUserFullname()}}</label>
@@ -74,3 +74,42 @@
 
     </div>
 </div>
+
+<modal #customerimageuploadModal class="mainmodal">
+    <modal-header class="modelheader">
+        <h1 class="shareh1title">Upload Image</h1>
+    </modal-header>
+    <modal-content class="modelcontent">
+
+
+        <form novalidate [formGroup]="updatecustomerform"   name="updatecustomer"  class="form-inline">
+            <div class="form-group">
+                <input [formControl]="updatecustomerform.controls['filename']" name="filename"  type="hidden" class="form-control" placeholder="Image"/>
+                <div class="clearfix"></div>
+            </div>
+            <div class="browsefileblock">
+                <label>Image</label>
+                <input type="file"
+                       ngFileSelect
+                       [options]="basicOptions"
+                       (onUpload)="handleUpload($event)">
+                <!--<div class="responsceclass">
+                    Response: {{ response | json }}
+                </div>-->
+                <div *ngIf="progress">
+                    Uploading: {{ progress }}%
+                </div>
+                <div *ngIf="customerimage" class="browsefileblockimg">
+                    <img src="{{customerimage}}" >
+                </div>
+            </div>
+            <div class="submitwrap">
+                <button (click)="submitform()" type="button" value="Submit" class="subbtn">Submit</button>
+            </div>
+            </form>
+
+    </modal-content>
+    <modal-footer class="modelfooter">
+        <button #modalclose class="btn btn-primary btnclose" (click)="customerimageuploadModal.close()">close</button>
+    </modal-footer>
+</modal>

@@ -88,7 +88,7 @@ export class AppCustomerlogin{
                         this.userInfo.putObject('userdetails', userdet);
                         console.log('Login successfully');
                         this.loginerror=1;
-                        this.router.navigateByUrl('/customerdashboard(customerheader:customerheader//dealerfooter:dealerfooter)');
+                        this.router.navigateByUrl('/customerdashboard(customerheader:customerheader//customerfooter:customerfooter)');
                     }
                     else{
                         console.log('Invalid username/password');

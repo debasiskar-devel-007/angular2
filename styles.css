@@ -1529,7 +1529,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     border-bottom:1px solid #0c1527;
 }
 .adminlistlists .table>thead>tr>th {padding: 8px; line-height: 1.42857143; border-top: 1px solid #ddd; color:#bbbfc0; font-family: 'open_sanssemibold'; font-size: 12px;}
-.adminlistheader .addbtnwrapper{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;float: right !important;}
+.adminlistheader .addbtnwrapper{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;}
 /*.adminlistheader .addbtn{color: #fff; cursor:pointer; background: #019901; padding: 7px 15px;}*/
 .adminlistlists .table>thead>tr>th{ padding: 14px 0px !important;}
 .adminlistlists .table>tbody>tr:nth-child(even){color:#fff;}
@@ -1539,7 +1539,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     color:#000; text-decoration: none;}
 .inventorysinglelistblock3col1 .actionbtns{text-align: center;}
 .btnaction{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;float: right;}
-.btnedit{color: #fff; cursor:pointer; background-color: #4c4d4e; -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1); -moz-box-shadow:    0px 1px 0px rgba(4, 4, 4, 1); box-shadow:         0px 1px 0px rgba(4, 4, 4, 1); padding: 5px 8px; border:none;}
+/*.btnedit{color: #fff; cursor:pointer; background-color: #4c4d4e; -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1); -moz-box-shadow:    0px 1px 0px rgba(4, 4, 4, 1); box-shadow:         0px 1px 0px rgba(4, 4, 4, 1); padding: 5px 8px; border:none;}*/
 .btndelete{color: #fff; cursor:pointer; background: #ff3317; padding: 5px 8px;}
 .adminlistlists input{ position: absolute; top: 45px; right: 98px; padding: 6px 9px; width: 260px;background: #b8b9b9 url(../images/iconsearch.png) no-repeat right 11px center; background: url(../images/iconsearch.png) no-repeat; background-position: right 11px center; background-position-x: 98%;
     background-position-y: 50%; background-color:#b8b9b9; font-family: 'open_sansregular';font-size: 14px;
@@ -1776,7 +1776,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     line-height: 38px;
     padding-bottom: 10px;
 }
-.faqblock .addbtnwrapper2{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;float: right;margin-top: 0px;margin-right: 15px;}
+.faqblock .addbtnwrapper2{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;margin-top: 0px;}
 .faqblock .addbtnwrapper2 .addbtn{color: #fff; cursor:pointer; background: #019901; padding: 10px 12px;}
 
 .faqblockwrapper{ padding: 10px; background-color: #9fa3a5 !important;}
@@ -2065,7 +2065,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .headeruserinfo ul li .btnactive{background-color: #019901 !important; line-height: 18px;}
 .headeruserinfo ul li .btninactive{background-color: #ccc; color: #555656; line-height: 18px;}*/
 
-
+.headeruserinfo ul li{vertical-align: middle; line-height: 60px;}
 .faxsearchbox input{
     background: #b8b9b9 url("../images/iconsearch.png") no-repeat scroll 98% 50%;
     border-radius: 0;
@@ -2073,11 +2073,12 @@ ul.inboxlists{padding:0px; margin:0px;}
     font-family: "open_sansregular";
     font-size: 14px;
     padding: 9px;
-    width: 260px; float:right;  margin-bottom: 10px;
+    width: 260px;
 }
 
-/*customer dashboard*/
+.blockmaininner .faqblock ul{float: right;}
 
+/*customer dashboard*/
 
 
 /*customer dashboard css*/
@@ -2773,6 +2774,37 @@ ul.inboxlists{padding:0px; margin:0px;}
     border: 1px solid #7e7d7d;
 }
 
+.auctioninventoryheader ul{float: right;}
+.auctioninventoryheader ul li .searchbox input {
+    padding: 9px 9px;
+    width: 260px;
+    background: #b8b9b9 url(images/iconsearch.png) no-repeat right 11px center;
+    background: url(images/iconsearch.png) no-repeat;
+    background-position: right 11px center;
+    background-position-x: 98%;
+    background-position-y: 50%;
+    background-color: #b8b9b9;
+    font-family: 'open_sansregular';
+    font-size: 14px;
+    border-radius: 0px;
+    color: rgb(85, 85, 85);
+    padding-right: 35px;
+    border: 1px solid #7e7d7d;
+}
+
+
+.auctioninventoryheader ul li .bootstrap-select.matchesdropdown .btndropdown {
+    color: #4c4b4b !important;
+    background-color: #b8b9b9!important;
+    border-color: #7e7d7d !important;
+    text-transform: uppercase;
+    border-radius: 0px !important;
+    font-family: 'MyriadPro-Regular';
+    width: 120px;
+    padding: 7px 8px;
+}
+
+
 .inventorylistswrapper .searchbox input {
     width: 360px;
 }
@@ -3414,7 +3446,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     font-size: 12px;
 }
 
-.adminlistheader .addbtnwrapper{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;float: right !important;}
+.adminlistheader .addbtnwrapper{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;}
 .adminlistheader .addbtn{color: #fff; cursor:pointer; background: #019901; padding: 10px 15px;}
 
 .adminlistlists .table>thead>tr>th{
@@ -3445,7 +3477,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     border:none;
 }
 .btndelete{color: #fff; cursor:pointer; background: #ff3317; padding: 5px 8px;}
-
+/*
 .adminlistlists input{
     position: absolute;
     top: 45px;
@@ -3465,7 +3497,49 @@ ul.inboxlists{padding:0px; margin:0px;}
     padding-right:35px;
     border: 1px solid #7e7d7d;
 
+}*/
+
+
+.adminlistheader ul{float: right;}
+.adminlistheader ul li .searchbox input{
+    padding: 9px 9px;
+    width: 260px;
+    background: #b8b9b9 url(images/iconsearch.png) no-repeat right 11px center;
+    background: url(images/iconsearch.png) no-repeat;
+    background-position: right 11px center;
+    background-position-x: 98%;
+    background-position-y: 50%;
+    background-color:#b8b9b9;
+    font-family: 'open_sansregular';
+    font-size: 14px;
+    border-radius: 0px;
+    color: rgb(85, 85, 85);
+    padding-right:35px;
+    border: 1px solid #7e7d7d;
+
 }
+
+
+
+.viewrsvpinnerheader ul{float: right;}
+.viewrsvpinnerheader ul li .searchbox input{
+    padding: 9px 9px;
+    width: 260px;
+    background: #b8b9b9 url(images/iconsearch.png) no-repeat right 11px center;
+    background: url(images/iconsearch.png) no-repeat;
+    background-position: right 11px center;
+    background-position-x: 98%;
+    background-position-y: 50%;
+    background-color:#b8b9b9;
+    font-family: 'open_sansregular';
+    font-size: 14px;
+    border-radius: 0px;
+    color: rgb(85, 85, 85);
+    padding-right:35px;
+    border: 1px solid #7e7d7d;
+
+}
+
 
 .searchbox input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #4c4b4b;
@@ -3626,12 +3700,12 @@ ul.inboxlists{padding:0px; margin:0px;}
 
 
 
-.bannerlistblock .adminlistlists input{right: 130px; padding: 8px 9px;}
-.bannersizelistblock .adminlistlists input{right: 153px; padding: 8px 9px;}
+/*.bannerlistblock .adminlistlists input{right: 130px; padding: 8px 9px;}
+.bannersizelistblock .adminlistlists input{right: 153px; padding: 8px 9px;}*/
 
-.adminlistmainblock .adminlistlists input {right: 126px; padding: 8px 9px;}
+/*.adminlistmainblock .adminlistlists input {right: 126px; padding: 8px 9px;}*/
 
-.dealerlistman .adminlistlists input {right: 30px; padding: 8px 9px;}
+/*.dealerlistman .adminlistlists input {right: 30px; padding: 8px 9px;}*/
 
 
 .inventoryrecentbidblock{padding: 0px; background-color: #e2e2e2 !important; height: auto; border-top: 5px solid #555555; margin-top: 30px; min-height: 1px;}
@@ -4160,19 +4234,19 @@ ul.inboxlists{padding:0px; margin:0px;}
     color:#ff3317;
 }
 
-.daterange{position: absolute; top: 45px; right: 156px;}
-.daterange input{width: 120px;
+/*.daterange{position: absolute; top: 45px; right: 156px;}*/
+.daterange input{width: 100%;
     background: url(../images/icon-calender.png) no-repeat left 4px center;
     padding-left: 33px;background-color: #b8b9b9; color: #4c4b4b; border: 1px solid #7e7d7d;
 }
 
 
-.RSVPActivity .daterange {
+/*.RSVPActivity .daterange {
     position: absolute;
     top: 45px;
     right: 467px;
-}
-.RSVPActivity .daterange li{color:#fff;}
+}*/
+.RSVPActivity .daterange li{color:#fff; margin-bottom: 10px;}
 
 
 /*---daterange-css---*/
@@ -4181,7 +4255,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     background: #fff;
     border-radius: 0px;
     width: 278px;
-    padding: 6px 4px;
+    padding: 9px 4px;
     margin-top: 1px;
     top: 100px;
     left: 20px;
@@ -4190,7 +4264,9 @@ ul.inboxlists{padding:0px; margin:0px;}
     position: absolute;
     display: inline-block;
     border-bottom-color: rgba(0, 0, 0, 0.2);
-    content: ''; }
+    content: '';
+}
+
 .daterangepicker:before {
     top: -7px;
     border-right: 7px solid transparent;
@@ -6760,6 +6836,7 @@ a:focus, a:hover {
     padding: 10px;
 }
 
+/*
 .RSVPActivity.viewrsvpinner .daterange {
     position: absolute;
     top: 15px;
@@ -6775,6 +6852,7 @@ a:focus, a:hover {
     top: 0px;
     right: 0px;
 }
+*/
 
 /*---End viewRSVP--*/
 
@@ -8275,13 +8353,6 @@ a:focus, a:hover {
     max-width: 100%;
 }
 
-.addmembershippackage .bannerlistblock .actionbtns {
-    width: 106px;
-    margin: 0 auto;
-    float: none;
-    display: block;
-    text-align: center;
-}
 
 .addmembershippackage .bannerlistblock .adminlistblock .adminlistlists .table>thead>tr>th {
     padding: 14px 8px !important;
@@ -8524,3 +8595,169 @@ a:focus, a:hover {
 .orderdetails .inventorysinglelist .table>tbody>tr>td h3 span{color: #ff3317; font-size: 24px;}
 
 /*----- end orderdetails-----*/
+
+.addpurchasetime .addadminblock .form-group_chakebox {
+    margin-left: 1%;
+    padding-top: 0px !important;
+    float: left;
+    width: 100%;
+}
+
+.btninactive {
+    color: #fff;
+    cursor: pointer;
+    background-color: #019901;
+    -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
+    -moz-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
+    box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
+    padding: 5px 8px;
+    border: none;
+}
+
+
+.adminlist .actionbtns button {margin-bottom: 0px; width: 48%;}
+.adminlist .actionbtns{width:200px;}
+
+/*
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.makedropdown{position: absolute;top: 45px;right: 842px;}*/
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.makedropdown .btndropdown {
+    color: #4c4b4b !important;
+    background-color: #b8b9b9!important;
+    border-color: #7e7d7d !important;
+    text-transform: uppercase;
+    border-radius: 0px !important;
+    font-family: 'MyriadPro-Regular';
+    width: 122px;
+    padding:9px 9px;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.makedropdown .dropdown-menu{
+    background-color: #a9abac;
+    color:#4c4b4b;
+    font-family: 'open_sansregular'; font-size: 14px; border-radius: 0px;    padding: 0px;
+    margin: 0px;
+    min-width: 122px;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.makedropdown .selecttext{float: left !important; text-transform: capitalize;}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.makedropdown .dropdown-menu>li>a{
+    border-bottom: 1px solid #4c4b4b;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.makedropdown .dropdown-menu>li:hover{
+    background-color: #b8b9b9;
+}
+
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.makedropdown .caret{display: inline-block;
+    display: inline-block;
+    border-top: 6px dashed;
+    border-top: 4px solid\9;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    margin-right: -5px;
+}
+
+
+/*.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.modeldropdown{position: absolute;top: 45px;right: 702px;}*/
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.modeldropdown .btndropdown {
+    color: #4c4b4b !important;
+    background-color: #b8b9b9!important;
+    border-color: #7e7d7d !important;
+    text-transform: uppercase;
+    border-radius: 0px !important;
+    font-family: 'MyriadPro-Regular';
+    width: 128px;
+    padding:9px 9px;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.modeldropdown .dropdown-menu{
+    background-color: #a9abac;
+    color:#4c4b4b;
+    font-family: 'open_sansregular'; font-size: 14px; border-radius: 0px;    padding: 0px;
+    margin: 0px;
+    min-width: 128px;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.modeldropdown .selecttext{float: left !important; text-transform: capitalize;}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.modeldropdown .dropdown-menu>li>a{
+    border-bottom: 1px solid #4c4b4b;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.modeldropdown .dropdown-menu>li:hover{
+    background-color: #b8b9b9;
+}
+
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.modeldropdown .caret{display: inline-block;
+    display: inline-block;
+    border-top: 6px dashed;
+    border-top: 4px solid\9;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    margin-right: -5px;
+}
+
+
+/*.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.auctiondropdown{position: absolute;top: 45px;right: 547px;}*/
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.auctiondropdown .btndropdown {
+    color: #4c4b4b !important;
+    background-color: #b8b9b9!important;
+    border-color: #7e7d7d !important;
+    text-transform: uppercase;
+    border-radius: 0px !important;
+    font-family: 'MyriadPro-Regular';
+    width: 142px;
+    padding:9px 9px;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.auctiondropdown .dropdown-menu{
+    background-color: #a9abac;
+    color:#4c4b4b;
+    font-family: 'open_sansregular'; font-size: 14px; border-radius: 0px;    padding: 0px;
+    margin: 0px;
+    min-width: 142px;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.auctiondropdown .selecttext{float: left !important; text-transform: capitalize;}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.auctiondropdown .dropdown-menu>li>a{
+    border-bottom: 1px solid #4c4b4b;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.auctiondropdown .dropdown-menu>li:hover{
+    background-color: #b8b9b9;
+}
+
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.auctiondropdown .caret{
+    display: inline-block;
+    border-top: 6px dashed;
+    border-top: 4px solid\9;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    margin-right: -5px;
+}
+
+
+/*.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.yeardropdown{position: absolute;top: 45px;right: 470px;}*/
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.yeardropdown .btndropdown {
+    color: #4c4b4b !important;
+    background-color: #b8b9b9!important;
+    border-color: #7e7d7d !important;
+    text-transform: uppercase;
+    border-radius: 0px !important;
+    font-family: 'MyriadPro-Regular';
+    width: 64px;
+    padding:9px 9px;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.yeardropdown .dropdown-menu{
+    background-color: #a9abac;
+    color:#4c4b4b;
+    font-family: 'open_sansregular'; font-size: 14px; border-radius: 0px;    padding: 0px;
+    margin: 0px;
+    min-width: 64px;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.yeardropdown .selecttext{float: left !important; text-transform: capitalize;}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select .dropdown-menu>li>a{
+    border-bottom: 1px solid #4c4b4b;
+}
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.yeardropdown .dropdown-menu>li:hover{
+    background-color: #b8b9b9;
+}
+
+.page-wrapper .blockmaininner .auctioninventoryheader .bootstrap-select.yeardropdown .caret{
+    display: inline-block;
+    border-top: 6px dashed;
+    border-top: 4px solid\9;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    margin-right: -5px;
+}

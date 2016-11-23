@@ -21,9 +21,13 @@
                         <!--<div class="addbtnwrapper">
                             <a><button class="addbtn" type="button" value="Add admin" (click)="addadmin()">Add dealer</button></a>
                         </div>-->
+                        <ul class="list-inline">
+                            <li><div class="searchbox"><input [(ngModel)]="query" placeholder="Search "></div></li>
+
+                        </ul>
                     </div>
                     <div class="adminlistlists">
-                        <div class="searchbox"><input [(ngModel)]="query" placeholder="Search "></div>
+
                         <div class=" table-responsive">
                             <table class="table table-striped">
                             <thead>

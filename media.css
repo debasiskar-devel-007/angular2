@@ -1338,7 +1338,8 @@
         margin: 0px 0px 15px 0px;
     }
     .auctioninventoryblock .searchbox{width: 47%; float: right;}
-
+    .page-wrapper .blockmaininner .auctioninventoryblock .searchbox{width: auto; float: none;}
+    .page-wrapper .blockmaininner .auctioninventoryblock ul li{margin-bottom: 10px;}
     .inventorymatchblock .inventorylistswrapper .searchbox input {
         position: absolute;
         top: 15px;
@@ -2448,7 +2449,9 @@
         overflow: hidden;
         padding-top: 0;
     }
-
+    .auctioninventoryheader ul {
+        float: none;
+    }
     /* .retailformblock5part1 .re_checkbox-inline label{ margin: 0 10px !important;}*/
 
 }
@@ -3413,7 +3416,27 @@
         padding-right: 0px !important;
         padding-left: 0px !important;
     }
+    .adminlistheader ul {
+        float: none;
+        width: 100%;
+    }
+    .adminlistheader ul li .searchbox input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .viewrsvpinnerheader ul {
+        float: none;
+        width: 100%;
+    }
+    .viewrsvpinnerheader ul li .searchbox input {
+        width: 100%;
+    }
+    .faqblock ul li{margin-bottom: 10px;}
+    .faxsearchbox input {
+        width: 100%;
+    }
 }
+
 
 @media(max-width:360px) {
     .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter {

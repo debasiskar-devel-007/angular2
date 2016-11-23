@@ -18,12 +18,16 @@
                 <div class="adminlistblock">
                     <div class="adminlistheader">
                         <h2><span>Car</span> listing</h2>
-                        <div class="addbtnwrapper">
-                            <a [routerLink]="['/addcar']"><button class="addbtn" type="button" value="Add package">Add Car</button></a>
-                        </div>
+
+                        <ul class="list-inline">
+                            <li><div class="searchbox" ><input [(ngModel)]="query" placeholder="Search "></div></li>
+                            <li><div class="addbtnwrapper">
+                                <a [routerLink]="['/addcar']"><button class="addbtn" type="button" value="Add package">Add Car</button></a>
+                            </div>
+                            </li>
+                        </ul>
                     </div>
                     <div class="adminlistlists" >
-                        <div class="searchbox" ><input [(ngModel)]="query" placeholder="Search "></div>
                         <div class=" table-responsive">
                             <table class="table table-striped">
                                 <thead>

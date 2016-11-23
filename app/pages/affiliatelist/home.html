@@ -18,13 +18,17 @@
                 <div class="adminlistblock">
                     <div class="adminlistheader">
                         <h2><span>Affiliate</span> listing123</h2>
-                        <div class="addbtnwrapper">
-                            <a [routerLink]="['/addaffiliate']"><button class="addbtn" type="button">Add Affiliate</button></a>
-                        </div>
+                        <ul class="list-inline">
+                            <li> <div class="searchbox"><input style="right: 198px;" [(ngModel)]="query" placeholder="Search "></div></li>
+                            <li>
+                                <div class="addbtnwrapper">
+                                    <a [routerLink]="['/addaffiliate']"><button class="addbtn" type="button">Add Affiliate</button></a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                     <div class="adminlistlists">
-                        <div class="searchbox"><input style="right: 198px;" [(ngModel)]="query" placeholder="Search "></div>
-                        <div class=" table-responsive">
+                        <div class="table-responsive">
                             <table class="table table-striped">
                             <thead>
                             <tr>

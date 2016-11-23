@@ -7,117 +7,123 @@
                     <div class="auctioninventoryblock">
                         <div class="auctioninventoryheader">
                             <h2><span>Auction</span> Inventory Review</h2>
+                            <ul class="list-inline">
+                                <li><div class="btn-group bootstrap-select makedropdown">
+                                    <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                        <span class="selecttext">Select a Make</span>&nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu open" role="menu">
+                                        <li class="selected">
+                                            <a><span class="text">Acura</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">BMW</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">Chevrolet</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">Datsun</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">Eagle</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">FIAT</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">Genesis</span></a>
+                                        </li>
+                                    </ul>
+                                </div></li>
+                                <li>
+                                    <div class="btn-group bootstrap-select modeldropdown">
+                                        <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                            <span class="selecttext">Select a Model</span>&nbsp;<span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu open" role="menu">
+                                            <li class="selected">
+                                                <a><span class="text">CL</span></a>
+                                            </li>
+                                            <li>
+                                                <a><span class="text">ILX</span></a>
+                                            </li>
+                                            <li>
+                                                <a><span class="text">Integra</span></a>
+                                            </li>
+                                            <li>
+                                                <a><span class="text">Legend</span></a>
+                                            </li>
+                                            <li>
+                                                <a><span class="text">MDX</span></a>
+                                            </li>
+                                            <li>
+                                                <a><span class="text">NSX</span></a>
+                                            </li>
+                                            <li>
+                                                <a><span class="text">RDX</span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="btn-group bootstrap-select auctiondropdown">
+                                    <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                        <span class="selecttext">Select by Auction</span>&nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu open" role="menu">
+                                        <li class="selected">
+                                            <a ><span class="text">Westbury</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">AutoFair</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">Pre Owned</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">Wilson's</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">Auto Auction</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li>
+                                    <div class="btn-group bootstrap-select yeardropdown">
+                                    <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                        <span class="selecttext">2010</span>&nbsp;<span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu open" role="menu">
+                                        <li class="selected">
+                                            <a><span class="text">2010</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">2011</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">2012</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">2013</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">2014</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">2015</span></a>
+                                        </li>
+                                        <li>
+                                            <a><span class="text">2016</span></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                </li>
+                                <li><div class="searchbox"><input [(ngModel)]="query" placeholder="Search by Make, Model, Auction, Year, Keyword"></div></li>
+                            </ul>
                         </div>
                         <div class="inventorylistswrapper">
-                            <div class="btn-group bootstrap-select makedropdown">
-                                <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
-                                    <span class="selecttext">Select a Make</span>&nbsp;<span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu open" role="menu">
-                                    <li class="selected">
-                                        <a><span class="text">Acura</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">BMW</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">Chevrolet</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">Datsun</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">Eagle</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">FIAT</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">Genesis</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="btn-group bootstrap-select modeldropdown">
-                                <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
-                                    <span class="selecttext">Select a Model</span>&nbsp;<span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu open" role="menu">
-                                    <li class="selected">
-                                        <a><span class="text">CL</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">ILX</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">Integra</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">Legend</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">MDX</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">NSX</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">RDX</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="btn-group bootstrap-select auctiondropdown">
-                                <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
-                                    <span class="selecttext">Select by Auction</span>&nbsp;<span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu open" role="menu">
-                                    <li class="selected">
-                                        <a ><span class="text">Westbury</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">AutoFair</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">Pre Owned</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">Wilson's</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">Auto Auction</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="btn-group bootstrap-select yeardropdown">
-                                <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
-                                    <span class="selecttext">2010</span>&nbsp;<span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu open" role="menu">
-                                    <li class="selected">
-                                        <a><span class="text">2010</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">2011</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">2012</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">2013</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">2014</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">2015</span></a>
-                                    </li>
-                                    <li>
-                                        <a><span class="text">2016</span></a>
-                                    </li>
-                                </ul>
-                            </div>
-
-
-                            <div class="searchbox"><input [(ngModel)]="query" placeholder="Search by Make, Model, Auction, Year, Keyword"></div>
                             <div class="row">
                                 <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
                                     <div class="inventorysinglelistblock">
@@ -400,9 +406,6 @@
                     </div>
                 </div>
             </div>
-            <!-- /.row -->
         </div>
     </div>
-    <!-- /#page-wrapper -->
 </div>
-

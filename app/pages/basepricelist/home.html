@@ -14,51 +14,34 @@
         </div>
         <!-- /.row -->
         <div class="row">
-            <div class="col-lg-12 col-md-12 adminlistmainblock">
+            <div class="col-lg-12 col-md-12 bannersizelistblock">
                 <div class="adminlistblock">
                     <div class="adminlistheader">
-                        <h2><span>Admin</span> listing</h2>
-                        <ul class="list-inline">
-                            <li><div class="searchbox"><input  [(ngModel)]="query" placeholder="Search "></div></li>
-                            <li><div class="addbtnwrapper">
-                                <a><button class="addbtn" type="button" value="Add admin" (click)="addadmin()">Add admin</button></a>
-                            </div>
-                            </li>
-                        </ul>
+                        <h2><span>Base Price</span> listing</h2>
+                        <div class="addbtnwrapper">
+                             <a [routerLink]="['/addbaseprice']"><button class="addbtn" type="button" value="Add banner size">Add Base Price </button></a>
+                        </div>
                     </div>
-                    <div class="adminlistlists">
-
+                    <div class="adminlistlists" >
+                        <div class="searchbox" ><input [(ngModel)]="query" placeholder="Search "></div>
                         <div class=" table-responsive">
                             <table class="table table-striped">
                             <thead>
                             <tr>
-                                <th>First Name <b [ngClass]="getSortClass('fname')" (click)="manageSorting('fname')" ></b></th>
-                                <th>Last Name <b [ngClass]="getSortClass('lname')" (click)="manageSorting('lname')" ></b></th>
-                                <th>Email <b [ngClass]="getSortClass('email')" (click)="manageSorting('email')" ></b></th>
-                                <th>City<b [ngClass]="getSortClass('city')" (click)="manageSorting('city')" ></b></th>
-                                <th>State/Address/Zip</th>
-                                <th>Phone</th>
+                                <th>Base Price</th>
+                               <!-- <th>Base Price <b [ngClass]="getSortClass('baseprice')" (click)="manageSorting('baseprice')" ></b></th>-->
                                 <th>Status <b [ngClass]="getSortClass('is_active')" (click)="manageSorting('is_active')" ></b></th>
-                                <th>Date Added <b [ngClass]="getSortClass('added_on')" (click)="manageSorting('added_on')" ></b></th>
                                 <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr  *ngFor="let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id">
-                                <td>{{item.fname}}</td>
-                                <td>{{item.lname}}</td>
-                                <td>{{item.email}}</td>
-                                <td>{{item.city}}</td>
-                                <!--<td>{{item.state}}</td>-->
+                                <td>{{item.baseprice}}</td>
+                                <td><a href="javascript:void(0)" class="{{(item.is_active==1) ? 'btninactive' : 'btndelete'}}" (click)="changeStatus(item)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>
 
-                                <td>{{item.state}} <br>{{item.address}}<br>{{item.zip}}</td>
-                                <!--<td>{{item.zip}}</td>-->
-                                <td>{{item.phone}}</td>
-                                <td><a href="javascript:void(0)" (click)="changeStatus(item)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>
-                                <td [innerHtml]="commonservices.convertunixtodate(item.added_on)"></td>
                                 <td>
                                     <div class="actionbtns">
-                                        <a [routerLink]="['/editadmin', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
+                                        <a [routerLink]="['/editbaseprice', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
                                         <a><button class="btndelete" type="button" (click)="deleterow(item)"  value="Delete">Delete</button></a>
                                     </div>
                                 </td>

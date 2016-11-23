@@ -74,6 +74,15 @@ import {AppCarlist} from "./pages/carlist/app.carlist";
 import {AppCustomersignupstep1} from "./pages/customersignupstep1/app.customersignupstep1";
 import {AppOrderdetails} from "./pages/orderdetails/app.orderdetails";
 import {AppDealerprofile} from "./pages/dealerprofile/app.dealerprofile";
+import {AppMembershiporderreport} from "./pages/membershiporderreport/app.membershiporderreport";
+import {AppAddpurchasetime} from "./pages/addpurchasetime/app.addpurchasetime";
+import {AppPurchasetimelist} from "./pages/purchasetimelist/app.purchasetimelist";
+import {AppEditpurchasetime} from "./pages/editpurchasetime/app.editpurchasetime";
+import {AppAddbaseprice} from "./pages/addbaseprice/app.addbaseprice";
+import {AppBasepricelist} from "./pages/basepricelist/app.basepricelist";
+import {AppEditbaseprice} from "./pages/editbaseprice/app.editbaseprice";
+import {AppColorlist} from "./pages/colorlist/app.colorlist";
+import {AppAddcolor} from "./pages/addcolor/app.addcolor";
 //alert(window.location.hostname);
 
 //alert(checkutl);
@@ -173,6 +182,15 @@ const appRoutes: Routes = [
     { path: 'customersignupstep1', component: AppCustomersignupstep1},
     { path: 'orderdetails/:id', component: AppOrderdetails},
     { path: 'dealerprofile', component: AppDealerprofile},
+    { path: 'membershiporderreport', component: AppMembershiporderreport},
+    { path: 'addpurchasetime', component: AppAddpurchasetime},
+    { path: 'purchasetimelist', component: AppPurchasetimelist},
+    { path: 'editpurchasetime/:id', component: AppEditpurchasetime},
+    { path: 'addbaseprice', component: AppAddbaseprice},
+    { path: 'basepricelist', component: AppBasepricelist},
+    { path: 'editbaseprice/:id', component: AppEditbaseprice},
+    { path: 'colorlist', component: AppColorlist},
+    { path: 'addcolor', component: AppAddcolor},
 
 
 ];

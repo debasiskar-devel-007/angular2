@@ -89,6 +89,15 @@ import {AppCarlist} from "./pages/carlist/app.carlist";
 import {AppCustomersignupstep1} from "./pages/customersignupstep1/app.customersignupstep1";
 import {AppOrderdetails} from "./pages/orderdetails/app.orderdetails";
 import {AppDealerprofile} from "./pages/dealerprofile/app.dealerprofile";
+import {AppMembershiporderreport} from "./pages/membershiporderreport/app.membershiporderreport";
+import {AppAddpurchasetime} from "./pages/addpurchasetime/app.addpurchasetime";
+import {AppPurchasetimelist} from "./pages/purchasetimelist/app.purchasetimelist";
+import {AppEditpurchasetime} from "./pages/editpurchasetime/app.editpurchasetime";
+import {AppAddbaseprice} from "./pages/addbaseprice/app.addbaseprice";
+import {AppBasepricelist} from "./pages/basepricelist/app.basepricelist";
+import {AppEditbaseprice} from "./pages/editbaseprice/app.editbaseprice";
+import {AppColorlist} from "./pages/colorlist/app.colorlist";
+import {AppAddcolor} from "./pages/addcolor/app.addcolor";
 //import {Clipboard} from 'clipboard';
 
 
@@ -97,7 +106,7 @@ import {AppDealerprofile} from "./pages/dealerprofile/app.dealerprofile";
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule,Ng2PaginationModule,CKEditorModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppAppFinance,AppRetailcustomerconnect,AppBannersizelist,AppAddbannersize,AppEditbannersize,AppAddbanner,AppBannerlist,AppEditbanner,AppViewcustomers,AppViewrsvp,AppWritemail,AppReadmessage,AppMailinbox,AppCustomerprofile,AppAddaffiliate,AppAffiliatelist,AppEditaffiliate,AppAffiliatelogin,AppAffiliatefooter,AppAffiliateheader,AppAffiliatedashboard,AppAddmembershippackage,AppMerbershippackagelist,AppAuctionbidding,AppEditmembershippackage,AppPackage,AppAuctionlist,AppAddauction,AppEditauction,AppAddcar,AppCarlist,AppCustomersignupstep1,AppOrderdetails,AppDealerprofile,UPLOAD_DIRECTIVES],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppAppFinance,AppRetailcustomerconnect,AppBannersizelist,AppAddbannersize,AppEditbannersize,AppAddbanner,AppBannerlist,AppEditbanner,AppViewcustomers,AppViewrsvp,AppWritemail,AppReadmessage,AppMailinbox,AppCustomerprofile,AppAddaffiliate,AppAffiliatelist,AppEditaffiliate,AppAffiliatelogin,AppAffiliatefooter,AppAffiliateheader,AppAffiliatedashboard,AppAddmembershippackage,AppMerbershippackagelist,AppAuctionbidding,AppEditmembershippackage,AppPackage,AppAuctionlist,AppAddauction,AppEditauction,AppAddcar,AppCarlist,AppCustomersignupstep1,AppOrderdetails,AppDealerprofile,AppMembershiporderreport,AppAddpurchasetime,AppPurchasetimelist,AppEditpurchasetime,AppAddbaseprice,AppBasepricelist,AppEditbaseprice,AppColorlist,AppAddcolor,UPLOAD_DIRECTIVES],
   providers: [
     appRoutingProviders,CookieService
   ],

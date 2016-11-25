@@ -1,4 +1,4 @@
-import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation} from '@angular/core';
+import {Component, NgModule, ViewChild, ViewContainerRef, ViewEncapsulation, Renderer, Inject} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
@@ -8,19 +8,22 @@ import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
+import {DomSanitizer} from "@angular/platform-browser";
 import {AppComponent} from "../home/app.component";
 
 
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/carlogolist/home.html',
+    templateUrl:'app/pages/dealerauctionlist/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppCarlogolist {
+export class AppDealerauctionlist{
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
+    // /@ViewChild('lgModal') sharemediaModal;
+
     myModal :ModalModule;
     data:any;
     http:Http;
@@ -37,11 +40,18 @@ export class AppCarlogolist {
     pagec:any;
     orderbyquery:any;
     orderbytype:any;
+    sharefilesrc:any;
     appcomponent:AppComponent;
     tempdata:Array<any>;
-    filesrc:any;
+    userdetails:any;
+    bannerdata:any;
+    bannerfilesrc:any;
+    //sharemediaModal:any;
+    @ViewChild('all_m')
+    private allMElementRef:any;
+    private mediaid:any;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
+    constructor(@Inject(Renderer) private renderer: Renderer,fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent,private _sanitizer: DomSanitizer   ) {
         this.router=router;
         this.http=http;
         this.router=router;
@@ -50,17 +60,35 @@ export class AppCarlogolist {
         this.items = commonservices.getItems();
         this.messages = appcomponent.getMessages();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl+'carlogolist';
+        //this.userInfo=userInfo;
+        this.userdetails=userInfo.getObject('userdetails');
+        let link='';
+        link = this.serverUrl+'dealerauctionlist';
         this.p=1;
         this.orderbyquery='priority';
         this.orderbytype=-1;
+
+
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
-                console.log(this.data);
+              //  console.log(this.data);
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
-                this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 this.pagec=Math.ceil(this.data.length / 10);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+      let  bannerlink = this.serverUrl+'bannerlistactive';
+        console.log(bannerlink);
+        this.http.get(bannerlink)
+            .subscribe(data2 => {
+                this.bannerdata = data2.json();
+
+                this.bannerfilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+              //  this.pagec=Math.ceil(this.data.length / 10);
 
             }, error => {
                 console.log("Oooops!");
@@ -72,25 +100,27 @@ export class AppCarlogolist {
     deleterow(dealerrow:any){
         //console.log(adminid);
 
-        let link= this.serverUrl+'deletecarlogo';
+        let link= this.serverUrl+'deletesharemedia';
         let id=dealerrow;
         this.http.post(link,id)
             .subscribe(data1 => {
                 // this.data = data1.json();
                 //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
                 var index = this.data.indexOf(id.id);
-                console.log(index);
                 //let tempdata:Array<any>;
                 let x:any;
                 for(x in this.data){
                     if(dealerrow._id==this.data[x]._id) {
+                        console.log(x+'.......'+this.data.length);
                         delete this.data.x;
                         this.data.splice(x, 1);
                         window.location.reload();
                     }
                 }
-                console.log(this.data);
-                 this.appcomponent.putmessages('Car logo '+dealerrow.baseprice+' deleted successfully','success');
+               // console.log(this.data);
+                //this.data=this.tempdata;
+                //this.data.splice(index, 1);
+                this.appcomponent.putmessages('share media '+dealerrow.name+' deleted successfully','success');
                 //console.log(this.data);
 
             }, error => {
@@ -100,47 +130,47 @@ export class AppCarlogolist {
 
         // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
     }
-    changeStatus(item:any){
-        var idx = this.data.indexOf(item);
-        if(this.data[idx].is_active==1){
-            var is_active=0;
-        }
-        else{
-            var is_active=1;
-        }
-        let stat={id:item._id,is_active:is_active};
-        let link= this.serverUrl+'carlogostatuschange';
-        this.http.post(link,stat)
-            .subscribe(data1 => {
-                // this.data = data1.json();
-                //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
-                if(this.data[idx].is_active == 0){
-                    this.data[idx].is_active = 1;
-                }else{
-                    this.data[idx].is_active = 0;
-                }
-            }, error => {
-                console.log("Oooops!");
-            });
 
-
+   changeStatus(item:any){
+    var idx = this.data.indexOf(item);
+    if(this.data[idx].is_active==1){
+        var is_active=0;
     }
+    else{
+        var is_active=1;
+    }
+   let stat={id:item._id,is_active:is_active};
+       let link= this.serverUrl+'dealerstatuschange';
+       this.http.post(link,stat)
+           .subscribe(data1 => {
+               // this.data = data1.json();
+               //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
+               if(this.data[idx].is_active == 0){
+                   this.data[idx].is_active = 1;
+               }else{
+                   this.data[idx].is_active = 0;
+               }
+           }, error => {
+               console.log("Oooops!");
+           });
 
-     getSortClass(value:any){
-        console.log(value);
+
+}
+    getSortClass(value:any){
+        //console.log(value);
         if(this.orderbyquery==value && this.orderbytype==-1) {
             console.log('caret-up');
             return 'caret-up'
         }
 
         if(this.orderbyquery==value && this.orderbytype==1) {
-            console.log('caret-up');
+           // console.log('caret-up');
             return 'caret-down'
         }
         return 'caret-up-down'
     }
     manageSorting(value:any){
-        console.log(value);
+       // console.log(value);
         if(this.orderbyquery==value && this.orderbytype==-1) {
             this.orderbytype=1;
             return;
@@ -154,6 +184,16 @@ export class AppCarlogolist {
         this.orderbytype=-1;
     }
 
+    bannerModal(mediaid:any){
+        //let shareid=sharemediaid;
+       // $('#sharemediaModal').myModal('show');
+       // sharemediaModal.open();
+      //  $('#sharemediaModal').modal('show');
+        //alert(mediaid);
+        this.mediaid=mediaid;
+        this.renderer.invokeElementMethod(this.allMElementRef.nativeElement, 'click', []);
+        //sharemediaModal.open();
+    }
 
 
 

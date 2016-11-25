@@ -14,11 +14,11 @@ import {AppComponent} from "../home/app.component";
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/carlogolist/home.html',
+    templateUrl:'app/pages/carfeaturelist/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppCarlogolist {
+export class AppCarfeaturelist {
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
@@ -50,7 +50,7 @@ export class AppCarlogolist {
         this.items = commonservices.getItems();
         this.messages = appcomponent.getMessages();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl+'carlogolist';
+        let link = this.serverUrl+'listcarfeature';
         this.p=1;
         this.orderbyquery='priority';
         this.orderbytype=-1;
@@ -72,7 +72,7 @@ export class AppCarlogolist {
     deleterow(dealerrow:any){
         //console.log(adminid);
 
-        let link= this.serverUrl+'deletecarlogo';
+        let link= this.serverUrl+'deletecarfeature';
         let id=dealerrow;
         this.http.post(link,id)
             .subscribe(data1 => {
@@ -90,7 +90,7 @@ export class AppCarlogolist {
                     }
                 }
                 console.log(this.data);
-                 this.appcomponent.putmessages('Car logo '+dealerrow.baseprice+' deleted successfully','success');
+                 this.appcomponent.putmessages('Car feature '+dealerrow.feature+' deleted successfully','success');
                 //console.log(this.data);
 
             }, error => {
@@ -109,7 +109,7 @@ export class AppCarlogolist {
             var is_active=1;
         }
         let stat={id:item._id,is_active:is_active};
-        let link= this.serverUrl+'carlogostatuschange';
+        let link= this.serverUrl+'carfeaturestatuschange';
         this.http.post(link,stat)
             .subscribe(data1 => {
                 // this.data = data1.json();

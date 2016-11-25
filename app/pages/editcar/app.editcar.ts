@@ -41,6 +41,11 @@ export class AppEditcar implements OnInit {
     ckeditorContent:any;
     private userInfo:any;
     auctionlist:any;
+    private carlogolist:any;
+    private colorlist:any;
+    private carbodystylelist:any;
+    private carautoyearlist:any;
+    private listcarautomileage:any;
 
     id: number;
     private sub: any;
@@ -60,7 +65,43 @@ export class AppEditcar implements OnInit {
         this.userInfo=userInfo.getObject('userdetails');
 console.log(this.userInfo);
         this.serverUrl = this.items[0].serverUrl;
+        this.http.get(this.serverUrl+'auctionlist')
+            .subscribe(data => {
+                this.auctionlist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
 
+        this.http.get(this.serverUrl+'carlogolist')
+            .subscribe(data => {
+                this.carlogolist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'colorlist')
+            .subscribe(data => {
+                this.colorlist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'carbodystylelist')
+            .subscribe(data => {
+                this.carbodystylelist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'carautoyearlist')
+            .subscribe(data => {
+                this.carautoyearlist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'listcarautomileage')
+            .subscribe(data => {
+                this.listcarautomileage=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
         this.sub = this.route.params.subscribe(params => {
             this.id = params['id']; // (+) converts string 'id' to a number
             let ids={id:this.id};
@@ -70,27 +111,43 @@ console.log(this.userInfo);
                     console.log(this.details);
                     this.uploadedfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details.filename;
                     this.addcarform = fb.group({
-                        username: [this.details.username, Validators.required],
+
+                        id: [this.details._id, Validators.required],
+
+                        username: [this.userInfo.username, Validators.required],
                         doctype: [this.details.doctype, Validators.required],
-                        odometer: [this.details.odometer, Validators.required],
-                        primary_damage: [this.details.primary_damage, Validators.required],
-                        highlights: [this.details.highlights, Validators.required],
-                        secondary_damage: [this.details.secondary_damage, Validators.required],
-                        est_retail_value: [this.details.est_retail_value, Validators.required],
-                        vin: [this.details.vin, Validators.required],
-                        body_style: [this.details.body_style, Validators.required],
+                        est_retail_value: ['', Validators.required],
+                        vin: [this.details.doctype, Validators.required],
                         color: [this.details.color, Validators.required],
-                        engine_type: [this.details.engine_type, Validators.required],
                         drive: [this.details.drive, Validators.required],
                         cylinder: [this.details.cylinder, Validators.required],
                         fuel: [this.details.fuel, Validators.required],
-                        keys: [this.details.keys, Validators.required],
-                        notes: [this.details.notes, Validators.required],
+                        notes: [this.details.notes],
                         is_active: [this.details.is_active],
                         priority: [this.details.priority, Validators.required],
                         filename: [this.details.filename, Validators.required],
+                        carlogolist: [this.details.carlogolist, Validators.required],
+                        model: [this.details.model, Validators.required],
+                        carautoyearlist: [this.details.carautoyearlist, Validators.required],
+                        mileage: [this.details.mileage, Validators.required],
+                        enginetype: [this.details.enginetype, Validators.required],
+                        carbodystylelist: [this.details.carbodystylelist, Validators.required],
                         auctionid: [this.details.auctionid, Validators.required],
-                        id: [this.details._id, Validators.required],
+                        power_locks: [this.details.power_locks],
+                        power_window: [this.details.power_window],
+                        sunroof: [this.details.sunroof],
+                        digital_display: [this.details.digital_display],
+                        stereo_system: [this.details.stereo_system],
+                        bluetooth: [this.details.bluetooth],
+                        dvd_player: [this.details.dvd_player],
+                        gps: [this.details.gps],
+                        airbags: [this.details.airbags],
+                        seats: [this.details.seats],
+                        satellite_radio: [this.details.satellite_radio],
+                        lights: [this.details.lights],
+                        gear_type: [this.details.gear_type],
+                        trinted_window: [this.details.trinted_window],
+
                     });
                     this.ckeditorContent = this.details.notes;
                     console.log(this.addcarform );
@@ -111,25 +168,37 @@ console.log(this.userInfo);
         this.addcarform = fb.group({
             username: [this.userInfo.username, Validators.required],
             doctype: ['', Validators.required],
-            odometer: ['', Validators.required],
-            primary_damage: ['', Validators.required],
-            highlights: ['', Validators.required],
-            secondary_damage: ['', Validators.required],
             est_retail_value: ['', Validators.required],
             vin: ['', Validators.required],
-            body_style: ['', Validators.required],
             color: ['', Validators.required],
-            engine_type: ['', Validators.required],
             drive: ['', Validators.required],
             cylinder: ['', Validators.required],
             fuel: ['', Validators.required],
-            keys: ['', Validators.required],
-            notes: ['', Validators.required],
+            notes: [''],
             is_active: [''],
             priority: ['', Validators.required],
             filename: ['', Validators.required],
+            carlogolist: ['', Validators.required],
+            model: ['', Validators.required],
+            carautoyearlist: ['', Validators.required],
+            mileage: ['', Validators.required],
+            enginetype: ['', Validators.required],
+            carbodystylelist: ['', Validators.required],
             auctionid: [[], Validators.required],
-
+            power_locks: [""],
+            power_window: [""],
+            sunroof: [""],
+            digital_display: [""],
+            stereo_system: [""],
+            bluetooth: [""],
+            dvd_player: [""],
+            gps: [""],
+            airbags: [""],
+            seats: [""],
+            satellite_radio: [""],
+            lights: [""],
+            gear_type: [""],
+            trinted_window: [""],
         });
 
 

@@ -18,19 +18,24 @@
                 <div class="adminlistblock">
                     <div class="adminlistheader">
                         <h2><span>Car</span> listing</h2>
-                        <div class="addbtnwrapper">
-                            <a [routerLink]="['/addcar']"><button class="addbtn" type="button" value="Add package">Add Car</button></a>
-                        </div>
+                        <ul class="list-inline">
+                            <li><div class="searchbox" ><input [(ngModel)]="query" placeholder="Search "></div></li>
+                            <li><div class="addbtnwrapper">
+                                <a [routerLink]="['/addcar']"><button class="addbtn" type="button" value="Add package">Add Car</button></a>
+                            </div></li>
+
+                        </ul>
+
                     </div>
                     <div class="adminlistlists" >
-                        <div class="searchbox" ><input [(ngModel)]="query" placeholder="Search "></div>
+
                         <div class=" table-responsive">
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
                                     <th>Doc type <b [ngClass]="getSortClass('doctype')" (click)="manageSorting('doctype')" ></b></th>
                                     <th>Image</th>
-                                    <th>Auction Name<b [ngClass]="getSortClass('odometer')" (click)="manageSorting('odometer')" ></b></th>
+                                    <th>Auction Name<b [ngClass]="getSortClass('odometer')" (click)="manageSorting('auctiondata[0].name')" ></b></th>
                                     <th>Retail value<b [ngClass]="getSortClass('est_retail_value')" (click)="manageSorting('est_retail_value')" ></b></th>
                                     <th>Color<b [ngClass]="getSortClass('color')" (click)="manageSorting('color')" ></b></th>
 
@@ -45,9 +50,9 @@
                                 <tr  *ngFor="let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:cartrackby">
                                     <td>{{item.doctype}}</td>
                                     <td><div *ngIf="filesrc" class="imgfilesrc"><img *ngIf="item.filename" src="{{filesrc}}{{item.filename}}"></div></td>
-                                    <td>{{item.auctiondata[0].name}}
+                                    <td>
 
-                                        <div *ngIf="filesrc" class="imgfilesrc"><img *ngIf="item.auctiondata[0].filename" src="{{filesrc}}{{item.auctiondata[0].filename}}"></div>
+                                        <div *ngIf="filesrc" class="imgfilesrc2"> <span>{{item.auctiondata[0].name}}</span><img *ngIf="item.auctiondata[0].filename" src="{{filesrc}}{{item.auctiondata[0].filename}}"></div>
                                        <!-- <div> count:{{item.auctionid.length}}</div>
                                         <div> id:{{item._id}}</div>-->
                                     </td>

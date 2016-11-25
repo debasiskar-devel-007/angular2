@@ -41,6 +41,8 @@ export class AppRetailcustomerconnect {
     customerinfo:any;
     getusastates:any;
     coockieData:CookieService;
+    purchasetimilist:any;
+    basepricelist:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
@@ -93,6 +95,30 @@ export class AppRetailcustomerconnect {
             color_opiton: ['', Validators.required],
             upcoming_auction: ['', Validators.required],
         });
+
+
+        this.http.get(this.serverUrl+'purchasetimelist')
+            .subscribe(data => {
+                //console.log(data);
+                this.purchasetimilist=data.json();
+
+                console.log(this.purchasetimilist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'basepricelist')
+            .subscribe(data => {
+                //console.log(data);
+                this.basepricelist=data.json();
+
+                console.log(this.basepricelist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
 
 
     }

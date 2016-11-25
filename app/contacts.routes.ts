@@ -92,6 +92,17 @@ import {AppEditcarlogo} from "./pages/editcarlogo/app.editcarlogo";
 import {AppAddcarbodystyle} from "./pages/addcarbodystyle/app.addcarbodystyle";
 import {AppCarbodystylelist} from "./pages/carbodystylelist/app.carbodystylelist";
 import {AppEditcarbodystyle} from "./pages/editcarbodystyle/app.editcarbodystyle";
+import {AppAddcarautoyear} from "./pages/addcarautoyear/app.addcarautoyear";
+import {AppCarautoyearlist} from "./pages/carautoyearlist/app.carautoyearlist";
+import {AppEditcarautoyear} from "./pages/editcarautoyear/app.editcarautoyear";
+import {AppDealerauctionlist} from "./pages/dealerauctionlist/app.dealerauctionlist";
+import {AppAddcarmileage} from "./pages/addcarmileage/app.addcarmileage";
+import {AppCarmileagelist} from "./pages/carmileagelist/app.carmileagelist";
+import {AppEditcarmileage} from "./pages/editcarmileage/app.editcarmileage";
+import {AppCarfeaturelist} from "./pages/carfeaturelist/app.carfeaturelist";
+import {AppAddcarfeature} from "./pages/addcarfeature/app.addcarfeature";
+import {AppEditcarfeature} from "./pages/editcarfeature/app.editcarfeature";
+
 //alert(window.location.hostname);
 
 //alert(checkutl);
@@ -209,6 +220,17 @@ const appRoutes: Routes = [
     { path: 'addcarbodystyle', component: AppAddcarbodystyle},
     { path: 'carbodystylelist', component: AppCarbodystylelist},
     { path: 'editcarbodystyle/:id', component: AppEditcarbodystyle},
+    { path: 'addcarautoyear', component: AppAddcarautoyear},
+    { path: 'carautoyearlist', component: AppCarautoyearlist},
+    { path: 'editcarautoyear/:id', component: AppEditcarautoyear},
+    { path: 'dealerauctionlist', component: AppDealerauctionlist},
+    { path: 'addcarmileage', component: AppAddcarmileage},
+    { path: 'carmileagelist', component: AppCarmileagelist},
+    { path: 'editcarmileage/:id', component: AppEditcarmileage},
+    { path: 'carfeaturelist', component: AppCarfeaturelist},
+    { path: 'addcarfeature', component: AppAddcarfeature},
+    { path: 'editcarfeature/:id', component: AppEditcarfeature},
+
 
 
 ];

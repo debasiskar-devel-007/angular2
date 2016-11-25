@@ -200,8 +200,8 @@
 
 <div class="container-fluid retailformblock1" >
     <div class="container retailformblock1wrapper">
-        <div class="retailformblock1part1">
-
+        <div class="row retailformblock1part1">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <span>Can we send you text and email alerts when we find you a match?</span>
                     <div class="re_checkbox_inlinediv">
@@ -210,7 +210,6 @@
 
                     </div>
                     </div>
-
                     <div class="re_checkbox_inlinediv">
                         <div class="re_checkbox-inline">
                             <input [formControl]="customersignupupdateform.controls['send_mail']" id="homeblock3part2" type="radio" name="send_mail" value="2"><label for="homeblock3part2"></label>
@@ -219,10 +218,10 @@
                     </div>
                     <span *ngIf ="customersignupupdateform.controls['send_mail'].touched && !customersignupupdateform.controls['send_mail'].valid" class="help-inline">You must check  one</span>
                 </div>
-
+            </div>
         </div>
-        <div class="retailformblock1part2">
-
+        <div class="row retailformblock1part2">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <div class="form-group">
                     <span>Would you like to use the smart retail calculator during your window of engagement?</span>
                     <div class="re_checkbox_inlinediv">
@@ -239,21 +238,23 @@
                         </div>
                     </div>
                 </div>
-
+            </div>
         </div>
-        <div class="retailformblock1part3">
-            <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 retailformblock1part3innerblock1">
+        <div class="row row-eq-height retailformblock1part3">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 retailformblock1part3innerblock1">
                     <h3>How soon are you looking to make a purchase?</h3>
                     <div class="retailformblock1part3innerblock1wrapper">
                         <div class="retailformblock1part3innerblock11">
                             <div class="row">
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single ">
-                                    <input [formControl]="customersignupupdateform.controls['purchase_time']" id="radio1" type="radio" name="purchase_time" value="1" checked="checked"><label for="radio1"></label><span>As soon as I find the right vehicle</span>
+                                <span style="display: block !important; clear: both !important;" *ngFor="let itempuchasetime of purchasetimilist">
+                                    <div *ngIf="itempuchasetime.is_active==1"  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single" >
 
+                                        <input [formControl]="customersignupupdateform.controls['purchase_time']" id="radio1" type="radio" name="purchase_time" value="{{itempuchasetime._id}}" checked="checked"><label for="radio1"></label><span>{{itempuchasetime.name}}</span>
 
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single">
+                                    </div>
+
+                                </span>
+                                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single">
                                     <input [formControl]="customersignupupdateform.controls['purchase_time']" id="radio2" type="radio" name="purchase_time" value="2"><label for="radio2"></label><span>Within the next month</span>
 
                                     <div class="clearfix"></div>
@@ -275,12 +276,12 @@
                                     <label for="radio6"></label>
                                     <span>Just want to see what is available</span>
                                     <div class="clearfix"></div>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 retailformblock1part3innerblock2">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 retailformblock1part3innerblock2">
                     <h3>Base Price you are looking to pay (Select one)</h3>
                     <div class="retailformblock1part3innerblock2wrapper">
                         <div class="retailformblock1part3innerblock21">
@@ -289,12 +290,14 @@
 
                                 <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 re_newtextleft">
 
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio7" type="radio" name="base_price" value="1" checked="checked">
+                                    <div *ngFor="let itemcarprice of basepricelist" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
+                                        <div *ngIf="itemcarprice.is_active==1">
+                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio7" type="radio" name="base_price" value="{{itemcarprice._id}}" checked="checked">
                                         <label for="radio7"></label>
-                                        <span>15k or less</span>
+                                        <span>{{itemcarprice.baseprice}}</span>
                                     </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
+                                </div>
+                                   <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
                                         <input [formControl]="customersignupupdateform.controls['base_price']" id="radio8" type="radio" name="base_price" value="2">
                                         <label for="radio8"></label>
                                         <span>$15k to $25k</span>
@@ -318,7 +321,7 @@
                                         <input [formControl]="customersignupupdateform.controls['base_price']" id="radio12" type="radio" name="base_price" value="6">
                                         <label for="radio12"></label>
                                         <span>55k or more</span>
-                                    </div>
+                                    </div>-->
                                 </div>
 
                                 <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 re_newtextright">
@@ -336,77 +339,73 @@
                         </div>
                     </div>
                 </div>
+        </div>
+        <div class="row retailformblock1part3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock5">
+            <h3>Most Popular Colors Options</h3>
+            <div class="retailformblock1part3innerblock5wrapper">
+                <div class="retailformblock1part3innerblock51 table-responsive">
+                    <table class = "table ">
+                        <thead>
+                        <tr>
+                            <th>Rank</th>
+                            <th>Color</th>
 
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock5">
-                    <h3>Most Popular Colors Options</h3>
-                    <div class="retailformblock1part3innerblock5wrapper">
-                        <div class="retailformblock1part3innerblock51 table-responsive">
-                            <table class = "table ">
-                                <thead>
-                                <tr>
-                                    <th>Rank</th>
-                                    <th>Color</th>
+                            <th>Rank</th>
+                            <th>Color</th>
+                            <th>Rank</th>
+                            <th>Color</th>
 
-                                    <th>Rank</th>
-                                    <th>Color</th>
-                                    <th>Rank</th>
-                                    <th>Color</th>
+                        </tr>
+                        </thead>
 
-                                </tr>
-                                </thead>
+                        <tbody>
+                        <tr>
+                            <td><strong>Rank</strong> 1</td>
+                            <td><strong>Color</strong> <div class="radio1"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio1" type="radio" name="color_opiton" value="1"><label for="block5radio1"><span></span>White/White Pearl</label></div></td>
 
-                                <tbody>
-                                <tr>
-                                    <td><strong>Rank</strong> 1</td>
-                                    <td><strong>Color</strong> <div class="radio1"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio1" type="radio" name="color_opiton" value="1"><label for="block5radio1"><span></span>White/White Pearl</label></div></td>
+                            <td><strong>Rank</strong> 2</td>
+                            <td><strong>Color</strong> <div class="radio2"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio2" type="radio" name="color_opiton" value="2"><label for="block5radio2"><span></span>Black</label></div></td>
+                            <td><strong>Rank</strong> 3</td>
+                            <td><strong>Color</strong> <div class="radio3"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio3" type="radio" name="color_opiton" value="3"><label for="block5radio3"><span></span>Silver</label></div></td>
 
-                                    <td><strong>Rank</strong> 2</td>
-                                    <td><strong>Color</strong> <div class="radio2"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio2" type="radio" name="color_opiton" value="2"><label for="block5radio2"><span></span>Black</label></div></td>
-                                    <td><strong>Rank</strong> 3</td>
-                                    <td><strong>Color</strong> <div class="radio3"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio3" type="radio" name="color_opiton" value="3"><label for="block5radio3"><span></span>Silver</label></div></td>
+                        </tr>
 
-                                </tr>
+                        <tr>
 
-                                <tr>
-
-                                    <td><strong>Rank</strong> 4</td>
-                                    <td><strong>Color</strong> <div class="radio4"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio4" type="radio" name="color_opiton" value="4"><label for="block5radio4"><span></span>Red</label></div></td>
-                                    <td><strong>Rank</strong> 5</td>
-                                    <td><strong>Color</strong> <div class="radio5"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio5" type="radio" name="color_opiton" value="5"><label for="block5radio5"><span></span>Gray</label></div></td>
-                                    <td><strong>Rank</strong> 6</td>
-                                    <td><strong>Color</strong> <div class="radio6"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio6" type="radio" name="color_opiton" value="6"><label for="block5radio6"><span></span>Blue</label></div></td>
-                                </tr>
-
+                            <td><strong>Rank</strong> 4</td>
+                            <td><strong>Color</strong> <div class="radio4"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio4" type="radio" name="color_opiton" value="4"><label for="block5radio4"><span></span>Red</label></div></td>
+                            <td><strong>Rank</strong> 5</td>
+                            <td><strong>Color</strong> <div class="radio5"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio5" type="radio" name="color_opiton" value="5"><label for="block5radio5"><span></span>Gray</label></div></td>
+                            <td><strong>Rank</strong> 6</td>
+                            <td><strong>Color</strong> <div class="radio6"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio6" type="radio" name="color_opiton" value="6"><label for="block5radio6"><span></span>Blue</label></div></td>
+                        </tr>
 
 
-                                <tr>
-                                    <td><strong>Rank</strong> 7</td>
-                                    <td><strong>Color</strong> <div class="radio7"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio7" type="radio" name="color_opiton" value="7"><label for="block5radio7"><span></span>Beige/Brown</label></div></td>
 
-                                    <td><strong>Rank</strong> 8</td>
-                                    <td><strong>Color</strong> <div class="radio8"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio8" type="radio" name="color_opiton" value="8"><label for="block5radio8"><span></span>Green</label></div></td>
-                                    <td><strong>Rank</strong> 9</td>
-                                    <td><strong>Color</strong> <div class="radio9"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio9" type="radio" name="color_opiton" value="5"><label for="block5radio9"><span></span>Yellow/Gold</label></div></td>
-                                </tr>
+                        <tr>
+                            <td><strong>Rank</strong> 7</td>
+                            <td><strong>Color</strong> <div class="radio7"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio7" type="radio" name="color_opiton" value="7"><label for="block5radio7"><span></span>Beige/Brown</label></div></td>
 
-                                <tr>
+                            <td><strong>Rank</strong> 8</td>
+                            <td><strong>Color</strong> <div class="radio8"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio8" type="radio" name="color_opiton" value="8"><label for="block5radio8"><span></span>Green</label></div></td>
+                            <td><strong>Rank</strong> 9</td>
+                            <td><strong>Color</strong> <div class="radio9"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio9" type="radio" name="color_opiton" value="5"><label for="block5radio9"><span></span>Yellow/Gold</label></div></td>
+                        </tr>
 
-                                    <td><strong>Rank</strong> 10</td>
-                                    <td><strong>Color</strong> <div class="radio10"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio10" type="radio" name="color_opiton" value="10"><label for="block5radio10"><span></span>Others</label></div></td>
+                        <tr>
 
-                                </tr>
+                            <td><strong>Rank</strong> 10</td>
+                            <td><strong>Color</strong> <div class="radio10"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio10" type="radio" name="color_opiton" value="10"><label for="block5radio10"><span></span>Others</label></div></td>
 
-                                </tbody>
+                        </tr>
 
-                            </table>
-                        </div>
-                    </div>
+                        </tbody>
+
+                    </table>
                 </div>
             </div>
-
-
+            </div>
         </div>
     </div>
 </div>

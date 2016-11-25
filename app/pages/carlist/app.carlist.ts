@@ -104,7 +104,7 @@ export class AppCarlist{
                         console.log(x+'.......'+this.data.length);
                         delete this.data.x;
                         this.data.splice(x, 1);
-                        window.location.reload();
+                       // window.location.reload();
                     }
                 }
                 // console.log(this.data);

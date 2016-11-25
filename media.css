@@ -3133,6 +3133,7 @@
 }
 
 @media(max-width:1199px) {
+
     .custoomerinfowrapper .postauctioncctivityheader li span {
         display: block;
     }
@@ -3424,6 +3425,28 @@
         width: 100%;
         margin-bottom: 10px;
     }
+
+
+    .inventoryrecentbidheader ul {
+        float: none;
+        width: 100%;
+    }
+    .inventoryrecentbidheader ul li .searchbox input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+
+    .inventorymatchheader ul {
+        float: none;
+        width: 100%;
+    }
+    .inventorymatchheader ul li .searchbox input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+
     .viewrsvpinnerheader ul {
         float: none;
         width: 100%;

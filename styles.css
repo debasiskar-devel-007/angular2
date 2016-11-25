@@ -1540,7 +1540,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .inventorysinglelistblock3col1 .actionbtns{text-align: center;}
 .btnaction{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;float: right;}
 /*.btnedit{color: #fff; cursor:pointer; background-color: #4c4d4e; -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1); -moz-box-shadow:    0px 1px 0px rgba(4, 4, 4, 1); box-shadow:         0px 1px 0px rgba(4, 4, 4, 1); padding: 5px 8px; border:none;}*/
-.btndelete{color: #fff; cursor:pointer; background: #ff3317; padding: 5px 8px;}
+.btndelete{color: #fff; cursor:pointer; background: #ff3317; padding: 8px 8px;}
 .adminlistlists input{ position: absolute; top: 45px; right: 98px; padding: 6px 9px; width: 260px;background: #b8b9b9 url(../images/iconsearch.png) no-repeat right 11px center; background: url(../images/iconsearch.png) no-repeat; background-position: right 11px center; background-position-x: 98%;
     background-position-y: 50%; background-color:#b8b9b9; font-family: 'open_sansregular';font-size: 14px;
     border-radius: 0px; color: rgb(85, 85, 85); padding-right:35px;}
@@ -1586,7 +1586,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     -moz-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
-    padding: 5px 8px;
+    padding: 8px 8px;
     border: none;
 }
 
@@ -1713,8 +1713,8 @@ ul.inboxlists{padding:0px; margin:0px;}
 .cusdashboardblock1innerright a{ text-decoration: none;}
 .collapsedivmenu .dropdown-menu{  background: #272727;   border: solid 1px #a6a6a6;  border-bottom:none; padding: 0px; border-radius: 0px;}
 .collapsedivmenu .dropdown-menu li{ margin: 0px; background: #333;  border-bottom: solid 1px #a6a6a6; width: 100%; padding: 0px;}
-.collapsedivmenu .dropdown-menu li a{ text-decoration: none; color:#fff; font-family: 'open_sansregular'; font-size: 13px; cursor: pointer; padding: 8px 5px;}
-.collapsedivmenu .dropdown-menu  li a:hover{color:#fb4a32;}
+.collapsedivmenu .dropdown-menu li a{ text-decoration: none; color:#fff; font-family: 'open_sansregular'; font-size: 13px; cursor: pointer; padding: 8px 5px;text-align: left;}
+.collapsedivmenu .dropdown-menu  li a:hover{color:#fb4a32; background-color: transparent;}
 .menuarrowimg2{ margin: 0px 0 0 105px; }
 .dropdown-menucuscom{ padding: 10px;}
 .collapsebtn{ display: inline-block!important; background: none!important; border: none; float: left!important; margin: 30px 0 0 20px; outline: none!important; padding: 0px!important; border-radius: 0px!important;}
@@ -1777,7 +1777,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     padding-bottom: 10px;
 }
 .faqblock .addbtnwrapper2{font-family: 'MyriadPro-Regular';font-size: 13px; text-align:right;display: inline-block;margin-top: 0px;}
-.faqblock .addbtnwrapper2 .addbtn{color: #fff; cursor:pointer; background: #019901; padding: 10px 12px;}
+.faqblock .addbtnwrapper2 .addbtn{color: #fff; cursor:pointer; background: #019901; padding: 10px 14px;}
 
 .faqblockwrapper{ padding: 10px; background-color: #9fa3a5 !important;}
 .faqblockwrapper .panel-group {margin-bottom: 0px;}
@@ -2065,6 +2065,8 @@ ul.inboxlists{padding:0px; margin:0px;}
 .headeruserinfo ul li .btnactive{background-color: #019901 !important; line-height: 18px;}
 .headeruserinfo ul li .btninactive{background-color: #ccc; color: #555656; line-height: 18px;}*/
 
+.btnactive{    padding: 8px 12px;    border-radius: 0px;-webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
+    -moz-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1); box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);}
 .headeruserinfo ul li{vertical-align: middle; line-height: 60px;}
 .faxsearchbox input{
     background: #b8b9b9 url("../images/iconsearch.png") no-repeat scroll 98% 50%;
@@ -2072,7 +2074,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     color: rgb(85, 85, 85);
     font-family: "open_sansregular";
     font-size: 14px;
-    padding: 9px;
+    padding: 8px;
     width: 260px;
 }
 
@@ -3185,7 +3187,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     text-align: center;
     cursor: pointer;
     background: #babcbe;
-    padding: 5px 8px;
+    padding: 8px 8px;
     -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     -moz-box-shadow:    0px 1px 0px rgba(4, 4, 4, 1);
     box-shadow:         0px 1px 0px rgba(4, 4, 4, 1);
@@ -3200,7 +3202,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     text-align: center;
     cursor: pointer;
     background: #fb4a32;
-    padding: 5px 8px;
+    padding: 8px 8px;
     -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     -moz-box-shadow:    0px 1px 0px rgba(4, 4, 4, 1);
     box-shadow:         0px 1px 0px rgba(4, 4, 4, 1);
@@ -3473,10 +3475,10 @@ ul.inboxlists{padding:0px; margin:0px;}
     -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     -moz-box-shadow:    0px 1px 0px rgba(4, 4, 4, 1);
     box-shadow:         0px 1px 0px rgba(4, 4, 4, 1);
-    padding: 6px 8px 5px 8px;
+    padding: 8px 8px 8px 8px;
     border:none;
 }
-.btndelete{color: #fff; cursor:pointer; background: #ff3317; padding: 5px 8px;}
+.btndelete{color: #fff; cursor:pointer; background: #ff3317; padding: 8px 8px;}
 /*
 .adminlistlists input{
     position: absolute;
@@ -3685,7 +3687,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     -moz-box-shadow:    0px 1px 0px rgba(4, 4, 4, 1);
     box-shadow:         0px 1px 0px rgba(4, 4, 4, 1);
-    padding: 3px 15px;
+    padding: 8px 14px;
     border:none;
 }
 .adminlistlists ul li:first-child {
@@ -4651,6 +4653,10 @@ ul.inboxlists{padding:0px; margin:0px;}
 }
 
 
+.upcomingauctions .adminlistheader ul li .searchbox input {
+    width: 321px;
+}
+
 
 .upcomingauctions .adminlistlists ul {
     width: 310px;
@@ -4952,6 +4958,28 @@ ul.inboxlists{padding:0px; margin:0px;}
     top:15px;
 }
 
+.inventoryrecentbidheader ul {
+    float: right;
+}
+.inventoryrecentbidheader ul li .searchbox input {
+    padding: 9px 9px;
+    width: 370px;
+    background: #b8b9b9 url(images/iconsearch.png) no-repeat right 11px center;
+    background: url(images/iconsearch.png) no-repeat;
+    background-position: right 11px center;
+    background-position-x: 98%;
+    background-position-y: 50%;
+    background-color: #b8b9b9;
+    font-family: 'open_sansregular';
+    font-size: 14px;
+    border-radius: 0px;
+    color: rgb(85, 85, 85);
+    padding-right: 35px;
+    border: 1px solid #7e7d7d;
+}
+
+
+
 .recentbidagreementmain .inventoryrecentbidblock {
     padding: 0px;
     background-color: transparent !important;
@@ -5162,7 +5190,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 
 .retailformblock1{background-color: #efeeed; padding: 30px 0px;}
 .retailformblock1wrapper{ margin: 0 auto; padding:0px;}
-.retailformblock1part1{background-color: #3a3838; width: 100%; padding: 8px 16px;    text-align: left; }
+.retailformblock1part1{background-color: #3a3838; width: 100%; padding: 8px 16px;    text-align: left; float: left; }
 .retailformblock1part1 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff; font-weight: normal; float: left; margin-right: 14px; }
 
 
@@ -5171,7 +5199,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .retailformblock1part1 .re_checkbox-inline label{margin: 0px 0px 0 0 !important;  font-family: 'myriadpro-regular'; font-weight: normal; font-size: 24px; color:#fff !important; text-transform: uppercase;}*/
 
 
-.retailformblock1part2{background-color: #7c7c7d; width: 100%; padding: 8px 16px;  margin-top: 2px;}
+.retailformblock1part2{background-color: #7c7c7d; width: 100%; padding: 8px 16px;  margin-top: 2px; float: left;}
 .retailformblock1part2 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff;font-weight: normal; float: left; margin-right: 14px !important;}
 
 /*
@@ -5611,7 +5639,7 @@ a .btnviewall {
 
 .retailformblock5{ padding: 0px 0px;}
 .retailformblock5wrapper{width: 1192px; margin: 0 auto;}
-.retailformblock5part1{background-color: #3a3838;width: 1130px; margin:0 auto; padding: 8px 16px 8px 16px;}
+.retailformblock5part1{background-color: #3a3838;width: 1130px; margin:0 auto; padding: 8px 16px 8px 16px; float: left;}
 .retailformblock5part1 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff; font-weight: normal;
     float: left;}
 
@@ -6571,6 +6599,73 @@ a .btnviewall {
 }
 
 
+.inventorymatchheader ul {
+    float: right;
+}
+.inventorymatchheader ul li .searchbox input {
+    padding: 9px 9px;
+    width: 370px;
+    background: #b8b9b9 url(images/iconsearch.png) no-repeat right 11px center;
+    background: url(images/iconsearch.png) no-repeat;
+    background-position: right 11px center;
+    background-position-x: 98%;
+    background-position-y: 50%;
+    background-color: #b8b9b9;
+    font-family: 'open_sansregular';
+    font-size: 14px;
+    border-radius: 0px;
+    color: rgb(85, 85, 85);
+    padding-right: 35px;
+    border: 1px solid #7e7d7d;
+}
+
+.page-wrapper .blockmaininner .inventorymatchheader .bootstrap-select.matchesdropdown .btndropdown {
+    color: #4c4b4b !important;
+    background-color: #b8b9b9!important;
+    border-color: #7e7d7d !important;
+    text-transform: uppercase;
+    border-radius: 0px !important;
+    font-family: 'MyriadPro-Regular';
+    width: 122px;
+    padding: 9px 9px;
+}
+
+.page-wrapper .blockmaininner .inventorymatchheader .bootstrap-select.matchesdropdown .btndropdown {
+    color: #4c4b4b !important;
+    background-color: #b8b9b9!important;
+    border-color: #7e7d7d !important;
+    text-transform: uppercase;
+    border-radius: 0px !important;
+    font-family: 'MyriadPro-Regular';
+    width: 122px;
+    padding:9px 9px;
+}
+.page-wrapper .blockmaininner .inventorymatchheader .bootstrap-select.matchesdropdown .dropdown-menu{
+    background-color: #a9abac;
+    color:#4c4b4b;
+    font-family: 'open_sansregular'; font-size: 14px; border-radius: 0px;    padding: 0px;
+    margin: 0px;
+    min-width: 122px;
+}
+.page-wrapper .blockmaininner .inventorymatchheader .bootstrap-select.matchesdropdown .selecttext{float: left !important; text-transform: capitalize;}
+.page-wrapper .blockmaininner .inventorymatchheader .bootstrap-select.matchesdropdown .dropdown-menu>li>a{
+    border-bottom: 1px solid #4c4b4b;
+}
+.page-wrapper .blockmaininner .inventorymatchheader .bootstrap-select.matchesdropdown .dropdown-menu>li:hover{
+    background-color: #b8b9b9;
+}
+
+.page-wrapper .blockmaininner .inventorymatchheader .bootstrap-select.matchesdropdown .caret{display: inline-block;
+    display: inline-block;
+    border-top: 6px dashed;
+    border-top: 4px solid\9;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    margin-right: -5px;
+}
+
+
+
 .sharelinks .inventorymatchblock .inventorylistswrapper .searchbox input {
     width: 360px;
     position: inherit;
@@ -6693,10 +6788,21 @@ a .btnviewall {
 .sharelinkssinglelistright ul li{float:left; display:inline-block;}
 .sharelinkssinglelistright ul li .btnsend{margin:0px;}
 .sharelinkssinglelistright ul li .btnedit{margin:0px;}
-.sharelinkssinglelistright p{display:block;}
-.sharelinkssinglelist .actionbtns{margin-bottom: 10px;}
-.sharelinkssinglelist .actionbtns button{display: inline-block;}
+.sharelinkssinglelistright p{display:block; margin-top: 10px;}
+.sharelinkssinglelist .actionbtns{margin-bottom: 10px; width: 200px; float: right;}
+.sharelinkssinglelist .actionbtns button{display: inline-block;    width: 48%;}
 .sharelinkssearch{margin-top: 0; margin-bottom: 0px;}
+
+.sharelinkssinglelistright .addbtn{
+    padding: 9px 15px;
+}
+.sharelinkssinglelistright .btnedit{
+    padding: 9px 15px;
+}
+.sharelinkssinglelistright .btndelete{
+    padding: 9px 15px;
+}
+
 
 /*---End sharelinks--*/
 
@@ -8344,13 +8450,13 @@ a:focus, a:hover {
     width:200px;
     height:150px;
     margin:10px 0;
-    border:1px solid #ccc;
+
     padding:4px;
     display: table-cell;
     vertical-align: middle;
 }
 .imgfilesrc img{
-    max-width: 100%;
+    max-width: 100%;   border:1px solid #ccc; padding: 2px;
 }
 
 
@@ -8407,6 +8513,52 @@ a:focus, a:hover {
 .addmembershippackage .browsefileblock .browsefileblockimg img{
     max-width: 100%;
 }
+
+.carbodystylelist .imgfilesrc {
+    text-align: center;
+    width: 147px;
+    height: 80px;
+    margin: 10px 0;
+    padding: 4px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.carbodystylelist .imgfilesrc img{
+    max-width: 100%;
+    border: 1px solid #ccc;
+    padding: 2px;
+}
+
+
+
+
+.addmembershippackage .browsefileblock .browsefileblockimg {
+    width: 244px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    padding: 4px;
+    height: 180px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.carlogolist .imgfilesrc {
+    text-align: center;
+    width: 72px;
+    height: 62px;
+    margin: 10px 0;
+    padding: 4px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.carlogolist .imgfilesrc img {
+    max-width: 100%;
+    border: 1px solid #ccc;
+    padding: 2px;
+}
+
+
 
 .addmembershippackage.addadmin .addadminblock .submitwrap {
     width: 127px;
@@ -8610,7 +8762,7 @@ a:focus, a:hover {
     -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     -moz-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
     box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);
-    padding: 5px 8px;
+    padding: 8px 14px;
     border: none;
 }
 
@@ -8761,3 +8913,7 @@ a:focus, a:hover {
     border-left: 6px solid transparent;
     margin-right: -5px;
 }
+
+
+.addpurchasetime .signupform_wrapper .col-md-12 {padding-left: 15px !important; padding-right: 15px !important;}
+.addbtnwrapper2 a{cursor: pointer;}

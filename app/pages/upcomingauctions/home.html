@@ -7,9 +7,11 @@
                 <div class="adminlistblock">
                     <div class="adminlistheader">
                         <h2><span>Upcoming</span> Auction</h2>
+                        <ul class="list-inline">
+                            <li><div class="searchbox"><input [(ngModel)]="query" placeholder="Search by Customer id, Auction, Status"></div></li>
+                        </ul>
                     </div>
                     <div class="adminlistlists dealerlists">
-                        <div class="searchbox"><input [(ngModel)]="query" placeholder="Search by Customer id, Auction, Status"></div>
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>

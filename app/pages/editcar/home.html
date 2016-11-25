@@ -1,4 +1,4 @@
-<div class="page-wrapper addmembershippackage addadmin">
+<div class="page-wrapper addmembershippackage addadmin addcarwrapper">
     <div class="blockmaininner">
         <div class="row">
             <div class="col-lg-12">
@@ -9,41 +9,74 @@
         <!-- /.row -->
         <div class="row addsharelinkblock">
             <div class="col-lg-12 addadminblock">
-                    <div class="signupform_wrapper">
-
-
-
-                        <form novalidate [formGroup]="addcarform"   name="addcar"  class="form-inline">
-                            <input type="hidden" name="username" [formControl]="addcarform.controls['username']">
+                <div class="signupform_wrapper">
+                    <form novalidate [formGroup]="addcarform"   name="addcar"  class="form-inline addcarsel">
+                        <input type="hidden" name="username" [formControl]="addcarform.controls['username']">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <select multiple class="form-control3" [formControl]="addcarform.controls['auctionid']" name="auctionid" >
+                                    <select multiple class="form-control3 addcar" [formControl]="addcarform.controls['auctionid']" name="auctionid" >
                                         <option value="" selected="selected"><span class="errormsgtxt">Select Your Auction</span></option>
                                         <option *ngFor="let obj1 of auctionlist" [value]="obj1._id">{{obj1.name}}</option>
                                     </select>
                                     <span  *ngIf ="addcarform.controls['auctionid'].touched && !addcarform.controls['auctionid'].valid" class="help-inline spanalign"><span class="errormsgtxt">Auction is Required ! </span><img src="images/iconquestion.png"></span>
                                 </div>
+
                                 <div class="form-group">
-                                    <input [formControl]="addcarform.controls['doctype']" name="doctype"  type="text" class="form-control" placeholder="Doc"/>
+                                    <select  class="form-control3" [formControl]="addcarform.controls['carlogolist']" name="auctionid" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Make</span></option>
+                                        <option *ngFor="let obj1 of carlogolist" [value]="obj1._id">{{obj1.name}}</option>
+                                    </select>
+                                    <span  *ngIf ="addcarform.controls['carlogolist'].touched && !addcarform.controls['carlogolist'].valid" class="help-inline spanalign"><span class="errormsgtxt">Make is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['doctype']" name="doctype"  type="text" class="form-control" placeholder="Doc Type"/>
                                     <span  *ngIf ="addcarform.controls['doctype'].touched && !addcarform.controls['doctype'].valid" class="help-inline"><span class="errormsgtxt">Doc type is Required !</span> <img src="images/iconquestion.png"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input [formControl]="addcarform.controls['odometer']" name="odometer"  type="text" class="form-control" placeholder="Odometer"/>
-                                    <span  *ngIf ="addcarform.controls['odometer'].touched && !addcarform.controls['odometer'].valid" class="help-inline"><span class="errormsgtxt">Odometer is Required !</span> <img src="images/iconquestion.png"></span>
+                                    <input [formControl]="addcarform.controls['enginetype']" name="enginetype"  type="text" class="form-control" placeholder="Engine Type"/>
+                                    <span  *ngIf ="addcarform.controls['enginetype'].touched && !addcarform.controls['enginetype'].valid" class="help-inline"><span class="errormsgtxt">Engine type is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input [formControl]="addcarform.controls['model']" name="model"  type="text" class="form-control" placeholder="Model"/>
+                                    <span  *ngIf ="addcarform.controls['model'].touched && !addcarform.controls['model'].valid" class="help-inline"><span class="errormsgtxt">Model is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <select  class="form-control3" [formControl]="addcarform.controls['color']" name="auctionid" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Color</span></option>
+                                        <option *ngFor="let obj1 of colorlist" [value]="obj1._id">{{obj1.color}}</option>
+                                    </select>
+                                    <span  *ngIf ="addcarform.controls['color'].touched && !addcarform.controls['color'].valid" class="help-inline spanalign"><span class="errormsgtxt">Color is Required ! </span><img src="images/iconquestion.png"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input [formControl]="addcarform.controls['highlights']" name="highlights"  type="text" class="form-control" placeholder="Highlights"/>
-                                    <span  *ngIf ="addcarform.controls['highlights'].touched && !addcarform.controls['highlights'].valid" class="help-inline"><span class="errormsgtxt">Highlights is Required !</span> <img src="images/iconquestion.png"></span>
+                                    <select  class="form-control3" [formControl]="addcarform.controls['carbodystylelist']" name="auctionid" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Body Style</span></option>
+                                        <option *ngFor="let obj1 of carbodystylelist" [value]="obj1._id">{{obj1.name}}</option>
+                                    </select>
+                                    <span  *ngIf ="addcarform.controls['carbodystylelist'].touched && !addcarform.controls['carbodystylelist'].valid" class="help-inline spanalign"><span class="errormsgtxt">Body Style is Required ! </span><img src="images/iconquestion.png"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input [formControl]="addcarform.controls['primary_damage']" name="highlights"  type="text" class="form-control" placeholder="rimary Damage"/>
-                                    <span  *ngIf ="addcarform.controls['primary_damage'].touched && !addcarform.controls['primary_damage'].valid" class="help-inline"><span class="errormsgtxt">Primary Damage is Required !</span> <img src="images/iconquestion.png"></span>
+                                    <select  class="form-control3" [formControl]="addcarform.controls['carautoyearlist']" name="carautoyearlist" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Year</span></option>
+                                        <option *ngFor="let obj1 of carautoyearlist" [value]="obj1._id">{{obj1.year}}</option>
+                                    </select>
+                                    <span  *ngIf ="addcarform.controls['carautoyearlist'].touched && !addcarform.controls['carautoyearlist'].valid" class="help-inline spanalign"><span class="errormsgtxt">Year is Required ! </span><img src="images/iconquestion.png"></span>
                                 </div>
+
                                 <div class="form-group">
-                                    <input [formControl]="addcarform.controls['secondary_damage']" name="secondary_damage"  type="text" class="form-control" placeholder="Secondary Damage"/>
-                                    <span  *ngIf ="addcarform.controls['secondary_damage'].touched && !addcarform.controls['primary_damage'].valid" class="help-inline"><span class="errormsgtxt">Secondary Damage is Required !</span> <img src="images/iconquestion.png"></span>
+                                    <select  class="form-control3" [formControl]="addcarform.controls['mileage']" name="carautoyearlist" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Mileage</span></option>
+                                        <option *ngFor="let obj1 of listcarautomileage" [value]="obj1._id">{{obj1.mileage}}</option>
+                                    </select>
+                                    <span  *ngIf ="addcarform.controls['mileage'].touched && !addcarform.controls['mileage'].valid" class="help-inline spanalign"><span class="errormsgtxt">Mileage is Required ! </span><img src="images/iconquestion.png"></span>
                                 </div>
+
+
+
+
+
                                 <div class="form-group">
                                     <input [formControl]="addcarform.controls['est_retail_value']" name="est_retail_value"  type="text" class="form-control" placeholder="Est. Retail Value"/>
                                     <span  *ngIf ="addcarform.controls['est_retail_value'].touched && !addcarform.controls['est_retail_value'].valid" class="help-inline"><span class="errormsgtxt">Est. Retail Value is Required !</span> <img src="images/iconquestion.png"></span>
@@ -52,20 +85,23 @@
                                     <input [formControl]="addcarform.controls['vin']" name="vin"  type="text" class="form-control" placeholder="Vin"/>
                                     <span  *ngIf ="addcarform.controls['vin'].touched && !addcarform.controls['vin'].valid" class="help-inline"><span class="errormsgtxt">Vin is Required !</span> <img src="images/iconquestion.png"></span>
                                 </div>
-                                <div class="form-group">
-                                    <input [formControl]="addcarform.controls['body_style']" name="body_style"  type="text" class="form-control" placeholder="Body Style"/>
-                                    <span  *ngIf ="addcarform.controls['body_style'].touched && !addcarform.controls['body_style'].valid" class="help-inline"><span class="errormsgtxt">Body Style is Required !</span> <img src="images/iconquestion.png"></span>
-                                </div>
-                                <div class="form-group">
+
+                                <!--<div class="form-group">
                                     <input [formControl]="addcarform.controls['color']" name="color"  type="text" class="form-control" placeholder="Color"/>
                                     <span  *ngIf ="addcarform.controls['color'].touched && !addcarform.controls['color'].valid" class="help-inline"><span class="errormsgtxt">Color is Required !</span> <img src="images/iconquestion.png"></span>
-                                </div>
+                                </div>-->
+
                                 <div class="form-group">
-                                    <input [formControl]="addcarform.controls['engine_type']" name="engine_type"  type="text" class="form-control" placeholder="Engine Type"/>
-                                    <span  *ngIf ="addcarform.controls['engine_type'].touched && !addcarform.controls['engine_type'].valid" class="help-inline"><span class="errormsgtxt">Engine Type is Required !</span> <img src="images/iconquestion.png"></span>
-                                </div>
-                                <div class="form-group">
-                                    <input [formControl]="addcarform.controls['drive']" name="drive"  type="text" class="form-control" placeholder="Drive"/>
+                                    <select  class="form-control3" [formControl]="addcarform.controls['drive']" name="drive" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Drive</span></option>
+                                        <option value="All Wheel Drive">All Wheel Drive</option>
+                                        <option value="4 Wheel Drive">4 Wheel Drive</option>
+                                        <option value="2 Wheel drive Front">2 Wheel drive Front</option>
+                                        <option value="2 Wheel drive Rear">2 Wheel drive Rear</option>
+
+                                    </select>
+
+
                                     <span  *ngIf ="addcarform.controls['drive'].touched && !addcarform.controls['drive'].valid" class="help-inline"><span class="errormsgtxt">Drive is Required !</span> <img src="images/iconquestion.png"></span>
                                 </div>
                                 <div class="form-group">
@@ -76,15 +112,76 @@
                                     <input [formControl]="addcarform.controls['fuel']" name="fuel"  type="text" class="form-control" placeholder="Fuel"/>
                                     <span  *ngIf ="addcarform.controls['fuel'].touched && !addcarform.controls['fuel'].valid" class="help-inline"><span class="errormsgtxt">Fuel is Required !</span> <img src="images/iconquestion.png"></span>
                                 </div>
-                                <div class="form-group">
-                                    <input [formControl]="addcarform.controls['keys']" name="keys"  type="text" class="form-control" placeholder="Keys"/>
-                                    <span  *ngIf ="addcarform.controls['keys'].touched && !addcarform.controls['keys'].valid" class="help-inline"><span class="errormsgtxt">Keys is Required !</span> <img src="images/iconquestion.png"></span>
-                                </div>
+
 
 
                                 <div class="form-group">
                                     <input [formControl]="addcarform.controls['priority']" name="priority"  type="text" class="form-control" placeholder="Priority"/>
                                     <span  *ngIf ="addcarform.controls['priority'].touched && !addcarform.controls['priority'].valid" class="help-inline"><span class="errormsgtxt">Priority is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <select  class="form-control3" [formControl]="addcarform.controls['power_locks']" name="power_locks" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Power Locks</span></option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select  class="form-control3" [formControl]="addcarform.controls['power_window']" name="power_window" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Power Window</span></option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <select  class="form-control3" [formControl]="addcarform.controls['sunroof']" name="sunroof" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Sunroof</span></option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <input type="text" [formControl]="addcarform.controls['digital_display']" name="digital_display" class="form-control" placeholder="Digital Display"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" [formControl]="addcarform.controls['stereo_system']" name="stereo_system" class="form-control" placeholder="Stereo System"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" [formControl]="addcarform.controls['bluetooth']" name="bluetooth" class="form-control" placeholder="Bluetooth"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" [formControl]="addcarform.controls['dvd_player']" name="dvd_player" class="form-control" placeholder="DVD Player"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" [formControl]="addcarform.controls['gps']" name="gps" class="form-control" placeholder="GPS"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" [formControl]="addcarform.controls['airbags']" name="airbags" class="form-control" placeholder="Airbags"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" [formControl]="addcarform.controls['seats']" name="seats" class="form-control" placeholder="Seats"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" [formControl]="addcarform.controls['satellite_radio']" name="satellite_radio" class="form-control" placeholder="Satellite Radio"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" [formControl]="addcarform.controls['lights']" name="lights" class="form-control" placeholder="Lights"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" [formControl]="addcarform.controls['gear_type']" name="gear_type" class="form-control" placeholder="Gear Type"/>
+                                </div>
+
+                                <div class="form-group">
+                                    <select  class="form-control3" [formControl]="addcarform.controls['trinted_window']" name="trinted_window" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Tinted Window</span></option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" [formControl]="addcarform.controls['filename']" name="filename" class="form-control" placeholder="Filename"/>
@@ -95,7 +192,7 @@
                                 <div class="form-group hide">
                                     <textarea [formControl]="addcarform.controls['notes']" name="notes" class="form-control form-control-textarea" placeholder="Notes">
                                     </textarea>
-                                   <!-- <span *ngIf ="addcarform.controls['description'].touched && !addcarform.controls['description'].valid" class="help-inline"><span class="errormsgtxt">Description is Required !</span><img src="images/iconquestion.png"></span>-->
+                                    <!-- <span *ngIf ="addcarform.controls['description'].touched && !addcarform.controls['description'].valid" class="help-inline"><span class="errormsgtxt">Description is Required !</span><img src="images/iconquestion.png"></span>-->
                                 </div>
 
                             </div>
@@ -135,8 +232,8 @@
                             <input [formControl]="addcarform.controls['imageurl']" name="imageurl"  type="text" class="form-control" placeholder="Image Url"/>
                             <span  *ngIf ="addcarform.controls['imageurl'].touched && !addcarform.controls['imageurl'].valid" class="help-inline"><span class="errormsgtxt">Image Url is Required ! </span><img src="images/iconquestion.png"></span>
                         </div>-->
-                        </form>
-                    </div>
+                    </form>
+                </div>
 
 
 
@@ -156,5 +253,5 @@
             </div>
         </div>
 
-       </div>
     </div>
+</div>

@@ -630,3 +630,9 @@
     cursor: pointer;
     padding: 5px 8px;
     border: none;}
+
+
+.imgfilesrc2 img{ width: 70px;  border:1px solid #ccc;  padding: 2px;}
+
+.imgfilesrc2 span{ display: inline-block;  font-family: "open_sanssemibold";
+    font-size: 14px; padding-right: 5px;}

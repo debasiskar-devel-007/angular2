@@ -14,11 +14,11 @@ import {AppComponent} from "../home/app.component";
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/carlogolist/home.html',
+    templateUrl:'app/pages/carautoyearlist/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppCarlogolist {
+export class AppCarautoyearlist {
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
@@ -39,7 +39,6 @@ export class AppCarlogolist {
     orderbytype:any;
     appcomponent:AppComponent;
     tempdata:Array<any>;
-    filesrc:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
@@ -50,7 +49,7 @@ export class AppCarlogolist {
         this.items = commonservices.getItems();
         this.messages = appcomponent.getMessages();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl+'carlogolist';
+        let link = this.serverUrl+'carautoyearlist';
         this.p=1;
         this.orderbyquery='priority';
         this.orderbytype=-1;
@@ -59,7 +58,6 @@ export class AppCarlogolist {
                 this.data = data1.json();
                 console.log(this.data);
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
-                this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 this.pagec=Math.ceil(this.data.length / 10);
 
             }, error => {
@@ -72,7 +70,7 @@ export class AppCarlogolist {
     deleterow(dealerrow:any){
         //console.log(adminid);
 
-        let link= this.serverUrl+'deletecarlogo';
+        let link= this.serverUrl+'deletecarautoyear';
         let id=dealerrow;
         this.http.post(link,id)
             .subscribe(data1 => {
@@ -86,11 +84,11 @@ export class AppCarlogolist {
                     if(dealerrow._id==this.data[x]._id) {
                         delete this.data.x;
                         this.data.splice(x, 1);
-                        window.location.reload();
+                        //window.location.reload();
                     }
                 }
                 console.log(this.data);
-                 this.appcomponent.putmessages('Car logo '+dealerrow.baseprice+' deleted successfully','success');
+                 this.appcomponent.putmessages('Auto Year '+dealerrow.year+' deleted successfully','success');
                 //console.log(this.data);
 
             }, error => {
@@ -109,7 +107,7 @@ export class AppCarlogolist {
             var is_active=1;
         }
         let stat={id:item._id,is_active:is_active};
-        let link= this.serverUrl+'carlogostatuschange';
+        let link= this.serverUrl+'carautoyearstatuschange';
         this.http.post(link,stat)
             .subscribe(data1 => {
                 // this.data = data1.json();

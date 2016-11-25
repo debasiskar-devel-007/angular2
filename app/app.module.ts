@@ -107,6 +107,16 @@ import {AppEditcarlogo} from "./pages/editcarlogo/app.editcarlogo";
 import {AppAddcarbodystyle} from "./pages/addcarbodystyle/app.addcarbodystyle";
 import {AppCarbodystylelist} from "./pages/carbodystylelist/app.carbodystylelist";
 import {AppEditcarbodystyle} from "./pages/editcarbodystyle/app.editcarbodystyle";
+import {AppAddcarautoyear} from "./pages/addcarautoyear/app.addcarautoyear";
+import {AppCarautoyearlist} from "./pages/carautoyearlist/app.carautoyearlist";
+import {AppEditcarautoyear} from "./pages/editcarautoyear/app.editcarautoyear";
+import {AppDealerauctionlist} from "./pages/dealerauctionlist/app.dealerauctionlist";
+import {AppAddcarmileage} from "./pages/addcarmileage/app.addcarmileage";
+import {AppCarmileagelist} from "./pages/carmileagelist/app.carmileagelist";
+import {AppEditcarmileage} from "./pages/editcarmileage/app.editcarmileage";
+import {AppCarfeaturelist} from "./pages/carfeaturelist/app.carfeaturelist";
+import {AppAddcarfeature} from "./pages/addcarfeature/app.addcarfeature";
+import {AppEditcarfeature} from "./pages/editcarfeature/app.editcarfeature";
 //import {Clipboard} from 'clipboard';
 
 
@@ -115,7 +125,7 @@ import {AppEditcarbodystyle} from "./pages/editcarbodystyle/app.editcarbodystyle
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule,Ng2PaginationModule,CKEditorModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerfooter,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppAppFinance,AppRetailcustomerconnect,AppBannersizelist,AppAddbannersize,AppEditbannersize,AppAddbanner,AppBannerlist,AppEditbanner,AppViewcustomers,AppViewrsvp,AppWritemail,AppReadmessage,AppMailinbox,AppCustomerprofile,AppAddaffiliate,AppAffiliatelist,AppEditaffiliate,AppAffiliatelogin,AppAffiliatefooter,AppAffiliateheader,AppAffiliatedashboard,AppAddmembershippackage,AppMerbershippackagelist,AppAuctionbidding,AppEditmembershippackage,AppPackage,AppAuctionlist,AppAddauction,AppEditauction,AppAddcar,AppCarlist,AppEditcar,AppCustomersignupstep1,AppOrderdetails,AppDealerprofile,AppMembershiporderreport,AppAddpurchasetime,AppPurchasetimelist,AppEditpurchasetime,AppAddbaseprice,AppBasepricelist,AppEditbaseprice,AppColorlist,AppAddcolor,AppEditcolor,AppCarlogolist,AppAddcarlogo,AppEditcarlogo,AppAddcarbodystyle,AppCarbodystylelist,AppEditcarbodystyle,UPLOAD_DIRECTIVES],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerfooter,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppAppFinance,AppRetailcustomerconnect,AppBannersizelist,AppAddbannersize,AppEditbannersize,AppAddbanner,AppBannerlist,AppEditbanner,AppViewcustomers,AppViewrsvp,AppWritemail,AppReadmessage,AppMailinbox,AppCustomerprofile,AppAddaffiliate,AppAffiliatelist,AppEditaffiliate,AppAffiliatelogin,AppAffiliatefooter,AppAffiliateheader,AppAffiliatedashboard,AppAddmembershippackage,AppMerbershippackagelist,AppAuctionbidding,AppEditmembershippackage,AppPackage,AppAuctionlist,AppAddauction,AppEditauction,AppAddcar,AppCarlist,AppEditcar,AppCustomersignupstep1,AppOrderdetails,AppDealerprofile,AppMembershiporderreport,AppAddpurchasetime,AppPurchasetimelist,AppEditpurchasetime,AppAddbaseprice,AppBasepricelist,AppEditbaseprice,AppColorlist,AppAddcolor,AppEditcolor,AppCarlogolist,AppAddcarlogo,AppEditcarlogo,AppAddcarbodystyle,AppCarbodystylelist,AppEditcarbodystyle,AppAddcarautoyear,AppCarautoyearlist,AppEditcarautoyear,AppDealerauctionlist,AppAddcarmileage,AppCarmileagelist,AppEditcarmileage,AppCarfeaturelist,AppAddcarfeature,AppEditcarfeature,UPLOAD_DIRECTIVES],
   providers: [
     appRoutingProviders,CookieService
   ],

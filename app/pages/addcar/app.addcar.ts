@@ -41,6 +41,11 @@ export class AppAddcar implements OnInit {
     ckeditorContent:any;
     private userInfo:any;
     auctionlist:any;
+    private carlogolist:any;
+    private colorlist:any;
+    private carbodystylelist:any;
+    private carautoyearlist:any;
+    private listcarautomileage:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.ckeditorContent = '';
@@ -61,27 +66,71 @@ console.log(this.userInfo);
             }, error => {
                 console.log("Oooops!");
             });
+
+        this.http.get(this.serverUrl+'carlogolist')
+            .subscribe(data => {
+                this.carlogolist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'colorlist')
+            .subscribe(data => {
+                this.colorlist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'carbodystylelist')
+            .subscribe(data => {
+                this.carbodystylelist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'carautoyearlist')
+            .subscribe(data => {
+                this.carautoyearlist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'listcarautomileage')
+            .subscribe(data => {
+                this.listcarautomileage=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
         this.addcarform = fb.group({
             username: [this.userInfo.username, Validators.required],
             doctype: ['', Validators.required],
-            odometer: ['', Validators.required],
-            primary_damage: ['', Validators.required],
-            highlights: ['', Validators.required],
-            secondary_damage: ['', Validators.required],
             est_retail_value: ['', Validators.required],
             vin: ['', Validators.required],
-            body_style: ['', Validators.required],
             color: ['', Validators.required],
-            engine_type: ['', Validators.required],
             drive: ['', Validators.required],
             cylinder: ['', Validators.required],
             fuel: ['', Validators.required],
-            keys: ['', Validators.required],
-            notes: ['', Validators.required],
+            notes: [''],
             is_active: [''],
             priority: ['', Validators.required],
             filename: ['', Validators.required],
+            carlogolist: ['', Validators.required],
+            model: ['', Validators.required],
+            carautoyearlist: ['', Validators.required],
+            mileage: ['', Validators.required],
+            enginetype: ['', Validators.required],
+            carbodystylelist: ['', Validators.required],
             auctionid: [[], Validators.required],
+            power_locks: [""],
+            power_window: [""],
+            sunroof: [""],
+            digital_display: [""],
+            stereo_system: [""],
+            bluetooth: [""],
+            dvd_player: [""],
+            gps: [""],
+            airbags: [""],
+            seats: [""],
+            satellite_radio: [""],
+            lights: [""],
+            gear_type: [""],
+            trinted_window: [""],
 
         });
 
@@ -121,22 +170,24 @@ console.log(this.userInfo);
     }
 
     submitform1(){
-
+console.log(111);
         let x:any;
         for(x in this.addcarform.controls){
             this.addcarform.controls[x].markAsTouched();
+           // console.log(333);
 
         }
         this.addcarform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
         if(this.addcarform.valid){
-            console.log(11);
+            console.log(222);
             //var headers = new Headers();
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
             let link = this.serverUrl+'addcar';
             var submitdata = this.addcarform.value;
+            console.log(submitdata);
             console.log(submitdata);
             this.http.post(link,submitdata)
                 .subscribe(data => {

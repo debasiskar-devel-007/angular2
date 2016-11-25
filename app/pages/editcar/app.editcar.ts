@@ -116,7 +116,7 @@ console.log(this.userInfo);
 
                         username: [this.userInfo.username, Validators.required],
                         doctype: [this.details.doctype, Validators.required],
-                        est_retail_value: ['', Validators.required],
+                        est_retail_value: [this.details.est_retail_value, Validators.required],
                         vin: [this.details.doctype, Validators.required],
                         color: [this.details.color, Validators.required],
                         drive: [this.details.drive, Validators.required],

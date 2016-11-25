@@ -1796,8 +1796,8 @@ ul.inboxlists{padding:0px; margin:0px;}
 .middlewrap{padding: 0px; width: auto !important;}
 .rightwrap{padding: 12px 5px;float: right !important;width:130px !important;}
 .faqblockwrapper .slrbutton {background:#ff2204; border-radius: 5px; width: 41px; height: 41px; position:relative; display:table-cell;vertical-align:middle; padding: 10px;}
-.faqblockwrapper .slrbutton h1 {vertical-align: center;text-align: center; margin:0; color:#fff;}
-.signupform_wrapper .help-inline span{margin-top: 52px; top: -32px; right: 54px !important;min-width: 141px; position: absolute;}
+.faqblockwrapper .slrbutton h1 {vertical-align:middle;text-align: center; margin:0; color:#fff;}
+.signupform_wrapper .help-inline span{margin-top: 52px; top: -32px; right: 54px !important;min-width: 200px; position: absolute;}
 .addfaq .submitwrap{width: 127px; text-align: right; padding: 20px 0px; margin-top: 0px; float: right; z-index: 9; position: relative;}
 .addfaq .submitwrap .subbtn{margin-right: 10px !important; padding: 8px 30px; font-family: 'open_sanssemibold'; font-size: 14px;line-height: 16px;background: #eff4f8;color: #000;cursor: pointer;border-radius: 1px;cursor: pointer; text-transform: uppercase;text-decoration: none;}
 
@@ -1814,7 +1814,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .addfaq .addfaqblock .signupform_wrapper {padding-left: 0px;padding-right: 0px;margin-top: 6px;padding-bottom: 0px;min-height: inherit;height: auto;width: 100%; display: inline-block;}
 .addadminblock .signupform_wrapper .form-group {width: 100%; margin: 14px 0; border-radius: 4px;}
 .addadminblock .signupform_wrapper .form-group input{background: #272727;box-shadow: 0 0 6px #615b42; padding: 6px 8px; }
-.addadminblock .signupform_wrapper .form-group img {width: 50px; height: 52px; margin: 0; background: #eff4f8; padding: 13px 17px; box-shadow: 0 0 6px #615b42; margin-left: 6px;}
+.addadminblock .signupform_wrapper .form-group img {width: 50px; height: 48px; margin: 0; background: #eff4f8; padding: 13px 17px; box-shadow: 0 0 6px #615b42; margin-left: 6px;}
 .addadminblock .signupform_wrapper select {-webkit-appearance: none; -moz-appearance: none; appearance: none; background: #272727 url(./images/selectboxbg.png) no-repeat!important; background-position: right top!important;  border: none!important; outline: none!important; padding: 0 9px;font-family: 'MyriadPro-Regular'; font-size: 16px; color: #fff !important; box-shadow: none; font-weight: normal !important;}
 .addadminblock .signupform_wrapper .form-group .form-control {width: 100%; background: #272727; height: 50px; margin: 0px; border: none; border-radius: 0px;font-family: 'MyriadPro-Regular';font-size: 16px; color: #fff; box-shadow: none;}
 
@@ -5190,7 +5190,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 
 .retailformblock1{background-color: #efeeed; padding: 30px 0px;}
 .retailformblock1wrapper{ margin: 0 auto; padding:0px;}
-.retailformblock1part1{background-color: #3a3838; width: 100%; padding: 8px 16px;    text-align: left; float: left; }
+.retailformblock1part1{background-color: #3a3838; width: 100%; padding: 8px 16px !important;    text-align: left;}
 .retailformblock1part1 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff; font-weight: normal; float: left; margin-right: 14px; }
 
 
@@ -5199,7 +5199,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .retailformblock1part1 .re_checkbox-inline label{margin: 0px 0px 0 0 !important;  font-family: 'myriadpro-regular'; font-weight: normal; font-size: 24px; color:#fff !important; text-transform: uppercase;}*/
 
 
-.retailformblock1part2{background-color: #7c7c7d; width: 100%; padding: 8px 16px;  margin-top: 2px; float: left;}
+.retailformblock1part2{background-color: #7c7c7d; width: 100%; padding: 8px 16px !important;  margin-top: 2px;}
 .retailformblock1part2 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff;font-weight: normal; float: left; margin-right: 14px !important;}
 
 /*
@@ -5275,16 +5275,16 @@ ul.inboxlists{padding:0px; margin:0px;}
 .retailformblock1part3innerblock5 h3 {background-color: #fb4a32; color: #fff;  padding: 15px 10px 13px 15px; text-align: left; min-height: 47px; margin: 0px; margin-top: 10px;}
 .retailformblock1part3innerblock5wrapper{border:1px solid #bfbebd; border-top:0px !important; background: #fff;}
 .retailformblock1part3innerblock51{ padding: 0px; background-color: #fff;}
-.retailformblock1part3innerblock51 input[type=checkbox]:not(old) + label,
+/*.retailformblock1part3innerblock51  label,
 .retailformblock1part3innerblock51 input[type=radio ]:not(old) + label {
     display: inline-block;
-    /*    margin-left: -32px;*/
+    !*    margin-left: -32px;*!
     padding-left: 32px;
     background: url('../images/re_checkbox3.png') no-repeat 0 0;
     line-height: 18px;
     font-size: 16px;
-    font-weight: normal;
-}
+    font-weight: normal; cursor: pointer;
+}*/
 
 .retailformblock1part3innerblock51 .table {
     width: 100%;
@@ -8917,3 +8917,62 @@ a:focus, a:hover {
 
 .addpurchasetime .signupform_wrapper .col-md-12 {padding-left: 15px !important; padding-right: 15px !important;}
 .addbtnwrapper2 a{cursor: pointer;}
+
+ .signupform_wrapper .form-group .form-control3.addcar {height: 112px;}
+ .signupform_wrapper select.addcar option {padding: 2px 9px;}
+ .addadminblock .signupform_wrapper select.addcar{background: #272727!important; border: none!important;
+    outline: none!important;}
+.addcarwrapper.addmembershippackage .addsharelinkblock .browsefileblock {margin-top: 10px !important;}
+
+
+
+ .spanalign{ right: 23px!important;}
+
+
+ .retailformblock2wrapperinnerpart21_wrapper{ padding-left: 24px; padding-right: 24px;}
+
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass{ display: none; padding: 8px 0px; clear:both;}
+
+
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(1){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(2){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(3){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(4){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(5){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(6){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(7){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(8){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(9){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(10){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(11){ display: block!important;}
+.retailformblock2wrapperinnerpart21_wrapper  .spanclass:nth-child(12){ display: block!important;}
+
+
+.carlogomodalbox .modal-content{ border: solid 5px #122246;}
+
+
+.carlogomodalbox .popupdiv_box .subpopup{width: 50%; padding:15px; margin:0px; border:solid 1px #ddd; display:block;
+  border-left:none; height: 220px;}
+
+
+.carlogomodalbox .popupdiv_box span{ width: auto; float: none; display:inline;}
+.carlogomodalbox .popupdiv_box b{ font-weight: normal; padding-left:10px;}
+.carlogomodalbox .popupdiv_box img{  display:block; margin:0 auto;}
+
+.carlogomodalbox .modal-body{ margin: 0; padding:0px;}
+
+
+.labletextbox{ display:block; text-align:center; padding: 10px 0;}
+
+.carlogomodalbox input[type=checkbox]{ display: block; width:25px; margin:0 auto;}
+
+
+.carlogomodalbox  table{ height: 130px; width: 100%;}
+
+
+.rankdiv{ width: 50%; float:left;}
+.colordiv{ width: 50%; float:left;}
+
+.colordiv label{ font-weight: normal!important;}
+
+.colordiv span{ font-weight: normal!important;}

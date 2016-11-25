@@ -43,6 +43,16 @@ export class AppRetailcustomerconnect {
     coockieData:CookieService;
     purchasetimilist:any;
     basepricelist:any;
+    carlogolist:any;
+    carlogosrc:any;
+    carbodystylelist:any;
+    carbodystylelogosrc:any;
+    carautoyearlist:any;
+    carmileagelist:any;
+    carfeaturelist:any;
+    carfeaturesrc:any;
+    private colorlist:any;
+    private rows:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
@@ -92,8 +102,12 @@ export class AppRetailcustomerconnect {
             retail_calculator: ['', Validators.required],
             purchase_time: ['', Validators.required],
             base_price: ['', Validators.required],
-            color_opiton: ['', Validators.required],
-            upcoming_auction: ['', Validators.required],
+            color_opiton: [''],
+            upcoming_auction: [[]],
+            car_body_style: [[]],
+            car_auto_year: [[]],
+            car_mileage: [[]],
+            car_feature: [[]],
         });
 
 
@@ -102,7 +116,7 @@ export class AppRetailcustomerconnect {
                 //console.log(data);
                 this.purchasetimilist=data.json();
 
-                console.log(this.purchasetimilist);
+                //console.log(this.purchasetimilist);
 
 
             }, error => {
@@ -113,7 +127,70 @@ export class AppRetailcustomerconnect {
                 //console.log(data);
                 this.basepricelist=data.json();
 
-                console.log(this.basepricelist);
+              //  console.log(this.basepricelist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'carlogolist')
+            .subscribe(data => {
+                //console.log(data);
+                this.carlogosrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.carlogolist=data.json();
+
+               // console.log(this.carlogolist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'carbodystylelist')
+            .subscribe(data => {
+                //console.log(data);
+                this.carbodystylelogosrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.carbodystylelist=data.json();
+
+               // console.log(this.carbodystylelogosrc);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'carautoyearlist')
+            .subscribe(data => {
+                this.carautoyearlist=data.json();
+
+               // console.log(this.carautoyearlist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'listcarautomileage')
+            .subscribe(data => {
+                this.carmileagelist=data.json();
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'listcarfeature')
+            .subscribe(data => {
+                this.carfeaturelist=data.json();
+                this.carfeaturesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                console.log(this.carfeaturelist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'colorlist')
+            .subscribe(data => {
+                this.colorlist=data.json();
+                this.rows = Array.from(Array(Math.ceil(this.colorlist.length / 3)).keys())
+                //this.carfeaturesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                console.log(this.carfeaturelist);
 
 
             }, error => {
@@ -178,7 +255,7 @@ export class AppRetailcustomerconnect {
         this.customersignupupdateform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
         if(this.customersignupupdateform.valid){
-
+            //console.log(this.customersignupform.value);
             //var headers = new Headers();
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 

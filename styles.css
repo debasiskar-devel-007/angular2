@@ -5639,7 +5639,7 @@ a .btnviewall {
 
 .retailformblock5{ padding: 0px 0px;}
 .retailformblock5wrapper{width: 1192px; margin: 0 auto;}
-.retailformblock5part1{background-color: #3a3838;width: 1130px; margin:0 auto; padding: 8px 16px 8px 16px; float: left;}
+.retailformblock5part1{background-color: #3a3838;width: 1190px; margin:0 auto; padding: 8px 16px 8px 16px; float: left;}
 .retailformblock5part1 span{font-family: 'myriadpro-regular'; font-size: 26px; color:#fff; font-weight: normal;
     float: left;}
 
@@ -8260,6 +8260,7 @@ a:focus, a:hover {
 
 
 
+/*
 .retailformblock2wrapperinnerpart21 input[type=checkbox]:not(old),
 .retailformblock2wrapperinnerpart21 input[type=radio]:not(old){
     width   : 20px;
@@ -8296,6 +8297,7 @@ a:focus, a:hover {
     width:84%;
 }
 
+*/
 
 
 
@@ -8973,6 +8975,52 @@ a:focus, a:hover {
 .rankdiv{ width: 50%; float:left;}
 .colordiv{ width: 50%; float:left;}
 
+.retailformblock1part3innerblock51 th .colordiv{ padding-left: 28px;}
+
 .colordiv label{ font-weight: normal!important;}
 
 .colordiv span{ font-weight: normal!important;}
+
+
+
+
+
+.retailformblock1part3innerblock51  input[type=checkbox]:not(old){
+    width   : 20px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0; cursor: pointer;
+}
+
+.retailformblock1part3innerblock51  input[type=checkbox]:not(old) + label{
+    display      : inline-block;
+    margin-left  : 0;
+    padding-left : 28px;
+    background   : url("../images/re_chakebox2.png") no-repeat 0 0;
+    line-height  : 20px;
+}
+
+.retailformblock1part3innerblock51  input[type=checkbox]:not(old):checked + label{
+    background-position : 0 -20px;
+}
+
+
+.newerrorcss{display: block;
+    text-align: left;
+    color: #ff0000;
+    width: 100%;
+    font-weight: normal;
+    font-size: 16px;
+    padding: 10px 0 30px 0!important;}
+
+
+.newerrorcss2{display: block;
+    text-align: left;
+    color: #ff0000;
+    width: 100%;
+
+    font-size: 16px;
+    padding: 25px 0 0 0!important;  font-weight: normal; }
+
+
+

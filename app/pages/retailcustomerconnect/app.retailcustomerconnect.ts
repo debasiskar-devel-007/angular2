@@ -1,4 +1,4 @@
-import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation} from '@angular/core';
+import {Component, NgModule, ViewChild, ViewContainerRef, ElementRef, ViewEncapsulation, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
@@ -11,6 +11,7 @@ import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
 //import {SimplePageScroll} from 'ng2-simple-page-scroll';
 
+declare var jQuery:any;
 
 @Component({
     selector: 'my-app',
@@ -19,7 +20,7 @@ import {AppComponent} from "../home/app.component";
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppRetailcustomerconnect {
+export class AppRetailcustomerconnect implements OnInit {
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
@@ -53,9 +54,15 @@ export class AppRetailcustomerconnect {
     carfeaturesrc:any;
     private colorlist:any;
     private rows:any;
+    private colorval:Array<any>;
+    private static colorval:Array<any>;
+    private upcoming_auctionarr:Array<any>;
+    private elementRef: ElementRef;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
         this.router=router;
+        this.colorval=[];
+        this.upcoming_auctionarr=[];
         this.http=http;
         this.router=router;
         this.appcomponent=appcomponent;
@@ -77,6 +84,8 @@ export class AppRetailcustomerconnect {
             }, error => {
                 console.log("Oooops!");
             });
+
+
 
         this.customersignupform = fb.group({
             username: [this.customerinfo.username, Validators.required],
@@ -102,8 +111,8 @@ export class AppRetailcustomerconnect {
             retail_calculator: ['', Validators.required],
             purchase_time: ['', Validators.required],
             base_price: ['', Validators.required],
-            color_opiton: [''],
-            upcoming_auction: [[]],
+            color_opiton: ['',Validators.required],
+            upcoming_auction: ['',Validators.required],
             car_body_style: [[]],
             car_auto_year: [[]],
             car_mileage: [[]],
@@ -199,6 +208,11 @@ export class AppRetailcustomerconnect {
 
 
     }
+    ngOnInit() {
+        var el = this.elementRef.nativeElement;
+        console.log('in native');
+        console.log(el);
+    }
 
 
      static validateTerms(control: FormControl){
@@ -206,6 +220,15 @@ export class AppRetailcustomerconnect {
 
         if(control.value==false){
             return { 'isTermsChecked': true };
+        }
+     }
+    static validcoloroptions(control: FormControl){
+        console.log('test');
+        //console.log(this.colorval);
+
+        if(control.value==1 ||control.value.length==false){
+            return { 'validcoloroptions': true };
+            //return true;
         }
     }
 
@@ -225,6 +248,7 @@ export class AppRetailcustomerconnect {
         }
         this.customersignupform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
+        //if(this.customersignupform.valid){
         if(this.customersignupform.valid){
 
             //this.items = this.commonservices.getItems();
@@ -279,7 +303,67 @@ export class AppRetailcustomerconnect {
     }
 
     goto(){
-       this.router.navigate(['/finance']) ;
+
+        console.log(this.customersignupupdateform.value);
+        let x:any;
+        for(x in this.customersignupupdateform.controls){
+            this.customersignupupdateform.controls[x].markAsTouched();
+
+        }
+        this.customersignupupdateform.markAsDirty();
+        console.log('form value ...');
+        console.log(this.customersignupupdateform.value);
+       //this.router.navigate(['/finance']) ;
+    }
+    carcolorchange(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        console.log(target.value);
+        console.log(target.checked);
+        console.log(ev);
+        if(target.checked==true){
+            this.colorval.push(target.value);
+        }else{
+            var arrindex = this.colorval.indexOf(target.value);
+            this.colorval.splice(arrindex, 1);
+        }
+        console.log('color val');
+        console.log(this.colorval);
+        //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
+        //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
+    }
+    upcoming_auctionchange(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        console.log(target.value);
+        console.log(target.checked);
+        console.log(ev);
+        if(target.checked==true){
+            this.upcoming_auctionarr.push(target.value);
+        }else{
+            var arrindex = this.upcoming_auctionarr.indexOf(target.value);
+            this.upcoming_auctionarr.splice(arrindex, 1);
+        }
+        console.log('upcoming_auctionarr val');
+        console.log(this.upcoming_auctionarr);
+        //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
+        //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
+    }
+
+
+    clickcarlogo(ev:any){
+
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        console.log(target.attributes);
+        console.log(target.attributes.id);
+        console.log(target.attributes.logoid);
+        console.log(target.parentElement.innerHTML);
+        //console.log(target.gete);
+
+        //target.hide();
+        //this.elementRef.nativeElement.
+        //jQuery(this.elementRef.nativeElement).find(target).html('6');
+
+        //console.log(target.attrs.logoid);
+
     }
 
 }

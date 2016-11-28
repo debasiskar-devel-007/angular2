@@ -207,7 +207,7 @@
                     <span>Can we send you text and email alerts when we find you a match?</span>
                     <div class="re_checkbox_inlinediv">
                         <div class="re_checkbox-inline">
-                            <input [formControl]="customersignupupdateform.controls['send_mail']" id="homeblock3part1" type="radio" name="send_mail" value="1" checked="checked"><label for="homeblock3part1"></label><span>YES</span>
+                            <input [formControl]="customersignupupdateform.controls['send_mail']" id="homeblock3part1" type="radio" name="send_mail" value="1"><label for="homeblock3part1"></label><span>YES</span>
 
                     </div>
                     </div>
@@ -227,7 +227,7 @@
                     <span>Would you like to use the smart retail calculator during your window of engagement?</span>
                     <div class="re_checkbox_inlinediv">
                         <div class="re_checkbox-inline">
-                            <input [formControl]="customersignupupdateform.controls['retail_calculator']" id="homeblock3part3" type="radio" name="retail_calculator" value="3" checked="checked">
+                            <input [formControl]="customersignupupdateform.controls['retail_calculator']" id="homeblock3part3" type="radio" name="retail_calculator" value="3">
                             <label for="homeblock3part3"></label>
                             <span>YES</span>
                         </div>
@@ -250,37 +250,21 @@
                                 <span style="display: block !important; clear: both !important;" *ngFor="let itempuchasetime of purchasetimilist">
                                     <div *ngIf="itempuchasetime.is_active==1"  class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single" >
 
-                                        <input [formControl]="customersignupupdateform.controls['purchase_time']"  id="{{itempuchasetime._id}}" type="radio" name="purchase_time" value="{{itempuchasetime._id}}" checked="checked"><label [attr.for]="itempuchasetime._id"></label><span>{{itempuchasetime.name}}</span>
+                                        <input [formControl]="customersignupupdateform.controls['purchase_time']"  id="{{itempuchasetime._id}}" type="radio" name="purchase_time" value="{{itempuchasetime._id}}"><label [attr.for]="itempuchasetime._id"></label><span>{{itempuchasetime.name}}</span>
 
                                     </div>
 
                                 </span>
-                                <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single">
-                                    <input [formControl]="customersignupupdateform.controls['purchase_time']" id="radio2" type="radio" name="purchase_time" value="2"><label for="radio2"></label><span>Within the next month</span>
 
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single">
-                                    <input [formControl]="customersignupupdateform.controls['purchase_time']" id="radio3" type="radio" name="purchase_time" value="3"><label for="radio3"></label><span>Within the next 2 months</span>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single">
-                                    <input [formControl]="customersignupupdateform.controls['purchase_time']" id="radio4" type="radio" name="purchase_time" value="4" checked="checked"><label for="radio4"></label><span>Within the next 6 months</span>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single">
-                                    <input [formControl]="customersignupupdateform.controls['purchase_time']" id="radio5" type="radio" name="purchase_time" value="5"><label for="radio5"></label><span>I am not sure</span>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock1single">
-                                    <input [formControl]="customersignupupdateform.controls['purchase_time']" id="radio6" type="radio" name="purchase_time" value="6">
-                                    <label for="radio6"></label>
-                                    <span>Just want to see what is available</span>
-                                    <div class="clearfix"></div>
-                                </div>-->
+
+
                             </div>
+
+                            <span *ngIf ="customersignupupdateform.controls['purchase_time'].touched && !customersignupupdateform.controls['purchase_time'].valid" class="help-inline newerrorcss" >This is Required !</span>
                         </div>
                     </div>
+
+
                 </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 retailformblock1part3innerblock2">
                     <h3>Base Price you are looking to pay (Select one)</h3>
@@ -293,7 +277,7 @@
 
                                     <div *ngFor="let itemcarprice of basepricelist" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
                                         <div *ngIf="itemcarprice.is_active==1">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="{{itemcarprice._id}}" type="radio" name="base_price" value="{{itemcarprice._id}}" checked="checked">
+                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="{{itemcarprice._id}}" type="radio" name="base_price" value="{{itemcarprice._id}}" >
                                         <label [attr.for]="itemcarprice._id" ></label>
                                         <span>{{itemcarprice.baseprice}}</span>
                                     </div>
@@ -334,9 +318,10 @@
                                 </div>
 
 
+
                                 <div class="clearfix"></div>
                             </div>
-
+                            <span *ngIf ="customersignupupdateform.controls['base_price'].touched && !customersignupupdateform.controls['base_price'].valid" class="help-inline newerrorcss2">This is Required !</span>
                         </div>
                     </div>
                 </div>
@@ -380,7 +365,7 @@
 
                                     </div>
 
-                                <div class="colordiv"> <strong>Color1</strong> <div class="radio{{(icolor*3)+(icolori+1)}}"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="{{colorlistitem._id}}" type="checkbox" name="color_opiton" value="1">
+                                <div class="colordiv"> <strong>Color1</strong> <div class="radio{{(icolor*3)+(icolori+1)}}"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="{{colorlistitem._id}}" type="checkbox" name="color_opiton[]" (change)="carcolorchange($event)" value="{{colorlistitem._id}}">
 
                                     <label [attr.for]="colorlistitem._id"><span>{{colorlistitem.color}}</span></label>
 
@@ -432,10 +417,18 @@
                     </table>
                 </div>
             </div>
+                <span *ngIf ="customersignupupdateform.controls['color_opiton'].touched && colorval.length<1" class="help-inline newerrorcss2">This is Required !</span>
+
+
             </div>
         </div>
     </div>
+
+
 </div>
+
+
+
 
 
 <div class="container-fluid retailformblock2">
@@ -450,67 +443,13 @@
                                 <div class="row">
                                     <div *ngFor="let itemcarlogo of carlogolist  let i=index">
                                     <div *ngIf="itemcarlogo.is_active==1 && i<12"  class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div  class="singlelogowrapper">
+                                        <div  class="singlelogowrapper" >
                                            <!-- <img src="images/logocom1.jpg" class="img-responsive">-->
-                                            <img src="{{carlogosrc}}{{itemcarlogo.logo}}" class="img-responsive">
+                                            <img [attr.logoid]="itemcarlogo._id" id="carlogo{{itemcarlogo._id}}" (click)="clickcarlogo($event)" src="{{carlogosrc}}{{itemcarlogo.logo}}" class="img-responsive">
                                         </div>
                                     </div>
                                     </div>
-                                  <!--  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom2.jpg" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom3.jpg" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom4.jpg" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom5.jpg" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom6.jpg" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom7.jpg" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom8.jpg" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom9.jpg" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom10.jpg" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom11.jpg" class="img-responsive">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
-                                        <div class="singlelogowrapper">
-                                            <img src="images/logocom12.jpg" class="img-responsive">
-                                        </div>
-                                    </div>-->
+
                                 </div>
                             </div>
                         </div>
@@ -540,10 +479,26 @@
                                 </div>
                             </div>
 
-                           <div class="retailformblock2wrapperinnerpart21_wrapper"> <span *ngFor="let itemcarlogo of carlogolist let i=index"  class="retailformblock2wrapperinnerpart21 spanclass">
+                           <div class="retailformblock2wrapperinnerpart21_wrapper"> <div *ngFor="let itemcarlogo of carlogolist let i=index"  class="retailformblock2wrapperinnerpart21 spanclass">
                                 <div *ngIf="itemcarlogo.is_active==1 && i<12">
-                                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="{{itemcarlogo._id}}" type="checkbox" name="upcoming_auction" value="{{itemcarlogo._id}}" checked="checked"><label [attr.for]="itemcarlogo._id"></label> <span>{{itemcarlogo.name}}</span><strong>(12)</strong></div>
-                            </span></div>
+
+
+<input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="{{itemcarlogo._id}}" type="checkbox" name="upcoming_auction[]" (change)="upcoming_auctionchange($event)" value="{{itemcarlogo._id}}">
+
+<span>{{itemcarlogo.name}}</span><strong>(11)</strong>
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+                           </div>
+
+
+
 
                            <!-- <div class="retailformblock2wrapperinnerpart21">
                                 <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="auction2" type="checkbox" name="upcoming_auction" value="1"><label for="auction2"></label><span>Chevrolet</span> <strong>(05)</strong>
@@ -589,6 +544,10 @@
 </div>
 
 
+
+
+
+
 <div class="container-fluid retailformblock3">
 <div class="container retailformblock3wrapper">
 <div class="row">
@@ -614,7 +573,7 @@
                 <p>{{itemcarbodystyle.name}}</p>
             </div>
             <div class="inputtag">
-                <input id="{{itemcarbodystyle._id}}" [formControl]="customersignupupdateform.controls['car_body_style']"  type="checkbox" name="car_body_style" value="{{itemcarbodystyle.logo}}" checked="checked"><label [attr.for]="itemcarbodystyle._id"><span></span></label>
+                <input id="{{itemcarbodystyle._id}}" [formControl]="customersignupupdateform.controls['car_body_style']"  type="checkbox" name="car_body_style" value="{{itemcarbodystyle.logo}}" ><label [attr.for]="itemcarbodystyle._id"><span></span></label>
             </div>
         </div>
     </div>
@@ -823,7 +782,7 @@
                 <div class="row">
                    <span *ngFor="let itemcaryear of carautoyearlist let k=index" >
                     <div *ngIf="itemcaryear.is_active==1" class="col-lg-4 col-md-4 col-sm-6 col-xs-12  retailformblock1part3innerblock3single" style="margin-bottom: 14px;">
-                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="customersignupupdateform.controls['car_auto_year']" name="car_auto_year" value="{{itemcaryear._id}}" checked="checked">
+                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="customersignupupdateform.controls['car_auto_year']" name="car_auto_year" value="{{itemcaryear._id}}" >
                         <label [attr.for]="itemcaryear._id"></label>
                         <span>{{itemcaryear.year}}</span>
                     </div>
@@ -880,7 +839,7 @@
                 <div class="row">
                     <span *ngFor="let itemcarmileage of carmileagelist">
                     <div *ngIf="itemcarmileage.is_active==1" class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single" style="margin-bottom: 14px;">
-                        <input id="{{itemcarmileage._id}}" type="checkbox" [formControl]="customersignupupdateform.controls['car_mileage']" name="car_mileage" value="{{itemcarmileage._id}}" checked="checked"><label [attr.for]="itemcarmileage._id"></label><span>{{itemcarmileage.mileage}}</span>
+                        <input id="{{itemcarmileage._id}}" type="checkbox" [formControl]="customersignupupdateform.controls['car_mileage']" name="car_mileage" value="{{itemcarmileage._id}}" ><label [attr.for]="itemcarmileage._id"></label><span>{{itemcarmileage.mileage}}</span>
                     </div>
 </span>
                   <!--  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
@@ -1306,7 +1265,7 @@
                     <span>Would you like to fill out an application now to see if you qualify for financing?</span>
                     <div class="re_checkbox_inlinediv">
                         <div class="re_checkbox-inline">
-                            <input id="retailformblock51" type="radio" name="radio" value="1" checked="checked">
+                            <input id="retailformblock51" type="radio" name="radio" value="1" >
                             <label for="retailformblock51"></label>
                             <span>YES</span>
                         </div>
@@ -1425,9 +1384,9 @@
     </tr>
 
 </table>
-               <div class="labletextbox"> <span>{{itemcarlogo1.name}}</span><b>(12)</b></div>
+               <div class="labletextbox"> <span>{{itemcarlogo1.name}}</span><b>(06)</b></div>
 
-                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="{{itemcarlogo1._id}}" type="checkbox" name="upcoming_auction" value="{{itemcarlogo1._id}}" checked="checked"><label [attr.for]="itemcarlogo1._id"></label>
+                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="{{itemcarlogo1._id}}" type="checkbox" name="upcoming_auction" value="{{itemcarlogo1._id}}" ><label [attr.for]="itemcarlogo1._id"></label>
 
 
 

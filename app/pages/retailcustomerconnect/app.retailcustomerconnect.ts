@@ -61,6 +61,7 @@ export class AppRetailcustomerconnect implements OnInit {
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
         this.router=router;
+        this.elementRef=elementRef;
         this.colorval=[];
         this.upcoming_auctionarr=[];
         this.http=http;
@@ -359,7 +360,8 @@ export class AppRetailcustomerconnect implements OnInit {
         //console.log(target.gete);
 
         //target.hide();
-        //this.elementRef.nativeElement.
+        console.log(this.elementRef.nativeElement.getElementById(target.attributes.logoid).attributes.id);
+        console.log(this.elementRef.nativeElement.getElementById(target.attributes.logoid).value);
         //jQuery(this.elementRef.nativeElement).find(target).html('6');
 
         //console.log(target.attrs.logoid);

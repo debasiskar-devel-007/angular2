@@ -11,7 +11,7 @@ import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
 //import {SimplePageScroll} from 'ng2-simple-page-scroll';
 
-declare var jQuery:any;
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -57,6 +57,9 @@ export class AppRetailcustomerconnect implements OnInit {
     private colorval:Array<any>;
     private static colorval:Array<any>;
     private upcoming_auctionarr:Array<any>;
+    private updatebodystylearr:Array<any>;
+    private updatepricearr:Array<any>;
+    private updatecarfeaturearr:Array<any>;
     private elementRef: ElementRef;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
@@ -64,6 +67,9 @@ export class AppRetailcustomerconnect implements OnInit {
         this.elementRef=elementRef;
         this.colorval=[];
         this.upcoming_auctionarr=[];
+        this.updatebodystylearr=[];
+        this.updatepricearr=[];
+        this.updatecarfeaturearr=[];
         this.http=http;
         this.router=router;
         this.appcomponent=appcomponent;
@@ -114,10 +120,10 @@ export class AppRetailcustomerconnect implements OnInit {
             base_price: ['', Validators.required],
             color_opiton: ['',Validators.required],
             upcoming_auction: ['',Validators.required],
-            car_body_style: [[]],
-            car_auto_year: [[]],
-            car_mileage: [[]],
-            car_feature: [[]],
+            car_body_style: ['',Validators.required],
+            car_auto_year: ['',Validators.required],
+            car_mileage: ['',Validators.required],
+            car_feature: ['',Validators.required],
         });
 
 
@@ -345,6 +351,85 @@ export class AppRetailcustomerconnect implements OnInit {
         }
         console.log('upcoming_auctionarr val');
         console.log(this.upcoming_auctionarr);
+        $('.logolabel'+target.value).toggleClass('selected');
+        //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
+        //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
+    }
+    updatebodystylearrf(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        console.log(target.value);
+        console.log(target.checked);
+        console.log(ev);
+        if(target.checked==true){
+            this.updatebodystylearr.push(target.value);
+        }else{
+            var arrindex = this.updatebodystylearr.indexOf(target.value);
+            this.updatebodystylearr.splice(arrindex, 1);
+        }
+        $(target).parent().parent().parent().toggleClass('selected');
+        console.log('upcoming_auctionarr val');
+        console.log(this.updatebodystylearr);
+        $('.logolabel'+target.value).toggleClass('selected');
+        //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
+        //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
+    }
+    upcoming_auctionchange1(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        console.log(target.value);
+        console.log(target.checked);
+        console.log(ev);
+        if($('#carlogo'+target.value).length==0) {
+            if (target.checked == true) {
+                this.upcoming_auctionarr.push(target.value);
+            } else {
+                var arrindex = this.upcoming_auctionarr.indexOf(target.value);
+                this.upcoming_auctionarr.splice(arrindex, 1);
+            }
+        }
+        console.log('upcoming_auctionarr val');
+        console.log(this.upcoming_auctionarr);
+        $('#carlogo'+target.value).click();
+        //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
+        //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
+    }
+
+    updatepricearray(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        console.log(target.value);
+        console.log(target.checked);
+        console.log(ev);
+        //if($('#carlogo'+target.value).length==0) {
+            if (target.checked == true) {
+                this.updatepricearr.push(target.value);
+            } else {
+                var arrindex = this.updatepricearr.indexOf(target.value);
+                this.updatepricearr.splice(arrindex, 1);
+            }
+       // }
+        console.log('upcoming_auctionarr val');
+        console.log(this.updatepricearr);
+        //$('#carlogo'+target.value).click();
+        //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
+        //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
+    }
+
+    updatecarfeaturearray(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        console.log(target.value);
+        console.log(target.checked);
+        console.log(ev);
+        //if($('#carlogo'+target.value).length==0) {
+            if (target.checked == true) {
+                this.updatecarfeaturearr.push(target.value);
+            } else {
+                var arrindex = this.updatecarfeaturearr.indexOf(target.value);
+                this.updatecarfeaturearr.splice(arrindex, 1);
+            }
+        $(target).parent().parent().parent().toggleClass('selected');
+       // }
+        console.log('upcoming_auctionarr val');
+        console.log(this.updatecarfeaturearr);
+        //$('#carlogo'+target.value).click();
         //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
         //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
     }
@@ -360,11 +445,16 @@ export class AppRetailcustomerconnect implements OnInit {
         //console.log(target.gete);
 
         //target.hide();
-        console.log(this.elementRef.nativeElement.getElementById(target.attributes.logoid).attributes.id);
-        console.log(this.elementRef.nativeElement.getElementById(target.attributes.logoid).value);
+        //console.log(this.elementRef.nativeElement.getElementById(target.attributes.logoid).attributes.id);
+        //console.log(this.elementRef.nativeElement.getElementById(target.attributes.logoid).value);
         //jQuery(this.elementRef.nativeElement).find(target).html('6');
 
         //console.log(target.attrs.logoid);
+        console.log(this.elementRef.nativeElement);
+
+        console.log($(target).attr('src'));
+        $('#'+$(target).attr('logoid')).click();
+        //$(target).parent().toggleClass('selected');
 
     }
 

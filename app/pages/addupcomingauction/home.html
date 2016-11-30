@@ -1,0 +1,62 @@
+<div class="page-wrapper addbannersize addadmin">
+    <div class="blockmaininner">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="pageheader"><span>Add</span> Banner Size</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row addsharelinkblock">
+            <div class="col-lg-12 addadminblock">
+
+                <form novalidate [formGroup]="addupcomingauctionform"   name="addupcomingauction"  class="form-inline">
+                    <div class="signupform_wrapper">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+
+                                    <select class="form-control3" [formControl]="addupcomingauctionform.controls['auctionid']" name="auctionid" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Auction</span></option>
+                                        <option *ngFor="let obj1 of auctionlist" [value]="obj1._id">{{obj1.name}}</option>
+                                    </select>
+                                    <span  *ngIf ="addupcomingauctionform.controls['auctionid'].touched && !addupcomingauctionform.controls['auctionid'].valid" class="help-inline spanalign"><span class="errormsgtxt">Auction is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addupcomingauctionform.controls['name']" name="name"  type="text" class="form-control" placeholder="Size Name"/>
+                                    <span  *ngIf ="addupcomingauctionform.controls['name'].touched && !addupcomingauctionform.controls['name'].valid" class="help-inline"><span class="errormsgtxt">Auction name is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addupcomingauctionform.controls['auctiondate']" type="text" name="auctiondate" class="form-control" placeholder="Height"/>
+                                    <span *ngIf ="addupcomingauctionform.controls['auctiondate'].touched && !addupcomingauctionform.controls['auctiondate'].valid" class="help-inline"><span class="errormsgtxt">Auction Date is Required !</span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group_chakebox signupcheckbox">
+                                    <input id="checkbox1" type="checkbox" name="checkbox1" [formControl]="addupcomingauctionform.controls['is_active']" value="1"/><label for="checkbox1"></label><span>Is Active</span>
+
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!--<div class="form-group">
+                            <input [formControl]="addsharelinkform.controls['imageurl']" name="imageurl"  type="text" class="form-control" placeholder="Image Url"/>
+                            <span  *ngIf ="addsharelinkform.controls['imageurl'].touched && !addsharelinkform.controls['imageurl'].valid" class="help-inline"><span class="errormsgtxt">Image Url is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>-->
+                        <div class="row uploadrow">
+                            <div class="col-md-12">
+                                <div class="submitwrap">
+                                    <button (click)="submitform()" type="button" value="Submit" class="subbtn">Submit</button>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </form>
+
+
+
+
+            </div>
+        </div>
+</div></div>

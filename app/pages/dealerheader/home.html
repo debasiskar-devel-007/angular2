@@ -1,15 +1,15 @@
    <div class="container-fluid cusdashboardblock1">
     <div class="container cusdashboardblock1inner">
         <div class="row">
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerleft">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 cusdashboardblock1innerleft">
                 <div class="logo">
                     <a [routerLink]="['/dealerdashboard']">  <img src="images/adminlogo.png" alt="adminlogo" class="adminlogo"/></a>
                     <div class="logodevider"></div>
-                    <img src="images/carlogo2.png" alt="adminlogo" class="adminlogo2"/>
+                    <a [routerLink]="['/dealerdashboard']"><img  src="images/carlogo2.png" alt="adminlogo" class="adminlogo2"/></a>
                     <button type="button" class="btn btn-info collapsebtn" data-toggle="collapse" data-target="#demo"> <img src="images/dropdownmenu1.png" alt=""/></button>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerright cusdashboardblock1innerrightsml">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 cusdashboardblock1innerright cusdashboardblock1innerrightsml">
                 <div class="badgelists">
                     <a href = "#"><span class = "badge">3</span><img src="images/admicon-message.png">Messages</a>
                     <a href = "#"><span class = "badge">1</span><img src="images/admicon-notification.png">Notifications</a>
@@ -36,6 +36,9 @@
                         </div>
                     </div>
                 </div>
+                <div class="clearfix"></div>
+                <button type="button" class="btn btn-info collapsebtn" data-toggle="collapse" data-target="#demo"> <img src="images/dropdownmenu1.png" alt=""/></button>
+
             </div>
         </div>
     </div>

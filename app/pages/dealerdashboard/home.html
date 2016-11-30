@@ -492,7 +492,7 @@
 
                             <span *ngFor="let item of data let i=index">
                             <span  *ngFor="let itemcar of item.cardata let icar=index">
-                           <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist inventorysinglelistblockcon">{{getarrcount(item,i,icar)}}
+                           <div *ngIf="getarrcount(data,i,icar)" class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist inventorysinglelistblockcon">
                                 <div class="inventorysinglelistblock">
                                     <div class="row">
                                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left infobox">

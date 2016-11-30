@@ -154,10 +154,15 @@ export class AppDealerdashboard {
     }
     getarrcount(item:any,i:any,icar:any){
 
-        if(i==0)
-            return icar;
         var x=0;
         var totalc=0;
+        if(i==0){
+            totalc=icar;
+            if(totalc>8 )return false;
+            else return true;
+        }
+
+
         console.log('car i counter before loop  '+i);
         while(i+1>x){
 
@@ -166,17 +171,18 @@ export class AppDealerdashboard {
             console.log('car  i counter in loop '+i);
             console.log('car x counter in loop '+x);
             console.log('car item data in loop ');
-            console.log('car item data in loop '+item);
+            console.log(item);
             if(i>0){
 
-                //totalc=item[0].cardata.length+icar;
+                totalc=item[0].cardata.length+icar;
                 console.log('car counter in loop '+totalc);
             }
 
             x++;
         }
         console.log('car counter '+totalc);
-        return totalc;
+        if(totalc>8 )return false;
+        else return true;
     }
 
 }

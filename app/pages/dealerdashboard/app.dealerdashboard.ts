@@ -163,10 +163,13 @@ export class AppDealerdashboard {
 
             console.log('car counter in loop '+totalc);
             console.log('car  i counter in loop '+i);
+            console.log('car  i counter in loop '+i);
             console.log('car x counter in loop '+x);
+            console.log('car item data in loop ');
+            console.log('car item data in loop '+item);
             if(i>0){
 
-                totalc=item[0].cardata.length+icar;
+                //totalc=item[0].cardata.length+icar;
                 console.log('car counter in loop '+totalc);
             }
 

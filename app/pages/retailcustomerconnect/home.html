@@ -213,11 +213,11 @@
                     </div>
                     <div class="re_checkbox_inlinediv">
                         <div class="re_checkbox-inline">
-                            <input [formControl]="customersignupupdateform.controls['send_mail']" id="homeblock3part2" type="radio" name="send_mail" value="2"><label for="homeblock3part2"></label>
+                            <input [formControl]="customersignupupdateform.controls['send_mail']" id="homeblock3part2" type="radio" name="send_mail" value="0"><label for="homeblock3part2"></label>
                             <span>NO</span>
                         </div>
                     </div>
-                    <span *ngIf ="customersignupupdateform.controls['send_mail'].touched && !customersignupupdateform.controls['send_mail'].valid" class="help-inline">You must check  one</span>
+                    <span *ngIf ="customersignupupdateform.controls['send_mail'].touched && !customersignupupdateform.controls['send_mail'].valid" class="help-inline errclass newerrorcss6">This is Required !</span>
                 </div>
             </div>
         </div>
@@ -227,17 +227,18 @@
                     <span>Would you like to use the smart retail calculator during your window of engagement?</span>
                     <div class="re_checkbox_inlinediv">
                         <div class="re_checkbox-inline">
-                            <input [formControl]="customersignupupdateform.controls['retail_calculator']" id="homeblock3part3" type="radio" name="retail_calculator" value="3">
+                            <input [formControl]="customersignupupdateform.controls['retail_calculator']" id="homeblock3part3" type="radio" name="retail_calculator" value="1">
                             <label for="homeblock3part3"></label>
                             <span>YES</span>
                         </div>
                     </div>
                     <div class="re_checkbox_inlinediv">
                         <div class="re_checkbox-inline">
-                        <input [formControl]="customersignupupdateform.controls['retail_calculator']" id="homeblock3part4" type="radio" name="retail_calculator" value="4">
+                        <input [formControl]="customersignupupdateform.controls['retail_calculator']" id="homeblock3part4" type="radio" name="retail_calculator" value="0">
                             <label for="homeblock3part4"></label><span>NO</span>
                         </div>
                     </div>
+                    <span *ngIf ="customersignupupdateform.controls['retail_calculator'].touched && !customersignupupdateform.controls['retail_calculator'].valid" class="help-inline errclass newerrorcss6_2">This is Required !</span>
                 </div>
             </div>
         </div>
@@ -282,31 +283,7 @@
                                         <span>{{itemcarprice.baseprice}}</span>
                                     </div>
                                 </div>
-                                   <!-- <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio8" type="radio" name="base_price" value="2">
-                                        <label for="radio8"></label>
-                                        <span>$15k to $25k</span>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio9" type="radio" name="base_price" value="3">
-                                        <label for="radio9"></label>
-                                        <span>$25k to $35k</span>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio10" type="radio" name="base_price" value="4" checked="checked">
-                                        <label for="radio10"></label>
-                                        <span>$35k to $45k</span>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio11" type="radio" name="base_price" value="5">
-                                        <label for="radio11"></label>
-                                        <span>$45k to $55k</span>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single">
-                                        <input [formControl]="customersignupupdateform.controls['base_price']" id="radio12" type="radio" name="base_price" value="6">
-                                        <label for="radio12"></label>
-                                        <span>55k or more</span>
-                                    </div>-->
+
                                 </div>
 
                                 <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 re_newtextright">
@@ -372,45 +349,12 @@
 
                                 </div>   </div>  <div class="clearfix"></div>
                             </td>
-                            <!--<td *ngFor="let colorlistitem1 of colorlist | slice:(icolor*3):(icolor+1)*3"></td>-->
 
-                           <!-- <td><strong>Rank</strong> 2</td>
-                            <td><strong>Color</strong> <div class="radio2"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio2" type="radio" name="color_opiton" value="2"><label for="block5radio2"><span></span>Black</label></div></td>
-
-                            <td><strong>Rank</strong> 3</td>
-                            <td><strong>Color</strong> <div class="radio3"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio3" type="radio" name="color_opiton" value="3"><label for="block5radio3"><span></span>Silver</label></div></td>-->
 
 
                         </tr>
 
-            <!--            <tr>
 
-                            <td><strong>Rank</strong> 4</td>
-                            <td><strong>Color</strong> <div class="radio4"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio4" type="radio" name="color_opiton" value="4"><label for="block5radio4"><span></span>Red</label></div></td>
-                            <td><strong>Rank</strong> 5</td>
-                            <td><strong>Color</strong> <div class="radio5"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio5" type="radio" name="color_opiton" value="5"><label for="block5radio5"><span></span>Gray</label></div></td>
-                            <td><strong>Rank</strong> 6</td>
-                            <td><strong>Color</strong> <div class="radio6"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio6" type="radio" name="color_opiton" value="6"><label for="block5radio6"><span></span>Blue</label></div></td>
-                        </tr>-->
-
-
-
-                      <!--  <tr>
-                            <td><strong>Rank</strong> 7</td>
-                            <td><strong>Color</strong> <div class="radio7"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio7" type="radio" name="color_opiton" value="7"><label for="block5radio7"><span></span>Beige/Brown</label></div></td>
-
-                            <td><strong>Rank</strong> 8</td>
-                            <td><strong>Color</strong> <div class="radio8"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio8" type="radio" name="color_opiton" value="8"><label for="block5radio8"><span></span>Green</label></div></td>
-                            <td><strong>Rank</strong> 9</td>
-                            <td><strong>Color</strong> <div class="radio9"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio9" type="radio" name="color_opiton" value="5"><label for="block5radio9"><span></span>Yellow/Gold</label></div></td>
-                        </tr>
-
-                        <tr>
-
-                            <td><strong>Rank</strong> 10</td>
-                            <td><strong>Color</strong> <div class="radio10"><input [formControl]="customersignupupdateform.controls['color_opiton']" id="block5radio10" type="radio" name="color_opiton" value="10"><label for="block5radio10"><span></span>Others</label></div></td>
-
-                        </tr>-->
 
                         </tbody>
 
@@ -506,38 +450,6 @@
 
 
 
-                           <!-- <div class="retailformblock2wrapperinnerpart21">
-                                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="auction2" type="checkbox" name="upcoming_auction" value="1"><label for="auction2"></label><span>Chevrolet</span> <strong>(05)</strong>
-                            </div>
-                            <div class="retailformblock2wrapperinnerpart21">
-                                <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="auction3" type="checkbox" name="upcoming_auction" value="1"><label for="auction3"></label><span>Toyota</span> <strong>(17)</strong>
-                            </div>
-                            <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction4" type="checkbox" name="auction4" value="1"><label for="auction4"></label><span>Nissan</span> <strong>(03)</strong>
-                            </div>
-                            <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction5" type="checkbox" name="auction5" value="1"><label for="auction5"></label><span>Honda</span> <strong>(20)</strong>
-                            </div>
-                            <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction6" type="checkbox" name="auction6" value="1"><label for="auction6"></label><span>Jeep</span> <strong>(01)</strong>
-                            </div>
-                            <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction7" type="checkbox" name="auction7" value="1"><label for="auction7"></label><span>Fiat</span> <strong>(11)</strong>
-                            </div>
-                            <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction8" type="checkbox" name="auction8" value="1"><label for="auction8"></label><span>Hyundai</span> <strong>(16)</strong>
-                            </div>
-
-                            <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction9" type="checkbox" name="auction9" value="1"><label for="auction9"></label><span>Jaguar</span> <strong>(05)</strong>
-                            </div>
-
-                            <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction10" type="checkbox" name="auction10" value="1"><label for="auction10"></label><span>Land Rover</span> <strong>(03)</strong>
-                            </div>
-                            <div class="retailformblock2wrapperinnerpart21">
-                                <input id="auction11" type="checkbox" name="auction11" value="1"><label for="auction11"></label><span>Mazda</span> <strong>(15)</strong>
-                            </div>-->
 
                             <a href="javascript:void(0)"><button (click)="carlogoModal.open()" type="button" class="btn btn-link text-left pull-left btnseeall">see all makes</button></a>
                         </div>
@@ -590,193 +502,7 @@
 
 
 
-<!--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg1.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Convertible</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox2" type="checkbox" name="checkbox" value="2"><label for="retailformblock3checkbox2"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg2.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Coupe</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox3" type="checkbox" name="checkbox" value="3"><label for="retailformblock3checkbox3"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg3.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Classic</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox4" type="checkbox" name="checkbox" value="4"><label for="retailformblock3checkbox4"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg4.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Hatchback</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox5" type="checkbox" name="checkbox" value="5"><label for="retailformblock3checkbox5"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg5.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Hybrid/Electric</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox6" type="checkbox" name="checkbox" value="6"><label for="retailformblock3checkbox6"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg6.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Luxury</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox7" type="checkbox" name="checkbox" value="7"><label for="retailformblock3checkbox7"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg7.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Sedan</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox8" type="checkbox" name="checkbox" value="8"><label for="retailformblock3checkbox8"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg8.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>SUV/Crossover</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox9" type="checkbox" name="checkbox" value="9"><label for="retailformblock3checkbox9"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg9.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Truck</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox10" type="checkbox" name="checkbox" value="11"><label for="retailformblock3checkbox10"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg10.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Van/Minivan</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox11" type="checkbox" name="checkbox" value="11"><label for="retailformblock3checkbox11"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
-    <div class="retailformblock3singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock3singleimg">
-                    <img src="images/carimg11.png">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Wagon</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock3checkbox12" type="checkbox" name="checkbox" value="12"><label for="retailformblock3checkbox12"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>-->
+
 </div>
     <span class="rrrrr" *ngIf ="customersignupupdateform.controls['car_body_style'].touched && updatebodystylearr.length<1" class="help-inline newerrorcss4">This is Required !</span>
 
@@ -794,53 +520,15 @@
                 <div class="row">
                    <span *ngFor="let itemcaryear of carautoyearlist let k=index" >
                     <div *ngIf="itemcaryear.is_active==1" class="col-lg-4 col-md-4 col-sm-6 col-xs-12  retailformblock1part3innerblock3single" style="margin-bottom: 14px;">
-                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="customersignupupdateform.controls['car_auto_year']" name="car_auto_year" value="{{itemcaryear._id}}" >
+                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="customersignupupdateform.controls['car_auto_year']" name="car_auto_year" (change)="autoyearchange($event)"value="{{itemcaryear._id}}" >
                         <label [attr.for]="itemcaryear._id"></label>
                         <span>{{itemcaryear.year}}</span>
                     </div>
                         </span>
 
-                  <!-- <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox6" type="checkbox" name="checkbox" value="1">
-                        <label for="checkbox6"></label>
-                        <span>2016</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox7" type="checkbox" name="checkbox" value="1">
-                        <label for="checkbox7"></label>
-                        <span>2015</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox8" type="checkbox" name="checkbox" value="1">
-                        <label for="checkbox8"></label>
-                        <span>2014</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox9" type="checkbox" name="checkbox" value="1">
-                        <label for="checkbox9"></label>
-                        <span>2013</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox10" type="checkbox" name="checkbox" value="1">
-                        <label for="checkbox10"></label>
-                        <span>2012</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox11" type="checkbox" name="checkbox" value="1">
-                        <label for="checkbox11"></label>
-                        <span>2011</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox12" type="checkbox" name="checkbox" value="1">
-                        <label for="checkbox12"></label>
-                        <span>2010</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock3single">
-                        <input id="checkbox13" type="checkbox" name="checkbox" value="1">
-                        <label for="checkbox13"></label>
-                        <span>Before 2010</span>
-                    </div>-->
+
                 </div>
+                <span *ngIf ="customersignupupdateform.controls['car_auto_year'].touched && !customersignupupdateform.controls['car_auto_year'].valid" class="help-inline newerrorcss7">This is Required !</span>
             </div>
         </div>
     </div>
@@ -854,44 +542,12 @@
 
 
 
-                        <input id="{{itemcarmileage._id}}" type="radio" [formControl]="customersignupupdateform.controls['car_mileage']" name="car_mileage" value="{{itemcarmileage._id}}" ><label [attr.for]="itemcarmileage._id"></label><span>{{itemcarmileage.mileage}}</span>
+                        <input id="{{itemcarmileage._id}}" type="radio" [formControl]="customersignupupdateform.controls['car_mileage']" name="car_mileage"  value="{{itemcarmileage._id}}" ><label [attr.for]="itemcarmileage._id"></label><span>{{itemcarmileage.mileage}}</span>
                     </div>
 </span>
 
-
-
-
-
-
-
-                  <!--  <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox15" type="checkbox" name="checkbox1" value="1"><label for="checkbox15"></label><span>Under 15,000</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox16" type="checkbox" name="checkbox1" value="1"><label for="checkbox16"></label><span>Under 30,000</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox17" type="checkbox" name="checkbox1" value="1"><label for="checkbox17"></label><span>Under 45,000</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox18" type="checkbox" name="checkbox1" value="1"><label for="checkbox18"></label><span>Under 60,000</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox19" type="checkbox" name="checkbox1" value="1"><label for="checkbox19"></label><span>Under 75,000</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox20" type="checkbox" name="checkbox1" value="1"><label for="checkbox20"></label><span>Under 100,000</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox21" type="checkbox" name="checkbox1" value="1"><label for="checkbox21"></label><span>Under 150,000</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox22" type="checkbox" name="checkbox1" value="1"><label for="checkbox22"></label><span>Under 200,000</span>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single">
-                        <input id="checkbox23" type="checkbox" name="checkbox1" value="1"><label for="checkbox23"></label><span>Over 200,000</span>
-                    </div>-->
                 </div>
+                <span *ngIf ="customersignupupdateform.controls['car_mileage'].touched && !customersignupupdateform.controls['car_mileage'].valid" class="help-inline newerrorcss7">This is Required !</span>
             </div>
         </div>
     </div>
@@ -915,7 +571,7 @@
         <div class="row display-table">
             <div class="col-md-3 display-cell">
                  <div class="retailformblock4singlewrapperimg">
-                     <img src="{{carfeaturesrc}}{{itemcarfeature.logo}}updatecarfeaturearr" class="img-responsive">
+                     <img src="{{carfeaturesrc}}{{itemcarfeature.logo}}" class="img-responsive">
                  </div>
             </div>
             <div class="col-md-9 display-cell">
@@ -928,349 +584,10 @@
     </div>
 </div>
         </span>
+<div class="clearfix"></div>
+    <span *ngIf ="customersignupupdateform.controls['car_feature'].touched && updatecarfeaturearr.length==0" class="help-inline newerrorcss4">This  is Required !</span>
 
-    <span *ngIf ="customersignupupdateform.controls['car_feature'].touched && updatecarfeaturearr.length==0" class="help-inline">First name  is Required !<img src="images/iconquestion.png"></span>
 
-<!--<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe2.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Power windows</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox2" type="checkbox" name="checkbox" value="2"><label for="retailformblock4checkbox2"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe3.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Sunroof</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox3" type="checkbox" name="checkbox" value="3"><label for="retailformblock4checkbox3"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe4.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Digital display</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox4" type="checkbox" name="checkbox" value="4"><label for="retailformblock4checkbox4"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe5.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>4-wheel drive</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox5" type="checkbox" name="checkbox" value="5"><label for="retailformblock4checkbox5"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe6.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Stereo System</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox6" type="checkbox" name="checkbox" value="6"><label for="retailformblock4checkbox6"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe7.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>GPS</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox7" type="checkbox" name="checkbox" value="7"><label for="retailformblock4checkbox7"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe8.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Bluetooth</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox8" type="checkbox" name="checkbox" value="8"><label for="retailformblock4checkbox8"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe9.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>DVD Player</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox9" type="checkbox" name="checkbox" value="9"><label for="retailformblock4checkbox9"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe10.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Heated Seats</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox10" type="checkbox" name="checkbox" value="12"><label for="retailformblock4checkbox10"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe11.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Satellite Radio</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox11" type="checkbox" name="checkbox" value="11"><label for="retailformblock4checkbox11"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe12.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Side/Curtain Airbags</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox12" type="checkbox" name="checkbox" value="12"><label for="retailformblock4checkbox12"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe13.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Third row seat</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox13" type="checkbox" name="checkbox" value="13"><label for="retailformblock4checkbox13"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe14.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Traction Control</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox14" type="checkbox" name="checkbox" value="14"><label for="retailformblock4checkbox14"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe15.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Xenon/HID Lights</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox15" type="checkbox" name="checkbox" value="15"><label for="retailformblock4checkbox15"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe16.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Trailer Hitch</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox16" type="checkbox" name="checkbox" value="16"><label for="retailformblock4checkbox16"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe17.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>6 Cylinder</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox17" type="checkbox" name="checkbox" value="17"><label for="retailformblock4checkbox17"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe18.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>4 Cylinder</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox18" type="checkbox" name="checkbox" value="18"><label for="retailformblock4checkbox18"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe19.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Automatic</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox19" type="checkbox" name="checkbox" value="19"><label for="retailformblock4checkbox19"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe20.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Manual</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox20" type="checkbox" name="checkbox" value="1"><label for="retailformblock4checkbox20"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
-    <div class="retailformblock4singlewrapper">
-        <div class="row display-table">
-            <div class="col-md-3 display-cell">
-                <div class="retailformblock4singlewrapperimg">
-                    <img src="images/fe21.png" class="img-responsive">
-                </div>
-            </div>
-            <div class="col-md-9 display-cell">
-                <p>Tinted Windows</p>
-            </div>
-            <div class="inputtag">
-                <input id="retailformblock4checkbox21" type="checkbox" name="checkbox" value="21"><label for="retailformblock4checkbox21"><span></span></label>
-            </div>
-        </div>
-    </div>
-</div>-->
 </div>
 </div>
 </div>
@@ -1289,21 +606,26 @@
                     <span>Would you like to fill out an application now to see if you qualify for financing?</span>
                     <div class="re_checkbox_inlinediv">
                         <div class="re_checkbox-inline">
-                            <input id="retailformblock51" type="radio" name="radio" value="1" >
+                            <input [formControl]="customersignupupdateform.controls['qualify_finance']"  id="retailformblock51" type="radio" name="qualify_finance" value="1" >
                             <label for="retailformblock51"></label>
                             <span>YES</span>
                         </div>
                     </div>
                     <div class="re_checkbox_inlinediv">
                         <div class="re_checkbox-inline">
-                            <input id="retailformblock52" type="radio" name="radio" value="2">
+                            <input [formControl]="customersignupupdateform.controls['qualify_finance']" id="retailformblock52" type="radio" name="qualify_finance" value="2">
                             <label for="retailformblock52"></label>
                             <span>NO</span>
                         </div>
                     </div>
+                    <span *ngIf ="customersignupupdateform.controls['qualify_finance'].touched && !customersignupupdateform.controls['qualify_finance'].valid" class="help-inline errclass newerrorcss6">This is Required !</span>
+
                 </div>
 
+
+
         </div>
+
     </div>
 </div>
 

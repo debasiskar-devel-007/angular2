@@ -46,10 +46,20 @@ export class AppDealerauctionlist{
     userdetails:any;
     bannerdata:any;
     bannerfilesrc:any;
+    carimgsrc:any;
     //sharemediaModal:any;
     @ViewChild('all_m')
     private allMElementRef:any;
     private mediaid:any;
+    private auctiocardata:any;
+    carlogolist:any;
+    carautoyearlist:any;
+    carmileagelist:any;
+    colorlist:any;
+    carid:any;
+    carname:any;
+    private dealerauctiondata:any;
+
 
     constructor(@Inject(Renderer) private renderer: Renderer,fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent,private _sanitizer: DomSanitizer   ) {
         this.router=router;
@@ -61,7 +71,9 @@ export class AppDealerauctionlist{
         this.messages = appcomponent.getMessages();
         this.serverUrl = this.items[0].serverUrl;
         //this.userInfo=userInfo;
+
         this.userdetails=userInfo.getObject('userdetails');
+        console.log(this.userdetails.id);
         let link='';
         link = this.serverUrl+'dealerauctionlist';
         this.p=1;
@@ -81,7 +93,7 @@ export class AppDealerauctionlist{
                 console.log("Oooops!");
             });
       let  bannerlink = this.serverUrl+'bannerlistactive';
-        console.log(bannerlink);
+       // console.log(bannerlink);
         this.http.get(bannerlink)
             .subscribe(data2 => {
                 this.bannerdata = data2.json();
@@ -93,7 +105,69 @@ export class AppDealerauctionlist{
             }, error => {
                 console.log("Oooops!");
             });
+        this.http.get(this.serverUrl+'carlogolist')
+            .subscribe(data => {
+                //console.log(data);
+                this.carlogolist=data.json();
 
+                console.log(this.carlogolist);
+
+
+            }, error => {
+                console.log("Oooops!");
+                //return '22';
+            });
+
+        this.http.get(this.serverUrl+'carautoyearlist')
+            .subscribe(data => {
+                this.carautoyearlist=data.json();
+
+                // console.log(this.carautoyearlist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'listcarautomileage')
+            .subscribe(data => {
+                this.carmileagelist=data.json();
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'colorlist')
+            .subscribe(data => {
+                this.colorlist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        let val11={dealerid:this.userdetails.id};
+        let link2= this.serverUrl+'getinventorybydealer';
+        this.http.post(link2,val11)
+            .subscribe(data2 => {
+                 this.dealerauctiondata = data2.json();
+                console.log(this.dealerauctiondata);
+                console.log('dealer auction data');
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+
+    }
+
+    checkauctionval(val:any){
+        console.log('auction val ...');
+        console.log(val);
+        var x:any;
+        for(x in this.dealerauctiondata){
+
+            console.log(this.dealerauctiondata[x].auctionid+'777');
+            if(this.dealerauctiondata[x].auctionid==val) return true;
+        }
+        return false;
     }
 
 
@@ -184,15 +258,101 @@ export class AppDealerauctionlist{
         this.orderbytype=-1;
     }
 
-    bannerModal(mediaid:any){
+    dealerauctionModal(auctiocardata:any){
         //let shareid=sharemediaid;
        // $('#sharemediaModal').myModal('show');
        // sharemediaModal.open();
       //  $('#sharemediaModal').modal('show');
         //alert(mediaid);
-        this.mediaid=mediaid;
+        this.auctiocardata=auctiocardata;
+        this.carimgsrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
         this.renderer.invokeElementMethod(this.allMElementRef.nativeElement, 'click', []);
         //sharemediaModal.open();
+    }
+
+    addInventory(data1:any){
+        let auctionid=data1.auctionid;
+        let val={auctionid:auctionid,dealerid:this.userdetails.id};
+        console.log(val);
+        let link1= this.serverUrl+'addinventory';
+         this.http.post(link1,val)
+         .subscribe(data1 => {
+         // this.data = data1.json();
+         //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
+
+         //console.log(this.data);
+           //  dealerauctioninventory
+         }, error => {
+         console.log("Oooops!");
+         });
+    }
+
+    getcarlogo(val:any){
+        console.log('get car logo ...');
+        console.log(val);
+        //carlogolist
+        var x:any;
+        for(x in this.carlogolist){
+            if(this.carlogolist[x]._id==val.carlogolist) return this.carlogolist[x].name;
+        }
+        return 'N/A';
+    }
+    getcaryear(val:any){
+        console.log(val);
+        //carlogolist
+        var y:any;
+        for(y in this.carautoyearlist){
+            if(this.carautoyearlist[y]._id==val.carautoyearlist) return this.carautoyearlist[y].year;
+        }
+        return 'N/A';
+    }
+    getmileage(val:any){
+        console.log(val);
+        //carlogolist
+        var z:any;
+        for(z in this.carmileagelist){
+            if(this.carmileagelist[z]._id==val.mileage) return this.carmileagelist[z].mileage;
+        }
+        return 'N/A';
+    }
+    getcolor(val:any){
+        console.log(val);
+        //carlogolist
+        var a:any;
+        for(a in this.colorlist){
+            if(this.colorlist[a]._id==val.color) return this.colorlist[a].color;
+        }
+        return 'N/A';
+    }
+
+    deleteFromInventory(data1:any){
+        let auctionid=data1.auctionid;
+        let val={auctionid:auctionid,dealerid:this.userdetails.id};
+        console.log(val);
+        console.log('in delete method !!!');
+        let link1= this.serverUrl+'deleteFromInventory';
+         this.http.post(link1,val)
+         .subscribe(data1 => {
+         // this.data = data1.json();
+         //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
+
+         //console.log(this.data);
+           //  dealerauctioninventory
+         }, error => {
+         console.log("Oooops!");
+         });
+
+        let val11={dealerid:this.userdetails.id};
+        let link2= this.serverUrl+'getinventorybydealer';
+        this.http.post(link2,val11)
+            .subscribe(data2 => {
+                this.dealerauctiondata = data2.json();
+                console.log(this.dealerauctiondata);
+                console.log('dealer auction data');
+
+            }, error => {
+                console.log("Oooops!");
+            });
     }
 
 

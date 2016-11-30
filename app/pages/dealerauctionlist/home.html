@@ -66,8 +66,9 @@
                                             <li><a>  <!--<button class="btn btn-default" type="button" ngIIclipboard [cbContent]="text">copy</button>--></a></li>
                                           <!-- <li><a><button (click)="sharemediaModal.open()" class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>-->
                                           <!-- <li><a><button (click)="bannerModal(item._id)" class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>-->
-                                           <li><a><button (click)="bannerModal(item._id)" class="btnedit" type="button" value="Edit">Add to my inventory</button></a></li>
-                                           <li><a><button (click)="bannerModal(item._id)" class="btnedit" type="button" value="Edit">View inventory</button></a></li>
+                                           <li *ngIf="checkauctionval(item._id)"><a ><button (click)="deleteFromInventory(item)"   class="btnedit deleteinventory" type="button " value="Edit">Delete From My Inventory</button></a></li>
+                                           <li *ngIf="!checkauctionval(item._id)"><a ><button (click)="addInventory(item)"   class="btnedit addinventory" type="button" value="Edit">Add to My Inventory  </button></a></li>
+                                           <li><a><button (click)="dealerauctionModal(item.cardata)" class="btnedit" type="button" value="Edit">View Inventory</button></a></li>
 
 
                                         </ul>
@@ -93,50 +94,64 @@
         <!-- /.row -->
 
 
-            <modal #sharemediaModal class="mainmodal">
+            <modal #auctionModal class="mainmodal viewinventorymodal">
                 <modal-header class="modelheader">
-                    <h1 class="shareh1title">Share Home</h1>
+                    <h1 class="shareh1title">View Inventory</h1>
                 </modal-header>
-                <modal-content class="modelcontent">
-                    <div *ngFor="let banner of bannerdata">
-                         <div *ngIf="banner.sharelink==mediaid" class="sharebanner_wrapper">
+                <modal-content class="modelcontent" >
+                    <div class="row">
+                        <div *ngFor="let itemcar of auctiocardata" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                            <div class="inventorysinglelistblock">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 pull-left infobox">
+                                        <table class="table">
+                                            <tbody>
+                                            <tr>
+                                                <td><span>Make:</span></td>
+                                                <td><span>{{getcarlogo(itemcar)}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Model:</span></td>
+                                                <td>{{itemcar.model}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Year:</span></td>
+                                                 <td>{{getcaryear(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Miles:</span></td>
+                                                <td>{{getmileage(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Color:</span></td>
+                                                <td>{{getcolor(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Wholesale:</span></td>
+                                                <td>{{itemcar.est_retail_value}}</td>
+                                            </tr>
 
-                             <div class="sharebanner_wrapper_bannertext">
-
-                                 <label><span>Banner Name:</span> {{banner.bannername}}</label>
-
-                                 <label *ngFor="let itembannersize of banner.bannersizedetails1"><div *ngIf="itembannersize._id==banner.bannersize"><span>Banner Size:</span> {{itembannersize.sizename}}</div></label>
-
-                             </div>
-
-                        <div class="sharebanner_wrapper_banner"><img src="{{bannerfilesrc}}{{banner.filename}}" alt="#"></div>
-
-
-
-                        <div class="clearfix"></div>
-
-
-                            <div class="sharebanner_textarea" *ngFor="let itembannersize of banner.bannersizedetails1">
-                               <div *ngIf="itembannersize._id==banner.bannersize">
-                                <textarea readonly="readonly"><a href="probid.influxiq.com/customersignup"><img src="{{bannerfilesrc}}{{banner.filename}}" height="{{itembannersize.height}}" width="{{itembannersize.width}}"></a></textarea>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 pull-right imgbox">
+                                        <div class="imgouter">
+                                            <div class="imgwrapper">
+                                                <img src="{{carimgsrc}}{{itemcar.filename}}">
+                                                <!--<img src="images/auctionimg_1.jpg">-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-
-                            </div>
-
-                             <div class="sharebanner_btnwrapper">
-
-                                 <input type="button" value="Grab Code" class="grabcodebanner">
-                             </div>
                         </div>
-
-                    </div>
-                    <div *ngIf="bannerdata==0">No Banner Found !</div>
+                     </div>
 
 
 
                 </modal-content>
                 <modal-footer class="modelfooter">
-                    <button class="btn btn-primary btnclose" (click)="sharemediaModal.close()">close</button>
+                    <button class="btn btn-primary btnclose" (click)="auctionModal.close()">close</button>
                 </modal-footer>
             </modal>
 
@@ -145,6 +160,6 @@
 <!-- /#page-wrapper -->
 
 
-    <button #all_m (click)="sharemediaModal.open()" class="btnedit hide" type="button" value="Edit">Grab Banner</button>
+    <button #all_m (click)="auctionModal.open()" class="btnedit hide" type="button" value="Edit">Grab Banner</button>
 </div>
 

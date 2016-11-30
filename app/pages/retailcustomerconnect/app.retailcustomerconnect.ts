@@ -34,6 +34,7 @@ export class AppRetailcustomerconnect implements OnInit {
     loginerror:any;
     private router: Router;
     private customerInfo:CookieService;
+    private userInfo:CookieService;
     id:any;
     item:any;
     private messages:any;
@@ -57,15 +58,17 @@ export class AppRetailcustomerconnect implements OnInit {
     private colorval:Array<any>;
     private static colorval:Array<any>;
     private upcoming_auctionarr:Array<any>;
+    private autoyeararr:Array<any>;
     private updatebodystylearr:Array<any>;
     private updatepricearr:Array<any>;
     private updatecarfeaturearr:Array<any>;
     private elementRef: ElementRef;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
         this.router=router;
         this.elementRef=elementRef;
         this.colorval=[];
+        this.autoyeararr=[];
         this.upcoming_auctionarr=[];
         this.updatebodystylearr=[];
         this.updatepricearr=[];
@@ -76,6 +79,7 @@ export class AppRetailcustomerconnect implements OnInit {
         this.commonservices=commonservices;
         this.items = commonservices.getItems();
         this.messages = appcomponent.getMessages();
+        this.userInfo=userInfo;
         this.customerinfo=customerInfo.getObject('customerInfo');
         console.log(this.customerinfo);
         this.customerInfo=customerInfo;
@@ -124,6 +128,7 @@ export class AppRetailcustomerconnect implements OnInit {
             car_auto_year: ['',Validators.required],
             car_mileage: ['',Validators.required],
             car_feature: ['',Validators.required],
+            qualify_finance: ['',Validators.required],
         });
 
 
@@ -291,21 +296,35 @@ export class AppRetailcustomerconnect implements OnInit {
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'updatecustomer';
-            var submitdata = this.customersignupupdateform.value;
-            console.log(submitdata);
-           /* this.http.post(link,submitdata)
+
+            let link22 = this.serverUrl+'updatecustomer22';
+            this.customersignupupdateform.value.base_price=this.updatepricearr;
+            this.customersignupupdateform.value.color_opiton=this.colorval;
+            this.customersignupupdateform.value.upcoming_auction=this.upcoming_auctionarr;
+            this.customersignupupdateform.value.car_body_style=this.updatebodystylearr;
+            this.customersignupupdateform.value.car_auto_year=this.autoyeararr;
+            this.customersignupupdateform.value.car_feature=this.updatecarfeaturearr;
+            var submitdata1 = this.customersignupupdateform.value;
+            console.log(submitdata1);
+           this.http.post(link22,submitdata1)
                 .subscribe(data => {
-                    // /this.data1.response = data.json();
+                    var userdet={username:this.customersignupform.value.username,useremail:this.customersignupform.value.email,userrole:'customer',userfullname:this.customersignupform.value.fname+' '+this.customersignupform.value.lname};
+                    this.userInfo.putObject('userdetails', userdet);
                     console.log(this.customersignupupdateform.value);
+                    if(this.customersignupupdateform.value.qualify_finance==1){
+                        this.router.navigate(['/finance']);
+                    }
+                    else{
+                        this.router.navigateByUrl('/customerdashboard(customerheader:customerheader//customerfooter:customerfooter)');
+                    }
                    // this.customerInfo.putObject('customerInfo',this.customersignupupdateform.value);
-                    this.router.navigateByUrl('/retailcustomerconnect');
+
                     // this.router.navigate(['/retailcustomerconnect']);
 
 
                 }, error => {
                     console.log("Oooops!");
-                });*/
+                });
         }
     }
 
@@ -338,6 +357,23 @@ export class AppRetailcustomerconnect implements OnInit {
         //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
         //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
     }
+    autoyearchange(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        console.log(target.value);
+        console.log(target.checked);
+        console.log(ev);
+        if(target.checked==true){
+            this.autoyeararr.push(target.value);
+        }else{
+            var arrindex1 = this.autoyeararr.indexOf(target.value);
+            this.autoyeararr.splice(arrindex1, 1);
+        }
+        console.log('color auto year');
+        console.log(this.autoyeararr);
+        //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
+        //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
+    }
+
     upcoming_auctionchange(ev:any){
         var target = ev.target || ev.srcElement || ev.originalTarget;
         console.log(target.value);

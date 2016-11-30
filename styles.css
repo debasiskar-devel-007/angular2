@@ -770,8 +770,7 @@ h1,h2,h3,h4.h5,h6{ margin: 0px; padding: 0px;}
 
 
 .adminlogo {float: left!important; display: inline-block!important;}
-.cusdashboardblock1innerleft .logo a{float: left!important; display: inline-block!important; width: 256px;  height: 72px;
-    overflow: hidden; float: left;}
+.cusdashboardblock1innerleft .logo a{float: left!important; display: inline-block!important; width: 242px; padding-top: 0px; height: 80px;  overflow: hidden; float: left;}
 .cusdashboardblock1innerleft .logo a img{max-width: 100%;}
 .adminlogo, .adminlogo2 {max-width: 100%;}
 .adminlogo2 {
@@ -786,7 +785,7 @@ h1,h2,h3,h4.h5,h6{ margin: 0px; padding: 0px;}
     border-radius: 0 !important;
     display: inline-block !important;
     float: left !important;
-    margin: 30px 0 0 28px;
+    margin: 30px 0 0 1px;
     outline: medium none !important;
     padding: 0 !important;
 }
@@ -1307,12 +1306,19 @@ ul.inboxlists{padding:0px; margin:0px;}
 .inventorysinglelist .blockname p span, .inventorysinglelist .blockdate p span{display: inline-block;}
 .inventorysinglelist:hover .blockname p span, .inventorysinglelist:hover .blockdate p span{color:#fff; display: inline-block;}
 
-.inventorysinglelistblock{padding: 15px;}
+.inventorysinglelistblock{padding: 15px;
+    height:310px;}
 .infobox{padding-left: 0px !important;}
 .imgbox{padding-right: 0px !important;}
-.inventorysinglelist .imgouter{float:right; -webkit-box-shadow: -1px 1px 29px -5px rgba(0,0,0,0.81);-moz-box-shadow: -1px 1px 29px -5px rgba(0,0,0,0.81);box-shadow: -1px 1px 29px -5px rgba(0,0,0,0.81); background-color: #fff;  border-radius: 10px;}
-.inventorysinglelist .imgouter .imgwrapper{width: 190px; height: 204px; overflow: hidden; text-align: center; border-radius: 5px; margin: 8px; display: table-cell; vertical-align: middle;}
+.inventorysinglelist .imgouter{float:right;}
+.inventorysinglelist .imgouter .imgwrapper{width: 190px; height: 204px; overflow: hidden; text-align: center; border-radius: 5px; margin: 8px; display: table-cell; vertical-align: middle; position: relative;}
+.auction_toplogo{
+    position: absolute; width: 80px;
+    left:2px;
+    top:2px;}
+
 .inventorysinglelist .imgwrapper img{max-width:100%; height: auto;}
+
 .inventorysinglelist p{text-align:center;font-family: 'MyriadPro-Regular';font-size: 13px;color: #151515;padding: 6px 0px 3px 0px; display:block;}
 .inventorysinglelist span{text-align:center;font-family: 'MyriadPro-Regular';font-size: 13px;color: #000;padding: 0px 0px 3px 0px; display:block; font-weight:600;}
 .inventorysinglelist .table>tbody>tr>td, .inventorysinglelist .table>tbody>tr>th,
@@ -1356,7 +1362,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .inventoryrecentbidheader{ padding: 10px; background-color: #2b2c2c !important;}
 .inventoryrecentbidheader h2{color: #fefefe;font-family: 'MyriadPro-Regular';font-size: 20px; text-align:left;display: inline-block;margin-top: 0px; margin-bottom: 0px;}
 .inventoryrecentbidheader h2 span{color: #02e402; text-transform: uppercase;}
-.inventoryrecentbidblock .inventorysinglelist .imgouter .imgwrapper {height: 100px; overflow: hidden; text-align: center; border-radius: 5px; margin: 8px; display: table-cell; vertical-align: middle;}
+.inventoryrecentbidblock .inventorysinglelist .imgouter .imgwrapper {height: 100px; overflow: hidden; text-align: center; border-radius: 5px; margin: 8px; display: table-cell; vertical-align: middle; position: relative;}
 .inventoryrecentbidblock .inventorysinglelist .imgbox ul{width:100%; margin: 0; padding: 0; display: table;}
 .inventoryrecentbidblock .inventorysinglelist .imgbox ul li {width:49%; margin: 0; padding: 0;}
 .blockheaderinfo{padding: 0px 0px 10px 0px;}
@@ -1717,7 +1723,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .collapsedivmenu .dropdown-menu  li a:hover{color:#fb4a32; background-color: transparent;}
 .menuarrowimg2{ margin: 0px 0 0 105px; }
 .dropdown-menucuscom{ padding: 10px;}
-.collapsebtn{ display: inline-block!important; background: none!important; border: none; float: left!important; margin: 30px 0 0 20px; outline: none!important; padding: 0px!important; border-radius: 0px!important;}
+.collapsebtn{ display: inline-block!important; background: none!important; border: none; float: left!important; margin: 30px 0 0 1px; outline: none!important; padding: 0px!important; border-radius: 0px!important;}
 .adminlogo{ float: left!important; display: inline-block!important;}
 .adminlogo2{ float: left!important; display: inline-block!important; margin: 4px 0 0 0;}
 .customersignout .dropdown-menu{background-color: #fff;}
@@ -2362,7 +2368,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .menublockdiv .btn{ background: none!important; border: none; position:  absolute;
     top:-57px; left: 270px; text-decoration: none; outline: none;}
 
-.collapsedivmenu{background: #272727; width: 100%; border: solid 1px #a6a6a6;  padding:6px 12px; margin-top:-2px;}
+.collapsedivmenu{background: #272727; width: 100%; border: solid 1px #a6a6a6;  padding:0px 12px; margin-top:-2px;}
 .collapsedivmenu ul{ width: 100%; margin: 0 auto; text-align:center;}
 .collapsedivmenu ul li{display: inline-block;padding: 0 12px; margin:10px 10px;}
 .collapsedivmenu ul li a{color:#fff; font-family: 'open_sansregular'; font-size: 13px; cursor: pointer; text-decoration: none;}
@@ -2374,7 +2380,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 
 .dropdown-menucuscom{ padding: 10px;}
 
-.collapsebtn{ display: inline-block!important; background: none!important; border: none; float: left!important; margin: 30px 0 0 28px; outline: none!important; padding: 0px!important; border-radius: 0px!important;}
+.collapsebtn{ display: inline-block!important; background: none!important; border: none; float: left!important; margin: 30px 0 0 6px; outline: none!important; padding: 0px!important; border-radius: 0px!important;}
 
 .adminlogo{ float: left!important; display: inline-block!important;}
 
@@ -6721,6 +6727,7 @@ a .btnviewall {
     vertical-align: middle;
     text-align: center;
     background: #000;
+    padding: 10px;
 }
 
 
@@ -6813,13 +6820,13 @@ a .btnviewall {
 .sharelinkssearch{margin-top: 0; margin-bottom: 0px;}
 
 .sharelinkssinglelistright .addbtn{
-    padding: 9px 15px;
+    padding: 9px 9px;
 }
 .sharelinkssinglelistright .btnedit{
-    padding: 9px 15px;
+    padding: 9px 9px;
 }
 .sharelinkssinglelistright .btndelete{
-    padding: 9px 15px;
+    padding: 9px 9px;
 }
 
 
@@ -8994,8 +9001,8 @@ a:focus, a:hover {
 .carlogomodalbox  table{ height: 130px; width: 100%;}
 
 
-.rankdiv{ width: 50%; float:left;}
-.colordiv{ width: 50%; float:left;}
+.rankdiv{ width: 14%; float:left;}
+.colordiv{ width: 74%; float:left;}
 
 .retailformblock1part3innerblock51 th .colordiv{ padding-left: 28px;}
 
@@ -9053,6 +9060,34 @@ a:focus, a:hover {
     font-size: 16px;
     padding: 12px 0 6px 7px!important;  font-weight: normal; }
 
+.newerrorcss6{
+
+    color: #ff0000!important;
+    width: 100%!important;
+
+    font-size: 16px!important;
+    padding: 0px 0 0px 0px!important;  font-weight: normal!important; }
+
+
+.newerrorcss6_2{
+
+    color: #8B0000!important;
+    width: 100%!important;
+
+    font-size: 16px!important;
+    padding: 0px 0 0px 0px!important;  font-weight: normal!important; }
+
+
+
+
+.newerrorcss7{display: block;
+    text-align: left;
+    color: #ff0000;
+    width: 100%;
+
+    font-size: 16px;
+    padding: 12px 0 6px 0px!important;  font-weight: normal; }
+
 
 .newerrorcss5{display: block;
     text-align: left;
@@ -9105,3 +9140,65 @@ a:focus, a:hover {
 }
 
 .retailformblock4single .selected  p{color: #fb4a32!important;}
+
+.table_checkbox_wrapper{width: 666px; float: left;}
+.table_textbox{display: inline-block; margin: 0; padding: 0;width: 100%;}
+.table_textbox .tabel_textarea{
+    width: 78%;
+    background: #e2e2e2;
+    margin: 0px;
+    border: none;
+    border-radius: 0px;
+    font-family: 'MyriadPro-Regular';
+    font-size: 18px;
+    color: #3f4041;
+    box-shadow: none;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    resize: none;
+    height: 62px;
+}
+
+
+.table_checkbox_wrapper #other1  {
+    width: 0px !important;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+
+.table_textbox .tabel_button {
+    width: 138px;
+    float: right;
+    margin: 0 4px;
+    border: solid 3px #fff;
+    box-shadow: 0 0 8px #888;
+    height: 62px;
+    font-size: 24px;
+    color: #ffffff;
+    font-family: "MyriadPro-Semibold";
+    background: rgba(102,126,150,1);
+    background: -moz-linear-gradient(top, rgba(102,126,150,1) 0%, rgba(92,113,136,1) 50%, rgba(72,94,116,1) 53%, rgba(52,74,95,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(102,126,150,1)), color-stop(50%, rgba(92,113,136,1)), color-stop(53%, rgba(72,94,116,1)), color-stop(100%, rgba(52,74,95,1)));
+    background: -webkit-linear-gradient(top, rgba(102,126,150,1) 0%, rgba(92,113,136,1) 50%, rgba(72,94,116,1) 53%, rgba(52,74,95,1) 100%);
+    background: -o-linear-gradient(top, rgba(102,126,150,1) 0%, rgba(92,113,136,1) 50%, rgba(72,94,116,1) 53%, rgba(52,74,95,1) 100%);
+    background: -ms-linear-gradient(top, rgba(102,126,150,1) 0%, rgba(92,113,136,1) 50%, rgba(72,94,116,1) 53%, rgba(52,74,95,1) 100%);
+    background: linear-gradient(to bottom, rgba(102,126,150,1) 0%, rgba(92,113,136,1) 50%, rgba(72,94,116,1) 53%, rgba(52,74,95,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#667e96', endColorstr='#344a5f', GradientType=0 );
+}
+
+.table_checkbox_wrapper label{
+    margin-bottom: 20px;
+}
+.table_checkbox_wrapper span {
+    font-weight: normal !important;
+}
+
+
+
+

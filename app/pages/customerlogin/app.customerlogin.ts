@@ -82,7 +82,7 @@ export class AppCustomerlogin{
 
                 var res=data.json();
                     if(res.length>0){
-                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'customer',userfullname:res[0].fname+' '+res[0].lname}
+                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'customer',userfullname:res[0].fname+' '+res[0].lname};
 
                         console.log('Login successfully');
                         this.userInfo.putObject('userdetails', userdet);

@@ -438,40 +438,44 @@
 
                         <div class="searchbox"><input [(ngModel)]="query" placeholder="Search by Make, Model, Auction, Year, Keyword"></div>
                         <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
+                            <!--<div *ngFor="let item of data">
+                            <div *ngFor="let itemcar of item.cardata"   class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                                <div  class="inventorysinglelistblock">
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
                                             <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2"><div class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                </tr>
-                                                </tbody>
+
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><span>Make:</span></td>
+                                                        <td><span>{{getcarlogo(itemcar)}}</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Model:</span></td>
+                                                        <td>{{itemcar.model}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Year:</span></td>
+                                                        <td>{{getcaryear(itemcar)}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Miles:</span></td>
+                                                        <td>{{getmileage(itemcar)}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Color:</span></td>
+                                                        <td>{{getcolor(itemcar)}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Wholesale:</span></td>
+                                                        <td>{{itemcar.est_retail_value}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><div class="viewdetail"><a href="" target="_blank">View Details {{item.username}}</a></div></td>
+                                                    </tr>
+                                                    </tbody>
+
+
                                             </table>
                                         </div>
                                         <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
@@ -482,13 +486,48 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                            </div>-->
+
+                            <span *ngFor="let item of data let i=index">
+                            <span  *ngFor="let itemcar of item.cardata let icar=index">
+                           <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist inventorysinglelistblockcon">{{getarrcount(item,i,icar)}}
                                 <div class="inventorysinglelistblock">
                                     <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                            <table class="table">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
+                                             <table class="table">
+                                            <tbody>
+                                            <tr>
+                                                <td><span>Make:</span></td>
+                                                <td><span>{{getcarlogo(itemcar)}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Model:</span></td>
+                                                <td>{{itemcar.model}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Year:</span></td>
+                                                 <td>{{getcaryear(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Miles:</span></td>
+                                                <td>{{getmileage(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Color:</span></td>
+                                                <td>{{getcolor(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Wholesale:</span></td>
+                                                <td>{{itemcar.est_retail_value}}</td>
+                                            </tr>
+ <tr>
+                                                    <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                           <!-- <table class="table">
                                                 <tbody>
                                                 <tr>
                                                     <td><span>Make:</span></td>
@@ -518,202 +557,24 @@
                                                     <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
                                                 </tr>
                                                 </tbody>
-                                            </table>
+                                            </table>-->
                                         </div>
-                                        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
                                             <div class="imgouter">
-                                                <div class="imgwrapper">
-                                                    <img src="images/auctionimg_1.jpg">
+
+
+                                                <div class="imgwrapper"><img src="images/auctionimg_1.jpg" class="auction_toplogo">
+                                                    <img src="{{sharefilesrc}}{{itemcar.filename}}">
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                            <div class="imgouter">
-                                                <div class="imgwrapper">
-                                                    <img src="images/auctionimg_1.jpg">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                            <div class="imgouter">
-                                                <div class="imgwrapper">
-                                                    <img src="images/auctionimg_1.jpg">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                            <div class="imgouter">
-                                                <div class="imgwrapper">
-                                                    <img src="images/auctionimg_1.jpg">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row">
-                                        <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                            <div class="imgouter">
-                                                <div class="imgwrapper">
-                                                    <img src="images/auctionimg_1.jpg">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                            </span>
+                            </span>
+
                         </div>
                     </div>
                 </div>

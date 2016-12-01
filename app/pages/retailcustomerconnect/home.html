@@ -6,7 +6,10 @@
         <a href="javascript:void(0)"><img src="images/re_logo1.png" alt="" class="re_logo1"/></a>
         <span class="logodevider"></span>
 
-        <a href="javascript:void(0)"><img src="images/re_logo2.png" alt=""  class="re_logo2"/></a>
+        <a href="javascript:void(0)">
+           <!-- <img src="images/re_logo2.png" alt=""  class="re_logo2"/>-->
+            <img src="{{package_image}}" alt=""  class="re_logo2"/>
+        </a>
 
     </div>
 
@@ -42,21 +45,22 @@
     <h6 class="re_new_textheading">Please fill out all of the following in order for us to match the perfect inventory to your choices</h6>
 
     <div class="container retailbannerblock2_text1">
-        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 retailbannerblock2_text1_left"><img src="images/retailcustomer_banner2.png" alt="" style="width: 100%;"/></div>
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 retailbannerblock2_text1_left">
+            <img src="{{banner_image}}" alt="" style="width: 100%;"/>
+            <!--<img src="images/retailcustomer_banner2.png" alt="" style="width: 100%;"/>-->
+        </div>
         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 retailbannerblock2_text1_right">
-            <div class="re_headingdiv"><h2>Your Ken Garff rep is: Billy Allen</h2></div>
+            <div class="re_headingdiv"><h2>Your rep is: {{name}}</h2></div>
             <div class="reuldiv">
                 <ul>
-                    <li>Ken Garff Dealership<br />
-
-                        54856 Sandy Drive, <br />
-
-                        Taylorsville UT 84123</li>
+                    <li>{{address1}}<br/>
+                        {{city}},{{state}}<br/>
+                        {{zip}}</li>
 
                     <li>
-                        Office: 745-856-6552<br />
+                        Phone: {{phone}}<br />
 
-                        Cell: 562-585-6965
+                       <!-- Cell: 562-585-6965-->
                     </li>
                     <div class="clearfix"></div>
 
@@ -64,7 +68,7 @@
 
             </div>
 
-            <h3>Billy Allen@kengarff.com</h3>
+            <h3>{{email}}</h3>
 
         </div>
     </div>
@@ -187,6 +191,7 @@
 
 
             </form>
+            <input [(ngModel)]="query" type="text" placeholder="research by make" class="form-control" id="researchbymake">
 
         </div>
     </div>
@@ -406,8 +411,8 @@
                         <div class="retailformblock2wrapperinnerwrapper">
                             <div class="retailformblock2wrapperinner1">
                                 <div class="row">
-                                    <div *ngFor="let itemcarlogo of carlogolist  let i=index">
-                                    <div *ngIf="itemcarlogo.is_active==1 && i<12"  class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
+                                    <div *ngFor="let itemcarlogo of carlogolist | filter:query">
+                                    <div *ngIf="itemcarlogo.is_active==1"  class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
                                         <div  class="singlelogowrapper logolabel{{itemcarlogo._id}}" >
                                            <!-- <img src="images/logocom1.jpg" class="img-responsive">-->
                                             <img [attr.logoid]="itemcarlogo._id" id="carlogo{{itemcarlogo._id}}" (click)="clickcarlogo($event)" src="{{carlogosrc}}{{itemcarlogo.logo}}" class="img-responsive">
@@ -431,9 +436,9 @@
                             <div class="retailformblock2wrapperinnerpart21">
                                 <div class="row">
                                     <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 imgAbtblock">
-                                        <div class="imgAbt">
+                                        <!--<div class="imgAbt">
                                             <img src="images/closehome.png" class="img-responsive">
-                                        </div>
+                                        </div>-->
                                     </div>
                                     <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 imgAbtblockcontent">
                                         <p>Clear all</p>
@@ -442,18 +447,18 @@
                                 <div class="row">
                                     <div class="form-group">
                                         <div class="icon-addon addon-lg">
-                                            <input type="text" placeholder="research by make" class="form-control" id="researchbymake">
+                                            <input  type="text" placeholder="research by make" class="form-control form-control_input" id="researchbymakez0">
                                         </div>
                                     </div>
-                                </div>
+                                 </div>
                             </div>
 
-                           <div class="retailformblock2wrapperinnerpart21_wrapper"> <div *ngFor="let itemcarlogo of carlogolist let i=index"  class="retailformblock2wrapperinnerpart21 spanclass">
-                                <div *ngIf="itemcarlogo.is_active==1 && i<12">
+                           <div class="retailformblock2wrapperinnerpart21_wrapper"> <div *ngFor="let itemcarlogo1 of carlogolist|filter:query"  class="retailformblock2wrapperinnerpart21 spanclass">
+                                <div *ngIf="itemcarlogo1.is_active==1">
 
 
-<input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="{{itemcarlogo._id}}" type="checkbox" name="upcoming_auction[]" (change)="upcoming_auctionchange($event)" value="{{itemcarlogo._id}}">
-                                    <label [attr.for]="itemcarlogo._id"><span>{{itemcarlogo.name}}</span><b>(11)</b>
+<input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="{{itemcarlogo1._id}}" type="checkbox" name="upcoming_auction[]" (change)="upcoming_auctionchange($event)" value="{{itemcarlogo1._id}}">
+                                    <label [attr.for]="itemcarlogo1._id"><span>{{itemcarlogo1.name}}</span><b>(11)</b>
 <div class="clearfix"></div>
                                     </label>
 
@@ -472,7 +477,8 @@
 
 
 
-                            <a href="javascript:void(0)"><button (click)="carlogoModal.open()" type="button" class="btn btn-link text-left pull-left btnseeall">see all makes</button></a>
+                            <a href="javascript:void(0)"><button (click)="openmakemodal()" type="button" class="btn btn-link text-left pull-left btnseeall">see all makes</button></a>
+                            <button class="hide openmakemodal" (click)="carlogoModal.open()">kkk</button>
                         </div>
                     </div>
 
@@ -736,7 +742,7 @@
         <modal-content class="modelcontent">
 
 
-            <span *ngFor="let itemcarlogo1 of carlogolist "  class="popupdiv_box" >
+            <span *ngFor="let itemcarlogo1 of carlogolist |filter:query "  class="popupdiv_box" >
 
 
                 <div class="subpopup"  *ngIf="itemcarlogo1.is_active==1" style="float: left;">
@@ -754,7 +760,7 @@
                <div class="labletextbox logolabel{{itemcarlogo1._id}}"> <span>{{itemcarlogo1.name}}</span><b>(06)</b></div>
                     <div class="popupselect">
 
-               <input [formControl]="customersignupupdateform.controls['upcoming_auction']" id="{{itemcarlogo1._id}}" type="checkbox" (change)="upcoming_auctionchange1($event)" name="upcoming_auction" value="{{itemcarlogo1._id}}" >
+               <input [formControl]="customersignupupdateform.controls['upcoming_auction']" class="popup{{itemcarlogo1._id}} poppcheck" type="checkbox" (change)="upcoming_auctionchange1($event)" name="upcoming_auction" value="{{itemcarlogo1._id}}" >
 
 
 

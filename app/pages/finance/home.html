@@ -6,7 +6,10 @@
         <a href="javascript:void(0)"><img src="images/re_logo1.png" alt="" class="re_logo1"/></a>
         <span class="logodevider"></span>
 
-        <a href="javascript:void(0)"><img src="images/re_logo2.png" alt=""  class="re_logo2"/></a>
+        <a href="javascript:void(0)">
+            <img src="{{package_image}}" alt=""  class="re_logo2"/>
+            <!--<img src="images/re_logo2.png" alt=""  class="re_logo2"/>-->
+        </a>
 
     </div>
 
@@ -42,21 +45,22 @@
     <h6 class="re_new_textheading">Please fill out all of the following in order for us to match the perfect inventory to your choices</h6>
 
     <div class="container retailbannerblock2_text1" style="margin-bottom: 32px;">
-        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 retailbannerblock2_text1_left"><img src="images/retailcustomer_banner2.png" alt="" style="width: 100%;"/></div>
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 retailbannerblock2_text1_left">
+            <img src="{{banner_image}}" alt="" style="width: 100%;"/>
+            <!--<img src="images/retailcustomer_banner2.png" alt="" style="width: 100%;"/>-->
+        </div>
         <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 retailbannerblock2_text1_right">
-            <div class="re_headingdiv"><h2>Your Ken Garff rep is: Billy Allen</h2></div>
+            <div class="re_headingdiv"><h2>Your rep is: {{name}}</h2></div>
             <div class="reuldiv">
                 <ul>
-                    <li>Ken Garff Dealership<br />
-
-                        54856 Sandy Drive, <br />
-
-                        Taylorsville UT 84123</li>
+                    <li>{{address1}}<br/>
+                        {{city}},{{state}}<br/>
+                        {{zip}}</li>
 
                     <li>
-                        Office: 745-856-6552<br />
+                        Phone: {{phone}}<br />
 
-                        Cell: 562-585-6965
+                        <!-- Cell: 562-585-6965-->
                     </li>
                     <div class="clearfix"></div>
 
@@ -64,7 +68,7 @@
 
             </div>
 
-            <h3>Billy Allen@kengarff.com</h3>
+            <h3>{{email}}</h3>
 
         </div>
     </div>

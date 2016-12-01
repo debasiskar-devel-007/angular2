@@ -194,7 +194,6 @@
                                 <p>Lorem ipsum.</p>
                                 <span>Yesterday</span>
                             </div>
-                            <div class="clearfix"></div>
                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
                                 <div class="imgwrapperbox">
                                     <div class="imgwrapper">
@@ -323,120 +322,124 @@
                 <div class="auctioninventoryblock">
                     <div class="auctioninventoryheader">
                         <h2><span>Auction</span> Inventory Review</h2>
-                        <div class="addbtnwrapper">
-                            <a href="auctioninventoryreview.html"><button class="btn btn-link viewallblack" type="button" value="view all">View All</button></a>
-                        </div>
+                        <ul class="list-inline">
+                            <li><div class="btn-group bootstrap-select makedropdown">
+                                <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                    <span class="selecttext">Select a Make</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu open" role="menu">
+                                    <!--<li class="selected">
+                                        <a><span class="text">Acura</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">BMW</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">Chevrolet</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">Datsun</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">Eagle</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">FIAT</span></a>
+                                    </li>-->
+                                    <li *ngFor="let carlogoval1 of carlogolist">
+                                        <a><span class="text">{{carlogoval1.name}}</span></a>
+                                    </li>
+                                </ul>
+                            </div></li>
+                            <li><div class="btn-group bootstrap-select modeldropdown">
+                                <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                    <span class="selecttext">Select a Model</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu open" role="menu">
+                                    <li *ngFor="let itemcarmodel of carlistarr" class="selected">
+                                        <a><span class="text">{{itemcarmodel.model}}</span></a>
+                                    </li>
+                                    <!--<li>
+                                        <a><span class="text">ILX</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">Integra</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">Legend</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">MDX</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">NSX</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">RDX</span></a>
+                                    </li>-->
+                                </ul>
+                            </div></li>
+                            <li><div class="btn-group bootstrap-select auctiondropdown">
+                                <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                    <span class="selecttext">Select by Auction</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu open" role="menu">
+                                    <li *ngFor="let itemauction of auctionlistarr" class="selected">
+                                        <a ><span class="text">{{itemauction.name}}</span></a>
+                                    </li>
+                                   <!-- <li>
+                                        <a><span class="text">AutoFair</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">Pre Owned</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">Wilson's</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">Auto Auction</span></a>
+                                    </li>-->
+                                </ul>
+                            </div></li>
+                            <li><div class="btn-group bootstrap-select yeardropdown">
+                                <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                    <span class="selecttext">2010</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu open" role="menu">
+                                    <li *ngFor="let caryearval of carautoyearlist" class="selected">
+                                        <a><span class="text">{{caryearval.year}}</span></a>
+                                    </li>
+                                   <!-- <li>
+                                        <a><span class="text">2011</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">2012</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">2013</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">2014</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">2015</span></a>
+                                    </li>
+                                    <li>
+                                        <a><span class="text">2016</span></a>
+                                    </li>-->
+                                </ul>
+                            </div></li>
+                            <li><div class="searchbox"><input [(ngModel)]="query" placeholder="Search by Make, Model, Auction, Year, Keyword"></div></li>
+                            <li>
+                                <div class="addbtnwrapper">
+                                    <a href="javascript(0)" [routerLink]="['/auctioninventoryview']"><button class="btn btn-link viewallblack" type="button" value="view all">View All</button></a>
+                                </div>
+                            </li>
+                        </ul>
+
+
                     </div>
                     <div class="inventorylistswrapper">
-                        <div class="btn-group bootstrap-select makedropdown">
-                            <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
-                                <span class="selecttext">Select a Make</span>&nbsp;<span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu open" role="menu">
-                                <li class="selected">
-                                    <a><span class="text">Acura</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">BMW</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">Chevrolet</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">Datsun</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">Eagle</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">FIAT</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">Genesis</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="btn-group bootstrap-select modeldropdown">
-                            <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
-                                <span class="selecttext">Select a Model</span>&nbsp;<span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu open" role="menu">
-                                <li class="selected">
-                                    <a><span class="text">CL</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">ILX</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">Integra</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">Legend</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">MDX</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">NSX</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">RDX</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="btn-group bootstrap-select auctiondropdown">
-                            <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
-                                <span class="selecttext">Select by Auction</span>&nbsp;<span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu open" role="menu">
-                                <li class="selected">
-                                    <a ><span class="text">Westbury</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">AutoFair</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">Pre Owned</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">Wilson's</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">Auto Auction</span></a>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="btn-group bootstrap-select yeardropdown">
-                            <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
-                                <span class="selecttext">2010</span>&nbsp;<span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu open" role="menu">
-                                <li class="selected">
-                                    <a><span class="text">2010</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">2011</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">2012</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">2013</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">2014</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">2015</span></a>
-                                </li>
-                                <li>
-                                    <a><span class="text">2016</span></a>
-                                </li>
-                            </ul>
-                        </div>
-
-
-                        <div class="searchbox"><input [(ngModel)]="query" placeholder="Search by Make, Model, Auction, Year, Keyword"></div>
                         <div class="row">
                             <!--<div *ngFor="let item of data">
                             <div *ngFor="let itemcar of item.cardata"   class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
@@ -491,11 +494,11 @@
                             </div>-->
 
                             <span *ngFor="let item of data let i=index">
-                            <span  *ngFor="let itemcar of item.cardata let icar=index">
-                           <div *ngIf="getarrcount(data,i,icar)" class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist inventorysinglelistblockcon">
+                            <span  *ngFor="let itemcar of item.cardata|filter:query let icar=index">
+                           <div  class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist inventorysinglelistblockcon">
                                 <div class="inventorysinglelistblock">
                                     <div class="row">
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
+                                        <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12 pull-left infobox">
                                              <table class="table">
                                             <tbody>
                                             <tr>
@@ -523,7 +526,7 @@
                                                 <td>{{itemcar.est_retail_value}}</td>
                                             </tr>
  <tr>
-                                                    <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
+                                                    <td colspan="2"><div  class="viewdetail"><a  [routerLink]="['/auctioininventorydetails', itemcar._id]" >View Details</a></div></td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -559,11 +562,11 @@
                                                 </tbody>
                                             </table>-->
                                         </div>
-                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
+                                        <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12 pull-right imgbox">
                                             <div class="imgouter">
 
 
-                                                <div class="imgwrapper"><img src="images/auctionimg_1.jpg" class="auction_toplogo">
+                                                <div class="imgwrapper"><img src="{{sharefilesrc}}{{item.auctiondata[0].filename}}" class="auction_toplogo">
                                                     <img src="{{sharefilesrc}}{{itemcar.filename}}">
 
                                                 </div>
@@ -587,25 +590,34 @@
                 <div class="inventorymatchblock">
                     <div class="inventorymatchheader">
                         <h2><span>Inventory</span> Matches</h2>
-                        <div class="addbtnwrapper">
-                            <a href="inventorymatches.html"><button class="btn btn-link viewallwhite" type="button" value="view all">View All</button></a>
-                        </div>
+                        <ul class="list-inline">
+
+                            <li><div class="btn-group bootstrap-select matchesdropdown">
+                                <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                    <span class="selecttext">Matches by %</span>&nbsp;<span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu open" role="menu">
+                                    <li class="selected">
+                                        <a><span class="text">Above 50%</span></a></li>
+                                    <li>
+                                        <a><span class="text">Above 60%</span></a></li>
+                                    <li>
+                                        <a><span class="text">Above 70%</span></a></li>
+                                </ul>
+                            </div></li>
+                            <li> <div class="searchbox"><input [(ngModel)]="query" placeholder="Search by Make, Model, Auction, Year, Keyword"></div>
+                            </li>
+                            <li>
+                                <div class="addbtnwrapper">
+                                    <a href="inventorymatches.html"><button class="btn btn-link viewallwhite" type="button" value="view all">View All</button></a>
+                                </div>
+                            </li>
+                        </ul>
+
                     </div>
                     <div class="inventorylistswrapper">
-                        <div class="btn-group bootstrap-select matchesdropdown">
-                            <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
-                                <span class="selecttext">Matches by %</span>&nbsp;<span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu open" role="menu">
-                                <li class="selected">
-                                    <a><span class="text">Above 50%</span></a></li>
-                                <li>
-                                    <a><span class="text">Above 60%</span></a></li>
-                                <li>
-                                    <a><span class="text">Above 70%</span></a></li>
-                            </ul>
-                        </div>
-                        <div class="searchbox"><input [(ngModel)]="query" placeholder="Search by Make, Model, Auction, Year, Keyword"></div>
+
+
                         <div class="row">
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
                                 <div class="inventorysinglelistblock">
@@ -1505,13 +1517,15 @@
                             <li>Search by Date Range</li>
                             <li><input type="text" class="daterangepicker" value="2016-08-10"></li>
                             <li><input type="text" class="daterangepicker" value="2016-12-10"></li>
+                            <li><div class="searchbox"><input placeholder="Search by Customer id, Auction, Status"></div></li>
+                            <li><div class="addbtnwrapper">
+                                <button class="btn btn-link viewallwhite" type="button" value="view all">View All</button>
+                            </div></li>
                         </ul>
-                        <div class="addbtnwrapper">
-                            <button class="btn btn-link viewallwhite" type="button" value="view all">View All</button>
-                        </div>
+
                     </div>
                     <div class="adminlistlists dealerlists">
-                        <div class="searchbox"><input placeholder="Search by Customer id, Auction, Status"></div>
+
                         <div class="table-responsive">
                             <table class="table table-striped">
                                 <thead>
@@ -1756,14 +1770,17 @@
                 <div class="inventoryrecentbidblock">
                     <div class="inventoryrecentbidheader">
                         <h2><span>RECENT BID</span> Agreements</h2>
-                        <div class="addbtnwrapper">
-                            <a href="recentbidagreement.html" class="btn btn-link viewallwhite">View All</a>
-                        </div>
+                        <ul class="list-inline">
+                            <li><div class="searchbox">
+                                <input placeholder="Search by Make, Model, Auction, Year, Keyword">
+                            </div></li>
+                            <li><div class="addbtnwrapper">
+                                <a href="recentbidagreement.html" class="btn btn-link viewallwhite">View All</a>
+                            </div></li>
+                        </ul>
+
                     </div>
                     <div class="inventorylistswrapper">
-                        <div class="searchbox">
-                            <input placeholder="Search by Make, Model, Auction, Year, Keyword">
-                        </div>
                         <div class="row">
                             <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
                                 <div class="inventorysinglelistblock">
@@ -2447,12 +2464,15 @@
                             <li>Search by Date Range</li>
                             <li><input type="text" class="daterangepicker" value="2016-08-10"></li>
                             <li><input type="text" class="daterangepicker" value="2016-12-10"></li>
+                            <li>
+                                <div class="addbtnwrapper2">
+                                    <a href="postauctionactivity.html" class="btn btn-link viewallblack">View All</a>
+                                    <a><img src="images/icon-refresh.png"></a>
+                                    <a><img src="images/icon-updown.png"></a>
+                                </div>
+                            </li>
                         </ul>
-                        <div class="addbtnwrapper2">
-                            <a href="postauctionactivity.html" class="btn btn-link viewallblack">View All</a>
-                            <a><img src="images/icon-refresh.png"></a>
-                            <a><img src="images/icon-updown.png"></a>
-                        </div>
+
                     </div>
                     <div class="postauctionactivitylist">
                         <div class="table-responsive">
@@ -2530,11 +2550,16 @@
                 <div class="postauctioncctivityblock">
                     <div class="postauctioncctivityheader customeractivity">
                         <h2><span>Customer</span> Social Share</h2>
-                        <div class="addbtnwrapper2">
-                            <!---<a><button class="btn btn-link viewallblack" type="button" value="view all">View All</button></a>--->
-                            <a><img src="images/icon-refresh.png"></a>
-                            <a><img src="images/icon-updown.png"></a>
-                        </div>
+                        <ul class="list-inline">
+                            <li>
+                                <div class="addbtnwrapper2">
+                                    <!---<a><button class="btn btn-link viewallblack" type="button" value="view all">View All</button></a>--->
+                                    <a><img src="images/icon-refresh.png"></a>
+                                    <a><img src="images/icon-updown.png"></a>
+                                </div>
+                            </li>
+                        </ul>
+
                     </div>
                     <div class="postauctionactivitylist">
                         <ul class = "list-group">

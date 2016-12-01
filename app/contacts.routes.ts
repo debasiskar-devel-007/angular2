@@ -102,6 +102,7 @@ import {AppEditcarmileage} from "./pages/editcarmileage/app.editcarmileage";
 import {AppCarfeaturelist} from "./pages/carfeaturelist/app.carfeaturelist";
 import {AppAddcarfeature} from "./pages/addcarfeature/app.addcarfeature";
 import {AppEditcarfeature} from "./pages/editcarfeature/app.editcarfeature";
+import {AppAuctioininventorydetails} from "./pages/auctioininventorydetails/app.auctioininventorydetails";
 
 //alert(window.location.hostname);
 
@@ -230,6 +231,7 @@ const appRoutes: Routes = [
     { path: 'carfeaturelist', component: AppCarfeaturelist},
     { path: 'addcarfeature', component: AppAddcarfeature},
     { path: 'editcarfeature/:id', component: AppEditcarfeature},
+    { path: 'auctioininventorydetails/:id', component: AppAuctioininventorydetails},
 
 
 

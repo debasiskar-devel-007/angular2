@@ -47,6 +47,7 @@ export class AppRetailcustomerconnect implements OnInit {
     basepricelist:any;
     carlogolist:any;
     carlogosrc:any;
+    package_image:any;
     carbodystylelist:any;
     carbodystylelogosrc:any;
     carautoyearlist:any;
@@ -54,6 +55,7 @@ export class AppRetailcustomerconnect implements OnInit {
     carfeaturelist:any;
     carfeaturesrc:any;
     private colorlist:any;
+    private details1:any;
     private rows:any;
     private colorval:Array<any>;
     private static colorval:Array<any>;
@@ -63,6 +65,17 @@ export class AppRetailcustomerconnect implements OnInit {
     private updatepricearr:Array<any>;
     private updatecarfeaturearr:Array<any>;
     private elementRef: ElementRef;
+    banner_image:any;
+    name:any;
+    zip:any;
+    description:any;
+    address1:any;
+    city:any;
+    state:any;
+    phone:any;
+    websiteurl:any;
+    email:any;
+    query:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
         this.router=router;
@@ -96,6 +109,41 @@ export class AppRetailcustomerconnect implements OnInit {
                 console.log("Oooops!");
             });
 
+        var parts = location.hostname.split('.');
+        var sndleveldomain = parts[0];
+
+        let ids = {username: sndleveldomain};
+        this.http.post(this.serverUrl + 'editdealerbyusername', ids)
+            .subscribe(data => {
+                this.details1 = data.json()[0];
+                console.log(this.details1);
+                this.name=this.details1.fname+' '+this.details1.lname;
+                this.description=this.details1.description;
+                this.address1=this.details1.address;
+                //  console.log(this.address1);
+                this.city=this.details1.city;
+                this.state=this.details1.state;
+                this.zip=this.details1.zip;
+                this.phone=this.details1.phone;
+                this.websiteurl=this.details1.websiteurl;
+                this.email=this.details1.email;
+
+                if(this.details1.filename) {
+                    this.package_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.filename;
+                }
+                else {
+                    this.package_image ="images/re_logo2.png";
+                }
+
+                if(this.details1.banner) {
+                    this.banner_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.banner;
+                }   else {
+                    this.banner_image= 'images/img_customersignup_car.png';
+                }
+
+            }, error => {
+                console.log("Oooops!");
+            });
 
 
         this.customersignupform = fb.group({
@@ -212,6 +260,19 @@ export class AppRetailcustomerconnect implements OnInit {
                 this.rows = Array.from(Array(Math.ceil(this.colorlist.length / 3)).keys())
                 //this.carfeaturesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 console.log(this.carfeaturelist);
+
+                let timeoutId = setInterval(() => {
+
+                    //console.log('hello');
+
+                    var x = $('.form-control_input').offset();
+
+                   // alert('offset x'+ x.top +'offset y' + x.left );
+
+                    $('#researchbymake').offset({top:x.top,left:x.left});
+
+
+                }, 2000);
 
 
             }, error => {
@@ -405,10 +466,29 @@ export class AppRetailcustomerconnect implements OnInit {
         $(target).parent().parent().parent().toggleClass('selected');
         console.log('upcoming_auctionarr val');
         console.log(this.updatebodystylearr);
+        $('#popup'+target.value).click();
         $('.logolabel'+target.value).toggleClass('selected');
         //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
         //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
     }
+
+    openmakemodal() {
+        $('.openmakemodal').click();
+        $('.poppcheck').removeAttr('checked');
+        $('.logolabel').removeClass('selected');
+
+        let timeoutId = setTimeout(() => {
+            //console.log('hello');
+            var x: any;
+            for (x in this.upcoming_auctionarr) {
+
+                $('.popup' + this.upcoming_auctionarr[x]).prop('checked', true);
+                $('.logolabel' + this.upcoming_auctionarr[x]).addClass('selected');
+                //alert($('.popup' + this.upcoming_auctionarr[x]).val());
+            }
+        }, 3000);
+    }
+
     upcoming_auctionchange1(ev:any){
         var target = ev.target || ev.srcElement || ev.originalTarget;
         console.log(target.value);

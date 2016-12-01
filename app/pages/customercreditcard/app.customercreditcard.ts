@@ -35,7 +35,8 @@ export class AppCustomercreditcard {
     private router: Router;
     package_image:any;
     details1:any;
-
+    orderbyquery:any;
+    orderbytype:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router ) {
 
@@ -68,7 +69,13 @@ export class AppCustomercreditcard {
             .subscribe(data => {
                 this.details1 = data.json()[0];
                 console.log(this.details1);
-                this.package_image="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/"+this.details1.filename;
+                if(this.details1.filename) {
+                    this.package_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.filename;
+                }
+                else {
+                    this.package_image ="images/re_logo2.png";
+                }
+
             }, error => {
                 console.log("Oooops!");
             });

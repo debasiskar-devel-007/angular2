@@ -7,7 +7,7 @@ import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
-
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -36,6 +36,8 @@ export class AppDealerdashboard {
     carautoyearlist:any;
     carmileagelist:any;
     colorlist:any;
+    carlistarr:any;
+    auctionlistarr:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router) {
         this.router=router;
@@ -56,6 +58,7 @@ export class AppDealerdashboard {
                 this.details=data.json();
                 console.log(this.details);
 
+
             }, error => {
                 console.log("Oooops!");
             });
@@ -67,6 +70,12 @@ export class AppDealerdashboard {
                 this.data = data1.json();
                 console.log('dealer inventorydata');
                 console.log(this.data);
+                let timeoutId = setInterval(() => {
+                    $('.inventorysinglelistblockcon').each(function (index:any) {
+                        if(index>8) $(this).css('display','none');
+                    });
+
+                }, 5000);
                 this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
 
@@ -112,6 +121,24 @@ export class AppDealerdashboard {
                 console.log("Oooops!");
             });
 
+
+        this.http.get(this.serverUrl+'carlist')
+            .subscribe(data1 => {
+                this.carlistarr = data1.json();
+                console.log(this.data);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'auctionlist')
+            .subscribe(data1 => {
+                this.auctionlistarr = data1.json();
+                console.log(this.data);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
     }
 
 
@@ -153,7 +180,11 @@ export class AppDealerdashboard {
         return 'N/A';
     }
     getarrcount(item:any,i:any,icar:any){
+        //var target = ev.target || ev.srcElement || ev.originalTarget;
+        //console.log('ev counter ...');
+        //console.log($(target).index());
 
+        $('.inventorysinglelistblockcon').eq(8).nextAll().remove();
         var x=0;
         var totalc=0;
         if(i==0){
@@ -181,10 +212,14 @@ export class AppDealerdashboard {
             x++;
         }
         console.log('car counter '+totalc);
+        alert(totalc);
         if(totalc>8 )return false;
         else return true;
     }
+    goinventoryDetails(inventoryid:any){
 
+
+    }
 }
 
 

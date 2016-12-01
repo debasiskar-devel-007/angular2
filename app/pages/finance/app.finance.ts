@@ -31,10 +31,22 @@ export class AppAppFinance {
     loginerror:any;
     private router: Router;
     private customerInfo:CookieService;
+    private details1:any;
     appcomponent:AppComponent;
     tempdata:Array<any>;
     customerinfo:any;
     getusastates:any;
+    banner_image:any;
+    name:any;
+    zip:any;
+    description:any;
+    address1:any;
+    city:any;
+    state:any;
+    phone:any;
+    websiteurl:any;
+    email:any;
+    package_image:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
@@ -53,6 +65,42 @@ export class AppAppFinance {
                 this.getusastates=data.json();
                 console.log(this.getusastates);
 
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        var parts = location.hostname.split('.');
+        var sndleveldomain = parts[0];
+
+        let ids = {username: sndleveldomain};
+        this.http.post(this.serverUrl + 'editdealerbyusername', ids)
+            .subscribe(data => {
+                this.details1 = data.json()[0];
+                console.log(this.details1);
+                this.name=this.details1.fname+' '+this.details1.lname;
+                this.description=this.details1.description;
+                this.address1=this.details1.address;
+                //  console.log(this.address1);
+                this.city=this.details1.city;
+                this.state=this.details1.state;
+                this.zip=this.details1.zip;
+                this.phone=this.details1.phone;
+                this.websiteurl=this.details1.websiteurl;
+                this.email=this.details1.email;
+
+                if(this.details1.filename) {
+                    this.package_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.filename;
+                }
+                else {
+                    this.package_image ="images/re_logo2.png";
+                }
+
+                if(this.details1.banner) {
+                    this.banner_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.banner;
+                }   else {
+                    this.banner_image= 'images/img_customersignup_car.png';
+                }
 
             }, error => {
                 console.log("Oooops!");

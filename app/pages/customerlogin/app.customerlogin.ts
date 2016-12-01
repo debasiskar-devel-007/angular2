@@ -29,6 +29,8 @@ export class AppCustomerlogin{
     private router: Router;
     private userInfo:CookieService;
     private userdetails:any;
+    package_image:any;
+    details1:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router ) {
@@ -40,6 +42,24 @@ export class AppCustomerlogin{
         this.userInfo=userInfo;
         //this.userdetails=userdetails;
         this.userdetails=userInfo.getObject('userdetails');
+        var parts = location.hostname.split('.');
+        var sndleveldomain = parts[0];
+console.log(sndleveldomain);
+        let ids = {username: sndleveldomain};
+        this.http.post(this.serverUrl + 'editdealerbyusername', ids)
+            .subscribe(data => {
+                this.details1 = data.json()[0];
+                console.log(this.details1);
+                if(this.details1.filename) {
+                    this.package_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.filename;
+                }
+                else {
+                    this.package_image ="images/re_logo2.png";
+                }
+
+            }, error => {
+                console.log("Oooops!");
+            });
 
         this.customerloginform = fb.group({
 

@@ -70,7 +70,7 @@
     .creditcardleftblock{width: 56% !important; float: left;}
     .signuprightblock{width: 44% !important; float: right;}
 
-    .creditcardleftblockbottom{width: 100%;height: 783px; overflow: hidden;}
+    .creditcardleftblockbottom{width: 100%;height: 755px; overflow: hidden;}
     .cusdashboardblock9 .cusdashboardblock9inner {
         width: 100%;
         margin: 0 auto;
@@ -83,7 +83,7 @@
     .signupleftblockbottom h1 {
         font-size: 25px;
     }
-    .creditcardleftblockbottom {width: 100%;height: 783px;overflow: hidden;}
+    .creditcardleftblockbottom {width: 100%;height: 755px;overflow: hidden;}
     .creditcardleftblockbottom img {
         width: 120% !important;
     }
@@ -125,8 +125,9 @@
 
 
 @media screen and (max-width:1280px){
-
-    .cusdashboardblock1innerleft{ width: 568px!important;}
+    .postauctioncctivityheader h2 {margin-bottom: 10px;}
+    .cusdashboardblock1innerleft{ width: 568px !important;}
+    .cusdashboardblock1innerleft1{ width: auto !important;}
     /* .btnedit {
        padding: 10px 5px;
        font-size: 12px !important;
@@ -143,6 +144,7 @@
 
 @media screen and (max-width:1199px){
     /*  .btnedit {padding: 10px 13px;}*/
+    .auctioninventoryblock .inventorylistswrapper span span:nth-of-type(2n+2){clear: both;}
     .bannerbottomblock {height: auto;}
     .inventorysinglelist:nth-child(2n+2) {margin-bottom: 9px;}
     .inventorysinglelist:nth-child(2n+2):last-of-type {margin-bottom: 0px;}
@@ -176,7 +178,7 @@
     .creditcardleftblockbottom img {width: 170% !important;}
 
     .creditcardleftblockbottom {width: 100%; overflow: hidden;}
-    .creditcardleftblockbottom {width: 100%; height:783px; overflow: hidden;}
+    .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
     .creditcardleftblocktop h1 {
         font-size: 30px;
     }
@@ -321,27 +323,27 @@
         text-align: center;
         float: none !important;
     }
-    .recentrsvpsinglelist .imgwrapperbox, .custoomerinfowrapper .recentrsvpsinglelist .imgwrapperbox {
-        width: auto;
-    }
-
 }
 
 @media screen and (max-width:1168px) {
-    .creditcardleftblockbottom {width: 100%; height:783px; overflow: hidden;}
+    .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
 }
 
 @media screen and (max-width:1159px) {
-    .creditcardleftblockbottom {width: 100%; height:783px; overflow: hidden;}
+    .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
 }
 
 @media screen and (max-width:1125px) {
-    .creditcardleftblockbottom {width: 100%; height:757px; overflow: hidden;}
+    .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
 }
 
-@media screen and (max-width:1100px) {
-
+@media screen and (max-width:1110px) {
     .creditcardleftblockbottom img {width: 175% !important;}
+    .creditcardleftblockbottom {width: 100%; height:729px; overflow: hidden;}
+}
+
+@media screen and (max-width:1080px) {
+    .creditcardleftblockbottom {width: 100%; height:729px; overflow: hidden;}
 }
 
 @media screen and (max-width:1060px){
@@ -363,7 +365,7 @@
         width: 100%;
     }
     .creditcardleftblockbottom img {width: 157% !important;}
-    .creditcardleftblockbottom {height: 756px;}
+    .creditcardleftblockbottom {height: 727px;}
 }
 
 @media screen and (max-width:1024px) {
@@ -378,33 +380,6 @@
 }
 
 @media screen and (max-width:991px) {
-
-    .orderdetails .inventorysinglelist .imgouter .imgwrapper {
-        width: auto;
-        height: 100%;
-        overflow: hidden;
-        text-align: center;
-        border-radius: 5px;
-        margin: 8px auto;
-        display: table-cell;
-        vertical-align: middle;
-        padding: 5px;
-        display: block;
-        margin-top: 30%;
-    }
-
-    .orderdetails .inventorymatchblock .inventorysinglelist .imgouter {
-        margin: 0 auto;
-        float: none;
-        width: 100% !important;
-    }
-    .recentrsvpsinglelist .imgwrapperbox, .custoomerinfowrapper .recentrsvpsinglelist .imgwrapperbox {
-        width: 65px;
-    }
-    .recentcussinglelist .imgwrapper {
-        width: 65px;
-    }
-
     .amountres{text-align: right; float: right; margin-right: 10px;}
     .residencytype span{padding-left: 10px !important;}
     .financingblock2wrapperinner .form-group {margin: 0px 0px;}
@@ -542,6 +517,12 @@
         display: block;
     }
 
+    .recentrsvpsinglelist .imgwrapper {
+        width: 65px;
+    }
+    .recentcussinglelist .imgwrapper {
+        width: 65px;
+    }
     .leftwrap {
         text-align: center !important;
         margin: 10px auto 10px auto !important;
@@ -575,7 +556,6 @@
 
 @media (min-width: 768px) {
 
-
     #page-wrapper {
         position: inherit;
         margin: 0px;
@@ -602,21 +582,6 @@
 
 
 @media screen and (max-width:768px) {
-
-    .orderdetails .inventorysinglelist .imgouter .imgwrapper {
-        margin-top: 0%;
-    }
-    .orderdetails .inventorysinglelist .imgbox {
-        display: table;
-        height: 100%;
-        text-align:center;
-    }
-    .orderdetails .row-eq-height {
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display: block;
-    }
     .toplogoblock .logo1{ display: block; margin: 5px auto; float: none; margin-bottom: 20px;}
     .toplogoblock .logo2{ display: block; margin: 5px auto; float: none;}
     .toplogoblock .logodevider{ display: none;}
@@ -824,32 +789,10 @@
         top: 0px;
         right: 0px !important;
     }
-    .orderdetails .inventorysinglelist .infobox .table>tbody>tr>td {
-        padding-right: 0px !important;
-        padding-left: 0px !important;
-        text-align: center;
-        width: 100%;
-        margin: 0 auto;
-        display: block;
-    }
-    .orderdetails .inventorysinglelist .table>tbody>tr>td h3 span {
-        color: #ff3317;
-        font-size: 24px;
-        text-align: center;
-    }
-
-    .orderdetails .inventorysinglelist p {
-        text-align: center;
-    }
-    .orderdetails .textsmlbold{font-weight:bold;}
-    .orderdetails .inventorysinglelist .imgouter {
-        width: 100% !important;
-    }
 }
 @media screen and (max-width:400px) {
-    .auctioninventoryheader {
-        padding: 10px 10px 0px 10px;
-        float: left;
+    .inventoryrecentbidheader ul li .searchbox input {
+        width: 100%;
     }
     .loginbox h1 { background-position: center top;
         padding:45px 4px 0px 4px!important;
@@ -871,8 +814,6 @@
         width: 240px;
         margin: 0 auto;
     }
-
-
 }
 
 @media screen and (max-width:320px) {
@@ -887,10 +828,13 @@
         display: inline-block;
         margin-bottom: 0;
         vertical-align: middle;
-        width: 48%;
-        margin-right: 1% !important;
-        margin-left: 1% !important;
-        float: left;
+        width: 49%;
+        margin-right: 1%;
+    }
+
+
+    .addadminblock .form-inline .signupform_wrapper .form-group:nth-child(even) {
+        margin-right: 0px;
     }
     .addadminblock .signupform_wrapper .form-group span {
         float: right;
@@ -1081,7 +1025,7 @@
 
     .cusdashboardblock1innerleft{ width: 100%!important; }
 
-    .cusdashboardblock1innerleft .logo{ width:100%; margin:0 auto; text-align:center; margin-top:10px; margin-bottom:15px!important;}
+    .cusdashboardblock1innerleft .logo{ width:100%; margin:0 auto; text-align:center; margin-top:0px;}
     .cusdashboardblock1innerleft .logo img{ display:block!important; margin:0 auto!important; float:none!important; padding-bottom: 20px !important;}
     .cusdashboardblock1innerleft .collapsebtn{ display:none!important;}
 
@@ -1089,6 +1033,19 @@
     .menuarrowimg{ display:block; margin:0 auto; margin-bottom:2px;}
 
     .copyright{ text-align:center;}
+    .menuarrowimg2 {
+        margin: 0 auto;
+        display: block;
+        float: none;
+        width: 20px;
+        height: 12px;
+    }
+    .collapsedivmenu ul li {
+        display: block;
+        margin: 0 !important;
+        border-bottom: 1px solid #3c3b3b;
+        padding: 10px 12px;
+    }
 }
 
 @media(max-width:820px) {
@@ -1097,6 +1054,8 @@
 
     .cd_block3_gallery_smimg img{  margin: 0.8%;
         width: auto; }
+
+
 }
 
 @media(max-width:800px) {
@@ -1128,9 +1087,15 @@
 
     .cusdashboardblock1innerleft{ width:100%!important;  float:none!important; }
     .cusdashboardblock1innerright{ width:100%!important;  float:none!important; padding-bottom: 10px; padding-top: 0px;}
-
+    .cusdashboardblock1innerleft .logo a {
+        display: inline-block!important;
+        width: 225px;
+        height: 72px;
+        overflow: hidden;
+        float: none !important;
+    }
     .badgelists{
-        float: none!important; margin:0 auto!important; text-align:center!important; width:100%!important;}
+      margin:0 auto!important; text-align:center!important; width:100%!important;}
 
     .customersignout{ float:none!important; margin:0 auto!important; text-align:center!important; width:100%!important; margin-top:15px!important;}
 }
@@ -1148,6 +1113,30 @@
 
     .customerdashboard_block4 .cd_block4_box{ width:100%; float:none; margin:2px 0!important; margin-bottom:10px!important; }
     .cdcar_img img{ width:200px;}
+    .yourinboxblock .searchbox input {
+        width: 100%;
+        display: block;
+        float: none;
+        margin-bottom: 10px;
+    }
+    .searchbox .input-group-addon, .searchbox .input-group-btn {
+        width: 100%;
+        vertical-align: middle;
+        text-align: center;
+        float: none;
+        margin: 0 auto;
+        display: block;
+    }
+    .searchbox .input-group {
+        display: block;
+    }
+    .yourinboxblock .btnnewmsg {
+        display: block;
+        float: none;
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+    }
 }
 
 @media(max-width:440px) {
@@ -1168,6 +1157,13 @@
 
 @media(max-width:360px) {
     .cdcar_img img{ width:120px;}
+    .recentcussinglelist:nth-child(2n+1) {
+        margin-bottom: 9px;
+        clear: both;
+    }
+    .auctioninventoryheader ul li .searchbox input, .adminlistheader ul li .searchbox input {
+        width: 100%;
+    }
 }
 
 
@@ -1240,9 +1236,7 @@
 
     .inventorysinglelistblock3col1 .actionbtns button {
         margin-bottom: 10px;
-        width: 48%;
-        margin-right: 1%;
-        margin-left: 1%;;
+        width: 49%;
     }
 
 
@@ -1305,7 +1299,10 @@
     .logodevider{
         display: none;
     }
-
+    .adminlistheader ul {
+        float: none;
+        text-align: center;
+    }
 
     .inventorylistswrapper .bootstrap-select.makedropdown {
         position: inherit;
@@ -1337,7 +1334,7 @@
         right: 0;
         margin: 0px 0px 15px 0px;
     }
-    .auctioninventoryblock .searchbox{width: 47%; float: right;}
+/*    .auctioninventoryblock .searchbox{width: 47%; float: right;}*/
 
     .inventorymatchblock .inventorylistswrapper .searchbox input {
         position: absolute;
@@ -1389,6 +1386,16 @@
         padding-right: 9px;
     }
 
+    .recentrsvpsinglelist .imgwrapper {
+        width: auto;
+        height: 50px;
+    }
+
+    .recentcussinglelist .imgwrapper {
+        width: auto;
+        height: 50px;
+    }
+
     .inventorysinglelist:nth-child(2n+2) {
         margin-bottom: 9px;
     }
@@ -1430,12 +1437,12 @@
         padding: 0px;
     }
     .margintop30{margin-top:0px; float:none; margin-bottom:20px;}
-    .custoomerinfowrapper .inboxlists .btnreply {
-        margin-bottom: 13px !important;
-    }
-
-
+    .cusdashboardblock1innerright .collapsebtn{display: block !important;}
+    /*.table_textbox .tabel_button {
+        margin-top: 20px;
+    }*/
 }
+
 @media screen and (max-width: 1100px) {
 
     .RSVPActivity .daterange {
@@ -1452,7 +1459,7 @@
       margin-bottom: 15px;
       margin-left: 12px;
     }*/
-    .RSVPActivity .addbtnwrapper{position: absolute; top: 18px; right: 15px;}
+    /*.RSVPActivity .addbtnwrapper{position: absolute; top: 18px; right: 15px;}*/
 }
 @media (max-width: 1024px) {
     .cusdashboardblock1innerright {
@@ -1465,7 +1472,19 @@
 
 }
 @media (max-width: 991px) {
+    .inventorymatchheader ul {
+        float: none;
+        text-align: center !important;
+        width: 100%;
+    }
 
+    .auctioninventoryheader ul {
+        float: right;
+        text-align: center;
+    }
+    .auctioninventoryheader ul li{
+        margin-bottom: 10px;
+    }
     .auctioninventoryblock .searchbox {
         width: 100%;
         float: none;
@@ -1516,13 +1535,15 @@
         font-size: 13px;
     }
     .postauctioncctivityheader .addbtnwrapper2 {
+        float: none;
+    }
+    .postauctioncctivityheader.customeractivity .addbtnwrapper2 {
         float: right;
     }
 
     .bannerbottomblockleft {
-        background: url(images/img-bannerbottomblock.jpg) no-repeat left top;
+        background: url(../images/img-bannerbottomblock.jpg) no-repeat left top;
     }
-
 
     .postauctionamain .postauctioncctivityheader .daterange {
         position: inherit;
@@ -1536,10 +1557,10 @@
         right: 15px;
     }
 
-    .daterange {
+   /* .daterange {
         position: absolute;
         top: 18px;
-    }
+    }*/
 
     .adminlistlists input {
         top: 17px;
@@ -1549,6 +1570,15 @@
         display: block;
     }
 
+    .recentrsvpsinglelist .imgwrapper {
+        width: 65px;
+        height: 65px;
+    }
+
+    .recentcussinglelist .imgwrapper {
+        width: 65px;
+        height: 65px;
+    }
 
     .inventorysinglelist .table {
         margin-bottom: 19px;
@@ -1588,7 +1618,6 @@
     .inventorysinglelistblock .imgbox {
         padding-right: 0px !important;
         padding-left: 0px !important;
-        margin-bottom: 15px;
     }
 
     .inventorylistswrapper input {
@@ -1657,7 +1686,9 @@
     .sharelinkssinglelistright {
         padding-right: 0px;
         text-align: center;
+        padding-left: 0px;
     }
+
     .sharelinks .btnsend {
         margin-left: auto;
         margin-right: auto;
@@ -1671,17 +1702,18 @@
     }
     .sharelinks .sharelinksimgwarpper {
         height: auto;
+        width: 100%;
     }
     .sharelinkssinglelistright ul{width: 90%; margin-left:auto; margin-right:auto; display:block}
     .sharelinkssinglelistright ul li{float:none; display:block; margin-bottom:20px;}
     .inventorymatch .inventorylistswrapper .bootstrap-select.matchesdropdown {right: 0;}
     .inventorylistswrapper .bootstrap-select.matchesdropdown {position: inherit; top: 0px; right: 0px;}
-    .postauctioncctivityheader .addbtnwrapper2 {
+    /*.postauctioncctivityheader .addbtnwrapper2 {
         float: right;
         position: absolute;
         top: 23px;
         right: 24px;
-    }
+    }*/
     .financingblock2wrapperinner {
         max-width: 96%;
         margin: 0px auto;
@@ -1751,23 +1783,10 @@
         padding: 7px 5px 10px 5px;
         font-size: 24px;
     }
-    .custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(1) {
-        width: 22%;
-    }
-    .custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(2) {
-        width: 28%;
-    }
-    .custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(3) {
-        width: 32%;
-    }
+
 }
 
-
 @media (max-width: 860px) {
-    .custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(1) {
-        width: 15%;
-    }
-
     .daterange {
         position: inherit;
         top: 0px;
@@ -1779,17 +1798,13 @@
         text-align: center;
     }
 
-    .custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(1) {
-        text-align: left;
-    }
-
     .recentbidagreementmain .inventorylistswrapper .customerstatus input {
         display: none;
     }
 
     .chakebox1box input[type=checkbox]:not(old) + label, .chakebox1box input[type=radio ]:not(old) + label, .chakebox2box input[type=checkbox]:not(old) + label, .chakebox2box input[type=radio   ]:not(old) + label,.chakebox3box input[type=checkbox]:not(old) + label, .chakebox3box input[type=radio   ]:not(old) + label {
         margin-left: 0px;
-        padding-left: 28px;
+        padding-left: 24px;
     }
 
     .customerstatus .example.list-inline>li:nth-child(2) {
@@ -1856,23 +1871,17 @@
 
     .inventorysinglelistblock3col3 .actionbtns button {
         margin-bottom: 10px;
-        width: 48%;
-        margin-right: 1%;
-        margin-left: 1%;
+        width: 49%;
     }
 
     .inventorysinglelistblock3col4 .actionbtns button {
         margin-bottom: 10px;
-        width: 48%;
-        margin-right: 1%;
-        margin-left: 1%;
+        width: 49%;
     }
 
     .inventorysinglelistblock3col1 .actionbtns button {
         margin-bottom: 10px;
-        width: 48%;
-        margin-right: 1%;
-        margin-left: 1%;
+        width: 49%;
     }
 
     .bannerbottomblock {
@@ -1992,6 +2001,23 @@
 }
 
 @media (max-width: 480px) {
+    .inventorymatchblock .searchbox {
+        width: 100%;
+        float: none;
+    }
+    .inventorymatchheader ul li .searchbox input {
+        width: 100%;
+    }
+    .inventoryrecentbidheader ul li .searchbox input {
+        width: 100%;
+    }
+    .inventoryrecentbidheader ul li{
+        width: 100%;
+    }
+    .inventorymatchheader ul li {
+        width: 100%;
+    }
+
     .customerstatus .example.list-inline>li:nth-child(2) {
         width: 100%;
         margin-bottom: 5px;
@@ -2132,12 +2158,12 @@
 
     .inventorysinglelistblock3col3 .actionbtns button {
         margin-bottom: 10px;
-        width: 98%;
+        width: 100%;
     }
 
     .inventorysinglelistblock3col1 .actionbtns button {
         margin-bottom: 10px;
-        width: 98%;
+        width: 100%;
     }
 
     .inventorysinglelist .imgouter {
@@ -2166,15 +2192,15 @@
         padding-left: 30px;
     }
     .RSVPActivity .daterange li {
-        color: #fff;
-        width: 49%;
+        color: #fff;/*
+        width: 49%;*/
     }
     .RSVPActivity .daterange li input {
         width: 100%;
     }
     .postauctioncctivityblock .daterange li {
-        color: #333;
-        width: 49%;
+        color: #333;/*
+        width: 49%;*/
     }
     .postauctioncctivityblock .daterange li input {
         width: 100%;
@@ -2225,14 +2251,6 @@
         width: 100% !important;
         float: left;
     }
-
-    .addadmin .addadminblock .submitwrap {
-        text-align: center;
-        float: none;
-        margin: 0 auto;
-        display: block;
-    }
-
 }
 
 
@@ -2298,16 +2316,7 @@
 
 
 @media(max-width:1199px) {
-
-    .cusdashboardblock1innerleft .logo a {
-        display: block!important;
-        width: 256px;
-        height: 72px;
-        overflow: hidden;
-        margin: 0 auto;
-        display: block;
-        text-align: center;
-    }
+    .dealerlists .adminlistlists .checkbox {text-align: center;}
     .newtablediv { padding:25px 0!important; display:block; width:100%; margin:0px;}
 
     .newtablediv tbody,.newtablediv tr{display:block; width:100%;}
@@ -2356,12 +2365,11 @@
 
 
 @media(max-width:1199px) {
-    .retailformblock1part1 .re_checkbox-inline span {
-        margin-top: -4px;
-    }
-    .retailformblock1part2 {
-        text-align: center;
-    }
+    .auctioninventoryblock .inventorylistswrapper span:nth-of-type(2n+2){
+        clear: both;}
+
+    .recentrsvpsinglelist .imgwrapperbox {width: auto; height: 50px;}
+
     .retailmainbannerblock .container h3{ font-size:32px;}
 
     .retailmainbannerblock .container h3 span{ display:block;}
@@ -2375,36 +2383,27 @@
 
     .retailbannerblock2_text2{ text-align:center;}
 
-    .retailformblock1part1 span{display: block;
+    .retailformblock1part1 span {
+        display: block;
         margin: 0 auto;
         text-align: center;
-        /* width: 100%; */
-        line-height:30px;
-        float: none;
+        line-height: 30px;
     }
-
     .retailformblock1part1 .re_checkbox_inlinediv {
-        display: inline-block;
+        display: block;
         margin: 0 auto;
         margin-top: 10px;
         width: 100px;
         float: none;
         overflow: hidden;
-        padding-top: 0px;
-
-    }
-    .retailformblock1part1 {
-        text-align: center;
+        padding-top: 5px;
     }
 
 
-    .retailformblock1part2  .re_checkbox_inlinediv{ display:inline-block; margin:0 auto; margin-top:10px; width:100px; float:none; overflow:hidden; padding-top:5px;}
+    .retailformblock1part2  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:10px; width:100px; float:none; overflow:hidden; padding-top:5px;}
 
-    .retailformblock1part2 span{ display:block; margin:0 auto; text-align:center; line-height:30px;
-        float: none;}
-    .retailformblock1part2 .re_checkbox-inline span {
-        margin-top: -4px;
-    }
+    .retailformblock1part2 span{ display:block; margin:0 auto; text-align:center; line-height:30px;}
+
     .form-inline .form-group{ display:block; width:100%;}
 
     .retailformblock1part3innerblock1 h3{ text-align:center;}
@@ -2435,21 +2434,30 @@
     .retailformblock4single{ width:309px!important;}
 
     .retailformblock5wrapper{width: 100%; margin: 0 auto;}
-    .retailformblock5part1{ width:90%!important; text-align: center;}
+    .retailformblock5part1{ width:90%!important;}
 
-    .retailformblock5part1 span{ display:block; text-align:center; margin-bottom: 10px;float: none;}
+    .retailformblock5part1 span{ display:block; text-align:center;}
 
-    .retailformblock5part1  .re_checkbox_inlinediv{
-        display: inline-block;
-        margin: 0 auto;
-        margin-top: 0;
-        width: 100px;
+    .retailformblock5part1  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:0; width:100px; float:none; overflow:hidden; padding-top:0;}
+
+/*    .retailformblock5part1 .re_checkbox-inline label{ margin: 0 10px !important;}*/
+    .inventorysinglelistblockcon .imgwrapper img.auction_toplogo {
+        max-width: 100% !important;
+        height: auto;
+        width: 106px !important;
+    }
+    .auction_toplogo{
+        position: inherit;
+        top:0;
+        right: 0;
+        margin-bottom: 10px;
+    }
+    .auctioninventoryheader ul {
         float: none;
-        overflow: hidden;
-        padding-top: 0;
+        text-align: center;
     }
 
-    /* .retailformblock5part1 .re_checkbox-inline label{ margin: 0 10px !important;}*/
+
 
 }
 @media(max-width:1024px) {
@@ -2457,13 +2465,23 @@
         width: 166px;
         float: right;
     }
-    .retailformblock1part1 .re_checkbox-inline span {
-        margin-top: -4px;
-    }
 }
 
 @media(max-width:991px) {
 
+
+
+    .postauctioncctivityheader ul {
+        float: none;
+        text-align: center;
+    }
+    .postauctioncctivityheader.customeractivity ul {
+        float: right;
+    }
+    .postauctioncctivityheader ul li{margin-bottom: 10px;}
+    .recentcussinglelist .imgwrapper {
+        display: block;
+    }
     .financingblock2wrapper [class*="col-"].pleaselistother{margin-bottom: 10px;}
 
     .ftrfinance p {margin-bottom: 0px;}
@@ -2540,12 +2558,15 @@
     .QuestionsCommentsdiv{padding-top: 7px !important;    padding-bottom: 10px !important;}
     .policydiv{padding-top: 7px !important;    padding-bottom: 0px !important;}
     .financingblock2wrapper [class*="col-"].QuestionsCommentstextarea{margin-bottom: 0px;}
-    .retailformblock1part2 {
-        text-align: center;
-    }
 }
 
+
+
 @media(max-width:767px) {
+    .inventorymatchheader ul li{margin-bottom: 10px;}
+    .inventorysinglelistblock {height: auto;}
+    .inventoryrecentbidheader ul {float: none;text-align: center; margin-top: 10px;}
+    .retailformblock1part3.row-eq-height {display: block;}
     .financingblock2wrapper [class*="col-"].vehicleplandiv {margin-bottom: 0px;}
     .financingblock2wrapper [class*="col-"].coapplicationdiv {margin-bottom: 10px;}
     .financingblock2wrapper [class*="col-"].cooperativeradio1div {margin-bottom: 0px;}
@@ -2607,6 +2628,15 @@
     .retailformblock4singlewrapper p{ font-size:16px; line-height:16px;}
 
     .retailformblock5part1{ width:96%!important;}
+    .retailformblock1part1 span {
+        padding-bottom: 14px;
+    }
+    .retailformblock1part2 span {
+        padding-bottom: 14px;
+    }
+    .retailformblock5part1 span {
+        padding-bottom: 14px;
+    }
 }
 
 
@@ -2620,7 +2650,10 @@
     .retailformblock1part3innerblock51 .table > tbody > tr > td:nth-child(3n+3){ text-align:center;}
 
     .retailformblock1part3innerblock51 strong{ display:block; padding-bottom:10px;}*/
-
+    .table_textbox .tabel_textarea {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
 
@@ -2631,6 +2664,15 @@
 
     .checkheredivbottom span {
         width: 60%;
+    }
+
+    .table_checkbox_wrapper {
+        width: 100%;
+        float: left;
+    }
+    .table_textbox .tabel_textarea {
+        width: 100%;
+        margin-bottom: 20px;
     }
 
 }
@@ -2788,6 +2830,9 @@
     .retailformblock1part3innerblock1 span{ width:60%; line-height:18px;}
     .prevresidentradiodiv span {width: 228px;line-height: 20px;}
     .otherliquidassetstxt{display:inline-block; floatl:left;}
+    .customersignout .dropdown-menu {
+        width: 100% !important;
+    }
 }
 
 @media(max-width:380px) {
@@ -2799,7 +2844,15 @@
         display: inline-block;
         width: 80%;
     }
+    .inventorymatchblock .searchbox {
+        width: 100%;
+        float: none;
+    }
+    .inventorymatchheader ul li .searchbox input {
+        width: 100%;
+    }
 }
+
 
 
 
@@ -2828,6 +2881,7 @@
 
 @media(max-width:991px) {
     .viewcustomers .logininfo p {display: block; float: none;}
+    .recentrsvpsinglelist .imgwrapperbox {width: 65px; height: 65px;}
 
 }
 @media(max-width:625px) {
@@ -2841,11 +2895,7 @@
     .sharelinkssearchbutton{width:100%; display: block; text-align: center;}
     .sharelinks .sharelinkssearch .list-inline>li { display: inline-block; padding-right: 5px; padding-left: 5px;
         width: 100%;}
-    .sharelinks .sharelinksimgwarpper {
-        width: 100% !important;
-    }
 }
-
 
 @media(max-width:480px) {
     .viewcustomers .blockcontentinfo .infobox{width:100%; display:block;}
@@ -2859,7 +2909,9 @@
         position: inherit;
     }
 
-
+    .sharelinks .sharelinksimgwarpper {
+        width: 100% !important;
+    }
     .sharelinkssinglelist .sharelinkssinglelistleft{ padding-right: 0px; padding-left: 0px;}
 
 }
@@ -2871,588 +2923,6 @@
 }
 
 
+
+
 /*------------end of view customer-------------*/
-
-
-
-/*---viewRSVP--*/
-@media(max-width:1100px) {
-    .RSVPActivity.viewrsvpinner .daterange {
-        margin-top: 0px;
-    }
-}
-
-@media(max-width:991px) {
-    .RSVPActivity.viewrsvpinner .daterange {
-        position: inherit;
-        top: 0;
-        right: 0;
-        margin-top: 13px !important;
-    }
-}
-@media(max-width:768px) {
-    .viewrsvpinner .viewrsvpinnerheader{
-        padding: 0px;
-    }
-
-    .RSVPActivity.viewrsvpinner .list-inline>li{
-        padding-right: 0px !important;
-    }
-
-    .RSVPActivity.viewrsvpinner .adminlistlists input {
-        width: 360px;
-        position: absolute;
-        top: 15px;
-        right: 15px;
-    }
-}
-
-@media(max-width:480px) {
-    .RSVPActivity.viewrsvpinner .adminlistlists input {
-        width: 100%;
-    }
-}
-
-/*---End viewRSVP--*/
-
-
-
-
-
-/*---mail inbox--*/
-
-
-/*---End mail inbox--*/
-
-
-
-
-@media(max-width:768px) {
-    .bannersizelistblock .adminlistlists input {
-        position: inherit !important;
-        top: 0 !important;
-        left: 0;
-        width: 100%;
-    }
-    .adminlistmainblock .adminlistlists input {
-        position: inherit !important;
-        top: 0 !important;
-        left: 0;
-        width: 100%;
-    }
-
-    .dealerlistman .adminlistlists input {
-        position: inherit !important;
-        top: 0 !important;
-        left: 0;
-        width: 100%;
-    }
-    .bannerlistblock .adminlistlists input {
-        position: inherit !important;
-        top: 0 !important;
-        left: 0;
-        width: 100%;
-    }
-    .readmailinboxwrapper .btn {
-        margin-bottom: 10px;
-    }
-    .mailinbox .row-eq-height {
-        display: block;
-    }
-}
-
-@media(max-width:480px) {
-    .bannersizelistblock .adminlistheader .addbtnwrapper {
-        display: block;
-        float: none !important;
-        text-align: center;
-        margin: 10px auto;
-    }
-    .adminlistmainblock .adminlistheader .addbtnwrapper {
-        display: block;
-        float: none !important;
-        text-align: center;
-        margin: 10px auto;
-    }
-    .bannerlistblock .adminlistheader .addbtnwrapper {
-        display: block;
-        float: none !important;
-        text-align: center;
-        margin: 10px auto;
-    }
-    .readmailinboxwrapper .btn {
-        margin-bottom: 10px;
-        width: 100%;
-    }
-
-    .readmailheadercontrol {
-        display: block;
-        width: 100%;
-        float: left;
-        text-align: center;
-    }
-}
-
-
-
-
-
-/*---CustomerProfile--*/
-
-@media(max-width:1800px) {
-    .custoomerinfowrapper .yourinboxblock .inboxlists li {
-        padding: 0px 0px 0px 0px;
-    }
-
-}
-
-@media(max-width:1666px) {
-    .custoomerinfowrapper .yourinboxblock .inboxlists li .btnreply{
-        margin-bottom: 14px !important;
-    }
-}
-
-
-@media(max-width:1520px) {
-
-    .custoomerinfowrapper .btnreply {
-        margin-bottom: 4px;
-    }
-
-
-    .activitylists ul li.list-group-item p {
-        float: left;
-        width: 55%;
-    }
-    .custoomerinfoblockright .control-label {
-        font-size: 13px;
-    }
-    .custoomerinfoblockright .control-data {
-        font-size: 13px;
-    }
-    .custoomerinfoblockleft .custoomerinfoonline ul li{font-size: 11px;}
-
-    .custoomerinfoblockright .btnsendmsg, .custoomerinfoblockright .btnwrite {
-        padding: 6px 5px 6px 5px;
-    }
-    .custoomerinfobtn ul li span {margin-right: 4px;}
-    .custoomerinfoonline .onlineblock1 img.icon-online {
-        width: 20px;
-        height: 20px;
-    }
-    .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper {
-        width: 80px;
-        vertical-align: middle;
-        padding-top: 0%;
-        height: 220px;
-    }
-    .custoomerinfowrapper .recentrsvpsinglelist p {
-        font-size: 11px;
-        padding: 6px 0px 6px 0px;
-    }
-
-    .custoomerinfowrapper .postauctioncctivityheader li{padding-right: 0px; padding-left: 0px;}
-    .custoomerinfowrapper .postauctioncctivityheader .daterange {right: 142px;}
-}
-@media(max-width:1400px) {
-    .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper {
-        vertical-align: middle;
-        padding-top: 0%;
-        width: 115px;
-        height: 190px;
-    }
-}
-
-@media(max-width:1366px) {
-    .custoomerinfoblockright .btnsendmsg, .custoomerinfoblockright .btnwrite {
-        padding: 6px 2px 6px 2px;
-    }
-    .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper {
-        width: 85px;
-        height: 174px;
-    }
-    .custoomerinfowrapper .postauctioncctivityheader h2 {
-        font-size: 17px;
-    }
-
-    .activitylists ul li.list-group-item p {
-        float: left;
-        width: 54%;
-    }
-    .custoomerinfowrapper .inboxlists li {
-        padding: 11px 0px 0px 0px;
-    }
-
-}
-
-@media(max-width:1320px) {
-
-    .custoomerinfowrapper .postauctioncctivityheader li span{display: none;}
-}
-
-
-@media(max-width:1280px) {
-
-
-    .custoomerinfowrapper .inboxlists li {
-        padding: 19px 0px 0px 0px;
-    }
-
-    .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper {
-        width: 66px;
-        height: 180px;
-    }
-
-    .custoomerinfowrapper .activitylists ul li {
-        padding: 8px 0px 9px 0px !important;
-    }
-
-    .custoomerinfowrapper .yourinboxblock .yourinboxheader h2 {
-        font-size: 17px;
-    }
-
-    .custoomerinfowrapper .recentrsvpheader h2 {
-        font-size: 17px;
-    }
-    .custoomerinfowrapper .recentrsvpsinglelist .imgwrapper {
-        width: 100%;
-        height: 56px;
-    }
-
-    .custoomerinfoblockright .btnsendmsg, .custoomerinfoblockright .btnwrite {
-        padding: 6px 4px 6px 4px;
-        font-size: 12px;
-    }
-    .custoomerinfowrapper .recentrsvpsinglelist .imgwrapperbox {
-        width: 55px;
-        height: 60px;
-    }
-}
-
-@media(max-width:1199px) {
-    .custoomerinfowrapper .postauctioncctivityheader li span {
-        display: block;
-    }
-    .custoomerinfowrapper .inboxlists li {
-        padding: 11px 0px 0px 0px;
-    }
-
-    .custoomerinfowrapper .inboxlists li p {
-        margin: 0 0 0px;
-        padding: 11px 0px 5px 0px;
-    }
-
-    .custoomerinfoblockright .btnsendmsg, .custoomerinfoblockright .btnwrite {
-        padding: 6px;
-        font-size: 15px;
-    }
-
-
-
-    .custoomerinfowrapper .auctioninventoryblock {
-        margin-top: 30px;
-    }
-
-    .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter .imgwrapper {
-        width: 200px;
-        vertical-align: top;
-        padding-top: 10%;
-        height: 215px;
-    }
-    .custoomerinfowrapper .auctioninventoryblock .progressleft {
-        padding-left: 0px !important;
-        padding-top: 0px;
-    }
-    .custoomerinfowrapper .auctioninventoryblock .progressright {
-        padding-right: 0px !important;
-        padding-top: 0px;
-    }
-    .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .table {
-        margin-bottom: 8px;
-    }
-    .custoomerinfowrapper .yourinboxblock {
-        margin-top: 20px;
-    }
-    .custoomerinfowrapper .recentrsvpblock {
-        margin-top: 20px;
-    }
-    .imgfilesrc{
-        height:auto;
-    }
-
-}
-
-
-@media(max-width:991px) {
-
-    .dealerpopup .inventorysinglelist .infobox .actionbtns .btnedit {
-        text-transform: uppercase;
-        margin-top: 20px;
-    }
-    .custoomerinfowrapper .inventorysinglelist .imgwrapper img {
-        max-width: 100% !important;
-        height: auto;
-        width: initial;
-    }
-    .custoomerinfowrapper .postauctioncctivityheader .daterange {
-        position: absolute;
-        top: 9px;
-        right: 156px;
-    }
-    .custoomerinfowrapper .postauctioncctivityheader .addbtnwrapper2 {
-        top: 16px;
-    }
-    .editlink.addbanner .browsefileblock{padding-left: 0px !important; padding-right: 0px !important;}
-    .inventorymatchblock.dealerpopup .inventorysinglelist .imgouter {
-        margin: 0 auto;
-        float: none;
-    }
-
-    .inventorymatchblock.dealerpopup .inventorysinglelist .imgouter {
-        margin: 0 auto;
-        float: none;
-        max-width: 100% !important;
-    }
-    .inventorymatchblock.dealerpopup .inventorysinglelist .imgouter {
-        margin: 0 auto;
-        float: none;
-        width: inherit;
-    }
-
-}
-
-@media(max-width:840px) {
-    .custoomerinfowrapper .postauctioncctivityheader .daterange {
-        position: inherit;
-        top: 0px;
-        right: 0px;
-        margin: 10px auto 10px auto;
-        display: block;
-        text-align: center;
-    }
-    .custoomerinfowrapper .postauctioncctivityheader .addbtnwrapper2 {
-        float: none;
-        margin-right: auto;
-        margin-left: auto;
-        text-align: center !important;
-        display: block;
-    }
-}
-
-@media(max-width:768px) {
-    .inventorymatchblock.dealerpopup .inventorysinglelist .imgouter {
-        margin: 0 auto;
-        float: none;
-        width: inherit;
-    }
-    .custoomerinfoblockleft .custoomerinfopic{
-        margin:0 auto;
-        display:block;
-        text-align:center;
-    }
-    .custoomerinfoblockleft {
-        padding-left: 0px !important;
-        padding-right: 0px !important;
-    }
-    .custoomerinfoblockright .form-horizontal .form-group {
-        margin-right: 0px;
-        margin-left: 0px;
-    }
-    .custoomerinfoblockright .control-label {
-        width: 100%;
-        float: none;
-        margin: 0px auto;
-        text-align: center;
-        display: block;
-        text-align: center !important;
-    }
-
-    .custoomerinfoblockright .control-data {
-        width: 100%;
-        float: none;
-        margin: 0px auto;
-        text-align: center;
-    }
-    .custoomerinfoblockright {
-        padding-right: 0px !important;
-        padding-left: 0px !important;
-    }
-    .custoomerinfoonline{
-        text-align:center;
-    }
-    .custoomerinfobtn {
-        float: none;
-        margin: 0 auto;
-        display: block;
-        text-align: center;
-    }
-
-
-
-
-    .custoomerinfoonline ul li {
-        padding-right: 0px;
-        padding-left: 0px;
-        margin-bottom: 10px;
-    }
-    .custoomerinfobtn ul li {
-        padding-right: 0px;
-        padding-left: 0px;
-        margin-bottom:10px;
-    }
-    .custoomerinfoonline ul li {
-        font-size: 13px;
-    }
-
-    .custoomerinfowrapper .inventorysinglelist .imgouter .imgwrapper {
-        width: inherit;
-    }
-    .addbannersize .addadminblock .form-inline .signupform_wrapper .form-group {
-        width: 98% !important;
-    }
-    .addbannersize .addadminblock .submitwrap {
-        margin-top: 21px !important;
-        width: 127px;
-        text-align: right;
-        float: right;
-        z-index: 9;
-        position: relative;
-        padding: 0px 0 15px 0px;
-    }
-}
-
-
-@media(max-width:768px) {
-
-    .dealerpopup .inventorysinglelist .imgwrapper img {
-        width: inherit;
-        height: auto;
-    }
-
-
-    .dealerpopup .inventorysinglelist .infobox .actionbtns .btnedit {
-        margin-top: 3px;
-    }
-    .dealerpopup .inventorysinglelist .imgouter .imgwrapper {
-        margin: 8px auto;
-        display: block;
-        vertical-align: middle;
-        padding: 5px;
-        height: auto;
-    }
-
-    .dealerpopup .inventorysinglelist .infobox h2 {
-        text-align: center;
-    }
-    .dealerpopup .table>tbody>tr>td {
-        text-align: center;
-    }
-}
-
-@media(max-width:600px) {
-
-    .activitylists .list-group-item .activitywarpper {
-        display: block;
-        float: none;
-        margin: 0 auto;
-        margin-bottom:5px;
-    }
-    .activitylists ul li.list-group-item p {
-        float: none;
-        width: 100%;
-        text-align: center;
-        margin-bottom:5px;
-    }
-    .activitylists ul li span {
-        float: none;
-        margin: 0 auto;
-        text-align: center;
-        display: block;
-    }
-    .activitylists ul.socialicon {
-        width: 100%;
-        float: none;
-        padding: 0px !important;
-        margin: 0 auto;
-        display: block;
-        text-align: center;
-    }
-    .custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(1) {
-        width: 100%;
-        display: block;
-        text-align: left;
-    }
-
-    .custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(2) {
-        width: 100%;
-        display: block;
-        text-align: left;
-    }
-    .custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(3) {
-        width: 100%;
-        display: block;
-        text-align: left;
-    }
-
-    .custoomerinfowrapper .customerstatus .example.list-inline>li:nth-child(4) {
-        width: 100%;
-        display: block;
-        text-align: left;
-    }
-
-}
-
-@media(max-width:480px) {
-    .btnsendrsvp, .btnviewdetails {padding: 6px 4px 5px 4px;}
-    .custoomerinfowrapper .auctioninventoryblock .viewdetail ul{text-align:center;}
-    .custoomerinfowrapper .auctioninventoryblock .infobox {padding-left: 0px !important; padding-right: 0px !important;}
-    .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter {
-        width: 180px !important;
-    }
-    .orderdetails .inventorysinglelist .infobox {
-        padding-right: 0px !important;
-        padding-left: 0px !important;
-    }
-}
-
-@media(max-width:360px) {
-    .custoomerinfowrapper .auctioninventoryblock .inventorysinglelist .imgouter {
-        width: 100%!important;
-    }
-    .custoomerinfowrapper .custoomerinfobtn ul.list-inline>li {
-        display:block;
-        margin: 0 auto;
-        margin-bottom: 10px !important;
-    }
-    .custoomerinfowrapper .custoomerinfobtn ul.list-inline>li:last-of-type {
-        margin-bottom: 0px !important;
-    }
-    .addbanner .uploadrow .col-md-6{padding-left: 0px; padding-right: 0px;}
-}
-@media(max-width:320px) {
-    .btnsendrsvp, .btnviewdetails {
-        padding: 6px 4px 5px 4px;
-        width: 100%;
-        margin-top: 10px;
-    }
-    .custoomerinfowrapper .auctioninventoryblock .infobox .viewdetail ul li {
-        padding-right: 0px;
-        padding-left: 0px;
-        display: block;
-    }
-
-}
-
-
-/*---End CustomerProfile--*/
-
-
-@media(max-width:768px) {
-    .addmembershippackage .addadminblock .signupform_wrapper .form-group {
-        width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        display: block;
-    }
-
-}

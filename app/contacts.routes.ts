@@ -30,6 +30,7 @@ import {AppFaq} from "./pages/faq/app.faq";
 import {AppDealerWebsiteLogin} from "./pages/dealerwebsitelogin/dealerwebsitelogin";
 import {AppCustomercreditcard} from "./pages/customercreditcard/app.customercreditcard";
 import {AppCustomerheader  }  from './pages/customerheader/app.customerheader';
+import {AppCustomerfooter  }  from './pages/customerfooter/app.customerfooter';
 import {AppDealerFaq} from "./pages/dealerfaq/app.faqs";
 import {AppDealerlist} from "./pages/dealerlist/app.dealerlist";
 import {AppAddsharelink} from "./pages/addsharelink/app.addsharelink";
@@ -71,10 +72,38 @@ import {AppAddauction} from "./pages/addauction/app.addauction";
 import {AppEditauction} from "./pages/editauction/app.editauction";
 import {AppAddcar} from "./pages/addcar/app.addcar";
 import {AppCarlist} from "./pages/carlist/app.carlist";
+import {AppEditcar} from "./pages/editcar/app.editcar";
 import {AppCustomersignupstep1} from "./pages/customersignupstep1/app.customersignupstep1";
 import {AppOrderdetails} from "./pages/orderdetails/app.orderdetails";
 import {AppDealerprofile} from "./pages/dealerprofile/app.dealerprofile";
 import {AppMembershiporderreport} from "./pages/membershiporderreport/app.membershiporderreport";
+import {AppAddpurchasetime} from "./pages/addpurchasetime/app.addpurchasetime";
+import {AppPurchasetimelist} from "./pages/purchasetimelist/app.purchasetimelist";
+import {AppEditpurchasetime} from "./pages/editpurchasetime/app.editpurchasetime";
+import {AppAddbaseprice} from "./pages/addbaseprice/app.addbaseprice";
+import {AppBasepricelist} from "./pages/basepricelist/app.basepricelist";
+import {AppEditbaseprice} from "./pages/editbaseprice/app.editbaseprice";
+import {AppColorlist} from "./pages/colorlist/app.colorlist";
+import {AppAddcolor} from "./pages/addcolor/app.addcolor";
+import {AppEditcolor} from "./pages/editcolor/app.editcolor";
+import {AppAddcarlogo} from "./pages/addcarlogo/app.addcarlogo";
+import {AppCarlogolist} from "./pages/carlogolist/app.carlogolist";
+import {AppEditcarlogo} from "./pages/editcarlogo/app.editcarlogo";
+import {AppAddcarbodystyle} from "./pages/addcarbodystyle/app.addcarbodystyle";
+import {AppCarbodystylelist} from "./pages/carbodystylelist/app.carbodystylelist";
+import {AppEditcarbodystyle} from "./pages/editcarbodystyle/app.editcarbodystyle";
+import {AppAddcarautoyear} from "./pages/addcarautoyear/app.addcarautoyear";
+import {AppCarautoyearlist} from "./pages/carautoyearlist/app.carautoyearlist";
+import {AppEditcarautoyear} from "./pages/editcarautoyear/app.editcarautoyear";
+import {AppDealerauctionlist} from "./pages/dealerauctionlist/app.dealerauctionlist";
+import {AppAddcarmileage} from "./pages/addcarmileage/app.addcarmileage";
+import {AppCarmileagelist} from "./pages/carmileagelist/app.carmileagelist";
+import {AppEditcarmileage} from "./pages/editcarmileage/app.editcarmileage";
+import {AppCarfeaturelist} from "./pages/carfeaturelist/app.carfeaturelist";
+import {AppAddcarfeature} from "./pages/addcarfeature/app.addcarfeature";
+import {AppEditcarfeature} from "./pages/editcarfeature/app.editcarfeature";
+import {AppAuctioininventorydetails} from "./pages/auctioininventorydetails/app.auctioininventorydetails";
+
 //alert(window.location.hostname);
 
 //alert(checkutl);
@@ -118,6 +147,7 @@ const appRoutes: Routes = [
     { path: 'customerlogin',component: AppCustomerlogin},
     { path: 'adminheader',component: AppAdminheader,outlet:'adminheader'},
     { path: 'customerheader',component: AppCustomerheader,outlet:'customerheader'},
+    { path: 'customerfooter',component: AppCustomerfooter,outlet:'customerfooter'},
     { path: 'adminfooter',component: AppAdminfooter,outlet:'adminfooter'},
     { path: 'admindashboard',component: AppAdmindashboard},
     { path: 'customerdashboard',component: AppCustomerdashboard},
@@ -171,10 +201,38 @@ const appRoutes: Routes = [
     { path: 'editauction/:id', component: AppEditauction},
     { path: 'addcar', component: AppAddcar},
     { path: 'carlist', component: AppCarlist},
+    { path: 'editcar/:id', component: AppEditcar},
     { path: 'customersignupstep1', component: AppCustomersignupstep1},
     { path: 'orderdetails/:id', component: AppOrderdetails},
     { path: 'dealerprofile', component: AppDealerprofile},
     { path: 'membershiporderreport', component: AppMembershiporderreport},
+    { path: 'addpurchasetime', component: AppAddpurchasetime},
+    { path: 'purchasetimelist', component: AppPurchasetimelist},
+    { path: 'editpurchasetime/:id', component: AppEditpurchasetime},
+    { path: 'addbaseprice', component: AppAddbaseprice},
+    { path: 'basepricelist', component: AppBasepricelist},
+    { path: 'editbaseprice/:id', component: AppEditbaseprice},
+    { path: 'colorlist', component: AppColorlist},
+    { path: 'addcolor', component: AppAddcolor},
+    { path: 'editcolor/:id', component: AppEditcolor},
+    { path: 'addcarlogo', component: AppAddcarlogo},
+    { path: 'carlogolist', component: AppCarlogolist},
+    { path: 'editcarlogo/:id', component: AppEditcarlogo},
+    { path: 'addcarbodystyle', component: AppAddcarbodystyle},
+    { path: 'carbodystylelist', component: AppCarbodystylelist},
+    { path: 'editcarbodystyle/:id', component: AppEditcarbodystyle},
+    { path: 'addcarautoyear', component: AppAddcarautoyear},
+    { path: 'carautoyearlist', component: AppCarautoyearlist},
+    { path: 'editcarautoyear/:id', component: AppEditcarautoyear},
+    { path: 'dealerauctionlist', component: AppDealerauctionlist},
+    { path: 'addcarmileage', component: AppAddcarmileage},
+    { path: 'carmileagelist', component: AppCarmileagelist},
+    { path: 'editcarmileage/:id', component: AppEditcarmileage},
+    { path: 'carfeaturelist', component: AppCarfeaturelist},
+    { path: 'addcarfeature', component: AppAddcarfeature},
+    { path: 'editcarfeature/:id', component: AppEditcarfeature},
+    { path: 'auctioininventorydetails/:id', component: AppAuctioininventorydetails},
+
 
 
 ];

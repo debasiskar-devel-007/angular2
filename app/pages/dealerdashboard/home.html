@@ -34,9 +34,9 @@
                         </div>
                         <div class="col-lg-8 col-md-10 col-sm-10 col-xs-9 block1box1 vcenter">
                             <h4>Total Customer Count :</h4>
-                            <h5>412</h5>
+                            <h5>{{(customercount)?customercount:0}}</h5>
                             <div class="btnview">
-                                <a><span>View Customers</span></a>
+                                <a [routerLink]="['/viewcustomers']"><span>View Customers</span></a>
                             </div>
                         </div>
                     </div>
@@ -244,16 +244,16 @@
                 <div class="recentcusblock">
                     <div class="recentcusheader">
                         <h2>Recent Customers</h2>
-                        <div class="viewall"><a>View All</a></div>
+                        <div class="viewall"><a [routerLink]="['/viewcustomers']">View All</a></div>
                     </div>
                     <div class="recentrsvplists">
                         <div class="row">
                             <div *ngFor="let item of details" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
                                 <div class="imgwrapper">
-                                    <img *ngIf="item.filename" src="{{filesrc}}{{item.filename}}">
-                                    <img *ngIf="!item.filename" src="images/logo_61.png">
+                                    <a [routerLink]="['/customerprofile', item._id]"> <img *ngIf="item.filename" src="{{filesrc}}{{item.filename}}"></a>
+                                    <a [routerLink]="['/customerprofile', item._id]"><img *ngIf="!item.filename" src="images/logo_61.png"></a>
                                 </div>
-                                <p>{{item.fname}} {{item.lname}}</p>
+                                <a [routerLink]="['/customerprofile', item._id]"><p>{{item.fname}} {{item.lname}}</p></a>
                                 <span [innerHtml]="commonservices.convertunixtodate(item.added_on)"></span>
                                 <span class="inactive"></span>
                             </div>
@@ -633,7 +633,7 @@
                             </li>
                             <li>
                                 <div class="addbtnwrapper">
-                                    <a href="inventorymatches.html"><button class="btn btn-link viewallwhite" type="button" value="view all">View All</button></a>
+                                    <a [routerLink]="['/inventorymatches']"><button class="btn btn-link viewallwhite" type="button" value="view all">View All</button></a>
                                 </div>
                             </li>
                         </ul>
@@ -643,9 +643,9 @@
 
 
                         <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist" *ngFor="let itemiventorymatch of inventorymatcharr|filter:query let iinventory=index ">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row">
+                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist inventorysinglelistbox" *ngFor="let itemiventorymatch of inventorymatcharr|filter:query let iinventory=index ">
+                                <div class="inventorysinglelistblock inventorysinglelistblock_new">
+                                    <div class="row inventorysinglelistblock_row">
                                         <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
                                             <table class="table">
                                                 <tbody>
@@ -679,6 +679,7 @@
                                                 </tbody>
                                             </table>
                                         </div>
+
                                         <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
                                             <div class="imgouter">
                                                 <div class="imgwrapper">
@@ -690,27 +691,30 @@
                                     </div>
                                 </div>
                                 <div class="inventorysinglelistblock3">
-                                    <div class="row">{{itemiventorymatch.userdetails.length}}
+                                    <div class="inventorymatchusers_con" *ngFor="let inventoryusers of itemiventorymatch.userdetails|orderBy:orderbyqueryinventorymatch:orderbytypeinventorymatch let iinventory=index" >
+
+                                        <div class="row inventorymatchusers">
                                         <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
                                             <div class="imgouter">
                                                 <div class="imgwrapper">
-                                                    <img src="{{sharefilesrc}}{{itemiventorymatch.userdetails[0].filename}}">
+                                                    <img *ngIf="inventoryusers.filename" src="{{sharefilesrc}}{{inventoryusers.filename}}">
+                                                    <img *ngIf="!inventoryusers.filename" src="images/logo_61.png">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-7 col-md-8 col-sm-8 col-xs-12 inventorysinglelistblock3col2">
-                                            <h4>Name : {{itemiventorymatch.userdetails[0].fname}} {{itemiventorymatch.userdetails[0].lname}}</h4>
+                                            <h4>Name : {{inventoryusers.fname}} {{inventoryusers.lname}}</h4>
                                             <div class="row">
                                                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 preogressleft">
                                                     <div class="progress">
-                                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
+                                                        <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="inventoryusers.inventorymatchval+'%'">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage">{{itemiventorymatch.userdetails[0].inventorymatchval}}%<span></span></span></div>
+                                                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage">{{inventoryusers.inventorymatchval}}%<span></span></span></div>
                                             </div>
-                                            <h3>Top 3 match:</h3>
-                                            <h5>Make :  Renault   Model :  Duster   Year:  2016</h5>
+                                            <h3>Matches:</h3>
+                                            <h5><span style="display: inline" *ngFor="let inventorychoicematches of inventoryusers.inventorymatchvaluearr">{{inventorychoicematches}}</span></h5>
                                             <div><button type="button" class="btn btn-link">View Match List</button></div>
                                         </div>
                                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 inventorysinglelistblock3col3">
@@ -719,7 +723,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row inventorysinglelistblock4">
+                                    <div class="row inventorysinglelistblock4 inventorymatchusers1">
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
                                             <div class="actionbtns">
                                                 <a><button class="btnset" type="button" value="Edit">Set the retail price</button></a>	<a><button class="btnsend" type="button" value="Edit">Send Info</button></a>
@@ -739,17 +743,24 @@
                                             </div>
                                         </div>
                                     </div>
+
                                     <div class="divider4"></div>
-                                    <div class="row">
+
+                                    </div>
+
+
+                                   <!-- <div class="row">
                                         <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
                                             <div class="imgouter">
                                                 <div class="imgwrapper">
-                                                    <img src="images/customerimg_1.jpg">
+
+                                                    <img *ngIf="itemiventorymatch.userdetails[1].filename" src="{{sharefilesrc}}{{itemiventorymatch.userdetails[1].filename}}">
+                                                    <img *ngIf="!itemiventorymatch.userdetails[1].filename" src="images/logo_61.png">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-7 col-md-8 col-sm-8 col-xs-12 inventorysinglelistblock3col2">
-                                            <h4>Name : Lorem Ipsum</h4>
+                                            <h4>Name : {{itemiventorymatch.userdetails[1].fname}} {{itemiventorymatch.userdetails[0].lname}}</h4>
                                             <div class="row">
                                                 <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 preogressleft">
                                                     <div class="progress">
@@ -788,7 +799,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
                                 </div>
                             </div>
 

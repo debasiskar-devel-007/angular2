@@ -380,6 +380,8 @@
 }
 
 @media screen and (max-width:991px) {
+
+
     .amountres{text-align: right; float: right; margin-right: 10px;}
     .residencytype span{padding-left: 10px !important;}
     .financingblock2wrapperinner .form-group {margin: 0px 0px;}
@@ -968,7 +970,7 @@
 
 @media(max-width:1199px) {
 
-
+    .inventorysinglelistnewdiv{ width: 100%!important;}
     .cd_block3_gallery_smimg {
         margin: 26px 26px 0;
         text-align: center;
@@ -2926,3 +2928,14 @@
 
 
 /*------------end of view customer-------------*/
+
+
+@media screen and (max-width:960px){
+
+    .matchespopup .modal-content{ width: 90%!important;}
+
+
+
+    .matchespopup .modal-dialog{  width: 90%!important; }
+
+}

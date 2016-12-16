@@ -1,0 +1,165 @@
+<div class="body-inner">
+<div class="page-wrapper page-wrapper-inner">
+    <div class="blockmaininner">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 adminlistmessageblock">
+                <!--<div *ngFor="let item1 of messages">-->
+                <!--<p *ngIf="typeof(messages)!='undefined' " class="bg-success">{{messages.message}}.</p>-->
+                <div [innerHtml]="messages"></div>
+                <!--<p class="bg-warning">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p class="bg-danger">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
+                <!-- </div>-->
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="pageheader"><span>Dealer Auction</span> List</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+
+        <!-- .row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 sharelinks">
+                <div class="inventorymatchblock">
+                    <div class="inventorymatchheader">
+                        <h4>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</h4>
+                    </div>
+                    <div class="inventorylistswrapper">
+                        <div class="row">
+                            <!--row start-->
+                            <ul class="list-inline sharelinkssearch">
+                                <li><div class="searchbox"><input [(ngModel)]="query" placeholder="Search "></div></li>
+                               <!-- <li *ngIf="userdetails.userrole=='admin'"> <div class="sharelinkssearchbutton"><a [routerLink]="['/addsharelink']"><button class="addbtn" type="button">Add Share Media</button></a></div></li>-->
+                            </ul>
+                            <div class="clearfix"></div>
+
+                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist" *ngFor="let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id">
+                                <div class="row">
+
+                                    <div *ngIf="userdetails.userrole=='admin'" class="actionbtns" style="text-align: right;">
+                                        <a [routerLink]="['/editsharelink', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
+                                        <a><button class="btndelete" type="button" (click)="deleterow(item)"  value="Delete">Delete</button></a>
+                                    </div>
+                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 sharelinkssinglelistleft">
+                                        <div class="sharelinksimgwarpper">
+                                            <img *ngIf="item.filename" src="{{sharefilesrc}}{{item.filename}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
+                                        <h2>{{item.name}}</h2>
+                                       <!-- <p><input type="text" placeholder="{{item.url}}"></p>
+                                        <h3>Advance Options</h3>-->
+                                        <ul class="list-inline">
+                                            <li>
+                                                <div>
+                                                    <span class='st_email_large' displayText='Email'></span>
+                                                    <span class='st_facebook_large' displayText='Facebook'></span>
+                                                    <span class='st_twitter_large' displayText='Tweet'></span>
+                                                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
+                                                    <span class='st_pinterest_large' displayText='Pinterest'></span>
+                                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
+                                                </div>
+                                            </li>
+
+                                          <!--  <li><a>  <button class="btnsend" type="button">Copy Link</button></a></li>-->
+                                            <li><a>  <!--<button class="btn btn-default" type="button" ngIIclipboard [cbContent]="text">copy</button>--></a></li>
+                                          <!-- <li><a><button (click)="sharemediaModal.open()" class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>-->
+                                          <!-- <li><a><button (click)="bannerModal(item._id)" class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>-->
+                                           <li *ngIf="checkauctionval(item._id)"><a ><button (click)="deleteFromInventory(item)"   class="btnedit deleteinventory" type="button " value="Edit">Delete From My Inventory</button></a></li>
+                                           <li *ngIf="!checkauctionval(item._id)"><a ><button (click)="addInventory(item)"   class="btnedit addinventory" type="button" value="Edit">Add to My Inventory  </button></a></li>
+                                           <li><a><button (click)="dealerauctionModal(item.cardata)" class="btnedit" type="button" value="Edit">View Inventory</button></a></li>
+
+
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                        <p [innerHTML]="_sanitizer.bypassSecurityTrustHtml(item.description)"></p>
+
+                                        <label>No. of Inventory</label> <span class="badge"> {{item.cardata.length}}</span>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="col-lg-12 col-md-12 paginationwrapper">
+                        <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+            <modal #auctionModal class="mainmodal viewinventorymodal">
+                <modal-header class="modelheader">
+                    <h1 class="shareh1title">View Inventory</h1>
+                </modal-header>
+                <modal-content class="modelcontent" >
+                    <div class="row">
+                        <div *ngFor="let itemcar of auctiocardata" class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                            <div class="inventorysinglelistblock">
+                                <div class="row">
+                                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7 pull-left infobox">
+                                        <table class="table">
+                                            <tbody>
+                                            <tr>
+                                                <td><span>Make:</span></td>
+                                                <td><span>{{getcarlogo(itemcar)}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Model:</span></td>
+                                                <td>{{itemcar.model}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Year:</span></td>
+                                                 <td>{{getcaryear(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Miles:</span></td>
+                                                <td>{{getmileage(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Color:</span></td>
+                                                <td>{{getcolor(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Wholesale:</span></td>
+                                                <td>{{itemcar.est_retail_value}}</td>
+                                            </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 pull-right imgbox">
+                                        <div class="imgouter">
+                                            <div class="imgwrapper">
+                                                <img src="{{carimgsrc}}{{itemcar.filename}}">
+                                                <!--<img src="images/auctionimg_1.jpg">-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                     </div>
+
+
+
+                </modal-content>
+                <modal-footer class="modelfooter">
+                    <button class="btn btn-primary btnclose" (click)="auctionModal.close()">close</button>
+                </modal-footer>
+            </modal>
+
+    </div>
+</div>
+<!-- /#page-wrapper -->
+
+
+    <button #all_m (click)="auctionModal.open()" class="btnedit hide" type="button" value="Edit">Grab Banner</button>
+</div>
+

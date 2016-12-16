@@ -1,0 +1,139 @@
+<div class="container-fluid customerdashboardmaimbody">
+<div class="customerdashboardbody ">
+<div class="customerdashboard_heading"><h2><span>Membership</span> Package</h2></div>
+
+
+    <div class="container-fluid package_mainbody">
+        <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 package_mainbody_left">
+            <h2>  <span>Chose Your</span> Package</h2>
+
+            <table>
+                <tr>
+                    <th width="15%">Package Name </th>
+                    <th width="18%">Package Image  </th>
+                    <th width="10%">Free Member  </th>
+                    <th width="10%">Extra Charge  </th>
+                    <th width="40%">Description</th>
+                    <th width="7%">&nbsp;  </th>
+                </tr>
+
+
+                <tr *ngFor="let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id">
+                    <td>{{item.name}}</td>
+                    <td><img src="{{filesrc}}{{item.filename}}"></td>
+                    <td>{{item.free_member}}</td>
+                    <td>${{item.cost_extra_member}}</td>
+                    <td><div [innerHTML]="_sanitizer.bypassSecurityTrustHtml(item.description)">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </div></td>
+                    <td><input type="button" (click)="selectpackage(item,$event)" value="Select" class="pack_subbtn"> </td>
+                </tr>
+<!--                <tr>
+                    <td>Lorem Ipsum is simply</td>
+                    <td><img src="http://media.treehugger.com/assets/images/2016/04/tracy-johnson-hummingbirds-1.jpg.662x0_q70_crop-scale.jpg"></td>
+                    <td>020</td>
+                    <td>$100</td>
+                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </td>
+                    <td><input type="button" value="Select" class="pack_subbtn"> </td>
+                </tr>
+                <tr>
+                    <td>Lorem Ipsum is simply</td>
+                    <td><img src="http://media.treehugger.com/assets/images/2016/04/tracy-johnson-hummingbirds-1.jpg.662x0_q70_crop-scale.jpg"></td>
+                    <td>020</td>
+                    <td>$100</td>
+                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </td>
+                    <td><input type="button" value="Select" class="pack_subbtn"> </td>
+                </tr>
+                <tr>
+                    <td>Lorem Ipsum is simply</td>
+                    <td><img src="http://media.treehugger.com/assets/images/2016/04/tracy-johnson-hummingbirds-1.jpg.662x0_q70_crop-scale.jpg"></td>
+                    <td>020</td>
+                    <td>$100</td>
+                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </td>
+                    <td><input type="button" value="Select" class="pack_subbtn"> </td>
+                </tr>
+                <tr>
+                    <td>Lorem Ipsum is simply</td>
+                    <td><img src="http://media.treehugger.com/assets/images/2016/04/tracy-johnson-hummingbirds-1.jpg.662x0_q70_crop-scale.jpg"></td>
+                    <td>020</td>
+                    <td>$100</td>
+                    <td>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </td>
+                    <td><input type="button" value="Select" class="pack_subbtn"> </td>
+                </tr>-->
+            </table>
+
+
+        </div>
+
+        <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 package_mainbody_right">
+    <form novalidate [formGroup]="packageform" name="package">
+    <input  [formControl]="packageform.controls['username']" name="username" type="hidden"   />
+    <input  [formControl]="packageform.controls['description']" name="description" type="hidden"   />
+    <input  [formControl]="packageform.controls['name']" name="name" type="hidden"   />
+    <input  [formControl]="packageform.controls['free_member']" name="free_member" type="hidden"   />
+    <input  [formControl]="packageform.controls['cost_extra_member']" name="cost_extra_member" type="hidden"   />
+    <input  [formControl]="packageform.controls['filename']" name="filename" type="hidden"   />
+    <input  [formControl]="packageform.controls['packageid']" name="packageid" type="hidden"   />
+            <h2>  <span>Payment</span> Info </h2>
+    <div class="form-group">
+            <label>Card Type</label>
+
+        <select class="input1" [formControl]="packageform.controls['cardtype']" name="cardtype">
+            <option value="" selected="selected">Select Card Type</option>
+            <option *ngFor="let obj1 of getCardtype" [value]="obj1.value">{{obj1.value}}</option>
+
+        </select>
+        <span *ngIf ="packageform.controls['cardtype'].touched && !packageform.controls['cardtype'].valid" class="help-inline"><span class="errormsgtxt">Card type is Required !</span><img src="images/iconquestion.png"></span>
+    </div>
+
+           <!-- <input type="text"  class="input1" placeholder="Card Type" />-->
+            <!--   <span class="error">error msg</span>-->
+    <div class="form-group">
+            <label>Card Number</label>
+
+            <input  [formControl]="packageform.controls['cardnumber']" name="cardnumber" type="text"  class="input1" placeholder="Card Number" />
+            <!--   <span class="error">error msg</span>-->
+        <span *ngIf ="packageform.controls['cardnumber'].touched && !packageform.controls['cardnumber'].valid" class="help-inline"><span class="errormsgtxt">Card number is Required !</span><img src="images/iconquestion.png"></span>
+        </div>
+    <img src="images/newf1.png" alt="#" class="visaimg"  />
+    <div class="form-group">
+            <label>Expiration Date</label>
+            <!--<input type="text"  class="input3" placeholder="Card Exp Month" />-->
+            <select class="input3" [formControl]="packageform.controls['expmonth']" name="expmonth">
+                <option value="" selected="selected">Select Card Exp Month</option>
+                <option *ngFor="let obj2 of expMonths" [value]="obj2.value">{{obj2.value}}</option>
+
+            </select>
+    <span *ngIf ="packageform.controls['expmonth'].touched && !packageform.controls['expmonth'].valid" class="help-inline"><span class="errormsgtxt">Expiration month is Required !</span><img src="images/iconquestion.png"></span>
+
+    </div>
+    <div class="slimg">/</div>
+      <!-- <input type="text"  class="input3" placeholder="Card Exp Year" />-->
+    <div class="form-group">
+            <select class="input3" [formControl]="packageform.controls['expyear']" name="expyear">
+                <option value="" selected="selected">Select Card Exp Year</option>
+                <option *ngFor="let obj of getExpyears" [value]="obj.value">{{obj.value}}</option>
+
+            </select>
+    <span *ngIf ="packageform.controls['expyear'].touched && !packageform.controls['expyear'].valid" class="help-inline"><span class="errormsgtxt">Expiration year is Required !</span><img src="images/iconquestion.png"></span>
+            <!--   <span class="error">error msg</span>-->
+            <div class="clear"></div>
+    </div>
+    <div class="form-group">
+    <label>Security Code</label>
+
+            <input [formControl]="packageform.controls['securitycode']" name="securitycode" type="text"  class="input1" placeholder="Security Code" />
+
+        <span *ngIf ="packageform.controls['securitycode'].touched && !packageform.controls['securitycode'].valid" class="help-inline"><span class="errormsgtxt">Security code is Required !</span><img src="images/iconquestion.png"></span>
+            <div class="clear"></div>
+        </div>
+
+           <input type="button" (click)="formsubmit12()"  class="packsubbtn1"  value="Submit"/>
+</form>
+
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+
+
+    </div>
+</div>

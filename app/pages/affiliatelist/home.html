@@ -1,0 +1,81 @@
+
+<div class="page-wrapper adminlist">
+    <div class="blockmaininner">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 adminlistmessageblock">
+                <!--<div *ngFor="let item1 of messages">-->
+                    <!--<p *ngIf="typeof(messages)!='undefined' " class="bg-success">{{messages.message}}.</p>-->
+                <div [innerHtml]="messages"></div>
+                    <!--<p class="bg-warning">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p class="bg-danger">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
+               <!-- </div>-->
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="adminlistblock">
+                    <div class="adminlistheader">
+                        <h2><span>Affiliate</span> listing123</h2>
+                        <ul class="list-inline">
+                            <li> <div class="searchbox"><input style="right: 198px;" [(ngModel)]="query" placeholder="Search "></div></li>
+                            <li>
+                                <div class="addbtnwrapper">
+                                    <a [routerLink]="['/addaffiliate']"><button class="addbtn" type="button">Add Affiliate</button></a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="adminlistlists">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>First Name <b [ngClass]="getSortClass('fname')" (click)="manageSorting('fname')" ></b></th>
+                                <th>Last Name <b [ngClass]="getSortClass('lname')" (click)="manageSorting('lname')" ></b></th>
+                                <th>Email <b [ngClass]="getSortClass('email')" (click)="manageSorting('email')" ></b></th>
+                                <th>City<b [ngClass]="getSortClass('city')" (click)="manageSorting('city')" ></b></th>
+                                <th>State/Address/Zip</th>
+                                <th>Phone</th>
+                                <th>Status <b [ngClass]="getSortClass('is_active')" (click)="manageSorting('is_active')" ></b></th>
+                                <th>Date Added <b [ngClass]="getSortClass('added_on')" (click)="manageSorting('added_on')" ></b></th>
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr  *ngFor="let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id">
+                                <td>{{item.fname}}</td>
+                                <td>{{item.lname}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.city}}</td>
+                                <!--<td>{{item.state}}</td>-->
+
+                                <td>{{item.state}} <br>{{item.address}}<br>{{item.zip}}</td>
+                                <!--<td>{{item.zip}}</td>-->
+                                <td>{{item.phone}}</td>
+                                <td><a href="javascript:void(0)" (click)="changeStatus(item)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>
+                                <td [innerHtml]="commonservices.convertunixtodate(item.added_on)"></td>
+                                <td>
+                                    <div class="actionbtns">
+                                        <a [routerLink]="['/editaffiliate', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
+                                        <a><button class="btndelete" type="button" (click)="deleterow(item)"  value="Delete">Delete</button></a>
+                                    </div>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 paginationwrapper">
+               <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+</div>
+<!-- /#page-wrapper -->
+

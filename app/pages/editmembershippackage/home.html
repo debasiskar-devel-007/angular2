@@ -1,0 +1,111 @@
+<div class="page-wrapper addmembershippackage addadmin">
+    <div class="blockmaininner">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="pageheader"><span>Edit</span> Membership Package</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row addsharelinkblock">
+            <div class="col-lg-12 addadminblock">
+
+
+                    <div class="signupform_wrapper">
+                        <form novalidate [formGroup]="addmembershippackageform"   name="addmembershippackage"  class="form-inline">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input [formControl]="addmembershippackageform.controls['name']" name="name"  type="text" class="form-control" placeholder="Name"/>
+                                    <span  *ngIf ="addmembershippackageform.controls['name'].touched && !addmembershippackageform.controls['name'].valid" class="help-inline"><span class="errormsgtxt">Name is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input [formControl]="addmembershippackageform.controls['free_member']" name="free_member"  type="text" class="form-control" placeholder="No of Free Member"/>
+                                    <span  *ngIf ="addmembershippackageform.controls['free_member'].touched && !addmembershippackageform.controls['free_member'].valid" class="help-inline"><span class="errormsgtxt">Free Member is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input [formControl]="addmembershippackageform.controls['cost_extra_member']" name="cost_extra_member"  type="text" class="form-control" placeholder="Cost of Extra Member"/>
+                                    <span  *ngIf ="addmembershippackageform.controls['cost_extra_member'].touched && !addmembershippackageform.controls['cost_extra_member'].valid" class="help-inline"><span class="errormsgtxt">Free Member is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <input [formControl]="addmembershippackageform.controls['priority']" name="priority"  type="text" class="form-control" placeholder="Priority"/>
+                                    <span  *ngIf ="addmembershippackageform.controls['priority'].touched && !addmembershippackageform.controls['priority'].valid" class="help-inline"><span class="errormsgtxt">Priority is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" [formControl]="addmembershippackageform.controls['filename']" name="filename" class="form-control" placeholder="Filename"/>
+                                    <span *ngIf ="addmembershippackageform.controls['filename'].touched && !addmembershippackageform.controls['filename'].valid" class="help-inline"><span class="errormsgtxt">Filename is Required !</span><img src="images/iconquestion.png"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group hide">
+                                    <textarea [formControl]="addmembershippackageform.controls['description']" name="description" class="form-control form-control-textarea" placeholder="Description">
+                                    </textarea>
+                                   <!-- <span *ngIf ="addmembershippackageform.controls['description'].touched && !addmembershippackageform.controls['description'].valid" class="help-inline"><span class="errormsgtxt">Description is Required !</span><img src="images/iconquestion.png"></span>-->
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="browsefileblock">
+                                    <input type="file"
+                                           ngFileSelect
+                                           [options]="basicOptions"
+                                           (onUpload)="handleUpload($event)">
+                                    <!--<div class="responsceclass">
+                                        Response: {{ response | json }}
+                                    </div>-->
+                                    <div *ngIf="progress">
+                                        Uploading: {{ progress }}%
+                                    </div>
+                                    <div *ngIf="uploadedfilesrc" class="browsefileblockimg">
+                                        <img src="{{uploadedfilesrc}}" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="row uploadrow">
+                            <div class="col-md-6">
+                                <div class="form-group_chakebox signupcheckbox">
+                                    <input id="checkbox1" type="checkbox" name="is_active" [formControl]="addmembershippackageform.controls['is_active']" value="1"/><label for="checkbox1"></label><span>Is Active?</span>
+                                    <span *ngIf ="addmembershippackageform.controls['is_active'].touched && !addmembershippackageform.controls['is_active'].valid" class="help-inline">You must select checkbox</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <!--<div class="form-group">
+                            <input [formControl]="addmembershippackageform.controls['imageurl']" name="imageurl"  type="text" class="form-control" placeholder="Image Url"/>
+                            <span  *ngIf ="addmembershippackageform.controls['imageurl'].touched && !addmembershippackageform.controls['imageurl'].valid" class="help-inline"><span class="errormsgtxt">Image Url is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>-->
+                        </form>
+                    </div>
+
+
+
+                <ckeditor
+                        [(ngModel)]="ckeditorContent"
+                        [config]="{uiColor: '#272727'}"
+                        (change)="onChange($event)"
+                        (blur)="onBlur($event)"
+                        debounce="500">
+                </ckeditor>
+                <span *ngIf ="addmembershippackageform.controls['description'].touched && !addmembershippackageform.controls['description'].valid" class="help-inline2"><span class="errormsgtxt">Description  is Required !</span><img src="images/iconquestion.png"></span>
+                <div class="col-md-12">
+
+                    <div class="submitwrap">
+                        <button (click)="submitform1()" type="button" value="Submit" class="subbtn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       </div>
+    </div>

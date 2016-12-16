@@ -1,0 +1,146 @@
+<div class="page-wrapper">
+    <div class="blockmaininner">
+        <div class="row">
+            <div class="col-lg-12 faqblock">
+                <h2>FAQs</h2>
+                <ul class="list-inline">
+                    <li><div class="searchbox faxsearchbox"><input [(ngModel)]="query" placeholder="Search "> </div>
+                    </li>
+                    <li>
+                        <div *ngIf="userInfo.userrole=='dealer' || userInfo.userrole=='admin'" class="addbtnwrapper2">
+                            <button [routerLink]="['/addfaqbyadmin']" class="addbtn" type="button" value="Add" >Add</button>
+                        </div>
+                    </li>
+                </ul>
+                <div class="faqblockwrapper">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel panel-default" *ngFor="let i = index; trackBy: trackByFn; let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id"   >
+                            <div class="panel-heading" role="tab" id="headingOne">
+                                <h4 class="panel-title">
+                                    <a role="button"   aria-expanded="true" aria-controls="collapseOne">
+                                    <!--data-toggle="collapse" data-parent="#accordion" href="#collapseOne{{i}}" -->
+
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-12 col-sm-12 leftwrap text-center">
+                                                <div class="slrbutton">
+                                                    <h1>{{i+1}}</h1>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-5 col-md-5 col-sm-12 col-sm-12 headertxtwrap"><span>{{item.title}}</span></div>
+                                            <div class="col-lg-5 col-md-5 col-sm-12 col-sm-12 headeruserinfo">
+                                                <!--<ul class="list-inline" *ngIf="userInfo.userrole=='dealer' || userInfo.userrole=='admin'">
+                                                    <li><span>Added by: <b style="text-transform: capitalize;"> {{item.addedusertype}}</b></span></li>
+                                                    <li>
+                                                        <span *ngIf="item.addedusertype =='admin' ">User Added: <b style="text-transform: capitalize;">{{item.userdetails[0].fname}} {{item.userdetails[0].lname}}</b></span></li>
+                                                    <span *ngIf="item.addedusertype =='dealer' ">User Added: <b style="text-transform: capitalize;">{{item.dealerdetails[0].fname}} {{item.dealerdetails[0].lname}}</b></span>
+                                                    <li *ngIf=" (userInfo.userrole=='dealer' && item.addedby==userInfo.username)|| userInfo.userrole=='admin'" >
+                                                        <button *ngIf="item.is_active==1" (click)="updatefaqstatus(0,item)" class="btn btn-default btnactive" type="button" value="Active">Active</button>
+                                                        <button *ngIf="item.is_active!=1 " (click)="updatefaqstatus(1,item)"  class="btn btn-default btninactive" type="button" value="Inactive">Inactive</button>
+                                                    </li>
+                                                </ul>-->
+                                            </div>
+                                            <div *ngIf="userInfo.userrole=='dealer' || userInfo.userrole=='admin'" class="col-lg-1 col-md-1 col-sm-12 col-sm-12 rightwrap">
+
+                                                <img *ngIf=" (userInfo.userrole=='dealer' && item.addedby==userInfo.username)|| userInfo.userrole=='admin'" (click)="deletefaq(item)" src="../images/newdelete.png" style="height: 38px; ">
+
+
+                                                <a *ngIf=" (userInfo.userrole=='dealer' && item.addedby==userInfo.username)|| userInfo.userrole=='admin'" [routerLink]="['/editfaq', item._id]"><img src="../images/icon-faqedit.png"></a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseOne{{i}}" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                                <div class="panel-body" [innerHtml]="item.body">
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 paginationwrapper">
+                            <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+                        </div>
+
+                        <!--<div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingTwo">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-12 col-sm-12 leftwrap">
+                                                <div class="slrbutton">
+                                                    <h1>02</h1>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-12 col-sm-12 headertxtwrap"><span>Lorem Ipsum is simply dummy text of the printing</span></div>
+                                            <div class="col-lg-1 col-md-1 col-sm-12 col-sm-12 rightwrap">
+                                                <a><img src="../images/icon-faqedit.png"></a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                                <div class="panel-body">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not <span class="text-uppercase">only five centuries, but also the leap into electronic typesetting,</span> remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingThree">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-12 col-sm-12 leftwrap">
+                                                <div class="slrbutton">
+                                                    <h1>03</h1>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-12 col-sm-12 headertxtwrap"><span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span></div>
+                                            <div class="col-lg-1 col-md-1 col-sm-12 col-sm-12 rightwrap">
+                                                <a><img src="../images/icon-faqedit.png"></a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                                <div class="panel-body">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel panel-default">
+                            <div class="panel-heading" role="tab" id="headingFour">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-12 col-sm-12 leftwrap">
+                                                <div class="slrbutton">
+                                                    <h1>04</h1>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-10 col-md-10 col-sm-12 col-sm-12 headertxtwrap"> <span>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</span></div>
+                                            <div class="col-lg-1 col-md-1 col-sm-12 col-sm-12 rightwrap">
+                                                <a><img src="../images/icon-faqedit.png"></a>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </h4>
+                            </div>
+
+                            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                                <div class="panel-body">
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. <span>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</span></p>
+                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                                </div>
+                            </div>
+                        </div>-->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

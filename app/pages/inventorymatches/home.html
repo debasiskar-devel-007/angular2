@@ -1,0 +1,469 @@
+<!--<div>{{details.length}}</div>
+<div>{{detailstemp}}</div>-->
+<div class="page-wrapper page-wrapper-inner">
+    <div class="blockmaininner">
+        <!-- .row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 inventorymatch">
+        <div class="inventorymatchblock">
+            <div class="inventorymatchheader">
+                <h2><span>Inventory</span> Matches</h2>
+
+                <ul class="list-inline">
+                    <li>
+                        <div class="btn-group bootstrap-select matchesdropdown">
+                            <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                <span class="selecttext">Matches by %</span>&nbsp;<span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu open" role="menu">
+                                <li class="selected">
+                                    <a><span class="text">Above 50%</span></a></li>
+                                <li>
+                                    <a><span class="text">Above 60%</span></a></li>
+                                <li>
+                                    <a><span class="text">Above 70%</span></a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li><div class="searchbox"><input (keyup)="startquerysearch($event)" [(ngModel)]="query_key" placeholder="Search by Make, Model, Auction, Year, Keyword"></div></li>
+                </ul>
+            </div>
+            <div class="inventorylistswrapper">
+
+
+                <div class="row">
+                    <div  *ngFor="let itemiventorymatch of inventorymatcharr|filter:query|orderBy:orderbyqueryinventorymatch:orderbytypeinventorymatch|paginate: { itemsPerPage: 9, currentPage: p };let iinventory=index " class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                        <div class="inventorysinglelistblock">
+                            <div class="row inventorysinglelistblock_row">
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
+                                    <table class="table">
+                                        <tbody>
+                                        <tr>
+                                            <td><span>Make:</span></td>
+                                            <td>{{getcarlogo(itemiventorymatch)}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Model:</span></td>
+                                            <td>{{itemiventorymatch.model}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Year:</span></td>
+                                            <td>{{getcaryear(itemiventorymatch)}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Miles:</span></td>
+                                            <td>{{getmileage(itemiventorymatch)}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Color:</span></td>
+                                            <td>{{getcolor(itemiventorymatch)}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span>Wholesale:</span></td>
+                                            <td>{{itemiventorymatch.est_retail_value}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
+                                    <div class="imgouter">
+                                        <div class="imgwrapper">
+                                            <div class="imgwrapper"><img src="{{sharefilesrc}}{{itemiventorymatch.auctiondata[0].filename}}" class="auction_toplogo">
+                                                <img src="{{sharefilesrc}}{{itemiventorymatch.filename}}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inventorysinglelistblock3"><!--{{itemiventorymatch.userdetails.length}}-->
+                            <div class="inventorymatchusers_con" *ngFor="let inventoryusers of itemiventorymatch.userdetails|orderBy:orderbyqueryinventorymatch:orderbytypeinventorymatch let iinventory=index" >
+
+                                <div class="row inventorymatchusers">
+                                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
+                                        <div class="imgouter">
+                                            <div class="imgwrapper">
+                                                <img *ngIf="inventoryusers.filename" src="{{sharefilesrc}}{{inventoryusers.filename}}">
+                                                <img *ngIf="!inventoryusers.filename" src="images/logo_61.png">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-7 col-md-8 col-sm-8 col-xs-12 inventorysinglelistblock3col2">
+                                        <h4>Name : {{inventoryusers.fname}} {{inventoryusers.lname}}</h4>
+                                        <div class="row">
+                                            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 preogressleft">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="inventoryusers.inventorymatchval+'%'">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage">{{inventoryusers.inventorymatchval}}%<span></span></span></div>
+                                        </div>
+                                        <h3>Matches:</h3>
+                                        <h5><span style="display: inline" *ngFor="let inventorychoicematches of inventoryusers.inventorymatchvaluearr">{{inventorychoicematches}}</span></h5>
+                                        <div>
+                                            <button type="button" (click)="inventoryModalopen(itemiventorymatch,inventoryusers)" class="btn btn-link">View Match List</button></div>
+                                    </div>
+                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 inventorysinglelistblock3col3">
+                                        <div class="actionbtns">
+                                            <a><button class="btnsend" (click)="rsvpModalopen(itemiventorymatch,inventoryusers)" type="button" value="Edit">Send RSVP</button></a>	<a><button class="btnedit" type="button" value="Edit">Contact</button></a>
+                                         </div>
+                                    </div>
+                                </div>
+                                <div class="row inventorysinglelistblock4 inventorymatchusers1">
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
+                                        <div class="actionbtns">
+                                            <a><button class="btnset" type="button" value="Edit">Set the retail price</button></a>	<a><button class="btnsend" type="button" value="Edit">Send Info</button></a>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col2 inventorysinglelistblock3col22">
+                                        <div class="example">
+                                            <div>
+                                                <label><span>Approved for financing</span></label>
+                                            </div>
+                                            <div class="radiobox1box">
+                                                <input id="radiobox1box1" type="radio" name="radiobox1box1" value="radiobox1box1"><label for="radiobox1box1"></label>
+                                            </div>
+                                            <div class="radiobox2box">
+                                                <input id="radiobox1box2" type="radio" name="radiobox1box1" value="radiobox1box2"><label for="radiobox1box2"></label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="divider4"></div>
+
+                            </div>
+
+
+
+                        </div>
+                    </div>
+
+                  </div>
+            </div>
+            <div class="col-lg-12 col-md-12 paginationwrapper">
+                <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <modal #invenModal class=" matchespopup">
+            <modal-header class="modelheader">
+            <div class="container-fluid" *ngIf="userinformation">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><h2><!--Match{{inventory.length}}--></h2></div>
+                <div class="col-lg-6 col-md-6 col-sm-3 col-xs-3">
+                    <div class="progress_wrapper">
+                    <div class="progress">
+                    <div class="progress-bar progress-bar-success" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" [style.width]="userinformation.inventorymatchval+'%'"> </div>
+                </div>
+                </div>
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> <h2>{{userinformation.inventorymatchval}}%</h2></div>
+
+
+            </div>
+            </modal-header>
+            <modal-content class="modelcontent">
+                     <div class="match_tablewrapper">
+                <div class="row-eq-height">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="userinformation">
+                    <div class="match_user_banner">
+                        <table width="100%" border="0">
+                            <tr>
+                                <td align="center" valign="middle" width="152"><div class="match_user_div">
+                                  <!--  <img src="http://bootstrap.gallery/everestv2/img/user1.jpg">-->
+                                    <img src="{{userinformation.userimage}}">
+                                </div></td>
+                                <td align="center" valign="middle"><h6>{{userinformation.fname}} {{userinformation.lname}}</h6></td>
+                            </tr>
+                        </table>
+
+
+
+                    </div>
+
+                    <div class="match_block_wrapper">
+                        <div class="matchblockdiv">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Make :</strong></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getcarlogoforuser(userinformation)}}</div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                       <!-- <div class="matchblockdiv">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Model : </strong></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">Duster</div>
+                            <div class="clearfix"></div>
+                        </div>-->
+
+
+                        <div class="matchblockdiv unmatched">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Year:  </strong></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getcaryearforuser(userinformation)}}</div>
+                            <div class="clearfix"></div>
+                        </div>
+
+
+                        <div class="matchblockdiv">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Miles : </strong></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getmileageforuser(userinformation)}}</div>
+                            <div class="clearfix"></div>
+                        </div>
+
+
+                        <div class="matchblockdiv unmatched">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Color :  </strong></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getcolorforuserinfo(userinformation)}}</div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="matchblockdiv">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Body Style : </strong></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getcarbodystyleforuser(userinformation)}}</div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                       <div class="matchblockdiv">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Price Range : </strong></div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getbasepricelistforuser(userinformation)}}</div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <!--  <div class="matchblockdiv">
+                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Odometer: </strong></div>
+                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 153,035 MI - ACTUAL</div>
+                             <div class="clearfix"></div>
+                         </div>-->
+
+
+
+                    </div>
+
+
+
+
+                </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="inventory" >
+                        <div class="match_car_banner">
+                            <table width="100%" border="0">
+
+                                <tr>
+                                    <td align="center" valign="middle" width="152"><div class="match_car_div">
+                                       <!-- <img src="http://www.pngpix.com/wp-content/uploads/2016/06/PNGPIX-COM-Renault-Megane-RS-Yellow-Car-PNG-Image-500x279.png">-->
+                                        <img src="{{sharefilesrc}}{{inventory.filename}}">
+                                    </div></td>
+                                    <td align="center" valign="middle">
+
+
+                                       <!-- <img src="https://static1.squarespace.com/static/56b0c302356fb0b51c2b951a/58222014c534a56b7c9299ad/582220263e00be7d112e9844/1480532836047/auctionzip+logo.png" class="auctionlogoimg">-->
+                                        <img src="{{sharefilesrc}}{{inventory.auctiondata[0].filename}}" class="auctionlogoimg">
+
+                                      <!--<img src="http://sac.flipkart.net/wp-content/uploads/2016/05/renaultlogo.png" class="carlogoimg">-->
+                                        <img src="{{sharefilesrc}}{{getcarlogos(inventory)}}" class="carlogoimg">
+                                        <h5>{{getcarlogo(inventory)}}</h5>
+                                        <!--<h5>Renault Duster</h5>-->
+                                    </td>
+                                </tr>
+                            </table>
+
+
+
+                        </div>
+
+                        <div class="match_block_wrapper">
+                            <div class="matchblockdiv">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Make :</strong></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getcarlogo(inventory)}}</div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="matchblockdiv">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Model : </strong></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{inventory.model}}</div>
+                                <div class="clearfix"></div>
+                            </div>
+
+
+                            <div class="matchblockdiv unmatched">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Year:  </strong></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getcaryear(inventory)}}</div>
+                                <div class="clearfix"></div>
+                            </div>
+
+
+                            <div class="matchblockdiv">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Miles : </strong></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getmileage(inventory)}}</div>
+                                <div class="clearfix"></div>
+                            </div>
+
+
+                            <div class="matchblockdiv unmatched">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Color :  </strong></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getcolor(inventory)}}</div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                           <!-- <div class="matchblockdiv">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Wholesale : </strong></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{inventory.est_retail_value}}</div>
+                                <div class="clearfix"></div>
+                            </div>-->
+                            <div class="matchblockdiv">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Price Range : </strong></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getbasepricelistforuser(userinformation)}}</div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                          <div class="matchblockdiv">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Body Style : </strong></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getbodystyle(inventory)}}</div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            bs{{userinformation.inventorymatchvalueclass['bs']}}
+                            bp{{userinformation.inventorymatchvalueclass['bp']}}
+                            ml{{userinformation.inventorymatchvalueclass['ml']}}
+                            mk{{userinformation.inventorymatchvalueclass['mk']}}
+                            cl{{userinformation.inventorymatchvalueclass['cl']}}
+ <!--
+                            <div class="matchblockdiv">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Odometer: </strong></div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"> 153,035 MI - ACTUAL</div>
+                                <div class="clearfix"></div>
+                            </div>
+-->
+
+
+                        </div>
+
+
+
+
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+
+                     </div>
+
+
+
+            </modal-content>
+          <modal-footer class="modelfooter">
+                <button class="btn btn-primary btnclose" (click)="invenModal.close()">close</button>
+            </modal-footer>
+        </modal>
+
+        <div id="rsvpModal" class="modal fade  matchespopup">
+            <div class="modal-dialog  ">
+                <div class="modal-content">
+                    <div class="modal-header" *ngIf="userinformation">
+                        <div class="container-fluid">
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><h2><!--Match{{inventory.length}}--></h2></div>
+                            <div class="col-lg-6 col-md-6 col-sm-3 col-xs-3">
+                                <div class="progress_wrapper">
+                                    <div class="progress">
+                                        <div class="progress-bar progress-bar-success" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" [style.width]="userinformation.inventorymatchval+'%'"> </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> <h2>{{userinformation.inventorymatchval}}%</h2></div>
+
+
+                        </div>
+                    </div>
+                    <div class="match_tablewrapper">
+                        <div class="row-eq-height">
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="userinformation">
+                                <div class="match_user_banner">
+                                    <table width="100%" border="0">
+                                        <tr>
+                                            <td align="center" valign="middle" width="152"><div class="match_user_div">
+                                                <!--  <img src="http://bootstrap.gallery/everestv2/img/user1.jpg">-->
+                                                <img src="{{userinformation.userimage}}">
+                                            </div></td>
+                                            <td align="center" valign="middle"><h6>{{userinformation.fname}} {{userinformation.lname}}</h6></td>
+                                        </tr>
+                                    </table>
+
+
+
+                                </div>
+
+
+
+
+
+
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="inventory" >
+                                <div class="match_car_banner">
+                                    <table width="100%" border="0">
+
+                                        <tr>
+                                            <td align="center" valign="middle" width="152"><div class="match_car_div">
+                                                <!-- <img src="http://www.pngpix.com/wp-content/uploads/2016/06/PNGPIX-COM-Renault-Megane-RS-Yellow-Car-PNG-Image-500x279.png">-->
+                                                <img src="{{sharefilesrc}}{{inventory.filename}}">
+                                            </div></td>
+                                            <td align="center" valign="middle">
+
+
+                                                <!-- <img src="https://static1.squarespace.com/static/56b0c302356fb0b51c2b951a/58222014c534a56b7c9299ad/582220263e00be7d112e9844/1480532836047/auctionzip+logo.png" class="auctionlogoimg">-->
+                                                <img src="{{sharefilesrc}}{{inventory.auctiondata[0].filename}}" class="auctionlogoimg">
+
+                                                <!--<img src="http://sac.flipkart.net/wp-content/uploads/2016/05/renaultlogo.png" class="carlogoimg">-->
+                                                <img src="{{sharefilesrc}}{{getcarlogos(inventory)}}" class="carlogoimg">
+                                                <h5>{{getcarlogo(inventory)}}</h5>
+                                                <!--<h5>Renault Duster</h5>-->
+                                            </td>
+                                        </tr>
+                                    </table>
+
+
+
+                                </div>
+
+
+
+
+
+
+                            </div>
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <h2 class="rsvp_headingtext">Please verify the <span>RSVP</span> amount is what you desire. Once accepted this can not be changed for this customer.</h2>
+
+                        <div class="rsvp_formgroup">
+                        <label>Set Retail Commission:</label>
+                        <input type="text" name="text" [(ngModel)]="retailfinalval" class="form-controlrsvp" >
+                        <input type="button" value="Send" class="rsvpsendbtn">
+
+                            <div class="clearfix"></div>
+
+                            <span>Calculated as Rule of Opencontract : Rate {{retailc}} with Type {{retailctype}} </span>
+                        </div>
+
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default btnclosepopup2" data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    <button #all_m (click)="invenModal.open()" class="btnedit hide" type="button" value="Edit">View Match List</button>
+   <!-- <button #all_m1 (click)="rsvpModal.open()" class="btnedit hide" type="button" value="Edit">Send RSVP</button>-->
+
+
+
+
+    </div>

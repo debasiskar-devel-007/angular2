@@ -1,0 +1,101 @@
+<div class="page-wrapper addmembershippackage addadmin">
+    <div class="blockmaininner">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="pageheader"><span>Edit</span> Auction</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row addsharelinkblock">
+            <div class="col-lg-12 addadminblock">
+
+                    <div class="signupform_wrapper">
+                        <form novalidate [formGroup]="addauctionform"   name="addauction"  class="form-inline">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input [formControl]="addauctionform.controls['name']" name="name"  type="text" class="form-control" placeholder="Name"/>
+                                    <span  *ngIf ="addauctionform.controls['name'].touched && !addauctionform.controls['name'].valid" class="help-inline"><span class="errormsgtxt">Name is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <input [formControl]="addauctionform.controls['priority']" name="priority"  type="text" class="form-control" placeholder="Priority"/>
+                                    <span  *ngIf ="addauctionform.controls['priority'].touched && !addauctionform.controls['priority'].valid" class="help-inline"><span class="errormsgtxt">Priority is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" [formControl]="addauctionform.controls['filename']" name="filename" class="form-control" placeholder="Filename"/>
+                                    <span *ngIf ="addauctionform.controls['filename'].touched && !addauctionform.controls['filename'].valid" class="help-inline"><span class="errormsgtxt">Filename is Required !</span><img src="images/iconquestion.png"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group hide">
+                                    <textarea [formControl]="addauctionform.controls['description']" name="description" class="form-control form-control-textarea" placeholder="Description">
+                                    </textarea>
+                                   <!-- <span *ngIf ="addauctionform.controls['description'].touched && !addauctionform.controls['description'].valid" class="help-inline"><span class="errormsgtxt">Description is Required !</span><img src="images/iconquestion.png"></span>-->
+                                </div>
+
+                            </div>
+                            <div class="clearfix"></div>
+                            <div class="col-md-12">
+                                <div class="browsefileblock">
+                                    <input type="file"
+                                           ngFileSelect
+                                           [options]="basicOptions"
+                                           (onUpload)="handleUpload($event)">
+                                    <!--<div class="responsceclass">
+                                        Response: {{ response | json }}
+                                    </div>-->
+                                    <div *ngIf="progress">
+                                        Uploading: {{ progress }}%
+                                    </div>
+                                    <div *ngIf="uploadedfilesrc" class="browsefileblockimg">
+                                        <img  src="{{uploadedfilesrc}}" >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="clearfix"></div>
+                        <div class="row uploadrow">
+                            <div class="col-md-6">
+                                <div class="form-group_chakebox signupcheckbox">
+                                    <input id="checkbox1" type="checkbox" name="is_active" [formControl]="addauctionform.controls['is_active']" value="1"/><label for="checkbox1"></label><span>Is Active?</span>
+                                    <span *ngIf ="addauctionform.controls['is_active'].touched && !addauctionform.controls['is_active'].valid" class="help-inline">You must select checkbox</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+
+                            <div class="clearfix"></div>
+
+                        </div>
+                        <!--<div class="form-group">
+                            <input [formControl]="addauctionform.controls['imageurl']" name="imageurl"  type="text" class="form-control" placeholder="Image Url"/>
+                            <span  *ngIf ="addauctionform.controls['imageurl'].touched && !addauctionform.controls['imageurl'].valid" class="help-inline"><span class="errormsgtxt">Image Url is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>-->
+                        </form>
+                    </div>
+
+
+
+                <ckeditor
+                        [(ngModel)]="ckeditorContent"
+                        [config]="{uiColor: '#272727'}"
+                        (change)="onChange($event)"
+                        (blur)="onBlur($event)"
+                        debounce="500">
+                </ckeditor>
+                <span *ngIf ="addauctionform.controls['description'].touched && !addauctionform.controls['description'].valid" class="help-inline2"><span class="errormsgtxt">Description  is Required !</span><img src="images/iconquestion.png"></span>
+                <div class="col-md-12">
+                    <div class="submitwrap">
+                        <button (click)="submitform1()" type="button" value="Submit" class="subbtn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       </div>
+    </div>

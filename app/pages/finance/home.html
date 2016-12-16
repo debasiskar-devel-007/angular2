@@ -1,0 +1,706 @@
+
+<div class="container-fluid re_signup_body_wrapper2">
+
+    <div class="container-fluid re_toplogoblock">
+
+        <a href="javascript:void(0)"><img src="images/re_logo1.png" alt="" class="re_logo1"/></a>
+        <span class="logodevider"></span>
+
+        <a href="javascript:void(0)">
+            <img src="{{package_image}}" alt=""  class="re_logo2"/>
+            <!--<img src="images/re_logo2.png" alt=""  class="re_logo2"/>-->
+        </a>
+
+    </div>
+
+    <div class="re_topsocialblock">
+
+        <a href="javascript:void(0)"><img src="images/re_ficon.jpg" alt="" /></a>
+        <a href="javascript:void(0)"><img src="images/re_ticon.jpg" alt="" /></a>
+        <a href="javascript:void(0)"><img src="images/re_gicon.jpg" alt="" /></a>
+        <a href="javascript:void(0)"><img src="images/re_iicon.jpg" alt="" /></a>
+        <a href="javascript:void(0)"><img src="images/re_vicon.jpg" alt="" /></a>
+
+        <div class="clearfix"></div>
+    </div>
+
+    <div class="clearfix"></div>
+
+</div>
+
+<div class="container-fluid retailmainbannerblock">
+    <div class="container">
+        <h2>Perfect Auto Match Calculator</h2>
+
+
+        <h3>The Cars You Really Want To Own <span>Our tools help you find a vehicle, quickly and easily</span></h3>
+    </div>
+</div>
+
+
+
+<div class="container-fluid retailbannerblock2">
+
+
+    <h6 class="re_new_textheading">Please fill out all of the following in order for us to match the perfect inventory to your choices</h6>
+
+    <div class="container retailbannerblock2_text1" style="margin-bottom: 32px;">
+        <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 retailbannerblock2_text1_left">
+            <img src="{{banner_image}}" alt="" style="width: 100%;"/>
+            <!--<img src="images/retailcustomer_banner2.png" alt="" style="width: 100%;"/>-->
+        </div>
+        <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12 retailbannerblock2_text1_right">
+            <div class="re_headingdiv"><h2>Your rep is: {{name}}</h2></div>
+            <div class="reuldiv">
+                <ul>
+                    <li>{{address1}}<br/>
+                        {{city}},{{state}}<br/>
+                        {{zip}}</li>
+
+                    <li>
+                        Phone: {{phone}}<br />
+
+                        <!-- Cell: 562-585-6965-->
+                    </li>
+                    <div class="clearfix"></div>
+
+                </ul>
+
+            </div>
+
+            <h3>{{email}}</h3>
+
+        </div>
+    </div>
+
+
+    <!--<div class="container retailbannerblock2_text2">
+
+        <h2>We are going to go to work for you! </h2>
+        <h3>There are literally thousands of automotive options at the auctions and now you are getting plugged in!   Once we know what your preferences are we are able to match that against literally thousands of autos and get you the best possible match at a price you just can't get on the lot!</h3>
+    </div>-->
+
+</div>
+
+<div class="container-fluid financingblock2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 financingblock2wrapper">
+                <form novalidate [formGroup]="customersignupform" name="customersignup">
+                <h3>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left text-left">Applicant's Information</div>
+                    </div>
+                </h3>
+                <div class="financingblock2wrapperinnerwrapper" style="padding-top: 26px;">
+                    <div class="financingblock2wrapperinner">
+
+                            <div class="row form-group">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['fname']" name="fname" type="text" class="form-control input-lg" placeholder="First name*">
+                                    <span  *ngIf ="customersignupform.controls['fname'].touched && !customersignupform.controls['fname'].valid" class="help-inline">First Name is Required ! <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['mname']" name="mname" type="text" class="form-control input-lg" placeholder="Middle name">
+
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['lname']" name="lname" type="text" class="form-control input-lg" placeholder="Last name*">
+                                    <span  *ngIf ="customersignupform.controls['lname'].touched && !customersignupform.controls['lname'].valid" class="help-inline">Last Name is Required ! <img src="images/iconquestion.png"></span>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['email']" name="email" type="email" class="form-control input-lg" placeholder="Email Address">
+                                    <span  *ngIf ="customersignupform.controls['email'].touched && !customersignupform.controls['email'].valid" class="help-inline">Email is Required ! <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['phone']" name="email" type="text" class="form-control input-lg" placeholder="Telephone number*">
+                                    <span  *ngIf ="customersignupform.controls['phone'].touched && !customersignupform.controls['phone'].valid" class="help-inline">Phone is Required ! <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['fax']" name="fax" type="text" class="form-control input-lg" placeholder="FAX">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['dob']" name="dob" type="text" class="form-control input-lg" placeholder="Birth Date*">
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['social_security']" name="social_security" type="text" class="form-control input-lg" placeholder="Social Security #*">
+
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['mother_maiden_name']" name="mother_maiden_name" type="text" class="form-control input-lg" placeholder="Mother’s maiden name">
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <h3><div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left text-left">Primary Residence</div></div></h3>
+                <div class="financingblock2wrapperinnerwrapper" style="padding-top: 26px;">
+                    <div class="financingblock2wrapperinner">
+
+                            <div class="row form-group">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['address']" name="address" type="text" class="form-control input-lg" placeholder="Address Line1*">
+                                    <span  *ngIf ="customersignupform.controls['address'].touched && !customersignupform.controls['address'].valid" class="help-inline">Address is Required ! <img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['addressline2']" name="addressline2" type="text" class="form-control input-lg" placeholder="Address Line2*">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 prhalfleft1"><input [formControl]="customersignupform.controls['city']" name="city" type="text" class="form-control input-lg" placeholder="City*">
+                                            <span  *ngIf ="customersignupform.controls['city'].touched && !customersignupform.controls['city'].valid" class="help-inline">City is Required ! <img src="images/iconquestion.png"></span>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 prhalfright2 Stateblock">
+                                            <!--<input type="text" class="form-control input-lg" placeholder="State*">-->
+                                            <select class="form-control input-lg" [formControl]="customersignupform.controls['state']" name="state" >
+                                                <option value="" selected="selected">Select Your State</option>
+                                                <option *ngFor="let obj of getusastates" [value]="obj.abbreviation">{{obj.name}}</option>
+                                            </select>
+                                            <span  *ngIf ="customersignupform.controls['state'].touched && !customersignupform.controls['state'].valid" class="help-inline spanalign">State is Required ! <img src="images/iconquestion.png"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12 prthird1"><input [formControl]="customersignupform.controls['zip']" name="zip" type="text" class="form-control input-lg" placeholder="Postal Code*">
+                                            <span  *ngIf ="customersignupform.controls['address'].touched && !customersignupform.controls['address'].valid" class="help-inline">Postal Code is Required ! <img src="images/iconquestion.png"></span>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8 prthird2 lbltext"><span class="amountres">Amount of Time at this Residence:</span></div>
+                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-4 prthird3"><input [formControl]="customersignupform.controls['primary_residence_year']" name="primary_residence_year" type="text" class="form-control input-lg" placeholder="Years*"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12 prthird1"><input [formControl]="customersignupform.controls['primary_residence_month']" name="primary_residence_month" type="text" class="form-control input-lg" placeholder="Months *"></div>
+                                        <div class="col-lg-3 col-md-3 col-sm-2 col-xs-12 prthird2 lbltext residencytype"><span>Residency Type*</span></div>
+                                        <div class="col-lg-6 col-md-6 col-sm-8 col-xs-12 prthird3 residencytyperadio">
+                                            <input [formControl]="customersignupform.controls['primary_residence_type']" name="primary_residence_type" id="radio1" type="radio"  value="1" checked="checked"><label for="radio1">Own</label>
+                                            <input [formControl]="customersignupform.controls['primary_residence_type']" name="primary_residence_type"  id="radio2" type="radio" name="radio" value="2"><label for="radio2">Rent</label>
+                                            <input [formControl]="customersignupform.controls['primary_residence_type']" name="primary_residence_type"  id="radio3" type="radio" name="radio" value="3"><label for="radio3">Others</label>
+                                            <!--   <label for="radio1">Own</label><input id="radio1" type="radio" name="radio" value="1">
+                                            <label for="radio2">Rent</label><input id="radio2" type="radio" name="radio" value="2">
+                                            <label for="radio3">Others</label><input id="radio3" type="radio" name="radio" value="3">-->
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 prhalfleft1"><input [formControl]="customersignupform.controls['primary_residence_monthly_payment']" name="primary_residence_monthly_payment"  type="text" class="form-control input-lg" placeholder="Total monthly housing payment $*"></div>
+                                    <div class="col-lg-6 col-md-6 prhalfright2"><input [formControl]="customersignupform.controls['primary_year_homeowner']" name="primary_year_homeowner" type="text" class="form-control input-lg" placeholder="Total years as a homeowner"></div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <h3>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-left text-left">Previous Residence</div>
+                        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pull-left text-left prevresidentradiodiv">
+                            <div class="smalltxt1" >
+                                <input id="prevresidentradio" type="checkbox" name="prevresidentradio" value="1">
+                                <label for="prevresidentradio"></label>
+                                <span>( If less than 2 years at current residence )</span>
+                            </div>
+                        </div>
+                    </div>
+                </h3>
+                <div class="financingblock2wrapperinnerwrapper" style="padding-top: 26px;">
+                    <div class="financingblock2wrapperinner">
+
+                            <div class="row form-group">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['previous_address']" name="previous_address" type="text" class="form-control input-lg" placeholder="Address Line1*">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['previous_addressline2']" name="previous_addressline2" type="text" class="form-control input-lg" placeholder="Address Line2*">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 prerthird1"><input [formControl]="customersignupform.controls['previous_city']" name="previous_city" type="text" class="form-control input-lg" placeholder="City*"></div>
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 prerthird2">
+
+                                        <select class="form-control input-lg" [formControl]="customersignupform.controls['previous_state']" name="previous_state" >
+                                            <option value="" selected="selected">Select Your State</option>
+                                            <option *ngFor="let obj of getusastates" [value]="obj.abbreviation">{{obj.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-12 prerthird2"><input [formControl]="customersignupform.controls['previous_zip']" name="previous_zip" type="text" class="form-control input-lg" placeholder="Postal Code*"></div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 prerthird2 lbltext"><label>Amount of Time at this Residence:</label></div>
+                                    <div class="col-lg-1 col-md-1 col-sm-4 col-xs-12 prerthird2">
+                                        <input [formControl]="customersignupform.controls['previous_residence_year']" name="previous_residence_year" type="text" class="form-control input-lg" placeholder="Years*">
+                                    </div>
+                                    <div class="col-lg-1 col-md-1 col-sm-4 col-xs-12 prerthird3">
+                                        <input [formControl]="customersignupform.controls['previous_residence_month']" name="previous_residence_month"  type="text" class="form-control input-lg" placeholder="Months*">
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <h3>
+                    <div class="row">
+                        <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 pull-left text-left">Mailing Address</div>
+                        <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 pull-left text-left mailingaddressradiodiv">
+                            <div class="smalltxt1">
+                                <input id="mailingaddressradio" type="checkbox" name="mailingaddressradio" value="1" checked="checked">
+                                <label for="mailingaddressradio"></label>
+                                <span>( If different than primary address )</span>
+                            </div>
+                        </div>
+                    </div>
+                </h3>
+                <div class="financingblock2wrapperinnerwrapper">
+                    <div class="financingblock2wrapperinner" style="padding-top: 26px;">
+
+                            <div class="row form-group">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['mailing_address']" name="mailing_address" type="text" class="form-control input-lg" placeholder="Address Line1*">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['mailing_addressline2']" name="mailing_addressline2" type="text" class="form-control input-lg" placeholder="Address Line2*">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mailingaddressthird1">
+                                        <input [formControl]="customersignupform.controls['mailing_city']" name="mailing_city" type="text" class="form-control input-lg" placeholder="City*">
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mailingaddressthird2">
+
+                                        <select class="form-control input-lg" [formControl]="customersignupform.controls['mailing_state']" name="mailing_state" >
+                                            <option value="" selected="selected">Select Your State</option>
+                                            <option *ngFor="let obj of getusastates" [value]="obj.abbreviation">{{obj.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 mailingaddressthird3">
+                                        <input [formControl]="customersignupform.controls['mailing_zip']" name="mailing_zip" type="text" class="form-control input-lg" placeholder="Postal Code*">
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <h3><div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left text-left">Current Employment</div></div></h3>
+                <div class="financingblock2wrapperinnerwrapper">
+                    <div class="financingblock2wrapperinner"style="padding-top: 26px;">
+
+                            <div class="row form-group">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 currentemploymenthalf1">
+
+                                        <input [formControl]="customersignupform.controls['occupation']" name="occupation" type="text" class="form-control input-lg" placeholder="Occupation">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 currentemploymenthalf2">
+                                        <input [formControl]="customersignupform.controls['employer']" name="employer" type="text" class="form-control input-lg" placeholder="Employer">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-12 currentemploymentthird1 lbltext paymenttype"><span>Payment Type</span></div>
+                                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 currentemploymentthird2 paymenttype1">
+                                            <label class="radio-inline">
+                                                <input [formControl]="customersignupform.controls['payment_type']" name="payment_type" id="paytype1" type="radio"  value="1" checked="checked"><label for="paytype1"><span></span>Hourly</label>
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input [formControl]="customersignupform.controls['payment_type']" name="payment_type" id="paytype2" type="radio"  value="2"><label for="paytype2"><span></span>Salary</label>
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input [formControl]="customersignupform.controls['payment_type']" name="payment_type" id="paytype3" type="radio"  value="3"><label for="paytype3"><span></span>Other</label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="col-lg-6 col-md-6 currentemploymenthalf1">
+                                        <input [formControl]="customersignupform.controls['hire_date']" name="hire_date" type="text" class="form-control input-lg" placeholder="Hire Date">
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 currentemploymenthalf2">
+                                        <input [formControl]="customersignupform.controls['work_phone']" name="work_phone" type="text" class="form-control input-lg" placeholder="Work phone">
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-2 col-xs-12 currentemploymenthalf1 lbltext selfemployee"><span>Self- Employed?</span></div>
+                                        <div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 currentemploymenthalf2 selfemployee1">
+                                            <label class="radio-inline">
+                                                <input id="Selfemp1" type="radio" [formControl]="customersignupform.controls['self_employed']" name="self_employed" value="1" checked="checked"><label for="Selfemp1"><span></span>Yes</label>
+                                            </label>
+                                            <label class="radio-inline">
+                                                <input id="Selfemp2" type="radio" [formControl]="customersignupform.controls['self_employed']" name="self_employed" value="0"><label for="Selfemp2"><span></span>No</label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 grossmonthlyincomeblock">
+                                    <div class="col-lg-5 col-md-5 col-sm-3 col-xs-12 currentemploymenthalf1 lbltext grossmonthlyincome"><span>Gross Monthly Income</span></div>
+                                    <div class="col-lg-7 col-md-7 col-sm-9 col-xs-12 currentemploymenthalf2 grossmonthlyincome1">
+                                        <div class="row">
+                                            <div class="col-lg-9 col-md-9 col-sm-8 col-xs-8 currentemploymenthalf1"><input [formControl]="customersignupform.controls['gross_monthly_income']" name="gross_monthly_income" type="text" class="form-control input-lg" placeholder="$"></div>
+                                            <div class="col-lg-3 col-md-3 col-sm-4 col-xs-4 currentemploymenthalf2 lbltext"><span class="txtpad">Monthly</span></div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                    <div class="row">
+                                        <div class="col-lg-5 col-md-5 currentemploymenthalf1 lbltext"><span>How long employed by this employer</span></div>
+                                        <div class="col-lg-7 col-md-7 currentemploymenthalf2">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 currentemploymenthalf1">
+                                                    <input [formControl]="customersignupform.controls['employment_year']" name="employment_year" type="text" class="form-control input-lg" placeholder="Years">
+                                                </div>
+                                                <div class="col-lg-6 col-md-6 currentemploymenthalf2">
+                                                    <input [formControl]="customersignupform.controls['employment_month']" name="employment_month"  type="text" class="form-control input-lg" placeholder="Months">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['employment_address']" name="employment_address"  type="text" class="form-control input-lg" placeholder="Address Line1*">
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                    <input [formControl]="customersignupform.controls['employment_addressline2']" name="employment_addressline2" type="text" class="form-control input-lg" placeholder="Address Line2*">
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="col-lg-4 col-md-4 currentemploymentthird1 currentemploymentcity">
+                                        <input [formControl]="customersignupform.controls['employment_city']" name="employment_city"  type="text" class="form-control input-lg" placeholder="City*">
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 currentemploymentthird2">
+
+                                        <select class="form-control input-lg" [formControl]="customersignupform.controls['employment_state']" name="employment_state" >
+                                            <option value="" selected="selected">Select Your State</option>
+                                            <option *ngFor="let obj of getusastates" [value]="obj.abbreviation">{{obj.name}}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-lg-4 col-md-4 currentemploymentthird3">
+                                        <input [formControl]="customersignupform.controls['employment_zip']" name="employment_zip"  type="text" class="form-control input-lg" placeholder="Postal Code*">
+                                    </div>
+                                </div>
+                            </div>
+
+                    </div>
+                </div>
+                <div class="clearfix"></div>
+
+                <h3>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-4 col-sm-7 col-xs-9 pull-left text-left">Previous Employment</div>
+                        <div class="col-lg-8 col-md-8 col-sm-5 col-xs-3 pull-left text-left prevemployeeradiodiv">
+                            <label class="smalltxt1">
+                                <input id="prevemployeeradio" type="checkbox" name="checkbox" value="1"><label for="prevemployeeradio"></label><span><strong>1</strong></span>
+                            </label>
+                        </div>
+                    </div>
+                </h3>
+                <div class="financingblock2wrapperinnerwrapper paddingtop26">
+                <div class="financingblock2wrapperinner">
+
+                        <div class="row form-group">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <input  [formControl]="customersignupform.controls['previous_employer']" name="previous_employer" type="text" class="form-control input-lg" placeholder="Employer*">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="col-lg-6 col-md-6 currentemploymentthird1 lbltext"><span>How long employed by this employer?</span></div>
+                                <div class="col-lg-3 col-md-3 currentemploymentthird2">
+                                    <input [formControl]="customersignupform.controls['previous_employment_year']" name="previous_employment_year" type="text" class="form-control input-lg" placeholder="Years">
+                                </div>
+                                <div class="col-lg-3 col-md-3 currentemploymentthird3 currentemploymentmonths">
+                                    <input [formControl]="customersignupform.controls['previous_employment_month']" name="previous_employment_month"  type="text" class="form-control input-lg" placeholder="Months">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <input [formControl]="customersignupform.controls['previous_employment_address']" name="previous_employment_address" type="text" class="form-control input-lg" placeholder="Address Line1*">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <input [formControl]="customersignupform.controls['previous_employment_addressline2']" name="previous_employment_addressline2"  type="text" class="form-control input-lg" placeholder="Address Line2*">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                <div class="col-lg-4 col-md-4 currentemploymentthird1 currentemploymentcity">
+                                    <input [formControl]="customersignupform.controls['previous_employment_city']" name="previous_employment_city" type="text" class="form-control input-lg" placeholder="City*">
+                                </div>
+                                <div class="col-lg-4 col-md-4 currentemploymentthird2">
+
+                                    <select class="form-control input-lg" [formControl]="customersignupform.controls['previous_employment_state']" name="previous_employment_state" >
+                                        <option value="" selected="selected">Select Your State</option>
+                                        <option *ngFor="let obj of getusastates" [value]="obj.abbreviation">{{obj.name}}</option>
+                                    </select>
+
+                                </div>
+                                <div class="col-lg-4 col-md-4 currentemploymentthird3">
+                                    <input [formControl]="customersignupform.controls['previous_employment_zip']" name="previous_employment_zip" type="text" class="form-control input-lg" placeholder="Postal Code*">
+                                </div>
+                            </div>
+                        </div>
+
+                </div>
+
+            </div>
+            <div class="clearfix"></div>
+
+            <h3><div class="row"><div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pull-left text-left">Financials</div></div></h3>
+            <div class="financingblock2wrapperinnerwrapper">
+                <div class="financingblock2wrapperinner paddingtop26">
+
+                        <div class="row form-group">
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+                                <div class="col-lg-5 col-md-5 financialshalf1 lbltext"><span>Other Monthly Income</span></div>
+                                <div class="col-lg-7 col-md-7 financialshalf2"><input [formControl]="customersignupform.controls['other_monthly_income']" name="other_monthly_income"  type="text" class="form-control input-lg" placeholder="$"></div>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 financialshalf1 lbltext"><span>Checking Account?</span></div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 financialshalf2">
+                                        <div class="row">
+                                            <div class="col-lg-7 col-md-7 col-sm-7 financialshalf1 financecheck1radio">
+                                                <label>
+                                                    <input [formControl]="customersignupform.controls['checking_account']" name="checking_account" id="financecheck1" type="radio"  value="1" checked="checked"><label for="financecheck1"><span></span>Yes</label>
+                                                </label>
+                                                <label>
+                                                    <input id="financecheck2" type="radio" [formControl]="customersignupform.controls['checking_account']" name="checking_account" value="2"><label for="financecheck2"><span></span>No/Current Balance</label>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-5 col-md-5 col-sm-5 financialshalf2">
+                                                <input [formControl]="customersignupform.controls['checking_account_balance']" name="checking_account_balance" type="text" class="form-control input-lg" placeholder="$"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-5 col-md-5 col-sm-12 col-xs-12 pleaselistother">
+                                <textarea [formControl]="customersignupform.controls['other_income_source']" name="other_income_source" class="form-control input-lg" rows="4" placeholder="Please list other income sources "></textarea>
+                            </div>
+                            <div class="col-lg-7 col-md-7 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-lg-3 col-md-3 col-sm-3 financialshalf1 currentemploymentthird1row1 lbltext"><span>Savings Account?</span></div>
+                                    <div class="col-lg-9 col-md-9 col-sm-9 financialshalf2">
+                                        <div class="row">
+                                            <div class="col-lg-7 col-md-7 col-sm-7 financialshalf1 savingsaccount1div">
+                                                <label>
+                                                    <input [formControl]="customersignupform.controls['saving_account']" name="saving_account"  id="savingsaccount1" type="radio"  value="1" checked="checked"><label for="savingsaccount1"><span></span>Yes</label>
+                                                </label>
+                                                <label>
+                                                    <input id="savingsaccount2" type="radio" [formControl]="customersignupform.controls['saving_account']" name="saving_account"  value="0"><label for="savingsaccount2"><span></span>No/Current Balance</label>
+                                                </label>
+                                            </div>
+                                            <div class="col-lg-5 col-md-5 col-sm-5 financialshalf2">
+                                                <input [formControl]="customersignupform.controls['saving_account_balnace']" name="saving_account_balnace"  type="text" class="form-control input-lg" placeholder="$" style="margin-left: 1px;"></div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row financialshalf2margintop">
+                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 financialshalf1 bankname">
+                                        <input [formControl]="customersignupform.controls['other_bank_name']" name="other_bank_name"  type="text" class="form-control input-lg" placeholder="Bank Name">
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 col-sm-6 col-xs-12 financialshalf2">
+                                        <div class="row" >
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-8 financialshalf1 lbltext otherliquidassetstxt"><span>Other Liquid assets</span></div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-4 financialshalf2 liquidassetsinputwrapper">
+                                                <input [formControl]="customersignupform.controls['other_liquid_asset']" name="other_liquid_asset"  type="text" class="form-control input-lg liquidassetsinput" placeholder="$"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 currentemploymentsinglewrapper">
+                                <div class="col-lg-12 col-md-12 currentemploymentsingle">
+                                    <input [formControl]="customersignupform.controls['other_liquid_asset_source']" name="other_liquid_asset_source"   type="text" class="form-control input-lg" placeholder="Please lists other liquid assets source">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-2 col-md-2 financialshalf1 pleasecheckdiv"><span><strong>Please check</strong></span></div>
+                            <div class="col-lg-10 col-md-10 financialshalf2 applicantclient">
+                                <div class="smalltxt">
+                                    <input [formControl]="customersignupform.controls['application_info_check']" name="application_info_check" id="1" type="checkbox" name="1" value="1"><label for="1"></label>
+                                    <span><i>I, the Applicant certify that all of the statements in this application are true and complete and are made for the purpose of obtaining credit.</i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-12 divdivider">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-5 col-md-5 col-sm-6 coapplicationdiv lbltext"><span>Do you have a co-application? ( co-buyer, co-signer )</span></div>
+                            <div class="col-lg-7 col-md-7 col-sm-6 cooperativeradio1div">
+                                <label class="radio-inline">
+                                    <input [formControl]="customersignupform.controls['co_applicant']" name="co_applicant"  id="cooperativeradio1" type="radio" name="radio5" value="1" checked="checked"><label for="cooperativeradio1"><span></span>Yes</label>
+                                </label>
+                                <label class="radio-inline">
+                                    <input [formControl]="customersignupform.controls['co_applicant']" name="co_applicant" id="cooperativeradio2" type="radio" name="radio5" value="2"><label for="cooperativeradio2"><span></span>No</label>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-5 col-md-5 col-sm-5 vehicleplandiv lbltext"><span>Do you have a vehicle you plan to trade in?</span></div>
+                            <div class="col-lg-7 col-md-7 col-sm-7 vehicleplan1div">
+                                <label class="radio-inline">
+                                    <input [formControl]="customersignupform.controls['vehicle_trade']" name="vehicle_trade" id="vehicleplan1" type="radio" name="radio6" value="1" checked="checked"><label for="vehicleplan1"><span></span>Yes</label>
+                                </label>
+                                <label class="radio-inline">
+                                    <input [formControl]="customersignupform.controls['vehicle_trade']" name="vehicle_trade" id="vehicleplan2" type="radio" name="radio6" value="2"><label for="vehicleplan2"><span></span>No</label>
+                                </label>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <h3><div class="row"><div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-left text-left">Loan Details</div></div></h3>
+            <div class="financingblock2wrapperinnerwrapper">
+                <div class="financingblock2wrapperinner">
+
+                        <div class="row form-group margintop">
+                            <div class="col-lg-12 col-md-12">
+                                <label class="message">If you are unsure of the details of your loan then a representative will contact you to aid you in completion of this or any section that you request.</label>
+                            </div>
+                        </div>
+                        <div class="row form-group" style="margin: 0px !important;">
+                            <div class="col-lg-2 col-md-2 checkherediv"><span class="lbltext"><strong>Check here</strong></span></div>
+                            <div class="col-lg-10 col-md-10 checkheredivbottom">
+                                <div class="smalltxt">
+                                    <input [formControl]="customersignupform.controls['loan_check']" name="loan_check" id="loandetailscheck1" type="checkbox"  value="1">
+                                    <label for="loandetailscheck1"></label>
+                                    <span><i>If you would like a representative to contact you.</i></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row form-group vehiclepurchasedblock">
+                            <div class="col-lg-12 col-md-12 vehiclepurchased">
+                                <label><strong>vehicle To Be Purchased</strong></label>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <input [formControl]="customersignupform.controls['listing_id']" name="listing_id" type="text" class="form-control input-lg" placeholder="Listing ID">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <input [formControl]="customersignupform.controls['location_id']" name="location_id" type="text" class="form-control input-lg" placeholder="Location ID">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                                <input [formControl]="customersignupform.controls['license_number']" name="license_number" type="text" class="form-control input-lg" placeholder="License Number">
+                            </div>
+                        </div>
+                       <!-- <div class="row form-group">
+                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
+                                <input [formControl]="customersignupform.controls['vin']" name="vin" type="text" class="form-control input-lg" placeholder="VIN">
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                               &lt;!&ndash; <input [formControl]="customersignupform.controls['mileage']" name="mileage" type="text" class="form-control input-lg" placeholder="Mileage">&ndash;&gt;
+                                <select  class="form-control input-lg" [formControl]="customersignupform.controls['car_mileage']" name="car_mileage" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Mileage</span></option>
+                                    <option *ngFor="let obj1 of listcarautomileage" [value]="obj1._id">{{obj1.mileage}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+
+                                <select multiple class="form-control input-lg" [formControl]="customersignupform.controls['upcoming_auction']" name="upcoming_auction[]" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Your Make</span></option>
+                                    <option *ngFor="let obj2 of carlogolist" [value]="obj2._id">{{obj2.name}}</option>
+                                </select>
+
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+
+                                <select class="form-control input-lg" [formControl]="customersignupform.controls['upcoming_auction']" name="upcoming_auction[]" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Your Model</span></option>
+                                    <option *ngFor="let obj3 of carlist" [value]="obj3._id">{{obj3.model}}</option>
+                                </select>
+
+
+                            </div>
+                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 modelyear">
+                                &lt;!&ndash;<input [formControl]="customersignupform.controls['model_year']" name="model_year" type="text" class="form-control input-lg" placeholder="Model Year">&ndash;&gt;
+                                <select multiple class="form-control input-lg" [formControl]="customersignupform.controls['car_auto_year']" name="car_auto_year[]" (change)="autoyearchange($event)" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Your Auction</span></option>
+                                    <option *ngFor="let obj1 of carautoyearlist" [value]="obj1._id">{{obj1.year}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-12 divdivider">
+                            </div>
+                        </div>-->
+                        <div class="row form-group">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <input [formControl]="customersignupform.controls['loan_down_payment']" name="loan_down_payment" type="text" class="form-control input-lg" placeholder="Down Payment $">
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <input [formControl]="customersignupform.controls['loan_vehicle_cost']" name="loan_vehicle_cost" type="text" class="form-control input-lg" placeholder="Total Vehicle Cost $">
+                            </div>
+                        </div>
+                        <div class="row form-group">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <input [formControl]="customersignupform.controls['loan_payment_amount']" name="loan_payment_amount" type="text" class="form-control input-lg" placeholder="Payment Amount $">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <input [formControl]="customersignupform.controls['loan_repayment_term']" name="loan_repayment_term" type="text" class="form-control input-lg" placeholder="Repyment Term">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                                <input  [formControl]="customersignupform.controls['loan_month']" name="loan_month" type="text" class="form-control input-lg" placeholder="Months">
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <h3><div class="row"><div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-left text-left">Questions / Comments?</div></div></h3>
+            <div class="financingblock2wrapperinnerwrapper" style="margin: 0; padding: 0;">
+                <div class="financingblock2wrapperinner QuestionsCommentsdiv margintop26">
+
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 QuestionsCommentstextarea">
+                                <textarea [formControl]="customersignupform.controls['comment']" name="comment" class="form-control input-lg" rows="3" placeholder="" style="margin: 0;"></textarea>
+                            </div>
+                        </div>
+                                    </div>
+            </div>
+            <div class="clearfix"></div>
+
+            <h3>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 pull-left text-left">POLICY</div>
+                </div>
+            </h3>
+            <div class="financingblock2wrapperinnerwrapper">
+                <div class="financingblock2wrapperinner policydiv margintop26">
+
+                        <div class="row form-group">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 textareamargin">
+                                <textarea readonly="readonly" style="padding: 20px; height: auto;" class="form-control input-lg" rows="5" placeholder="By click

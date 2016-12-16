@@ -1,0 +1,115 @@
+<div class="container-fluid cusdashboardblock1">
+    <div class="container-fluid cusdashboardblock1inner">
+        <div class="row" >
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerleft">
+                <div class="logo">
+                    <img src="images/adminlogo.png" alt="adminlogo" class="adminlogo"/>
+                    <span class="logodevider"></span>
+
+                    <!--<a href="javascript:void(0)"><img src="images/logo2.png" alt=""  class="logo2"/></a>-->
+                    <a href="javascript:void(0)"><img src="{{uploadedfilesrc}}" alt=""  class="adminlogo"/></a>
+                    <button type="button" class="btn btn-info collapsebtn" data-toggle="collapse" data-target="#demo"> <img src="images/dropdownmenu1.png" alt=""/></button>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="clearfix"></div>
+            </div>
+
+
+
+            <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerright">
+                <div class="badgelists">
+                    <a href = "#"><span class = "badge">3</span><img src="images/admicon-message.png">Messages</a>
+                    <a href = "#"><span class = "badge">1</span><img src="images/admicon-notification.png">Notifications</a>
+                    <a href = "#"><span class = "badge">5</span><img src="images/admicon-newcustomer.png">New Customers</a>
+                </div>
+                <div class = "customersignout dropdown">
+                    <a type = "button" class = "btn dropdown-toggle" id = "dropdownMenu1" data-toggle = "dropdown">
+                        <img src="{{customerimage}}" class="imgadminimg"> <label class="lblsignupcustomer">{{getUserFullname()}}</label> <span class = "caret"></span>
+                    </a>
+                    <div class = "dropdown-menu dropdown-menucuscom" aria-labelledby = "dropdownMenu1">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                            <a (click)="customerimageuploadModal.open()"><img  src="{{customerimage}}" class="imgadminimg"></a>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                            <label class="lblsignupcustomer">{{getUserFullname()}}</label>
+                        </div>
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                            <a (click)="logout()" href = "javascript:void(0)" class="btn btn-default btnlogout"  >
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <button type="button" class="btn btn-info collapsebtn" data-toggle="collapse" data-target="#demo"> <img src="images/dropdownmenu1.png" alt=""/></button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container-fluid menublockdiv collapse" id="demo">
+
+
+    <div >
+
+        <div class="container-fluid collapsediv">
+
+            <img src="images/menuarrow.png" alt="" class="menuarrowimg"/>
+
+        </div>
+        <div class="collapsedivmenu" >
+            <!--<img src="images/demomenu.png" alt="" style="display: block; margin: 0 auto;"/>-->
+            <ul>
+                <li><a><img src="images/admicon-managecustomer.png">Manage Customer Portal</a></li>
+                <li><a><img src="images/admicon-broadcastprefer.png">Manage Broadcast Preferences</a></li>
+                <li><a><img src="images/admicon-opencontact.png">Manage Open Contract</a></li>
+                <li><a><img src="images/admicon-manageaution.png">Manage Auctions</a></li>
+                <li><a><img src="images/admicon-subscription.png">Manage Subscriptions</a></li>
+                <li><a><img src="images/admicon-sharemedia.png">Share Media</a></li>
+                <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
+                <li><a [routerLink]="['/dealerfaq']"><img src="images/admicon-faq.png">Faq's</a></li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<modal #customerimageuploadModal class="mainmodal imageuploadmodal">
+    <modal-header class="modelheader">
+        <h1 class="shareh1title">Upload Image</h1>
+    </modal-header>
+    <modal-content class="modelcontent">
+
+
+        <form novalidate [formGroup]="updatecustomerform"   name="updatecustomer"  class="form-inline">
+            <div class="form-group">
+                <input [formControl]="updatecustomerform.controls['filename']" name="filename"  type="hidden" class="form-control" placeholder="Image"/>
+                <div class="clearfix"></div>
+            </div>
+            <div class="browsefileblock">
+                <label>Image</label>
+                <input type="file"
+                       ngFileSelect
+                       [options]="basicOptions"
+                       (onUpload)="handleUpload($event)">
+                <!--<div class="responsceclass">
+                    Response: {{ response | json }}
+                </div>-->
+                <div *ngIf="progress">
+                    Uploading: {{ progress }}%
+                </div>
+                <div *ngIf="customerimage" class="browsefileblockimg">
+                    <img src="{{customerimage}}" >
+                </div>
+            </div>
+            <div class="submitwrap">
+                <button (click)="submitform()" type="button" value="Submit" class="subbtn">Submit</button>
+            </div>
+            </form>
+
+    </modal-content>
+    <modal-footer class="modelfooter">
+        <button #modalclose class="btn btn-primary btnclose" (click)="customerimageuploadModal.close()">close</button>
+    </modal-footer>
+</modal>

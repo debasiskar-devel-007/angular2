@@ -521,6 +521,31 @@ h1,h2,h3,h4.h5,h6{ margin: 0px; padding: 0px;}
     text-decoration: none;
     float: right;
 }
+
+
+
+ .btnclosepopup2 {
+    background: rgba(0,0,0,1)!important;
+    background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%)!important;
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(48%, rgba(38,38,38,1)), color-stop(52%, rgba(47,47,47,1)), color-stop(100%, rgba(66,66,68,1)))!important;
+    background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%)!important;
+    background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%)!important;
+    background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%)!important;
+    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%)!important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#424244', GradientType=0 )!important;
+    display: block!important;
+    width: 100px!important;
+    height: 100%!important;
+    border: none;
+    cursor: pointer!important;
+    font-size: 20px!important;
+    color: #fff!important;
+    text-transform: uppercase!important;
+    font-family: 'MyriadPro-Semibold'!important;
+    text-shadow: 0 0 4px #000!important;
+    text-decoration: none!important;
+    float: right!important;
+}
 .modal-header .close{background-color: #fb4a32; opacity: 1; height: 24px; width: 24px; color: #fff;}
 
 
@@ -9540,7 +9565,7 @@ a:focus, a:hover {
 
 .match_tablewrapper .col-md-6{ margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px;}
 
-.match_tablewrapper .match_user_banner{ width: 100%; height:160px; background: #64a4b0; padding:0px; border: solid 8px #64a4b0; overflow: hidden; margin: 2px 0;}
+.match_tablewrapper .match_user_banner{ width: 100%; height:176px; background: #64a4b0; padding:0px; border: solid 8px #64a4b0; overflow: hidden; margin: 2px 0;}
 
 .match_tablewrapper .match_user_banner .match_user_div{  background: #ccc; width: 152px;  height: 144px; display: table-cell; text-align: center
 ; vertical-align: middle;}
@@ -9554,21 +9579,21 @@ a:focus, a:hover {
 .match_tablewrapper tr{ margin: 0!important; padding: 0px!important;}
 
 
-.match_tablewrapper .match_car_banner{ width: 100%; height:160px; background: #ffffff; padding: 0px; border: solid 8px #fb4a32;  overflow: hidden; margin: 2px 0;}
+.match_tablewrapper .match_car_banner{ width: 100%; height:176px; background: #ffffff; padding: 0px; border: solid 8px #fb4a32;  overflow: hidden; margin: 2px 0;}
 
 .match_tablewrapper .match_car_banner .match_car_div{ background: #ccc;  height: 144px; width: 152px; display: table-cell; text-align: center
 ; vertical-align: middle;}
 
 .match_tablewrapper .match_car_banner .match_car_div img{ max-width: 100%;  max-height: 100%;}
 
-.match_tablewrapper .match_car_banner td h5{ font-size: 20px; color: #fb4a32; text-transform: uppercase;   font-family:'MyriadPro-Regular'; text-align: center;  margin: 0; padding: 0px 4px;}
+.match_tablewrapper .match_car_banner td h5{ font-size: 16px; color: #fb4a32; text-transform: uppercase;   font-family:'MyriadPro-Regular'; text-align: center;  margin: 0; padding: 0px 4px;}
 
 .match_tablewrapper .match_car_banner td .carlogoimg{ width: 100px; display:block; margin: 0 auto; margin-bottom: 5px; }
 
 .match_tablewrapper .match_car_banner td .auctionlogoimg{ width: 80px; display:block; margin: 0 auto; margin-bottom: 5px; }
 .match_block_wrapper{ border: solid 1px #bfbfbf; border-bottom:none;  font-size: 16px; color: #303030; font-family:'MyriadPro-Regular'; }
 
-.match_block_wrapper .matchblockdiv{  border-bottom:solid 1px #bfbfbf;  padding: 5px 5px 5px 28px; background: url("images/matchcar.jpg") no-repeat 8px center;}
+.match_block_wrapper .matchblockdiv{  border-bottom:solid 1px #bfbfbf;  padding: 5px 5px 5px 28px; background: url("images/matchcar.jpg") no-repeat 8px 8px;}
 
 
 
@@ -9578,14 +9603,27 @@ a:focus, a:hover {
 
 
 
-.match_block_wrapper .unmatched{  background: url("images/unmatchedcar.jpg") no-repeat 8px center;}
+.match_block_wrapper .unmatched{  background: url("images/unmatchedcar.jpg") no-repeat 8px 8px;}
+
+.option_popup_wrapper td{ padding: 10px;  font-family:'MyriadPro-Regular'; border-bottom:solid 1px #bfbfbf; font-size: 16px; color: #303030; border-right:solid 1px #bfbfbf;  }
+
+
+.option_popup_wrapper td:last-of-type{border-right:none;}
+
+.option_popup_wrapper td b{ background: #ff0000; font-family:'MyriadPro-Semibold'; display: block; width: 30px; height: 30px; text-align: center; border-radius: 100px; color: #fff; line-height: 33px; }
+
+.option_popup_wrapper td strong{font-family:'MyriadPro-Semibold';}
+
+
+.option_popup_wrapper tr:last-of-type td{ border-bottom: none;}
+
+.option_popup_wrapper tr:nth-child(odd){ background: #DCDCDC;}
 
 
 
 
 
-
-/*-----------amitava-----------*/
+    /*-----------amitava-----------*/
 
 .retail_h2heading{ font-size: 24px; color: #fff; padding-left:0px !important;
     padding-right: 0px !important; padding-bottom: 20px}
@@ -9702,3 +9740,76 @@ a:focus, a:hover {
 .formgroupnew1 .help-inline2{ display: block !important; width: 100% !important; position: inherit !important; left: 0 !important; top: 0 !important; color: #ff0000 !important; margin-top: 5px;}
 
 .formgroupnew1 .help-inline2 img{ width: 15px !important; padding-left: 15px;}
+
+
+.capture_div{ width: 344px;  margin: 0 auto;}
+
+
+.capture_div h1{ color: #000;
+    display: block;
+    font-family: "open_sanssemibold";
+    font-size: 40px;
+    font-style: italic;
+
+    padding: 5px;
+    text-align: center;
+
+  background: url("images/captureblank.png") no-repeat  center top; background-size: cover;  width: 300px; height: 62px; float: left; margin: 0;}
+
+.capture_div span{ display:block; width:32px; height:32px; float:right; margin-top:15px;
+    background: url("images/newloader.png") no-repeat  center top;  background-size: cover; }
+
+
+
+
+
+@media(max-width:400px) {
+
+    .capture_div{ width: 280px;  margin: 0 auto;}
+
+    .capture_div h1{width: 236px;  font-size: 26px; }
+
+}
+
+
+
+.rsvp_headingtext{ margin: 0; padding: 10px; text-align: center;  font-family: "open_sanssemibold"; font-size: 26px; color: #000; padding-top: 25px; }
+
+.rsvp_headingtext span{color: #fb4a32;}
+
+.rsvp_formgroup{ width: 476px; display: block; margin: 25px auto; margin-bottom: 35px;}
+
+.rsvp_formgroup label{ width: 156px; float: left;  font-family:'MyriadPro-Semibold';     font-size: 15px;
+    margin-top: 6px;}
+.rsvp_formgroup .form-controlrsvp{width: 220px; height: 40px; background: #fff; border: solid 1px #ddd;
+    padding: 0 5px; border-radius: 0px; float: left; margin: 0 5px;}
+
+
+.rsvpsendbtn{ width: 90px; float: left;
+    height:40px;
+    color: #fff;  cursor: pointer; font-size: 16px;
+
+background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -moz-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  padding: 8px 8px 8px 8px;  border: none;
+}
+
+
+@media(max-width:500px) {
+    .rsvp_formgroup{ width: 100%;}
+    .rsvp_formgroup label{display: block; width: 100%; float: none; text-align: center; padding-bottom: 20px;}
+
+    .rsvp_formgroup .form-controlrsvp{ float: none; margin: 0 auto;}
+
+    .rsvpsendbtn{ float: none; margin: 0 auto; margin-top: 20px;}
+
+}
+
+
+
+.inventorysinglelist_blockdiv{ display: none;}
+
+.inventorysinglelist_blockdiv:nth-of-type(1){ display: block;}
+.inventorysinglelist_blockdiv:nth-of-type(2){ display: block;}
+.inventorysinglelist_blockdiv:nth-of-type(3){ display: block;}
+.inventorysinglelist_blockdiv:nth-of-type(4){ display: block;}
+.inventorysinglelist_blockdiv:nth-of-type(5){ display: block;}
+.inventorysinglelist_blockdiv:nth-of-type(6){ display: block;}

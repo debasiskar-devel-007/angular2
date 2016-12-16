@@ -70,7 +70,7 @@
     .creditcardleftblock{width: 56% !important; float: left;}
     .signuprightblock{width: 44% !important; float: right;}
 
-    .creditcardleftblockbottom{width: 100%;height: 783px; overflow: hidden;}
+    .creditcardleftblockbottom{width: 100%;height: 755px; overflow: hidden;}
     .cusdashboardblock9 .cusdashboardblock9inner {
         width: 100%;
         margin: 0 auto;
@@ -83,7 +83,7 @@
     .signupleftblockbottom h1 {
         font-size: 25px;
     }
-    .creditcardleftblockbottom {width: 100%;height: 783px;overflow: hidden;}
+    .creditcardleftblockbottom {width: 100%;height: 755px;overflow: hidden;}
     .creditcardleftblockbottom img {
         width: 120% !important;
     }
@@ -125,7 +125,7 @@
 
 
 @media screen and (max-width:1280px){
-
+    .postauctioncctivityheader h2 {margin-bottom: 10px;}
     .cusdashboardblock1innerleft{ width: 568px !important;}
     .cusdashboardblock1innerleft1{ width: auto !important;}
     /* .btnedit {
@@ -144,6 +144,7 @@
 
 @media screen and (max-width:1199px){
     /*  .btnedit {padding: 10px 13px;}*/
+    .auctioninventoryblock .inventorylistswrapper span span:nth-of-type(2n+2){clear: both;}
     .bannerbottomblock {height: auto;}
     .inventorysinglelist:nth-child(2n+2) {margin-bottom: 9px;}
     .inventorysinglelist:nth-child(2n+2):last-of-type {margin-bottom: 0px;}
@@ -177,7 +178,7 @@
     .creditcardleftblockbottom img {width: 170% !important;}
 
     .creditcardleftblockbottom {width: 100%; overflow: hidden;}
-    .creditcardleftblockbottom {width: 100%; height:783px; overflow: hidden;}
+    .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
     .creditcardleftblocktop h1 {
         font-size: 30px;
     }
@@ -325,20 +326,24 @@
 }
 
 @media screen and (max-width:1168px) {
-    .creditcardleftblockbottom {width: 100%; height:783px; overflow: hidden;}
+    .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
 }
 
 @media screen and (max-width:1159px) {
-    .creditcardleftblockbottom {width: 100%; height:783px; overflow: hidden;}
+    .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
 }
 
 @media screen and (max-width:1125px) {
-    .creditcardleftblockbottom {width: 100%; height:757px; overflow: hidden;}
+    .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
 }
 
-@media screen and (max-width:1100px) {
-
+@media screen and (max-width:1110px) {
     .creditcardleftblockbottom img {width: 175% !important;}
+    .creditcardleftblockbottom {width: 100%; height:729px; overflow: hidden;}
+}
+
+@media screen and (max-width:1080px) {
+    .creditcardleftblockbottom {width: 100%; height:729px; overflow: hidden;}
 }
 
 @media screen and (max-width:1060px){
@@ -360,7 +365,7 @@
         width: 100%;
     }
     .creditcardleftblockbottom img {width: 157% !important;}
-    .creditcardleftblockbottom {height: 756px;}
+    .creditcardleftblockbottom {height: 727px;}
 }
 
 @media screen and (max-width:1024px) {
@@ -375,6 +380,8 @@
 }
 
 @media screen and (max-width:991px) {
+
+
     .amountres{text-align: right; float: right; margin-right: 10px;}
     .residencytype span{padding-left: 10px !important;}
     .financingblock2wrapperinner .form-group {margin: 0px 0px;}
@@ -786,6 +793,9 @@
     }
 }
 @media screen and (max-width:400px) {
+    .inventoryrecentbidheader ul li .searchbox input {
+        width: 100%;
+    }
     .loginbox h1 { background-position: center top;
         padding:45px 4px 0px 4px!important;
         font-size: 28px;
@@ -960,7 +970,7 @@
 
 @media(max-width:1199px) {
 
-
+    .inventorysinglelistnewdiv{ width: 100%!important;}
     .cd_block3_gallery_smimg {
         margin: 26px 26px 0;
         text-align: center;
@@ -1105,6 +1115,30 @@
 
     .customerdashboard_block4 .cd_block4_box{ width:100%; float:none; margin:2px 0!important; margin-bottom:10px!important; }
     .cdcar_img img{ width:200px;}
+    .yourinboxblock .searchbox input {
+        width: 100%;
+        display: block;
+        float: none;
+        margin-bottom: 10px;
+    }
+    .searchbox .input-group-addon, .searchbox .input-group-btn {
+        width: 100%;
+        vertical-align: middle;
+        text-align: center;
+        float: none;
+        margin: 0 auto;
+        display: block;
+    }
+    .searchbox .input-group {
+        display: block;
+    }
+    .yourinboxblock .btnnewmsg {
+        display: block;
+        float: none;
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+    }
 }
 
 @media(max-width:440px) {
@@ -1125,6 +1159,13 @@
 
 @media(max-width:360px) {
     .cdcar_img img{ width:120px;}
+    .recentcussinglelist:nth-child(2n+1) {
+        margin-bottom: 9px;
+        clear: both;
+    }
+    .auctioninventoryheader ul li .searchbox input, .adminlistheader ul li .searchbox input {
+        width: 100%;
+    }
 }
 
 
@@ -1260,7 +1301,10 @@
     .logodevider{
         display: none;
     }
-
+    .adminlistheader ul {
+        float: none;
+        text-align: center;
+    }
 
     .inventorylistswrapper .bootstrap-select.makedropdown {
         position: inherit;
@@ -1292,7 +1336,7 @@
         right: 0;
         margin: 0px 0px 15px 0px;
     }
-    .auctioninventoryblock .searchbox{width: 47%; float: right;}
+/*    .auctioninventoryblock .searchbox{width: 47%; float: right;}*/
 
     .inventorymatchblock .inventorylistswrapper .searchbox input {
         position: absolute;
@@ -1396,10 +1440,11 @@
     }
     .margintop30{margin-top:0px; float:none; margin-bottom:20px;}
     .cusdashboardblock1innerright .collapsebtn{display: block !important;}
-    .table_textbox .tabel_button {
+    /*.table_textbox .tabel_button {
         margin-top: 20px;
-    }
+    }*/
 }
+
 @media screen and (max-width: 1100px) {
 
     .RSVPActivity .daterange {
@@ -1416,7 +1461,7 @@
       margin-bottom: 15px;
       margin-left: 12px;
     }*/
-    .RSVPActivity .addbtnwrapper{position: absolute; top: 18px; right: 15px;}
+    /*.RSVPActivity .addbtnwrapper{position: absolute; top: 18px; right: 15px;}*/
 }
 @media (max-width: 1024px) {
     .cusdashboardblock1innerright {
@@ -1429,7 +1474,19 @@
 
 }
 @media (max-width: 991px) {
+    .inventorymatchheader ul {
+        float: none;
+        text-align: center !important;
+        width: 100%;
+    }
 
+    .auctioninventoryheader ul {
+        float: right;
+        text-align: center;
+    }
+    .auctioninventoryheader ul li{
+        margin-bottom: 10px;
+    }
     .auctioninventoryblock .searchbox {
         width: 100%;
         float: none;
@@ -1480,13 +1537,15 @@
         font-size: 13px;
     }
     .postauctioncctivityheader .addbtnwrapper2 {
+        float: none;
+    }
+    .postauctioncctivityheader.customeractivity .addbtnwrapper2 {
         float: right;
     }
 
     .bannerbottomblockleft {
         background: url(../images/img-bannerbottomblock.jpg) no-repeat left top;
     }
-
 
     .postauctionamain .postauctioncctivityheader .daterange {
         position: inherit;
@@ -1500,10 +1559,10 @@
         right: 15px;
     }
 
-    .daterange {
+   /* .daterange {
         position: absolute;
         top: 18px;
-    }
+    }*/
 
     .adminlistlists input {
         top: 17px;
@@ -1651,12 +1710,12 @@
     .sharelinkssinglelistright ul li{float:none; display:block; margin-bottom:20px;}
     .inventorymatch .inventorylistswrapper .bootstrap-select.matchesdropdown {right: 0;}
     .inventorylistswrapper .bootstrap-select.matchesdropdown {position: inherit; top: 0px; right: 0px;}
-    .postauctioncctivityheader .addbtnwrapper2 {
+    /*.postauctioncctivityheader .addbtnwrapper2 {
         float: right;
         position: absolute;
         top: 23px;
         right: 24px;
-    }
+    }*/
     .financingblock2wrapperinner {
         max-width: 96%;
         margin: 0px auto;
@@ -1944,6 +2003,23 @@
 }
 
 @media (max-width: 480px) {
+    .inventorymatchblock .searchbox {
+        width: 100%;
+        float: none;
+    }
+    .inventorymatchheader ul li .searchbox input {
+        width: 100%;
+    }
+    .inventoryrecentbidheader ul li .searchbox input {
+        width: 100%;
+    }
+    .inventoryrecentbidheader ul li{
+        width: 100%;
+    }
+    .inventorymatchheader ul li {
+        width: 100%;
+    }
+
     .customerstatus .example.list-inline>li:nth-child(2) {
         width: 100%;
         margin-bottom: 5px;
@@ -2118,15 +2194,15 @@
         padding-left: 30px;
     }
     .RSVPActivity .daterange li {
-        color: #fff;
-        width: 49%;
+        color: #fff;/*
+        width: 49%;*/
     }
     .RSVPActivity .daterange li input {
         width: 100%;
     }
     .postauctioncctivityblock .daterange li {
-        color: #333;
-        width: 49%;
+        color: #333;/*
+        width: 49%;*/
     }
     .postauctioncctivityblock .daterange li input {
         width: 100%;
@@ -2242,7 +2318,7 @@
 
 
 @media(max-width:1199px) {
-
+    .dealerlists .adminlistlists .checkbox {text-align: center;}
     .newtablediv { padding:25px 0!important; display:block; width:100%; margin:0px;}
 
     .newtablediv tbody,.newtablediv tr{display:block; width:100%;}
@@ -2291,6 +2367,10 @@
 
 
 @media(max-width:1199px) {
+    .auctioninventoryblock .inventorylistswrapper span:nth-of-type(2n+2){
+        clear: both;}
+
+    .recentrsvpsinglelist .imgwrapperbox {width: auto; height: 50px;}
 
     .retailmainbannerblock .container h3{ font-size:32px;}
 
@@ -2305,9 +2385,22 @@
 
     .retailbannerblock2_text2{ text-align:center;}
 
-    .retailformblock1part1 span{ display:block; margin:0 auto; text-align:center; line-height:30px;}
+    .retailformblock1part1 span {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        line-height: 30px;
+    }
+    .retailformblock1part1 .re_checkbox_inlinediv {
+        display: block;
+        margin: 0 auto;
+        margin-top: 10px;
+        width: 100px;
+        float: none;
+        overflow: hidden;
+        padding-top: 5px;
+    }
 
-    .retailformblock1part1  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:10px; width:100px;overflow:hidden; padding-top:5px;}
 
     .retailformblock1part2  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:10px; width:100px; float:none; overflow:hidden; padding-top:5px;}
 
@@ -2349,7 +2442,24 @@
 
     .retailformblock5part1  .re_checkbox_inlinediv{ display:block; margin:0 auto; margin-top:0; width:100px; float:none; overflow:hidden; padding-top:0;}
 
-    .retailformblock5part1 .re_checkbox-inline label{ margin: 0 10px !important;}
+/*    .retailformblock5part1 .re_checkbox-inline label{ margin: 0 10px !important;}*/
+    .inventorysinglelistblockcon .imgwrapper img.auction_toplogo {
+        max-width: 100% !important;
+        height: auto;
+        width: 106px !important;
+    }
+    .auction_toplogo{
+        position: inherit;
+        top:0;
+        right: 0;
+        margin-bottom: 10px;
+    }
+    .auctioninventoryheader ul {
+        float: none;
+        text-align: center;
+    }
+
+
 
 }
 @media(max-width:1024px) {
@@ -2360,6 +2470,20 @@
 }
 
 @media(max-width:991px) {
+
+
+
+    .postauctioncctivityheader ul {
+        float: none;
+        text-align: center;
+    }
+    .postauctioncctivityheader.customeractivity ul {
+        float: right;
+    }
+    .postauctioncctivityheader ul li{margin-bottom: 10px;}
+    .recentcussinglelist .imgwrapper {
+        display: block;
+    }
     .financingblock2wrapper [class*="col-"].pleaselistother{margin-bottom: 10px;}
 
     .ftrfinance p {margin-bottom: 0px;}
@@ -2438,7 +2562,13 @@
     .financingblock2wrapper [class*="col-"].QuestionsCommentstextarea{margin-bottom: 0px;}
 }
 
+
+
 @media(max-width:767px) {
+    .inventorymatchheader ul li{margin-bottom: 10px;}
+    .inventorysinglelistblock {height: auto;}
+    .inventoryrecentbidheader ul {float: none;text-align: center; margin-top: 10px;}
+    .retailformblock1part3.row-eq-height {display: block;}
     .financingblock2wrapper [class*="col-"].vehicleplandiv {margin-bottom: 0px;}
     .financingblock2wrapper [class*="col-"].coapplicationdiv {margin-bottom: 10px;}
     .financingblock2wrapper [class*="col-"].cooperativeradio1div {margin-bottom: 0px;}
@@ -2500,6 +2630,15 @@
     .retailformblock4singlewrapper p{ font-size:16px; line-height:16px;}
 
     .retailformblock5part1{ width:96%!important;}
+    .retailformblock1part1 span {
+        padding-bottom: 14px;
+    }
+    .retailformblock1part2 span {
+        padding-bottom: 14px;
+    }
+    .retailformblock5part1 span {
+        padding-bottom: 14px;
+    }
 }
 
 
@@ -2513,7 +2652,10 @@
     .retailformblock1part3innerblock51 .table > tbody > tr > td:nth-child(3n+3){ text-align:center;}
 
     .retailformblock1part3innerblock51 strong{ display:block; padding-bottom:10px;}*/
-
+    .table_textbox .tabel_textarea {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
 
@@ -2524,6 +2666,15 @@
 
     .checkheredivbottom span {
         width: 60%;
+    }
+
+    .table_checkbox_wrapper {
+        width: 100%;
+        float: left;
+    }
+    .table_textbox .tabel_textarea {
+        width: 100%;
+        margin-bottom: 20px;
     }
 
 }
@@ -2681,6 +2832,9 @@
     .retailformblock1part3innerblock1 span{ width:60%; line-height:18px;}
     .prevresidentradiodiv span {width: 228px;line-height: 20px;}
     .otherliquidassetstxt{display:inline-block; floatl:left;}
+    .customersignout .dropdown-menu {
+        width: 100% !important;
+    }
 }
 
 @media(max-width:380px) {
@@ -2692,7 +2846,15 @@
         display: inline-block;
         width: 80%;
     }
+    .inventorymatchblock .searchbox {
+        width: 100%;
+        float: none;
+    }
+    .inventorymatchheader ul li .searchbox input {
+        width: 100%;
+    }
 }
+
 
 
 
@@ -2721,6 +2883,7 @@
 
 @media(max-width:991px) {
     .viewcustomers .logininfo p {display: block; float: none;}
+    .recentrsvpsinglelist .imgwrapperbox {width: 65px; height: 65px;}
 
 }
 @media(max-width:625px) {
@@ -2735,7 +2898,6 @@
     .sharelinks .sharelinkssearch .list-inline>li { display: inline-block; padding-right: 5px; padding-left: 5px;
         width: 100%;}
 }
-
 
 @media(max-width:480px) {
     .viewcustomers .blockcontentinfo .infobox{width:100%; display:block;}
@@ -2763,4 +2925,17 @@
 }
 
 
+
+
 /*------------end of view customer-------------*/
+
+
+@media screen and (max-width:960px){
+
+    .matchespopup .modal-content{ width: 90%!important;}
+
+
+
+    .matchespopup .modal-dialog{  width: 90%!important; }
+
+}

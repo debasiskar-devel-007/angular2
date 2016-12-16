@@ -9,7 +9,7 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
-
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -19,8 +19,6 @@ import {AppComponent} from "../home/app.component";
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
 export class AppAuctioninventoryview {
-    // /@ViewChild(Modal) modal;
-    //dealerloginform: FormGroup;
     myModal :ModalModule;
     data:any;
     http:Http;
@@ -29,135 +27,254 @@ export class AppAuctioninventoryview {
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
-    private userInfo:CookieService;
-    id:any;
-    item:any;
-    private messages:any;
+    private userInfo:any;
+    details:any;
+    username:any;
+    filesrc:any;
+    sharefilesrc:any;
+    carlogolist:any;
+    carautoyearlist:any;
+    carmileagelist:any;
+    colorlist:any;
+    carlistarr:any;
+    auctionlistarr:any;
+    private query_model:any;
+    private query_auction:any;
+    private query_make:any;
+    private query_year:any;
+    private query:any;
     p:any;
     pagec:any;
-    orderbyquery:any;
-    orderbytype:any;
-    appcomponent:AppComponent;
-    tempdata:Array<any>;
+    cardata:Array<any>;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
+
+    constructor(b: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router) {
         this.router=router;
         this.http=http;
         this.router=router;
-        this.appcomponent=appcomponent;
         this.commonservices=commonservices;
         this.items = commonservices.getItems();
-        this.messages = appcomponent.getMessages();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl+'dealerlist';
+        this.query_model=0;
+        this.query_auction=0;
+        this.query_make=0;
+        this.query_year=0;
         this.p=1;
-        this.orderbyquery='fname';
-        this.orderbytype=-1;
-       this.http.get(link)
+        this.cardata=[];
+
+        this.userInfo=userInfo.getObject('userdetails');
+        this.username = this.userInfo.username; // (+) converts string 'id' to a number
+        console.log(this.username);
+        let ids={dealerusername:this.username};
+        this.http.post(this.serverUrl+'getcustomerbyusername',ids)
+            .subscribe(data => {
+                this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.details=data.json();
+                console.log(this.details);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        let link='';
+        link = this.serverUrl+'getinventoryfordealer?dealerid='+this.userInfo.id;
+        console.log('link ==='+link);
+        this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
-                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
-                this.pagec=Math.ceil(this.data.length / 10);
+                var x:any;
+                var y:any;
+                for (x in this.data){
+                    for(y in this.data[x].cardata){
 
-            }, error => {
-                console.log("Oooops!");
-            });
-
-    }
-
-
-    deleterow(dealerrow:any){
-        //console.log(adminid);
-
-        let link= this.serverUrl+'deletedealer';
-        let id=dealerrow;
-        this.http.post(link,id)
-            .subscribe(data1 => {
-                // this.data = data1.json();
-                //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
-                var index = this.data.indexOf(id.id);
-                console.log(index);
-                //let tempdata:Array<any>;
-                let x:any;
-                for(x in this.data){
-                    console.log(this.data[x]._id);
-                    console.log('this.data[x]._id');
-                    console.log(dealerrow._id);
-                    if(dealerrow._id==this.data[x]._id) {
-                        console.log(x+'.......'+this.data.length);
-                        delete this.data.x;
-                        this.data.splice(x, 1);
-                        console.log(this.data.length);
-                        //this.router.navigate(['adminlist']);
-                        window.location.reload();
+                        this.data[x].cardata[y].auctionids=this.data[x].cardata[y].auctionid.join("-");
+                        this.data[x].cardata[y].auctiondata=this.data[x].auctiondata;
+                        //this.data[x].cardata[y].auctionids=this.data[x].cardata[y].auctionid.join("-");
+                        this.cardata.push(this.data[x].cardata[y]);
                     }
                 }
+                console.log('cardata logs ...')
+                console.log(this.cardata);
+                 console.log('dealer inventorydata');
                 console.log(this.data);
-                //this.data=this.tempdata;
-                //this.data.splice(index, 1);
-                this.appcomponent.putmessages('Dealer user '+dealerrow.username+' deleted successfully','success');
-                //console.log(this.data);
+                console.log('dealer data');
+                console.log(this.cardata);
+                this.pagec=Math.ceil(this.cardata.length / 10);
+                let timeoutId = setInterval(() => {
+                    //alert($('.inventorysinglelistblockcon').length);
+                     if($('.inventorysinglelistblockcon').length>1) {
+                        $('.noresinventory').css('display','none');
+                        //alert(9);
+                    }
+                    else {
+                        //alert(7);
+                        $('.noresinventory').css('display','inline-block');
+                    }
+                    /*$('.inventorysinglelistblockcon').each(function (index:any) {
+                        if(index>8) $(this).css('display','none');
+                    });*/
+
+                    // alert($('#query_model').val());
+                    //alert($('#query_auction').val());
+                }, 5000);
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
 
             }, error => {
                 console.log("Oooops!");
             });
 
+        this.http.get(this.serverUrl+'carlogolist')
+            .subscribe(data => {
+                //console.log(data);
+                this.carlogolist=data.json();
 
-        // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
+                console.log(this.carlogolist);
+
+
+            }, error => {
+                console.log("Oooops!");
+                //return '22';
+            });
+
+        this.http.get(this.serverUrl+'carautoyearlist')
+            .subscribe(data => {
+                this.carautoyearlist=data.json();
+
+                // console.log(this.carautoyearlist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'listcarautomileage')
+            .subscribe(data => {
+                this.carmileagelist=data.json();
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'colorlist')
+            .subscribe(data => {
+                this.colorlist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+
+
+        this.http.get(this.serverUrl+'carlist')
+            .subscribe(data1 => {
+                this.carlistarr = data1.json();
+                console.log(this.data);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'auctionlist')
+            .subscribe(data1 => {
+                this.auctionlistarr = data1.json();
+                console.log(this.data);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
     }
 
-   changeStatus(item:any){
-    var idx = this.data.indexOf(item);
-    if(this.data[idx].is_active==1){
-        var is_active=0;
-    }
-    else{
-        var is_active=1;
-    }
-   let stat={id:item._id,is_active:is_active};
-       let link= this.serverUrl+'dealerstatuschange';
-       this.http.post(link,stat)
-           .subscribe(data1 => {
-               // this.data = data1.json();
-               //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
-               if(this.data[idx].is_active == 0){
-                   this.data[idx].is_active = 1;
-               }else{
-                   this.data[idx].is_active = 0;
-               }
-           }, error => {
-               console.log("Oooops!");
-           });
 
 
-}
-    getSortClass(value:any){
-        console.log(value);
-        if(this.orderbyquery==value && this.orderbytype==-1) {
-            console.log('caret-up');
-            return 'caret-up'
+    getcarlogo(val:any){
+        console.log('get car logo ...');
+        //console.log(val);
+        //carlogolist
+        var x:any;
+        for(x in this.carlogolist){
+            if(this.carlogolist[x]._id==val.carlogolist) return this.carlogolist[x].name;
+        }
+        return 'N/A';
+    }
+    getcaryear(val:any){
+        //console.log(val);
+        //carlogolist
+        var y:any;
+        for(y in this.carautoyearlist){
+            if(this.carautoyearlist[y]._id==val.carautoyearlist) return this.carautoyearlist[y].year;
+        }
+        return 'N/A';
+    }
+    getmileage(val:any){
+        //console.log(val);
+        //carlogolist
+        var z:any;
+        for(z in this.carmileagelist){
+            if(this.carmileagelist[z]._id==val.mileage) return this.carmileagelist[z].mileage;
+        }
+        return 'N/A';
+    }
+    getcolor(val:any){
+        //console.log(val);
+        //carlogolist
+        var a:any;
+        for(a in this.colorlist){
+            if(this.colorlist[a]._id==val.color) return this.colorlist[a].color;
+        }
+        return 'N/A';
+    }
+
+    startquerysearch(ev:any){
+
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        var tval=$(target).val();
+        $('.inventory_review').val(0);
+        $(target).val(tval);
+        //alert($(target).val());
+        //alert(tval);
+        this.query=$(target).val();
+        //alert(this.query);
+    }
+    getarrcount(item:any,i:any,icar:any){
+        //var target = ev.target || ev.srcElement || ev.originalTarget;
+        //console.log('ev counter ...');
+        //console.log($(target).index());
+
+        $('.inventorysinglelistblockcon').eq(8).nextAll().remove();
+        var x=0;
+        var totalc=0;
+        if(i==0){
+            totalc=icar;
+            if(totalc>8 )return false;
+            else return true;
         }
 
-        if(this.orderbyquery==value && this.orderbytype==1) {
-            console.log('caret-up');
-            return 'caret-down'
-        }
-        return 'caret-up-down'
-    }
-    manageSorting(value:any){
-        console.log(value);
-        if(this.orderbyquery==value && this.orderbytype==-1) {
-            this.orderbytype=1;
-            return;
-        }
-        if(this.orderbyquery==value && this.orderbytype==1) {
-            this.orderbytype=-1;
-            return;
-        }
 
-        this.orderbyquery=value;
-        this.orderbytype=-1;
+        console.log('car i counter before loop  '+i);
+        while(i+1>x){
+
+            console.log('car counter in loop '+totalc);
+            console.log('car  i counter in loop '+i);
+            console.log('car  i counter in loop '+i);
+            console.log('car x counter in loop '+x);
+            console.log('car item data in loop ');
+            console.log(item);
+            if(i>0){
+
+                totalc=item[0].cardata.length+icar;
+                console.log('car counter in loop '+totalc);
+            }
+
+            x++;
+        }
+        console.log('car counter '+totalc);
+        alert(totalc);
+        if(totalc>8 )return false;
+        else return true;
     }
+    goinventoryDetails(inventoryid:any){
+
+
+    }
+
 
 
 

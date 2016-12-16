@@ -9,7 +9,8 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
-
+import {DomSanitizer} from "@angular/platform-browser";
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -29,145 +30,204 @@ export class AppViewcustomers {
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
-    private userInfo:CookieService;
-    id:any;
-    item:any;
-    private messages:any;
+    private userInfo:any;
+    details:any;
+    username:any;
+    filesrc:any;
+    sharefilesrc:any;
+    carlogolist:any;
+    carautoyearlist:any;
+    carmileagelist:any;
+    colorlist:any;
+    carlistarr:any;
+    auctionlistarr:any;
+    private query_model:any;
+    private query_auction:any;
+    private query_make:any;
+    private query_year:any;
+    private query:any;
     p:any;
     pagec:any;
+    cardata:Array<any>;
     orderbyquery:any;
     orderbytype:any;
-    appcomponent:AppComponent;
-    tempdata:Array<any>;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent,private _sanitizer: DomSanitizer  ) {
         this.router=router;
         this.http=http;
         this.router=router;
-        this.appcomponent=appcomponent;
         this.commonservices=commonservices;
         this.items = commonservices.getItems();
-        this.messages = appcomponent.getMessages();
-        console.log(this.messages);
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl+'adminlist';
         this.p=1;
-        this.orderbyquery='fname';
+        this.orderbyquery='added_on';
         this.orderbytype=-1;
-        // alert(link);
-       this.http.get(link)
+        this.query_model=0;
+        this.query_auction=0;
+        this.query_make=0;
+        this.query_year=0;
+        this.cardata=[];
+
+        this.userInfo=userInfo.getObject('userdetails');
+        this.username = this.userInfo.username; // (+) converts string 'id' to a number
+        let ids={dealerusername:this.username};
+        this.http.post(this.serverUrl+'getcustomerbyusername',ids)
+            .subscribe(data => {
+                this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.details=data.json();
+                console.log(this.details);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        let link='';
+        link = this.serverUrl+'getinventoryforcustomerbydealer?dealerusername='+this.username;
+        this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
-                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                console.log('dealer inventorydata');
                 console.log(this.data);
-                this.pagec=Math.ceil(this.data.length / 10);
 
-            }, error => {
-                console.log("Oooops!");
-            });
+                var x:any;
 
-    }
-
-addadmin(){
-    this.router.navigateByUrl('/addadmin(adminheader:adminheader//adminfooter:adminfooter)');
-
-}
-
-    deleterow(adminid:any){
-        //console.log(adminid);
-
-        let link= this.serverUrl+'deleteadmin';
-        let id=adminid;
-        this.http.post(link,id)
-            .subscribe(data1 => {
-                // this.data = data1.json();
-                //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
-                var index = this.data.indexOf(id.id);
-                console.log(index);
-                //let tempdata:Array<any>;
-                let x:any;
-                for(x in this.data){
-                    console.log(this.data[x]._id);
-                    console.log('this.data[x]._id');
-                    console.log(adminid._id);
-                    if(adminid._id==this.data[x]._id) {
-                        console.log(x+'.......'+this.data.length);
-                        delete this.data.x;
-                        this.data.splice(x, 1);
-                        console.log(this.data.length);
-                        //this.router.navigate(['adminlist']);
-                        window.location.reload();
+                for (x in this.data){
+                    this.data[x].sharefilesrc='images/logo_61.png';
+                        if(this.data[x].filename) {
+                            this.data[x].sharefilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.data[x].filename;
+                        }
+                        //this.data[x].cardata[y].auctionids=this.data[x].cardata[y].auctionid.join("-");
+                        this.cardata.push(this.data[x]);
                     }
-                }
-                console.log(this.data);
-                //this.data=this.tempdata;
-                //this.data.splice(index, 1);
-                this.appcomponent.putmessages('Admin user '+adminid.username+' deleted successfully','success');
-                //console.log(this.data);
+                    console.log('view customer data');
+                console.log(this.cardata);
+                this.pagec=Math.ceil(this.data.length / 20);
+
+
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
 
             }, error => {
                 console.log("Oooops!");
             });
 
+        this.http.get(this.serverUrl+'carlogolist')
+            .subscribe(data => {
+                //console.log(data);
+                this.carlogolist=data.json();
 
-        // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
+                console.log(this.carlogolist);
+
+
+            }, error => {
+                console.log("Oooops!");
+                //return '22';
+            });
+
+        this.http.get(this.serverUrl+'carautoyearlist')
+            .subscribe(data => {
+                this.carautoyearlist=data.json();
+
+                // console.log(this.carautoyearlist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'listcarautomileage')
+            .subscribe(data => {
+                this.carmileagelist=data.json();
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'colorlist')
+            .subscribe(data => {
+                this.colorlist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+
+
+        this.http.get(this.serverUrl+'carlist')
+            .subscribe(data1 => {
+                this.carlistarr = data1.json();
+                console.log(this.data);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'auctionlist')
+            .subscribe(data1 => {
+                this.auctionlistarr = data1.json();
+                console.log(this.data);
+
+            }, error => {
+                console.log("Oooops!");
+            });
     }
 
-   changeStatus(item:any){
-    var idx = this.data.indexOf(item);
-    if(this.data[idx].is_active==1){
-        var is_active=0;
-    }
-    else{
-        var is_active=1;
-    }
-   let stat={id:item._id,is_active:is_active};
-       let link= this.serverUrl+'adminstatuschange';
-       this.http.post(link,stat)
-           .subscribe(data1 => {
-               // this.data = data1.json();
-               //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
-               if(this.data[idx].is_active == 0){
-                   this.data[idx].is_active = 1;
-               }else{
-                   this.data[idx].is_active = 0;
-               }
-           }, error => {
-               console.log("Oooops!");
-           });
 
-
-}
-    getSortClass(value:any){
-        console.log(value);
-        if(this.orderbyquery==value && this.orderbytype==-1) {
-            console.log('caret-up');
-            return 'caret-up'
+    getmileage(val:any){
+        //console.log(val);
+        //carlogolist
+        var z:any;
+        for(z in this.carmileagelist){
+            if(this.carmileagelist[z]._id==val.car_mileage) return this.carmileagelist[z].mileage;
         }
-
-        if(this.orderbyquery==value && this.orderbytype==1) {
-            console.log('caret-up');
-            return 'caret-down'
-        }
-        return 'caret-up-down'
+        return 'N/A';
     }
-    manageSorting(value:any){
-        console.log(value);
-        if(this.orderbyquery==value && this.orderbytype==-1) {
-            this.orderbytype=1;
-            return;
-        }
-        if(this.orderbyquery==value && this.orderbytype==1) {
-            this.orderbytype=-1;
-            return;
-        }
+    getcolor(val:any){
+        //console.log(val);
+        //carlogolist
 
-        this.orderbyquery=value;
-        this.orderbytype=-1;
+        var colorstring:any;
+        colorstring='';
+        var a:any;
+        for(a in this.colorlist){
+           // if(this.colorlist[a]._id==val.color) return this.colorlist[a].color;
+            if($.inArray(this.colorlist[a]._id,val.color_opiton)>-1)
+                colorstring+=this.colorlist[a].color+' / ';
+        }
+        if(colorstring!='') return colorstring;
+        return 'N/A';
     }
+    getcaryear(val:any){
+        var rstring:any;
+        rstring='';
+        var y:any;
+        for(y in this.carautoyearlist){
+            //if(this.carautoyearlist[y]._id==val.carautoyearlist) return this.carautoyearlist[y].year;
 
+            if($.inArray( this.carautoyearlist[y]._id, val.car_auto_year )>-1)
+                rstring+=this.carautoyearlist[y].year+' / ';
+        }
+        if(rstring!='') return rstring;
+        return 'N/A';
+    }
+    getcarlogo(val:any){
+        var makestring:any;
+        makestring='';
+        var x:any;
+        for(x in this.carlogolist){
+           // if(this.carlogolist[x]._id==val.carlogolist) return this.carlogolist[x].name;
+            if($.inArray(this.carlogolist[x]._id,val.upcoming_auction)>-1)
+                makestring+=this.carlogolist[x].name+' / '  ;
+        }
+        if(makestring!='') return makestring;
+        return 'N/A';
+    }
+    startquerysearch(ev:any){
 
-
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        var tval=$(target).val();
+       // $('.inventory_review').val(0);
+        $(target).val(tval);
+        //alert($(target).val());
+        //alert(tval);
+        this.query=$(target).val();
+        //alert(this.query);
+    }
 
 }
 

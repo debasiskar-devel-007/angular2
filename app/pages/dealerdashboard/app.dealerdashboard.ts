@@ -3,10 +3,12 @@ import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import {Routes, RouterModule, Router, ActivatedRoute} from '@angular/router';
+
 import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
+import {DomSanitizer} from "@angular/platform-browser";
 declare var $: any;
 
 @Component({
@@ -38,15 +40,32 @@ export class AppDealerdashboard {
     colorlist:any;
     carlistarr:any;
     auctionlistarr:any;
+    private query_model:any;
+    private query_auction:any;
+    private query_make:any;
+    private query_year:any;
+    private query:any;
+    private inventorymatcharr:Array<any>;
+    private orderbyqueryinventorymatch:any;
+    private orderbytypeinventorymatch:any;
+    customercount:any;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router) {
+
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,private _sanitizer: DomSanitizer) {
         this.router=router;
+        this._sanitizer=_sanitizer;
         this.http=http;
         this.router=router;
         this.commonservices=commonservices;
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
-
+        this.query_model=0;
+        this.query_auction=0;
+        this.query_make=0;
+        this.query_year=0;
+        this.inventorymatcharr=[];
+        this.orderbyqueryinventorymatch='inventorymatchval';
+        this.orderbytypeinventorymatch=-1;
 
         this.userInfo=userInfo.getObject('userdetails');
         this.username = this.userInfo.username; // (+) converts string 'id' to a number
@@ -62,6 +81,19 @@ export class AppDealerdashboard {
             }, error => {
                 console.log("Oooops!");
             });
+        this.http.post(this.serverUrl+'getcustomerbyusernamecount',ids)
+            .subscribe(data => {
+                this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.customercount=data.json();
+                this.customercount=this.customercount.length;
+                console.log('customer count');
+                console.log(this.customercount.length);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
         let link='';
         link = this.serverUrl+'getinventoryfordealer?dealerid='+this.userInfo.id;
         console.log('link ==='+link);
@@ -70,11 +102,95 @@ export class AppDealerdashboard {
                 this.data = data1.json();
                 console.log('dealer inventorydata');
                 console.log(this.data);
+                var x:any;
+                var y:any;
+                var z:any;
+                var inventorymatchvalue:any;
+                var inventorymatchvaluearr:Array<any>;
+                var tempcustomerarrforiventorymatches:Array<any>;
+                for (x in this.data){
+                    for(y in this.data[x].cardata){
+
+                        this.data[x].cardata[y].auctionids=this.data[x].cardata[y].auctionid.join("-");
+                        this.data[x].cardata[y].auctiondata=this.data[x].auctiondata;
+                        tempcustomerarrforiventorymatches=[];
+
+                        for(z in this.details){
+                            inventorymatchvalue=0;
+                            inventorymatchvaluearr=[];
+                            if(typeof (this.details[z].base_price!='undefined')){
+                                //alert(39);
+
+                               /* console.log('user detail .. ');
+                                console.log(this.details[z]);
+                                console.log('car detail data  .. .');
+                                console.log(this.data[x].cardata[y]);
+                                console.log('in array log ...');*/
+                                console.log($.inArray( this.data[x].cardata[y].carbodystylelist, this.details[z].car_body_style ));
+                                if($.inArray( this.data[x].cardata[y].carautoyearlist, this.details[z].car_auto_year )>-1){
+
+                                    inventorymatchvalue+=14.3;
+                                    inventorymatchvaluearr.push('Year /');
+                                }
+                                if($.inArray( this.data[x].cardata[y].basepricerange, this.details[z].base_price )>-1){
+
+                                    inventorymatchvalue+=14.3;
+                                    inventorymatchvaluearr.push('Price /');
+                                }
+                                if($.inArray( this.data[x].cardata[y].car_body_style, this.details[z].car_body_style )>-1){
+
+                                    inventorymatchvalue+=14.3;
+                                    inventorymatchvaluearr.push('Body Style / ');
+                                }
+                                if($.inArray( this.data[x].cardata[y].color, this.details[z].color_opiton )>-1){
+
+                                    inventorymatchvalue+=14.3;
+                                    inventorymatchvaluearr.push('Color /');
+                                }
+                                if($.inArray( this.data[x].cardata[y].carlogolist, this.details[z].upcoming_auction )>-1){
+
+                                    //alert(9);
+                                    inventorymatchvalue+=14.3;
+                                    inventorymatchvaluearr.push('Make /');
+                                }
+                                if (this.data[x].cardata[y].mileage ==this.details[z].car_mileage){
+
+                                    inventorymatchvalue+=14.3;
+                                    inventorymatchvaluearr.push('Mileage /');
+
+                                }
+
+                                this.details[z].inventorymatchval=Math.ceil(inventorymatchvalue);
+                                this.details[z].inventorymatchvaluearr=inventorymatchvaluearr;
+                                if(inventorymatchvalue>0)tempcustomerarrforiventorymatches.push(this.details[z]);
+                                console.log('inventorymatchvalue == '+inventorymatchvalue);
+                            }
+                        }
+                        this.data[x].cardata[y].userdetails=tempcustomerarrforiventorymatches;
+
+                        ///alert(tempcustomerarrforiventorymatches.length);
+                        if(tempcustomerarrforiventorymatches.length>0)this.inventorymatcharr.push(this.data[x].cardata[y]);
+                        //console.log('customer details');
+                        //console.log(this.details);
+                    }
+                }
+                //alert(this.inventorymatcharr.length);
                 let timeoutId = setInterval(() => {
+                    //alert($('.inventorysinglelistblockcon').length);
+                    if($('.inventorysinglelistblockcon').length>0) {
+                        $('.noresinventory').css('display','none');
+                        //alert(9);
+                    }
+                    else {
+                        //alert(7);
+                        $('.noresinventory').css('display','inline-block');
+                    }
                     $('.inventorysinglelistblockcon').each(function (index:any) {
                         if(index>8) $(this).css('display','none');
                     });
 
+                    // alert($('#query_model').val());
+                    //alert($('#query_auction').val());
                 }, 5000);
                 this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
@@ -144,7 +260,7 @@ export class AppDealerdashboard {
 
     getcarlogo(val:any){
         console.log('get car logo ...');
-        console.log(val);
+        //console.log(val);
         //carlogolist
         var x:any;
         for(x in this.carlogolist){
@@ -153,7 +269,7 @@ export class AppDealerdashboard {
         return 'N/A';
     }
     getcaryear(val:any){
-        console.log(val);
+        //console.log(val);
         //carlogolist
         var y:any;
         for(y in this.carautoyearlist){
@@ -162,7 +278,7 @@ export class AppDealerdashboard {
         return 'N/A';
     }
     getmileage(val:any){
-        console.log(val);
+        //console.log(val);
         //carlogolist
         var z:any;
         for(z in this.carmileagelist){
@@ -171,13 +287,25 @@ export class AppDealerdashboard {
         return 'N/A';
     }
     getcolor(val:any){
-        console.log(val);
+        //console.log(val);
         //carlogolist
         var a:any;
         for(a in this.colorlist){
             if(this.colorlist[a]._id==val.color) return this.colorlist[a].color;
         }
         return 'N/A';
+    }
+
+    startquerysearch(ev:any){
+
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        var tval=$(target).val();
+        $('.inventory_review').val(0);
+        $(target).val(tval);
+        //alert($(target).val());
+        //alert(tval);
+        this.query=$(target).val();
+        //alert(this.query);
     }
     getarrcount(item:any,i:any,icar:any){
         //var target = ev.target || ev.srcElement || ev.originalTarget;
@@ -219,6 +347,10 @@ export class AppDealerdashboard {
     goinventoryDetails(inventoryid:any){
 
 
+    }
+
+    getmatchpercentage(val:any){
+        return this._sanitizer.bypassSecurityTrustHtml(val);
     }
 }
 

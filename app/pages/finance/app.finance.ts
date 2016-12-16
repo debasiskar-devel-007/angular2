@@ -1,4 +1,4 @@
-import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation} from '@angular/core';
+import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
@@ -9,7 +9,7 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
-
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -18,7 +18,8 @@ import {AppComponent} from "../home/app.component";
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppAppFinance {
+export class AppFinance implements OnInit {
+
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
@@ -47,8 +48,18 @@ export class AppAppFinance {
     websiteurl:any;
     email:any;
     package_image:any;
+    private listcarautomileage:any;
+    private carautoyearlist:any;
+    private modellist:any;
+    private carlogolist:any;
+    private carlist:any;
+    private upcoming_auctionarr:Array<any>;
+    private autoyeararr:Array<any>;
+    randstring:any;
+    err:any;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
+
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
         this.router=router;
         this.http=http;
         this.router=router;
@@ -59,6 +70,13 @@ export class AppAppFinance {
         this.customerinfo=customerInfo.getObject('customerInfo');
         this.customerInfo=customerInfo;
         console.log(this.customerinfo);
+        this.err='';
+        this.randstring= 'ab8gr';
+        console.log('string -');
+       // console.log(this.randstring);
+
+        this.autoyeararr=[];
+        this.upcoming_auctionarr=[];
         this.http.get(this.serverUrl+'getusastates')
             .subscribe(data => {
                 console.log(data);
@@ -105,6 +123,8 @@ export class AppAppFinance {
             }, error => {
                 console.log("Oooops!");
             });
+
+
         this.customersignupform = fb.group({
             username: [this.customerinfo.username, Validators.required],
             fname: [this.customerinfo.fname, Validators.required],
@@ -177,22 +197,105 @@ export class AppAppFinance {
             listing_id: [''],
             location_id: [''],
             license_number: [''],
-            vin: [''],
-            mileage: [''],
-            make: [''],
+           /* vin: [''],
+            car_mileage: [this.customerinfo.car_mileage],
+            upcoming_auction: [this.customerinfo.upcoming_auction],
             model: [''],
-            model_year: [''],
+            car_auto_year: [this.customerinfo.car_auto_year],*/
             loan_down_payment: [''],
             loan_vehicle_cost: [''],
             loan_payment_amount: [''],
             loan_repayment_term: [''],
             loan_month: [''],
             comment: [''],
+            signature: ['', Validators.required],
+            is_active: ['', Validators.required],
         });
+        this.http.get(this.serverUrl+'listcarautomileage')
+            .subscribe(data => {
+                this.listcarautomileage=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        this.http.get(this.serverUrl+'carautoyearlist')
+            .subscribe(data => {
+                this.carautoyearlist=data.json();
+
+                // console.log(this.carautoyearlist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'carlogolist')
+            .subscribe(data => {
+                //console.log(data);
+
+                this.carlogolist=data.json();
+
+                // console.log(this.carlogolist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'carlist')
+            .subscribe(data => {
+                //console.log(data);
+
+                this.carlist=data.json();
+
+                // console.log(this.carlogolist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
 
 
     }
 
+    autoyearchange(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        console.log(target.value);
+        console.log(target.checked);
+        console.log(ev);
+        if(target.checked==true){
+            this.autoyeararr.push(target.value);
+        }else{
+            var arrindex1 = this.autoyeararr.indexOf(target.value);
+            this.autoyeararr.splice(arrindex1, 1);
+        }
+        console.log('color auto year');
+        console.log(this.autoyeararr);
+        //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
+        //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
+    }
+
+    upcoming_auctionchange(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        console.log(target.value);
+        console.log(target.checked);
+        console.log(ev);
+        if(target.checked==true){
+            this.upcoming_auctionarr.push(target.value);
+        }else{
+            var arrindex = this.upcoming_auctionarr.indexOf(target.value);
+            this.upcoming_auctionarr.splice(arrindex, 1);
+        }
+        console.log('upcoming_auctionarr val');
+        console.log(this.upcoming_auctionarr);
+        $('.logolabel'+target.value).toggleClass('selected');
+        //if(this.colorval.length==0)this.customersignupupdateform.patchValue({color_opiton: 1})
+        //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
+    }
+
+    static validateTerms(control: FormControl){
+        if(control.value==false){
+            return { 'isTermsChecked': true };
+        }
+    }
     submitform1(){
         let x:any;
         for(x in this.customersignupform.controls){
@@ -202,29 +305,46 @@ export class AppAppFinance {
         this.customersignupform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
         if(this.customersignupform.valid){
+          var sign1=  $('#sign').html();
+           // if(sign1==this.customersignupform.value.signature){
+                let link = this.serverUrl+'updatecustomerstep3';
+                var submitdata = this.customersignupform.value;
+                console.log(submitdata);
+                this.http.post(link,submitdata)
+                    .subscribe(data => {
+                        // /this.data1.response = data.json();
+                        console.log(this.customersignupform.value);
+                        this.customerInfo.putObject('customerInfo',this.customersignupform.value);
+                        this.router.navigateByUrl('/customerlogin');
 
-            //var headers = new Headers();
+                    }, error => {
+                        console.log("Oooops!");
+                    });
+           // }
+           /* else{
+                this.err="Capthca does not macth";
+            }*/
+        console.log(this.customersignupform.value);
+         /*   this.customersignupform.value.upcoming_auction=this.upcoming_auctionarr;
+
+            this.customersignupform.value.car_auto_year=this.autoyeararr;
+            //var headers = new Headers();*/
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'updatecustomerstep3';
-            var submitdata = this.customersignupform.value;
-            console.log(submitdata);
-            this.http.post(link,submitdata)
-                .subscribe(data => {
-                    // /this.data1.response = data.json();
-                    console.log(this.customersignupform.value);
-                    this.customerInfo.putObject('customerInfo',this.customersignupform.value);
-                   // this.router.navigateByUrl('/customerlogin');
 
-                }, error => {
-                    console.log("Oooops!");
-                });
         }
     }
 
 
+    getrandomString() {
 
+       var charss='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var length=5;
+        var result = '';
+        for (var i = length; i > 0; --i) result += charss[Math.round(Math.random() * (charss.length - 1))];
+        this.randstring =result;
+    }
 
 }
 

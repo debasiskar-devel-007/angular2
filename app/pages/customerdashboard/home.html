@@ -833,20 +833,21 @@ maximising space for you and minimising space taken up by the machinery.</span>
     </div>
 
     <div class="container-fluid customerdashboard_blockcar">
+        <span class="noresult noresinventory">No result found!</span>
 
-        <div class="blockcar_box">
+        <div  *ngFor="let itemcar of cardata let icar=index" class="blockcar_box inventorysinglelistblockcon">
 
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td align="left" valign="middle">
                         <div class="cdcar_des">
-                            <span>Make :  Renault</span>
-                            <span>Model :  Duster</span>
-                            <span>Year:  2016</span>
-                            <span>Miles :  600</span>
-                            <span>Color :  Red</span>
-                            <span>Wholesale : $8,46,999</span>
-                            <a href="javascript:void(0)">View Detail  </a>
+                            <span>Make :  {{getcarlogo(itemcar)}}</span>
+                            <span>Model :  {{itemcar.model}}</span>
+                            <span>Year:  {{getcaryear(itemcar)}}</span>
+                            <span>Miles :  {{getmileage(itemcar)}}</span>
+                            <span>Color :  {{getcolor(itemcar)}}</span>
+                            <span>Wholesale : {{itemcar.est_retail_value}}</span>
+                            <a [routerLink]="['/auctioininventorydetails', itemcar._id]">View Detail  </a>
 
                         </div>
                     </td>
@@ -854,7 +855,10 @@ maximising space for you and minimising space taken up by the machinery.</span>
                     <td align="right" valign="middle">
 
                         <div class="cdcar_img">
-                            <img src="images/cd_car1.jpg" alt="#">
+                            <img class="auction_toplogo" src="{{sharefilesrc}}{{itemcar.auctiondata[0].filename}}">
+                            <img src="{{sharefilesrc}}{{itemcar.filename}}">
+
+                           <!-- <img src="images/cd_car1.jpg" alt="#">-->
                         </div>
                     </td>
                 </tr>
@@ -862,7 +866,8 @@ maximising space for you and minimising space taken up by the machinery.</span>
 
             <div class="clearfix"></div>
         </div>
-        <div class="blockcar_box">
+
+       <!-- <div class="blockcar_box">
 
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
@@ -889,203 +894,8 @@ maximising space for you and minimising space taken up by the machinery.</span>
             </table>
 
             <div class="clearfix"></div>
-        </div>
-        <div class="blockcar_box">
+        </div>-->
 
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td align="left" valign="middle">
-                        <div class="cdcar_des">
-                            <span>Make :  Renault</span>
-                            <span>Model :  Duster</span>
-                            <span>Year:  2016</span>
-                            <span>Miles :  600</span>
-                            <span>Color :  Red</span>
-                            <span>Wholesale : $8,46,999</span>
-                            <a href="javascript:void(0)">View Detail  </a>
-
-                        </div>
-                    </td>
-
-                    <td align="right" valign="middle">
-
-                        <div class="cdcar_img">
-                            <img src="images/cd_car3.jpg" alt="#">
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <div class="clearfix"></div>
-        </div>
-        <div class="blockcar_box">
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td align="left" valign="middle">
-                        <div class="cdcar_des">
-                            <span>Make :  Renault</span>
-                            <span>Model :  Duster</span>
-                            <span>Year:  2016</span>
-                            <span>Miles :  600</span>
-                            <span>Color :  Red</span>
-                            <span>Wholesale : $8,46,999</span>
-                            <a href="javascript:void(0)">View Detail  </a>
-
-                        </div>
-                    </td>
-
-                    <td align="right" valign="middle">
-
-                        <div class="cdcar_img">
-                            <img src="images/cd_car4.jpg" alt="#">
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <div class="clearfix"></div>
-        </div>
-        <div class="blockcar_box">
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td align="left" valign="middle">
-                        <div class="cdcar_des">
-                            <span>Make :  Renault</span>
-                            <span>Model :  Duster</span>
-                            <span>Year:  2016</span>
-                            <span>Miles :  600</span>
-                            <span>Color :  Red</span>
-                            <span>Wholesale : $8,46,999</span>
-                            <a href="javascript:void(0)">View Detail  </a>
-
-                        </div>
-                    </td>
-
-                    <td align="right" valign="middle">
-
-                        <div class="cdcar_img">
-                            <img src="images/cd_car5.jpg" alt="#">
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <div class="clearfix"></div>
-        </div>
-        <div class="blockcar_box">
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td align="left" valign="middle">
-                        <div class="cdcar_des">
-                            <span>Make :  Renault</span>
-                            <span>Model :  Duster</span>
-                            <span>Year:  2016</span>
-                            <span>Miles :  600</span>
-                            <span>Color :  Red</span>
-                            <span>Wholesale : $8,46,999</span>
-                            <a href="javascript:void(0)">View Detail  </a>
-
-                        </div>
-                    </td>
-
-                    <td align="right" valign="middle">
-
-                        <div class="cdcar_img">
-                            <img src="images/cd_car6.jpg" alt="#">
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <div class="clearfix"></div>
-        </div>
-        <div class="blockcar_box">
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td align="left" valign="middle">
-                        <div class="cdcar_des">
-                            <span>Make :  Renault</span>
-                            <span>Model :  Duster</span>
-                            <span>Year:  2016</span>
-                            <span>Miles :  600</span>
-                            <span>Color :  Red</span>
-                            <span>Wholesale : $8,46,999</span>
-                            <a href="javascript:void(0)">View Detail  </a>
-
-                        </div>
-                    </td>
-
-                    <td align="right" valign="middle">
-
-                        <div class="cdcar_img">
-                            <img src="images/cd_car7.jpg" alt="#">
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <div class="clearfix"></div>
-        </div>
-        <div class="blockcar_box">
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td align="left" valign="middle">
-                        <div class="cdcar_des">
-                            <span>Make :  Renault</span>
-                            <span>Model :  Duster</span>
-                            <span>Year:  2016</span>
-                            <span>Miles :  600</span>
-                            <span>Color :  Red</span>
-                            <span>Wholesale : $8,46,999</span>
-                            <a href="javascript:void(0)">View Detail  </a>
-
-                        </div>
-                    </td>
-
-                    <td align="right" valign="middle">
-
-                        <div class="cdcar_img">
-                            <img src="images/cd_car8.jpg" alt="#">
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <div class="clearfix"></div>
-        </div>
-        <div class="blockcar_box">
-
-            <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td align="left" valign="middle">
-                        <div class="cdcar_des">
-                            <span>Make :  Renault</span>
-                            <span>Model :  Duster</span>
-                            <span>Year:  2016</span>
-                            <span>Miles :  600</span>
-                            <span>Color :  Red</span>
-                            <span>Wholesale : $8,46,999</span>
-                            <a href="javascript:void(0)">View Detail  </a>
-
-                        </div>
-                    </td>
-
-                    <td align="right" valign="middle">
-
-                        <div class="cdcar_img">
-                            <img src="images/cd_car9.jpg" alt="#">
-                        </div>
-                    </td>
-                </tr>
-            </table>
-
-            <div class="clearfix"></div>
-        </div>
 
 
 

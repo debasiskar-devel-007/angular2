@@ -9,7 +9,12 @@
                             <h2><span>Auction</span> Inventory Review</h2>
                             <ul class="list-inline">
                                 <li><div class="btn-group bootstrap-select makedropdown">
-                                    <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                    <select id="query_make" class="inventory_review" [(ngModel)]="query_make" (change)="startquerysearch($event)">
+                                        <option value='0' selected="selected" >Select a Make</option>
+                                        <!--<option>{{carlogoval1.name}}</option>-->
+                                        <option *ngFor="let carlogoval1 of carlogolist" [value]="carlogoval1._id">{{carlogoval1.name}}</option>
+                                    </select>
+                                    <!--<button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
                                         <span class="selecttext">Select a Make</span>&nbsp;<span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu open" role="menu">
@@ -34,11 +39,16 @@
                                         <li>
                                             <a><span class="text">Genesis</span></a>
                                         </li>
-                                    </ul>
+                                    </ul>-->
                                 </div></li>
                                 <li>
                                     <div class="btn-group bootstrap-select modeldropdown">
-                                        <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+
+                                        <select id="query_model" class="inventory_review" (change)="startquerysearch($event)" [(ngModel)]="query_model">
+                                            <option selected="selected"  value='0' >Select a Model</option>
+                                            <option *ngFor="let itemcarmodel of carlistarr" [value]="itemcarmodel._id">{{itemcarmodel.model}}</option>
+                                        </select>
+                                        <!--<button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
                                             <span class="selecttext">Select a Model</span>&nbsp;<span class="caret"></span>
                                         </button>
                                         <ul class="dropdown-menu open" role="menu">
@@ -63,12 +73,16 @@
                                             <li>
                                                 <a><span class="text">RDX</span></a>
                                             </li>
-                                        </ul>
+                                        </ul>-->
                                     </div>
                                 </li>
                                 <li>
                                     <div class="btn-group bootstrap-select auctiondropdown">
-                                    <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                        <select id="query_auction" [(ngModel)]="query_auction" class="inventory_review" (change)="startquerysearch($event)">
+                                            <option value="0" selected="selected">Select an Auction</option>
+                                            <option *ngFor="let itemauction of auctionlistarr" [value]="itemauction._id">{{itemauction.name}}</option>
+                                        </select>
+                                   <!-- <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
                                         <span class="selecttext">Select by Auction</span>&nbsp;<span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu open" role="menu">
@@ -87,12 +101,16 @@
                                         <li>
                                             <a><span class="text">Auto Auction</span></a>
                                         </li>
-                                    </ul>
+                                    </ul>-->
                                 </div>
                                 </li>
                                 <li>
                                     <div class="btn-group bootstrap-select yeardropdown">
-                                    <button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
+                                        <select [(ngModel)]="query_year" class="inventory_review" (change)="startquerysearch($event)">
+                                            <option value="0" selected="selected">Select Year</option>
+                                            <option *ngFor="let caryearval of carautoyearlist" [value]="caryearval._id">{{caryearval.year}}</option>
+                                        </select>
+                                    <!--<button type="button" class="btn dropdown-toggle btn-default btndropdown" data-toggle="dropdown">
                                         <span class="selecttext">2010</span>&nbsp;<span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu open" role="menu">
@@ -117,291 +135,155 @@
                                         <li>
                                             <a><span class="text">2016</span></a>
                                         </li>
-                                    </ul>
+                                    </ul>-->
                                 </div>
                                 </li>
-                                <li><div class="searchbox"><input [(ngModel)]="query" placeholder="Search by Make, Model, Auction, Year, Keyword"></div></li>
+                                <li><div class="searchbox"><input (keyup)="startquerysearch($event)" [(ngModel)]="query_key" placeholder="Search by Model, Price,Engine type, Keyword"></div></li>
                             </ul>
                         </div>
                         <div class="inventorylistswrapper">
                             <div class="row">
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                    <div class="inventorysinglelistblock">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><div class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                <span class="noresult noresinventory">No result found!</span>
+
+                            <span  *ngFor="let itemcar of cardata|filter:query |paginate: { itemsPerPage: 9, currentPage: p };let icar=index">
+                           <div  class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist inventorysinglelistblockcon">
+                                <div class="inventorysinglelistblock">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12 pull-left infobox">
+                                             <table class="table">
+                                            <tbody>
+                                            <tr>
+                                                <td><span>Make:</span></td>
+                                                <td><span>{{getcarlogo(itemcar)}}</span></td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Model:</span></td>
+                                                <td>{{itemcar.model}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Year:</span></td>
+                                                 <td>{{getcaryear(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Miles:</span></td>
+                                                <td>{{getmileage(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Color:</span></td>
+                                                <td>{{getcolor(itemcar)}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Wholesale:</span></td>
+                                                <td>{{itemcar.est_retail_value}}</td>
+                                            </tr>
+                                            <tr>
+                                                <td><span>Engine Type:</span></td>
+                                                <td>{{itemcar.enginetype}}</td>
+                                            </tr>
+ <tr>
+                                                    <td colspan="2"><div  class="viewdetail"><a  [routerLink]="['/auctioininventorydetails', itemcar._id]" >View Details</a></div></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                            <!-- <table class="table">
+                                                 <tbody>
+                                                 <tr>
+                                                     <td><span>Make:</span></td>
+                                                     <td>Renault</td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td><span>Model:</span></td>
+                                                     <td>Duster</td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td><span>Year:</span></td>
+                                                     <td>2016</td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td><span>Miles:</span></td>
+                                                     <td>600</td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td><span>Color:</span></td>
+                                                     <td>Red</td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td><span>Wholesale:</span></td>
+                                                     <td>$8,46,999</td>
+                                                 </tr>
+                                                 <tr>
+                                                     <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
+                                                 </tr>
+                                                 </tbody>
+                                             </table>-->
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                    <div class="inventorysinglelistblock">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><div class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                    <div class="inventorysinglelistblock">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><div class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                    <div class="inventorysinglelistblock">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><div class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                    <div class="inventorysinglelistblock">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><div class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                    <div class="inventorysinglelistblock">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2"><div class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12 pull-right imgbox">
+                                            <div class="imgouter">
+
+
+                                                <div class="imgwrapper">
+                                                    <img src="{{sharefilesrc}}{{itemcar.auctiondata[0].filename}}" class="auction_toplogo">
+                                                    <img src="{{sharefilesrc}}{{itemcar.filename}}">
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                            </span>
+
+
+                                <!--<div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                                    <div class="inventorysinglelistblock">
+                                        <div class="row">
+                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><span>Make:</span></td>
+                                                        <td>Renault</td>
+                                                     </tr>
+                                                    <tr>
+                                                        <td><span>Model:</span></td>
+                                                        <td>Duster</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Year:</span></td>
+                                                        <td>2016</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Miles:</span></td>
+                                                        <td>600</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Color:</span></td>
+                                                        <td>Red</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Wholesale:</span></td>
+                                                        <td>$8,46,999</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2"><div class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
+                                                <div class="imgouter">
+                                                    <div class="imgwrapper">
+                                                        <img src="images/auctionimg_1.jpg">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 paginationwrapper">
+                            <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
                         </div>
                     </div>
                 </div>

@@ -614,29 +614,48 @@
                                 <input [formControl]="customersignupform.controls['license_number']" name="license_number" type="text" class="form-control input-lg" placeholder="License Number">
                             </div>
                         </div>
-                        <div class="row form-group">
+                       <!-- <div class="row form-group">
                             <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12">
                                 <input [formControl]="customersignupform.controls['vin']" name="vin" type="text" class="form-control input-lg" placeholder="VIN">
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                <input [formControl]="customersignupform.controls['mileage']" name="mileage" type="text" class="form-control input-lg" placeholder="Mileage">
+                               &lt;!&ndash; <input [formControl]="customersignupform.controls['mileage']" name="mileage" type="text" class="form-control input-lg" placeholder="Mileage">&ndash;&gt;
+                                <select  class="form-control input-lg" [formControl]="customersignupform.controls['car_mileage']" name="car_mileage" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Mileage</span></option>
+                                    <option *ngFor="let obj1 of listcarautomileage" [value]="obj1._id">{{obj1.mileage}}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                <input [formControl]="customersignupform.controls['make']" name="make" type="text" class="form-control input-lg" placeholder="Make">
+
+                                <select multiple class="form-control input-lg" [formControl]="customersignupform.controls['upcoming_auction']" name="upcoming_auction[]" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Your Make</span></option>
+                                    <option *ngFor="let obj2 of carlogolist" [value]="obj2._id">{{obj2.name}}</option>
+                                </select>
+
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
-                                <input [formControl]="customersignupform.controls['model']" name="model" type="text" class="form-control input-lg" placeholder="Model">
+
+                                <select class="form-control input-lg" [formControl]="customersignupform.controls['upcoming_auction']" name="upcoming_auction[]" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Your Model</span></option>
+                                    <option *ngFor="let obj3 of carlist" [value]="obj3._id">{{obj3.model}}</option>
+                                </select>
+
+
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 modelyear">
-                                <input [formControl]="customersignupform.controls['model_year']" name="model_year" type="text" class="form-control input-lg" placeholder="Model Year">
+                                &lt;!&ndash;<input [formControl]="customersignupform.controls['model_year']" name="model_year" type="text" class="form-control input-lg" placeholder="Model Year">&ndash;&gt;
+                                <select multiple class="form-control input-lg" [formControl]="customersignupform.controls['car_auto_year']" name="car_auto_year[]" (change)="autoyearchange($event)" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Your Auction</span></option>
+                                    <option *ngFor="let obj1 of carautoyearlist" [value]="obj1._id">{{obj1.year}}</option>
+                                </select>
                             </div>
                         </div>
                         <div class="row form-group">
                             <div class="col-lg-12 col-md-12 divdivider">
                             </div>
-                        </div>
+                        </div>-->
                         <div class="row form-group">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <input [formControl]="customersignupform.controls['loan_down_payment']" name="loan_down_payment" type="text" class="form-control input-lg" placeholder="Down Payment $">
@@ -694,24 +713,44 @@
                                 <div style="margin: 0 auto; float: none; text-align: center;">
                                     <h5><strong>Type your name to signify your electronic signature</strong></h5>
                                 </div>
-                                <div style="margin: 0 auto; float: none;">
-                                    <input type="text" class="form-control input-lg" placeholder="">
+
+
+                                <div class="form-group" style="margin: 0 auto; float: none;">
+                                    <input [formControl]="customersignupform.controls['signature']" name="signature" type="text" class="form-control input-lg" placeholder="Signature*">
+                                    <span  *ngIf ="customersignupform.controls['signature'].touched && !customersignupform.controls['signature'].valid" class="help-inline">Signature is Required ! <img src="images/iconquestion.png"></span>
+                                   <!-- <input type="text" class="form-control input-lg" placeholder="">-->
                                 </div>
                                 <div style="margin: 0 auto; float: none;">
                                     <h5>Applicant’s Signature</h5>
                                 </div>
-                                <div style="margin: 0 auto; float: none;">
-                                    <img src="images/capture.jpg">
+                                <div class="capture_div">
+
+
+                                    <h1 id="sign">{{randstring}}</h1>
+                                    <p>{{err}}</p>
+
+                                    <span (click)="getrandomString()"style="cursor:pointer;" ></span>
+
+
+                                    <div class="clearfix"></div>
+
                                 </div>
+
                                 <div style="margin: 0 auto; float: none;">
                                     <p>Please enter verification code shown in the image above.</p>
+                                </div>
+                                <div style="margin: 0 auto; float: none;">
+                                    <input type="text" class="form-control input-lg" placeholder="">
                                 </div>
                                 <div class="row checkplease">
                                     <div class="col-md-4 lbltextdiv">
                                         <span class="lbltext text-right"><strong>And please check</strong></span>
                                     </div>
                                     <div class="col-md-8 checkpleaseinput">
-                                        <input id="2" type="checkbox" name="2" value="1"><label for="2"></label><span>I have read and accept the above policy.</span>
+                                       <!-- <input id="2" type="checkbox" name="2" value="1">-->
+                                        <input id="checkbox1" type="checkbox" name="is_active" [formControl]="customersignupform.controls['is_active']" value="1"/>
+                                        <label for="checkbox1"></label><span>I have read and accept the above policy.</span>
+                                        <span *ngIf ="customersignupform.controls['is_active'].touched && !customersignupform.controls['is_active'].valid" class="help-inline">You must select checkbox <img src="images/iconquestion.png"></span>
                                     </div>
                                     <!-- <div class="currentemploymentthird1">
 
@@ -720,9 +759,7 @@
 
                                      </div>-->
                                 </div>
-                                <div style="margin: 0 auto; float: none;">
-                                    <input type="text" class="form-control input-lg" placeholder="">
-                                </div>
+
                                 <div class="margintop30">
                                     <div class="btnfinacefooterlist list-inline center-block text-center">
                                         <input (click)="submitform1()" type="button" class="bo_btn2" value="submit">

@@ -46,6 +46,8 @@ export class AppAddcar implements OnInit {
     private carbodystylelist:any;
     private carautoyearlist:any;
     private listcarautomileage:any;
+    private basepricelist:any;
+    private featurelist:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.ckeditorContent = '';
@@ -97,6 +99,24 @@ console.log(this.userInfo);
             }, error => {
                 console.log("Oooops!");
             });
+        this.http.get(this.serverUrl+'listcarfeature')
+            .subscribe(data => {
+                this.featurelist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        this.http.get(this.serverUrl+'basepricelist')
+            .subscribe(data => {
+                //console.log(data);
+                this.basepricelist=data.json();
+
+                //  console.log(this.basepricelist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
         this.addcarform = fb.group({
             username: [this.userInfo.username, Validators.required],
             doctype: ['', Validators.required],
@@ -116,6 +136,8 @@ console.log(this.userInfo);
             mileage: ['', Validators.required],
             enginetype: ['', Validators.required],
             carbodystylelist: ['', Validators.required],
+            basepricerange: ['', Validators.required],
+            feature: ['', Validators.required],
             auctionid: [[], Validators.required],
             power_locks: [""],
             power_window: [""],

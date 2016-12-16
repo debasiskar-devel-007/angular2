@@ -362,18 +362,26 @@
                         <tr>
                             <td colspan="3">
                                 <div class="table_checkbox_wrapper">
-                                <input type="checkbox" id="other1"><label for="other1"><span>Other</span></label>
+
+                                <input type="checkbox" (click)="colorcheck()" id="other1"><label for="other1"><span>Other</span></label>
                                 <div class="clearfix"></div>
 
-                                <div class="table_textbox">
-
-
-                                    <input type="text" class="tabel_textarea">
-                                    <input type="button" value="Submit" class="tabel_button">
+                                <div class="table_textbox hide">
+                                    <form novalidate [formGroup]="colorform"   name="addsharelinkform"  class="form-inline">
+                                        <!--<input [formControl]="colorform.controls['priority']" name="priority"  type="hidden" class="form-control" placeholder="Priority" value="200"/>-->
+                                        <!--<input id="checkbox1" type="hidden" name="checkbox1" [formControl]="colorform.controls['is_active']" value="1"/>-->
+                                    <!--<input type="text" [formControl]="colorform.controls['color']" class="tabel_textarea">-->
+                                        <div class="form-group" style="width:78%;">
+                                            <input [formControl]="colorform.controls['color']" name="color"  type="text" class="form-control colclass tabel_textarea" placeholder="Color Name" style="width: 100%; background: #ccc;"/>
+                                            <span  *ngIf ="colorform.controls['color'].touched && !colorform.controls['color'].valid" class="help-inline"><span class="errormsgtxt">Color Name is Required !</span> <img src="images/iconquestion.png"></span>
+                                        </div>
+                                    <input (click)="updatecolorform()" type="button" value="Submit" class="tabel_button">
 
                                     <div class="clearfix"></div>
+                                    </form>
 
                                 </div>
+
                                 </div>
 
                             </td>
@@ -547,7 +555,7 @@
                 <div class="row">
                    <span *ngFor="let itemcaryear of carautoyearlist let k=index" >
                     <div *ngIf="itemcaryear.is_active==1" class="col-lg-4 col-md-4 col-sm-6 col-xs-12  retailformblock1part3innerblock3single" style="margin-bottom: 14px;">
-                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="customersignupupdateform.controls['car_auto_year']" name="car_auto_year" (change)="autoyearchange($event)"value="{{itemcaryear._id}}" >
+                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="customersignupupdateform.controls['car_auto_year']" name="car_auto_year" (change)="autoyearchange($event)" value="{{itemcaryear._id}}" >
                         <label [attr.for]="itemcaryear._id"></label>
                         <span>{{itemcaryear.year}}</span>
                     </div>

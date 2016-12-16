@@ -40,7 +40,7 @@ import {AppPostauctionactivity} from "./pages/postauctionactivity/app.postauctio
 import {AppRecentbidagreement} from "./pages/recentbidagreement/app.recentbidagreement";
 import {AppSharemedia} from "./pages/sharemedia/app.sharemedia";
 import {AppUpcomingauctions} from "./pages/upcomingauctions/app.upcomingauctions";
-import {AppAppFinance} from "./pages/finance/app.finance";
+import {AppFinance} from "./pages/finance/app.finance";
 import {AppRetailcustomerconnect} from "./pages/retailcustomerconnect/app.retailcustomerconnect";
 import {AppEditsharelink} from "./pages/editsharelink/app.editsharelink";
 import {AppBannersizelist} from "./pages/bannersizelist/app.bannersizelist";
@@ -103,6 +103,9 @@ import {AppCarfeaturelist} from "./pages/carfeaturelist/app.carfeaturelist";
 import {AppAddcarfeature} from "./pages/addcarfeature/app.addcarfeature";
 import {AppEditcarfeature} from "./pages/editcarfeature/app.editcarfeature";
 import {AppAuctioininventorydetails} from "./pages/auctioininventorydetails/app.auctioininventorydetails";
+import {AppAddretailcommission} from "./pages/addretailcommission/app.addretailcommission";
+import {AppRetailcommissionlist} from "./pages/retailcommissionlist/app.retailcommissionlist";
+import {AppManageopencontract} from "./pages/manageopencontract/app.manageopencontract";
 
 //alert(window.location.hostname);
 
@@ -170,7 +173,7 @@ const appRoutes: Routes = [
     { path: 'recentbidagreement', component:AppRecentbidagreement},
     { path: 'sharemedia', component:AppSharemedia},
     { path: 'upcomingauctions', component:AppUpcomingauctions},
-    { path: 'finance', component:AppAppFinance},
+    { path: 'finance', component:AppFinance},
     { path: 'retailcustomerconnect', component:AppRetailcustomerconnect},
     { path: 'bannersizelist', component:AppBannersizelist},
     { path: 'addbannersize', component:AppAddbannersize},
@@ -183,7 +186,7 @@ const appRoutes: Routes = [
     { path: 'writemail', component:AppWritemail},
     { path: 'readmessage', component:AppReadmessage},
     { path: 'mailinbox', component:AppMailinbox},
-    { path: 'customerprofile', component:AppCustomerprofile},
+    { path: 'customerprofile/:id', component:AppCustomerprofile},
     { path: 'addaffiliate', component:AppAddaffiliate},
     { path: 'affiliatelist', component:AppAffiliatelist},
     { path: 'editaffiliate/:id', component:AppEditaffiliate},
@@ -232,6 +235,9 @@ const appRoutes: Routes = [
     { path: 'addcarfeature', component: AppAddcarfeature},
     { path: 'editcarfeature/:id', component: AppEditcarfeature},
     { path: 'auctioininventorydetails/:id', component: AppAuctioininventorydetails},
+    { path: 'addretailcommission', component: AppAddretailcommission},
+    { path: 'retailcommissionlist', component: AppRetailcommissionlist},
+    { path: 'manageopencontract', component: AppManageopencontract},
 
 
 

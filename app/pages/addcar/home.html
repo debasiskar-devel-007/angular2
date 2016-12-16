@@ -44,14 +44,14 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <select  class="form-control3" [formControl]="addcarform.controls['color']" name="auctionid" >
+                                    <select  class="form-control3" [formControl]="addcarform.controls['color']" name="color" >
                                         <option value="" selected="selected"><span class="errormsgtxt">Select Color</span></option>
                                         <option *ngFor="let obj1 of colorlist" [value]="obj1._id">{{obj1.color}}</option>
                                     </select>
                                     <span  *ngIf ="addcarform.controls['color'].touched && !addcarform.controls['color'].valid" class="help-inline spanalign"><span class="errormsgtxt">Color is Required ! </span><img src="images/iconquestion.png"></span>
                                 </div>
                                 <div class="form-group">
-                                    <select  class="form-control3" [formControl]="addcarform.controls['carbodystylelist']" name="auctionid" >
+                                    <select  class="form-control3" [formControl]="addcarform.controls['carbodystylelist']" name="carbodystylelist" >
                                         <option value="" selected="selected"><span class="errormsgtxt">Select Body Style</span></option>
                                         <option *ngFor="let obj1 of carbodystylelist" [value]="obj1._id">{{obj1.name}}</option>
                                     </select>
@@ -66,7 +66,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                    <select  class="form-control3" [formControl]="addcarform.controls['mileage']" name="carautoyearlist" >
+                                    <select  class="form-control3" [formControl]="addcarform.controls['mileage']" name="mileage" >
                                         <option value="" selected="selected"><span class="errormsgtxt">Select Mileage</span></option>
                                         <option *ngFor="let obj1 of listcarautomileage" [value]="obj1._id">{{obj1.mileage}}</option>
                                     </select>
@@ -182,6 +182,20 @@
                                         <option value="No">No</option>
 
                                     </select>
+                                </div>
+                                <div class="form-group">
+                                    <select  class="form-control3" [formControl]="addcarform.controls['basepricerange']" name="basepricerange" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Base Price Range</span></option>
+                                        <option *ngFor="let obj1 of basepricelist" [value]="obj1._id">{{obj1.baseprice}}</option>
+                                    </select>
+                                    <span  *ngIf ="addcarform.controls['basepricerange'].touched && !addcarform.controls['basepricerange'].valid" class="help-inline spanalign"><span class="errormsgtxt">Base Price Range is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <select  class="form-control3" [formControl]="addcarform.controls['feature']" name="feature" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Feature</span></option>
+                                        <option *ngFor="let objfeature of featurelist" [value]="objfeature._id">{{objfeature.feature}}</option>
+                                    </select>
+                                    <span  *ngIf ="addcarform.controls['feature'].touched && !addcarform.controls['feature'].valid" class="help-inline spanalign"><span class="errormsgtxt">Feature is Required ! </span><img src="images/iconquestion.png"></span>
                                 </div>
                                 <div class="form-group">
                                     <input type="hidden" [formControl]="addcarform.controls['filename']" name="filename" class="form-control" placeholder="Filename"/>

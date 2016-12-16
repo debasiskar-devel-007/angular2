@@ -13,7 +13,8 @@
                         <div class="row">
                             <div class="col-lg-4 col-md-2 col-sm-3 col-xs-12 custoomerinfoblockleft">
                                 <div class="custoomerinfopic">
-                                    <img src="images/customeprofilerpic1.jpg" class="img-responsive">
+                                   <!-- <img src="images/customeprofilerpic1.jpg" class="img-responsive">-->
+                                    <img src="{{sharefilesrc1}}" class="img-responsive">
                                 </div>
                                 <div class="custoomerinfoonline">
                                     <ul class="list-inline">
@@ -24,36 +25,38 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="col-lg-8 col-md-10 col-sm-9 col-xs-12 custoomerinfoblockright">
+                            <div *ngIf="details" class="col-lg-8 col-md-10 col-sm-9 col-xs-12 custoomerinfoblockright">
                                 <form class="form-horizontal">
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Name:</label>
                                         <div class="col-sm-10 control-data">
-                                            <p class="form-control-static"><span>David Jones</span></p>
+                                            <p class="form-control-static"><span>{{details.fname}} {{details.lname}}</span></p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Address:</label>
                                         <div class="col-sm-10 control-data">
-                                            <p class="form-control-static">24 DC Lane Saltlake Utah</p>
+                                            <p class="form-control-static">{{details.address}}<br/>
+                                            {{details.city}} , {{details.state}} , {{details.zip}}
+                                            </p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Phone:</label>
                                         <div class="col-sm-10 control-data">
-                                            <p class="form-control-static">1800-345-1500</p>
+                                            <p class="form-control-static">{{details.phone}}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Email:</label>
                                         <div class="col-sm-10 control-data">
-                                            <p class="form-control-static">devidjones@gmail.com</p>
+                                            <p class="form-control-static">{{details.email}}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Member Since:</label>
                                         <div class="col-sm-10 control-data">
-                                            <p class="form-control-static">Sep, 2016</p>
+                                            <p class="form-control-static">{{commonservices.convertunixtodate(details.added_on)}}</p>
                                         </div>
                                     </div>
                                 </form>
@@ -145,7 +148,7 @@
                     </div>
                     <div class="inventorylistswrapper">
                         <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                            <div *ngFor="let inventietm of inventorymatcharr" class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
                                 <div class="inventorysinglelistblock">
                                     <div class="row">
                                         <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
@@ -153,27 +156,27 @@
                                                 <tbody>
                                                 <tr>
                                                     <td><span>Make:</span></td>
-                                                    <td>Renault</td>
+                                                    <td>{{getcarlogo(inventietm)}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Model:</span></td>
-                                                    <td>Duster</td>
+                                                    <td>{{inventietm.model}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Year:</span></td>
-                                                    <td>2016</td>
+                                                    <td>{{getcaryear(inventietm)}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Miles:</span></td>
-                                                    <td>600</td>
+                                                    <td>{{getmileage(inventietm)}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Color:</span></td>
-                                                    <td>Red</td>
+                                                    <td>{{getcolor(inventietm)}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
+                                                    <td>{{inventietm.est_retail_value}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td colspan="2" class="viewdetail">
@@ -193,9 +196,11 @@
                                         <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
                                             <div class="imgouter">
                                                 <div class="imgwrapper">
-                                                    <img src="images/auctionimg.jpg">
+                                                   <!-- <img src="images/auctionimg.jpg">-->
+                                                    <img src="{{carimg}}{{inventietm.filename}}">
                                                     <div class="auctionimg">
-                                                        <img src="images/auctionlogoimg.jpg">
+                                                       <!-- <img src="images/auctionlogoimg.jpg">-->
+                                                        <img src="{{carimg}}{{inventietm.auctiondata[0].filename}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -203,16 +208,17 @@
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 progressleft">
+
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="inventietm.userdetails[0].inventorymatchval+'%'">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 progressright" style="padding-left:0px;"><span class="progresspercentage">60%<span></span></span></div>
+                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 progressright" style="padding-left:0px;"><span class="progresspercentage">{{inventietm.userdetails[0].inventorymatchval}}%<span></span></span></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                           <!-- <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
                                 <div class="inventorysinglelistblock">
                                     <div class="row">
                                         <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
@@ -279,275 +285,7 @@
                                         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 progressright" style="padding-left:0px;"><span class="progresspercentage">40%<span></span></span></div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row">
-                                        <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail">
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <button class="btnsendrsvp" type="button" value="Edit">Send RSVP</button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="btnviewdetails" type="button" value="Edit">View Details</button>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                            <div class="imgouter">
-                                                <div class="imgwrapper">
-                                                    <img src="images/auctionimg.jpg">
-                                                    <div class="auctionimg">
-                                                        <img src="images/auctionlogoimg.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 progressleft">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 progressright" style="padding-left:0px;"><span class="progresspercentage">10%<span></span></span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row">
-                                        <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail">
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <button class="btnsendrsvp" type="button" value="Edit">Send RSVP</button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="btnviewdetails" type="button" value="Edit">View Details</button>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                            <div class="imgouter">
-                                                <div class="imgwrapper">
-                                                    <img src="images/auctionimg.jpg">
-                                                    <div class="auctionimg">
-                                                        <img src="images/auctionlogoimg.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 progressleft">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 progressright" style="padding-left:0px;"><span class="progresspercentage">40%<span></span></span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row">
-                                        <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail">
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <button class="btnsendrsvp" type="button" value="Edit">Send RSVP</button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="btnviewdetails" type="button" value="Edit">View Details</button>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                            <div class="imgouter">
-                                                <div class="imgwrapper">
-                                                    <img src="images/auctionimg.jpg">
-                                                    <div class="auctionimg">
-                                                        <img src="images/auctionlogoimg.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 progressleft">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 progressright" style="padding-left:0px;"><span class="progresspercentage">100%<span></span></span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row">
-                                        <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail">
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <button class="btnsendrsvp" type="button" value="Edit">Send RSVP</button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="btnviewdetails" type="button" value="Edit">View Details</button>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                            <div class="imgouter">
-                                                <div class="imgwrapper">
-                                                    <img src="images/auctionimg.jpg">
-                                                    <div class="auctionimg">
-                                                        <img src="images/auctionlogoimg.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 progressleft">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 progressright" style="padding-left:0px;"><span class="progresspercentage">20%<span></span></span></div>
-                                    </div>
-                                </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -1308,22 +1046,22 @@
                 <div class="recentrsvpblock">
                     <div class="recentrsvpheader">
                         <h2>View Similar Profile</h2>
-                        <div class="viewall"><a>View All</a></div>
+                        <div class="viewall"><a [routerLink]="['/viewcustomers']">View All</a></div>
                     </div>
                     <div class="recentrsvplists">
                         <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
+                            <div *ngFor="let customeritem of customerlistarr" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
                                 <div class="imgwrapperbox">
                                     <div class="imgwrapper">
-                                        <img src="images/inboximgleft.jpg">
+                                        <a [routerLink]="['/customerprofile', customeritem._id]"> <img src="{{customeritem.filesrc}}"></a>
                                     </div>
                                     <div class="inactive"></div>
                                 </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Yesterday</span>
+                                <a [routerLink]="['/customerprofile', customeritem._id]"> <p>{{customeritem.fname}} {{customeritem.lname}}</p></a>
+                                <span [innerHtml]="commonservices.convertunixtodate(customeritem.added_on)"></span>
                                 <span class="inactive"></span>
                             </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
+ <!--                           <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
                                 <div class="imgwrapperbox">
                                     <div class="imgwrapper">
                                         <img src="images/inboximgleft.jpg">
@@ -1397,7 +1135,7 @@
                                 <p>Lorem ipsum.</p>
                                 <span>Yesterday</span>
                             </div>
-                        </div>
+-->                        </div>
                     </div>
                 </div>
             </div>

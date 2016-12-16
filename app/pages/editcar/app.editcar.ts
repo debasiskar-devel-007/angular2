@@ -46,6 +46,8 @@ export class AppEditcar implements OnInit {
     private carbodystylelist:any;
     private carautoyearlist:any;
     private listcarautomileage:any;
+    private basepricelist:any;
+    private featurelist:any;
 
     id: number;
     private sub: any;
@@ -102,6 +104,23 @@ console.log(this.userInfo);
             }, error => {
                 console.log("Oooops!");
             });
+        this.http.get(this.serverUrl+'listcarfeature')
+            .subscribe(data => {
+                this.featurelist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
+        this.http.get(this.serverUrl+'basepricelist')
+            .subscribe(data => {
+                //console.log(data);
+                this.basepricelist=data.json();
+
+                //  console.log(this.basepricelist);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
         this.sub = this.route.params.subscribe(params => {
             this.id = params['id']; // (+) converts string 'id' to a number
             let ids={id:this.id};
@@ -147,6 +166,8 @@ console.log(this.userInfo);
                         lights: [this.details.lights],
                         gear_type: [this.details.gear_type],
                         trinted_window: [this.details.trinted_window],
+                        basepricerange: [this.details.basepricerange,Validators.required],
+                        feature: [this.details.feature,Validators.required],
 
                     });
                     this.ckeditorContent = this.details.notes;
@@ -184,6 +205,8 @@ console.log(this.userInfo);
             mileage: ['', Validators.required],
             enginetype: ['', Validators.required],
             carbodystylelist: ['', Validators.required],
+            basepricerange: ['', Validators.required],
+            feature: ['', Validators.required],
             auctionid: [[], Validators.required],
             power_locks: [""],
             power_window: [""],

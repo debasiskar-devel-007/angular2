@@ -26,6 +26,7 @@ export class AppRetailcustomerconnect implements OnInit {
     myModal :ModalModule;
     customersignupform: FormGroup;
     customersignupupdateform: FormGroup;
+    colorform: FormGroup;
     data:any;
     http:Http;
     items:any;
@@ -78,6 +79,8 @@ export class AppRetailcustomerconnect implements OnInit {
     query:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
+        //table_textbox
+        $('.table_textbox').css('display','none');
         this.router=router;
         this.elementRef=elementRef;
         this.colorval=[];
@@ -145,6 +148,11 @@ export class AppRetailcustomerconnect implements OnInit {
                 console.log("Oooops!");
             });
 
+        this.colorform = fb.group({
+            color: ["", Validators.required],
+            priority: [20],
+            is_active: [1]
+        });
 
         this.customersignupform = fb.group({
             username: [this.customerinfo.username, Validators.required],
@@ -280,7 +288,9 @@ export class AppRetailcustomerconnect implements OnInit {
             });
 
 
+
     }
+
     ngOnInit() {
         var el = this.elementRef.nativeElement;
         console.log('in native');
@@ -371,6 +381,7 @@ export class AppRetailcustomerconnect implements OnInit {
                 .subscribe(data => {
                     var userdet={username:this.customersignupform.value.username,useremail:this.customersignupform.value.email,userrole:'customer',userfullname:this.customersignupform.value.fname+' '+this.customersignupform.value.lname};
                     this.userInfo.putObject('userdetails', userdet);
+                    this.customerInfo.putObject('customerInfo',this.customersignupupdateform.value);
                     console.log(this.customersignupupdateform.value);
                     if(this.customersignupupdateform.value.qualify_finance==1){
                         this.router.navigate(['/finance']);
@@ -572,6 +583,80 @@ export class AppRetailcustomerconnect implements OnInit {
         $('#'+$(target).attr('logoid')).click();
         //$(target).parent().toggleClass('selected');
 
+    }
+    colorcheck(){
+
+        if($('#other1').is(':checked')){
+
+
+            $('.table_textbox').removeClass('hide');
+           // $('#other1').val(' ');
+        }
+        else{
+            $('.table_textbox').addClass('hide');
+        }
+    }
+
+    updatecolorform(){
+        console.log('add color');
+        console.log(this.colorform.value);
+        let x:any;
+        for(x in this.colorform.controls){
+            this.colorform.controls[x].markAsTouched();
+
+        }
+        this.colorform.markAsDirty();
+        if(this.colorform.valid){
+            let link = this.serverUrl+'addcolor';
+            var submitdata = this.colorform.value;
+            console.log(submitdata);
+            this.http.post(link,submitdata)
+                .subscribe(data2 => {
+                   console.log('Before Push');
+                    console.log(this.colorval);
+
+                    this.colorlist.push({'_id':data2.json()[0],'color':submitdata.color,'priority':submitdata.priority,'is_active':submitdata.is_active});
+                    this.rows = Array.from(Array(Math.ceil(this.colorlist.length / 3)).keys());
+                    $('#'+data2.json()[0]).click();
+                    console.log('After Push');
+                    this.colorval.push(data2.json()[0]);
+                    // $('#'+data2.json()[0]).click();
+                    //$('#'+data2.json()).prop('checked', true);
+                    console.log(this.colorval);
+                    $('.table_textbox').addClass('hide');
+                    $('#other1').prop('checked',false);
+                    $('.colclass').val('');
+
+                   /* this.http.get(this.serverUrl+'colorlist')
+                        .subscribe(data => {
+                            this.colorlist=data.json();
+                            this.rows = Array.from(Array(Math.ceil(this.colorlist.length / 3)).keys())
+                            //this.carfeaturesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+
+
+                            let timeoutId = setInterval(() => {
+
+                                //console.log('hello');
+
+                                var x = $('.form-control_input').offset();
+
+                                // alert('offset x'+ x.top +'offset y' + x.left );
+
+                                $('#researchbymake').offset({top:x.top,left:x.left});
+
+
+                            }, 2000);
+
+
+                        }, error => {
+                            console.log("Oooops!");
+                        });*/
+                   // this.router.navigateByUrl('/colorlist(adminheader:adminheader//adminfooter:adminfooter)')
+
+                }, error => {
+                    console.log("Oooops!");
+                });
+        }
     }
 
 }

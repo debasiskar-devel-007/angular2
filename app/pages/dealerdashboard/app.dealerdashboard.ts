@@ -49,6 +49,7 @@ export class AppDealerdashboard {
     private orderbyqueryinventorymatch:any;
     private orderbytypeinventorymatch:any;
     customercount:any;
+    private rsvplist:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,private _sanitizer: DomSanitizer) {

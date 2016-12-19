@@ -60,6 +60,13 @@ export class AppInventorymatches {
     private allMElementRef:any;
     private datatemp:any;
     private detailstemp:any;
+    private retailcommission:any;
+    private retailfinalval:any;
+    private retailctype:any;
+    private retailc:any;
+    private parsecomission:any;
+    private parseprice:any;
+    private rsvplist:any;
 
     constructor(@Inject(Renderer) private renderer: Renderer,fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent,private _sanitizer: DomSanitizer  ) {
         this.router=router;
@@ -72,6 +79,8 @@ export class AppInventorymatches {
         this.query_auction=0;
         this.query_make=0;
         this.query_year=0;
+        this.retailc=0;
+        this.retailctype=0;
         this.inventorymatcharr=[];
         this.p=1;
         this.orderbyqueryinventorymatch='inventorymatchval';
@@ -87,128 +96,50 @@ export class AppInventorymatches {
                 this.details=data.json();
                 this.detailstemp=JSON.stringify(data.json());
                 console.log(this.details);
+                this.manageinventory();
 
 
             }, error => {
                 console.log("Oooops!");
             });
         let link='';
+
+        let linkv = this.serverUrl+'getretailcommissionlist';
+        let var1={dealerid:this.userInfo.id};
+        this.http.post(linkv,var1)
+            .subscribe(data1 => {
+
+                this.retailcommission = data1.json();
+                console.log('retail comission ...');
+                console.log(this.retailcommission[0]);
+                this.retailfinalval=this.retailcommission[0].commission;
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        let linkv1 = this.serverUrl+'getrsvpbydealerid';
+        let var11={dealerid:this.userInfo.username};
+        this.http.post(linkv1,var11)
+            .subscribe(data1 => {
+
+                this.rsvplist = data1.json();
+                console.log('rsvp list...');
+                console.log(this.rsvplist);
+
+            }, error => {
+                console.log("Oooops!");
+            });
         link = this.serverUrl+'getinventoryfordealer?dealerid='+this.userInfo.id;
        // console.log('link ==='+link);
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
                 this.datatemp = JSON.stringify( data1.json());
+                this.manageinventory();
                // console.log('dealer inventorydata');
                // console.log(this.data);
-                var x:any;
-                var y:any;
-                var z:any;
-                var inventorymatchvalue:any;
-                var inventorymatchvaluearr:Array<any>;
-                var inventorymatchvalueclass:Array<any>;
-                var tempcustomerarrforiventorymatches:Array<any>;
-                for (x in this.data){
-                    for(y in this.data[x].cardata){
 
-                        this.data[x].cardata[y].auctionids=this.data[x].cardata[y].auctionid.join("-");
-                        this.data[x].cardata[y].auctiondata=this.data[x].auctiondata;
-                        tempcustomerarrforiventorymatches=[];
-
-                        for(z in this.details){
-                            inventorymatchvalue=0;
-                            inventorymatchvaluearr=[];
-                            inventorymatchvalueclass=[];
-                            if(typeof (this.details[z].base_price!='undefined')){
-                                //alert(39);
-
-                               //  console.log('user detail .. ');
-                                // console.log(this.details[z]);
-                                // console.log('car detail data  .. .');
-                                // console.log(this.data[x].cardata[y]);
-                                // console.log('in array log ...');
-                              //  console.log($.inArray( this.data[x].cardata[y].carbodystylelist, this.details[z].car_body_style ));
-                                if($.inArray( this.data[x].cardata[y].carautoyearlist, this.details[z].car_auto_year )>-1){
-
-                                    inventorymatchvalue+=14.3;
-                                    inventorymatchvaluearr.push('Year /');
-                                    inventorymatchvalueclass['yr']='match';
-                                }
-                                else{
-                                    inventorymatchvalueclass['yr']='unmatched';
-                                }
-                                if($.inArray( this.data[x].cardata[y].basepricerange, this.details[z].base_price )>-1){
-
-                                    inventorymatchvalue+=14.3;
-                                    inventorymatchvaluearr.push('Price /');
-                                    inventorymatchvalueclass['bp']='match';
-                                }
-                                else{
-                                    inventorymatchvalueclass['bp']='unmatched';
-                                }
-                                if($.inArray( this.data[x].cardata[y].car_body_style, this.details[z].car_body_style )>-1){
-
-                                    inventorymatchvalue+=14.3;
-                                    inventorymatchvaluearr.push('Body Style / ');
-                                    inventorymatchvalueclass['bs']='matched';
-                                }
-                                else{
-                                    inventorymatchvalueclass['bs']='unmatched';
-                                }
-                                if($.inArray( this.data[x].cardata[y].color, this.details[z].color_opiton )>-1){
-
-                                    inventorymatchvalue+=14.3;
-                                    inventorymatchvaluearr.push('Color /');
-                                    inventorymatchvalueclass['cl']='match';
-                                }
-                                else{
-                                    inventorymatchvalueclass['cl']='unmatched';
-                                }
-                                if($.inArray( this.data[x].cardata[y].carlogolist, this.details[z].upcoming_auction )>-1){
-
-                                    //alert(9);
-                                    inventorymatchvalue+=14.3;
-                                    inventorymatchvaluearr.push('Make /');
-                                    inventorymatchvalueclass['mk']='match';
-                                }
-                                else
-                                {
-                                    inventorymatchvalueclass['mk']='unmatched';
-                                }
-                                if (this.data[x].cardata[y].mileage ==this.details[z].car_mileage){
-
-                                    inventorymatchvalue+=14.3;
-                                    inventorymatchvaluearr.push('Mileage /');
-                                    inventorymatchvalueclass['ml']='match';
-
-                                }
-                                else{
-                                    inventorymatchvalueclass['ml']='unmatched';
-                                }
-                                console.log('push arr...');
-                                console.log(this.details[z]);
-                                console.log('class arr...');
-                                console.log(inventorymatchvalueclass);
-
-                                this.details[z].inventorymatchval=Math.ceil(inventorymatchvalue);
-                                this.details[z].inventorymatchvaluearr=inventorymatchvaluearr;
-                                this.details[z].inventorymatchvalueclass=inventorymatchvalueclass;
-                                if(inventorymatchvalue>0)tempcustomerarrforiventorymatches.push(this.details[z]);
-                                console.log('inventorymatchvalue == '+inventorymatchvalue);
-                            }
-                        }
-                        this.data[x].cardata[y].userdetails=tempcustomerarrforiventorymatches;
-
-
-                        ///alert(tempcustomerarrforiventorymatches.length);
-                        if(tempcustomerarrforiventorymatches.length>0){
-                            this.inventorymatcharr.push(this.data[x].cardata[y]);
-                            console.log('inventory user array length d');
-                            console.log(this.data[x].cardata[y].userdetails.length);
-                        }
-
-                    }
-                }
                // console.log('inventory datas');
                // console.log(this.inventorymatcharr);
                 this.pagec=Math.ceil(this.inventorymatcharr.length / 9);
@@ -302,6 +233,147 @@ export class AppInventorymatches {
 
 
     }
+
+    manageinventory(){
+        var x:any;
+        var y:any;
+        var z:any;
+        var inventorymatchvalue:any;
+        var inventorymatchvaluearr:Array<any>;
+        var inventorymatchvalueclass:Array<any>;
+        var tempcustomerarrforiventorymatches:Array<any>;
+        let timeout=setInterval(() => {
+
+            for (x in this.data) {
+                for (y in this.data[x].cardata) {
+                    tempcustomerarrforiventorymatches = [];
+
+                    this.data[x].cardata[y].auctionids = this.data[x].cardata[y].auctionid.join("-");
+                    this.data[x].cardata[y].auctiondata = this.data[x].auctiondata;
+
+
+                    for (z in this.details) {
+                        if(this.checkrsvp(this.details[z], this.data[x].cardata[y]) != 1){
+                        clearInterval(timeout);
+
+                        let cflag: any = 0;
+                        //console.log('details.. users ...');
+                        //console.log(this.details[z]);
+
+                        if (typeof (this.details[z].base_price != 'undefined' )) {
+                            inventorymatchvalue = 0;
+                            inventorymatchvaluearr = [];
+                            inventorymatchvalueclass = [];
+
+                            if ($.inArray(this.data[x].cardata[y].carautoyearlist, this.details[z].car_auto_year) > -1) {
+
+                                inventorymatchvalue += 14.3;
+                                inventorymatchvaluearr.push('Year /');
+                                inventorymatchvalueclass['yr'] = 'match';
+                            }
+                            else {
+                                inventorymatchvalueclass['yr'] = 'unmatched';
+                            }
+                            if ($.inArray(this.data[x].cardata[y].basepricerange, this.details[z].base_price) > -1) {
+
+                                inventorymatchvalue += 14.3;
+                                inventorymatchvaluearr.push('Price /');
+                                inventorymatchvalueclass['bp'] = 'match';
+                            }
+                            else {
+                                inventorymatchvalueclass['bp'] = 'unmatched';
+                            }
+                            if ($.inArray(this.data[x].cardata[y].car_body_style, this.details[z].car_body_style) > -1) {
+
+                                inventorymatchvalue += 14.3;
+                                inventorymatchvaluearr.push('Body Style / ');
+                                inventorymatchvalueclass['bs'] = 'matched';
+                            }
+                            else {
+                                inventorymatchvalueclass['bs'] = 'unmatched';
+                            }
+                            if ($.inArray(this.data[x].cardata[y].color, this.details[z].color_opiton) > -1) {
+
+                                inventorymatchvalue += 14.3;
+                                inventorymatchvaluearr.push('Color /');
+                                inventorymatchvalueclass['cl'] = 'match';
+                            }
+                            else {
+                                inventorymatchvalueclass['cl'] = 'unmatched';
+                            }
+                            if ($.inArray(this.data[x].cardata[y].carlogolist, this.details[z].upcoming_auction) > -1) {
+
+
+                                inventorymatchvalue += 14.3;
+                                inventorymatchvaluearr.push('Make /');
+                                inventorymatchvalueclass['mk'] = 'match';
+                            }
+                            else {
+                                inventorymatchvalueclass['mk'] = 'unmatched';
+                            }
+                            if (this.data[x].cardata[y].mileage == this.details[z].car_mileage) {
+
+                                inventorymatchvalue += 14.3;
+                                inventorymatchvaluearr.push('Mileage /');
+                                inventorymatchvalueclass['ml'] = 'match';
+
+                            }
+                            else {
+                                inventorymatchvalueclass['ml'] = 'unmatched';
+                            }
+                            //console.log('push arr...');
+                            //console.log(this.details[z]);
+                            //console.log('class arr...');
+                            //console.log(inventorymatchvalueclass);
+
+                            this.details[z].inventorymatchval = Math.ceil(inventorymatchvalue);
+                            this.details[z].inventorymatchvaluearr = inventorymatchvaluearr;
+                            this.details[z].inventorymatchvalueclass = inventorymatchvalueclass;
+                            if (inventorymatchvalue > 0)tempcustomerarrforiventorymatches.push(this.details[z]);
+                            //console.log('inventorymatchvalue == ' + inventorymatchvalue);
+                        }
+                    }
+                    }
+                    this.data[x].cardata[y].userdetails = tempcustomerarrforiventorymatches;
+
+
+                    ///alert(tempcustomerarrforiventorymatches.length);
+                    if (tempcustomerarrforiventorymatches.length > 0) {
+                        this.inventorymatcharr.push(this.data[x].cardata[y]);
+                        //console.log('inventory user array length d');
+                        //console.log(this.data[x].cardata[y].userdetails.length);
+                    }
+
+                }
+            }
+        },2000);
+    }
+
+    checkrsvp(val1:any,val2:any){
+        let z1:any;
+
+        for(z1 in this.rsvplist){
+           /* console.log('rsvp .. users ...');
+            console.log(this.rsvplist[z1].dealerid);
+            console.log(val1.dealerusername);
+            console.log(val1.customerusername);
+            console.log(val1.username);
+            console.log('car data id');
+            console.log(val2._id);
+            console.log(this.rsvplist[z1].inventoryid);*/
+            //if(this.data[x].cardata[y]._id == this.rsvplist[z1].inventoryid) alert(890);
+            if(val1.username==this.rsvplist[z1].customerusername && val1.dealerusername==this.rsvplist[z1].dealerid && this.rsvplist[z1].inventoryid==val2._id){
+                console.log('rsvp found ...');
+                console.log(val1);
+                console.log(val2);
+                return 1;
+                //alert(9);
+            }
+        }
+        return 0;
+
+    }
+
 
 
     getcarlogo(val:any){
@@ -479,7 +551,21 @@ export class AppInventorymatches {
     }
 
     rsvpModalopen(inventory:Array<any>,userarr:Array<any>){
+        console.log('inventory');
         this.inventory=inventory;
+        console.log(this.inventory.est_retail_value);
+        //alert(parseFloat(this.inventory.est_retail_value.replace(',','')));
+        //alert(this.retailcommission[0].commission);
+        //alert(this.retailcommission[0].commissiontype);
+        this.retailctype=this.retailcommission[0].commissiontype;
+        this.retailc=this.retailcommission[0].commission;
+        if(this.retailcommission[0].commissiontype=='Percentage'){
+            this.parsecomission=parseFloat(this.retailcommission[0].commission);
+            this.parseprice=parseFloat(this.inventory.est_retail_value.replace(',',''));
+
+            this.parsecomission=parseFloat(this.retailcommission[0].commission);
+            this.retailfinalval=parseInt(this.parseprice+(this.parseprice*this.parsecomission/100));
+        }
         this.userinformation=userarr;
         this.userinformation.userimage='images/logo_61.png';
         if(this.userinformation.filename) {
@@ -487,7 +573,36 @@ export class AppInventorymatches {
         }
 
         $("#rsvpModal").modal('show');
+        /*$(function(){
+            $('.snd').on('click', function() { // code
+                alert(1);
+            });
+        })*/
     }
+    sendrsvp(){
+        //alert(9);
+        console.log('Modal ')
+        console.log(this.inventory);
+        console.log('User');
+        console.log(this.userinformation);
+        let values={dealerid:this.userInfo.username,inventoryid:this.inventory._id,customerusername:this.userinformation.username,retialcommission:this.retailfinalval};
+        //this.details=[];
+        alert(values);
+        console.log('post rsvp values');
+        console.log(values);
+        this.http.post(this.serverUrl+'addrsvp',values)
+            .subscribe(data => {
+                $(".btnclosepopup2").click();
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+       }
+
+
+
 }
 
 

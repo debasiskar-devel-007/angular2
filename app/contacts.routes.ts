@@ -106,6 +106,7 @@ import {AppAuctioininventorydetails} from "./pages/auctioininventorydetails/app.
 import {AppAddretailcommission} from "./pages/addretailcommission/app.addretailcommission";
 import {AppRetailcommissionlist} from "./pages/retailcommissionlist/app.retailcommissionlist";
 import {AppManageopencontract} from "./pages/manageopencontract/app.manageopencontract";
+import {AppEditopencontract} from "./pages/editopencontract/app.editopencontract";
 
 //alert(window.location.hostname);
 
@@ -238,6 +239,7 @@ const appRoutes: Routes = [
     { path: 'addretailcommission', component: AppAddretailcommission},
     { path: 'retailcommissionlist', component: AppRetailcommissionlist},
     { path: 'manageopencontract', component: AppManageopencontract},
+    { path: 'editopencontract/:id', component: AppEditopencontract},
 
 
 

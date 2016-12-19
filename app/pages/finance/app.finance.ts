@@ -197,6 +197,7 @@ export class AppFinance implements OnInit {
             listing_id: [''],
             location_id: [''],
             license_number: [''],
+            captcha: ['',AppFinance.validCaptcha],
            /* vin: [''],
             car_mileage: [this.customerinfo.car_mileage],
             upcoming_auction: [this.customerinfo.upcoming_auction],
@@ -253,6 +254,21 @@ export class AppFinance implements OnInit {
                 console.log("Oooops!");
             });
 
+
+    }
+    ngOnInit(){
+        console.log('on init');
+    };
+    static validCaptcha(control: FormControl){
+
+        console.log(control.value+'stateval');
+        if (control.value=='') {
+
+            return { 'invalidState': true };
+        }
+        if($('#sign').text()!=control.value){
+            return { 'invalidState': true };
+        }
 
     }
 
@@ -345,7 +361,31 @@ export class AppFinance implements OnInit {
         for (var i = length; i > 0; --i) result += charss[Math.round(Math.random() * (charss.length - 1))];
         this.randstring =result;
     }
+    mailingaddress(){
 
+    if($('#mailingaddressradio').is(':checked')){
+    $('.mailadd').removeClass('hide');
+    }
+    else{
+        $('.mailadd').addClass('hide');
+    }
+    }
+    prevresidance(){
+        if($('#prevresidentradio').is(':checked')){
+            $('.prevses').removeClass('hide');
+        }
+        else{
+            $('.prevses').addClass('hide');
+        }
+    }
+    employment(){
+        if($('#prevemployeeradio').is(':checked')){
+            $('.paddingtop26').removeClass('hide');
+        }
+        else{
+            $('.paddingtop26').addClass('hide');
+        }
+    }
 }
 
 

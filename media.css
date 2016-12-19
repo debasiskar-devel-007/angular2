@@ -2914,28 +2914,4 @@
     .sharelinks .sharelinksimgwarpper {
         width: 100% !important;
     }
-    .sharelinkssinglelist .sharelinkssinglelistleft{ padding-right: 0px; padding-left: 0px;}
-
-}
-
-@media(max-width:1280px) {
-    .viewcustomers .blockcontentinfo .imgbox .btnwrapper .btnedit {
-        width: 78px;
-    }
-}
-
-
-
-
-/*------------end of view customer-------------*/
-
-
-@media screen and (max-width:960px){
-
-    .matchespopup .modal-content{ width: 90%!important;}
-
-
-
-    .matchespopup .modal-dialog{  width: 90%!important; }
-
-}
+    .sharelinkssinglelist .sharelinkssinglelistleft{ pad

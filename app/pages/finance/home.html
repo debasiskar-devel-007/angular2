@@ -209,14 +209,14 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-left text-left">Previous Residence</div>
                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pull-left text-left prevresidentradiodiv">
                             <div class="smalltxt1" >
-                                <input id="prevresidentradio" type="checkbox" name="prevresidentradio" value="1">
+                                <input id="prevresidentradio" (click)="prevresidance()" type="checkbox" name="prevresidentradio" value="1">
                                 <label for="prevresidentradio"></label>
                                 <span>( If less than 2 years at current residence )</span>
                             </div>
                         </div>
                     </div>
                 </h3>
-                <div class="financingblock2wrapperinnerwrapper" style="padding-top: 26px;">
+                <div class="financingblock2wrapperinnerwrapper prevses hide" style="padding-top: 26px;">
                     <div class="financingblock2wrapperinner">
 
                             <div class="row form-group">
@@ -257,14 +257,14 @@
                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 pull-left text-left">Mailing Address</div>
                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 pull-left text-left mailingaddressradiodiv">
                             <div class="smalltxt1">
-                                <input id="mailingaddressradio" type="checkbox" name="mailingaddressradio" value="1" checked="checked">
+                                <input id="mailingaddressradio" (click)="mailingaddress()" type="checkbox" name="mailingaddressradio" value="1" >
                                 <label for="mailingaddressradio"></label>
                                 <span>( If different than primary address )</span>
                             </div>
                         </div>
                     </div>
                 </h3>
-                <div class="financingblock2wrapperinnerwrapper">
+                <div class="financingblock2wrapperinnerwrapper mailadd hide">
                     <div class="financingblock2wrapperinner" style="padding-top: 26px;">
 
                             <div class="row form-group">
@@ -409,15 +409,15 @@
 
                 <h3>
                     <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-7 col-xs-9 pull-left text-left">Previous Employment</div>
-                        <div class="col-lg-8 col-md-8 col-sm-5 col-xs-3 pull-left text-left prevemployeeradiodiv">
+                        <div class="col-lg-3 col-md-3 col-sm-7 col-xs-9 pull-left text-left">Previous Employment</div>
+                        <div class="col-lg-9 col-md-9 col-sm-5 col-xs-3 pull-left text-left prevemployeeradiodiv">
                             <label class="smalltxt1">
-                                <input id="prevemployeeradio" type="checkbox" name="checkbox" value="1"><label for="prevemployeeradio"></label><span><strong>1</strong></span>
+                                <input (click)="employment()" id="prevemployeeradio" type="checkbox" name="checkbox" value="1"><label for="prevemployeeradio"></label><span><strong>1</strong></span>
                             </label>
                         </div>
                     </div>
                 </h3>
-                <div class="financingblock2wrapperinnerwrapper paddingtop26">
+                <div class="financingblock2wrapperinnerwrapper paddingtop26 hide">
                 <div class="financingblock2wrapperinner">
 
                         <div class="row form-group">
@@ -740,7 +740,9 @@
                                     <p>Please enter verification code shown in the image above.</p>
                                 </div>
                                 <div style="margin: 0 auto; float: none;">
-                                    <input type="text" class="form-control input-lg" placeholder="">
+                                    <input type="text" [formControl]="customersignupform.controls['captcha']" name="captcha"  class="form-control input-lg" placeholder="">
+                                    <span  *ngIf ="customersignupform.controls['captcha'].touched && !customersignupform.controls['captcha'].valid" class="help-inline">Captcha is Required ! <img src="images/iconquestion.png"></span>
+
                                 </div>
                                 <div class="row checkplease">
                                     <div class="col-md-4 lbltextdiv">

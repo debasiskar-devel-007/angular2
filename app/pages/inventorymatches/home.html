@@ -359,8 +359,8 @@
             </modal-footer>
         </modal>
 
-        <div id="rsvpModal" class="modal fade">
-            <div class="modal-dialog">
+        <div id="rsvpModal" class="modal fade  matchespopup">
+            <div class="modal-dialog  ">
                 <div class="modal-content">
                     <div class="modal-header" *ngIf="userinformation">
                         <div class="container-fluid">
@@ -435,11 +435,25 @@
 
                             </div>
                             <div class="clearfix"></div>
+
+                        </div>
+                        <h2 class="rsvp_headingtext">Please verify the <span>RSVP</span> amount is what you desire. Once accepted this can not be changed for this customer.</h2>
+
+                        <div class="rsvp_formgroup">
+                        <label>Set Retail Commission:</label>
+                        <input type="text" name="text" [(ngModel)]="retailfinalval" class="form-controlrsvp" >
+                        <input type="button" value="Send" (click)="sendrsvp()" class="rsvpsendbtn snd">
+
+                            <div class="clearfix"></div>
+
+                            <span>Calculated as Rule of Opencontract : Rate {{retailc}} with Type {{retailctype}} </span>
                         </div>
 
+
                     </div>
+
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btnclosepopup2" data-dismiss="modal">Close</button>
 
                     </div>
                 </div>

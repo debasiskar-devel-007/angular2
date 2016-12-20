@@ -1799,15 +1799,15 @@
                                                 <tbody>
                                                 <tr>
                                                     <td><span>Make:</span></td>
-                                                    <td>Renault</td>
+                                                    <td>{{getcardetails(itemrsvp.inventoryid,'make')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Model:</span></td>
-                                                    <td>Duster</td>
+                                                    <td>{{getcardetails(itemrsvp.inventoryid,'model')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Year:</span></td>
-                                                    <td>2016</td>
+                                                    <td>{{getcardetails(itemrsvp.inventoryid,'year')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Miles:</span></td>
@@ -1841,8 +1841,8 @@
                                                 </li>
                                                 <li>
                                                     <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/auctionimg_1.jpg">
+                                                        <div class="imgwrapper" [innerHtml]="getcardetails(itemrsvp.inventoryid,'image')">
+                                                            <!--<img src="images/auctionimg_1.jpg">-->
                                                         </div>
                                                     </div>
                                                     <div class="btnwrapper">

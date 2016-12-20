@@ -2764,7 +2764,10 @@ ul.inboxlists{padding:0px; margin:0px;}
 .recentrsvpsinglelist .imgwrapper img{max-width:100%;}
 .recentrsvpsinglelist p{text-align:center;font-family: 'MyriadPro-Regular';font-size: 13px;color: #151515;padding: 2px 0px 0px 0px; line-height: 16px; display:block; margin: 0px;}
 .recentrsvpsinglelist span{text-align:center;font-family: 'MyriadPro-Regular';font-size: 13px;color: #000;padding: 0px 0px 3px 0px; display:block; font-weight:500;overflow: hidden; word-wrap: break-word;}
-.recentrsvpsinglelist{margin-bottom:9px;}
+/*.recentrsvpsinglelist{margin-bottom:9px;}*/
+.recentrsvpsinglelist:nth-child(4n+1){
+    clear:left;
+}
 /*.recentrsvpsinglelist .imgwrapper .active{background-color:#229c1a; width:10px; height:10px; border-radius:100%; position:absolute; bottom:0px; right:0px;}
 .recentrsvpsinglelist .imgwrapper .inactive{background-color:#ff0000; width:10px; height:10px; border-radius:100%;position:absolute; bottom:0px; right:0px;}*/
 
@@ -2789,7 +2792,14 @@ ul.inboxlists{padding:0px; margin:0px;}
 .recentcussinglelist p{text-align:center;font-family: 'MyriadPro-Regular';font-size: 13px;color: #151515;padding: 6px 0px 3px 0px; display:block;    margin: 0px;}
 .recentcussinglelist span{text-align:center;font-family: 'MyriadPro-Regular';font-size: 13px;color: #000;padding: 0px 0px 3px 0px; display:block; font-weight:normal;overflow: hidden;
     word-wrap: break-word;}
-.recentcussinglelist{margin-bottom:9px;}
+.recentcussinglelist:nth-child(4n+1){
+    clear:left;
+}
+
+
+.recentcussinglelist:nth-of-type(1n+9) {display: none;}
+
+/*.recentcussinglelist{margin-bottom:9px;}*/
 
 
 .auctioninventoryblock{padding: 0px; background-color: #e2e2e2 !important; height: auto; border-top: 5px solid #ff3317; margin-top: 30px;}
@@ -9826,3 +9836,17 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
     color: #fff;
     font-style: italic;
 }
+
+
+.prevemployeeradiodiv .smalltxt1 input{
+    display: none;
+}
+.prevemployeeradiodiv .smalltxt1 label{
+    width: 34px;
+    height: 34px;
+    float: left;
+    display: inline-block;
+    margin-top: 0px !important;
+}
+
+

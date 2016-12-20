@@ -64,6 +64,7 @@ export class AppDealerdashboard {
         this.query_auction=0;
         this.query_make=0;
         this.query_year=0;
+        this.carlistarr=[];
         this.details=[];
         this.inventorymatcharr=[];
         this.orderbyqueryinventorymatch='inventorymatchval';
@@ -245,8 +246,8 @@ export class AppDealerdashboard {
                         if (val1=='name')return this.details[x].fname+' '+this.details[x].lname;
                         if (val1=='image'){
                             if(typeof (this.details[x].filename)!='undefined')
-                                return this._sanitizer.bypassSecurityTrustHtml("<img  src "+this.filesrc+this.details[x].filename+ " />");
-                            else return this._sanitizer.bypassSecurityTrustHtml("<img  src images/logo_61.png />");
+                                return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.details[x].filename+ " />");
+                            else return this._sanitizer.bypassSecurityTrustHtml("<img  src ='images/logo_61.png' />");
                         }
                     }
                 }
@@ -265,8 +266,8 @@ export class AppDealerdashboard {
                     if (val1=='name')return this.details[x].fname+' '+this.details[x].lname;
                     if (val1=='image'){
                         if(typeof (this.details[x].filename)!='undefined')
-                            return this._sanitizer.bypassSecurityTrustHtml("<img  src "+this.filesrc+this.details[x].filename+ " />");
-                        else return this._sanitizer.bypassSecurityTrustHtml("<img  src images/logo_61.png />");
+                            return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.details[x].filename+ " />");
+                        else return this._sanitizer.bypassSecurityTrustHtml("<img  src = 'images/logo_61.png' />");
                     }
                 }
             }
@@ -274,6 +275,78 @@ export class AppDealerdashboard {
         }
     }
 
+    getcardetails(val:any,val1:any){
+
+        if(this.carlistarr.length==0){
+            this.http.get(this.serverUrl+'carlist')
+                .subscribe(data1 => {
+                    this.carlistarr = data1.json();
+                    //console.log(this.data);
+
+                    var x:any;
+                    for(x in this.carlistarr){
+                        if(val==this.carlistarr[x]._id){
+
+                            if (val1=='make'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return this.getcarlogo(this.carlistarr[x]);
+                            }
+                            if (val1=='model'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].model);
+                            }
+                            if (val1=='year'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return this.getcaryear(this.carlistarr[x]);
+                            }
+                            if (val1=='image'){
+                                if(typeof (this.carlistarr[x].filename)!='undefined')
+                                    return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.carlistarr[x].filename+ " />");
+                                else return this._sanitizer.bypassSecurityTrustHtml("<img  src = 'images/logo_61.png' />");
+                            }
+                        }
+
+                    }
+
+                }, error => {
+                    console.log("Oooops!");
+                });
+        }
+        else{
+            var x:any;
+            for(x in this.carlistarr){
+                if(val==this.carlistarr[x]._id){
+                    if (val1=='model'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].model);
+                    }
+
+                    if (val1=='make'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return this.getcarlogo(this.carlistarr[x]);
+                    }
+                    if (val1=='year'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return this.getcaryear(this.carlistarr[x]);
+                    }
+                    if (val1=='image'){
+                        if(typeof (this.carlistarr[x].filename)!='undefined')
+                            return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.carlistarr[x].filename+ " />");
+                        else return this._sanitizer.bypassSecurityTrustHtml("<img  src = 'images/logo_61.png' />");
+                    }
+                }
+
+            }
+        }
+        return 'N/A'
+
+    }
 
     manageinventory(){
         var x:any;

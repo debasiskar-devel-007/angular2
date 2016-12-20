@@ -40,7 +40,7 @@ import {AppPostauctionactivity} from "./pages/postauctionactivity/app.postauctio
 import {AppRecentbidagreement} from "./pages/recentbidagreement/app.recentbidagreement";
 import {AppSharemedia} from "./pages/sharemedia/app.sharemedia";
 import {AppUpcomingauctions} from "./pages/upcomingauctions/app.upcomingauctions";
-import {AppAppFinance} from "./pages/finance/app.finance";
+import {AppFinance} from "./pages/finance/app.finance";
 import {AppRetailcustomerconnect} from "./pages/retailcustomerconnect/app.retailcustomerconnect";
 import {AppEditsharelink} from "./pages/editsharelink/app.editsharelink";
 import {AppBannersizelist} from "./pages/bannersizelist/app.bannersizelist";
@@ -106,6 +106,9 @@ import {AppAuctioininventorydetails} from "./pages/auctioininventorydetails/app.
 import {AppAddretailcommission} from "./pages/addretailcommission/app.addretailcommission";
 import {AppRetailcommissionlist} from "./pages/retailcommissionlist/app.retailcommissionlist";
 import {AppManageopencontract} from "./pages/manageopencontract/app.manageopencontract";
+import {AppEditopencontract} from "./pages/editopencontract/app.editopencontract";
+import {AppDealercustomerlist} from "./pages/dealercustomerlist/app.dealercustomerlist";
+import {AppInventorymatchedetails} from "./pages/inventorymatchedetails/app.inventorymatchedetails";
 
 //alert(window.location.hostname);
 
@@ -173,7 +176,7 @@ const appRoutes: Routes = [
     { path: 'recentbidagreement', component:AppRecentbidagreement},
     { path: 'sharemedia', component:AppSharemedia},
     { path: 'upcomingauctions', component:AppUpcomingauctions},
-    { path: 'finance', component:AppAppFinance},
+    { path: 'finance', component:AppFinance},
     { path: 'retailcustomerconnect', component:AppRetailcustomerconnect},
     { path: 'bannersizelist', component:AppBannersizelist},
     { path: 'addbannersize', component:AppAddbannersize},
@@ -238,6 +241,9 @@ const appRoutes: Routes = [
     { path: 'addretailcommission', component: AppAddretailcommission},
     { path: 'retailcommissionlist', component: AppRetailcommissionlist},
     { path: 'manageopencontract', component: AppManageopencontract},
+    { path: 'editopencontract/:id', component: AppEditopencontract},
+    { path: 'dealercustomerlist', component: AppDealercustomerlist},
+    { path: 'inventorymatchedetails/:id', component: AppInventorymatchedetails},
 
 
 

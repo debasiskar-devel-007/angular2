@@ -59,7 +59,7 @@ export class AppCustomerdashboard {
     private inventorymatcharr:Array<any>;
     private orderbyqueryinventorymatch:any;
     private orderbytypeinventorymatch:any;
-
+    randstring:any;
     p:any;
     pagec:any;
     cardata:Array<any>;
@@ -82,6 +82,7 @@ export class AppCustomerdashboard {
         this.orderbytypeinventorymatch=-1;
         this.p=1;
         this.cardata=[];
+
         // console.log(userdetails.getObject('userdetails'));
         this.http=http;
         let idss = {username: this.userDetails.username};
@@ -277,6 +278,8 @@ export class AppCustomerdashboard {
         }
         return 'N/A';
     }
+
+
 
  /*   startquerysearch(ev:any){
 

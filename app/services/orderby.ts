@@ -14,10 +14,10 @@ import {type} from "os";
 export class OrderBy {
     transform(array: Array<string>, args: string,type:number): Array<string> {
 
-        console.log('aa');
+        /*console.log('aa');
         console.log(array);
         console.log(args);
-        console.log(type);
+        console.log(type);*/
 
         //array.sort(dynamicSort(args));
         if (typeof (array)!='undefined') {

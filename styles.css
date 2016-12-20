@@ -9718,7 +9718,7 @@ a:focus, a:hover {
 .retail_chakblock{ width: 150px!important; float: left; margin: 0 10px 10px 0;}
 
 
-.retail_formwrapperblock2{ background-color: #858687 !important; padding-top: 15px; margin: 20px 0;}
+.retail_formwrapperblock2{ background-color: #858687 !important; padding-top: 15px; margin: 20px 0; padding-bottom: 15px;}
 
 .retail_formwrapperblock2 .formgroupnew1 {
     display: inline-block;
@@ -9813,3 +9813,16 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
 .inventorysinglelist_blockdiv:nth-of-type(4){ display: block;}
 .inventorysinglelist_blockdiv:nth-of-type(5){ display: block;}
 .inventorysinglelist_blockdiv:nth-of-type(6){ display: block;}
+
+
+
+
+
+.opencontract_text {
+    text-align: center;
+    padding: 8px 8px 5px 8px;
+    font-family:'MyriadPro-Semibold'; line-height: 24px;
+    font-size: 18px;
+    color: #fff;
+    font-style: italic;
+}

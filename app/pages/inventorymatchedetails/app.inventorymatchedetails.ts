@@ -15,11 +15,11 @@ declare var $: any;
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/inventorymatches/home.html',
+    templateUrl:'app/pages/inventorymatchedetails/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppInventorymatches {
+export class AppInventorymatchedetails {
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
@@ -66,7 +66,6 @@ export class AppInventorymatches {
     private retailc:any;
     private parsecomission:any;
     private parseprice:any;
-    private rsvplist:any;
 
     constructor(@Inject(Renderer) private renderer: Renderer,fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent,private _sanitizer: DomSanitizer  ) {
         this.router=router;
@@ -96,7 +95,6 @@ export class AppInventorymatches {
                 this.details=data.json();
                 this.detailstemp=JSON.stringify(data.json());
                 console.log(this.details);
-                this.manageinventory();
 
 
             }, error => {
@@ -117,29 +115,116 @@ export class AppInventorymatches {
             }, error => {
                 console.log("Oooops!");
             });
-
-        let linkv1 = this.serverUrl+'getrsvpbydealerid';
-        let var11={dealerid:this.userInfo.username};
-        this.http.post(linkv1,var11)
-            .subscribe(data1 => {
-
-                this.rsvplist = data1.json();
-                console.log('rsvp list...');
-                console.log(this.rsvplist);
-
-            }, error => {
-                console.log("Oooops!");
-            });
         link = this.serverUrl+'getinventoryfordealer?dealerid='+this.userInfo.id;
        // console.log('link ==='+link);
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
                 this.datatemp = JSON.stringify( data1.json());
-                this.manageinventory();
                // console.log('dealer inventorydata');
                // console.log(this.data);
+                var x:any;
+                var y:any;
+                var z:any;
+                var inventorymatchvalue:any;
+                var inventorymatchvaluearr:Array<any>;
+                var inventorymatchvalueclass:Array<any>;
+                var tempcustomerarrforiventorymatches:Array<any>;
+                setInterval(() => {
+                    for (x in this.data) {
+                        for (y in this.data[x].cardata) {
 
+                            this.data[x].cardata[y].auctionids = this.data[x].cardata[y].auctionid.join("-");
+                            this.data[x].cardata[y].auctiondata = this.data[x].auctiondata;
+                            tempcustomerarrforiventorymatches = [];
+
+                            for (z in this.details) {
+                                inventorymatchvalue = 0;
+                                inventorymatchvaluearr = [];
+                                inventorymatchvalueclass = [];
+                                if (typeof (this.details[z].base_price != 'undefined')) {
+
+                                    if ($.inArray(this.data[x].cardata[y].carautoyearlist, this.details[z].car_auto_year) > -1) {
+
+                                        inventorymatchvalue += 14.3;
+                                        inventorymatchvaluearr.push('Year /');
+                                        inventorymatchvalueclass['yr'] = 'match';
+                                    }
+                                    else {
+                                        inventorymatchvalueclass['yr'] = 'unmatched';
+                                    }
+                                    if ($.inArray(this.data[x].cardata[y].basepricerange, this.details[z].base_price) > -1) {
+
+                                        inventorymatchvalue += 14.3;
+                                        inventorymatchvaluearr.push('Price /');
+                                        inventorymatchvalueclass['bp'] = 'match';
+                                    }
+                                    else {
+                                        inventorymatchvalueclass['bp'] = 'unmatched';
+                                    }
+                                    if ($.inArray(this.data[x].cardata[y].car_body_style, this.details[z].car_body_style) > -1) {
+
+                                        inventorymatchvalue += 14.3;
+                                        inventorymatchvaluearr.push('Body Style / ');
+                                        inventorymatchvalueclass['bs'] = 'matched';
+                                    }
+                                    else {
+                                        inventorymatchvalueclass['bs'] = 'unmatched';
+                                    }
+                                    if ($.inArray(this.data[x].cardata[y].color, this.details[z].color_opiton) > -1) {
+
+                                        inventorymatchvalue += 14.3;
+                                        inventorymatchvaluearr.push('Color /');
+                                        inventorymatchvalueclass['cl'] = 'match';
+                                    }
+                                    else {
+                                        inventorymatchvalueclass['cl'] = 'unmatched';
+                                    }
+                                    if ($.inArray(this.data[x].cardata[y].carlogolist, this.details[z].upcoming_auction) > -1) {
+
+
+                                        inventorymatchvalue += 14.3;
+                                        inventorymatchvaluearr.push('Make /');
+                                        inventorymatchvalueclass['mk'] = 'match';
+                                    }
+                                    else {
+                                        inventorymatchvalueclass['mk'] = 'unmatched';
+                                    }
+                                    if (this.data[x].cardata[y].mileage == this.details[z].car_mileage) {
+
+                                        inventorymatchvalue += 14.3;
+                                        inventorymatchvaluearr.push('Mileage /');
+                                        inventorymatchvalueclass['ml'] = 'match';
+
+                                    }
+                                    else {
+                                        inventorymatchvalueclass['ml'] = 'unmatched';
+                                    }
+                                    console.log('push arr...');
+                                    console.log(this.details[z]);
+                                    console.log('class arr...');
+                                    console.log(inventorymatchvalueclass);
+
+                                    this.details[z].inventorymatchval = Math.ceil(inventorymatchvalue);
+                                    this.details[z].inventorymatchvaluearr = inventorymatchvaluearr;
+                                    this.details[z].inventorymatchvalueclass = inventorymatchvalueclass;
+                                    if (inventorymatchvalue > 0)tempcustomerarrforiventorymatches.push(this.details[z]);
+                                    console.log('inventorymatchvalue == ' + inventorymatchvalue);
+                                }
+                            }
+                            this.data[x].cardata[y].userdetails = tempcustomerarrforiventorymatches;
+
+
+                            ///alert(tempcustomerarrforiventorymatches.length);
+                            if (tempcustomerarrforiventorymatches.length > 0) {
+                                this.inventorymatcharr.push(this.data[x].cardata[y]);
+                                console.log('inventory user array length d');
+                                console.log(this.data[x].cardata[y].userdetails.length);
+                            }
+
+                        }
+                    }
+                },6000);
                // console.log('inventory datas');
                // console.log(this.inventorymatcharr);
                 this.pagec=Math.ceil(this.inventorymatcharr.length / 9);
@@ -233,147 +318,6 @@ export class AppInventorymatches {
 
 
     }
-
-    manageinventory(){
-        var x:any;
-        var y:any;
-        var z:any;
-        var inventorymatchvalue:any;
-        var inventorymatchvaluearr:Array<any>;
-        var inventorymatchvalueclass:Array<any>;
-        var tempcustomerarrforiventorymatches:Array<any>;
-        let timeout=setInterval(() => {
-
-            for (x in this.data) {
-                for (y in this.data[x].cardata) {
-                    tempcustomerarrforiventorymatches = [];
-
-                    this.data[x].cardata[y].auctionids = this.data[x].cardata[y].auctionid.join("-");
-                    this.data[x].cardata[y].auctiondata = this.data[x].auctiondata;
-
-
-                    for (z in this.details) {
-                        if(this.checkrsvp(this.details[z], this.data[x].cardata[y]) != 1){
-                        clearInterval(timeout);
-
-                        let cflag: any = 0;
-                        //console.log('details.. users ...');
-                        //console.log(this.details[z]);
-
-                        if (typeof (this.details[z].base_price != 'undefined' )) {
-                            inventorymatchvalue = 0;
-                            inventorymatchvaluearr = [];
-                            inventorymatchvalueclass = [];
-
-                            if ($.inArray(this.data[x].cardata[y].carautoyearlist, this.details[z].car_auto_year) > -1) {
-
-                                inventorymatchvalue += 14.3;
-                                inventorymatchvaluearr.push('Year /');
-                                inventorymatchvalueclass['yr'] = 'match';
-                            }
-                            else {
-                                inventorymatchvalueclass['yr'] = 'unmatched';
-                            }
-                            if ($.inArray(this.data[x].cardata[y].basepricerange, this.details[z].base_price) > -1) {
-
-                                inventorymatchvalue += 14.3;
-                                inventorymatchvaluearr.push('Price /');
-                                inventorymatchvalueclass['bp'] = 'match';
-                            }
-                            else {
-                                inventorymatchvalueclass['bp'] = 'unmatched';
-                            }
-                            if ($.inArray(this.data[x].cardata[y].car_body_style, this.details[z].car_body_style) > -1) {
-
-                                inventorymatchvalue += 14.3;
-                                inventorymatchvaluearr.push('Body Style / ');
-                                inventorymatchvalueclass['bs'] = 'matched';
-                            }
-                            else {
-                                inventorymatchvalueclass['bs'] = 'unmatched';
-                            }
-                            if ($.inArray(this.data[x].cardata[y].color, this.details[z].color_opiton) > -1) {
-
-                                inventorymatchvalue += 14.3;
-                                inventorymatchvaluearr.push('Color /');
-                                inventorymatchvalueclass['cl'] = 'match';
-                            }
-                            else {
-                                inventorymatchvalueclass['cl'] = 'unmatched';
-                            }
-                            if ($.inArray(this.data[x].cardata[y].carlogolist, this.details[z].upcoming_auction) > -1) {
-
-
-                                inventorymatchvalue += 14.3;
-                                inventorymatchvaluearr.push('Make /');
-                                inventorymatchvalueclass['mk'] = 'match';
-                            }
-                            else {
-                                inventorymatchvalueclass['mk'] = 'unmatched';
-                            }
-                            if (this.data[x].cardata[y].mileage == this.details[z].car_mileage) {
-
-                                inventorymatchvalue += 14.3;
-                                inventorymatchvaluearr.push('Mileage /');
-                                inventorymatchvalueclass['ml'] = 'match';
-
-                            }
-                            else {
-                                inventorymatchvalueclass['ml'] = 'unmatched';
-                            }
-                            //console.log('push arr...');
-                            //console.log(this.details[z]);
-                            //console.log('class arr...');
-                            //console.log(inventorymatchvalueclass);
-
-                            this.details[z].inventorymatchval = Math.ceil(inventorymatchvalue);
-                            this.details[z].inventorymatchvaluearr = inventorymatchvaluearr;
-                            this.details[z].inventorymatchvalueclass = inventorymatchvalueclass;
-                            if (inventorymatchvalue > 0)tempcustomerarrforiventorymatches.push(this.details[z]);
-                            //console.log('inventorymatchvalue == ' + inventorymatchvalue);
-                        }
-                    }
-                    }
-                    this.data[x].cardata[y].userdetails = tempcustomerarrforiventorymatches;
-
-
-                    ///alert(tempcustomerarrforiventorymatches.length);
-                    if (tempcustomerarrforiventorymatches.length > 0) {
-                        this.inventorymatcharr.push(this.data[x].cardata[y]);
-                        //console.log('inventory user array length d');
-                        //console.log(this.data[x].cardata[y].userdetails.length);
-                    }
-
-                }
-            }
-        },2000);
-    }
-
-    checkrsvp(val1:any,val2:any){
-        let z1:any;
-
-        for(z1 in this.rsvplist){
-           /* console.log('rsvp .. users ...');
-            console.log(this.rsvplist[z1].dealerid);
-            console.log(val1.dealerusername);
-            console.log(val1.customerusername);
-            console.log(val1.username);
-            console.log('car data id');
-            console.log(val2._id);
-            console.log(this.rsvplist[z1].inventoryid);*/
-            //if(this.data[x].cardata[y]._id == this.rsvplist[z1].inventoryid) alert(890);
-            if(val1.username==this.rsvplist[z1].customerusername && val1.dealerusername==this.rsvplist[z1].dealerid && this.rsvplist[z1].inventoryid==val2._id){
-                console.log('rsvp found ...');
-                console.log(val1);
-                console.log(val2);
-                return 1;
-                //alert(9);
-            }
-        }
-        return 0;
-
-    }
-
 
 
     getcarlogo(val:any){
@@ -580,16 +524,13 @@ export class AppInventorymatches {
         })*/
     }
     sendrsvp(){
-        //alert(9);
+        alert(9);
         console.log('Modal ')
         console.log(this.inventory);
         console.log('User');
         console.log(this.userinformation);
-        let values={dealerid:this.userInfo.username,inventoryid:this.inventory._id,customerusername:this.userinformation.username,retialcommission:this.retailfinalval};
-        //this.details=[];
-        alert(values);
-        console.log('post rsvp values');
-        console.log(values);
+        let values={dealerid:this.userInfo.id,inventoryid:this.inventory._id,customerusername:this.userinformation.username,retialcommission:this.retailfinalval};
+        this.details=[];
         this.http.post(this.serverUrl+'addrsvp',values)
             .subscribe(data => {
                 $(".btnclosepopup2").click();

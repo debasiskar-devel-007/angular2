@@ -1,4 +1,4 @@
-import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation,f, ElementRef, OnInit} from '@angular/core';
+import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation, ElementRef, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
@@ -18,9 +18,8 @@ declare var $: any;
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppAppFinance implements OnInit {
-    ngOnInit(): void {
-    }
+export class AppFinance implements OnInit {
+
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
@@ -56,6 +55,8 @@ export class AppAppFinance implements OnInit {
     private carlist:any;
     private upcoming_auctionarr:Array<any>;
     private autoyeararr:Array<any>;
+    randstring:any;
+    err:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
@@ -69,6 +70,11 @@ export class AppAppFinance implements OnInit {
         this.customerinfo=customerInfo.getObject('customerInfo');
         this.customerInfo=customerInfo;
         console.log(this.customerinfo);
+        this.err='';
+        this.randstring= 'ab8gr';
+        console.log('string -');
+       // console.log(this.randstring);
+
         this.autoyeararr=[];
         this.upcoming_auctionarr=[];
         this.http.get(this.serverUrl+'getusastates')
@@ -202,6 +208,8 @@ export class AppAppFinance implements OnInit {
             loan_repayment_term: [''],
             loan_month: [''],
             comment: [''],
+            signature: ['', Validators.required],
+            is_active: ['', Validators.required],
         });
         this.http.get(this.serverUrl+'listcarautomileage')
             .subscribe(data => {
@@ -247,6 +255,9 @@ export class AppAppFinance implements OnInit {
 
 
     }
+    ngOnInit(){
+        console.log('on init');
+    };
 
     autoyearchange(ev:any){
         var target = ev.target || ev.srcElement || ev.originalTarget;
@@ -283,6 +294,11 @@ export class AppAppFinance implements OnInit {
         //if(this.colorval.length>0)this.customersignupupdateform.patchValue({color_opiton: 2})
     }
 
+    static validateTerms(control: FormControl){
+        if(control.value==false){
+            return { 'isTermsChecked': true };
+        }
+    }
     submitform1(){
         let x:any;
         for(x in this.customersignupform.controls){
@@ -292,6 +308,25 @@ export class AppAppFinance implements OnInit {
         this.customersignupform.markAsDirty();
         //this.signupform.controls['fname'].markAsTouched();
         if(this.customersignupform.valid){
+          var sign1=  $('#sign').html();
+           // if(sign1==this.customersignupform.value.signature){
+                let link = this.serverUrl+'updatecustomerstep3';
+                var submitdata = this.customersignupform.value;
+                console.log(submitdata);
+                this.http.post(link,submitdata)
+                    .subscribe(data => {
+                        // /this.data1.response = data.json();
+                        console.log(this.customersignupform.value);
+                        this.customerInfo.putObject('customerInfo',this.customersignupform.value);
+                        this.router.navigateByUrl('/customerlogin');
+
+                    }, error => {
+                        console.log("Oooops!");
+                    });
+           // }
+           /* else{
+                this.err="Capthca does not macth";
+            }*/
         console.log(this.customersignupform.value);
          /*   this.customersignupform.value.upcoming_auction=this.upcoming_auctionarr;
 
@@ -300,24 +335,19 @@ export class AppAppFinance implements OnInit {
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'updatecustomerstep3';
-            var submitdata = this.customersignupform.value;
-            console.log(submitdata);
-            this.http.post(link,submitdata)
-                .subscribe(data => {
-                    // /this.data1.response = data.json();
-                    console.log(this.customersignupform.value);
-                    this.customerInfo.putObject('customerInfo',this.customersignupform.value);
-                    this.router.navigateByUrl('/customerlogin');
 
-                }, error => {
-                    console.log("Oooops!");
-                });
         }
     }
 
 
+    getrandomString() {
 
+       var charss='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        var length=5;
+        var result = '';
+        for (var i = length; i > 0; --i) result += charss[Math.round(Math.random() * (charss.length - 1))];
+        this.randstring =result;
+    }
 
 }
 

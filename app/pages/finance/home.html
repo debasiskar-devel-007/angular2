@@ -703,4 +703,94 @@
 
                         <div class="row form-group">
                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 textareamargin">
-                                <textarea readonly="readonly" style="padding: 20px; height: auto;" class="form-control input-lg" rows="5" placeholder="By click
+                                <textarea readonly="readonly" style="padding: 20px; height: auto;" class="form-control input-lg" rows="5" placeholder="By clicking the button below, you certify that all of the statements in this application are true and complete and are made for the purpose of obtaining credit. You authorize this website to share the application and related information withs its lending partners in order to complete the processing of this application. You authorize this website and its lending partners to retain and rely on this application, and obtain additional information, including credit reports."></textarea>
+                            </div>
+                        </div>
+
+                    <div class="text-center">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ftrfinance">
+                                <div style="margin: 0 auto; float: none; text-align: center;">
+                                    <h5><strong>Type your name to signify your electronic signature</strong></h5>
+                                </div>
+
+
+                                <div class="form-group" style="margin: 0 auto; float: none;">
+                                    <input [formControl]="customersignupform.controls['signature']" name="signature" type="text" class="form-control input-lg" placeholder="Signature*">
+                                    <span  *ngIf ="customersignupform.controls['signature'].touched && !customersignupform.controls['signature'].valid" class="help-inline">Signature is Required ! <img src="images/iconquestion.png"></span>
+                                   <!-- <input type="text" class="form-control input-lg" placeholder="">-->
+                                </div>
+                                <div style="margin: 0 auto; float: none;">
+                                    <h5>Applicant’s Signature</h5>
+                                </div>
+                                <div class="capture_div">
+
+
+                                    <h1 id="sign">{{randstring}}</h1>
+                                    <p>{{err}}</p>
+
+                                    <span (click)="getrandomString()"style="cursor:pointer;" ></span>
+
+
+                                    <div class="clearfix"></div>
+
+                                </div>
+
+                                <div style="margin: 0 auto; float: none;">
+                                    <p>Please enter verification code shown in the image above.</p>
+                                </div>
+                                <div style="margin: 0 auto; float: none;">
+                                    <input type="text" class="form-control input-lg" placeholder="">
+                                </div>
+                                <div class="row checkplease">
+                                    <div class="col-md-4 lbltextdiv">
+                                        <span class="lbltext text-right"><strong>And please check</strong></span>
+                                    </div>
+                                    <div class="col-md-8 checkpleaseinput">
+                                       <!-- <input id="2" type="checkbox" name="2" value="1">-->
+                                        <input id="checkbox1" type="checkbox" name="is_active" [formControl]="customersignupform.controls['is_active']" value="1"/>
+                                        <label for="checkbox1"></label><span>I have read and accept the above policy.</span>
+                                        <span *ngIf ="customersignupform.controls['is_active'].touched && !customersignupform.controls['is_active'].valid" class="help-inline">You must select checkbox <img src="images/iconquestion.png"></span>
+                                    </div>
+                                    <!-- <div class="currentemploymentthird1">
+
+                                     </div>
+                                     <div class="currentemploymentthird2 checkpleaseinput text-left">
+
+                                     </div>-->
+                                </div>
+
+                                <div class="margintop30">
+                                    <div class="btnfinacefooterlist list-inline center-block text-center">
+                                        <input (click)="submitform1()" type="button" class="bo_btn2" value="submit">
+                                        <input type="button" class="bo_btn3" value="cancel">
+
+                                        <div class="clearfix"></div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="re_bottomsocialblock">
+
+    <a href="javascript:void(0)"><img src="images/re_ficon.jpg" alt="" /></a>
+    <a href="javascript:void(0)"><img src="images/re_ticon.jpg" alt="" /></a>
+    <a href="javascript:void(0)"><img src="images/re_gicon.jpg" alt="" /></a>
+    <a href="javascript:void(0)"><img src="images/re_iicon.jpg" alt="" /></a>
+    <a href="javascript:void(0)"><img src="images/re_vicon.jpg" alt="" /></a>
+
+    <div class="clearfix"></div>
+</div>
+
+<div class="retailcopyright">&copy;  Copyright 2016 ken garff - All Rights Reserved </div>

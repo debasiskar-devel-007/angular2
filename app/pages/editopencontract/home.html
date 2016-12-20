@@ -2,102 +2,11 @@
     <div class="blockmaininner">
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="pageheader"><span>Manage Open</span>  Contract</h1>
+                <h1 class="pageheader"><span>Edit Open</span>  Contract</h1>
             </div>
             <!-- /.col-lg-12 -->
         </div>
         <!-- /.row -->
-        <div class="row addsharelinkblock">
-            <div class="col-lg-12 addadminblock">
-
-                <form novalidate [formGroup]="addbannersizeform"   name="addsharelinkform"  class="form-inline">
-                    <div class="signupform_wrapper">
-                        <h2 class="retail_h2heading">Default Retail Commission</h2>
-
-                        <div class="row">
-                            <div class="col-md-12 retail_formwrapper">
-                                <div class="formgroupnew1">
-                                    <select class="form-control3" [formControl]="addbannersizeform.controls['commissiontype']" name="commissiontype" >
-                                        <option value="" selected="selected"><span class="errormsgtxt">Select Commission Type</span></option>
-                                        <option value="Flat">Flat</option>
-                                        <option value="Percentage">Percentage</option>
-                                    </select>
-                                    <span  *ngIf ="addbannersizeform.controls['commissiontype'].touched && !addbannersizeform.controls['commissiontype'].valid" class="help-inline2 spanalign"><span class="errormsgtxt">Commission type is Required ! </span><img src="images/iconquestion.png"></span>
-                                </div>
-                                <div class="formgroupnew1 ">
-                                    <input [formControl]="addbannersizeform.controls['commission']" type="text" name="commission" class="form-controlnew" placeholder="Commission"/>
-                                    <span *ngIf ="addbannersizeform.controls['commission'].touched && !addbannersizeform.controls['commission'].valid" class="help-inline2"><span class="errormsgtxt">Commission is Required !</span><img src="images/iconquestion.png"></span>
-                                </div>
-
-                                <button (click)="submitform()" type="button" value="Submit" class="npdate_newbtn">Update</button>
-
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="clearfix"></div>
-
-                        <div class="row uploadrow">
-                            <div class="col-md-12">
-                                <div class="submitwrap">
-                                   <!-- <button (click)="submitform()" type="button" value="Submit" class="subbtn">Update</button>-->
-                                  <!-- <button (click)="deletecom()" type="button" value="Submit" class="subbtn">Delete</button>-->
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </form>
-
-                <div class="row">
-                    <div class="col-lg-12 col-md-12">
-                        <div class="postauctioncctivityblock">
-                            <div class="postauctioncctivityheader">
-                                <h2><span>Your</span> Existing Open Contracts</h2>
-
-
-                            </div>
-                            <div class="postauctionactivitylist">
-                                <div class="table-responsive">
-                                    <table class="table table-striped">
-                                        <thead>
-                                        <tr>
-                                            <th>Option Name</th>
-                                            <th>Comission Type<b class="caret-up-down"></b></th>
-                                            <th>Commission Rate<b class="caret-up"></b></th>
-                                            <th>Priority<b class="caret-up"></b></th>
-                                            <th>No Of Constraints<b class="caret-down"></b></th>
-                                            <th>Action<b class="caret-down"></b></th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr *ngFor="let item of contractlist">
-                                            <td>{{item.option_name}}</td>
-                                            <td>{{item.commissiontypen}}</td>
-                                            <td>{{item.commissionn}}</td>
-                                            <td>{{item.priority}}</td>
-                                            <td>{{getnoofconstraints(item)}}</td>
-                                            <td class="result">
-                                                <ul class="list-inline">
-                                                    <li style="cursor: pointer" (click)="showcontraints(item)">View Constraints</li>
-                                                    <li><a [routerLink]="['/editopencontract', item._id]">Edit Option</a></li>
-                                                </ul>
-                                            </td>
-                                        </tr>
-
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <button (click)="addnewcontractlogic()" type="button" value="Submit" class="sub_newbtn">Add New Option</button>
-
-
-            </div>
-        </div>
 
 
 
@@ -106,7 +15,8 @@
 
 
 
-<div class="new_adminblockwrapper hide">
+
+<div class="new_adminblockwrapper">
     <form novalidate [formGroup]="addbannersizeformnew"   name="addsharelinkformnew"  class="form-inline">
 
 
@@ -157,7 +67,7 @@
 
                             <div *ngFor="let itemcarprice of basepricelist" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single retail_chakblock">
                                 <div *ngIf="itemcarprice.is_active==1">
-                                    <input [formControl]="addbannersizeformnew.controls['base_price']" id="{{itemcarprice._id}}" (change)="updatepricearray($event)" type="checkbox" name="base_price" value="{{itemcarprice._id}}" >
+                                    <input [formControl]="addbannersizeformnew.controls['base_price']" id="{{itemcarprice._id}}" (change)="updatepricearray($event)" class="bprice" type="checkbox" name="base_price" value="{{itemcarprice._id}}" >
                                     <label [attr.for]="itemcarprice._id" ></label>
                                     <span>{{itemcarprice.baseprice}}</span>
                                 </div>
@@ -222,7 +132,7 @@
 
                                     </div>
 
-                                    <div class="colordiv"> <strong>Color1</strong> <div class="radio{{(icolor*3)+(icolori+1)}}"><input [formControl]="addbannersizeformnew.controls['color_opiton']" id="{{colorlistitem._id}}" type="checkbox" name="color_opiton[]" (change)="carcolorchange($event)" value="{{colorlistitem._id}}">
+                                    <div class="colordiv"> <strong>Color1</strong> <div class="radio{{(icolor*3)+(icolori+1)}}"><input [formControl]="addbannersizeformnew.controls['color_opiton']" id="{{colorlistitem._id}}" type="checkbox" name="color_opiton[]" class="color"  (change)="carcolorchange($event)" value="{{colorlistitem._id}}">
 
                                         <label [attr.for]="colorlistitem._id"><span>{{colorlistitem.color}}</span></label>
 
@@ -326,7 +236,7 @@
                                         <div *ngIf="itemcarlogo1.is_active==1">
 
 
-                                            <input [formControl]="addbannersizeformnew.controls['upcoming_auction']" id="{{itemcarlogo1._id}}" type="checkbox" name="upcoming_auction[]" (change)="upcoming_auctionchange($event)" value="{{itemcarlogo1._id}}">
+                                            <input [formControl]="addbannersizeformnew.controls['upcoming_auction']" id="{{itemcarlogo1._id}}" type="checkbox" name="upcoming_auction[]" class="upcoming" (change)="upcoming_auctionchange($event)" value="{{itemcarlogo1._id}}">
                                             <label [attr.for]="itemcarlogo1._id"><span>{{itemcarlogo1.name}}</span><b>(11)</b>
                                                 <div class="clearfix"></div>
                                             </label>
@@ -387,7 +297,7 @@
                 <p>{{itemcarbodystyle.name}}</p>
             </div>
             <div class="inputtag">
-                <input id="{{itemcarbodystyle._id}}" [formControl]="addbannersizeformnew.controls['car_body_style']" (change)="updatebodystylearrf($event)"  type="checkbox" name="car_body_style" value="{{itemcarbodystyle._id}}" ><label [attr.for]="itemcarbodystyle._id"><span></span></label>
+                <input id="{{itemcarbodystyle._id}}" [formControl]="addbannersizeformnew.controls['car_body_style']" (change)="updatebodystylearrf($event)" class="bodystyle"  type="checkbox" name="car_body_style" value="{{itemcarbodystyle._id}}" ><label [attr.for]="itemcarbodystyle._id"><span></span></label>
             </div>
         </div>
     </div>
@@ -414,7 +324,7 @@
                                 <div class="row">
                    <span *ngFor="let itemcaryear of carautoyearlist let k=index" >
                     <div *ngIf="itemcaryear.is_active==1" class="col-lg-4 col-md-4 col-sm-6 col-xs-12  retailformblock1part3innerblock3single" style="margin-bottom: 14px;">
-                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="addbannersizeformnew.controls['car_auto_year']" name="car_auto_year" (change)="autoyearchange($event)"value="{{itemcaryear._id}}" >
+                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="addbannersizeformnew.controls['car_auto_year']" name="car_auto_year" class="year" (change)="autoyearchange($event)"value="{{itemcaryear._id}}" >
                         <label [attr.for]="itemcaryear._id"></label>
                         <span>{{itemcaryear.year}}</span>
                     </div>
@@ -472,7 +382,7 @@
                 <p>{{itemcarfeature.feature}}</p>
             </div>
             <div class="inputtag">
-                <input id="{{itemcarfeature._id}}" type="checkbox" [formControl]="addbannersizeformnew.controls['car_feature']" name="car_feature" (change)="updatecarfeaturearray($event)"  value="{{itemcarfeature._id}}"><label [attr.for]="itemcarfeature._id"><span></span></label>
+                <input id="{{itemcarfeature._id}}" class="feature" type="checkbox" [formControl]="addbannersizeformnew.controls['car_feature']" name="car_feature" (change)="updatecarfeaturearray($event)"  value="{{itemcarfeature._id}}"><label [attr.for]="itemcarfeature._id"><span></span></label>
             </div>
         </div>
     </div>
@@ -511,6 +421,7 @@
  </div>
     </div>
 
+<!--
 <modal #contractdetail class="carlogomodalbox">
     <modal-header class="modelheader">
         <h1> Contract Detail</h1>
@@ -595,4 +506,4 @@
         <button class="btn btn-primary btnclose" (click)="contractdetail.close()">close</button>
     </modal-footer>
 </modal>
-<button class="btn btn-primary btnclose hide cmodalbutton" (click)="contractdetail.open()">close</button>
+<button class="btn btn-primary btnclose hide cmodalbutton" (click)="contractdetail.open()">close</button>-->

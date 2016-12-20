@@ -296,7 +296,7 @@
                             </div>
 
 
-                            <div class="matchblockdiv">
+                             <div class="matchblockdiv">
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6"><strong>Miles : </strong></div>
                                 <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">{{getmileage(inventory)}}</div>
                                 <div class="clearfix"></div>
@@ -442,7 +442,7 @@
                         <div class="rsvp_formgroup">
                         <label>Set Retail Commission:</label>
                         <input type="text" name="text" [(ngModel)]="retailfinalval" class="form-controlrsvp" >
-                        <input type="button" value="Send" class="rsvpsendbtn">
+                        <input type="button" value="Send" (click)="sendrsvp()" class="rsvpsendbtn snd">
 
                             <div class="clearfix"></div>
 

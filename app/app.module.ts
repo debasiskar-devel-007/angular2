@@ -55,7 +55,7 @@ import {AppPostauctionactivity} from "./pages/postauctionactivity/app.postauctio
 import {AppRecentbidagreement} from "./pages/recentbidagreement/app.recentbidagreement";
 import {AppSharemedia} from "./pages/sharemedia/app.sharemedia";
 import {AppUpcomingauctions} from "./pages/upcomingauctions/app.upcomingauctions";
-import {AppAppFinance} from "./pages/finance/app.finance";
+import {AppFinance} from "./pages/finance/app.finance";
 import {AppRetailcustomerconnect} from "./pages/retailcustomerconnect/app.retailcustomerconnect";
 import {AppBannersizelist} from "./pages/bannersizelist/app.bannersizelist";
 import {AppAddbannersize} from "./pages/addbannersize/app.addbannersize";
@@ -121,6 +121,9 @@ import {AppAuctioininventorydetails} from "./pages/auctioininventorydetails/app.
 import {AppAddretailcommission} from "./pages/addretailcommission/app.addretailcommission";
 import {AppRetailcommissionlist} from "./pages/retailcommissionlist/app.retailcommissionlist";
 import {AppManageopencontract} from "./pages/manageopencontract/app.manageopencontract";
+import {AppEditopencontract} from "./pages/editopencontract/app.editopencontract";
+import {AppDealercustomerlist} from "./pages/dealercustomerlist/app.dealercustomerlist";
+import {AppInventorymatchedetails} from "./pages/inventorymatchedetails/app.inventorymatchedetails";
 //import {Clipboard} from 'clipboard';
 
 
@@ -129,7 +132,7 @@ import {AppManageopencontract} from "./pages/manageopencontract/app.manageopenco
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule,Ng2PaginationModule,CKEditorModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerfooter,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppAppFinance,AppRetailcustomerconnect,AppBannersizelist,AppAddbannersize,AppEditbannersize,AppAddbanner,AppBannerlist,AppEditbanner,AppViewcustomers,AppViewrsvp,AppWritemail,AppReadmessage,AppMailinbox,AppCustomerprofile,AppAddaffiliate,AppAffiliatelist,AppEditaffiliate,AppAffiliatelogin,AppAffiliatefooter,AppAffiliateheader,AppAffiliatedashboard,AppAddmembershippackage,AppMerbershippackagelist,AppAuctionbidding,AppEditmembershippackage,AppPackage,AppAuctionlist,AppAddauction,AppEditauction,AppAddcar,AppCarlist,AppEditcar,AppCustomersignupstep1,AppOrderdetails,AppDealerprofile,AppMembershiporderreport,AppAddpurchasetime,AppPurchasetimelist,AppEditpurchasetime,AppAddbaseprice,AppBasepricelist,AppEditbaseprice,AppColorlist,AppAddcolor,AppEditcolor,AppCarlogolist,AppAddcarlogo,AppEditcarlogo,AppAddcarbodystyle,AppCarbodystylelist,AppEditcarbodystyle,AppAddcarautoyear,AppCarautoyearlist,AppEditcarautoyear,AppDealerauctionlist,AppAddcarmileage,AppCarmileagelist,AppEditcarmileage,AppCarfeaturelist,AppAddcarfeature,AppEditcarfeature,AppAuctioininventorydetails,AppAddretailcommission,AppRetailcommissionlist,AppManageopencontract,UPLOAD_DIRECTIVES],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerfooter,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppFinance,AppRetailcustomerconnect,AppBannersizelist,AppAddbannersize,AppEditbannersize,AppAddbanner,AppBannerlist,AppEditbanner,AppViewcustomers,AppViewrsvp,AppWritemail,AppReadmessage,AppMailinbox,AppCustomerprofile,AppAddaffiliate,AppAffiliatelist,AppEditaffiliate,AppAffiliatelogin,AppAffiliatefooter,AppAffiliateheader,AppAffiliatedashboard,AppAddmembershippackage,AppMerbershippackagelist,AppAuctionbidding,AppEditmembershippackage,AppPackage,AppAuctionlist,AppAddauction,AppEditauction,AppAddcar,AppCarlist,AppEditcar,AppCustomersignupstep1,AppOrderdetails,AppDealerprofile,AppMembershiporderreport,AppAddpurchasetime,AppPurchasetimelist,AppEditpurchasetime,AppAddbaseprice,AppBasepricelist,AppEditbaseprice,AppColorlist,AppAddcolor,AppEditcolor,AppCarlogolist,AppAddcarlogo,AppEditcarlogo,AppAddcarbodystyle,AppCarbodystylelist,AppEditcarbodystyle,AppAddcarautoyear,AppCarautoyearlist,AppEditcarautoyear,AppDealerauctionlist,AppAddcarmileage,AppCarmileagelist,AppEditcarmileage,AppCarfeaturelist,AppAddcarfeature,AppEditcarfeature,AppAuctioininventorydetails,AppAddretailcommission,AppRetailcommissionlist,AppManageopencontract,AppEditopencontract,AppDealercustomerlist,AppInventorymatchedetails,UPLOAD_DIRECTIVES],
   providers: [
     appRoutingProviders,CookieService
   ],

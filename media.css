@@ -323,6 +323,9 @@
         text-align: center;
         float: none !important;
     }
+    .auctioninventoryheader ul li {
+        margin-bottom: 10px;
+    }
 }
 
 @media screen and (max-width:1168px) {
@@ -381,7 +384,10 @@
 
 @media screen and (max-width:991px) {
 
-
+    .inventorysinglelistblock2 h4 {
+        margin-top: 8px;
+        margin-bottom: 8px;
+    }
     .amountres{text-align: right; float: right; margin-right: 10px;}
     .residencytype span{padding-left: 10px !important;}
     .financingblock2wrapperinner .form-group {margin: 0px 0px;}

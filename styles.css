@@ -2808,7 +2808,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .auctioninventoryheader h2 span{color: #262525;}
 
 
-.auctioninventoryheader .addbtnwrapper {font-family: 'MyriadPro-Regular'; font-size: 13px; text-align: right; display: inline-block; float: right !important; line-height: 38px !important;  color: #272727 !important;}
+.auctioninventoryheader .addbtnwrapper {font-family: 'MyriadPro-Regular'; font-size: 13px; text-align: right; display: inline-block; line-height: 38px !important;  color: #272727 !important;}
 .auctioninventoryblock .inventorylistswrapper{background-color: #e2e2e2 !important;}
 .auctioninventoryblock .inventorylistswrapper input {
     position: absolute;
@@ -3180,7 +3180,6 @@ ul.inboxlists{padding:0px; margin:0px;}
     font-size: 13px;
     text-align: right;
     display: inline-block;
-    float: right !important;
 }
 .inventorysinglelistblock3{background: -moz-linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(220,221,222,1) 100%); /* ff3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(220,221,222,1))); /* safari4+,chrome */
@@ -3364,6 +3363,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .modeldropdown select{
     background: transparent !important;
     border: none;
+    width: 100%;
 }
 
 .modeldropdown select option{
@@ -3961,7 +3961,6 @@ ul.inboxlists{padding:0px; margin:0px;}
     font-size: 13px;
     text-align: right;
     display: inline-block;
-    float: right !important;
     line-height: 38px !important;
     color: #fff !important;
 }
@@ -4004,13 +4003,16 @@ ul.inboxlists{padding:0px; margin:0px;}
     padding-right: 32px; min-height: 25px;}
 .postauctioncctivityheader h2 span{color: #262525;}
 .postauctioncctivityblockwrapper{background-color: #e2e2e2; padding: 15px;}
-
+.postauctioncctivityheader ul{
+    float: right;
+    margin-top: 0;
+    margin-bottom: 0px;
+}
 .postauctioncctivityheader .addbtnwrapper2 {
     font-family: 'MyriadPro-Regular';
     font-size: 13px;
     text-align: right;
     display: inline-block;
-    float: right;
     margin-right: 0px;
 }
 .postauctioncctivityheader .addbtnwrapper2 .btn{
@@ -4128,15 +4130,6 @@ ul.inboxlists{padding:0px; margin:0px;}
     cursor:pointer;
 }
 
-.postauctioncctivityheader .addbtnwrapper2{
-    font-family: 'MyriadPro-Regular';
-    font-size: 13px;
-    text-align: right;
-    display: inline-block;
-    float: right;
-    margin-right: 0px;
-}
-
 .postauctioncctivityheader .addbtnwrapper2 a {
     margin-right: 10px;
 }
@@ -4179,7 +4172,9 @@ ul.inboxlists{padding:0px; margin:0px;}
 .postauctionactivitylist ul{margin-bottom:0px;}
 
 .customeractivity .postauctionactivitylist ul{margin-bottom:0px; width: 104px;}
-
+.postauctioncctivityheader.customeractivity{
+    padding: 26px 10px !important;
+}
 .postauctionactivitylist li img{margin-bottom: 0px;}
 
 .postauctionactivitylist .list-group-item:first-child {
@@ -4221,6 +4216,8 @@ ul.inboxlists{padding:0px; margin:0px;}
     background: linear-gradient(333deg, rgba(221,177,86,1) 0%, rgba(165,103,27,1) 100%); /* w3c */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a5671b', endColorstr='#ddb156',GradientType=0 ); /* ie6-9 */
 }
+
+
 .automatchimgwrapper{
     border:1px solid #cbcdcd;
     width:45px;
@@ -4428,7 +4425,6 @@ ul.inboxlists{padding:0px; margin:0px;}
 }*/
 .RSVPActivity .daterange li{color:#fff; margin-bottom: 10px;}
 
-
 /*---daterange-css---*/
 .daterangepicker {
     color: inherit;
@@ -4436,7 +4432,6 @@ ul.inboxlists{padding:0px; margin:0px;}
     border-radius: 0px;
     width: 278px;
     padding: 9px 4px;
-    margin-top: 1px;
     top: 100px;
     left: 20px;
 }
@@ -9825,9 +9820,6 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
 .inventorysinglelist_blockdiv:nth-of-type(6){ display: block;}
 
 
-
-
-
 .opencontract_text {
     text-align: center;
     padding: 8px 8px 5px 8px;
@@ -9837,10 +9829,7 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
     font-style: italic;
 }
 
-
-.prevemployeeradiodiv .smalltxt1 input{
-    display: none;
-}
+.prevemployeeradiodiv .smalltxt1 input{display: none;}
 .prevemployeeradiodiv .smalltxt1 label{
     width: 34px;
     height: 34px;
@@ -9849,4 +9838,4 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
     margin-top: 0px !important;
 }
 
-
+.inventorysinglelist:nth-of-type(1n+7) {display: none;}

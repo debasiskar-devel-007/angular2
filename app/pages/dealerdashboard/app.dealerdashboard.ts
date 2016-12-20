@@ -249,6 +249,7 @@ export class AppDealerdashboard {
                                 return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.details[x].filename+ " />");
                             else return this._sanitizer.bypassSecurityTrustHtml("<img  src ='images/logo_61.png' />");
                         }
+                        return this.details[x];
                     }
                 }
                 return 'N/A';
@@ -269,6 +270,8 @@ export class AppDealerdashboard {
                             return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.details[x].filename+ " />");
                         else return this._sanitizer.bypassSecurityTrustHtml("<img  src = 'images/logo_61.png' />");
                     }
+
+                    return this.details[x];
                 }
             }
             return 'N/A';
@@ -292,6 +295,11 @@ export class AppDealerdashboard {
                                 //console.log(this.carlistarr[x].carlogolist);
                                 return this.getcarlogo(this.carlistarr[x]);
                             }
+                            if (val1=='mileage'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return this.getmileage(this.carlistarr[x]);
+                            }
                             if (val1=='model'){
                                 //console.log(this.carlistarr[x]);
                                 //console.log(this.carlistarr[x].carlogolist);
@@ -307,6 +315,17 @@ export class AppDealerdashboard {
                                     return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.carlistarr[x].filename+ " />");
                                 else return this._sanitizer.bypassSecurityTrustHtml("<img  src = 'images/logo_61.png' />");
                             }
+                            if (val1=='color'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return this.getcolor(this.carlistarr[x]);
+                            }
+                            if (val1=='price'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].est_retail_value);
+                            }
+                            return this.carlistarr[x];
                         }
 
                     }
@@ -319,10 +338,25 @@ export class AppDealerdashboard {
             var x:any;
             for(x in this.carlistarr){
                 if(val==this.carlistarr[x]._id){
+                    if (val1=='mileage'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return this.getmileage(this.carlistarr[x]);
+                    }
                     if (val1=='model'){
                         //console.log(this.carlistarr[x]);
                         //console.log(this.carlistarr[x].carlogolist);
                         return (this.carlistarr[x].model);
+                    }
+                    if (val1=='color'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return this.getcolor(this.carlistarr[x]);
+                    }
+                    if (val1=='price'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].est_retail_value);
                     }
 
                     if (val1=='make'){
@@ -340,11 +374,54 @@ export class AppDealerdashboard {
                             return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.carlistarr[x].filename+ " />");
                         else return this._sanitizer.bypassSecurityTrustHtml("<img  src = 'images/logo_61.png' />");
                     }
+
+                    return this.carlistarr[x];
                 }
 
             }
         }
         return 'N/A'
+
+    }
+
+    getmatchpercentageval(val:any,val1:any){
+
+        var customerdata:any=0;
+        customerdata=this.getcustomerdetails(val1,'');
+        var cardata:any=0;
+        cardata=this.getcardetails(val,'');
+
+        //console.log('match data');
+        //console.log(customerdata);
+        //////console.log(cardata);
+        var matchval:any=0;
+        if(typeof (customerdata)!='undefined' && typeof (cardata)!='undefined') {
+
+            if ($.inArray(cardata.carautoyearlist ,customerdata.car_auto_year) > -1) matchval += 14.3;
+            //if (cardata.carautoyearlist == customerdata.car_auto_year) matchval += 14.3;
+            if ($.inArray(cardata.basepricerange , customerdata.base_price)) matchval += 14.3;
+            if ($.inArray(cardata.car_body_style , customerdata.car_body_style)) matchval += 14.3;
+            if ($.inArray(cardata.color , customerdata.color_opiton)) matchval += 14.3;
+            if ($.inArray(cardata.carlogolist , customerdata.upcoming_auction)) matchval += 14.3;
+            if (cardata.mileage == customerdata.car_mileage) matchval += 14.3;
+        }
+       /* else{
+            let timeout=setTimeout(() => {
+
+                if (cardata.carautoyearlist == customerdata.car_auto_year) matchval += 14.3;
+                if (cardata.basepricerange == customerdata.base_price) matchval += 14.3;
+                if (cardata.car_body_style == customerdata.car_body_style) matchval += 14.3;
+                if (cardata.color == customerdata.color_opiton) matchval += 14.3;
+                if (cardata.carlogolist == customerdata.upcoming_auction) matchval += 14.3;
+                if (cardata.mileage == customerdata.car_mileage) matchval += 14.3;
+
+            },2000);
+
+        }*/
+
+        return Math.ceil(matchval)+'%';
+
+
 
     }
 

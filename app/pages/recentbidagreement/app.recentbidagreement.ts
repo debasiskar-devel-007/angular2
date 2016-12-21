@@ -106,9 +106,11 @@ export class AppRecentbidagreement{
             .subscribe(data1 => {
 
                 this.rsvplist = data1.json();
-                this.rsvplistarr=this.rsvplist.slice(0,6);
-                this.rsvplistarr1=this.rsvplist.slice(0,10);
-                this.rsvplistarr2=this.rsvplist.slice(0,8);
+                this.rsvplistarr=this.rsvplist;
+                this.pagec=Math.ceil(this.rsvplistarr.length / 9);
+                this.rsvplistarr1=this.rsvplist;
+                this.rsvplistarr2=this.rsvplist;
+                console.log(this.rsvplistarr2);
 
 
             }, error => {

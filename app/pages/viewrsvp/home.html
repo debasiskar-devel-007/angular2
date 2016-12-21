@@ -35,7 +35,7 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr *ngFor="let itemrsvp of rsvplistarr1 let irsvp=index">
+                                    <tr *ngFor="let itemrsvp of rsvplistarr1 |paginate: { itemsPerPage: 10, currentPage: p }; let irsvp=index">
                                         <td>{{irsvp+1}}</td>
                                         <!--<td><div class="checkbox"><label><input type="checkbox"></label></div></td>-->
                                         <td>{{getcardetails(itemrsvp.inventoryid,'auctionname')}}</td>
@@ -76,9 +76,9 @@
                         </div>
                     </div>
                 </div>
-                <!---<div class="col-lg-12 col-md-12 paginationwrapper">
-                   <span>Page {{p}} of 8</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
-                </div>--->
+                <div class="col-lg-12 col-md-12 paginationwrapper">
+                    <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+                </div>
             </div>
             <!-- /.row -->
         </div>

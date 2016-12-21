@@ -1,7 +1,7 @@
 <div class="body-inner">
     <div class="page-wrapper page-wrapper-inner">
         <div class="blockmaininner">
-            <div class="row">
+            <div class="row" *ngIf="details.length>0 && carlistarr.length >0 ">
                 <div class="col-lg-12 col-md-12 recentbidagreementmain">
                     <div class="inventoryrecentbidblock">
                         <div class="inventoryrecentbidheader">
@@ -17,173 +17,62 @@
 
                         <div class="inventorylistswrapper">
                             <div class="row">
-                                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist inventorysinglelistbox" *ngFor="let itemiventorymatch of inventorymatcharr|filter:query let iinventory=index ">
-                                    <div class="inventorysinglelistblock inventorysinglelistblock_new">
-                                        <div class="row inventorysinglelistblock_row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
+                                <div *ngFor="let itemrsvp of rsvplistarr|paginate: { itemsPerPage: 9, currentPage: p };trackBy:itemrsvp?._id" class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                                    <div class="inventorysinglelistblock">
+                                        <div class="row blockheaderinfo">
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left blockname">
+                                                <p><span>Name:</span> {{getcustomerdetails(itemrsvp.customerusername,'name')}}</p>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right blockdate">
+                                                <p><span>Auction Date:</span> 09-09-2016</p>
+                                            </div>
+                                        </div>
+                                        <div class="row blockcontentinfo">
+                                            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pull-left infobox">
+                                                <h5>Preferences/Match</h5>
+                                                <div class="divider"></div>
                                                 <table class="table">
                                                     <tbody>
                                                     <tr>
                                                         <td><span>Make:</span></td>
-                                                        <td>{{getcarlogo(itemiventorymatch)}}</td>
+                                                        <td>{{getcardetails(itemrsvp.inventoryid,'make')}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td><span>Model:</span></td>
-                                                        <td>{{itemiventorymatch.model}}</td>
+                                                        <td>{{getcardetails(itemrsvp.inventoryid,'model')}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td><span>Year:</span></td>
-                                                        <td>{{getcaryear(itemiventorymatch)}}</td>
+                                                        <td>{{getcardetails(itemrsvp.inventoryid,'year')}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td><span>Miles:</span></td>
-                                                        <td>{{getmileage(itemiventorymatch)}}</td>
+                                                        <td>{{getcardetails(itemrsvp.inventoryid,'mileage')}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td><span>Color:</span></td>
-                                                        <td>{{getcolor(itemiventorymatch)}}</td>
+                                                        <td>{{getcardetails(itemrsvp.inventoryid,'color')}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td><span>Wholesale:</span></td>
-                                                        <td>{{itemiventorymatch.est_retail_value}}</td>
+                                                        <td>{{getcardetails(itemrsvp.inventoryid,'price')}}</td>
                                                     </tr>
                                                     <tr>
-                                                        <td colspan="2"><div  class="viewdetail"><a [routerLink]="['/inventorymatchedetails',itemiventorymatch._id]">View Details</a></div></td>
+                                                        <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
                                             </div>
-
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <div class="imgwrapper"><img src="{{sharefilesrc}}{{itemiventorymatch.auctiondata[0].filename}}" class="auction_toplogo">
-                                                            <img src="{{sharefilesrc}}{{itemiventorymatch.filename}}">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="inventorysinglelistblock3">
-                                            <div class="inventorymatchusers_con" *ngFor="let inventoryusers of itemiventorymatch.userdetails|orderBy:orderbyqueryinventorymatch:orderbytypeinventorymatch let iinventory=index" >
-
-                                                <div class="row inventorymatchusers">
-                                                    <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
+                                            <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
+                                                <ul class="list-inline">
+                                                    <li>
                                                         <div class="imgouter">
-                                                            <div class="imgwrapper">
-                                                                <img *ngIf="inventoryusers.filename" src="{{sharefilesrc}}{{inventoryusers.filename}}">
-                                                                <img *ngIf="!inventoryusers.filename" src="images/logo_61.png">
+                                                            <div class="imgwrapper" [innerHtml]="getcustomerdetails(itemrsvp.customerusername,'image')">
+
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-7 col-md-8 col-sm-8 col-xs-12 inventorysinglelistblock3col2">
-                                                        <h4>Name : {{inventoryusers.fname}} {{inventoryusers.lname}}</h4>
-                                                        <div class="row">
-                                                            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 preogressleft">
-                                                                <div class="progress">
-                                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="inventoryusers.inventorymatchval+'%'">
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage">{{inventoryusers.inventorymatchval}}%<span></span></span></div>
+                                                        <div class="btnwrapper">
+                                                            <button class="btnedit" type="button" value="Edit">View Profile</button>
                                                         </div>
-                                                        <h3>Matches:</h3>
-                                                        <h5><span style="display: inline" *ngFor="let inventorychoicematches of inventoryusers.inventorymatchvaluearr">{{inventorychoicematches}}</span></h5>
-                                                        <div><button type="button" class="btn btn-link">View Match List</button></div>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 inventorysinglelistblock3col3">
-                                                        <div class="actionbtns">
-                                                            <a><button class="btnsend" type="button" value="Edit">Send RSVP</button></a>	<a><button class="btnedit" type="button" value="Edit">Contact</button></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="row inventorysinglelistblock4 inventorymatchusers1">
-                                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
-                                                        <div class="actionbtns">
-                                                            <a><button class="btnset" type="button" value="Edit">Set the retail price</button></a>	<a><button class="btnsend" type="button" value="Edit">Send Info</button></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col2 inventorysinglelistblock3col22">
-                                                        <div class="example">
-                                                            <div>
-                                                                <label><span>Approved for financing</span></label>
-                                                            </div>
-                                                            <div class="radiobox1box">
-                                                                <input id="radiobox1box1" type="radio" name="radiobox1box1" value="radiobox1box1"><label for="radiobox1box1"></label>
-                                                            </div>
-                                                            <div class="radiobox2box">
-                                                                <input id="radiobox1box2" type="radio" name="radiobox1box1" value="radiobox1box2"><label for="radiobox1box2"></label>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="divider4"></div>
-
-                                            </div>
-
-
-                                            <!-- <div class="row">
-                                                 <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
-                                                     <div class="imgouter">
-                                                         <div class="imgwrapper">
-
-                                                             <img *ngIf="itemiventorymatch.userdetails[1].filename" src="{{sharefilesrc}}{{itemiventorymatch.userdetails[1].filename}}">
-                                                             <img *ngIf="!itemiventorymatch.userdetails[1].filename" src="images/logo_61.png">
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                                 <div class="col-lg-7 col-md-8 col-sm-8 col-xs-12 inventorysinglelistblock3col2">
-                                                     <h4>Name : {{itemiventorymatch.userdetails[1].fname}} {{itemiventorymatch.userdetails[0].lname}}</h4>
-                                                     <div class="row">
-                                                         <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 preogressleft">
-                                                             <div class="progress">
-                                                                 <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-                                                                 </div>
-                                                             </div>
-                                                         </div>
-                                                         <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage">{{itemiventorymatch.userdetails[1].inventorymatchval}}%<span></span></span></div>
-                                                     </div>
-                                                     <h3>Top 3 match:</h3>
-                                                     <h5>Make :  Renault   Model :  Duster   Year:  2016</h5>
-                                                     <div><button type="button" class="btn btn-link">View Match List</button></div>
-                                                 </div>
-                                                 <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 inventorysinglelistblock3col3">
-                                                     <div class="actionbtns">
-                                                         <button class="btnsend" type="button" value="Edit">Send RSVP</button><button class="btnedit" type="button" value="Edit">Contact</button>
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                             <div class="row inventorysinglelistblock4">
-                                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
-                                                     <div class="actionbtns">
-                                                         <button class="btnset" type="button" value="Edit">Set the retail price</button><button class="btnsend" type="button" value="Edit">Send Info</button>
-                                                     </div>
-                                                 </div>
-                                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col2 inventorysinglelistblock3col22">
-                                                     <div class="example">
-                                                         <div>
-                                                             <label><span>Approved for financing</span></label>
-                                                         </div>
-                                                         <div class="radiobox1box">
-                                                             <input id="radiobox1box3" type="radio" name="radiobox1box2" value="radiobox1box3"><label for="radiobox1box3"></label>
-                                                         </div>
-                                                         <div class="radiobox2box">
-                                                             <input id="radiobox1box4" type="radio" name="radiobox1box2" value="radiobox1box4"><label for="radiobox1box4"></label>
-                                                         </div>
-                                                     </div>
-                                                 </div>
-                                             </div>-->
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+                                                    </li>
+                                

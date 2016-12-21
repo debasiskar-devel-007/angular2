@@ -106,9 +106,10 @@ export class AppViewrsvp {
             .subscribe(data1 => {
 
                 this.rsvplist = data1.json();
-                this.rsvplistarr=this.rsvplist.slice(0,6);
-                this.rsvplistarr1=this.rsvplist.slice(0,10);
-                this.rsvplistarr2=this.rsvplist.slice(0,8);
+                this.rsvplistarr=this.rsvplist;
+                this.rsvplistarr1=this.rsvplist;
+                this.pagec=Math.ceil(this.rsvplistarr1.length / 10);
+                this.rsvplistarr2=this.rsvplist;
 
 
             }, error => {

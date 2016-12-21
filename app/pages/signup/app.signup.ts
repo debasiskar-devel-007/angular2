@@ -114,7 +114,7 @@ export class AppSignup {
         }*/
 
 
-         let link1= this.serverUrl+'dealercheck';
+       /*  let link1= this.serverUrl+'dealercheck';
         this.http.post(link1,username)
              .subscribe(data2 => {
                   let data3:any = data2.json();
@@ -127,7 +127,7 @@ export class AppSignup {
 
              }, error => {
                  console.log("Oooops!");
-             });
+             });*/
         //let appsignupobj=new AppSignup();
         // /console.log(appsignupobj.signupform.value.term);
 
@@ -151,27 +151,52 @@ export class AppSignup {
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'adddealer';
-            var submitdata = this.signupform.value;
+            let link1= this.serverUrl+'dealercheck';
+            let username={username:this.signupform.value.username};
+            this.http.post(link1,username)
+                .subscribe(data2 => {
+                    let data3:any = data2.json();
+                    console.log(data2);
+                    console.log(data3);
+                    console.log(data3.length);
+                    if(data3.length==0){
+                       // return { 'invalidEmailAddress': true };
 
-            this.http.post(link,submitdata)
-                .subscribe(data => {
-                    this.showloader=false;
-                    // /this.data1.response = data.json();
-                    console.log(data);
-                    this.signupform.value.password='';
-                    this.userInfo.putObject('userInfo', this.signupform.value);
-                    //console.log(this.userInfo.getObject('userInfo'));
-                    this.router.navigate(['/creditcard']);
+                        let link = this.serverUrl+'adddealer';
+                        var submitdata = this.signupform.value;
 
-                    //this.local = new Storage(LocalStorageService);
-                   // this.local.set('userinfo', JSON.stringify(data.json()));
-                    //console.logthis.local.get('userinfo');
+                        this.http.post(link,submitdata)
+                            .subscribe(data => {
+                                this.showloader=false;
+                                // /this.data1.response = data.json();
+                                console.log(data);
+                                this.signupform.value.password='';
+                                this.userInfo.putObject('userInfo', this.signupform.value);
+                                //console.log(this.userInfo.getObject('userInfo'));
+                                this.router.navigate(['/creditcard']);
 
+                                //this.local = new Storage(LocalStorageService);
+                                // this.local.set('userinfo', JSON.stringify(data.json()));
+                                //console.logthis.local.get('userinfo');
+
+
+                            }, error => {
+                                console.log("Oooops!");
+                            });
+                    }
+                    else{
+                        this.showloader=false;
+                        console.log('Invalid username/password');
+                        this.loginerror=0;
+                    }
 
                 }, error => {
                     console.log("Oooops!");
                 });
+
+
+
+
 
             //this.navCtrl.push(ProfilePage);
         }

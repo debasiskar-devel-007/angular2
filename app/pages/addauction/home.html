@@ -27,6 +27,22 @@
                                     <input type="hidden" [formControl]="addauctionform.controls['filename']" name="filename" class="form-control" placeholder="Filename"/>
                                     <span *ngIf ="addauctionform.controls['filename'].touched && !addauctionform.controls['filename'].valid" class="help-inline"><span class="errormsgtxt">Filename is Required !</span><img src="images/iconquestion.png"></span>
                                 </div>
+                                <div class="form-group">
+                                    <input [formControl]="addauctionform.controls['auction_date']" name="auction_date"  type="text" data-provide="datepicker" class="form-control datepicker" placeholder="Auction Date" data-date-format="mm/dd/yyyy"/>
+                                   <!-- <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>-->
+                                    <span  *ngIf ="addauctionform.controls['auction_date'].touched && !addauctionform.controls['auction_date'].valid" class="help-inline"><span class="errormsgtxt">Auction Date is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                               <!-- <div class="form-group">
+                                    <div class='input-group date' id='datepicker'>
+                                        <input [formControl]="addauctionform.controls['auction_date']" name="auction_date"  type="text" data-provide="datepicker" class="form-control" placeholder="Auction Date" data-date-format="mm/dd/yyyy"/>
+                                        <span  *ngIf ="addauctionform.controls['auction_date'].touched && !addauctionform.controls['auction_date'].valid" class="help-inline"><span class="errormsgtxt">Auction Date is Required ! </span><img src="images/iconquestion.png"></span>
+                                        <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                                    </div>
+                                </div>-->
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group hide">
@@ -34,6 +50,7 @@
                                     </textarea>
                                    <!-- <span *ngIf ="addauctionform.controls['description'].touched && !addauctionform.controls['description'].valid" class="help-inline"><span class="errormsgtxt">Description is Required !</span><img src="images/iconquestion.png"></span>-->
                                 </div>
+
 
                             </div>
                             <div class="clearfix"></div>

@@ -2764,7 +2764,10 @@ ul.inboxlists{padding:0px; margin:0px;}
 .recentrsvpsinglelist .imgwrapper img{max-width:100%;}
 .recentrsvpsinglelist p{text-align:center;font-family: 'MyriadPro-Regular';font-size: 13px;color: #151515;padding: 2px 0px 0px 0px; line-height: 16px; display:block; margin: 0px;}
 .recentrsvpsinglelist span{text-align:center;font-family: 'MyriadPro-Regular';font-size: 13px;color: #000;padding: 0px 0px 3px 0px; display:block; font-weight:500;overflow: hidden; word-wrap: break-word;}
-.recentrsvpsinglelist{margin-bottom:9px;}
+/*.recentrsvpsinglelist{margin-bottom:9px;}*/
+.recentrsvpsinglelist:nth-child(4n+1){
+    clear:left;
+}
 /*.recentrsvpsinglelist .imgwrapper .active{background-color:#229c1a; width:10px; height:10px; border-radius:100%; position:absolute; bottom:0px; right:0px;}
 .recentrsvpsinglelist .imgwrapper .inactive{background-color:#ff0000; width:10px; height:10px; border-radius:100%;position:absolute; bottom:0px; right:0px;}*/
 
@@ -2789,7 +2792,14 @@ ul.inboxlists{padding:0px; margin:0px;}
 .recentcussinglelist p{text-align:center;font-family: 'MyriadPro-Regular';font-size: 13px;color: #151515;padding: 6px 0px 3px 0px; display:block;    margin: 0px;}
 .recentcussinglelist span{text-align:center;font-family: 'MyriadPro-Regular';font-size: 13px;color: #000;padding: 0px 0px 3px 0px; display:block; font-weight:normal;overflow: hidden;
     word-wrap: break-word;}
-.recentcussinglelist{margin-bottom:9px;}
+.recentcussinglelist:nth-child(4n+1){
+    clear:left;
+}
+
+
+.recentcussinglelist:nth-of-type(1n+9) {display: none;}
+
+/*.recentcussinglelist{margin-bottom:9px;}*/
 
 
 .auctioninventoryblock{padding: 0px; background-color: #e2e2e2 !important; height: auto; border-top: 5px solid #ff3317; margin-top: 30px;}
@@ -2798,7 +2808,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .auctioninventoryheader h2 span{color: #262525;}
 
 
-.auctioninventoryheader .addbtnwrapper {font-family: 'MyriadPro-Regular'; font-size: 13px; text-align: right; display: inline-block; float: right !important; line-height: 38px !important;  color: #272727 !important;}
+.auctioninventoryheader .addbtnwrapper {font-family: 'MyriadPro-Regular'; font-size: 13px; text-align: right; display: inline-block; line-height: 38px !important;  color: #272727 !important;}
 .auctioninventoryblock .inventorylistswrapper{background-color: #e2e2e2 !important;}
 .auctioninventoryblock .inventorylistswrapper input {
     position: absolute;
@@ -3170,7 +3180,6 @@ ul.inboxlists{padding:0px; margin:0px;}
     font-size: 13px;
     text-align: right;
     display: inline-block;
-    float: right !important;
 }
 .inventorysinglelistblock3{background: -moz-linear-gradient(270deg, rgba(255,255,255,1) 0%, rgba(220,221,222,1) 100%); /* ff3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(255,255,255,1)), color-stop(100%, rgba(220,221,222,1))); /* safari4+,chrome */
@@ -3354,6 +3363,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .modeldropdown select{
     background: transparent !important;
     border: none;
+    width: 100%;
 }
 
 .modeldropdown select option{
@@ -3951,7 +3961,6 @@ ul.inboxlists{padding:0px; margin:0px;}
     font-size: 13px;
     text-align: right;
     display: inline-block;
-    float: right !important;
     line-height: 38px !important;
     color: #fff !important;
 }
@@ -3994,13 +4003,16 @@ ul.inboxlists{padding:0px; margin:0px;}
     padding-right: 32px; min-height: 25px;}
 .postauctioncctivityheader h2 span{color: #262525;}
 .postauctioncctivityblockwrapper{background-color: #e2e2e2; padding: 15px;}
-
+.postauctioncctivityheader ul{
+    float: right;
+    margin-top: 0;
+    margin-bottom: 0px;
+}
 .postauctioncctivityheader .addbtnwrapper2 {
     font-family: 'MyriadPro-Regular';
     font-size: 13px;
     text-align: right;
     display: inline-block;
-    float: right;
     margin-right: 0px;
 }
 .postauctioncctivityheader .addbtnwrapper2 .btn{
@@ -4118,15 +4130,6 @@ ul.inboxlists{padding:0px; margin:0px;}
     cursor:pointer;
 }
 
-.postauctioncctivityheader .addbtnwrapper2{
-    font-family: 'MyriadPro-Regular';
-    font-size: 13px;
-    text-align: right;
-    display: inline-block;
-    float: right;
-    margin-right: 0px;
-}
-
 .postauctioncctivityheader .addbtnwrapper2 a {
     margin-right: 10px;
 }
@@ -4169,7 +4172,9 @@ ul.inboxlists{padding:0px; margin:0px;}
 .postauctionactivitylist ul{margin-bottom:0px;}
 
 .customeractivity .postauctionactivitylist ul{margin-bottom:0px; width: 104px;}
-
+.postauctioncctivityheader.customeractivity{
+    padding: 26px 10px !important;
+}
 .postauctionactivitylist li img{margin-bottom: 0px;}
 
 .postauctionactivitylist .list-group-item:first-child {
@@ -4211,6 +4216,8 @@ ul.inboxlists{padding:0px; margin:0px;}
     background: linear-gradient(333deg, rgba(221,177,86,1) 0%, rgba(165,103,27,1) 100%); /* w3c */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a5671b', endColorstr='#ddb156',GradientType=0 ); /* ie6-9 */
 }
+
+
 .automatchimgwrapper{
     border:1px solid #cbcdcd;
     width:45px;
@@ -4418,7 +4425,6 @@ ul.inboxlists{padding:0px; margin:0px;}
 }*/
 .RSVPActivity .daterange li{color:#fff; margin-bottom: 10px;}
 
-
 /*---daterange-css---*/
 .daterangepicker {
     color: inherit;
@@ -4426,7 +4432,6 @@ ul.inboxlists{padding:0px; margin:0px;}
     border-radius: 0px;
     width: 278px;
     padding: 9px 4px;
-    margin-top: 1px;
     top: 100px;
     left: 20px;
 }
@@ -9621,7 +9626,164 @@ a:focus, a:hover {
 
 
 
+.option_popup_wrapper_header{
+    text-transform: uppercase;
+    font-size: 18px !important;
+    color: #303030 !important;
+    font-weight: 600;
+    background: #e2e2e2 !important;
+}
+.option_popup_wrapper span.spanfull{
+    display: block;
+    width: 100%;
+    float: left;
+}
 
+#customerfinanceModal .modelheader h4 {
+    margin: 0px;
+    padding: 0px;
+    font-size: 24px;
+    text-transform: uppercase;
+    word-wrap: break-word;
+}
+#customerfinanceModal .modelheader .close {
+    background-color: #fb4a32 !important;
+    opacity: 1 !important;
+    height: 24px !important;
+    width: 24px !important;
+    color: #fff !important;
+    right: 10px;
+    position: absolute;
+}
+
+#customerfinanceModal .modal-footer .btnclose {
+    background: rgba(0,0,0,1) !important;
+    background: -moz-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%) !important;
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,1)), color-stop(48%, rgba(38,38,38,1)), color-stop(52%, rgba(47,47,47,1)), color-stop(100%, rgba(66,66,68,1))) !important;
+    background: -webkit-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%) !important;
+    background: -o-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%) !important;
+    background: -ms-linear-gradient(top, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%) !important;
+    background: linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(38,38,38,1) 48%, rgba(47,47,47,1) 52%, rgba(66,66,68,1) 100%) !important;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#424244', GradientType=0 ) !important;
+    display: block !important;
+    width: 100px !important;
+    height: 100% !important;
+    border: none !important;
+    cursor: pointer!important;
+    font-size: 20px!important;
+    color: #fff !important;
+    text-transform: uppercase !important;
+    font-family: 'MyriadPro-Semibold' !important;
+    text-shadow: 0 0 4px #000 !important;
+    text-decoration: none !important;
+    float: right !important;
+}
+
+.option_popup_wrapper h2{
+    font-size: 22px;
+    margin: 0;
+    text-transform: uppercase;
+    color:#fff;
+}
+.option_popup_wrapper h2 span{
+    float: right;
+    position: relative;
+    font-size: 18px;
+}
+.option_popup_wrapper_top{
+    background: #7e8080;
+    padding: 10px;
+    font-family: 'MyriadPro-Regular';
+}
+
+.option_popup_wrapper_top ul{
+    margin: 5px 0px 0px 0px;
+    border: 1px solid #f5f5f5;
+    text-align: center;
+    padding: 8px;
+}
+.option_popup_wrapper_top ul li input{
+    width:16px;
+    height: 16px;
+    float: left;
+}
+.option_popup_wrapper_top ul li span{
+    margin-left: 5px;
+    margin-top: 0px !important;
+    float: right;
+    margin-right: 10px;
+    font-size: 16px;
+    color:#fff;
+}
+.financestatusApproved{
+    color:rgba(112,217,83,1);
+}
+.financestatusDecline{
+    color:rgba(244,2,2,1);
+}
+.financestatusPending{
+    color:rgba(221,177,86,1);
+}
+
+.option_popup_wrapper_top ul li input [type='radio'] {
+    -webkit-appearance:none;
+    outline:none;
+}
+
+.option_popup_wrapper_top ul li input[type='radio'].inputgreen:before {
+    content:'';
+    display:block;
+    width:60%;
+    height:60%;
+    margin: 20% auto;
+    border-radius:50%;
+}
+.option_popup_wrapper_top ul li input[type='radio']:checked.inputgreen:before {
+    background: -moz-linear-gradient(117deg, rgba(112,217,83,1) 0%, rgba(75,126,24,1) 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(75,126,24,1)), color-stop(100%, rgba(112,217,83,1)));
+    background: -webkit-linear-gradient(117deg, rgba(112,217,83,1) 0%, rgba(75,126,24,1) 100%);
+    background: -o-linear-gradient(117deg, rgba(112,217,83,1) 0%, rgba(75,126,24,1) 100%);
+    background: -ms-linear-gradient(117deg, rgba(112,217,83,1) 0%, rgba(75,126,24,1) 100%);
+    background: linear-gradient(333deg, rgba(112,217,83,1) 0%, rgba(75,126,24,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4b7e18', endColorstr='#70d953',GradientType=0 );
+}
+.option_popup_wrapper_top ul li input[type='radio'].inputred:before {
+    content:'';
+    display:block;
+    width:60%;
+    height:60%;
+    margin: 20% auto;
+    border-radius:50%;
+}
+
+.option_popup_wrapper_top ul li input[type='radio']:checked.inputred:before {
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(138,1,1,1)), color-stop(100%, rgba(244,2,2,1)));
+    background: -webkit-linear-gradient(117deg, rgba(244,2,2,1) 0%, rgba(138,1,1,1) 100%);
+    background: -o-linear-gradient(117deg, rgba(244,2,2,1) 0%, rgba(138,1,1,1) 100%);
+    background: -ms-linear-gradient(117deg, rgba(244,2,2,1) 0%, rgba(138,1,1,1) 100%);
+    background: linear-gradient(333deg, rgba(244,2,2,1) 0%, rgba(138,1,1,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#8a0101', endColorstr='#f40202',GradientType=0 );
+}
+
+
+.option_popup_wrapper_top ul li input[type='radio'].inputorange:before {
+    content:'';
+    display:block;
+    width:60%;
+    height:60%;
+    margin: 20% auto;
+    border-radius:50%;
+}
+
+.option_popup_wrapper_top ul li input[type='radio']:checked.inputorange:before {
+    background: -moz-linear-gradient(117deg, rgba(221,177,86,1) 0%, rgba(165,103,27,1) 100%);
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%, rgba(165,103,27,1)), color-stop(100%, rgba(221,177,86,1)));
+    background: -webkit-linear-gradient(117deg, rgba(221,177,86,1) 0%, rgba(165,103,27,1) 100%);
+    background: -o-linear-gradient(117deg, rgba(221,177,86,1) 0%, rgba(165,103,27,1) 100%);
+    background: -ms-linear-gradient(117deg, rgba(221,177,86,1) 0%, rgba(165,103,27,1) 100%);
+    background: linear-gradient(333deg, rgba(221,177,86,1) 0%, rgba(165,103,27,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a5671b', endColorstr='#ddb156',GradientType=0 );
+}
 
     /*-----------amitava-----------*/
 
@@ -9815,9 +9977,6 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
 .inventorysinglelist_blockdiv:nth-of-type(6){ display: block;}
 
 
-
-
-
 .opencontract_text {
     text-align: center;
     padding: 8px 8px 5px 8px;
@@ -9827,16 +9986,25 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
     font-style: italic;
 }
 
-
-.prevemployeeradiodiv .smalltxt1 input{
-    display: none;
-}
+.prevemployeeradiodiv .smalltxt1 input{display: none;}
 .prevemployeeradiodiv .smalltxt1 label{
     width: 34px;
     height: 34px;
     float: left;
     display: inline-block;
     margin-top: 0px !important;
+}
+
+/*.inventorysinglelist:nth-of-type(1n+7) {display: none;}*/
+
+
+
+.customerstatus .example .chakebox2box input[type=radio]:not(old):checked + label {
+    background-position: 0 -69px;
+}
+
+.customerstatus .example .chakebox3box input[type=radio]:not(old):checked + label {
+    background-position : 0 -46px;
 }
 
 

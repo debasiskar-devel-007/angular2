@@ -10,7 +10,7 @@ import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
 
-
+declare var $: any;
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
@@ -43,6 +43,7 @@ export class AppAddauction implements OnInit {
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.ckeditorContent = '';
+        $('#datepicker').datepicker();
         this.router=router;
         this.http=http;
         this.router=router;
@@ -59,6 +60,7 @@ console.log(this.userInfo);
             is_active: [''],
             priority: ['', Validators.required],
             filename: ['', Validators.required],
+            auction_date: ['', Validators.required],
 
         });
 

@@ -209,7 +209,7 @@
                         <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pull-left text-left">Previous Residence</div>
                         <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 pull-left text-left prevresidentradiodiv">
                             <div class="smalltxt1" >
-                                <input id="prevresidentradio" (click)="prevresidance()" type="checkbox" name="prevresidentradio" value="1">
+                                <input [formControl]="customersignupform.controls['previousresidence_check']" name="previousresidence_check" id="prevresidentradio" (click)="prevresidance()" type="checkbox"  value="1">
                                 <label for="prevresidentradio"></label>
                                 <span>( If less than 2 years at current residence )</span>
                             </div>
@@ -257,7 +257,7 @@
                         <div class="col-lg-2 col-md-2 col-sm-3 col-xs-12 pull-left text-left">Mailing Address</div>
                         <div class="col-lg-10 col-md-10 col-sm-9 col-xs-12 pull-left text-left mailingaddressradiodiv">
                             <div class="smalltxt1">
-                                <input id="mailingaddressradio" (click)="mailingaddress()" type="checkbox" name="mailingaddressradio" value="1" >
+                                <input id="mailingaddressradio" (click)="mailingaddress()" type="checkbox"  [formControl]="customersignupform.controls['mailingaddress_check']" name="mailingaddress_check" value="1" >
                                 <label for="mailingaddressradio"></label>
                                 <span>( If different than primary address )</span>
                             </div>
@@ -412,7 +412,7 @@
                         <div class="col-lg-3 col-md-3 col-sm-7 col-xs-9 pull-left text-left">Previous Employment</div>
                         <div class="col-lg-9 col-md-9 col-sm-5 col-xs-3 pull-left text-left prevemployeeradiodiv">
                             <label class="smalltxt1">
-                                <input (click)="employment()" id="prevemployeeradio" type="checkbox" name="checkbox" value="1"><label for="prevemployeeradio"></label><span><strong>1</strong></span>
+                                <input (click)="employment()" id="prevemployeeradio" type="checkbox" [formControl]="customersignupform.controls['previousemployment_check']" name="previousemployment_check" value="1"><label for="prevemployeeradio"></label><span><strong>1</strong></span>
                             </label>
                         </div>
                     </div>

@@ -35,6 +35,7 @@ export class AppCustomersignup {
     package_image:any;
     details1:any;
     coockieData:CookieService;
+    data1:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,customerInfo:CookieService ,router: Router) {
 
@@ -107,7 +108,8 @@ export class AppCustomersignup {
     console.log(submitdata);
             this.http.post(link,submitdata)
                 .subscribe(data => {
-                    // /this.data1.response = data.json();
+                   // this.data1 = data.json();
+                    console.log(this.data1);
                     this.customersignupform.value.password='';
                     if(this.customersignupform.value.term==true){
                           this.terms=1;

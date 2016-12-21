@@ -142,6 +142,7 @@ export class AppFinance implements OnInit {
             city: [this.customerinfo.city, Validators.required],
             state: [this.customerinfo.state, Validators.required],
             zip: [this.customerinfo.zip, Validators.required],
+            previousresidence_check: [''],
             primary_residence_year: [''],
             primary_residence_month: [''],
             primary_residence_type: [''],
@@ -154,6 +155,7 @@ export class AppFinance implements OnInit {
             previous_zip: [''],
             previous_state: [''],
             previous_city: [''],
+            mailingaddress_check: [''],
             mailing_address: [''],
             mailing_addressline2: [''],
             mailing_state: [''],
@@ -173,6 +175,7 @@ export class AppFinance implements OnInit {
             employment_city: [''],
             employment_state: [''],
             employment_zip: [''],
+            previousemployment_check: [''],
             previous_employer: [''],
             previous_employment_year: [''],
             previous_employment_month: [''],
@@ -212,6 +215,9 @@ export class AppFinance implements OnInit {
             signature: ['', Validators.required],
             is_active: ['', Validators.required],
         });
+
+        console.log('finance form');
+        console.log(this.customersignupform);
         this.http.get(this.serverUrl+'listcarautomileage')
             .subscribe(data => {
                 this.listcarautomileage=data.json();

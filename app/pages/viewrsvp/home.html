@@ -4,7 +4,7 @@
             <!-- .row -->
             <div class="row">
                 <div class="col-lg-12 col-md-12 RSVPActivity viewrsvpinner">
-                    <div class="viewrsvpinnerblock">
+                    <div class="viewrsvpinnerblock" *ngIf="details.length>0 && carlistarr.length >0 && auctionlistarr.length>0">
                         <div class="viewrsvpinnerheader">
                             <h2><span>RSVP</span> Activity</h2>
                             <ul class="list-inline daterange">
@@ -16,235 +16,62 @@
                         <div class="adminlistlists dealerlists">
                             <div class="searchbox"><input placeholder="Search by Customer id, Auction, Status"></div>
                             <div class="table-responsive">
+
+
                                 <table class="table table-striped">
                                     <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th><div class="checkbox"><label><input type="checkbox"></label></div></th>
-                                        <th>Auction <b class="caret-up-down"></b></th>
-                                        <th>Date <b class="caret-down"></b></th>
-                                        <th>Customer ID <b class="caret-up"></b></th>
-                                        <th>Buyer <b class="caret-down"></b></th>
-                                        <th>Status <b class="caret-down"></b></th>
-                                        <th>Auto Match <b class="caret-down"></b></th>
-                                        <th>Wholesale <b class="caret-down"></b></th>
-                                        <th>Retail <b class="caret-down"></b></th>
-                                        <th>Action <b class="caret-down"></b></th>
+                                        <!--<th><div class="checkbox"><label><input type="checkbox"></label></div></th>-->
+                                        <th>Auction<b class="caret-up-down"></b></th>
+                                        <th>Date<b class="caret-down"></b></th>
+                                        <th>Customer ID<b class="caret-up"></b></th>
+                                        <th>Customer Name<b class="caret-down"></b></th>
+                                        <th>Status<b class="caret-down"></b></th>
+                                        <th>Auto Match<b class="caret-down"></b></th>
+                                        <th>Wholesale<b class="caret-down"></b></th>
+                                        <th>Retail<b class="caret-down"></b></th>
+                                        <!--<th>Action<b class="caret-down"></b></th>-->
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <tr>
-                                        <td>01</td>
-                                        <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                        <td>Auction A</td>
+                                    <tr *ngFor="let itemrsvp of rsvplistarr1 let irsvp=index">
+                                        <td>{{irsvp+1}}</td>
+                                        <!--<td><div class="checkbox"><label><input type="checkbox"></label></div></td>-->
+                                        <td>{{getcardetails(itemrsvp.inventoryid,'auctionname')}}</td>
                                         <td>19 Aug 2016</td>
-                                        <td>#C0024</td>
-                                        <td>Hana Sartika</td>
+                                        <td>{{getcustomerdetails(itemrsvp.customerusername,'username')}}</td>
+                                        <td>{{getcustomerdetails(itemrsvp.customerusername,'name')}}</td>
                                         <td>
                                             <div class="actionbtns">
-                                                <a><button class="btndelete" type="button" value="Denied">Denied</button></a>
+                                                <button *ngIf="itemrsvp.status==1" class="btndelete" type="button" value="Denied">Approved</button>
+                                                <button *ngIf="itemrsvp.status==0" class="btnedit" type="button" value="Pending">Pending</button>
+                                                <button *ngIf="itemrsvp.status==2" class="btninvite" type="button" value="Approved">Denied</button>
                                             </div>
                                         </td>
                                         <td>
                                             <ul class="automatchwrapper list-inline">
-                                                <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                                <li><div class="automatchimgwrapper2"><img src="images/img-rsvpcar-logo.png"></div></li>
+                                                <li><div class="automatchimgwrapper" [innerHtml]="getcardetails(itemrsvp.inventoryid,'image')" ></div></li>
+                                                <li><div class="automatchimgwrapper2"  [innerHtml]="getcardetails(itemrsvp.inventoryid,'auctionimage')"></div></li>
                                             </ul>
                                         </td>
-                                        <td>$ 1,200</td>
-                                        <td>$ 2,400</td>
-                                        <td>
+                                        <td>$ {{getcardetails(itemrsvp.inventoryid,'price')}}</td>
+                                        <td>${{itemrsvp.retialcommission}} USD</td>
+                                        <!--<td>
                                             <ul class="list-inline actionbid">
                                                 <li>Max Bid</li>
                                                 <li><div class="actionbtns">
-                                                    <a><button class="btnedit" type="button" value="Edit">Contact</button></a>
+                                                    <button class="btnedit" type="button" value="Edit">Contact</button>
                                                 </div>
                                                 </li>
                                             </ul>
-                                        </td>
+                                        </td>-->
                                     </tr>
-                                    <tr>
-                                        <td>02</td>
-                                        <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                        <td>Auction A</td>
-                                        <td>19 Aug 2016</td>
-                                        <td>#C0024</td>
-                                        <td>Hana Sartika</td>
-                                        <td>
-                                            <div class="actionbtns">
-                                                <a><button class="btninvite" type="button" value="Denied">Denied</button></a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <ul class="list-inline">
-                                                <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                                <li><div class="automatchimgwrapper2"><img src="images/img-rsvpcar-logo.png"></div></li>
-                                            </ul>
-                                        </td>
-                                        <td>$ 1,200</td>
-                                        <td>$ 2,400</td>
-                                        <td>
-                                            <ul class="list-inline actionbid">
-                                                <li>Participate</li>
-                                                <li><div class="actionbtns">
-                                                    <a><button class="btnedit" type="button" value="Edit">Contact</button></a>
-                                                </div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>03</td>
-                                        <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                        <td>Auction A</td>
-                                        <td>19 Aug 2016</td>
-                                        <td>#C0024</td>
-                                        <td>Hana Sartika</td>
-                                        <td>
-                                            <div class="actionbtns">
-                                                <a><button class="btnaccept" type="button" value="Denied">Denied</button></a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <ul class="list-inline">
-                                                <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                                <li><div class="automatchimgwrapper2"><img src="images/img-rsvpcar-logo.png"></div></li>
-                                            </ul>
-                                        </td>
-                                        <td>$ 1,200</td>
-                                        <td>$ 2,400</td>
-                                        <td>
-                                            <ul class="list-inline actionbid">
-                                                <li>Participate</li>
-                                                <li><div class="actionbtns">
-                                                    <a><button class="btnedit" type="button" value="Edit">Contact</button></a>
-                                                </div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>04</td>
-                                        <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                        <td>Auction A</td>
-                                        <td>19 Aug 2016</td>
-                                        <td>#C0024</td>
-                                        <td>Hana Sartika</td>
-                                        <td>
-                                            <div class="actionbtns">
-                                                <a><button class="btndelete" type="button" value="Denied">Denied</button></a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <ul class="list-inline">
-                                                <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                                <li><div class="automatchimgwrapper2"><img src="images/img-rsvpcar-logo.png"></div></li>
-                                            </ul>
-                                        </td>
-                                        <td>$ 1,200</td>
-                                        <td>$ 2,400</td>
-                                        <td>
-                                            <ul class="list-inline actionbid">
-                                                <li>Max Bid</li>
-                                                <li><div class="actionbtns">
-                                                    <a><button class="btnedit" type="button" value="Edit">Contact</button></a>
-                                                </div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>05</td>
-                                        <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                        <td>Auction A</td>
-                                        <td>19 Aug 2016</td>
-                                        <td>#C0024</td>
-                                        <td>Hana Sartika</td>
-                                        <td>
-                                            <div class="actionbtns">
-                                                <a><button class="btnaccept" type="button" value="Denied">Denied</button></a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <ul class="list-inline">
-                                                <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                                <li><div class="automatchimgwrapper2"><img src="images/img-rsvpcar-logo.png"></div></li>
-                                            </ul>
-                                        </td>
-                                        <td>$ 1,200</td>
-                                        <td>$ 2,400</td>
-                                        <td>
-                                            <ul class="list-inline actionbid">
-                                                <li>Max Bid</li>
-                                                <li><div class="actionbtns">
-                                                    <a><button class="btnedit" type="button" value="Edit">Contact</button></a>
-                                                </div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>06</td>
-                                        <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                        <td>Auction A</td>
-                                        <td>19 Aug 2016</td>
-                                        <td>#C0024</td>
-                                        <td>Hana Sartika</td>
-                                        <td>
-                                            <div class="actionbtns">
-                                                <a><button class="btnaccept" type="button" value="Denied">Denied</button></a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <ul class="list-inline">
-                                                <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                                <li><div class="automatchimgwrapper2"><img src="images/img-rsvpcar-logo.png"></div></li>
-                                            </ul>
-                                        </td>
-                                        <td>$ 1,200</td>
-                                        <td>$ 2,400</td>
-                                        <td>
-                                            <ul class="list-inline actionbid">
-                                                <li>Max Bid</li>
-                                                <li><div class="actionbtns">
-                                                    <a><button class="btnedit" type="button" value="Edit">Contact</button></a>
-                                                </div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>07</td>
-                                        <td><div class="checkbox"><label><input type="checkbox"></label></div></td>
-                                        <td>Auction A</td>
-                                        <td>19 Aug 2016</td>
-                                        <td>#C0024</td>
-                                        <td>Hana Sartika</td>
-                                        <td>
-                                            <div class="actionbtns">
-                                                <a><button class="btninvite" type="button" value="Denied">Denied</button></a>
-                                            </div>
-                                        </td>
-                                        <td>
-                                            <ul class="list-inline">
-                                                <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                                <li><div class="automatchimgwrapper2"><img src="images/img-rsvpcar-logo.png"></div></li>
-                                            </ul>
-                                        </td>
-                                        <td>$ 1,200</td>
-                                        <td>$ 2,400</td>
-                                        <td>
-                                            <ul class="list-inline actionbid">
-                                                <li>Max Bid</li>
-                                                <li><div class="actionbtns">
-                                                    <a><button class="btnedit" type="button" value="Edit">Contact</button></a>
-                                                </div>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
+
                                     </tbody>
                                 </table>
+
+
                             </div>
                         </div>
                     </div>

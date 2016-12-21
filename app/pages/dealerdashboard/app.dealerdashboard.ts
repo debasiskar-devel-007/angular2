@@ -50,6 +50,9 @@ export class AppDealerdashboard {
     private orderbytypeinventorymatch:any;
     customercount:any;
     private rsvplist:any;
+    private rsvplistarr:any;
+    private rsvplistarr1:any;
+    private rsvplistarr2:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,private _sanitizer: DomSanitizer) {
@@ -57,6 +60,10 @@ export class AppDealerdashboard {
         this._sanitizer=_sanitizer;
         this.http=http;
         this.router=router;
+        this.rsvplistarr=[];
+        this.rsvplistarr1=[];
+        this.rsvplistarr2=[];
+        this.rsvplist=[];
         this.commonservices=commonservices;
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
@@ -65,6 +72,7 @@ export class AppDealerdashboard {
         this.query_make=0;
         this.query_year=0;
         this.carlistarr=[];
+        this.auctionlistarr=[];
         this.details=[];
         this.inventorymatcharr=[];
         this.orderbyqueryinventorymatch='inventorymatchval';
@@ -105,30 +113,9 @@ export class AppDealerdashboard {
             .subscribe(data1 => {
 
                 this.rsvplist = data1.json();
-                //console.log('rsvp list first...');
-                //console.log(this.rsvplist);
-                //console.log(this.details.length);
-               /* var x:any;
-                let timeoutId = setInterval(() => {
-                    for (x in this.rsvplist) {
-
-                        var y: any;
-                        for (y in this.details) {
-                            this.rsvplist[y].userdetails=0;
-
-                            if (this.details[y].username == this.rsvplist[x].customerusername) {
-                                console.log('matched ..');
-                                this.rsvplist[y].userdetails = this.details[y];
-                                break;
-                            }
-                            //clearInterval(timeoutId);
-                        }
-                    }
-
-                    console.log('rsvp list later...');
-                    console.log(this.rsvplist);
-                },2000);*/
-
+                this.rsvplistarr=this.rsvplist.slice(0,6);
+                this.rsvplistarr1=this.rsvplist.slice(0,10);
+                this.rsvplistarr2=this.rsvplist.slice(0,8);
 
 
             }, error => {
@@ -265,6 +252,7 @@ export class AppDealerdashboard {
             for (x in this.details) {
                 if (val == this.details[x].username) {
                     if (val1=='name')return this.details[x].fname+' '+this.details[x].lname;
+                    if (val1=='username')return this.details[x].username;
                     if (val1=='image'){
                         if(typeof (this.details[x].filename)!='undefined')
                             return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.details[x].filename+ " />");
@@ -364,6 +352,11 @@ export class AppDealerdashboard {
                         //console.log(this.carlistarr[x].carlogolist);
                         return this.getcarlogo(this.carlistarr[x]);
                     }
+                    if (val1=='auctionname'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].auctiondata[0].name);
+                    }
                     if (val1=='year'){
                         //console.log(this.carlistarr[x]);
                         //console.log(this.carlistarr[x].carlogolist);
@@ -372,6 +365,11 @@ export class AppDealerdashboard {
                     if (val1=='image'){
                         if(typeof (this.carlistarr[x].filename)!='undefined')
                             return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.carlistarr[x].filename+ " />");
+                        else return this._sanitizer.bypassSecurityTrustHtml("<img  src = 'images/logo_61.png' />");
+                    }
+                    if (val1=='auctionimage'){
+                        if(typeof (this.carlistarr[x].auctiondata[0].filename)!='undefined')
+                            return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.carlistarr[x].auctiondata[0].filename+ " />");
                         else return this._sanitizer.bypassSecurityTrustHtml("<img  src = 'images/logo_61.png' />");
                     }
 
@@ -383,6 +381,34 @@ export class AppDealerdashboard {
         return 'N/A'
 
     }
+
+    getauctiondetails(val:any,val1:any){
+
+        var x: any;
+        for (x in this.auctionlistarr) {
+            if (val == this.auctionlistarr[x]._id) {
+                //if (val1=='name')return this.auctionlistarr[x].fname+' '+this.details[x].lname;
+                //if (val1=='username')return this.details[x].username;
+                if (val1=='image'){
+                    if(typeof (this.details[x].filename)!='undefined')
+                        return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.details[x].filename+ " />");
+                    else return this._sanitizer.bypassSecurityTrustHtml("<img  src = 'images/logo_61.png' />");
+                }
+
+                return this.details[x];
+            }
+        }
+        return 'N/A';
+
+    }
+
+    getrsvpapprovalstatus(val:any,val1:any){
+
+        //console.log('val1'+val1+'-- val --'+val);
+        if(val==val1) return true;
+        return false;
+
+}
 
     getmatchpercentageval(val:any,val1:any){
 
@@ -537,6 +563,8 @@ export class AppDealerdashboard {
 
                 }
             }
+
+            this.inventorymatcharr.slice(0,6);
         },2000);
     }
 

@@ -63,6 +63,7 @@ export class AppCustomerdashboard {
     p:any;
     pagec:any;
     cardata:Array<any>;
+    private retailcommission:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router) {
 
@@ -77,6 +78,7 @@ export class AppCustomerdashboard {
         this.query_auction=0;
         this.query_make=0;
         this.query_year=0;
+        this.retailcommission=[];
         this.inventorymatcharr=[];
         this.orderbyqueryinventorymatch='inventorymatchval';
         this.orderbytypeinventorymatch=-1;
@@ -101,17 +103,33 @@ export class AppCustomerdashboard {
                         console.log('Dealer details');
                         console.log(this.details1);
                         this.dealerid=this.details1._id;
+
+                        let linkv = this.serverUrl+'getretailcommissionlist';
+                        let var1={dealerid:this.dealerid};
+                        this.http.post(linkv,var1)
+                            .subscribe(data1 => {
+
+                                this.retailcommission = data1.json();
+                                console.log('retail comission ...');
+                                console.log(this.retailcommission[0]);
+                                //this.retailfinalval=this.retailcommission[0].commission;
+
+                            }, error => {
+                                console.log("Oooops!");
+                            });
+
+
                         this.name=this.details1.fname+' '+this.details1.lname;
                         this.description=this.details1.description;
                         this.address1=this.details1.address;
-                      //  console.log(this.address1);
                         this.city=this.details1.city;
                         this.state=this.details1.state;
                         this.zip=this.details1.zip;
                         this.phone=this.details1.phone;
                         this.websiteurl=this.details1.websiteurl;
                         this.email=this.details1.email;
-                       // console.log(this.details1);
+                        console.log('dealer id');
+                        console.log(this.dealerid);
                         if(this.details1.banner) {
                             this.banner_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.banner;
                         }   else{
@@ -182,6 +200,8 @@ export class AppCustomerdashboard {
 
 
 
+
+
         this.http.get(this.serverUrl+'carlogolist')
             .subscribe(data => {
                 //console.log(data);
@@ -239,6 +259,16 @@ export class AppCustomerdashboard {
             });
 
 
+    }
+    getwholesalevalue(val:any){
+        console.log(val);
+        if(this.retailcommission[0].commissiontype=='Percentage'){
+            var parsecomission:any=parseFloat(this.retailcommission[0].commission);
+            var parseprice:any=parseFloat(val.replace(',',''));
+
+            parsecomission=parseFloat(this.retailcommission[0].commission);
+            return parseInt(parseprice+(parseprice*parsecomission/100))+ ' USD';
+        }
     }
 
     getcarlogo(val:any){

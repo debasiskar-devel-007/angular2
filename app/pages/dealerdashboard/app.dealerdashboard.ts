@@ -113,6 +113,8 @@ export class AppDealerdashboard {
             .subscribe(data1 => {
 
                 this.rsvplist = data1.json();
+                console.log('rsvp list arr');
+                console.log(this.rsvplist);
                 this.rsvplistarr=this.rsvplist.slice(0,6);
                 this.rsvplistarr1=this.rsvplist.slice(0,10);
                 this.rsvplistarr2=this.rsvplist.slice(0,8);
@@ -408,7 +410,14 @@ export class AppDealerdashboard {
         if(val==val1) return true;
         return false;
 
-}
+    }
+    checkcustomerfinancestatus(val:any,val1:any){
+
+        //console.log('val1'+val1+'-- val --'+val);
+        if(val==val1) return true;
+        return false;
+
+    }
 
     getmatchpercentageval(val:any,val1:any){
 

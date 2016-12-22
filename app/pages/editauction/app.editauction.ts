@@ -65,6 +65,7 @@ export class AppEditauction implements OnInit, OnDestroy {
             is_active: [''],
             priority: ['', Validators.required],
             filename: ['', Validators.required],
+            auction_date: ['', Validators.required],
 
         });
 
@@ -83,6 +84,7 @@ export class AppEditauction implements OnInit, OnDestroy {
                         description: [this.details.description, Validators.required],
                         filename: [this.details.filename, Validators.required],
                         priority: [this.details.priority, Validators.required],
+                        auction_date: [this.details.auction_date, Validators.required],
                         is_active: [this.details.is_active]
                     });
 console.log(this.details.description);

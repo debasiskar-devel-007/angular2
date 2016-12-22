@@ -832,7 +832,7 @@ maximising space for you and minimising space taken up by the machinery.</span>
         <div class="clearfix"></div>
     </div>
 
-    <div class="container-fluid customerdashboard_blockcar">
+    <div class="container-fluid customerdashboard_blockcar" *ngIf="retailcommission.length>0">
         <span class="noresult noresinventory">No result found!</span>
 
         <div  *ngFor="let itemcar of cardata let icar=index" class="blockcar_box inventorysinglelistblockcon">
@@ -846,7 +846,7 @@ maximising space for you and minimising space taken up by the machinery.</span>
                             <span>Year:  {{getcaryear(itemcar)}}</span>
                             <span>Miles :  {{getmileage(itemcar)}}</span>
                             <span>Color :  {{getcolor(itemcar)}}</span>
-                            <span>Wholesale : {{itemcar.est_retail_value}}</span>
+                            <span>Wholesale : {{getwholesalevalue(itemcar.est_retail_value)}}</span>
                             <a [routerLink]="['/auctioininventorydetails', itemcar._id]">View Detail  </a>
 
                         </div>

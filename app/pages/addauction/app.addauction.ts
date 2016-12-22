@@ -10,7 +10,7 @@ import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
 
-
+declare var $: any;
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
@@ -42,7 +42,9 @@ export class AppAddauction implements OnInit {
     private userInfo:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
+        $('#datpicker1').datepicker();
         this.ckeditorContent = '';
+        $('#datpicker1').datepicker();
         this.router=router;
         this.http=http;
         this.router=router;
@@ -59,6 +61,7 @@ console.log(this.userInfo);
             is_active: [''],
             priority: ['', Validators.required],
             filename: ['', Validators.required],
+            auction_date: ['', Validators.required],
 
         });
 
@@ -89,6 +92,7 @@ console.log(this.userInfo);
             }
         });
     }
+
 
     onChange(event:any){
         //alert(99);
@@ -126,8 +130,26 @@ console.log(this.userInfo);
                 });
         }
     }
+    datepick(){
 
 
+        console.log('datepick called .. ');
+        var auctiondat= $('#datpicker11').val();
+        if( (auctiondat)!='') {
+            this.addauctionform.patchValue({auction_date: auctiondat});
+            console.log('undefined not ..');
+        }else{
+            console.log('dp called');
+            let timeoutId = setTimeout(() => {
+                this.datepick();
+            },3000);
+        }
+      
+    }
+
+    /* $(function(){
+     $('#datpicker1').datepicker();
+ })*/
  
 
 }

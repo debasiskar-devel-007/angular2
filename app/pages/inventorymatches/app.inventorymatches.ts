@@ -234,6 +234,14 @@ export class AppInventorymatches {
 
     }
 
+    checkcustomerfinancestatus(val:any,val1:any){
+
+        //console.log('val1'+val1+'-- val --'+val);
+        if(val==val1) return true;
+        return false;
+
+    }
+
     manageinventory(){
         var x:any;
         var y:any;

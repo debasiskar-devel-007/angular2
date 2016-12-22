@@ -383,7 +383,11 @@
 }
 
 @media screen and (max-width:991px) {
-
+    .orderdetails .inventorysinglelist .imgouter .imgwrapper {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
     .inventorysinglelistblock2 h4 {
         margin-top: 8px;
         margin-bottom: 8px;

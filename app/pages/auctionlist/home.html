@@ -34,10 +34,11 @@
                             <table class="table table-striped">
                                 <thead>
                                 <tr>
-                                    <th>auction Name <b [ngClass]="getSortClass('name')" (click)="manageSorting('name')" ></b></th>
+                                    <th>Auction Name <b [ngClass]="getSortClass('name')" (click)="manageSorting('name')" ></b></th>
                                     <th>Image<b [ngClass]="getSortClass('filename')" (click)="manageSorting('filename')" ></b></th>
 
                                     <th>Description<b [ngClass]="getSortClass('description')" (click)="manageSorting('description')" ></b></th>
+                                    <th>Auction Date<b [ngClass]="getSortClass('auction_date')" (click)="manageSorting('auction_date')" ></b></th>
                                     <th>Priority <b [ngClass]="getSortClass('priority')" (click)="manageSorting('priority')" ></b></th>
                                     <th>Status<b [ngClass]="getSortClass('is_active')" (click)="manageSorting('is_active')" ></b></th>
 
@@ -51,6 +52,7 @@
 
 
                                     <td ><div class="panel-body" [innerHTML]="_sanitizer.bypassSecurityTrustHtml(item.description)"></div></td>
+                                    <td>{{item.auction_date}}</td>
                                     <td>{{item.priority}}</td>
                                     <td>
 

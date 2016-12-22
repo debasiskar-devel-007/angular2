@@ -114,7 +114,8 @@ url:any
     }
     convertunixtodate(unix_tm:any) {
         var dt = new Date(unix_tm);
-        return  dt.getMonth()+'/'+dt.getDate()+'/'+dt.getFullYear() ;
+        var month = dt.getMonth()+1;
+        return  month+'/'+dt.getDate()+'/'+dt.getFullYear() ;
 
     }
 

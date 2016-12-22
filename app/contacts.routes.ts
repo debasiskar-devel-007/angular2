@@ -109,6 +109,7 @@ import {AppManageopencontract} from "./pages/manageopencontract/app.manageopenco
 import {AppEditopencontract} from "./pages/editopencontract/app.editopencontract";
 import {AppDealercustomerlist} from "./pages/dealercustomerlist/app.dealercustomerlist";
 import {AppInventorymatchedetails} from "./pages/inventorymatchedetails/app.inventorymatchedetails";
+import {AppDealerpackagepurchase} from "./pages/dealerpackagepurchase/app.dealerpackagepurchase";
 
 //alert(window.location.hostname);
 
@@ -244,6 +245,7 @@ const appRoutes: Routes = [
     { path: 'editopencontract/:id', component: AppEditopencontract},
     { path: 'dealercustomerlist', component: AppDealercustomerlist},
     { path: 'inventorymatchedetails/:id', component: AppInventorymatchedetails},
+    { path: 'dealerpackagepurchase', component: AppDealerpackagepurchase},
 
 
 

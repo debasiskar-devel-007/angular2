@@ -408,7 +408,14 @@ export class AppDealerdashboard {
         if(val==val1) return true;
         return false;
 
-}
+    }
+    checkcustomerfinancestatus(val:any,val1:any){
+
+        //console.log('val1'+val1+'-- val --'+val);
+        if(val==val1) return true;
+        return false;
+
+    }
 
     getmatchpercentageval(val:any,val1:any){
 

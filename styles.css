@@ -3571,6 +3571,34 @@ ul.inboxlists{padding:0px; margin:0px;}
 .radiobox2box input[type=radio]:not(old):checked + label{background-position : 0 -70px;}
 
 
+
+
+
+
+.radiobox3box input[type=checkbox]:not(old),
+.radiobox3box input[type=radio   ]:not(old){
+    width   : 28px;
+    margin  : 0;
+    padding : 0;
+    opacity : 0;
+}
+
+.radiobox3box input[type=checkbox]:not(old) + label,
+.radiobox3box input[type=radio   ]:not(old) + label{
+    display      : inline-block;
+    margin-left  : -28px;
+    padding-left : 28px;
+    background   : url('images/checks.png') no-repeat 0 0;
+    line-height  : 24px;
+    WIDTH: 24px;
+    height: 24px;
+}
+
+
+.radiobox3box input[type=radio]:not(old):checked + label{background-position : 0 -46px;}
+
+
+
 .inventorymatchblock .inventorysinglelistblock4 .inventorysinglelistblock3col2 input {
     position: relative !important;
 }
@@ -9691,16 +9719,16 @@ a:focus, a:hover {
     font-size: 18px;
 }
 .option_popup_wrapper_top{
-    background: #7e8080;
+    background: #494a4a;
     padding: 10px;
     font-family: 'MyriadPro-Regular';
 }
 
 .option_popup_wrapper_top ul{
-    margin: 5px 0px 0px 0px;
+    margin: 8px 0px 0px 0px;
     border: 1px solid #f5f5f5;
     text-align: center;
-    padding: 8px;
+    padding: 9px 9px 4px 8px;
 }
 .option_popup_wrapper_top ul li input{
     width:16px;
@@ -9716,13 +9744,13 @@ a:focus, a:hover {
     color:#fff;
 }
 .financestatusApproved{
-    color:rgba(112,217,83,1);
+    color:#02e402;
 }
 .financestatusDecline{
-    color:rgba(244,2,2,1);
+    color:#de0000;
 }
 .financestatusPending{
-    color:rgba(221,177,86,1);
+    color:#ff9600;
 }
 
 .option_popup_wrapper_top ul li input [type='radio'] {
@@ -10007,4 +10035,75 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
     background-position : 0 -46px;
 }
 
+.option_popup_wrapper_top ul li.chakebox1box input[type=radio]:not(old):checked + span {
+    background-position: 0 -24px;
+}
 
+.option_popup_wrapper_top ul li.chakebox2box input[type=radio]:not(old):checked + span {
+    background-position: 0 -69px;
+}
+
+.option_popup_wrapper_top ul li.chakebox3box input[type=radio]:not(old):checked + span {
+    background-position: 0 -46px;
+}
+
+.option_popup_wrapper_top ul li.chakebox1box input[type=checkbox]:not(old) + span,
+.option_popup_wrapper_top ul li.chakebox1box input[type=radio ]:not(old) + span {
+    display: inline-block;
+    margin-left: -28px;
+    padding-left: 28px;
+    background: url(images/checks.png) no-repeat 0 0;
+    line-height: 24px;
+}
+
+.option_popup_wrapper_top ul li.chakebox2box input[type=checkbox]:not(old) + span,
+.option_popup_wrapper_top ul li.chakebox2box input[type=radio ]:not(old) + span {
+    display: inline-block;
+    margin-left: -28px;
+    padding-left: 28px;
+    background: url(images/checks.png) no-repeat 0 0;
+    line-height: 24px;
+}
+
+.option_popup_wrapper_top ul li.chakebox3box input[type=checkbox]:not(old) + span,
+.option_popup_wrapper_top ul li.chakebox3box input[type=radio ]:not(old) + span {
+    display: inline-block;
+    margin-left: -28px;
+    padding-left: 28px;
+    background: url(images/checks.png) no-repeat 0 0;
+    line-height: 24px;
+}
+
+
+.option_popup_wrapper_top ul li.chakebox1box input[type=checkbox]:not(old),
+.option_popup_wrapper_top ul li.chakebox1box input[type=radio ]:not(old) {
+    width: 28px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+
+.option_popup_wrapper_top ul li.chakebox2box input[type=checkbox]:not(old),
+.option_popup_wrapper_top ul li.chakebox2box input[type=radio ]:not(old) {
+    width: 28px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+}
+.option_popup_wrapper_top ul li.chakebox3box input[type=checkbox]:not(old),
+.option_popup_wrapper_top ul li.chakebox3box input[type=radio ]:not(old) {
+    width: 28px;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+}
+
+
+
+.package_mainbody_right .form-group {margin-bottom: 0px !important;}
+.package_mainbody_right .slimg {
+    margin: 20px 0 0;
+}
+
+.orderdetails .inventorysinglelistblock {height: auto;}

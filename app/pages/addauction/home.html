@@ -28,7 +28,8 @@
                                     <span *ngIf ="addauctionform.controls['filename'].touched && !addauctionform.controls['filename'].valid" class="help-inline"><span class="errormsgtxt">Filename is Required !</span><img src="images/iconquestion.png"></span>
                                 </div>
                                 <div class="form-group">
-                                    <input [formControl]="addauctionform.controls['auction_date']" name="auction_date"  type="text" data-provide="datepicker" class="form-control datepicker" placeholder="Auction Date" data-date-format="mm/dd/yyyy"/>
+                                   <!-- <input [formControl]="addauctionform.controls['auction_date']" name="auction_date"  type="text" data-provide="datepicker" class="form-control datepicker" placeholder="Auction Date" data-date-format="mm/dd/yyyy"/>-->
+                                    <input [formControl]="addauctionform.controls['auction_date']" name="auction_date"  type="text" data-provide="datepicker"    class="form-control" id="datpicker11" (click)="datepick()" placeholder="Auction Date" data-date-format="mm-dd-yyyy" data-date-start-date=""/>
                                    <!-- <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>-->

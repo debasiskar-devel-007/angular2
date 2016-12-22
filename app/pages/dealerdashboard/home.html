@@ -54,7 +54,7 @@
                             <h4>Total RSVP to Date :</h4>
                             <h5>{{rsvplist.length}}</h5>
                             <div class="btnview">
-                                <a><span>View RSVPs</span></a>
+                                <a><span [routerLink]="['/viewrsvp']">View RSVPs</span></a>
                             </div>
                         </div>
                     </div>
@@ -618,7 +618,7 @@
                                     </div>
                                 </div>
                                 <div class="inventorysinglelistblock3">
-                                    <div class="inventorymatchusers_con" *ngFor="let inventoryusers of itemiventorymatch.userdetails|orderBy:orderbyqueryinventorymatch:orderbytypeinventorymatch let iinventory=index" >
+                                    <div class="inventorymatchusers_con" *ngFor="let inventoryusers of itemiventorymatch.userdetails|orderBy:orderbyqueryinventorymatch:orderbytypeinventorymatch let iinventoryusers=index" >
 
                                         <div class="row inventorymatchusers">
                                         <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
@@ -662,10 +662,13 @@
                                                     <label><span>Approved for financing</span></label>
                                                 </div>
                                                 <div class="radiobox1box">
-                                                    <input id="radiobox1box1" type="radio" name="radiobox1box1" value="radiobox1box1"><label for="radiobox1box1"></label>
+                                                    <input [attr.checked]="checkcustomerfinancestatus(inventoryusers.finance_check,1) ? true: null " disabled="disabled" id="{{itemiventorymatch._id+'-'+iinventory+1+iinventoryusers}}" type="radio" name="{{itemiventorymatch._id+'-'+iinventory+1+iinventoryusers}}" value="radiobox1box1"><label [attr.for]="itemiventorymatch._id+'-'+iinventory+1+iinventoryusers"></label>
                                                 </div>
                                                 <div class="radiobox2box">
-                                                    <input id="radiobox1box2" type="radio" name="radiobox1box1" value="radiobox1box2"><label for="radiobox1box2"></label>
+                                                    <input [attr.checked]="checkcustomerfinancestatus(inventoryusers.finance_check,2) ? true: null  " disabled="disabled" id="{{itemiventorymatch._id+iinventory+iinventoryusers}}" type="radio" name="{{itemiventorymatch._id+iinventory+iinventoryusers}}" value="radiobox1box2"><label [attr.for]="itemiventorymatch._id+iinventory+iinventoryusers"></label>
+                                                </div>
+                                                <div class="radiobox3box">
+                                                    <input [attr.checked]="checkcustomerfinancestatus(inventoryusers.finance_check,0) ? true: null  " disabled="disabled" id="{{itemiventorymatch._id+iinventory+2+iinventoryusers}}" type="radio" name="{{itemiventorymatch._id+iinventory+2+iinventoryusers}}" value="radiobox1box2"><label [attr.for]="itemiventorymatch._id+iinventory+2+iinventoryusers"></label>
                                                 </div>
                                             </div>
                                         </div>

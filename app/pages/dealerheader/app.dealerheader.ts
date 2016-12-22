@@ -8,7 +8,7 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 
-
+declare var $: any;
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
@@ -64,7 +64,9 @@ export class AppDealerheader {
     }
 
 
-
+    opensupportticket(){
+       $('#supportticketModal').modal('show');
+    }
 
 }
 

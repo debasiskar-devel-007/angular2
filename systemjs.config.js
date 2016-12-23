@@ -40,6 +40,7 @@
       'ng2-pagination':'npm:ng2-pagination',
       "ng2-ckeditor": "npm:ng2-ckeditor",
       'ng2-uploader': 'npm:ng2-uploader',
+      //'ng2-typeahead':              'node_modules/ng2-typeahead',
       //'angular2-clipboard': 'npm:angular2-clipboard',
       //'clipboard': 'npm1:clipboard/dist/clipboard.js',
       //'angular2-clipboard': 'https://unpkg.com/:angular2-clipboard',
@@ -67,6 +68,7 @@
       },
       "ng2-modal": { "main": "index.js", "defaultExtension": "js" },
       "ng2-popover": { "main": "index.js", "defaultExtension": "js" },
+      //'ng2-typeahead':              { main: 'ng2-typeahead.js', defaultExtension: 'js' },
       'angular2-cookie': {
         main: './core.js',
         defaultExtension: 'js'

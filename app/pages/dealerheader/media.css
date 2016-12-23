@@ -2709,4 +2709,52 @@
 @media screen and (min-width: 1200px) and (max-width: 1299px) {
     .viewcustomers .inventorysinglelist{width:25% !important; float:left !important;}
     .viewcustomers .inventorysinglelist:nth-child(4n+4) {
-        margin-bottom:9
+        margin-bottom:9px;
+    }
+}
+
+@media(max-width:991px) {
+    .viewcustomers .logininfo p {display: block; float: none;}
+
+}
+@media(max-width:625px) {
+    .viewcustomers .inventorymatchblock .inventorylistswrapper .searchbox {
+        width: 100%;
+        float: right;
+    }
+    .sharelinks .sharelinkssearch {width: 100%; display: block; float: none; margin: 0 auto; text-align: center;}
+    .sharelinks .sharelinkssearch.list-inline>li {display: block;}
+    .sharelinks .inventorymatchblock .inventorylistswrapper .sharelinkssearch .searchbox {width:100%;}
+    .sharelinkssearchbutton{width:100%; display: block; text-align: center;}
+    .sharelinks .sharelinkssearch .list-inline>li { display: inline-block; padding-right: 5px; padding-left: 5px;
+        width: 100%;}
+}
+
+
+@media(max-width:480px) {
+    .viewcustomers .blockcontentinfo .infobox{width:100%; display:block;}
+    .viewcustomers .blockcontentinfo .imgbox {
+        width: 100%;
+        display: block;
+        text-align: center;
+    }
+    .sharelinks .inventorymatchblock .inventorylistswrapper .searchbox input {
+        width: 100%;
+        position: inherit;
+    }
+
+    .sharelinks .sharelinksimgwarpper {
+        width: 100% !important;
+    }
+    .sharelinkssinglelist .sharelinkssinglelistleft{ padding-right: 0px; padding-left: 0px;}
+
+}
+
+@media(max-width:1280px) {
+    .viewcustomers .blockcontentinfo .imgbox .btnwrapper .btnedit {
+        width: 78px;
+    }
+}
+
+
+/*------------end of view customer-------------*/

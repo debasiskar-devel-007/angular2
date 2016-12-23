@@ -326,6 +326,9 @@
     .auctioninventoryheader ul li {
         margin-bottom: 10px;
     }
+    .customerdashboard_blockcar .blockcar_box:nth-of-type(3n+3) {
+        margin-right: auto;
+    }
 }
 
 @media screen and (max-width:1168px) {
@@ -934,7 +937,7 @@
 
     .customerdashboard_block4 .cd_block4_box h2{ font-size:20px; }
 
-    .cdcar_img img{ width:200px;}
+  /*  .cdcar_img img{ width:200px;}*/
 
 
 
@@ -975,11 +978,14 @@
         width: 14.1%;
     }
 
-    .cdcar_img img{ width:180px;}
+    /*.cdcar_img img{ width:180px;}*/
 }
 
 @media(max-width:1199px) {
-
+    .cd_block3_gallery_bigimg {
+        margin-left: auto;
+        margin-right: auto;
+    }
     .inventorysinglelistnewdiv{ width: 100%!important;}
     .cd_block3_gallery_smimg {
         margin: 26px 26px 0;
@@ -1033,7 +1039,9 @@
 
     .customerdashboard_blockcar .blockcar_box:nth-child(3n+3) { margin:0 auto; margin-bottom:20px;}
 
-    .cdcar_img img{ width:260px;}
+    .cdcar_img img {
+        width: 180px;
+    }
 
     .cusdashboardblock1innerleft{ width: 100%!important; }
 
@@ -2881,6 +2889,11 @@
     .viewcustomers .inventorysinglelist:nth-child(5n+5) {
         margin-bottom:9px;
     }
+
+    .cdcar_img {
+        max-width: 296px;
+        height: 197px;
+    }
 }
 
 
@@ -2932,6 +2945,10 @@
     .viewcustomers .blockcontentinfo .imgbox .btnwrapper .btnedit {
         width: 78px;
     }
+    .cdcar_img {
+        max-width: 194px;
+        height: 200px;
+    }
 }
 
 
@@ -2948,4 +2965,26 @@
 
     .matchespopup .modal-dialog{  width: 90%!important; }
 
+}
+
+@media screen and (max-width:1500px) {
+    .cdcar_img {
+        max-width: 260px;
+        height: 180px;
+    }
+}
+
+@media screen and (max-width:1300px) {
+    .cdcar_img {
+        max-width: 221px;
+        height: 180px;
+    }
+}
+
+
+@media screen and (max-width:1250px) {
+    .cdcar_img {
+        max-width: 204px;
+        height: 180px;
+    }
 }

@@ -17,6 +17,7 @@
                             </ul>
                             <div>&nbsp;</div>
                             <h2>Remaining Free Subscription : {{freemember}}</h2>
+                           <!-- <a (click)="deletedealerpckage()">Del</a>-->
                         </div>
 
                          <div class="adminlistlists dealerlists">
@@ -30,7 +31,7 @@
 
                                     <th>Free Subscribtions <b [ngClass]="getSortClass('free_member')" (click)="manageSorting('free_member')" ></b></th>
                                         <th>Date Added <b [ngClass]="getSortClass('added_on')" (click)="manageSorting('added_on')" ></b></th>
-
+<!--<th>Action</th>-->
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -42,6 +43,7 @@
                                         <!--<td><span *ngFor="let item1 of item.dealername"><span *ngIf="item1.username==item.username">{{item1.fname}} {{item1.lname}}</span></span></td>-->
                                         <td>{{item.free_member}} </td>
                                         <td [innerHtml]="commonservices.convertunixtodate(item.added_on)"></td>
+                                        <!--<td><a (click)="deletedealerpckage(item)">Delete</a> </td>-->
                                     </tr>
                                      </tbody>
                                 </table>

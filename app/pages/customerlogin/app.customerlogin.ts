@@ -102,7 +102,11 @@ console.log(sndleveldomain);
 
                 var res=data.json();
                     if(res.length>0){
-                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'customer',userfullname:res[0].fname+' '+res[0].lname};
+                        var filename= 'images/logo_61.png';
+                        if(res[0].filename!='undefined'){
+                            filename=res[0].filename;
+                        }
+                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'customer',userfullname:res[0].fname+' '+res[0].lname,filename:filename};
 
                         console.log('Login successfully');
                         this.userInfo.putObject('userdetails', userdet);

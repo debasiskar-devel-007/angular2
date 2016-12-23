@@ -69,6 +69,7 @@ export class AppDealerprofile implements OnInit{
 
        console.log(this.userinfo);
        console.log(this.serverUrl+'editdealer');
+
             let ids={id:this.userinfo.id};
             this.http.post(this.serverUrl+'editdealer',ids)
                 .subscribe(data => {
@@ -117,7 +118,24 @@ export class AppDealerprofile implements OnInit{
                 });
 
             // In a real app: dispatch action to load the details here.
-       
+        this.addadminform = fb.group({
+            //password: ["", Validators.required],
+            // username: [this.dealerprofiledetails.username, Validators.required],
+            //id: [this.dealerprofiledetails._id, Validators.required],
+            fname: ['', Validators.required],
+            lname: ["", Validators.required],
+            email: ["", AppDealerprofile.validateEmail],
+            address: ["", Validators.required],
+            city: ["", Validators.required],
+            state: ["", Validators.required],
+            phone: ["", Validators.required],
+            zip: ["", Validators.required],
+            description: [""],
+            websiteurl: [""],
+            is_active: [""],
+            filename: [""],
+            banner: [""],
+        });
 
        // this.serverUrl = this.items[0].serverUrl;
         this.http.get(this.serverUrl+'getusastates')
@@ -129,23 +147,7 @@ console.log(this.getusastates);
                 console.log("Oooops!");
             });
 
-         this.addadminform = fb.group({
-            //password: ["", Validators.required],
-           // username: [this.dealerprofiledetails.username, Validators.required],
-            fname: ['', Validators.required],
-            lname: ["", Validators.required],
-            email: ["", AppDealerprofile.validateEmail],
-            address: ["", Validators.required],
-            city: ["", Validators.required],
-            state: ["", Validators.required],
-            phone: ["", Validators.required],
-            zip: ["", Validators.required],
-             description: [""],
-            websiteurl: [""],
-            is_active: [""],
-            filename: [""],
-            banner: [""],
-        });
+
 
         //this.router.navigate(['/about']);
 

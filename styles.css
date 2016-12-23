@@ -2275,7 +2275,16 @@ ul.inboxlists{padding:0px; margin:0px;}
 
 .cd_block3_gallery{ padding:26px 0 0 0;}
 
-.cd_block3_gallery_bigimg{ position:relative; margin-left:26px; margin-right:26px;}
+.cd_block3_gallery_bigimg{
+    position: relative;
+    margin-left: 26px;
+    margin-right: 26px;
+    display: table;
+    vertical-align: middle;
+    text-align: center;
+    width: 96%;
+    align-items: center;
+}
 
 .cd_block3_gallery_bigimg .cd1_bigcar{ width:100%; border:solid 1px #b3b2b0; }
 
@@ -2289,7 +2298,6 @@ ul.inboxlists{padding:0px; margin:0px;}
 .cdcar_textdiv2{ background:#feb322; color:#0a0b0e; font-size:13px;   padding:0 12px 12px 12px;}
 
 .cdcar_text img{ display:inline-block; float:right; margin-bottom:6px; margin-top:6px;}
-
 
 .cd_viewbtn{ background:url(images/cd_viewallbtn.png); width:116px; height:30px; position:absolute; right:1px; bottom:1px; text-align:center; line-height:30px; color:#fff; font-size:13px; color:#e2e2e2!important; font-family: "open_sanssemibold"; text-decoration: none;}
 
@@ -2344,7 +2352,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .customerdashboard_blockcar .blockcar_box table .cdcar_des a{ display:inline-block; margin-top:10px; background:url(images/cd_linkbg.png) no-repeat right center; padding-right:18px; padding-left:5px; color:#00ff01; text-transform:uppercase; font-style:italic;  font-family: "open_sanssemibold"; text-decoration: none;}
 
 
-.customerdashboard_blockcar .blockcar_box:nth-child(3n+3) { margin-right:0px;}
+.customerdashboard_blockcar .blockcar_box:nth-of-type(3n+3) { margin-right:0px !important;}
 
 
 /*---CustomerDashboard css-----*/
@@ -4348,12 +4356,12 @@ ul.inboxlists{padding:0px; margin:0px;}
 }
 .page-wrapper-inner .table>tbody>tr>td,  .page-wrapper-inner .table>tfoot>tr>td,  .page-wrapper-inner .table>thead>tr>td {
     vertical-align: middle;
-    padding: 8px 4px !important;
+    padding: 6px 4px !important;
 }
 
 .page-wrapper .table>tbody>tr>td, .page-wrapper .table>tfoot>tr>td, .page-wrapper .table>thead>tr>td {
     vertical-align: middle;
-    padding: 8px 4px !important;
+    padding: 6px 4px !important;
 }
 
 
@@ -10107,3 +10115,112 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
 }
 
 .orderdetails .inventorysinglelistblock {height: auto;}
+
+
+
+
+
+
+/*---*/
+.cd_block3_gallery .cd_block3_gallery_bigimg img{
+    max-width: 100%;
+}
+
+.cdcar_img{
+    max-width: 360px;
+    position: relative;
+    height: 198px;
+    overflow: hidden;
+}
+.cdcar_img img{
+    max-width: 100%;
+}
+
+.imgdealerwrapper{
+    width: 105px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.upcomingauctions ul.automatchwrapperimglist{
+    width: 193px;
+    float: left;
+}
+
+.upcomingauctions ul.automatchwrapperimglist li{
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.upcomingauctions .actionbtns{
+    float: right;
+    display: inline;
+    padding-top: 10px;
+}
+
+.automatchwrapperimglist li:nth-of-type(1n+4) {display: none;}
+
+
+.inventorylistswrapperlistswrap .row span:nth-of-type(3n+3) {clear: both !important;}
+.inventorylistswrapperlistswrap span .inventorysinglelistblockcon .inventorysinglelistblock .infobox .table>tbody>tr>td{
+    vertical-align: middle;
+    padding: 6px 4px !important;
+}
+
+.inventorylistswrapperlistswrap span .inventorysinglelistblockcon .inventorysinglelistblock {
+    height: 310px;
+}
+
+.bs-example {
+    font-family: sans-serif;
+    position: relative;
+    margin: 100px;
+}
+.typeahead, .tt-query, .tt-hint {
+    border: 2px solid #CCCCCC;
+    border-radius: 8px;
+    font-size: 22px; /* Set input font size */
+    height: 30px;
+    line-height: 30px;
+    outline: medium none;
+    padding: 8px 12px;
+    width: 396px;
+}
+.typeahead {
+    background-color: #FFFFFF;
+}
+.typeahead:focus {
+    border: 2px solid #0097CF;
+}
+.tt-query {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+}
+.tt-hint {
+    color: #999999;
+}
+.tt-menu {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+    padding: 8px 0;
+    width: 422px;
+}
+.tt-suggestion {
+    font-size: 22px;  /* Set suggestion dropdown font size */
+    padding: 3px 20px;
+}
+.tt-suggestion:hover {
+    cursor: pointer;
+    background-color: #0097CF;
+    color: #FFFFFF;
+}
+.tt-suggestion p {
+    margin: 0;
+}
+
+
+.auctioninventoryreview .inventorylistswrapper span .inventorysinglelist .inventorysinglelistblock{
+    height: 330px;
+}

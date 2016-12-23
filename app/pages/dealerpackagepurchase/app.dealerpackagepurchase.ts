@@ -97,8 +97,8 @@ export class AppDealerpackagepurchase {
     deletedealerpckage(item:any){
         //console.log(adminid);
 
-        let link= this.serverUrl+'updatealldealerfield';
-        let id={dealerusername:'payel'};
+        let link= this.serverUrl+'deletedealerpackage';
+        let id={id:item._id};
         this.http.post(link,id)
             .subscribe(data1 => {
                 // this.data = data1.json();

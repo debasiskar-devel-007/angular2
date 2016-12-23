@@ -37,13 +37,14 @@ export class AppDealerheader {
         this.coockieData=userdetails;
         this.router=router;
         this.userDetails=userdetails.getObject('userdetails');
+        console.log('User Info');
        // images/img_customersignup_car.png
         console.log(this.userDetails.filename);
-        if(this.userDetails.filename!=undefined){
+        if(this.userDetails.filename!='undefined'){
             this.uploadedfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.userDetails.filename;
         }
         else{
-            this.uploadedfilesrc= 'images/img_customersignup_car.png';
+            this.uploadedfilesrc= 'images/logo_61.png';
         }
 
     }

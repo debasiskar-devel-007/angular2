@@ -110,6 +110,7 @@ import {AppEditopencontract} from "./pages/editopencontract/app.editopencontract
 import {AppDealercustomerlist} from "./pages/dealercustomerlist/app.dealercustomerlist";
 import {AppInventorymatchedetails} from "./pages/inventorymatchedetails/app.inventorymatchedetails";
 import {AppDealerpackagepurchase} from "./pages/dealerpackagepurchase/app.dealerpackagepurchase";
+import {AppViewbyauctionid} from "./pages/viewbyauctionid/app.viewbyauctionid";
 
 //alert(window.location.hostname);
 
@@ -246,6 +247,7 @@ const appRoutes: Routes = [
     { path: 'dealercustomerlist', component: AppDealercustomerlist},
     { path: 'inventorymatchedetails/:id', component: AppInventorymatchedetails},
     { path: 'dealerpackagepurchase', component: AppDealerpackagepurchase},
+    { path: 'viewbyauctionid/:id', component: AppViewbyauctionid},
 
 
 

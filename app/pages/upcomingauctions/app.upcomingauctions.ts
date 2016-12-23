@@ -39,6 +39,9 @@ export class AppUpcomingauctions{
     orderbytype:any;
     appcomponent:AppComponent;
     tempdata:Array<any>;
+    private auctionlistarr:any;
+    private nextauctiondate:any;
+    private filesrc:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
@@ -53,11 +56,44 @@ export class AppUpcomingauctions{
         this.p=1;
         this.orderbyquery='fname';
         this.orderbytype=-1;
-       this.http.get(link)
+        this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+        this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
                 this.pagec=Math.ceil(this.data.length / 10);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        this.http.get(this.serverUrl+'getauctionwithinventory')
+            .subscribe(data1 => {
+                this.auctionlistarr = data1.json();
+                console.log('auction data ..');
+                console.log(this.auctionlistarr);
+                var x:any;
+                for(x in this.auctionlistarr){
+                    //console.log('logging auction data ...');
+                    //console.log(this.auctionlistarr[x].auction_date);
+                    var myarr = this.auctionlistarr[x].auction_date.split("-");
+                    //console.log(myarr);
+                    //console.log(myarr[2]+'.'+myarr[0]+'.'+myarr[1]);
+                    myarr=(myarr[2]+'-'+myarr[0]+'-'+myarr[1]);
+                    var myarr1=(myarr[2]+''+myarr[0]+''+myarr[1]);
+                    var timestamp = parseInt((new Date(myarr).getTime() / 1000).toFixed(0));
+                    //console.log(timestamp);
+                    //console.log('myarr1');
+                    //console.log(myarr1);
+                    //console.log(parseInt(myarr.replace('-','')));
+                    //console.log(commonservices.convertunixtodate(timestamp));
+                    //if((myarr.replace('-',''))<this.oldarr){
+                    this.nextauctiondate=this.auctionlistarr[x].auction_date.replace('-','/');
+                    this.nextauctiondate=this.nextauctiondate.replace('-','/');
+                    this.auctionlistarr[x].auction_date_formatted=this.nextauctiondate;
+                    //}
+                    //this.oldarr=(myarr.replace('-',''));
+                }
 
             }, error => {
                 console.log("Oooops!");

@@ -9,7 +9,7 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
-
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -29,7 +29,7 @@ export class AppWritemail {
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
-    private userInfo:CookieService;
+    private userInfo:any;
     id:any;
     item:any;
     private messages:any;
@@ -40,6 +40,14 @@ export class AppWritemail {
     appcomponent:AppComponent;
     tempdata:Array<any>;
     sharefilesrc:any;
+    ckeditorContent:any;
+    private username:any;
+    private filesrc:any;
+    private details:any;
+    private customerarr:any;
+    fruitName: any;
+    private fruits:any;
+    private selectedFruit:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
@@ -54,6 +62,7 @@ export class AppWritemail {
         this.p=1;
         this.orderbyquery='bannername';
         this.orderbytype=-1;
+        this.ckeditorContent='';
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
@@ -65,6 +74,54 @@ export class AppWritemail {
                 console.log("Oooops!");
             });
 
+        this.fruits= [
+            {
+                id: 1,
+                name: "Apple",
+                searchText: "apple"
+            },
+            {
+                id: 2,
+                name: "Orange",
+                searchText: "orange"
+            },
+            {
+                id: 3,
+                name: "Banana",
+                searchText: "banana"
+            }
+        ];
+
+
+        this.userInfo=userInfo.getObject('userdetails');
+        this.username = this.userInfo.username; // (+) converts string 'id' to a number
+        console.log(this.username);
+        let ids={dealerusername:this.username};
+        this.http.post(this.serverUrl+'getcustomerbyusername',ids)
+            .subscribe(data => {
+                this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.details=data.json();
+                console.log('customer details ..');
+                console.log(this.details);
+                console.log(this.details.length);
+                this.customerarr=[122333,333,5444,733,5544,4433];
+                $('.typeahead').typeahead(null, {
+                    name: 'countries',
+                    source: this.customerarr,
+                    limit: 10 /* Specify maximum number of suggestions to be displayed */
+                });
+
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+    }
+
+
+    fruitSelected(fruit:any) {
+        this.fruitName = fruit ? fruit.name : 'none';
     }
 
 

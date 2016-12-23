@@ -2275,7 +2275,16 @@ ul.inboxlists{padding:0px; margin:0px;}
 
 .cd_block3_gallery{ padding:26px 0 0 0;}
 
-.cd_block3_gallery_bigimg{ position:relative; margin-left:26px; margin-right:26px;}
+.cd_block3_gallery_bigimg{
+    position: relative;
+    margin-left: 26px;
+    margin-right: 26px;
+    display: table;
+    vertical-align: middle;
+    text-align: center;
+    width: 96%;
+    align-items: center;
+}
 
 .cd_block3_gallery_bigimg .cd1_bigcar{ width:100%; border:solid 1px #b3b2b0; }
 
@@ -2289,7 +2298,6 @@ ul.inboxlists{padding:0px; margin:0px;}
 .cdcar_textdiv2{ background:#feb322; color:#0a0b0e; font-size:13px;   padding:0 12px 12px 12px;}
 
 .cdcar_text img{ display:inline-block; float:right; margin-bottom:6px; margin-top:6px;}
-
 
 .cd_viewbtn{ background:url(images/cd_viewallbtn.png); width:116px; height:30px; position:absolute; right:1px; bottom:1px; text-align:center; line-height:30px; color:#fff; font-size:13px; color:#e2e2e2!important; font-family: "open_sanssemibold"; text-decoration: none;}
 
@@ -2344,7 +2352,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .customerdashboard_blockcar .blockcar_box table .cdcar_des a{ display:inline-block; margin-top:10px; background:url(images/cd_linkbg.png) no-repeat right center; padding-right:18px; padding-left:5px; color:#00ff01; text-transform:uppercase; font-style:italic;  font-family: "open_sanssemibold"; text-decoration: none;}
 
 
-.customerdashboard_blockcar .blockcar_box:nth-child(3n+3) { margin-right:0px;}
+.customerdashboard_blockcar .blockcar_box:nth-of-type(3n+3) { margin-right:0px !important;}
 
 
 /*---CustomerDashboard css-----*/
@@ -10099,3 +10107,55 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
     opacity: 0;
 }
 
+
+
+.package_mainbody_right .form-group {margin-bottom: 0px !important;}
+.package_mainbody_right .slimg {
+    margin: 20px 0 0;
+}
+
+.orderdetails .inventorysinglelistblock {height: auto;}
+
+
+
+
+
+
+/*---*/
+.cd_block3_gallery .cd_block3_gallery_bigimg img{
+    max-width: 100%;
+}
+
+.cdcar_img{
+    max-width: 360px;
+    position: relative;
+    height: 198px;
+    overflow: hidden;
+}
+.cdcar_img img{
+    max-width: 100%;
+}
+
+.imgdealerwrapper{
+    width: 105px;
+    height: auto;
+    margin: 0 auto;
+}
+
+.upcomingauctions ul.automatchwrapperimglist{
+    width: 193px;
+    float: left;
+}
+
+.upcomingauctions ul.automatchwrapperimglist li{
+    padding-right: 4px;
+    padding-left: 4px;
+}
+
+.upcomingauctions .actionbtns{
+    float: right;
+    display: inline;
+    padding-top: 10px;
+}
+
+.automatchwrapperimglist li:nth-of-type(1n+4) {display: none;}

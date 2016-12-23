@@ -53,6 +53,8 @@ export class AppDealerdashboard {
     private rsvplistarr:any;
     private rsvplistarr1:any;
     private rsvplistarr2:any;
+    private oldarr:any;
+    private nextauctiondate:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,private _sanitizer: DomSanitizer) {
@@ -205,10 +207,33 @@ export class AppDealerdashboard {
             }, error => {
                 console.log("Oooops!");
             });
+        this.oldarr=999999999;
         this.http.get(this.serverUrl+'auctionlist')
             .subscribe(data1 => {
                 this.auctionlistarr = data1.json();
-                //console.log(this.data);
+                //console.log('auction data ..');
+                //console.log(this.auctionlistarr);
+                var x:any;
+                for(x in this.auctionlistarr){
+                    //console.log('logging auction data ...');
+                    //console.log(this.auctionlistarr[x].auction_date);
+                    var myarr = this.auctionlistarr[x].auction_date.split("-");
+                    //console.log(myarr);
+                    //console.log(myarr[2]+'.'+myarr[0]+'.'+myarr[1]);
+                    myarr=(myarr[2]+'-'+myarr[0]+'-'+myarr[1]);
+                    var myarr1=(myarr[2]+''+myarr[0]+''+myarr[1]);
+                    var timestamp = parseInt((new Date(myarr).getTime() / 1000).toFixed(0));
+                    //console.log(timestamp);
+                    //console.log('myarr1');
+                    //console.log(myarr1);
+                    //console.log(parseInt(myarr.replace('-','')));
+                    //console.log(commonservices.convertunixtodate(timestamp));
+                    if((myarr.replace('-',''))<this.oldarr){
+                        this.nextauctiondate=this.auctionlistarr[x].auction_date.replace('-','/');
+                        this.nextauctiondate=this.nextauctiondate.replace('-','/');
+                    }
+                    this.oldarr=(myarr.replace('-',''));
+                }
 
             }, error => {
                 console.log("Oooops!");

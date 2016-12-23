@@ -25,65 +25,31 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>01</td>
-                                    <td><img src="images/upcoming-auctions-img1.png"></td>
-                                    <td>Auction A</td>
-                                    <td>19 Aug 2016</td>
-                                    <td>Hana Sartika</td>
+                                <tr *ngFor="let itemrs of auctionlistarr let i=index">
+                                    <td>{{i+1}}</td>
+                                    <td><div class="imgdealerwrapper"><img src="{{filesrc}}/{{itemrs.filename}}"></div></td>
+                                    <td>{{itemrs.name}}</td>
+                                    <td>{{itemrs.auction_date_formatted}}</td>
+                                    <td>{{itemrs.cardata.length}}</td>
                                     <td>
-                                        <ul class="automatchwrapper list-inline">
-                                            <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                            <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                            <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                            <li>
-                                                <div class="actionbtns">
-                                                    <a><button class="btnedit" type="button" value="Edit">View All</button></a>
-                                                </div>
-                                            </li>
+                                        <ul *ngIf="itemrs.cardata.length>0" class="automatchwrapper automatchwrapperimglist list-inline">
+                                            <li *ngFor="let itemcar of itemrs.cardata let icar=index" ><div class="automatchimgwrapper"><img src="{{filesrc}}/{{itemcar.filename}}"></div></li>
+
+
                                         </ul>
+                                        <div class="actionbtns">
+                                            <a><button class="btnedit" type="button" value="Edit">View All</button></a>
+                                        </div>
                                     </td>
                                 </tr>
-                                <tr>
-                                    <td>02</td>
-                                    <td><img src="images/upcoming-auctions-img1.png"></td>
-                                    <td>Auction C</td>
-                                    <td>19 Aug 2016</td>
-                                    <td>Hana Sartika</td>
-                                    <td>
-                                        <ul class="automatchwrapper list-inline">
-                                            <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                            <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                            <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                            <li>
-                                                <div class="actionbtns">
-                                                    <a><button class="btnedit" type="button" value="Edit">View All</button></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>03</td>
-                                    <td><img src="images/upcoming-auctions-img1.png"></td>
-                                    <td>Auction A</td>
-                                    <td>19 Aug 2016</td>
-                                    <td>Hana Sartika</td>
-                                    <td>
-                                        <ul class="automatchwrapper list-inline">
-                                            <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                            <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                            <li><div class="automatchimgwrapper"><img src="images/img-rsvpcar.png"></div></li>
-                                            <li>
-                                                <div class="actionbtns">
-                                                    <a><button class="btnedit" type="button" value="Edit">View All</button></a>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>04</td>
-                                    <td><img src="images/upcoming-auctions-img1.png"></td>
-                                    <td>Auction A</td>
-                                   
+
+                               </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>

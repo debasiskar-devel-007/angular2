@@ -142,6 +142,7 @@ export class AppFinance implements OnInit {
             city: [this.customerinfo.city, Validators.required],
             state: [this.customerinfo.state, Validators.required],
             zip: [this.customerinfo.zip, Validators.required],
+            previousresidence_check: [''],
             primary_residence_year: [''],
             primary_residence_month: [''],
             primary_residence_type: [''],
@@ -154,6 +155,7 @@ export class AppFinance implements OnInit {
             previous_zip: [''],
             previous_state: [''],
             previous_city: [''],
+            mailingaddress_check: [''],
             mailing_address: [''],
             mailing_addressline2: [''],
             mailing_state: [''],
@@ -173,6 +175,7 @@ export class AppFinance implements OnInit {
             employment_city: [''],
             employment_state: [''],
             employment_zip: [''],
+            previousemployment_check: [''],
             previous_employer: [''],
             previous_employment_year: [''],
             previous_employment_month: [''],
@@ -197,6 +200,7 @@ export class AppFinance implements OnInit {
             listing_id: [''],
             location_id: [''],
             license_number: [''],
+            captcha: ['',AppFinance.validCaptcha],
            /* vin: [''],
             car_mileage: [this.customerinfo.car_mileage],
             upcoming_auction: [this.customerinfo.upcoming_auction],
@@ -211,6 +215,9 @@ export class AppFinance implements OnInit {
             signature: ['', Validators.required],
             is_active: ['', Validators.required],
         });
+
+        console.log('finance form');
+        console.log(this.customersignupform);
         this.http.get(this.serverUrl+'listcarautomileage')
             .subscribe(data => {
                 this.listcarautomileage=data.json();
@@ -258,6 +265,18 @@ export class AppFinance implements OnInit {
     ngOnInit(){
         console.log('on init');
     };
+    static validCaptcha(control: FormControl){
+
+        console.log(control.value+'stateval');
+        if (control.value=='') {
+
+            return { 'invalidState': true };
+        }
+        if($('#sign').text()!=control.value){
+            return { 'invalidState': true };
+        }
+
+    }
 
     autoyearchange(ev:any){
         var target = ev.target || ev.srcElement || ev.originalTarget;
@@ -348,7 +367,31 @@ export class AppFinance implements OnInit {
         for (var i = length; i > 0; --i) result += charss[Math.round(Math.random() * (charss.length - 1))];
         this.randstring =result;
     }
+    mailingaddress(){
 
+    if($('#mailingaddressradio').is(':checked')){
+    $('.mailadd').removeClass('hide');
+    }
+    else{
+        $('.mailadd').addClass('hide');
+    }
+    }
+    prevresidance(){
+        if($('#prevresidentradio').is(':checked')){
+            $('.prevses').removeClass('hide');
+        }
+        else{
+            $('.prevses').addClass('hide');
+        }
+    }
+    employment(){
+        if($('#prevemployeeradio').is(':checked')){
+            $('.paddingtop26').removeClass('hide');
+        }
+        else{
+            $('.paddingtop26').addClass('hide');
+        }
+    }
 }
 
 

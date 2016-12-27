@@ -7,7 +7,7 @@ import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
-
+declare var $: any;
 
 
 
@@ -55,9 +55,9 @@ export class AppAddretailcommission {
         this.serverUrl = this.items[0].serverUrl;
 
         let link = this.serverUrl+'getretailcommissionlist';
+        let var1={dealerid:this.userDetails.id};
 
-
-        this.http.get(link)
+        this.http.post(link,var1)
             .subscribe(data1 => {
 
                 this.data2 = data1.json();
@@ -131,6 +131,7 @@ export class AppAddretailcommission {
                 console.log("Oooops!");
             });
     }
+
 }
 
 

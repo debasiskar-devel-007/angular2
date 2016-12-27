@@ -12,7 +12,7 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
-
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -59,6 +59,17 @@ export class AppEditauction implements OnInit, OnDestroy {
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
         this.userInfo=userInfo.getObject('userdetails');
+        var d = new Date();
+
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+
+        var output =  ((''+month).length<2 ? '0' : '') + month + '-'+((''+day).length<2 ? '0' : '') + day +'-' +d.getFullYear() ;
+
+
+        let timeoutId1 = setTimeout(() => {
+            $('#datpicker11').attr('data-date-start-date',output);
+        },2000);
         this.addauctionform = fb.group({
             name: ['', Validators.required],
             description: ['', Validators.required],
@@ -163,7 +174,22 @@ console.log(this.details.description);
         }
     }
 
+    datepick(){
 
+
+        console.log('datepick called .. ');
+        var auctiondat= $('#datpicker11').val();
+        if( (auctiondat)!='') {
+            this.addauctionform.patchValue({auction_date: auctiondat});
+            console.log('undefined not ..');
+        }else{
+            console.log('dp called');
+            let timeoutId = setTimeout(() => {
+                this.datepick();
+            },3000);
+        }
+
+    }
 
 
 }

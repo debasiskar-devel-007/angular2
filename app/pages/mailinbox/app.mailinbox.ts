@@ -29,7 +29,7 @@ export class AppMailinbox {
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
-    private userInfo:CookieService;
+    private userInfo:any;
     id:any;
     item:any;
     private messages:any;
@@ -40,6 +40,12 @@ export class AppMailinbox {
     appcomponent:AppComponent;
     tempdata:Array<any>;
     sharefilesrc:any;
+    private customerlist: any;
+    private dealerlist: any;
+    private messageaar: Array<any>;
+    private breaklog1:any;
+    private breaklog:any;
+    private datab:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
@@ -52,18 +58,74 @@ export class AppMailinbox {
         this.serverUrl = this.items[0].serverUrl;
         let link = this.serverUrl+'bannerlist';
         this.p=1;
+        this.userInfo=userInfo.getObject('userdetails');
         this.orderbyquery='bannername';
         this.orderbytype=-1;
+        this.messageaar=[];
+        this.breaklog=0;
+        this.breaklog1=0;
+        this.dealerlist=[];
+        this.customerlist=[];
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.datab = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.pagec=Math.ceil(this.datab.length / 10);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+
+        link = this.serverUrl+'messagelist';
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
                 this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
-                this.pagec=Math.ceil(this.data.length / 10);
+                //this.pagec=Math.ceil(this.data.length / 10);
+                console.log(' message list ...');
+                console.log(this.data);
+                console.log(this.data.length);
+                this.makemessagelist();
 
             }, error => {
                 console.log("Oooops!");
             });
+
+        link = this.serverUrl+'customerlist';
+        console.log(link);
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.customerlist = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                console.log(' customer list ...');
+                console.log(this.customerlist);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        link = this.serverUrl+'dealerlist';
+        console.log(link);
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.dealerlist = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                console.log(' dealer list ...');
+                console.log(this.dealerlist);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
 
     }
 
@@ -88,7 +150,7 @@ export class AppMailinbox {
                         window.location.reload();
                     }
                 }
-                 this.appcomponent.putmessages('Banner '+dealerrow.bannername+' deleted successfully','success');
+                this.appcomponent.putmessages('Banner '+dealerrow.bannername+' deleted successfully','success');
                 //console.log(this.data);
 
             }, error => {
@@ -99,33 +161,9 @@ export class AppMailinbox {
         // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
     }
 
-    changeStatus(item:any){
-        var idx = this.data.indexOf(item);
-        if(this.data[idx].is_active==1){
-            var is_active=0;
-        }
-        else{
-            var is_active=1;
-        }
-        let stat={id:item._id,is_active:is_active};
-        let link= this.serverUrl+'bannerstatuschange';
-        this.http.post(link,stat)
-            .subscribe(data1 => {
-                // this.data = data1.json();
-                //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
-                if(this.data[idx].is_active == 0){
-                    this.data[idx].is_active = 1;
-                }else{
-                    this.data[idx].is_active = 0;
-                }
-            }, error => {
-                console.log("Oooops!");
-            });
 
 
-    }
-
-     getSortClass(value:any){
+    getSortClass(value:any){
         if(this.orderbyquery==value && this.orderbytype==-1) {
             return 'caret-up'
         }
@@ -150,8 +188,49 @@ export class AppMailinbox {
     }
 
 
+    private makemessagelist() {
+        if(this.dealerlist.length>0 && this.customerlist.length>0) {
+            this.messageaar = [];
+            console.log('userinfo  in makemessagelist.. .. ');
+            console.log(this.userInfo.username);
+            console.log(this.data.length);
+            var x: any;
+            for (x in this.data) {
+                if (this.data[x].to == this.userInfo.username) {
+                    this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
+                    this.messageaar.push(this.data[x]);
+                }
+            }
 
+            console.log('message final array');
+            console.log(this.messageaar);
+            console.log(this.messageaar.length);
+        }
+    }
 
+    private getuserinfo(from:any) {
+        var y:any;
+        for(y in this.customerlist){
+            this.breaklog++;
+
+            if(from==this.customerlist[y].username){
+                return this.customerlist[y].fname+' '+this.customerlist[y].lname+' ( '+this.customerlist[y].username+' ) ';
+            }
+
+        }
+        var z:any;
+        for(z in this.dealerlist){
+            this.breaklog1++;
+
+            if(from==this.dealerlist[z].username){
+                return this.dealerlist[z].fname+' '+this.dealerlist[z].lname+' ( '+this.dealerlist[z].username+' ) ';
+            }
+
+        }
+
+        return '';
+
+    }
 }
 
 

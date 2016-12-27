@@ -8,7 +8,7 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 
-
+declare var $: any;
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
@@ -37,13 +37,15 @@ export class AppDealerheader {
         this.coockieData=userdetails;
         this.router=router;
         this.userDetails=userdetails.getObject('userdetails');
+        console.log('User Info');
        // images/img_customersignup_car.png
         console.log(this.userDetails.filename);
-        if(this.userDetails.filename!=undefined){
+        this.uploadedfilesrc= 'images/logo_61.png';
+        if(this.userDetails.filename!='undefined'){
             this.uploadedfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.userDetails.filename;
         }
         else{
-            this.uploadedfilesrc= 'images/img_customersignup_car.png';
+            this.uploadedfilesrc= 'images/logo_61.png';
         }
 
     }
@@ -64,7 +66,9 @@ export class AppDealerheader {
     }
 
 
-
+    opensupportticket(){
+       $('#supportticketModal').modal('show');
+    }
 
 }
 

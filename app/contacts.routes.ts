@@ -109,6 +109,9 @@ import {AppManageopencontract} from "./pages/manageopencontract/app.manageopenco
 import {AppEditopencontract} from "./pages/editopencontract/app.editopencontract";
 import {AppDealercustomerlist} from "./pages/dealercustomerlist/app.dealercustomerlist";
 import {AppInventorymatchedetails} from "./pages/inventorymatchedetails/app.inventorymatchedetails";
+import {AppDealerpackagepurchase} from "./pages/dealerpackagepurchase/app.dealerpackagepurchase";
+import {AppViewbyauctionid} from "./pages/viewbyauctionid/app.viewbyauctionid";
+import {AppFreeinvitedealercustomerlist} from "./pages/freeinvitedealercustomerlist/app.freeinvitedealercustomerlist";
 
 //alert(window.location.hostname);
 
@@ -187,7 +190,7 @@ const appRoutes: Routes = [
     { path: 'viewcustomers', component:AppViewcustomers},
     { path: 'viewrsvp', component:AppViewrsvp},
     { path: 'writemail', component:AppWritemail},
-    { path: 'readmessage', component:AppReadmessage},
+    { path: 'readmessage/:id', component:AppReadmessage},
     { path: 'mailinbox', component:AppMailinbox},
     { path: 'customerprofile/:id', component:AppCustomerprofile},
     { path: 'addaffiliate', component:AppAddaffiliate},
@@ -244,6 +247,9 @@ const appRoutes: Routes = [
     { path: 'editopencontract/:id', component: AppEditopencontract},
     { path: 'dealercustomerlist', component: AppDealercustomerlist},
     { path: 'inventorymatchedetails/:id', component: AppInventorymatchedetails},
+    { path: 'dealerpackagepurchase', component: AppDealerpackagepurchase},
+    { path: 'viewbyauctionid/:id', component: AppViewbyauctionid},
+    { path: 'freeinvitedealercustomerlist', component: AppFreeinvitedealercustomerlist},
 
 
 

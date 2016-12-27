@@ -10159,3 +10159,19 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
 }
 
 .automatchwrapperimglist li:nth-of-type(1n+4) {display: none;}
+
+.box-footer .readmailheadercontrol{
+    margin-top: 20px;
+}
+
+.readmailheadercontrol i.glyphicon-share-alt{
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+}
+
+#cke_editor1 {
+    float: left;
+    width:100%;
+    margin-top: 20px;
+}

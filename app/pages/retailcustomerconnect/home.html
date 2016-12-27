@@ -555,7 +555,7 @@
                 <div class="row">
                    <span *ngFor="let itemcaryear of carautoyearlist let k=index" >
                     <div *ngIf="itemcaryear.is_active==1" class="col-lg-4 col-md-4 col-sm-6 col-xs-12  retailformblock1part3innerblock3single" style="margin-bottom: 14px;">
-                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="customersignupupdateform.controls['car_auto_year']" name="car_auto_year" (change)="autoyearchange($event)"value="{{itemcaryear._id}}" >
+                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="customersignupupdateform.controls['car_auto_year']" name="car_auto_year" (change)="autoyearchange($event)" value="{{itemcaryear._id}}" >
                         <label [attr.for]="itemcaryear._id"></label>
                         <span>{{itemcaryear.year}}</span>
                     </div>

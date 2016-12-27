@@ -17,7 +17,7 @@
             <div class="col-lg-12 col-md-12">
                 <div class="adminlistblock">
                     <div class="adminlistheader">
-                        <h2><span>Customer</span> listing</h2>
+                        <h2><span>Customer</span> Listing</h2>
                         <ul class="list-inline">
                             <li> <div class="searchbox"><input style="right: 198px;" [(ngModel)]="query" placeholder="Search "></div></li>
                             <li>
@@ -37,10 +37,11 @@
                                 <th>Email <b [ngClass]="getSortClass('email')" (click)="manageSorting('email')" ></b></th>
                                 <th>City<b [ngClass]="getSortClass('city')" (click)="manageSorting('city')" ></b></th>
                                 <th>State/Address/Zip</th>
-                                <th>Phone</th>
+                                <th>Phone<b [ngClass]="getSortClass('phone')" (click)="manageSorting('phone')" ></b></th>
+                                <th>Finance Status <b [ngClass]="getSortClass('finance_check')" (click)="manageSorting('finance_check')" ></b></th>
                                 <th>Status <b [ngClass]="getSortClass('is_active')" (click)="manageSorting('is_active')" ></b></th>
                                 <th>Date Added <b [ngClass]="getSortClass('added_on')" (click)="manageSorting('added_on')" ></b></th>
-                               <!-- <th>Action</th>-->
+                                <th>Action</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -54,15 +55,21 @@
                                 <td>{{item.state}} <br>{{item.address}}<br>{{item.zip}}</td>
                                 <!--<td>{{item.zip}}</td>-->
                                 <td>{{item.phone}}</td>
-                                <td><a href="javascript:void(0)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>
-                              <!--  <td><a href="javascript:void(0)" (click)="changeStatus(item)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>-->
-                                <td [innerHtml]="commonservices.convertunixtodate(item.added_on)"></td>
-                                <!--<td>
+                                <!--<td><a href="javascript:void(0)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>-->
+                                <td class="financestatus{{item.finance_checktext}}">{{item.finance_checktext}}</td>
+                                <!--<td *ngIf="item.finance_check==1" class="financestatusApproved">Approved</td>
+                                <td *ngIf="item.finance_check==2" class="financestatusDecline">Decline</td>-->
+                               <td><a href="javascript:void(0)" (click)="changeStatus(item)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>
+                                <td [innerHtml]="(item.added_on)?commonservices.convertunixtodate(item.added_on):'N/A'"></td>
+                                <td>
                                     <div class="actionbtns">
-                                        <a [routerLink]="['/editaffiliate', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
-                                        <a><button class="btndelete" type="button" (click)="deleterow(item)"  value="Delete">Delete</button></a>
+
+                                        <a><button class="btndelete" style="width:100%" type="button" (click)="reviewfinance(item)"  value="Delete">Review finance Details</button></a>
+                                      <!--  <a><button class="btndelete" style="width:100%" type="button" (click)="customerdelete(item)"  value="Delete">Delete</button></a>-->
+
+                                       <!-- <a><button value="update" (click)="customerupdate()"></button></a>-->
                                     </div>
-                                </td>-->
+                                </td>
                             </tr>
                             </tbody>
                         </table>
@@ -80,3 +87,449 @@
 </div>
 <!-- /#page-wrapper -->
 
+<div id="customerfinanceModal" class="modal fade carlogomodalbox">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modelheader">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Customer Finace Information</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_popup_wrapper" *ngIf="customerinfo">
+                    <div class="option_popup_wrapper_top">
+                        <h2>Finance Status <span class="financestatus{{customerinfo.finance_check}}">{{customerinfo.finance_check}}</span></h2>
+                        <ul class="example list-inline">
+                            <li *ngIf="customerinfo.finance_check!='Approved'" class="chakebox1box"><input  type="radio" name="finance_check" value="1" (click)="financestatuschange(customerinfo,1)"><span>Approved </span></li>
+                            <li *ngIf="customerinfo.finance_check!='Decline'" class="chakebox2box"> <input  type="radio" name="finance_check" value="2" (click)="financestatuschange(customerinfo,2)"><span>Decline</span></li>
+                        </ul>
+
+
+                    </div>
+                    <table width="100%" border="0">
+
+                        <tbody>
+                        <tr>
+                            <!--<td width="40%" align="center" valign="top" class="option_popup_wrapper_header">Finance Status</td>
+                            <td width="60%" align="left" valign="top">{{customerinfo.finance_check}}</td>
+                        </tr>-->
+                        <tr>
+                            <td colspan="3" class="option_popup_wrapper_header">Customer Information</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.fname">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>First Name</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.fname}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.mname">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Middle Name </strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.mname}}</td>
+                        </tr>
+
+                        <tr *ngIf="customerinfo.lname">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Last Name</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.lname}}</td>
+                        </tr>
+
+
+                        <tr *ngIf="customerinfo.email" >
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Email</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.email}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.phone" >
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Telephone No.</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.phone}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.fax">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Fax</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.fax}}</td>
+                        </tr>
+
+                        <tr *ngIf="customerinfo.dob">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Birth Date</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.dob}}</td>
+                        </tr>
+
+                        <tr *ngIf="">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span></b></td>
+                            <td width="20%" align="left" valign="top"><strong>Social Security#</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.social_security}}</td>
+                        </tr>
+
+                        <tr *ngIf="customerinfo.mother_maiden_name">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span></b></td>
+                            <td width="20%" align="left" valign="top"><strong>Mother's Maiden Name</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.mother_maiden_name}}</td>
+                        </tr>
+
+                        <tr>
+                            <td colspan="3" class="option_popup_wrapper_header">Primary Residence</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.address">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Address Line1</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.address}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.addressline2">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Address Line2</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.addressline2}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.city">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>City</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.city}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.state">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>State</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.state}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.zip">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Postal Code</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.zip}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.primary_residence_year || customerinfo.primary_residence_month">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Amount of Time</strong></td>
+                            <td width="35%" align="left" valign="top"><span *ngIf="customerinfo.primary_residence_year" class="spanfull">Year: {{customerinfo.primary_residence_year}}</span> <span *ngIf="customerinfo.primary_residence_month" class="spanfull">Months: {{customerinfo.primary_residence_month}}</span></td>
+                        </tr>
+                        <tr *ngIf="customerinfo.primary_residence_type">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Residency Type</strong></td>
+                            <td width="35%" align="left" valign="top">{{customerinfo.primary_residence_type}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.primary_residence_monthly_payment">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Total Monthly housing payment</strong></td>
+                            <td width="35%" align="left" valign="top">${{customerinfo.primary_residence_monthly_payment}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.primary_year_homeowner">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Total Years as a homeowner</strong></td>
+                            <td width="35%" align="left" valign="top">{{customerinfo.primary_year_homeowner}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_address || customerinfo.previous_addressline2 || customerinfo.previous_city || customerinfo.previous_state || customerinfo.previous_zip || customerinfo.previous_residence_year || customerinfo.previous_residence_month">
+                            <td colspan="3" class="option_popup_wrapper_header">Previous Residence</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_address">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Address Line1</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_address}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_addressline2">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Address Line2</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_addressline2}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_city">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>City</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_city}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_state">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>State</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_state}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_zip">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Postal Code</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_zip}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_residence_year || customerinfo.previous_residence_month">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Amount of Time</strong></td>
+                            <td width="35%" align="left" valign="top"><span *ngIf="customerinfo.previous_residence_year" class="spanfull">Year: {{customerinfo.previous_residence_year}}</span> <span *ngIf="customerinfo.previous_residence_month" class="spanfull">Months: {{customerinfo.previous_residence_month}}</span></td>
+                        </tr>
+                        <tr *ngIf="customerinfo.mailing_address || customerinfo.mailing_addressline2 || customerinfo.mailing_city || customerinfo.mailing_state || customerinfo.mailing_zip">
+                            <td colspan="3" class="option_popup_wrapper_header">Mailing Address</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.mailing_address">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Address Line1</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.mailing_address}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.mailing_addressline2">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Address Line2</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.mailing_addressline2}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.mailing_city">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>City</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.mailing_city}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.mailing_state">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>State</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.mailing_state}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.mailing_zip">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Postal Code</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.mailing_zip}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.occupation || customerinfo.payment_type || customerinfo.hire_date || customerinfo.work_phone || customerinfo.self_employed || customerinfo.gross_monthly_income || customerinfo.employment_year || customerinfo.employment_month || customerinfo.employment_address || customerinfo.employment_addressline2 || customerinfo.employment_city  || customerinfo.employment_state || customerinfo.employment_zip">
+                            <td colspan="3" class="option_popup_wrapper_header">Current Employment</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.occupation">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Occupation</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.occupation}}</td>
+                        </tr>
+
+                        <tr *ngIf="customerinfo.employer">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Employer</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.employer}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.payment_type">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Payment Type</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.payment_type}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.hire_date">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Hire Date</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.hire_date}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.work_phone">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Work phone</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.work_phone}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.self_employed">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Self- Employed?</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.self_employed}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.gross_monthly_income">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Gross Monthly Income</strong></td>
+                            <td width="70%" align="left" valign="top">${{customerinfo.gross_monthly_income}}</td>
+                        </tr>
+
+                        <tr *ngIf="customerinfo.employment_year || customerinfo.employment_month">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>How long employed by this employer</strong></td>
+                            <td width="70%" align="left" valign="top"><span *ngIf="customerinfo.employment_year" class="spanfull">Year: {{customerinfo.employment_year}}</span> <span *ngIf="customerinfo.employment_month" class="spanfull">Months: {{customerinfo.employment_month}}</span></td>
+                        </tr>
+                        <tr *ngIf="customerinfo.employment_address">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Address Line1</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.employment_address}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.employment_addressline2">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Address Line2</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.employment_addressline2}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.employment_city">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>City</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.employment_city}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.employment_state">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>State</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.employment_state}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.employment_zip">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Postal Code</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.employment_zip}}</td>
+                        </tr>
+
+                        <tr *ngIf="customerinfo.previous_employer || customerinfo.previous_employment_year || customerinfo.previous_employment_month || customerinfo.previous_employment_address || customerinfo.previous_employment_addressline2 || customerinfo.previous_employment_city || customerinfo.previous_employment_state || customerinfo.previous_employment_zip">
+                            <td colspan="3" class="option_popup_wrapper_header">Previous Employment</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_employer">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Employer</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_employer}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_employment_year || customerinfo.previous_employment_month">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>How long Employed</strong></td>
+                            <td width="35%" align="left" valign="top"><span *ngIf="customerinfo.previous_employment_year" class="spanfull">Year: {{customerinfo.previous_employment_year}}</span> <span *ngIf="customerinfo.previous_employment_month" class="spanfull">Months: {{customerinfo.previous_employment_month}}</span></td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_employment_address">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Address Line1</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_employment_address}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_employment_addressline2">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Address Line2</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_employment_addressline2}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_employment_city">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>City</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_employment_city}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_employment_state">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>State</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_employment_state}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.previous_employment_zip">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Postal Code</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.previous_employment_zip}}</td>
+                        </tr>
+                        <tr  *ngIf="customerinfo.other_monthly_income || customerinfo.checking_account|| customerinfo.checking_account_balance || customerinfo.other_income_source || customerinfo.saving_account || customerinfo.saving_account_balnace|| customerinfo.other_bank_name || customerinfo.other_liquid_asset || customerinfo.co_applicant || customerinfo.vehicle_trade">
+                            <td colspan="3" class="option_popup_wrapper_header">Financials</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.other_monthly_income">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Other Monthly Income</strong></td>
+                            <td width="70%" align="left" valign="top">${{customerinfo.other_monthly_income}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.checking_account">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Checking Account</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.checking_account}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.checking_account_balance">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Current Balance</strong></td>
+                            <td width="70%" align="left" valign="top">${{customerinfo.checking_account_balance}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.other_income_source">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Other Income Sources</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.other_income_source}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.saving_account">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Savings Account</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.saving_account}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.saving_account_balnace">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Current Balance</strong></td>
+                            <td width="70%" align="left" valign="top">${{customerinfo.saving_account_balnace}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.other_bank_name">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Bank Name</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.other_bank_name}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.other_liquid_asset">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Other Liquid Assets </strong></td>
+                            <td width="70%" align="left" valign="top">${{customerinfo.other_liquid_asset}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.other_liquid_asset_source">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Other Liquid Assets Sources</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.other_liquid_asset_source}}</td>
+                        </tr>
+                        <!--<tr>
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Please Check</strong></td>
+                            <td width="70%" align="left" valign="top">True</td>
+                        </tr>-->
+                        <tr *ngIf="customerinfo.co_applicant">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Do you have a co-application</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.co_applicant}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.vehicle_trade">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Do you have a Vehicle you plan to trade in</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.vehicle_trade}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.loan_check || customerinfo.listing_id|| customerinfo.location_id || customerinfo.license_number || customerinfo.loan_down_payment || customerinfo.loan_vehicle_cost|| customerinfo.loan_payment_amount || customerinfo.loan_repayment_term || customerinfo.loan_month">
+                            <td colspan="3" class="option_popup_wrapper_header">Loan Deatils</td>
+                        </tr>
+
+                        <tr *ngIf="customerinfo.loan_check">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Do You Want Representative Contcat you ?</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.loan_check}}</td>
+                        </tr>
+
+                        <tr *ngIf="customerinfo.listing_id">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Lising ID</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.listing_id}}</td>
+                        </tr>
+
+                        <tr *ngIf="customerinfo.location_id">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Location ID</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.location_id}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.license_number">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Licence Number</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.license_number}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.loan_down_payment">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Down Payment</strong></td>
+                            <td width="70%" align="left" valign="top">${{customerinfo.loan_down_payment}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.loan_vehicle_cost">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Total Vehicle Cost</strong></td>
+                            <td width="70%" align="left" valign="top">${{customerinfo.loan_vehicle_cost}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.loan_payment_amount">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Payment Amount</strong></td>
+                            <td width="70%" align="left" valign="top">${{customerinfo.loan_payment_amount}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.loan_repayment_term">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Repayment Term</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.loan_repayment_term}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.loan_month">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Month</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.loan_month}}</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.comment">
+                            <td colspan="3" class="option_popup_wrapper_header">Question/Comments</td>
+                        </tr>
+                        <tr *ngIf="customerinfo.comment">
+                            <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                            <td width="20%" align="left" valign="top"><strong>Information</strong></td>
+                            <td width="70%" align="left" valign="top">{{customerinfo.comment}}</td>
+                        </tr>
+                        </tbody>
+
+
+
+
+                    </table>
+
+                    <div *ngIf="customerinfo" class="option_popup_wrapper_top">
+                        <h2>Finance Status <span class="financestatus{{customerinfo.finance_check}}">{{customerinfo.finance_check}}</span></h2>
+                        <ul class="example list-inline">
+                            <li *ngIf="customerinfo.finance_check!='Approved'" class="chakebox1box"><input   type="radio" name="finance_check" value="1" (click)="financestatuschange(customerinfo,1)"><span>Approved </span></li>
+                            <li *ngIf="customerinfo.finance_check!='Decline'" class="chakebox2box"> <input  type="radio" name="finance_check" value="2" (click)="financestatuschange(customerinfo,2)"><span>Decline</span></li>
+                        </ul>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>

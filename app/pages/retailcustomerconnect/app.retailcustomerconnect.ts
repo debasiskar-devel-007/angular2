@@ -381,6 +381,7 @@ export class AppRetailcustomerconnect implements OnInit {
                 .subscribe(data => {
                     var userdet={username:this.customersignupform.value.username,useremail:this.customersignupform.value.email,userrole:'customer',userfullname:this.customersignupform.value.fname+' '+this.customersignupform.value.lname};
                     this.userInfo.putObject('userdetails', userdet);
+                    this.customerInfo.putObject('customerInfo',this.customersignupupdateform.value);
                     console.log(this.customersignupupdateform.value);
                     if(this.customersignupupdateform.value.qualify_finance==1){
                         this.router.navigate(['/finance']);
@@ -589,6 +590,7 @@ export class AppRetailcustomerconnect implements OnInit {
 
 
             $('.table_textbox').removeClass('hide');
+           // $('#other1').val(' ');
         }
         else{
             $('.table_textbox').addClass('hide');
@@ -610,14 +612,27 @@ export class AppRetailcustomerconnect implements OnInit {
             console.log(submitdata);
             this.http.post(link,submitdata)
                 .subscribe(data2 => {
-                   console.log(data2.json()[0]);
+                   console.log('Before Push');
+                    console.log(this.colorval);
+
+                    this.colorlist.push({'_id':data2.json()[0],'color':submitdata.color,'priority':submitdata.priority,'is_active':submitdata.is_active});
+                    this.rows = Array.from(Array(Math.ceil(this.colorlist.length / 3)).keys());
+                    $('#'+data2.json()[0]).click();
+                    console.log('After Push');
                     this.colorval.push(data2.json()[0]);
-                    this.http.get(this.serverUrl+'colorlist')
+                    // $('#'+data2.json()[0]).click();
+                    //$('#'+data2.json()).prop('checked', true);
+                    console.log(this.colorval);
+                    $('.table_textbox').addClass('hide');
+                    $('#other1').prop('checked',false);
+                    $('.colclass').val('');
+
+                   /* this.http.get(this.serverUrl+'colorlist')
                         .subscribe(data => {
                             this.colorlist=data.json();
                             this.rows = Array.from(Array(Math.ceil(this.colorlist.length / 3)).keys())
                             //this.carfeaturesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
-                            console.log(this.carfeaturelist);
+
 
                             let timeoutId = setInterval(() => {
 
@@ -635,7 +650,7 @@ export class AppRetailcustomerconnect implements OnInit {
 
                         }, error => {
                             console.log("Oooops!");
-                        });
+                        });*/
                    // this.router.navigateByUrl('/colorlist(adminheader:adminheader//adminfooter:adminfooter)')
 
                 }, error => {

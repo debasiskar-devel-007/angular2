@@ -54,13 +54,21 @@
             <ul>
                 <li><a><img src="images/admicon-managecustomer.png">Manage Customer Portal</a></li>
                 <li><a><img src="images/admicon-broadcastprefer.png">Manage Broadcast Preferences</a></li>
-                <li><a ><img src="images/admicon-opencontact.png">Manage Open Contract</a></li>
+                <li><a [routerLink]="['/manageopencontract']" ><img src="images/admicon-opencontact.png">Manage Open Contract</a></li>
                   <li><a [routerLink]="['/dealerauctionlist']"><img src="images/admicon-manageaution.png">Manage Auctions</a></li>
-                <li><a><img src="images/admicon-subscription.png">Manage Subscriptions</a></li>
+
+                <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="images/admicon-subscription.png">Manage Subscriptions <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a [routerLink]="['/package']"><img src="images/admicon-package.png">Buy Subscription</a></li>
+                        <li><a [routerLink]="['/dealerpackagepurchase']"><img src="images/admicon-managebannersizes.png">Recent Purchases</a></li>
+                        <li><a [routerLink]="['/freeinvitedealercustomerlist']"><img src="images/admicon-manageprofile.png">Manage Free Invite </a></li>
+                     </ul>
+               </li>
+
                 <!--<li><a [routerlink]="['/affiliatelist']"><img src="images/admicon-subscription.png">Manage Affiliate</a></li>-->
                 <li><a [routerLink]="['/sharemedia']"><img src="images/admicon-sharemedia.png">Share Media</a></li>
                 <li><a [routerLink]="['/affiliatelist']"><img src="images/admicon-manageaffiliate.png">Manage Affiliate</a></li>
-                <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
+                <li><a (click)="opensupportticket()"><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
                 <li><a [routerLink]="['/faq']"><img src="images/admicon-faq.png">Faq's</a></li>
                 <li><a [routerLink]="['/dealerfaq']"><img src="images/admicon-myfaq.png">My Faq's</a></li>
                 <li><a [routerLink]="['/auctioninventoryview']"><img src="images/admicon-auctioninventoryview.png">Auction Inventory View</a></li>
@@ -69,12 +77,28 @@
                 <li><a [routerLink]="['/recentbidagreement']"><img src="images/admicon-recentbidactivity.png">Recent Bid Activity</a></li>
                 <li><a [routerLink]="['/upcomingauctions']"><img src="images/admicon-upcomingauction.png">Upcoming Auction</a></li>
                 <li><a [routerLink]="['/dealerprofile']"><img src="images/admicon-manageprofile.png">Manage Profile</a></li>
-                <li><a [routerLink]="['/package']"><img src="images/admicon-package.png">Package</a></li>
+               <!-- <li><a [routerLink]="['/package']"><img src="images/admicon-package.png">Package</a></li>-->
                 <li><a [routerLink]="['/addretailcommission']"><img src="images/admicon-package.png">Retail Commission</a></li>
-                <li><a [routerLink]="['/manageopencontract']"><img src="images/admicon-package.png">Manage Open Contract</a></li>
+               <!-- <li><a [routerLink]="['/manageopencontract']"><img src="images/admicon-package.png">Manage Open Contract</a></li>-->
                 <li><a [routerLink]="['/dealercustomerlist']"><img src="images/admicon-package.png">Customer List</a></li>
             </ul>
         </div>
     </div>
 </div>
 
+   <div id="supportticketModal" class="modal fade carlogomodalbox">
+       <div class="modal-dialog">
+           <div class="modal-content">
+               <div class="modelheader">
+                   <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                  <!-- <h4 class="modal-title"></h4>-->
+               </div>
+               <div class="modal-body">
+                   <div class="option_poup_wrapper"><h4 align="center">Comming Soon !</h4></div>
+               </div>
+               <div class="modal-footer">
+                   <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+               </div>
+           </div>
+       </div>
+   </div>

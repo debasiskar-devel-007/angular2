@@ -18,7 +18,7 @@ import {CookieService} from 'angular2-cookie/core';
 })
 export class AppAffiliatefooter{
     // /@ViewChild(Modal) modal;
-   // dealerloginform: FormGroup;
+    // dealerloginform: FormGroup;
     myModal :ModalModule;
     data:any;
     http:Http;
@@ -38,5 +38,3 @@ export class AppAffiliatefooter{
 
 
 }
-
-

@@ -40,6 +40,7 @@ export class AppAddauction implements OnInit {
     uploadedfilesrc:any;
     ckeditorContent:any;
     private userInfo:any;
+    curdate:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         $('#datpicker1').datepicker();
@@ -53,6 +54,19 @@ export class AppAddauction implements OnInit {
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
         this.userInfo=userInfo.getObject('userdetails');
+        var d = new Date();
+
+        var month = d.getMonth()+1;
+        var day = d.getDate();
+
+        var output =  ((''+month).length<2 ? '0' : '') + month + '-'+((''+day).length<2 ? '0' : '') + day +'-' +d.getFullYear() ;
+
+
+        let timeoutId1 = setTimeout(() => {
+        $('#datpicker11').attr('data-date-start-date',output);
+        },2000);
+
+
 console.log(this.userInfo);
         this.addauctionform = fb.group({
             username: [this.userInfo.username, Validators.required],
@@ -134,7 +148,7 @@ console.log(this.userInfo);
 
 
         console.log('datepick called .. ');
-        var auctiondat= $('#datpicker11').val();
+       var auctiondat= $('#datpicker11').val();
         if( (auctiondat)!='') {
             this.addauctionform.patchValue({auction_date: auctiondat});
             console.log('undefined not ..');
@@ -144,7 +158,7 @@ console.log(this.userInfo);
                 this.datepick();
             },3000);
         }
-      
+
     }
 
     /* $(function(){

@@ -667,6 +667,19 @@
         width: 100% !important;
         right: 0px !important;;
     }
+
+    .readmailheadercontrol button{
+        margin-bottom: 10px;
+    }
+    .readmailheadercontrol button:last-child{
+        margin-bottom: 0px;
+    }
+    .readmailinboxwrapper .replybtn{
+        width:100%;
+    }
+    .readmailinboxwrapper .forwardbtn{
+        width:100%;
+    }
 }
 
 

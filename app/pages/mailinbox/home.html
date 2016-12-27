@@ -28,7 +28,7 @@
                                                 <ul class="nav nav-pills nav-stacked">
                                                     <li class="active">
                                                         <a href="#"><span class="glyphicon glyphicon-inbox"></span> Inbox
-                                                        <span class="label label-green pull-right">12</span></a></li>
+                                                        <span class="label label-green pull-right">{{messageaar.length}}</span></a></li>
 
                                                     <li><a href="#"><span class="glyphicon glyphicon-star"></span> Starred <span class="label label-yellow pull-right">12</span></a></li>
 
@@ -61,17 +61,17 @@
                                                     <!-- Check all button -->
                                                     <button type="button" class="btn btn-default btn-sm btninputtype"><input type="checkbox"><span class="glyphicon glyphicon-vector-path-square"></span>
                                                     </button>
-                                                    <button type="button" class="btn btn-default btn-sm btnwritemail"><span class="glyphicon glyphicon-plus"></span> write mail</button>
+                                                    <button [routerLink]="['/writemail']" type="button" class="btn btn-default btn-sm btnwritemail"><span class="glyphicon glyphicon-plus"></span> write mail</button>
                                                     <div class="btn-group">
-                                                        <button type="button" class="btn btn-default btn-sm btndelete"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+                                                       <!-- <button type="button" class="btn btn-default btn-sm btndelete"><span class="glyphicon glyphicon-trash"></span> Delete</button>-->
                                                         <!---<button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
                                                         <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>--->
                                                     </div>
                                                     <!-- /.btn-group -->
 
                                                     <div class="pull-right">
-                                                        <button type="button" class="btn btn-default btn-sm btnrefresh"><span class="glyphicon glyphicon-refresh"></span></button>
-                                                        <button type="button" class="btn btn-default btn-sm btnall">All <span class="glyphicon glyphicon-triangle-bottom"></span></button>
+                                                        <button type="button" class=" hide btn btn-default btn-sm btnrefresh"><span class="glyphicon glyphicon-refresh"></span></button>
+                                                        <button type="button" class=" hide btn btn-default btn-sm btnall">All <span class="glyphicon glyphicon-triangle-bottom"></span></button>
                                                         <!--1-50/200
                                                         <div class="btn-group">
                                                           <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
@@ -85,141 +85,17 @@
                                                 <div class="table-responsive mailbox-messages">
                                                     <table class="table table-hover table-striped">
                                                         <tbody>
-                                                        <tr class='clickable-row' data-href='http://probiddealer.influxiq.com/#/writemail'>
+
+                                                        <tr *ngFor="let msg of messageaar">
                                                             <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject"><b class="imptxt">important</b> - Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"></td>
-                                                            <td class="mailbox-date">2.35 am</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star-empty text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>My Business</b></a></td>
-                                                            <td class="mailbox-subject"><b class="worktxt">work</b> - Trying to find a solution to this problem...
-                                                            </td>
+                                                            <td class="mailbox-star"><a href="javascript:void(0)"  [routerLink]="['/readmessage',msg._id]"><span class="glyphicon glyphicon-star-empty text-yellow"></span></a></td>
+                                                            <td class="mailbox-name"><a href="javascript:void(0)"  [routerLink]="['/readmessage',msg._id]"><b>{{msg.fromfullname}}</b></a></td>
+                                                            <td class="mailbox-subject"><a href="javascript:void(0)"  [routerLink]="['/readmessage',msg._id]"><b class="worktxt hide">work</b>{{msg.subject}}
+                                                           </a> </td>
                                                             <td class="mailbox-attachment"><span class="glyphicons glyphicons-paperclip"></span></td>
-                                                            <td class="mailbox-date">1:27 pm</td>
+                                                            <td class="mailbox-date">{{commonservices.convertunixtodatetime(msg.addedon)}}</td>
                                                         </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star-empty text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject">Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"><span class="glyphicons glyphicons-paperclip"></span></td>
-                                                            <td class="mailbox-date">15 hours ago</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject">Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"></td>
-                                                            <td class="mailbox-date">Yesterday</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>My Friend</b></a></td>
-                                                            <td class="mailbox-subject"><b class="privatetxt">private</b> - Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"><span class="glyphicons glyphicons-paperclip"></span></td>
-                                                            <td class="mailbox-date">Oct 10</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star-empty text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject">Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"><span class="glyphicons glyphicons-paperclip"></span></td>
-                                                            <td class="mailbox-date">Oct 9</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star-empty text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject">Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"><span class="glyphicons glyphicons-paperclip"></span></td>
-                                                            <td class="mailbox-date">Sep 10</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject">Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"></td>
-                                                            <td class="mailbox-date">Sep 8</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject">Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"></td>
-                                                            <td class="mailbox-date">Aug 15</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star-empty text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject">Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"></td>
-                                                            <td class="mailbox-date">Aug 4</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star-empty text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject">Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"><span class="glyphicons glyphicons-paperclip"></span></td>
-                                                            <td class="mailbox-date">Aug 1</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject">Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"></td>
-                                                            <td class="mailbox-date">July 24</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star-empty text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>My Friend</b></a></td>
-                                                            <td class="mailbox-subject"><b class="privatetxt">private</b> Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"><span class="glyphicons glyphicons-paperclip"></span></td>
-                                                            <td class="mailbox-date">July 10</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>John Doe</b></a></td>
-                                                            <td class="mailbox-subject">Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"><span class="glyphicons glyphicons-paperclip"></span></td>
-                                                            <td class="mailbox-date">July 5</td>
-                                                        </tr>
-                                                        <tr>
-                                                            <td><input type="checkbox"></td>
-                                                            <td class="mailbox-star"><a href="#"><span class="glyphicon glyphicon-star text-yellow"></span></a></td>
-                                                            <td class="mailbox-name"><a href="read-mail.html"><b>My Business</b></a></td>
-                                                            <td class="mailbox-subject"><b class="worktxt">important</b> - Trying to find a solution to this problem...
-                                                            </td>
-                                                            <td class="mailbox-attachment"><span class="glyphicons glyphicons-paperclip"></span></td>
-                                                            <td class="mailbox-date">July 1</td>
-                                                        </tr>
+
                                                         </tbody>
                                                     </table>
                                                     <!-- /.table -->

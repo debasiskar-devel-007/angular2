@@ -1,9 +1,9 @@
-import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation} from '@angular/core';
+import {Component, NgModule, ViewChild, ViewContainerRef, ViewEncapsulation, OnDestroy, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
 import {Ng2PaginationModule} from 'ng2-pagination';
-import {Routes, RouterModule, Router} from '@angular/router';
+import {Routes, RouterModule, Router, ActivatedRoute} from '@angular/router';
 import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
@@ -18,7 +18,7 @@ import {AppComponent} from "../home/app.component";
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppReadmessage {
+export class AppReadmessage implements OnInit, OnDestroy{
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
@@ -28,8 +28,8 @@ export class AppReadmessage {
     serverUrl:any;
     commonservices:AppCommonservices;
     loginerror:any;
-    private router: Router;
-    private userInfo:CookieService;
+    private router: any;
+    private userInfo:any;
     id:any;
     item:any;
     private messages:any;
@@ -40,26 +40,100 @@ export class AppReadmessage {
     appcomponent:AppComponent;
     tempdata:Array<any>;
     sharefilesrc:any;
+    private customerlist: any;
+    private dealerlist: any;
+    private messageaar: Array<any>;
+    private breaklog1:any;
+    private breaklog:any;
+    private datab:any;
+    private sub:any;
+    private route:any;
+    private currentmessage:any;
+    ckeditorContent:any;
+    private replyopen:any;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent ,route: ActivatedRoute  ) {
         this.router=router;
+        this.replyopen=false;
         this.http=http;
-        this.router=router;
+        this.route=route;
         this.appcomponent=appcomponent;
         this.commonservices=commonservices;
         this.items = commonservices.getItems();
         this.messages = appcomponent.getMessages();
+        this.userInfo=userInfo.getObject('userdetails');
         this.serverUrl = this.items[0].serverUrl;
         let link = this.serverUrl+'bannerlist';
         this.p=1;
         this.orderbyquery='bannername';
         this.orderbytype=-1;
+        this.ckeditorContent='';
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.datab = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.pagec=Math.ceil(this.datab.length / 10);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        this.messageaar=[];
+        this.breaklog=0;
+        this.breaklog1=0;
+        this.dealerlist=[];
+        this.customerlist=[];
+        this.currentmessage=[];
+        this.sub = this.route.params.subscribe(params => {
+            this.id = params['id']; // (+) converts string 'id' to a number
+
+            // In a real app: dispatch action to load the details here.
+        });
+
+        link = this.serverUrl+'messagelist';
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
                 this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
-                this.pagec=Math.ceil(this.data.length / 10);
+                //this.pagec=Math.ceil(this.data.length / 10);
+                console.log(' message list ...');
+                console.log(this.data);
+                console.log(this.data.length);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        link = this.serverUrl+'customerlist';
+        console.log(link);
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.customerlist = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                console.log(' customer list ...');
+                console.log(this.customerlist);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        link = this.serverUrl+'dealerlist';
+        console.log(link);
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.dealerlist = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                console.log(' dealer list ...');
+                console.log(this.dealerlist);
+                this.makemessagelist();
 
             }, error => {
                 console.log("Oooops!");
@@ -67,6 +141,18 @@ export class AppReadmessage {
 
     }
 
+    ngOnInit() {
+
+
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
+
+    openreply(){
+        this.replyopen=true;
+    }
 
     deleterow(dealerrow:any){
         //console.log(adminid);
@@ -149,6 +235,58 @@ export class AppReadmessage {
         this.orderbytype=-1;
     }
 
+
+    private makemessagelist() {
+        //if(this.dealerlist.length>0 && this.customerlist.length>0) {
+            this.messageaar = [];
+            console.log('userinfo  in makemessagelist.. .. ');
+            console.log(this.userInfo.username);
+            console.log(this.data.length);
+            var x: any;
+            for (x in this.data) {
+                if (this.data[x].to == this.userInfo.username) {
+                    this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
+                    this.messageaar.push(this.data[x]);
+
+                }
+                if(this.id==this.data[x]._id){
+                    console.log('got the current message');
+
+                    this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
+                    this.currentmessage.push(this.data[x]);
+                }
+                console.log(this.id+'==='+this.data[x]._id);
+            }
+
+            console.log('message final array');
+            console.log(this.messageaar);
+            console.log(this.messageaar.length);
+        //}
+    }
+
+    private getuserinfo(from:any) {
+        var y:any;
+        for(y in this.customerlist){
+            this.breaklog++;
+
+            if(from==this.customerlist[y].username){
+                return this.customerlist[y].fname+' '+this.customerlist[y].lname+' ( '+this.customerlist[y].username+' ) ';
+            }
+
+        }
+        var z:any;
+        for(z in this.dealerlist){
+            this.breaklog1++;
+
+            if(from==this.dealerlist[z].username){
+                return this.dealerlist[z].fname+' '+this.dealerlist[z].lname+' ( '+this.dealerlist[z].username+' ) ';
+            }
+
+        }
+
+        return '';
+
+    }
 
 
 

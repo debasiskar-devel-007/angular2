@@ -106,7 +106,7 @@ console.log(sndleveldomain);
                         if(res[0].filename!='undefined'){
                             filename=res[0].filename;
                         }
-                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'customer',userfullname:res[0].fname+' '+res[0].lname,filename:filename};
+                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'customer',userfullname:res[0].fname+' '+res[0].lname,filename:filename,dealerusername:res[0].dealerusername};
 
                         console.log('Login successfully');
                         this.userInfo.putObject('userdetails', userdet);

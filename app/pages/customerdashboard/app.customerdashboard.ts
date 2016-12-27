@@ -73,6 +73,7 @@ export class AppCustomerdashboard {
 
         this.details12='';
         this.details1='';
+        this.carlistarr=[];
         this._sanitizer=_sanitizer;
         this.banner_image= 'images/img_customersignup_car.png';
         this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";

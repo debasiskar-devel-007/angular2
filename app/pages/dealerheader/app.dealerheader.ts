@@ -40,6 +40,7 @@ export class AppDealerheader {
         console.log('User Info');
        // images/img_customersignup_car.png
         console.log(this.userDetails.filename);
+        this.uploadedfilesrc= 'images/logo_61.png';
         if(this.userDetails.filename!='undefined'){
             this.uploadedfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.userDetails.filename;
         }

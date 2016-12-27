@@ -9,7 +9,7 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
-
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -29,7 +29,7 @@ export class AppWritemail {
     commonservices:AppCommonservices;
     loginerror:any;
     private router: Router;
-    private userInfo:CookieService;
+    private userInfo:any;
     id:any;
     item:any;
     private messages:any;
@@ -40,30 +40,231 @@ export class AppWritemail {
     appcomponent:AppComponent;
     tempdata:Array<any>;
     sharefilesrc:any;
+    ckeditorContent:any;
+    private username:any;
+    private filesrc:any;
+    private details:any;
+    private customerarr:any;
+    fruitName: any;
+    private fruits:any;
+    private selectedFruit:any;
+    private messgaetoerror: any;
+    private messgaebodyerror: any;
+    private messgaesubjecterror: any;
+    private messgaetousername: any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
-        this.router=router;
-        this.http=http;
-        this.router=router;
-        this.appcomponent=appcomponent;
-        this.commonservices=commonservices;
+        this.router = router;
+
+        this.messgaetoerror = false;
+        this.messgaebodyerror = false;
+        this.messgaesubjecterror = false;
+        this.http = http;
+        this.router = router;
+        this.appcomponent = appcomponent;
+        this.commonservices = commonservices;
         this.items = commonservices.getItems();
         this.messages = appcomponent.getMessages();
         this.serverUrl = this.items[0].serverUrl;
-        let link = this.serverUrl+'bannerlist';
-        this.p=1;
-        this.orderbyquery='bannername';
-        this.orderbytype=-1;
+        let link = this.serverUrl + 'bannerlist';
+        this.p = 1;
+        this.orderbyquery = 'bannername';
+        this.orderbytype = -1;
+        this.ckeditorContent = '';
         this.http.get(link)
             .subscribe(data1 => {
                 this.data = data1.json();
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
-                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
-                this.pagec=Math.ceil(this.data.length / 10);
+                this.sharefilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.pagec = Math.ceil(this.data.length / 10);
 
             }, error => {
                 console.log("Oooops!");
             });
+
+        this.fruits = [
+            {
+                id: 1,
+                name: "Apple",
+                searchText: "apple"
+            },
+            {
+                id: 2,
+                name: "Orange",
+                searchText: "orange"
+            },
+            {
+                id: 3,
+                name: "Banana",
+                searchText: "banana"
+            }
+        ];
+
+
+        this.userInfo = userInfo.getObject('userdetails');
+        this.username = this.userInfo.username; // (+) converts string 'id' to a number
+        console.log('user info');
+        console.log(this.userInfo);
+        if (this.userInfo.userrole == 'customer') {
+
+            let ids = {username: this.userInfo.dealerusername};
+            this.http.post(this.serverUrl + 'editdealerbyusername', ids)
+                .subscribe(data => {
+                    this.filesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                    this.details = data.json();
+                    console.log('dealer detail as customer ..');
+                    console.log(this.details);
+                    console.log(this.details.length);
+                    var x: any;
+                    for (x in this.details) {
+                        this.details[x].name = this.details[x].fname + " " + this.details[x].lname + ' ( ' + this.details[x].username + ' ) ';
+
+                        $('.typeahead').val(this.details[x].name);
+                        $('.typeahead').attr('disabled','disabled');
+
+                    }
+                    /*$('.typeahead').typeahead({
+                     hint: true,
+                     highlight: true,
+                     minLength: 1
+                     },
+                     {
+                     name: 'states',
+                     source: (this.customerarr)
+                     });*/
+                    var options = {
+                        data: this.details,
+                        getValue: "name",
+                        list: {
+                            match: {
+                                enabled: true
+                            }
+                        }
+                    };
+                    $(".typeahead").easyAutocomplete(options);
+                    console.log('dealer details');
+                    console.log(this.userInfo);
+                    console.log(this.userInfo.userfullname + ' ( ' + this.username + ' ) ');
+                    //alert(88);
+
+
+                }, error => {
+                    console.log("Oooops!");
+                });
+        }
+        if(this.userInfo.userrole=='dealer'){
+        let ids = {dealerusername: this.username};
+        this.http.post(this.serverUrl + 'getcustomerbyusername', ids)
+            .subscribe(data => {
+                this.filesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.details = data.json();
+                console.log('customer details ..');
+                console.log(this.details);
+                console.log(this.details.length);
+                var x: any;
+                for (x in this.details) {
+                    this.details[x].name = this.details[x].fname + " " + this.details[x].lname + ' ( ' + this.details[x].username + ' ) ';
+                }
+                /*$('.typeahead').typeahead({
+                 hint: true,
+                 highlight: true,
+                 minLength: 1
+                 },
+                 {
+                 name: 'states',
+                 source: (this.customerarr)
+                 });*/
+                var options = {
+                    data: this.details,
+                    getValue: "name",
+                    list: {
+                        match: {
+                            enabled: true
+                        }
+                    }
+                };
+                $(".typeahead").easyAutocomplete(options);
+                console.log('dealer details');
+                console.log(this.userInfo);
+                console.log(this.userInfo.userfullname + ' ( ' + this.username + ' ) ');
+                //alert(88);
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+    }
+
+
+    }
+
+
+    fruitSelected(fruit:any) {
+        this.fruitName = fruit ? fruit.name : 'none';
+    }
+
+    sendemail() {
+        this.messgaetoerror=false;
+        this.messgaesubjecterror=false;
+        this.messgaebodyerror=false;
+
+        var messagetostring: any;
+        messagetostring = $('.typeahead').val();
+        if (messagetostring == '') {
+            this.messgaetoerror = true;
+            $('.messgaetoerror').text('Select a Customer you want to message !');
+            return;
+        }
+
+        var messagesubject: any;
+        messagesubject = $('.messagesubject').val();
+        if (messagesubject == '') {
+            this.messgaesubjecterror = true;
+            //$('.messgaetoerror').text('Select a Customer you want to message !');
+            return;
+        }
+        //alert(this.checkmessagetoerror(messagetostring));
+        if(this.checkmessagetoerror(messagetostring)){
+            //alert(9);
+            $('.messgaetoerror').text('Select a Customer from the options only and you can message only one person at a time  !');
+            return;
+        }
+
+        if(this.ckeditorContent=='') {
+            this.messgaebodyerror=true;
+            return;
+        }
+
+
+        let link = this.serverUrl+'addmessage';
+        var submitdata = {'to':this.messgaetousername,'subject':messagesubject,'body':this.ckeditorContent,'parentid':0,'from':this.username};
+        this.http.post(link,submitdata)
+            .subscribe(data => {
+                // /this.data1.response = data.json();
+                this.router.navigateByUrl('/mailinbox(dealerheader:dealerheader//dealerfooter:dealerfooter)')
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+
+    }
+
+        checkmessagetoerror(val:any){
+            //alert(val);
+            var x: any;
+            for (x in this.details) {
+                if (this.details[x].name == val) {
+                    this.messgaetoerror = false;
+                    this.messgaetousername=this.details[x].username;
+                    return;
+                }
+            }
+            this.messgaetoerror=true;
+            alert(5);
+            $('.messgaetoerror').html('Select a Customer from the options only and you can message only one person at a time  !');
+            return;
+
 
     }
 

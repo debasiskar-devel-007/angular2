@@ -10,10 +10,10 @@ url:any
         //this.cookeiservice=cookeiservice;
 
         if(window.location.hostname=='localhost'){
-            this.url= 'http://influxiq.com:8001/';
+            this.url= 'http://influxiq.com:8002/';
         }
         else{
-            this.url= 'http://influxiq.com:8001/';
+            this.url= 'http://influxiq.com:8002/';
         }
         this.items = [
             { serverUrl: this.url },
@@ -116,6 +116,12 @@ url:any
         var dt = new Date(unix_tm);
         var month = dt.getMonth()+1;
         return  month+'/'+dt.getDate()+'/'+dt.getFullYear() ;
+
+    }
+    convertunixtodatetime(unix_tm:any) {
+        var dt = new Date(unix_tm);
+        var month = dt.getMonth()+1;
+        return  month+'/'+dt.getDate()+'/'+dt.getFullYear()+' '+dt.getHours()+' : '+dt.getMinutes()+' : '+dt.getSeconds() ;
 
     }
 

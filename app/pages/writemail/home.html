@@ -26,11 +26,20 @@
                                             <div class="box-body no-padding navbar-collapse" id="navbar-collapse-1">
                                                 <ul class="nav nav-pills nav-stacked">
                                                     <li class="active"><a href="javascript:void(0)"><span class="glyphicon glyphicon-inbox"></span>New Message </a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-star"></span> Starred <span class="label label-yellow pull-right">12</span></a></li>
+                                                    <li>
+                                                        <a [routerLink]="['/mailinbox']"><span class="glyphicon glyphicon-inbox"></span> Inbox
+                                                            <span class="label label-green pull-right">{{messageaarpub.length}}</span></a></li>
+
+                                                    <!--<li><a href="#"><span class="glyphicon glyphicon-star"></span> Starred <span class="label label-yellow pull-right">12</span></a></li>
+
+                                                    <li><a href="#"><span class="glyphicon glyphicon-bookmark"></span> Important</a></li>-->
+
+                                                    <li><a [routerLink]="['/mailboxsend']"><span class="glyphicon glyphicon-envelope"></span> Sent Mail <span class="label label-red pull-right">{{sendmessageaarpub.length}}</span></a></li>
+                                                   <!-- <li><a href="#"><span class="glyphicon glyphicon-star"></span> Starred <span class="label label-yellow pull-right">12</span></a></li>
                                                     <li><a href="#"><span class="glyphicon glyphicon-bookmark"></span> Important</a></li>
                                                     <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Sent Mail <span class="label label-red pull-right">65</span></a></li>
                                                     <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Drafts</a></li>
-                                                    <li><a href="#">More <span class="glyphicon glyphicon-chevron-down"></span> </a></li>
+                                                    <li><a href="#">More <span class="glyphicon glyphicon-chevron-down"></span> </a></li>-->
                                                 </ul>
                                             </div>
                                             <!-- /.box-body -->
@@ -77,14 +86,14 @@
                                             <div class="box-footer">
                                                 <div class="pull-left">
                                                     <button type="submit" (click)="sendemail()" class="btn btnsend">Send</button>
-                                                    <button type="button" class="btn btndraft">Draft</button>
-                                                    <button type="reset" class="btn btndiscard">Discard</button>
+                                                   <!-- <button type="button" class="btn btndraft">Draft</button>
+                                                    <button type="reset" class="btn btndiscard">Discard</button>-->
                                                 </div>
                                                 <div class="pull-right">
                                                     <div class="form-group">
                                                         <div class="btn btn-default btn-file">
-                                                            <span class="glyphicon glyphicon-paperclip"></span>
-                                                            <input type="file" name="attachment">
+                                                           <!-- <span class="glyphicon glyphicon-paperclip"></span>
+                                                            <input type="file" name="attachment">-->
                                                         </div>
                                                         <!--<div class="btn btn-default btn-file">
                                                             <span class="glyphicon glyphicon-picture"></span>

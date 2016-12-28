@@ -43,6 +43,7 @@ export class AppReadmessage implements OnInit, OnDestroy{
     private customerlist: any;
     private dealerlist: any;
     private messageaar: Array<any>;
+    private sentmessageaar: Array<any>;
     private breaklog1:any;
     private breaklog:any;
     private datab:any;
@@ -51,12 +52,18 @@ export class AppReadmessage implements OnInit, OnDestroy{
     private currentmessage:any;
     ckeditorContent:any;
     private replyopen:any;
+    private messgaebodyerror:any;
+    private replymessages:any;
+    private messageaarpub:any;
+    private sendmessageaarpub:any;
+
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent ,route: ActivatedRoute  ) {
         this.router=router;
         this.replyopen=false;
         this.http=http;
         this.route=route;
+        this.replymessages=[];
         this.appcomponent=appcomponent;
         this.commonservices=commonservices;
         this.items = commonservices.getItems();
@@ -67,6 +74,10 @@ export class AppReadmessage implements OnInit, OnDestroy{
         this.p=1;
         this.orderbyquery='bannername';
         this.orderbytype=-1;
+        this.messageaar=[];
+        this.sentmessageaar=[];
+        this.messageaarpub=[];
+        this.sendmessageaarpub=[];
         this.ckeditorContent='';
         this.http.get(link)
             .subscribe(data1 => {
@@ -80,16 +91,17 @@ export class AppReadmessage implements OnInit, OnDestroy{
             });
 
         this.messageaar=[];
+        this.messgaebodyerror=false;
         this.breaklog=0;
         this.breaklog1=0;
         this.dealerlist=[];
         this.customerlist=[];
         this.currentmessage=[];
-        this.sub = this.route.params.subscribe(params => {
-            this.id = params['id']; // (+) converts string 'id' to a number
+        //this.sub = this.route.params.subscribe(params => {
+            this.id = this.route.snapshot.params['id']; // (+) converts string 'id' to a number
 
             // In a real app: dispatch action to load the details here.
-        });
+       // });
 
         link = this.serverUrl+'messagelist';
         this.http.get(link)
@@ -147,11 +159,31 @@ export class AppReadmessage implements OnInit, OnDestroy{
     }
 
     ngOnDestroy() {
-        this.sub.unsubscribe();
+        //this.sub.unsubscribe();
     }
 
     openreply(){
         this.replyopen=true;
+
+    }
+    sendreply(){
+
+        if(this.ckeditorContent=='') {
+            this.messgaebodyerror=true;
+            return;
+        }
+
+        let link = this.serverUrl+'addmessage';
+        var submitdata = {'to':this.currentmessage[0].from,'subject':this.currentmessage[0].subject,'body':this.ckeditorContent,'parentid':this.id,'from':this.userInfo.username};
+        this.http.post(link,submitdata)
+            .subscribe(data => {
+                // /this.data1.response = data.json();
+                this.router.navigateByUrl('/mailinbox(dealerheader:dealerheader//dealerfooter:dealerfooter)')
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
     }
 
     deleterow(dealerrow:any){
@@ -239,31 +271,66 @@ export class AppReadmessage implements OnInit, OnDestroy{
     private makemessagelist() {
         //if(this.dealerlist.length>0 && this.customerlist.length>0) {
             this.messageaar = [];
+            this.messageaarpub=[];
+            this.replymessages = [];
             console.log('userinfo  in makemessagelist.. .. ');
             console.log(this.userInfo.username);
             console.log(this.data.length);
             var x: any;
             for (x in this.data) {
-                if (this.data[x].to == this.userInfo.username) {
-                    this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
-                    this.messageaar.push(this.data[x]);
-
-                }
                 if(this.id==this.data[x]._id){
                     console.log('got the current message');
-
                     this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
                     this.currentmessage.push(this.data[x]);
                 }
+                if(this.id==this.data[x].parentid){
+                    this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
+                    this.replymessages.push(this.data[x]);
+                }
+                if(this.data[x].parentid!=0) this.data[x]._id=this.data[x].parentid;
+                if (this.data[x].to == this.userInfo.username) {
+                    this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
+                    this.messageaar[this.data[x]._id]=(this.data[x]);
+                }
+
                 console.log(this.id+'==='+this.data[x]._id);
+                console.log(this.replymessages+'reply count');
+                console.log(this.replymessages.length+'reply count');
             }
 
-            console.log('message final array');
-            console.log(this.messageaar);
-            console.log(this.messageaar.length);
+        for ( var key in this.messageaar ){
+            this.messageaarpub.push(this.messageaar[key]);
+        }
+
+        this.sendmessagelist();
         //}
     }
+    private sendmessagelist() {
+        // if(this.dealerlist.length>0 && this.customerlist.length>0) {
+        this.sentmessageaar = [];
+        this.sendmessageaarpub=[];
+        console.log('userinfo  in makemessagelist.. .. ');
+        console.log(this.userInfo.username);
+        console.log(this.data.length);
+        var x: any;
+        for (x in this.data) {
+            if(this.data[x].parentid!=0) this.data[x]._id=this.data[x].parentid;
+            if (this.data[x].from == this.userInfo.username) {
+                this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
+                this.sentmessageaar[this.data[x]._id]=(this.data[x]);
+            }
+        }
 
+        for ( var key in this.sentmessageaar ){
+            this.sendmessageaarpub.push(this.sentmessageaar[key]);
+        }
+
+
+        console.log('message final array');
+        console.log(this.messageaar);
+        console.log(this.messageaar.length);
+        // }
+    }
     private getuserinfo(from:any) {
         var y:any;
         for(y in this.customerlist){

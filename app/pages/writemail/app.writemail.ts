@@ -52,6 +52,15 @@ export class AppWritemail {
     private messgaebodyerror: any;
     private messgaesubjecterror: any;
     private messgaetousername: any;
+    private customerlist: any;
+    private dealerlist: any;
+    private messageaar: Array<any>;
+    private sentmessageaar: Array<any>;
+    private breaklog1:any;
+    private breaklog:any;
+    private datab:any;
+    private messageaarpub:any;
+    private sendmessageaarpub:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router = router;
@@ -70,6 +79,14 @@ export class AppWritemail {
         this.p = 1;
         this.orderbyquery = 'bannername';
         this.orderbytype = -1;
+        this.messageaar=[];
+        this.sentmessageaar=[];
+        this.messageaarpub=[];
+        this.sendmessageaarpub=[];
+        this.breaklog=0;
+        this.breaklog1=0;
+        this.dealerlist=[];
+        this.customerlist=[];
         this.ckeditorContent = '';
         this.http.get(link)
             .subscribe(data1 => {
@@ -194,6 +211,53 @@ export class AppWritemail {
                 console.log("Oooops!");
             });
     }
+        link = this.serverUrl+'messagelist';
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.data = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                console.log(' message list ...');
+                console.log(this.data);
+                console.log(this.data.length);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        link = this.serverUrl+'customerlist';
+        console.log(link);
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.customerlist = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                console.log(' customer list ...');
+                console.log(this.customerlist);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        link = this.serverUrl+'dealerlist';
+        console.log(link);
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.dealerlist = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                console.log(' dealer list ...');
+                console.log(this.dealerlist);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
 
 
     }
@@ -261,7 +325,7 @@ export class AppWritemail {
                 }
             }
             this.messgaetoerror=true;
-            alert(5);
+            //alert(5);
             $('.messgaetoerror').html('Select a Customer from the options only and you can message only one person at a time  !');
             return;
 
@@ -350,7 +414,83 @@ export class AppWritemail {
         this.orderbytype=-1;
     }
 
+    private makemessagelist() {
+       // if(this.dealerlist.length>0 && this.customerlist.length>0) {
+            this.messageaar = [];
+            this.messageaarpub=[];
+            console.log('userinfo  in makemessagelist.. .. ');
+            console.log(this.userInfo.username);
+            console.log(this.data.length);
+            var x: any;
+            for (x in this.data) {
+                if(this.data[x].parentid!=0) this.data[x]._id=this.data[x].parentid;
+                if (this.data[x].to == this.userInfo.username) {
+                    this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
+                    this.messageaar[this.data[x]._id]=(this.data[x]);
+                }
+            }
 
+            for ( var key in this.messageaar ){
+                this.messageaarpub.push(this.messageaar[key]);
+            }
+
+
+            console.log('message final array');
+            console.log(this.messageaar);
+            console.log(this.messageaar.length);
+            this.sendmessagelist();
+       // }
+    }
+    private sendmessagelist() {
+       // if(this.dealerlist.length>0 && this.customerlist.length>0) {
+            this.sentmessageaar = [];
+            this.sendmessageaarpub=[];
+            console.log('userinfo  in makemessagelist.. .. ');
+            console.log(this.userInfo.username);
+            console.log(this.data.length);
+            var x: any;
+            for (x in this.data) {
+                if(this.data[x].parentid!=0) this.data[x]._id=this.data[x].parentid;
+                if (this.data[x].from == this.userInfo.username) {
+                    this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
+                    this.sentmessageaar[this.data[x]._id]=(this.data[x]);
+                }
+            }
+
+            for ( var key in this.sentmessageaar ){
+                this.sendmessageaarpub.push(this.sentmessageaar[key]);
+            }
+
+
+            console.log('message final array');
+            console.log(this.messageaar);
+            console.log(this.messageaar.length);
+       // }
+    }
+
+    private getuserinfo(from:any) {
+        var y:any;
+        for(y in this.customerlist){
+            this.breaklog++;
+
+            if(from==this.customerlist[y].username){
+                return this.customerlist[y].fname+' '+this.customerlist[y].lname+' ( '+this.customerlist[y].username+' ) ';
+            }
+
+        }
+        var z:any;
+        for(z in this.dealerlist){
+            this.breaklog1++;
+
+            if(from==this.dealerlist[z].username){
+                return this.dealerlist[z].fname+' '+this.dealerlist[z].lname+' ( '+this.dealerlist[z].username+' ) ';
+            }
+
+        }
+
+        return '';
+
+    }
 
 
 }

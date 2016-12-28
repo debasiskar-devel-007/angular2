@@ -113,6 +113,8 @@ import {AppDealerpackagepurchase} from "./pages/dealerpackagepurchase/app.dealer
 import {AppViewbyauctionid} from "./pages/viewbyauctionid/app.viewbyauctionid";
 import {AppFreeinvitedealercustomerlist} from "./pages/freeinvitedealercustomerlist/app.freeinvitedealercustomerlist";
 import {AppFreecustomercreditcard} from "./pages/freecustomercreditcard/app.freecustomercreditcard";
+import {AppFreemembershipviews} from "./pages/freemembershipviews/app.freemembershipviews";
+import {AppMailboxsend} from "./pages/mailboxsend/app.mailboxsend";
 
 //alert(window.location.hostname);
 
@@ -252,6 +254,8 @@ const appRoutes: Routes = [
     { path: 'viewbyauctionid/:id', component: AppViewbyauctionid},
     { path: 'freeinvitedealercustomerlist', component: AppFreeinvitedealercustomerlist},
     { path: 'freecustomercreditcard/:randomstring', component: AppFreecustomercreditcard},
+    { path: 'freemembershipviews', component: AppFreemembershipviews},
+    { path: 'mailboxsend', component: AppMailboxsend},
 
 
 

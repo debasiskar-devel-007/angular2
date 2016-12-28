@@ -40,6 +40,7 @@ export class AppDealerdashboard {
     colorlist:any;
     carlistarr:any;
     auctionlistarr:any;
+    datamsg:any;
     private query_model:any;
     private query_auction:any;
     private query_make:any;
@@ -55,6 +56,13 @@ export class AppDealerdashboard {
     private rsvplistarr2:any;
     private oldarr:any;
     private nextauctiondate:any;
+    private customerlist: any;
+    private dealerlist: any;
+    private messageaar: Array<any>;
+    private messageaarpub:any;
+    private breaklog1:any;
+    private breaklog:any;
+    private userfilesrc:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,private _sanitizer: DomSanitizer) {
@@ -75,6 +83,12 @@ export class AppDealerdashboard {
         this.query_year=0;
         this.carlistarr=[];
         this.auctionlistarr=[];
+        this.messageaar=[];
+        this.messageaarpub=[];
+        this.dealerlist=[];
+        this.breaklog1=0;
+        this.breaklog=0;
+        this.customerlist=[];
         this.details=[];
         this.inventorymatcharr=[];
         this.orderbyqueryinventorymatch='inventorymatchval';
@@ -239,9 +253,145 @@ export class AppDealerdashboard {
                 console.log("Oooops!");
             });
 
+
+        link = this.serverUrl+'messagelist';
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.datamsg = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                // console.log(' message list ...');
+                // console.log(this.data);
+                //console.log(this.data.length);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        link = this.serverUrl+'customerlist';
+        // console.log(link);
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.customerlist = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                //console.log(' customer list ...');
+                // console.log(this.customerlist);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+        link = this.serverUrl+'dealerlist';
+        // console.log(link);
+        this.http.get(link)
+            .subscribe(data1 => {
+                this.dealerlist = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                // console.log(' dealer list ...');
+                //console.log(this.dealerlist);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
     }
 
+    private makemessagelist() {
+        // if(this.dealerlist.length>0 && this.customerlist.length>0) {
+        this.messageaar = [];
+        this.messageaarpub=[];
+        // console.log('userinfo  in makemessagelist.. .. ');
+        // console.log(this.userInfo.username);
+        //console.log(this.data.length);
+        var x: any;
+        for (x in this.datamsg) {
+            if(this.datamsg[x].parentid!=0) this.datamsg[x]._id=this.datamsg[x].parentid;
+            if (this.datamsg[x].to == this.userInfo.username) {
+                this.datamsg[x].fromfullname = this.getuserinfo(this.datamsg[x].from);
+                this.datamsg[x].userimage = this.getuserimage(this.datamsg[x].from);
+                this.messageaar[this.datamsg[x]._id]=(this.datamsg[x]);
+            }
+        }
 
+        for ( var key in this.messageaar ){
+            this.messageaarpub.push(this.messageaar[key]);
+        }
+       // this.pagec=Math.ceil(this.messageaarpub.length / 10);
+
+        // console.log('message final array');
+        // console.log(this.messageaar);
+        // console.log(this.messageaar.length);
+       // this.sendmessagelist();
+        //}
+    }
+    private getuserinfo(from:any) {
+        var y:any;
+        for(y in this.customerlist){
+            this.breaklog++;
+
+            if(from==this.customerlist[y].username){
+                return this.customerlist[y].fname+' '+this.customerlist[y].lname+' ( '+this.customerlist[y].username+' ) ';
+            }
+
+        }
+        var z:any;
+        for(z in this.dealerlist){
+            this.breaklog1++;
+
+            if(from==this.dealerlist[z].username){
+                return this.dealerlist[z].fname+' '+this.dealerlist[z].lname+' ( '+this.dealerlist[z].username+' ) ';
+            }
+
+        }
+
+        return '';
+
+    }
+    private getuserimage(from:any) {
+
+        var y:any;
+        for(y in this.customerlist){
+            this.breaklog++;
+
+            if(from==this.customerlist[y].username){
+                //return this.customerlist[y].filename;
+                this.userfilesrc= 'images/logo_61.png';
+                console.log('customercvvv');
+                if(this.customerlist[y].filename!='undefined'){
+                    console.log('customercvvv');
+                    this.userfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.customerlist[y].filename;
+                    return this.userfilesrc;
+                }
+            }
+
+        }
+        var z:any;
+        for(z in this.dealerlist){
+            this.breaklog1++;
+
+            if(from==this.dealerlist[z].username){
+                this.userfilesrc= 'images/logo_61.png';
+                console.log('dealervcxvxvc');
+                if(this.dealerlist[z].filename!='undefined'){
+                    console.log('dealervcxvxvc');
+                    this.userfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.dealerlist[z].filename;
+                    return this.userfilesrc;
+                }
+            }
+
+        }
+
+        return '';
+
+    }
     getcustomerdetails(val:any,val1:any){
 
         let ids={dealerusername:this.username};

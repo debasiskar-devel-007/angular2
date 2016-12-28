@@ -16,11 +16,11 @@ declare var $: any;
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/freeinvitedealercustomerlist/home.html',
+    templateUrl:'app/pages/freemembershipviews/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppFreeinvitedealercustomerlist {
+export class AppFreemembershipviews {
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
@@ -76,12 +76,12 @@ export class AppFreeinvitedealercustomerlist {
             .subscribe(data => {
                 this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 this.data=data.json();
-                console.log('data');
+                console.log('data vbbcbcbb');
                 console.log(this.data.length);
                 var x:any;
 
                 for (x in this.data){
-                   // if(this.data[x].is_lead==1) {
+                    if(this.data[x].is_lead==0 && this.data[x].randomstring!='') {
                         this.data[x].sharefilesrc = 'images/logo_61.png';
                         if (this.data[x].filename) {
                             this.data[x].sharefilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.data[x].filename;
@@ -97,7 +97,7 @@ export class AppFreeinvitedealercustomerlist {
                         }
                         //this.data[x].cardata[y].auctionids=this.data[x].cardata[y].auctionid.join("-");
                         this.cardata.push(this.data[x]);
-                   // }
+                    }
 
 
                 }
@@ -125,20 +125,20 @@ export class AppFreeinvitedealercustomerlist {
                 //var index = this.cardata.indexOf(item);
                 //console.log(index);
                 //let tempdata:Array<any>;
-               /* let x:any;
-                for(x in this.data){
-                    console.log(this.data[x]._id);
-                    console.log('this.data[x]._id');
+                /* let x:any;
+                 for(x in this.data){
+                 console.log(this.data[x]._id);
+                 console.log('this.data[x]._id');
 
-                    if(item._id==this.data[x]._id) {
-                        console.log(x+'.......'+this.data.length);
-                        delete this.data.x;
-                        this.data.splice(x, 1);
-                        console.log(this.data.length);
-                        //this.router.navigate(['adminlist']);
-                       // window.location.reload();
-                    }
-                }*/
+                 if(item._id==this.data[x]._id) {
+                 console.log(x+'.......'+this.data.length);
+                 delete this.data.x;
+                 this.data.splice(x, 1);
+                 console.log(this.data.length);
+                 //this.router.navigate(['adminlist']);
+                 // window.location.reload();
+                 }
+                 }*/
 
                 //console.log(this.data);
 
@@ -150,30 +150,30 @@ export class AppFreeinvitedealercustomerlist {
         // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
     }
 
-   changeStatus(item:any){
-    var idx = this.cardata.indexOf(item);
-    if(this.cardata[idx].is_active==1){
-        var is_active=0;
+    changeStatus(item:any){
+        var idx = this.cardata.indexOf(item);
+        if(this.cardata[idx].is_active==1){
+            var is_active=0;
+        }
+        else{
+            var is_active=1;
+        }
+        let stat={id:item._id,is_active:is_active};
+        let link= this.serverUrl+'customerstatuschange';
+        this.http.post(link,stat)
+            .subscribe(data1 => {
+
+                if(this.cardata[idx].is_active == 0){
+                    this.cardata[idx].is_active = 1;
+                }else{
+                    this.cardata[idx].is_active = 0;
+                }
+            }, error => {
+                console.log("Oooops!");
+            });
+
+
     }
-    else{
-        var is_active=1;
-    }
-   let stat={id:item._id,is_active:is_active};
-       let link= this.serverUrl+'customerstatuschange';
-       this.http.post(link,stat)
-           .subscribe(data1 => {
-
-               if(this.cardata[idx].is_active == 0){
-                   this.cardata[idx].is_active = 1;
-               }else{
-                   this.cardata[idx].is_active = 0;
-               }
-           }, error => {
-               console.log("Oooops!");
-           });
-
-
-}
     getSortClass(value:any){
         console.log(value);
         if(this.orderbyquery==value && this.orderbytype==-1) {
@@ -208,7 +208,7 @@ export class AppFreeinvitedealercustomerlist {
         console.log(item);
         console.log(this.userInfo);
         this.customerinfo=item;
-        var idx1 = this.cardata.indexOf(item);
+        var idx1 = this.data.indexOf(item);
         var charss='0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         var length=5;
         var result = '';
@@ -221,15 +221,15 @@ export class AppFreeinvitedealercustomerlist {
                 this.cardata[idx1].randomstring =this.randstring;
 
                 //this.cardata.finance_check=status;
-              /*  for (y in this.cardata){
+                /*  for (y in this.cardata){
 
 
-                        //this.data[x].cardata[y].auctionids=this.data[x].cardata[y].auctionid.join("-");
-                        this.cardata.push(this.data[y]);
+                 //this.data[x].cardata[y].auctionids=this.data[x].cardata[y].auctionid.join("-");
+                 this.cardata.push(this.data[y]);
 
 
 
-                }*/
+                 }*/
 
 
             }, error => {
@@ -240,7 +240,7 @@ export class AppFreeinvitedealercustomerlist {
     }
     customerupdate(){
         let idss={dealerusername:this.userInfo.username};
-        this.http.post(this.serverUrl+'updateallcustomerfield',idss)
+        this.http.post(this.serverUrl+'updatealldealerfield',idss)
             .subscribe(data => {
                 console.log(data);
 
@@ -251,7 +251,7 @@ export class AppFreeinvitedealercustomerlist {
                 console.log("Oooops!");
             });
 
-}
+    }
 
     financestatuschange(item:any,status:any){
         var idx = this.cardata.indexOf(item);

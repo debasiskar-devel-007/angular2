@@ -41,6 +41,7 @@ export class AppFreecustomercreditcard implements OnInit, OnDestroy {
     randomstring: any;
     private sub: any;
     details: any;
+    dealerusername: any;
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,private route: ActivatedRoute ) {
 
         this.items = commonservices.getItems();
@@ -54,6 +55,25 @@ export class AppFreecustomercreditcard implements OnInit, OnDestroy {
         this.router = router;
         this.customerinfo=[];
         this.serverUrl = this.items[0].serverUrl;
+        var parts = location.hostname.split('.');
+        var sndleveldomain = parts[0];
+        this.dealerusername=parts[0];
+        let ids = {username: sndleveldomain};
+        this.http.post(this.serverUrl + 'editdealerbyusername', ids)
+            .subscribe(data => {
+                this.details1 = data.json()[0];
+                //  console.log('customer data');
+                // console.log(this.details1);
+                if(this.details1.filename) {
+                    this.package_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.filename;
+                }
+                else {
+                    this.package_image ="images/re_logo2.png";
+                }
+
+            }, error => {
+                console.log("Oooops!");
+            });
         this.sub = this.route.params.subscribe(params => {
             this.randomstring = params['randomstring']; // (+) converts string 'id' to a number
             let ids1={randomstring:this.randomstring};
@@ -67,6 +87,7 @@ export class AppFreecustomercreditcard implements OnInit, OnDestroy {
 
                         this.customercreditform = fb.group({
                             username: [this.customerinfo.username, Validators.required],
+                            dealerusername: [this.dealerusername, Validators.required],
                             address: ["", Validators.required],
                             state: ["", Validators.required],
                             city: ["", Validators.required],
@@ -96,28 +117,11 @@ export class AppFreecustomercreditcard implements OnInit, OnDestroy {
             }, error => {
                 console.log("Oooops!");
             });
-        var parts = location.hostname.split('.');
-        var sndleveldomain = parts[0];
 
-        let ids = {username: sndleveldomain};
-        this.http.post(this.serverUrl + 'editdealerbyusername', ids)
-            .subscribe(data => {
-                this.details1 = data.json()[0];
-              //  console.log('customer data');
-               // console.log(this.details1);
-                if(this.details1.filename) {
-                    this.package_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.filename;
-                }
-                else {
-                    this.package_image ="images/re_logo2.png";
-                }
-
-            }, error => {
-                console.log("Oooops!");
-            });
 
         this.customercreditform = fb.group({
             username: [this.customerinfo.username, Validators.required],
+            dealerusername: [this.dealerusername, Validators.required],
             address: ["", Validators.required],
             state: ["", Validators.required],
             city: ["", Validators.required],
@@ -182,10 +186,11 @@ export class AppFreecustomercreditcard implements OnInit, OnDestroy {
             //headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
             //this.items = this.commonservices.getItems();
-            let link = this.serverUrl+'updatecustomer';
+            let link = this.serverUrl+'updatecustomerfree';
             var submitdata = this.customercreditform.value;
+
             console.log(submitdata);
-           this.http.post(link,submitdata)
+          this.http.post(link,submitdata)
                 .subscribe(data => {
                     // /this.data1.response = data.json();
                     console.log(this.customercreditform.value);
@@ -202,5 +207,6 @@ export class AppFreecustomercreditcard implements OnInit, OnDestroy {
 
 
 }
+
 
 

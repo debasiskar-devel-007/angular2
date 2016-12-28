@@ -43,9 +43,12 @@ export class AppMailinbox {
     private customerlist: any;
     private dealerlist: any;
     private messageaar: Array<any>;
+    private sentmessageaar: Array<any>;
     private breaklog1:any;
     private breaklog:any;
     private datab:any;
+    private messageaarpub:any;
+    private sendmessageaarpub:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
@@ -62,6 +65,9 @@ export class AppMailinbox {
         this.orderbyquery='bannername';
         this.orderbytype=-1;
         this.messageaar=[];
+        this.messageaarpub=[];
+        this.sentmessageaar=[];
+        this.sendmessageaarpub=[];
         this.breaklog=0;
         this.breaklog1=0;
         this.dealerlist=[];
@@ -71,7 +77,7 @@ export class AppMailinbox {
                 this.datab = data1.json();
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
                 this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
-                this.pagec=Math.ceil(this.datab.length / 10);
+                //this.pagec=Math.ceil(this.datab.length / 10);
 
             }, error => {
                 console.log("Oooops!");
@@ -85,9 +91,9 @@ export class AppMailinbox {
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
                 this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 //this.pagec=Math.ceil(this.data.length / 10);
-                console.log(' message list ...');
-                console.log(this.data);
-                console.log(this.data.length);
+               // console.log(' message list ...');
+               // console.log(this.data);
+                //console.log(this.data.length);
                 this.makemessagelist();
 
             }, error => {
@@ -95,15 +101,15 @@ export class AppMailinbox {
             });
 
         link = this.serverUrl+'customerlist';
-        console.log(link);
+       // console.log(link);
         this.http.get(link)
             .subscribe(data1 => {
                 this.customerlist = data1.json();
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
                 this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 //this.pagec=Math.ceil(this.data.length / 10);
-                console.log(' customer list ...');
-                console.log(this.customerlist);
+                //console.log(' customer list ...');
+               // console.log(this.customerlist);
                 this.makemessagelist();
 
             }, error => {
@@ -111,15 +117,15 @@ export class AppMailinbox {
             });
 
         link = this.serverUrl+'dealerlist';
-        console.log(link);
+       // console.log(link);
         this.http.get(link)
             .subscribe(data1 => {
                 this.dealerlist = data1.json();
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
                 this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 //this.pagec=Math.ceil(this.data.length / 10);
-                console.log(' dealer list ...');
-                console.log(this.dealerlist);
+               // console.log(' dealer list ...');
+                //console.log(this.dealerlist);
                 this.makemessagelist();
 
             }, error => {
@@ -140,7 +146,7 @@ export class AppMailinbox {
                 // this.data = data1.json();
                 //  this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)');
                 var index = this.data.indexOf(id.id);
-                console.log(index);
+               // console.log(index);
                 //let tempdata:Array<any>;
                 let x:any;
                 for(x in this.data){
@@ -189,23 +195,57 @@ export class AppMailinbox {
 
 
     private makemessagelist() {
-        if(this.dealerlist.length>0 && this.customerlist.length>0) {
+       // if(this.dealerlist.length>0 && this.customerlist.length>0) {
             this.messageaar = [];
-            console.log('userinfo  in makemessagelist.. .. ');
-            console.log(this.userInfo.username);
-            console.log(this.data.length);
+        this.messageaarpub=[];
+           // console.log('userinfo  in makemessagelist.. .. ');
+           // console.log(this.userInfo.username);
+            //console.log(this.data.length);
             var x: any;
             for (x in this.data) {
+                if(this.data[x].parentid!=0) this.data[x]._id=this.data[x].parentid;
                 if (this.data[x].to == this.userInfo.username) {
                     this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
-                    this.messageaar.push(this.data[x]);
+                    this.messageaar[this.data[x]._id]=(this.data[x]);
                 }
             }
 
-            console.log('message final array');
-            console.log(this.messageaar);
-            console.log(this.messageaar.length);
-        }
+            for ( var key in this.messageaar ){
+                this.messageaarpub.push(this.messageaar[key]);
+            }
+            this.pagec=Math.ceil(this.messageaarpub.length / 10);
+
+           // console.log('message final array');
+           // console.log(this.messageaar);
+           // console.log(this.messageaar.length);
+            this.sendmessagelist();
+        //}
+    }
+    private sendmessagelist() {
+       // if(this.dealerlist.length>0 && this.customerlist.length>0) {
+            this.sentmessageaar = [];
+            this.sendmessageaarpub=[];
+           // console.log('userinfo  in makemessagelist.. .. ');
+           // console.log(this.userInfo.username);
+           // console.log(this.data.length);
+            var x: any;
+            for (x in this.data) {
+                if(this.data[x].parentid!=0) this.data[x]._id=this.data[x].parentid;
+                if (this.data[x].from == this.userInfo.username) {
+                    this.data[x].fromfullname = this.getuserinfo(this.data[x].from);
+                    this.sentmessageaar[this.data[x]._id]=(this.data[x]);
+                }
+            }
+
+            for ( var key in this.sentmessageaar ){
+                this.sendmessageaarpub.push(this.sentmessageaar[key]);
+            }
+
+
+            //console.log('message final array');
+           // console.log(this.messageaar);
+           // console.log(this.messageaar.length);
+       // }
     }
 
     private getuserinfo(from:any) {

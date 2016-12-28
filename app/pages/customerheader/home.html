@@ -7,7 +7,7 @@
                     <span class="logodevider"></span>
 
                     <!--<a href="javascript:void(0)"><img src="images/logo2.png" alt=""  class="logo2"/></a>-->
-                    <a href="javascript:void(0)"><img src="{{uploadedfilesrc}}" alt=""  class="adminlogo"/></a>
+                    <a href="javascript:void(0)" [routerLink]="['/customerdashboard']"><img src="{{uploadedfilesrc}}" alt=""  class="adminlogo"/></a>
                     <button type="button" class="btn btn-info collapsebtn" data-toggle="collapse" data-target="#demo"> <img src="images/dropdownmenu1.png" alt=""/></button>
                     <div class="clearfix"></div>
                 </div>
@@ -19,7 +19,7 @@
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerright">
                 <div class="badgelists">
-                    <a href = "#"><span class = "badge">3</span><img src="images/admicon-message.png">Messages</a>
+                    <a href = "javascript:void(0)" [routerLink]="['/mailinbox']"><span class = "badge">3</span><img src="images/admicon-message.png">Messages</a>
                     <a href = "#"><span class = "badge">1</span><img src="images/admicon-notification.png">Notifications</a>
                     <a href = "#"><span class = "badge">5</span><img src="images/admicon-newcustomer.png">New Customers</a>
                 </div>

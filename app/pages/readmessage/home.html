@@ -24,12 +24,12 @@
                                             </div>
                                             <div class="box-body no-padding navbar-collapse" id="navbar-collapse-1">
                                                 <ul class="nav nav-pills nav-stacked">
-                                                    <li class="active"><a href="#"><span class="glyphicon glyphicon-inbox"></span>Inbox <span class="label label-green pull-right">12</span></a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-star"></span> Starred <span class="label label-yellow pull-right">12</span></a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-bookmark"></span> Important</a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-envelope"></span> Sent Mail <span class="label label-red pull-right">65</span></a></li>
-                                                    <li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Drafts</a></li>
-                                                    <li><a href="#">More <span class="glyphicon glyphicon-chevron-down"></span> </a></li>
+                                                    <li class="active"><a [routerLink]="['/mailinbox']"><span class="glyphicon glyphicon-inbox"></span>Inbox <span class="label label-green pull-right">{{messageaarpub.length}}</span></a></li>
+                                                    <!--<li><a href="#"><span class="glyphicon glyphicon-star"></span> Starred <span class="label label-yellow pull-right">12</span></a></li>
+                                                    <li><a href="#"><span class="glyphicon glyphicon-bookmark"></span> Important</a></li>-->
+                                                    <li><a [routerLink]="['/mailboxsend']"><span class="glyphicon glyphicon-envelope"></span> Sent Mail <span class="label label-red pull-right">{{sendmessageaarpub.length}}</span></a></li>
+                                                    <!--<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Drafts</a></li>
+                                                    <li><a href="#">More <span class="glyphicon glyphicon-chevron-down"></span> </a></li>-->
                                                 </ul>
                                             </div>
                                             <!-- /.box-body -->
@@ -40,6 +40,9 @@
                                     <div class="col-md-10 col-sm-9 col-xs-12 mailinboxright readmailinboxouterwrapper">
                                         <div class="box box-primary readmailinboxwrapper">
                                             <div class="box-header with-border">
+                                                <!--<button type="button" class="btn btn-default btn-sm btninputtype"><input type="checkbox"><span class="glyphicon glyphicon-vector-path-square"></span>
+                                                </button>-->
+                                                <button [routerLink]="['/writemail']" type="button" class="btn btn-default btn-sm btnwritemail"><span class="glyphicon glyphicon-plus"></span> write mail</button>
                                                 <div class="box-tools pull-right">
                                                     <span class="mailbox-read-time pull-right" *ngIf="currentmessage.length>0">{{commonservices.convertunixtodatetime(currentmessage[0].addedon)}}</span>
                                                 </div>
@@ -63,14 +66,26 @@
 
                                                 <!-- /.mailbox-controls -->
                                                 <div *ngIf="currentmessage.length>0" class="mailbox-read-message"[innerHtml]="currentmessage[0].body" >
+                                                </div>
+                                                <div class="msgreply">Replies:</div>
+
+                                                <div *ngFor="let msg of replymessages"  >
+                                                    <div class="msgdatewrapper">
+                                                        <span class="msgdate">{{msg.fromfullname}}</span>
+                                                        <span class="msgdate">{{commonservices.convertunixtodatetime(msg.addedon)}}</span>
+                                                    </div>
+                                                    <div class="mailbox-read-message"[innerHtml]="msg.body"></div>
 
                                                 </div>
+
                                                 <!-- /.mailbox-read-message -->
                                             </div>
 
                                             <ckeditor *ngIf="replyopen"
                                                     [(ngModel)]="ckeditorContent"
                                                     [config]="{uiColor: '#272727'}"                                                                                                     debounce="500">                                                    </ckeditor>
+
+                                            <span  *ngIf ="messgaebodyerror" class="help-inline">Message Body is required ! <img src="images/iconquestion.png"></span>
                                             <!-- /.box-body -->
                                             <div class="box-footer">
 

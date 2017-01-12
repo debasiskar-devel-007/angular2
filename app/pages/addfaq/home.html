@@ -15,7 +15,7 @@
                             <div class="form-group">
                                 <input [formControl]="faqform.controls['title']" name="title"  type="text" class="form-control" placeholder="Title"/>
                                 <span  *ngIf ="!faqform.controls['title'].valid" class="help-inline">Title is Required ! <img src="images/iconquestion.png"></span>
-                            </div>
+                             </div>
                             <div class="form-group">
                                 <input [formControl]="faqform.controls['priority']" name="priority"  type="text" class="form-control" placeholder="Priority"/>
                                 <span *ngIf ="faqform.controls['priority'].touched && !faqform.controls['priority'].valid" class="help-inline">Priority  is Required !<img src="images/iconquestion.png"></span>

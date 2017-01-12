@@ -10,7 +10,7 @@ import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
 import {DomSanitizer} from "@angular/platform-browser";
-
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -69,6 +69,7 @@ export class AppAuctioininventorydetails implements OnInit, OnDestroy {
     gear_type:any;
     trinted_window:any;
     uploadedfilesrc1:any;
+    uploadedadditionalfilearr:any;
     lights:any;
     carmileagelist:any;
     carbodystylelistarr:any;
@@ -83,6 +84,8 @@ export class AppAuctioininventorydetails implements OnInit, OnDestroy {
         this.items = commonservices.getItems();
         this.messages = appcomponent.getMessages();
         this.serverUrl = this.items[0].serverUrl;
+        this.uploadedadditionalfilearr=[];
+        this.details=[];
         this.http.get(this.serverUrl+'auctionlist')
             .subscribe(data => {
                 this.auctionlist=data.json();
@@ -130,7 +133,7 @@ export class AppAuctioininventorydetails implements OnInit, OnDestroy {
                     console.log(this.details);
                     this.uploadedfilesrc1 = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details.filename;
 
-console.log(this.uploadedfilesrc1);
+//console.log(this.uploadedfilesrc1);
 
 
                         this.doctype=this.details.doctype;
@@ -163,8 +166,16 @@ console.log(this.uploadedfilesrc1);
                         this.gear_type=this.details.gear_type;
                         this.trinted_window=this.details.trinted_window;
                         this.digital_display=this.details.digital_display;
+                    console.log('Inventory Details');
+                        console.log(this.details.additionalfilename);
+                        var x:any;
+                        for(x in this.details.additionalfilename){
+                            console.log(this.details.additionalfilename[x]);
+                            this.uploadedadditionalfilearr.push("http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" +this.details.additionalfilename[x]);
+                        }
+                        console.log('Image List');
 
-
+                        console.log(this.uploadedadditionalfilearr);
 
                 }, error => {
                     console.log("Oooops!");
@@ -203,8 +214,8 @@ console.log(this.uploadedfilesrc1);
         console.log('car logo val');
         console.log(val);
         for(x in this.carlogolistarr){
-            console.log('car logo loop val');
-            console.log(this.carlogolistarr[x]._id);
+           // console.log('car logo loop val');
+          //  console.log(this.carlogolistarr[x]._id);
             if(this.carlogolistarr[x]._id==val) return this.carlogolistarr[x].name;
         }
         return 'N/A';
@@ -237,7 +248,9 @@ console.log(this.uploadedfilesrc1);
         }
         return 'N/A';
     }
-
+    imageshow(imagesrs:any){
+        $('.bigimag').attr('src',imagesrs);
+    }
 
 }
 

@@ -81,7 +81,7 @@ export class AppFreeinvitedealercustomerlist {
                 var x:any;
 
                 for (x in this.data){
-                   // if(this.data[x].is_lead==1) {
+                    if(this.data[x].is_lead==1) {
                         this.data[x].sharefilesrc = 'images/logo_61.png';
                         if (this.data[x].filename) {
                             this.data[x].sharefilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.data[x].filename;
@@ -97,7 +97,7 @@ export class AppFreeinvitedealercustomerlist {
                         }
                         //this.data[x].cardata[y].auctionids=this.data[x].cardata[y].auctionid.join("-");
                         this.cardata.push(this.data[x]);
-                   // }
+                    }
 
 
                 }
@@ -215,7 +215,7 @@ export class AppFreeinvitedealercustomerlist {
         for (var i = length; i > 0; --i) result += charss[Math.round(Math.random() * (charss.length - 1))];
         this.randstring =result;
         this.dealerfullname=this.userInfo.userfullname;
-        var mailinfo={username:this.customerinfo.username,fname:this.customerinfo.fname,email:this.customerinfo.email,dealerfullname:this.dealerfullname,randomstring:this.randstring};
+        var mailinfo={username:this.userInfo.username,customerusername:this.customerinfo.username,fname:this.customerinfo.fname,email:this.customerinfo.email,dealerfullname:this.dealerfullname,randomstring:this.randstring};
         this.http.post(this.serverUrl+'mailtocustomerforfreesignup',mailinfo)
             .subscribe(data => {
                 this.cardata[idx1].randomstring =this.randstring;

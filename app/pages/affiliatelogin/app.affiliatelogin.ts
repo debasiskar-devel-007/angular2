@@ -75,7 +75,7 @@ export class AppAffiliatelogin {
 
                 var res=data.json();
                     if(res.length>0){
-                        var userdet={username:res[0].username,useremail:res[0].email,userrole:'dealer',userfullname:res[0].fname+' '+res[0].lname}
+                        var userdet={id:res[0]._id,username:res[0].username,useremail:res[0].email,userrole:'affiliate',userfullname:res[0].fname+' '+res[0].lname,dealereusername:res[0].dealereusername}
 
                         console.log('Login successfully');
                         this.userInfo.putObject('userdetails', userdet);

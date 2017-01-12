@@ -7,7 +7,7 @@ import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
-
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -68,7 +68,12 @@ export class AppAffiliateheader {
             return '';
         }
     }
-
+    openclickreport(){
+        $('#affiliateclickModal1').modal('show');
+    }
+    opensignupreport(){
+        $('#affiliatesignupModal').modal('show');
+    }
 }
 
 

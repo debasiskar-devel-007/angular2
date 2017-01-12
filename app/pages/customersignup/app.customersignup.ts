@@ -1,8 +1,8 @@
-import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation} from '@angular/core';
+import {Component, NgModule, ViewChild,ViewContainerRef, ViewEncapsulation,OnDestroy,OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from "@angular/forms/src/directives";
 //import {FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES} from '@angular/forms';
-import {Routes, RouterModule, Router} from '@angular/router';
+import {Routes, RouterModule, Router, ActivatedRoute} from '@angular/router';
 import {ModalModule} from "ng2-modal";
 import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
@@ -30,6 +30,8 @@ export class AppCustomersignup {
     commonservices:AppCommonservices;
     private customerInfo:CookieService;
     private router: Router;
+    private sub: any;
+    id:any;
     customerinfo:any;
     terms:any;
     package_image:any;
@@ -37,12 +39,16 @@ export class AppCustomersignup {
     coockieData:CookieService;
     data1:any;
 
-    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,customerInfo:CookieService ,router: Router) {
+    constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices ,customerInfo:CookieService ,router: Router,private route: ActivatedRoute ) {
 
         this.items = commonservices.getItems();
         this.http=http;
         this.router=router;
         this.customerInfo=customerInfo;
+        this.id=0;
+        this.sub = this.route.params.subscribe(params => {
+            this.id = params['id'];
+        });
 
         this.serverUrl = this.items[0].serverUrl;
         var parts = location.hostname.split('.');
@@ -74,11 +80,23 @@ export class AppCustomersignup {
             email: ["", AppCustomersignup.validateEmail],
             phone: ["", Validators.required],
             zip: ["", Validators.required],
+            affiliateid: [this.id],
             term: ["", AppCustomersignup.validateTerms]
         });
     }
 
+    ngOnInit() {
+        this.sub = this.route.params.subscribe(params => {
+            this.id = params['id']; // (+) converts string 'id' to a number
 
+            // In a real app: dispatch action to load the details here.
+        });
+
+    }
+
+    ngOnDestroy() {
+        this.sub.unsubscribe();
+    }
     static validateTerms(control: FormControl){
 
         if(control.value==false){
@@ -118,6 +136,7 @@ export class AppCustomersignup {
                           this.terms=0;
                     }
                     this.customersignupform.value.term=this.terms;
+
                    // console.log(this.customersignupform.value.term);
                     this.customerInfo.putObject('customerInfo', this.customersignupform.value);
                     this.router.navigate(['/customercreditcard']);

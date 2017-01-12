@@ -24,6 +24,7 @@ export class AppEditcar implements OnInit {
     private zone: NgZone;
     private basicOptions: Object;
     private progress: number = 0;
+    private additionalprogress: number = 0;
     private response: any = {};
     myModal :ModalModule;
     addcarform: FormGroup;
@@ -48,6 +49,9 @@ export class AppEditcar implements OnInit {
     private listcarautomileage:any;
     private basepricelist:any;
     private featurelist:any;
+    private response1:any;
+    additionalfilenamearr:any;
+    additionaluploadedfilesrcarr:any;
 
     id: number;
     private sub: any;
@@ -65,7 +69,17 @@ export class AppEditcar implements OnInit {
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
         this.userInfo=userInfo.getObject('userdetails');
-console.log(this.userInfo);
+        this.auctionlist=[];
+        this.carlogolist=[];
+        this.colorlist=[];
+        this.carbodystylelist=[];
+        this.carautoyearlist=[];
+        this.listcarautomileage=[];
+        this.basepricelist=[];
+        this.featurelist=[];
+        this.additionalfilenamearr=[];
+        this.additionaluploadedfilesrcarr=[];
+        console.log(this.userInfo);
         this.serverUrl = this.items[0].serverUrl;
         this.http.get(this.serverUrl+'auctionlist')
             .subscribe(data => {
@@ -129,6 +143,21 @@ console.log(this.userInfo);
                     this.details=data.json()[0];
                     console.log(this.details);
                     this.uploadedfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details.filename;
+                    console.log('Image');
+                    console.log(this.details.additionalfilename);
+                   //
+                   /* $.each(this.details.additionalfilename, function (index:any, value:any) {
+                        console.log(value);
+
+                        // Will stop running after "three"
+                        return (value !== 'three');
+                    });*/
+                   var x:any;
+                    for(x in this.details.additionalfilename ){
+
+                        this.additionaluploadedfilesrcarr.push("http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details.additionalfilename[x]);
+                    }
+
                     this.addcarform = fb.group({
 
                         id: [this.details._id, Validators.required],
@@ -145,6 +174,7 @@ console.log(this.userInfo);
                         is_active: [this.details.is_active],
                         priority: [this.details.priority, Validators.required],
                         filename: [this.details.filename, Validators.required],
+                        additionalfilename: [this.details.additionalfilename, Validators.required],
                         carlogolist: [this.details.carlogolist, Validators.required],
                         model: [this.details.model, Validators.required],
                         carautoyearlist: [this.details.carautoyearlist, Validators.required],
@@ -199,6 +229,7 @@ console.log(this.userInfo);
             is_active: [''],
             priority: ['', Validators.required],
             filename: ['', Validators.required],
+            additionalfilename: ['', Validators.required],
             carlogolist: ['', Validators.required],
             model: ['', Validators.required],
             carautoyearlist: ['', Validators.required],
@@ -251,6 +282,36 @@ console.log(this.userInfo);
             }
         });
     }
+    additionalhandleUpload(data: any): void
+    {
+
+        //console.log(data.progress.percent);
+        this.zone.run(() => {
+            this.response1 = data;
+            this.additionalprogress = data.progress.percent ;
+            if(data.progress.percent==100){
+                console.log(data.response);
+                //console.log(data.response.json());
+                //console.log(data.response.filename);
+
+                if(typeof (data.response)!='undefined') {
+                    this.additionalfilenamearr.push(data.response);
+                    this.addcarform.patchValue({additionalfilename: this.additionalfilenamearr});
+                    this.additionaluploadedfilesrcarr.push("http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + data.response);
+                }
+            }
+        });
+        console.log(this.additionalfilenamearr);
+
+    }
+    deleteimage(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        var arrindex = this.additionalfilenamearr.indexOf(target.value);
+        this.additionalfilenamearr.splice(arrindex, 1);
+        this.additionaluploadedfilesrcarr.splice(arrindex, 1);
+        this.addcarform.patchValue({additionalfilename: this.additionalfilenamearr});
+        console.log(this.additionalfilenamearr);
+    }
 
     onChange(event:any){
         //alert(99);
@@ -279,7 +340,7 @@ console.log(this.userInfo);
             console.log(submitdata);
             this.http.post(link,submitdata)
                 .subscribe(data => {
-                     this.router.navigateByUrl('/carlist(adminheader:adminheader//adminfooter:adminfooter)');
+                    this.router.navigateByUrl('/carlist(adminheader:adminheader//adminfooter:adminfooter)');
 
                 }, error => {
                     console.log("Oooops!");
@@ -288,7 +349,7 @@ console.log(this.userInfo);
     }
 
 
- 
+
 
 }
 

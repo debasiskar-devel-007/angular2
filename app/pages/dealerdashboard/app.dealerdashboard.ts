@@ -62,7 +62,31 @@ export class AppDealerdashboard {
     private messageaarpub:any;
     private breaklog1:any;
     private breaklog:any;
-    private userfilesrc:any;
+    private userimagefilesrc:any;
+    orderbyquery:any;
+    orderbytype:any;
+    private customprofiledetails:any;
+    private customerfile:any;
+
+    private itemrsvpcar:any;
+    private carbodystylelist:any;
+    private inventory:any;
+    private retailcommission:any;
+    private retailfinalval:any;
+    private retailctype:any;
+    private retailc:any;
+    private parsecomission:any;
+    private parseprice:any;
+
+    private userinformation:any;
+    private customeractivity:any;
+    private a:any;
+    private b:any;
+    private colorname:any;
+    private color:any;
+    private bodystyle:any;
+    private make:any;
+    private mileage:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,private _sanitizer: DomSanitizer) {
@@ -82,13 +106,19 @@ export class AppDealerdashboard {
         this.query_make=0;
         this.query_year=0;
         this.carlistarr=[];
+        this.customeractivity=[];
         this.auctionlistarr=[];
         this.messageaar=[];
         this.messageaarpub=[];
         this.dealerlist=[];
         this.breaklog1=0;
         this.breaklog=0;
+        this.retailc=0;
+        this.retailctype=0;
         this.customerlist=[];
+        this.orderbyquery='addedon';
+        this.orderbytype=-1;
+
         this.details=[];
         this.inventorymatcharr=[];
         this.orderbyqueryinventorymatch='inventorymatchval';
@@ -96,12 +126,39 @@ export class AppDealerdashboard {
 
         this.userInfo=userInfo.getObject('userdetails');
         this.username = this.userInfo.username; // (+) converts string 'id' to a number
+        let linkmessage = this.serverUrl+'messagelist';
+        this.http.get(linkmessage)
+            .subscribe(data1 => {
+                this.datamsg = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+ /*               console.log(' message list ...');
+                console.log(this.data);
+                console.log(this.data.length);*/
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
         console.log(this.username);
         let ids={dealerusername:this.username};
         this.http.post(this.serverUrl+'getcustomerbyusername',ids)
             .subscribe(data => {
                 this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 this.details=data.json();
+                //console.log(this.details);
+                this.manageinventory();
+
+
+            }, error => {
+                console.log("Oooops!");
+            });
+        let ids3={dealerusername:this.username};
+        this.http.post(this.serverUrl+'getcustomeractivitybyusername',ids3)
+            .subscribe(data => {
+                //this.filesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                this.customeractivity=data.json();
                 //console.log(this.details);
                 this.manageinventory();
 
@@ -121,7 +178,19 @@ export class AppDealerdashboard {
             }, error => {
                 console.log("Oooops!");
             });
+        let linkv = this.serverUrl+'getretailcommissionlist';
+        let var1={dealerid:this.userInfo.id};
+        this.http.post(linkv,var1)
+            .subscribe(data1 => {
 
+                this.retailcommission = data1.json();
+                console.log('retail comission ...');
+                console.log(this.retailcommission[0]);
+                this.retailfinalval=this.retailcommission[0].commission;
+
+            }, error => {
+                console.log("Oooops!");
+            });
 
         let linkv1 = this.serverUrl+'getrsvpbydealerid';
         let var11={dealerid:this.userInfo.username};
@@ -221,6 +290,12 @@ export class AppDealerdashboard {
             }, error => {
                 console.log("Oooops!");
             });
+        this.http.get(this.serverUrl+'carbodystylelist')
+            .subscribe(data => {
+                this.carbodystylelist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
         this.oldarr=999999999;
         this.http.get(this.serverUrl+'auctionlist')
             .subscribe(data1 => {
@@ -254,21 +329,7 @@ export class AppDealerdashboard {
             });
 
 
-        link = this.serverUrl+'messagelist';
-        this.http.get(link)
-            .subscribe(data1 => {
-                this.datamsg = data1.json();
-                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
-                this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
-                //this.pagec=Math.ceil(this.data.length / 10);
-                // console.log(' message list ...');
-                // console.log(this.data);
-                //console.log(this.data.length);
-                this.makemessagelist();
 
-            }, error => {
-                console.log("Oooops!");
-            });
 
         link = this.serverUrl+'customerlist';
         // console.log(link);
@@ -308,9 +369,6 @@ export class AppDealerdashboard {
         // if(this.dealerlist.length>0 && this.customerlist.length>0) {
         this.messageaar = [];
         this.messageaarpub=[];
-        // console.log('userinfo  in makemessagelist.. .. ');
-        // console.log(this.userInfo.username);
-        //console.log(this.data.length);
         var x: any;
         for (x in this.datamsg) {
             if(this.datamsg[x].parentid!=0) this.datamsg[x]._id=this.datamsg[x].parentid;
@@ -324,13 +382,7 @@ export class AppDealerdashboard {
         for ( var key in this.messageaar ){
             this.messageaarpub.push(this.messageaar[key]);
         }
-       // this.pagec=Math.ceil(this.messageaarpub.length / 10);
 
-        // console.log('message final array');
-        // console.log(this.messageaar);
-        // console.log(this.messageaar.length);
-       // this.sendmessagelist();
-        //}
     }
     private getuserinfo(from:any) {
         var y:any;
@@ -356,19 +408,22 @@ export class AppDealerdashboard {
 
     }
     private getuserimage(from:any) {
-
+        this.userimagefilesrc= 'images/logo_61.png';
         var y:any;
         for(y in this.customerlist){
             this.breaklog++;
 
             if(from==this.customerlist[y].username){
                 //return this.customerlist[y].filename;
-                this.userfilesrc= 'images/logo_61.png';
+
                 console.log('customercvvv');
-                if(this.customerlist[y].filename!='undefined'){
+                if(typeof(this.customerlist[y].filename)!='undefined'){
                     console.log('customercvvv');
-                    this.userfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.customerlist[y].filename;
-                    return this.userfilesrc;
+                    this.userimagefilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.customerlist[y].filename;
+                    console.log(this.userimagefilesrc);
+                    console.log(from);
+
+                    return this.userimagefilesrc;
                 }
             }
 
@@ -378,12 +433,14 @@ export class AppDealerdashboard {
             this.breaklog1++;
 
             if(from==this.dealerlist[z].username){
-                this.userfilesrc= 'images/logo_61.png';
+
                 console.log('dealervcxvxvc');
-                if(this.dealerlist[z].filename!='undefined'){
+                if(typeof(this.dealerlist[z].filename)!='undefined'){
                     console.log('dealervcxvxvc');
-                    this.userfilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.dealerlist[z].filename;
-                    return this.userfilesrc;
+                    this.userimagefilesrc = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.dealerlist[z].filename;
+                    console.log(this.userimagefilesrc);
+                    console.log(from);
+                    return this.userimagefilesrc;
                 }
             }
 
@@ -413,6 +470,11 @@ export class AppDealerdashboard {
                                 return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.details[x].filename+ " />");
                             else return this._sanitizer.bypassSecurityTrustHtml("<img  src ='images/logo_61.png' />");
                         }
+                        if (val1=='carimage'){
+                            if(typeof (this.details[x].filename)!='undefined')
+                                return this._sanitizer.bypassSecurityTrustHtml("<img class='detailsimgnew' src = "+this.filesrc+this.details[x].filename+ " />");
+                            else return this._sanitizer.bypassSecurityTrustHtml("<img  class='detailsimgnew' src ='images/logo_61.png' />");
+                        }
                         return this.details[x];
                     }
                 }
@@ -434,6 +496,11 @@ export class AppDealerdashboard {
                         if(typeof (this.details[x].filename)!='undefined')
                             return this._sanitizer.bypassSecurityTrustHtml("<img  src = "+this.filesrc+this.details[x].filename+ " />");
                         else return this._sanitizer.bypassSecurityTrustHtml("<img  src = 'images/logo_61.png' />");
+                    }
+                    if (val1=='carimage'){
+                        if(typeof (this.details[x].filename)!='undefined')
+                            return this._sanitizer.bypassSecurityTrustHtml("<img class='detailsimgnew' src = "+this.filesrc+this.details[x].filename+ " />");
+                        else return this._sanitizer.bypassSecurityTrustHtml("<img  class='detailsimgnew' src ='images/logo_61.png' />");
                     }
 
                     return this.details[x];
@@ -469,6 +536,46 @@ export class AppDealerdashboard {
                                 //console.log(this.carlistarr[x]);
                                 //console.log(this.carlistarr[x].carlogolist);
                                 return (this.carlistarr[x].model);
+                            }
+                            if (val1=='enginetype'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].enginetype);
+                            }
+                            if (val1=='drive'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].drive);
+                            }
+                            if (val1=='cylinder'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].cylinder);
+                            }
+                            if (val1=='fuel'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].fuel);
+                            }
+                            if (val1=='vin'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].vin);
+                            }
+                            if (val1=='seats'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].seats);
+                            }
+                            if (val1=='gear_type'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].gear_type);
+                            }
+                            if (val1=='carbodystyle'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return this.getbodystyle(this.carlistarr[x]);
                             }
                             if (val1=='year'){
                                 //console.log(this.carlistarr[x]);
@@ -518,10 +625,50 @@ export class AppDealerdashboard {
                         //console.log(this.carlistarr[x].carlogolist);
                         return this.getcolor(this.carlistarr[x]);
                     }
+                    if (val1=='enginetype'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].enginetype);
+                    }
+                    if (val1=='drive'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].drive);
+                    }
+                    if (val1=='cylinder'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].cylinder);
+                    }
+                    if (val1=='seats'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].seats);
+                    }
+                    if (val1=='gear_type'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].gear_type);
+                    }
+                    if (val1=='fuel'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].fuel);
+                    }
+                    if (val1=='vin'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].vin);
+                    }
                     if (val1=='price'){
                         //console.log(this.carlistarr[x]);
                         //console.log(this.carlistarr[x].carlogolist);
                         return (this.carlistarr[x].est_retail_value);
+                    }
+                    if (val1=='carbodystyle'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return this.getbodystyle(this.carlistarr[x]);
                     }
 
                     if (val1=='make'){
@@ -788,6 +935,13 @@ export class AppDealerdashboard {
         }
         return 'N/A';
     }
+    getcarlogos(val:any){
+        var x1:any;
+        for(x1 in this.carlogolist){
+            if(this.carlogolist[x1]._id==val.carlogolist) return this.carlogolist[x1].logo;
+        }
+        return 'N/A';
+    }
     getcaryear(val:any){
         //console.log(val);
         //carlogolist
@@ -826,6 +980,15 @@ export class AppDealerdashboard {
         //alert(tval);
         this.query=$(target).val();
         //alert(this.query);
+    }
+    getbodystyle(val:any){
+        //console.log(val);
+        //carlogolist
+        var t:any;
+        for(t in this.carbodystylelist){
+            if(this.carbodystylelist[t]._id==val.carbodystylelist) return this.carbodystylelist[t].name;
+        }
+        return 'N/A';
     }
     getarrcount(item:any,i:any,icar:any){
         //var target = ev.target || ev.srcElement || ev.originalTarget;
@@ -871,6 +1034,163 @@ export class AppDealerdashboard {
 
     getmatchpercentage(val:any){
         return this._sanitizer.bypassSecurityTrustHtml(val);
+    }
+    rsvpModalopen(inventory:Array<any>,userarr:Array<any>){
+        console.log('inventory');
+        this.inventory=inventory;
+        console.log(this.inventory.est_retail_value);
+        //alert(parseFloat(this.inventory.est_retail_value.replace(',','')));
+        //alert(this.retailcommission[0].commission);
+        //alert(this.retailcommission[0].commissiontype);
+        this.retailctype=this.retailcommission[0].commissiontype;
+        this.retailc=this.retailcommission[0].commission;
+        if(this.retailcommission[0].commissiontype=='Percentage'){
+            this.parsecomission=parseFloat(this.retailcommission[0].commission);
+            this.parseprice=parseFloat(this.inventory.est_retail_value.replace(',',''));
+
+            this.parsecomission=parseFloat(this.retailcommission[0].commission);
+            this.retailfinalval=parseInt(this.parseprice+(this.parseprice*this.parsecomission/100));
+        }
+        this.userinformation=userarr;
+        this.userinformation.userimage='images/logo_61.png';
+        if(this.userinformation.filename) {
+            this.userinformation.userimage = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.userinformation.filename;
+        }
+
+        $("#rsvpModal").modal('show');
+        /*$(function(){
+         $('.snd').on('click', function() { // code
+         alert(1);
+         });
+         })*/
+    }
+    sendrsvp(){
+        //alert(9);
+        console.log('Modal ')
+        console.log(this.inventory);
+        console.log('User');
+         this.color=this.getcolor(this.inventory);
+         this.bodystyle=this.getbodystyle(this.inventory);
+         this.make=this.getcarlogo(this.inventory);
+         this.mileage=this.getmileage(this.inventory);
+       // console.log(this.colorname);
+        let items={doctype:this.inventory.doctype,
+            color:this.color,
+            bodystyle:this.bodystyle,
+            make:this.make,
+            mileage:this.mileage,
+            filename:this.inventory.filename,
+            est_retail_value:this.inventory.est_retail_value,
+            vin:this.inventory.vin,
+            enginetype:this.inventory.enginetype,
+            drive:this.inventory.drive,
+            cylinder:this.inventory.cylinder,
+            fuel:this.inventory.fuel,
+            model:this.inventory.model,
+            gear_type:this.inventory.gear_type};
+        console.log(this.userinformation);
+        let values={dealerid:this.userInfo.username,inventoryid:this.inventory._id,customerusername:this.userinformation.username,retialcommission:this.retailfinalval,dealername:this.userInfo.userfullname,customeremail:this.userinformation.email,inventorymatchval:this.userinformation.inventorymatchval,carinfo:items};
+        //this.details=[];
+       // alert(values);
+        console.log('post rsvp values');
+        console.log(values);
+        this.http.post(this.serverUrl+'addrsvp',values)
+            .subscribe(data => {
+                $(".btnclosepopup2").click();
+
+                $('#rsvpsendModal').modal('show');
+            }, error => {
+                console.log("Oooops!");
+            });
+
+    }
+    viewprofile(itemrsvp:any){
+        console.log('Customer Profile ');
+         console.log(itemrsvp);
+       // var customprofiledetails=[];
+         this.customerfile='images/logo_61.png';
+        let customerusername = itemrsvp; // (+) converts string 'id' to a number
+        let ids={username: itemrsvp.customerusername};
+        this.http.post(this.serverUrl+'editdcustomerbyusername',ids)
+            .subscribe(data => {
+                 this.customprofiledetails = data.json()[0];
+                if(typeof(this.customprofiledetails.filename)!='undefined'){
+                    this.customerfile='http://probidbackend.influxiq.com/uploadedfiles/sharelinks/'+this.customprofiledetails.filename;
+                }
+                $('.rsvpcl').click();
+                $('#userprofileModal').modal('show');
+                console.log('customer details');
+                console.log(this.customprofiledetails);
+            })
+
+
+    }
+    sendinfo(inventory:Array<any>,userarr:Array<any>){
+        this.inventory=inventory;
+        this.userinformation=userarr;
+        console.log('Modal ')
+        console.log(this.inventory);
+        console.log('User');
+        this.color=this.getcolor(this.inventory);
+        this.bodystyle=this.getbodystyle(this.inventory);
+        this.make=this.getcarlogo(this.inventory);
+        this.mileage=this.getmileage(this.inventory);
+        // console.log(this.colorname);
+        let items={doctype:this.inventory.doctype,
+            color:this.color,
+            bodystyle:this.bodystyle,
+            make:this.make,
+            mileage:this.mileage,
+            filename:this.inventory.filename,
+            est_retail_value:this.inventory.est_retail_value,
+            vin:this.inventory.vin,
+            enginetype:this.inventory.enginetype,
+            drive:this.inventory.drive,
+            cylinder:this.inventory.cylinder,
+            fuel:this.inventory.fuel,
+            model:this.inventory.model,
+            gear_type:this.inventory.gear_type};
+        console.log(this.userinformation);
+        let values={dealerid:this.userInfo.username,inventoryid:this.inventory._id,customerusername:this.userinformation.username,dealername:this.userInfo.userfullname,customeremail:this.userinformation.email,inventorymatchval:this.userinformation.inventorymatchval,carinfo:items};
+        //this.details=[];
+        // alert(values);
+        console.log('post rsvp values');
+        console.log(values);
+        this.http.post(this.serverUrl+'sendinfo',values)
+            .subscribe(data => {
+
+        $('#sendinfoModal').modal('show');
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+
+    }
+
+    viewdetails(item:any){
+        this.itemrsvpcar=item;
+        console.log('Car Info');
+        console.log(this.itemrsvpcar);
+        console.log(this.itemrsvpcar.inventoryid);
+        $('#viewdetailsModal1').modal('show');
+    }
+
+    timeConverter(UNIX_timestamp:any){
+        // var a = new Date(UNIX_timestamp * 1000);
+   /*     this.a = new Date(UNIX_timestamp);
+        this.b = new Date();
+        // var a = new Date(UNIX_timestamp * 1000);
+
+        var diff =  Math.abs(this.b-this.a);
+        var seconds = Math.floor(diff/1000); //ignore any left over units smaller than a second
+        var minutes = Math.floor(seconds/60);
+        seconds = seconds % 60;
+        var hours = Math.floor(minutes/60);
+        return hours;
+*/        var dt = new Date(UNIX_timestamp);
+        var month = dt.getMonth()+1;
+        return  month+'/'+dt.getDate()+'/'+dt.getFullYear()+' '+dt.getHours()+' : '+dt.getMinutes()+' : '+dt.getSeconds() ;
     }
 }
 

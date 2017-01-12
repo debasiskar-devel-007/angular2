@@ -6,10 +6,12 @@
             </div>
         </div>
         <!-- /.row -->
+
+        <!--<div style="color: white">{{customerdatajson}}</div>-->
         <div class="row row-eq-height">
             <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
                 <div class="row custoomerinfo">
-                    <div class="yourinboxblock">
+                    <div class="yourinboxblock" *ngIf="detailscustomer.length>0">
                         <div class="row">
                             <div class="col-lg-4 col-md-2 col-sm-3 col-xs-12 custoomerinfoblockleft">
                                 <div class="custoomerinfopic">
@@ -21,7 +23,7 @@
                                         <li class="onlineblock1">
                                             <img class="icon-online">Online
                                         </li>
-                                        <li class="chatblock1"><img class="chat">Chat</li>
+                                        <li class="chatblock1"><a (click)="chatopen()"><img class="chat">Chat</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -30,33 +32,33 @@
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Name:</label>
                                         <div class="col-sm-10 control-data">
-                                            <p class="form-control-static"><span>{{details.fname}} {{details.lname}}</span></p>
+                                            <p class="form-control-static"><span>{{detailscustomer[0].fname}} {{detailscustomer[0].lname}}</span></p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Address:</label>
                                         <div class="col-sm-10 control-data">
-                                            <p class="form-control-static">{{details.address}}<br/>
-                                            {{details.city}} , {{details.state}} , {{details.zip}}
+                                            <p class="form-control-static">{{detailscustomer[0].address}}<br/>
+                                            {{detailscustomer[0].city}} , {{detailscustomer[0].state}} , {{detailscustomer[0].zip}}
                                             </p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Phone:</label>
                                         <div class="col-sm-10 control-data">
-                                            <p class="form-control-static">{{details.phone}}</p>
+                                            <p class="form-control-static">{{detailscustomer[0].phone}}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Email:</label>
                                         <div class="col-sm-10 control-data">
-                                            <p class="form-control-static">{{details.email}}</p>
+                                            <p class="form-control-static">{{detailscustomer[0].email}}</p>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">Member Since:</label>
                                         <div class="col-sm-10 control-data">
-                                            <p class="form-control-static">{{commonservices.convertunixtodate(details.added_on)}}</p>
+                                            <p class="form-control-static">{{commonservices.convertunixtodate(detailscustomer[0].added_on)}}</p>
                                         </div>
                                     </div>
                                 </form>
@@ -65,7 +67,7 @@
                                 <div class="custoomerinfobtn">
                                     <ul class="list-inline">
                                         <li class="onlineblock1">
-                                            <button class="btnsendmsg" type="button" value="Edit"><span class="glyphicon glyphicon-envelope"></span>Send Message</button>
+                                            <button [routerLink]="['/writemail']" class="btnsendmsg" type="button" value="Edit"><span class="glyphicon glyphicon-envelope"></span>Send Message</button>
                                         </li>
                                         <li class="chatblock1">
                                             <button class="btnwrite" type="button" value="Edit"><span class="glyphicon glyphicon-file"></span>Write Notes</button>
@@ -82,18 +84,18 @@
                     <div class="yourinboxblock">
                         <div class="yourinboxheader">
                             <h2>Activities</h2>
-                            <div class="viewall"><a>View All</a></div>
+                            <div class="viewall"><a [routerLink]="['/customeractivitylist']">View All</a></div>
                         </div>
                         <div class="activitylists">
                             <ul class="list-group">
-                                <li class="list-group-item">
+                                <li class="list-group-item" *ngFor="let customeitem of customeractivitysingle">
                                     <div class="activitywarpper">
-                                        <img src="images/activityimg1.jpg">
+                                        <img src="{{sharefilesrc1}}">
                                     </div>
-                                    <p>David Jones searched for Renault</p>
-                                    <span class="tag tag-default tag-pill float-right">30 min ago</span>
+                                    <p>{{customeitem.activity_content}}</p>
+                                    <span class="tag tag-default tag-pill float-right">at {{timeConverter(customeitem.added_on)}}</span>
                                 </li>
-                                <li class="list-group-item">
+                               <!-- <li class="list-group-item">
                                     <div class="activitywarpper">
                                         <img src="images/activityimg1.jpg">
                                     </div>
@@ -131,7 +133,7 @@
 										<li><img src="images/icon-socialshare-tw.png"></li>
 									</ul>
 								</span>
-                                </li>
+                                </li>-->
                             </ul>
                         </div>
                     </div>
@@ -182,7 +184,7 @@
                                                     <td colspan="2" class="viewdetail">
                                                         <ul class="list-inline">
                                                             <li>
-                                                                <button class="btnsendrsvp" type="button" value="Edit">Send RSVP</button>
+                                                                <button (click)="rsvpModalopen(inventietm,inventietm.userdetails[0])" class="btnsendrsvp" type="button" value="Edit">Send RSVP</button>
                                                             </li>
                                                             <li>
                                                                 <button class="btnviewdetails" type="button" value="Edit">View Details</button>
@@ -210,82 +212,15 @@
                                         <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 progressleft">
 
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="inventietm.userdetails[0].inventorymatchval+'%'">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="detailscustomer[0].inventorymatchvals[inventietm._id]+'%' ">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 progressright" style="padding-left:0px;"><span class="progresspercentage">{{inventietm.userdetails[0].inventorymatchval}}%<span></span></span></div>
+                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 progressright" style="padding-left:0px;"><span class="progresspercentage">{{detailscustomer[0].inventorymatchvals[inventietm._id]}}%<span></span></span></div>
                                     </div>
                                 </div>
                             </div>
-                           <!-- <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row">
-                                        <div class="col-lg-7 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail">
-                                                        <ul class="list-inline">
-                                                            <li>
-                                                                <button class="btnsendrsvp" type="button" value="Edit">Send RSVP</button>
-                                                            </li>
-                                                            <li>
-                                                                <button class="btnviewdetails" type="button" value="Edit">View Details</button>
-                                                            </li>
-                                                        </ul>
-                                                    </td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-5 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
-                                            <div class="imgouter">
-                                                <div class="imgwrapper">
-                                                    <img src="images/auctionimg.jpg">
-                                                    <div class="auctionimg">
-                                                        <img src="images/auctionlogoimg.jpg">
-                                                    </div>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 progressleft">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2 progressright" style="padding-left:0px;"><span class="progresspercentage">40%<span></span></span></div>
-                                    </div>
-                                </div>
-                            </div>-->
                         </div>
                     </div>
                 </div>
@@ -295,21 +230,30 @@
 
         <div class="row">
             <div class="col-lg-12 col-md-12">
-                <div class="inventoryrecentbidblock">
+                <div *ngIf="carlistarr.length >0 " class="inventoryrecentbidblock">
                     <div class="inventoryrecentbidheader">
                         <h2><span>RECENT BID</span> Agreements</h2>
-                        <div class="addbtnwrapper">
-                            <a href="recentbidagreement.html"><button class="btn btn-link viewallwhite" type="button" value="view all">View All</button></a>
-                        </div>
+                        <ul class="list-inline">
+                            <li><div class="searchbox">
+                                <input placeholder="Search by Make, Model, Auction, Year, Keyword">
+                            </div></li>
+                            <li><div class="addbtnwrapper">
+                                <a href="recentbidagreement.html" class="btn btn-link viewallwhite" [routerLink]="['/recentbidagreement']">View All</a>
+                            </div></li>
+                        </ul>
+
                     </div>
                     <div class="inventorylistswrapper">
-                        <div class="searchbox"><input placeholder="Search by Make, Model, Auction, Year, Keyword"></div>
                         <div class="row">
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                            <div *ngFor="let itemrsvp of rsvplistarr" class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
                                 <div class="inventorysinglelistblock">
                                     <div class="row blockheaderinfo">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right blockdate">
-                                            <p><span>Auction Date:</span> 09-09-2016</p></div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left blockname">
+                                            <p><span>Name:</span> {{getcustomerdetails(itemrsvp.customerusername,'name')}}</p>
+                                        </div>
+                                        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right blockdate">
+                                            <p><span>Auction Date:</span> 09-09-2016</p>
+                                        </div>
                                     </div>
                                     <div class="row blockcontentinfo">
                                         <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pull-left infobox">
@@ -319,54 +263,57 @@
                                                 <tbody>
                                                 <tr>
                                                     <td><span>Make:</span></td>
-                                                    <td>Renault</td>
+                                                    <td>{{getcardetails(itemrsvp.inventoryid,'make')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Model:</span></td>
-                                                    <td>Duster</td>
+                                                    <td>{{getcardetails(itemrsvp.inventoryid,'model')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Year:</span></td>
-                                                    <td>2016</td>
+                                                    <td>{{getcardetails(itemrsvp.inventoryid,'year')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Miles:</span></td>
-                                                    <td>600</td>
+                                                    <td>{{getcardetails(itemrsvp.inventoryid,'mileage')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Color:</span></td>
-                                                    <td>Red</td>
+                                                    <td>{{getcardetails(itemrsvp.inventoryid,'color')}}</td>
                                                 </tr>
                                                 <tr>
                                                     <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
+                                                    <td>{{getcardetails(itemrsvp.inventoryid,'price')}}</td>
                                                 </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail"><a href="" target="_blank">View Details</a></td>
-                                                </tr>
+                                                <!--<tr>
+                                                    <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
+                                                </tr>-->
                                                 </tbody>
-                                            </table>
+                                             </table>
                                         </div>
-                                        <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg.jpg">
+                                         <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
+                                               <ul class="list-inline">
+                                                 <li>
+                                                     <div class="imgouter">
+                                                        <div class="imgwrapper" [innerHtml]="getcustomerdetails(itemrsvp.customerusername,'image')">
+
                                                         </div>
+                                                     </div>
+                                                    <div class="btnwrapper">
+                                                        <button class="btnedit" (click)="viewprofile(itemrsvp)"   type="button" value="Edit">View Profile</button>
                                                     </div>
                                                 </li>
                                                 <li>
                                                     <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg-auction.jpg">
+                                                        <div class="imgwrapper" [innerHtml]="getcardetails(itemrsvp.inventoryid,'image')">
+                                                            <!--<img src="images/auctionimg_1.jpg">-->
                                                         </div>
                                                     </div>
+                                                    <div class="btnwrapper">
+                                                        <button class="btnedit" (click)="viewdetails(itemrsvp)"    type="button" value="Edit">View Inventory</button>
+                                                    </div>
                                                 </li>
-                                            </ul>
-                                            <div class="btnwrapper">
-                                                <button class="btnedit" type="button" value="Edit">View Inventory</button>
-                                            </div>
+                                             </ul>
                                         </div>
                                     </div>
                                 </div>
@@ -379,548 +326,38 @@
                                     <div class="row">
                                         <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10">
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 10%;">
+                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="getmatchpercentageval(itemrsvp.inventoryid,itemrsvp.customerusername)">
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage">10%<span></span></span></div>
+                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;">
+                                            <span class="progresspercentage">{{getmatchpercentageval(itemrsvp.inventoryid,itemrsvp.customerusername)}}</span>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 customerstatus">
                                             <ul class="example list-inline">
                                                 <li>
-                                                    <label><span>Status</span></label>
+                                                    <label><span>Customer</span></label>
                                                 </li>
 
                                                 <li class="chakebox1box">
-                                                    <input id="chakebox1box1" type="radio" name="chakebox1box1" value="chakebox1box1"><label for="chakebox1box1">Approved</label>
+                                                    <input disabled="disabled"  id="{{itemrsvp._id+itemrsvp.inventoryid}}" [attr.checked]="getrsvpapprovalstatus(itemrsvp.status,1) ? true :null  " type="radio" name="{{itemrsvp._id+itemrsvp.inventoryid}}" value="chakebox1box1"><label [attr.for]="itemrsvp._id+itemrsvp.inventoryid">Approved</label>
                                                 </li>
                                                 <li class="chakebox2box">
-                                                    <input id="chakebox1box2" type="radio" name="chakebox1box1" value="chakebox1box2"><label for="chakebox1box2">Disapproved</label>
+                                                    <input disabled="disabled" [attr.checked]="getrsvpapprovalstatus(itemrsvp.status,2) ? true : null " id="{{itemrsvp._id}}"  type="radio" name="{{itemrsvp._id}}" value="chakebox1box2"><label [attr.for]="itemrsvp._id">Disapproved</label>
                                                 </li>
 
                                                 <li class="chakebox3box">
-                                                    <input id="chakebox1box3" type="radio" name="chakebox1box1" value="chakebox1box3"><label for="chakebox1box3">Pending</label>
+                                                    <input disabled="disabled" [attr.checked]="getrsvpapprovalstatus(itemrsvp.status,0) ? true : null" id="{{itemrsvp._id+'-'+itemrsvp.inventoryid}}" type="radio" name="{{itemrsvp._id+'-'+itemrsvp.inventoryid}}" value="chakebox1box3"><label [attr.for]="itemrsvp._id+'-'+itemrsvp.inventoryid">Pending</label>
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row blockheaderinfo">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right blockdate">
-                                            <p><span>Auction Date:</span> 09-09-2016</p></div>
-                                    </div>
-                                    <div class="row blockcontentinfo">
-                                        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pull-left infobox">
-                                            <h5>Preferences/Match</h5>
-                                            <div class="divider"></div>
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail"><a href="" target="_blank">View Details</a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg.jpg">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg-auction.jpg">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="btnwrapper">
-                                                <button class="btnedit" type="button" value="Edit">View Inventory</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="inventorysinglelistblock2">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <h4>Match %</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2">0%</div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 customerstatus">
-                                            <ul class="example list-inline">
-                                                <li>
-                                                    <label><span>Status</span></label>
-                                                </li>
-
-                                                <li class="chakebox1box">
-                                                    <input id="chakebox1box4" type="radio" name="chakebox1box2" value="chakebox1box4"><label for="chakebox1box4">Approved</label>
-                                                </li>
-                                                <li class="chakebox2box">
-                                                    <input id="chakebox1box5" type="radio" name="chakebox1box2" value="chakebox1box4"><label for="chakebox1box5">Disapproved</label>
-                                                </li>
-
-                                                <li class="chakebox3box">
-                                                    <input id="chakebox1box6" type="radio" name="chakebox1box2" value="chakebox1box4"><label for="chakebox1box6">Pending</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row blockheaderinfo">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right blockdate">
-                                            <p><span>Auction Date:</span> 09-09-2016</p></div>
-                                    </div>
-                                    <div class="row blockcontentinfo">
-                                        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pull-left infobox">
-                                            <h5>Preferences/Match</h5>
-                                            <div class="divider"></div>
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail"><a href="" target="_blank">View Details</a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg.jpg">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg-auction.jpg">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="btnwrapper">
-                                                <button class="btnedit" type="button" value="Edit">View Inventory</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="inventorysinglelistblock2">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <h4>Match %</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 20%;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage">20%<span></span></span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 customerstatus">
-                                            <ul class="example list-inline">
-                                                <li>
-                                                    <label><span>Status</span></label>
-                                                </li>
-
-                                                <li class="chakebox1box">
-                                                    <input id="chakebox1box7" type="radio" name="chakebox1box3" value="chakebox1box7"><label for="chakebox1box7">Approved</label>
-                                                </li>
-                                                <li class="chakebox2box">
-                                                    <input id="chakebox1box8" type="radio" name="chakebox1box3" value="chakebox1box8"><label for="chakebox1box8">Disapproved</label>
-                                                </li>
-
-                                                <li class="chakebox3box">
-                                                    <input id="chakebox1box9" type="radio" name="chakebox1box3" value="chakebox1box9"><label for="chakebox1box9">Pending</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row blockheaderinfo">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right blockdate">
-                                            <p><span>Auction Date:</span> 09-09-2016</p></div>
-                                    </div>
-                                    <div class="row blockcontentinfo">
-                                        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pull-left infobox">
-                                            <h5>Preferences/Match</h5>
-                                            <div class="divider"></div>
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail"><a href="" target="_blank">View Details</a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg.jpg">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg-auction.jpg">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="btnwrapper">
-                                                <button class="btnedit" type="button" value="Edit">View Inventory</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="inventorysinglelistblock2">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <h4>Match %</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 50%;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage">50%<span></span></span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 customerstatus">
-                                            <ul class="example list-inline">
-                                                <li>
-                                                    <label><span>Status</span></label>
-                                                </li>
-
-                                                <li class="chakebox1box">
-                                                    <input id="chakebox1box10" type="radio" name="chakebox1box4" value="chakebox1box10"><label for="chakebox1box10">Approved</label>
-                                                </li>
-                                                <li class="chakebox2box">
-                                                    <input id="chakebox1box11" type="radio" name="chakebox1box4" value="chakebox1box11"><label for="chakebox1box11">Disapproved</label>
-                                                </li>
-
-                                                <li class="chakebox3box">
-                                                    <input id="chakebox1box12" type="radio" name="chakebox1box4" value="chakebox1box12"><label for="chakebox1box12">Pending</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
+                                     </div>
+                                 </div>
                             </div>
 
 
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row blockheaderinfo">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right blockdate">
-                                            <p><span>Auction Date:</span> 09-09-2016</p></div>
-                                    </div>
-                                    <div class="row blockcontentinfo">
-                                        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pull-left infobox">
-                                            <h5>Preferences/Match</h5>
-                                            <div class="divider"></div>
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail"><a href="" target="_blank">View Details</a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg.jpg">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg-auction.jpg">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                            </ul>
-                                            <div class="btnwrapper">
-                                                <button class="btnedit" type="button" value="Edit">View Inventory</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="inventorysinglelistblock2">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <h4>Match %</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 80%;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage">80%<span></span></span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 customerstatus">
-                                            <ul class="example list-inline">
-                                                <li>
-                                                    <label><span>Status</span></label>
-                                                </li>
-                                                <li class="chakebox1box">
-                                                    <input id="chakebox1box13" type="radio" name="chakebox1box5" value="chakebox1box13"><label for="chakebox1box13">Approved</label>
-                                                </li>
-                                                <li class="chakebox2box">
-                                                    <input id="chakebox1box14" type="radio" name="chakebox1box5" value="chakebox1box14"><label for="chakebox1box14">Disapproved</label>
-                                                </li>
-                                                <li class="chakebox3box">
-                                                    <input id="chakebox1box15" type="radio" name="chakebox1box5" value="chakebox1box15"><label for="chakebox1box15">Pending</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
-                                <div class="inventorysinglelistblock">
-                                    <div class="row blockheaderinfo">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 text-right blockdate">
-                                            <p><span>Auction Date:</span> 09-09-2016</p></div>
-                                    </div>
-                                    <div class="row blockcontentinfo">
-                                        <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pull-left infobox">
-                                            <h5>Preferences/Match</h5>
-                                            <div class="divider"></div>
-                                            <table class="table">
-                                                <tbody>
-                                                <tr>
-                                                    <td><span>Make:</span></td>
-                                                    <td>Renault</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Model:</span></td>
-                                                    <td>Duster</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Year:</span></td>
-                                                    <td>2016</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Miles:</span></td>
-                                                    <td>600</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Color:</span></td>
-                                                    <td>Red</td>
-                                                </tr>
-                                                <tr>
-                                                    <td><span>Wholesale:</span></td>
-                                                    <td>$8,46,999</td>
-                                                </tr>
-                                                <tr>
-                                                    <td colspan="2" class="viewdetail"><a href="" target="_blank">View Details</a></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>
-                                        <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
-                                            <ul class="list-inline">
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg.jpg">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <li>
-                                                    <div class="imgouter">
-                                                        <div class="imgwrapper">
-                                                            <img src="images/customerifo-inventoryrecentbidimg-auction.jpg">
-                                                        </div>
-                                                    </div>
-                                                </li>
-                                                <div class="btnwrapper">
-                                                    <button class="btnedit" type="button" value="Edit">View Inventory</button>
-                                                </div>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="inventorysinglelistblock2">
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                                            <h4>Match %</h4>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10">
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage">100%<span></span></span></div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 customerstatus">
-                                            <ul class="example list-inline">
-                                                <li>
-                                                    <label><span>Status</span></label>
-                                                </li>
-
-                                                <li class="chakebox1box">
-                                                    <input id="chakebox1box16" type="radio" name="chakebox1box6" value="chakebox1box16"><label for="chakebox1box16">Approved</label>
-                                                </li>
-                                                <li class="chakebox2box">
-                                                    <input id="chakebox1box17" type="radio" name="chakebox1box6" value="chakebox1box17"><label for="chakebox1box17">Disapproved</label>
-                                                </li>
-
-                                                <li class="chakebox3box">
-                                                    <input id="chakebox1box18" type="radio" name="chakebox1box6" value="chakebox1box18"><label for="chakebox1box18">Pending</label>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -1006,33 +443,34 @@
                 </div>
             </div>
             <div class="col-lg-3 col-md-6">
-                <div class="yourinboxblock">
+                <div class="yourinboxblock custpro">
                     <div class="yourinboxheader">
                         <h2><b>Recent</b> Communications</h2>
                         <div class="viewall">
-                            <a>View All</a>
+                            <a [routerLink]="['/mailinbox']">View All</a>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <ul class="inboxlists">
-                                <li>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lobortis sit amet ligula sit amet variu Loreipsum dolor sit amet.</p>
+                                <li class="inboxlistsprofile-li" *ngFor="let msg of messageaarpub|filter:query|orderBy:orderbyquery:orderbytype">
+                                    <p class="msgclass">{{msg.subject}}</p>
                                     <span class="btnreply">
-                        <a>Reply</a>
+                        <a [routerLink]="['/readmessage',msg._id]">Reply</a>
                        </span>
+                                    <div class="clearfix"></div>
                                 </li>
-                                <li>
+                               <!-- <li>
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lobortis sit amet ligula sit amet variu Loreipsum dolor sit.</p>
                                     <span class="btnreply">
                         <a>Reply</a>
                        </span>
-                                </li>
+                                </li>-->
                             </ul>
 
                             <div class="searchbox">
                                 <div class="input-group">
-                                    <input type="text" class="form-control input-lg"><span class="input-group-btn"><button class="btn btn-default btnnewmsg" type="button">New message</button>         </span>
+                                    <input [(ngModel)]="query" type="text" class="form-control input-lg"><span class="input-group-btn"><button [routerLink]="['/writemail']" class="btn btn-default btnnewmsg" type="button">New message</button>         </span>
                                 </div><!-- /input-group -->
                             </div>
                         </div>
@@ -1143,5 +581,280 @@
 
         </div>
         <!-- /.row -->
+    </div>
+</div>
+
+
+<div id="userprofileModal" class="modal fade  matchespopupnew2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Customer Profile</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper" *ngIf="customprofiledetails">
+
+                    <table width="100%" border="0" class="profiletable1">
+                        <tr>
+                            <td width="30%">
+                                <!--  <img src="http://bootstrap.gallery/everestv2/img/user1.jpg"  alt="#" class="popprofileimg"/>-->
+                                <img src="{{customerfile}}"  alt="#" class="popprofileimg"/>
+                            </td>
+
+
+                            <td width="70%" align="left" valign="middle">
+                                Name: <strong>{{customprofiledetails.fname}} {{customprofiledetails.lname}}</strong>
+                                <br/><br/>
+                                Address: <strong>{{customprofiledetails.address}} , {{customprofiledetails.city}} , {{customprofiledetails.state}} ,{{customprofiledetails.zip}}</strong>
+
+
+
+                            </td>
+
+                        </tr>
+
+
+
+
+                        <tr>
+                            <td align="left" valign="middle">Phone:</td>
+                            <td align="left" valign="middle">{{customprofiledetails.phone}}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="middle">Email:</td>
+                            <td align="left" valign="middle">{{customprofiledetails.email}}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="middle">Member Since:</td>
+                            <td align="left" valign="middle">{{commonservices.convertunixtodate(customprofiledetails.added_on)}}</td>
+                            <!--<span [innerHtml]="commonservices.convertunixtodate(itemrs.added_on)"></span>-->
+                        </tr>
+
+
+
+                    </table>
+
+
+                </div>
+            </div>
+            <div class="modal-footer modelfooter">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="viewdetailsModal1" class="modal fade  matchespopupnew2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Inventory Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper">
+
+                    <div class="customerdashboard_block2_right detailpopupnew1" *ngIf="itemrsvpcar">
+                        <!--{{getcardetails(itemrsvpcar.inventoryid,'image')}}-->
+                        <div class="detailsimgnew" [innerHtml]="getcardetails(itemrsvpcar.inventoryid,'image')">/</div>
+
+                        <!-- <img src="http://pluginelectrichybrids.com/wp-content/uploads/2014/07/2015-Audi-Q5-Hybrid-front-view.jpg"  alt="#" class="detailsimgnew"/>-->
+
+                        <div class="cdblock2topbg1"><h3>Details <span>Glossary</span></h3></div>
+
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="middle">Make:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'make')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Model:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'model')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Year:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'year')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Miles:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'mileage')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Color:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'color')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Wholesale:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'price')}}                        </td>
+                            </tr>
+
+
+
+
+
+
+                            <tr>
+                                <td align="left" valign="middle">Body Style:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'carbodystyle')}} </td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Vin:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'vin')}} </td>
+                            </tr>
+
+
+
+
+                            <tr>
+                                <td align="left" valign="middle">Engine Type:        </td>
+                                <td align="right" valign="middle">       {{getcardetails(itemrsvpcar.inventoryid,'enginetype')}} </td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Drive:    </td>
+                                <td align="right" valign="middle">    {{getcardetails(itemrsvpcar.inventoryid,'drive')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Cylinder:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'cylinder')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Fuel:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'fuel')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Seats:    </td>
+                                <td align="right" valign="middle">   {{getcardetails(itemrsvpcar.inventoryid,'seats')}}</td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Gear Type:    </td>
+                                <td align="right" valign="middle">{{getcardetails(itemrsvpcar.inventoryid,'gear_type')}}</td>
+                            </tr>
+
+
+                        </table>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer modelfooter">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="rsvpModal" class="modal fade  matchespopup">
+    <div class="modal-dialog  ">
+        <div class="modal-content">
+            <div class="modal-header" *ngIf="userinformation">
+                <div class="container-fluid">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><h2><!--Match{{inventory.length}}--></h2></div>
+                    <div class="col-lg-6 col-md-6 col-sm-3 col-xs-3">
+                        <div class="progress_wrapper">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" [style.width]="userinformation.inventorymatchval+'%'"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> <h2>{{userinformation.inventorymatchval}}%</h2></div>
+
+
+                </div>
+            </div>
+            <div class="match_tablewrapper">
+                <div class="row-eq-height">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="userinformation">
+                        <div class="match_user_banner">
+                            <table width="100%" border="0">
+                                <tr>
+                                    <td align="center" valign="middle" width="152"><div class="match_user_div">
+                                        <!--  <img src="http://bootstrap.gallery/everestv2/img/user1.jpg">-->
+                                        <img src="{{userinformation.userimage}}">
+                                    </div></td>
+                                    <td align="center" valign="middle"><h6>{{userinformation.fname}} {{userinformation.lname}}</h6></td>
+                                </tr>
+                            </table>
+
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="inventory" >
+                        <div class="match_car_banner">
+                            <table width="100%" border="0">
+
+                                <tr>
+                                    <td align="center" valign="middle" width="152"><div class="match_car_div">
+                                        <!-- <img src="http://www.pngpix.com/wp-content/uploads/2016/06/PNGPIX-COM-Renault-Megane-RS-Yellow-Car-PNG-Image-500x279.png">-->
+                                        <img src="{{sharefilesrc}}{{inventory.filename}}">
+                                    </div></td>
+                                    <td align="center" valign="middle">
+
+
+                                        <!-- <img src="https://static1.squarespace.com/static/56b0c302356fb0b51c2b951a/58222014c534a56b7c9299ad/582220263e00be7d112e9844/1480532836047/auctionzip+logo.png" class="auctionlogoimg">-->
+                                        <img src="{{sharefilesrc}}{{inventory.auctiondata[0].filename}}" class="auctionlogoimg">
+
+                                        <!--<img src="http://sac.flipkart.net/wp-content/uploads/2016/05/renaultlogo.png" class="carlogoimg">-->
+                                        <img src="{{sharefilesrc}}{{getcarlogos(inventory)}}" class="carlogoimg">
+                                        <h5>{{getcarlogo(inventory)}}</h5>
+                                        <!--<h5>Renault Duster</h5>-->
+                                    </td>
+                                </tr>
+                            </table>
+
+
+
+                        </div>
+
+
+
+
+
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                </div>
+                <h2 class="rsvp_headingtext">Please verify the <span>RSVP</span> amount is what you desire. Once accepted this can not be changed for this customer.</h2>
+
+                <div class="rsvp_formgroup">
+                    <label>Set Retail Commission:</label>
+                    <input type="text" name="text" [(ngModel)]="retailfinalval" class="form-controlrsvp" >
+                    <input type="button" value="Send" (click)="sendrsvp()" class="rsvpsendbtn snd">
+
+                    <div class="clearfix"></div>
+
+                    <span>Calculated as Rule of Opencontract : Rate {{retailc}} with Type {{retailctype}} </span>
+                </div>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btnclosepopup2" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
     </div>
 </div>

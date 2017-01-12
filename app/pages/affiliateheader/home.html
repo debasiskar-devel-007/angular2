@@ -52,23 +52,17 @@
         <div class="collapsedivmenu" >
             <!--<img src="images/demomenu.png" alt="" style="display: block; margin: 0 auto;"/>-->
             <ul>
-                <li><a (click)="adminlist()"><img src="images/admicon-manageadmin.png">Manage Admin</a></li>
-                <li><a><img src="images/admicon-managecustomer.png">Manage Customer Portal</a></li>
-                <li><a><img src="images/admicon-broadcastprefer.png">Manage Broadcast Preferences</a></li>
-                <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
-                <li><a><img src="images/admicon-manageaution.png">Manage Auctions</a></li>
-                <li><a><img src="images/admicon-subscription.png">Manage Subscriptions</a></li>
+                <li><a (click)="openclickreport()" ><img src="images/admicon-manageadmin.png">Click Report</a></li>
+                <li><a (click)="opensignupreport()" ><img src="images/admicon-subscription.png">signup Report</a></li>
                 <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="images/admicon-sharemedia.png">Manage Share Link <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a [routerLink]="['/sharemedia']">Share Link</a></li>
-                        <li><a [routerLink]="['/bannerlist']">Manage Banner</a></li>
-                        <li><a [routerLink]="['/bannersizelist']">Manage Banner Sizes</a></li>
 
                     </ul>
 
 
                 </li>
-                <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
+               <!-- <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
                 <li ><a (click)="faq()"><img src="images/admicon-faq.png">Faq's</a></li>
 
                 <li class="dropdown">   <a href="javascript:void(0)" class="dropdown-toggle" type="button" data-toggle="dropdown"> Demo  <span class="caret"></span></a>
@@ -82,6 +76,8 @@
                 </li>
                 <li ><a [routerLink]="['/dealerlist']">Dealers</a></li>
                 <li ><a [routerLink]="['/addsharelink']">Manage Share Link</a></li>
+                <li ><a (click)="openclickreport()" >Click Report</a></li>
+                <li ><a (click)="opensignupreport()" >signup Report</a></li>-->
 
 
             </ul>

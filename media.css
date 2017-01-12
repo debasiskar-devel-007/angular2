@@ -75,7 +75,11 @@
         width: 100%;
         margin: 0 auto;
     }
-
+    .freecustomercreditcard .creditcardleftblockbottom {
+        width: 100%;
+        height: 561px;
+        overflow: hidden;
+    }
 }
 
 
@@ -84,6 +88,12 @@
         font-size: 25px;
     }
     .creditcardleftblockbottom {width: 100%;height: 755px;overflow: hidden;}
+    .freecustomercreditcard .creditcardleftblockbottom {
+        width: 100%;
+        height: 474px;
+        overflow: hidden;
+    }
+
     .creditcardleftblockbottom img {
         width: 120% !important;
     }
@@ -179,6 +189,11 @@
 
     .creditcardleftblockbottom {width: 100%; overflow: hidden;}
     .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
+    .freecustomercreditcard .creditcardleftblockbottom {
+        width: 100%;
+        height: 476px;
+        overflow: hidden;
+    }
     .creditcardleftblocktop h1 {
         font-size: 30px;
     }
@@ -329,27 +344,41 @@
     .customerdashboard_blockcar .blockcar_box:nth-of-type(3n+3) {
         margin-right: auto;
     }
+
 }
 
 @media screen and (max-width:1168px) {
     .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
+    .freecustomercreditcard .creditcardleftblockbottom {width: 100%;height: 476px !important; overflow: hidden;}
 }
 
 @media screen and (max-width:1159px) {
     .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
+    .freecustomercreditcard .creditcardleftblockbottom {width: 100%;height: 474px !important; overflow: hidden;}
 }
 
 @media screen and (max-width:1125px) {
     .creditcardleftblockbottom {width: 100%; height:755px; overflow: hidden;}
+    .freecustomercreditcard .creditcardleftblockbottom {width: 100%;height: 448px !important; overflow: hidden;}
 }
 
 @media screen and (max-width:1110px) {
     .creditcardleftblockbottom img {width: 175% !important;}
     .creditcardleftblockbottom {width: 100%; height:729px; overflow: hidden;}
+    .freecustomercreditcard .creditcardleftblockbottom {
+        width: 100%;
+        height: 448px !important;
+        overflow: hidden;
+    }
 }
 
 @media screen and (max-width:1080px) {
     .creditcardleftblockbottom {width: 100%; height:729px; overflow: hidden;}
+    .freecustomercreditcard .creditcardleftblockbottom {
+        width: 100%;
+        height: 448px !important;
+        overflow: hidden;
+    }
 }
 
 @media screen and (max-width:1060px){
@@ -558,6 +587,11 @@
     .faqblockwrapper .panel-default>.panel-heading+.panel-collapse>.panel-body p {
         text-align: center;
     }
+    .programimgright {
+        display: table;
+        width: 64%;
+        margin: 30px auto;
+    }
 }
 
 @media screen and (max-width:800px) {
@@ -667,6 +701,19 @@
         width: 100% !important;
         right: 0px !important;;
     }
+
+    .readmailheadercontrol button{
+        margin-bottom: 10px;
+    }
+    .readmailheadercontrol button:last-child{
+        margin-bottom: 0px;
+    }
+    .readmailinboxwrapper .replybtn{
+        width:100%;
+    }
+    .readmailinboxwrapper .forwardbtn{
+        width:100%;
+    }
 }
 
 
@@ -758,6 +805,11 @@
     .headeruserinfo  .list-inline>li:nth-child(1) {
         margin-top: 10px;
     }
+    .programimgright {
+        display: table;
+        width: 100%;
+        margin: 30px auto;
+    }
 }
 
 @media screen and (max-width:480px) {
@@ -803,6 +855,24 @@
         width: 183px;
         top: 0px;
         right: 0px !important;
+    }
+    .imgprogramwrapper {
+        width: auto;
+        height: 215px;
+    }
+    .btnprogram .btnmoreinfo {
+        font-size: 16px;
+        width: 100%;
+        float: left;
+        text-align: center;
+    }
+
+    .btnprogram .btnaddtocart {
+        font-size: 16px;
+        float: left;
+        margin-top: 20px;
+        width: 100%;
+        text-align: center;
     }
 }
 @media screen and (max-width:400px) {
@@ -2300,7 +2370,7 @@
 
     .setmaxbid input[type="text"]{ width:130px;}
 
-    .newtablediv td h3{ font-size:14px; line-height:20px;}
+    .newtablediv td h3{ font-size:14px; line-height:24px;}
 
 
 }
@@ -2657,6 +2727,15 @@
     .retailformblock5part1 span {
         padding-bottom: 14px;
     }
+    .socialimgwrapper {
+        width: 220px;
+        height: 145px;
+        display: block;
+        vertical-align: middle;
+        text-align: center;
+        margin: 0 auto;
+    }
+
 }
 
 
@@ -2694,7 +2773,9 @@
         width: 100%;
         margin-bottom: 20px;
     }
-
+    .btnmodify {
+        float: none;
+    }
 }
 
 @media(max-width:540px) {
@@ -2717,6 +2798,40 @@
     }
     .financingblock2wrapper [class*="col-"].checkheredivbottom span {width: 44%; line-height: 20px;
     }
+
+    .socialimgwrapper {
+        width: 220px;
+        height: 145px;
+        background: #fff;
+        padding: 10px;
+        border-bottom: 1px solid #c6c6c6;
+        display: block;
+        vertical-align: middle;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+    .accountinfo .table>tr>td label, .accountinfo .table>tr>td, .accountinfo .table>tr>td label {
+        width: 100%;
+        float: none;
+        text-align: center;
+        display: block;
+    }
+    .socialmediablock .accountinfo .table tr td{
+        width: 100%;
+        float: none;
+        text-align: center;
+        display: block;
+        font-weight: normal;
+    }
+    .socialmediablock .accountinfo .table tr td{
+        width: 100%;
+        float: none;
+        text-align: center;
+        display: block;
+        font-weight: normal;
+    }
+
 }
 
 
@@ -2822,7 +2937,9 @@
     .badgelists a:last-child {
         margin-bottom: 0px;
     }
-
+    .socialimgwrapper {
+        width: 100%;
+    }
 }
 
 

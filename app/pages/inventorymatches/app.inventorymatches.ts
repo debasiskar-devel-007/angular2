@@ -67,6 +67,10 @@ export class AppInventorymatches {
     private parsecomission:any;
     private parseprice:any;
     private rsvplist:any;
+    private color:any;
+    private bodystyle:any;
+    private make:any;
+    private mileage:any;
 
     constructor(@Inject(Renderer) private renderer: Renderer,fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent,private _sanitizer: DomSanitizer  ) {
         this.router=router;
@@ -592,23 +596,84 @@ export class AppInventorymatches {
         console.log('Modal ')
         console.log(this.inventory);
         console.log('User');
+        this.color=this.getcolor(this.inventory);
+        this.bodystyle=this.getbodystyle(this.inventory);
+        this.make=this.getcarlogo(this.inventory);
+        this.mileage=this.getmileage(this.inventory);
+        // console.log(this.colorname);
+        let items={doctype:this.inventory.doctype,
+            color:this.color,
+            bodystyle:this.bodystyle,
+            make:this.make,
+            mileage:this.mileage,
+            filename:this.inventory.filename,
+            est_retail_value:this.inventory.est_retail_value,
+            vin:this.inventory.vin,
+            enginetype:this.inventory.enginetype,
+            drive:this.inventory.drive,
+            cylinder:this.inventory.cylinder,
+            fuel:this.inventory.fuel,
+            model:this.inventory.model,
+            gear_type:this.inventory.gear_type};
         console.log(this.userinformation);
-        let values={dealerid:this.userInfo.username,inventoryid:this.inventory._id,customerusername:this.userinformation.username,retialcommission:this.retailfinalval};
+        let values={dealerid:this.userInfo.username,inventoryid:this.inventory._id,customerusername:this.userinformation.username,retialcommission:this.retailfinalval,dealername:this.userInfo.userfullname,customeremail:this.userinformation.email,inventorymatchval:this.userinformation.inventorymatchval,carinfo:items};
         //this.details=[];
-        alert(values);
+        // alert(values);
         console.log('post rsvp values');
         console.log(values);
         this.http.post(this.serverUrl+'addrsvp',values)
             .subscribe(data => {
                 $(".btnclosepopup2").click();
 
+                $('#rsvpsendModal').modal('show');
+            }, error => {
+                console.log("Oooops!");
+            });
+
+    }
+    sendinfo(inventory:Array<any>,userarr:Array<any>){
+        this.inventory=inventory;
+        this.userinformation=userarr;
+        console.log('Modal ')
+        console.log(this.inventory);
+        console.log('User');
+        this.color=this.getcolor(this.inventory);
+        this.bodystyle=this.getbodystyle(this.inventory);
+        this.make=this.getcarlogo(this.inventory);
+        this.mileage=this.getmileage(this.inventory);
+        // console.log(this.colorname);
+        let items={doctype:this.inventory.doctype,
+            color:this.color,
+            bodystyle:this.bodystyle,
+            make:this.make,
+            mileage:this.mileage,
+            filename:this.inventory.filename,
+            est_retail_value:this.inventory.est_retail_value,
+            vin:this.inventory.vin,
+            enginetype:this.inventory.enginetype,
+            drive:this.inventory.drive,
+            cylinder:this.inventory.cylinder,
+            fuel:this.inventory.fuel,
+            model:this.inventory.model,
+            gear_type:this.inventory.gear_type};
+        console.log(this.userinformation);
+        let values={dealerid:this.userInfo.username,inventoryid:this.inventory._id,customerusername:this.userinformation.username,dealername:this.userInfo.userfullname,customeremail:this.userinformation.email,inventorymatchval:this.userinformation.inventorymatchval,carinfo:items};
+        //this.details=[];
+        // alert(values);
+        console.log('post rsvp values');
+        console.log(values);
+        this.http.post(this.serverUrl+'sendinfo',values)
+            .subscribe(data => {
+
+               $('.rsvpcl').click();
+                $('#sendinfoModal').modal('show');
 
             }, error => {
                 console.log("Oooops!");
             });
 
-       }
 
+    }
 
 
 }

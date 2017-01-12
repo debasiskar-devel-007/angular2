@@ -42,6 +42,62 @@
       System.import('app/main').then(null, console.error.bind(console));
     </script>
 
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '310938685967600',
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/sdk.js";
+        fjs.parentNode.insertBefore(js, fjs);
+      }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+
+
+    <link rel="stylesheet" href="http://widgets.edmunds.com/css/tmv/simple-dark.css">
+    <style>.tmvwidget{-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border-width:1px;width:569px;}.tmvwidget .tmvwidget-header{-webkit-border-top-right-radius:5px;-moz-border-radius-topright:5px;border-top-right-radius:5px;-webkit-border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px;}
+    </style>
+    <script type="text/javascript">
+      (function(d, tag, apikey){
+        var tmv = {
+          init: function() {
+            tmv.loadjs('http://widgets.edmunds.com/js/edm/sdk.js', tmv.loadWidget);
+          },
+          loadjs: function(file, callback) {
+            var fjs = d.getElementsByTagName(tag)[0],
+                    s = d.createElement(tag);
+            s.onload = s.onreadystatechange = function() {
+              var r = this.readyState;
+              if (!r || r === 'loaded' || r === 'complete') {
+                callback.call();
+                s.onreadystatechange = null;
+              }
+            };
+            s.src = file;
+            fjs.parentNode.insertBefore(s, fjs);
+          },
+          loadWidget: function() {
+            tmv.loadjs('http://widgets.edmunds.com/js/tmv/tmvwidget.js', tmv.initWidget);
+          },
+          initWidget: function() {
+            var widget = new EDM.TMV(apikey, {root: 'tmvwidget', baseClass: 'tmvwidget'});
+            widget.init({"includedMakes":"all","price":"tmv","showVehicles":"USED","zip":"84310"});
+            widget.render();
+          }
+        }
+        tmv.init();
+      }(document, 'script', 'qahfbj296u33sf7qvbmk5ezh'));
+    </script>
   </head>
 
   <body>
@@ -54,5 +110,23 @@
        <img src="images/processing.gif" style="display: block; margin: 10px auto;">
       </div>
     </my-app>
+
+    <div id="myModal11" class="modal fade">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+           <!-- <h4 class="modal-title">Confirmation</h4>-->
+          </div>
+          <div class="modal-body">
+            <div id="tmvwidget"></div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+           <!-- <button type="button" class="btn btn-primary">Save changes</button>-->
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

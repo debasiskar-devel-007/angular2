@@ -64,17 +64,17 @@
 
                 <div class="cd_block3_gallery_bigimg">
 
-                    <img src="{{uploadedfilesrc1}}" alt="#" class="cd1_bigcar">
+                    <img src="{{uploadedfilesrc1}}" alt="#" class="cd1_bigcar bigimag">
                    <!-- <img src="images/cd1_bigcar1.jpg" alt="#" class="cd1_bigcar">-->
 
-                    <img src="images/cd_carlogo1.jpg" alt="#" class="cd1_carsponser">
+                  <!--  <img src="images/cd_carlogo1.jpg" alt="#" class="cd1_carsponser">-->
 
                     <div class="cdcar_text">
                         <div class="cdcar_textdiv1">
-                            <a href="javascript:void(0)">
-                               <!-- <img src="{{uploadedfilesrc1}}" alt="#">-->
+                            <!--<a href="javascript:void(0)">
+                               &lt;!&ndash; <img src="{{uploadedfilesrc1}}" alt="#">&ndash;&gt;
                                 <img src="images/cd_con1.png" alt="#">
-                            </a>
+                            </a>-->
                             <div class="clearfix"></div>
 <span *ngIf="notes" [innerHTML]="_sanitizer.bypassSecurityTrustHtml(notes)"></span>
                            <!-- The Brio is a testimony to Honda's 'Man Maximum, machine Minimum' principle that believes in
@@ -87,13 +87,17 @@
                     </div>
 
 
-                    <a href="javascript:void(0)" class="cd_viewbtn">View All Photos</a>
+                   <!-- <a href="javascript:void(0)" class="cd_viewbtn">View All Photos</a>-->
 
                 </div>
 
                 <div class="cd_block3_gallery_smimg">
-                    <img src="{{uploadedfilesrc1}}" alt="#">
-                   <!-- <img src="images/cd1_sm1.jpg" alt="#">-->
+                    <span><img (click)="imageshow(uploadedfilesrc1)"  src="{{uploadedfilesrc1}}" alt="#"></span>
+                    <span *ngFor="let adcarimage of uploadedadditionalfilearr">
+                            <img (click)="imageshow(adcarimage)"   src="{{adcarimage}}" alt="#">
+                                </span>
+                    <!--<img src="{{uploadedfilesrc1}}" alt="#">
+                   &lt;!&ndash; <img src="images/cd1_sm1.jpg" alt="#">&ndash;&gt;
                     <img src="images/cd1_sm2.jpg" alt="#">
                     <img src="images/cd1_sm3.jpg" alt="#">
                     <img src="images/cd1_sm4.jpg" alt="#">
@@ -104,7 +108,7 @@
                     <img src="images/cd1_sm9.jpg" alt="#">
                     <img src="images/cd1_sm10.jpg" alt="#">
                     <img src="images/cd1_sm11.jpg" alt="#">
-                    <img src="images/cd1_sm12.jpg" alt="#">
+                    <img src="images/cd1_sm12.jpg" alt="#">-->
 
                 </div>
 

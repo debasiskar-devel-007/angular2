@@ -37,6 +37,7 @@ export class AppCustomercreditcard {
     details1:any;
     orderbyquery:any;
     orderbytype:any;
+    private dealerusername:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router ) {
 
@@ -63,7 +64,7 @@ export class AppCustomercreditcard {
             });
         var parts = location.hostname.split('.');
         var sndleveldomain = parts[0];
-
+        this.dealerusername=sndleveldomain;
         let ids = {username: sndleveldomain};
         this.http.post(this.serverUrl + 'editdealerbyusername', ids)
             .subscribe(data => {
@@ -82,6 +83,7 @@ export class AppCustomercreditcard {
 console.log(this.customerinfo.username);
         this.customercreditform = fb.group({
             username: [this.customerinfo.username, Validators.required],
+            dealerusername: [this.dealerusername],
             address: ["", Validators.required],
             state: ["", Validators.required],
             expmonth: ["", Validators.required],

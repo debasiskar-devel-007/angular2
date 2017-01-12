@@ -52,11 +52,11 @@
             <!--<img src="images/demomenu.png" alt="" style="display: block; margin: 0 auto;"/>-->
             <ul>
                 <li><a (click)="adminlist()"><img src="images/admicon-manageadmin.png">Manage Admin</a></li>
-                <li><a><img src="images/admicon-managecustomer.png">Manage Customer Portal</a></li>
+                <!--<li><a><img src="images/admicon-managecustomer.png">Manage Customer Portal</a></li>-->
                 <li><a><img src="images/admicon-broadcastprefer.png">Manage Broadcast Preferences</a></li>
-                <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
-                <li><a><img src="images/admicon-manageaution.png">Manage Auctions</a></li>
-                <li><a><img src="images/admicon-subscription.png">Manage Subscriptions</a></li>
+                <li><a [routerLink]="['/jobticketinbox']"><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
+                <li><a [routerLink]="['/auctionlist']"><img src="images/admicon-manageaution.png">Manage Auctions</a></li>
+                <li><a [routerLink]="['/merbershippackagelist']"><img src="images/admicon-subscription.png">Manage Subscriptions</a></li>
                 <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="images/admicon-sharemedia.png">Manage Share Link <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <li><a [routerLink]="['/sharemedia']"><img src="images/admicon-sharelink.png">Share Link</a></li>
@@ -67,10 +67,10 @@
 
 
                 </li>
-                <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
+               <!-- <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>-->
                 <li ><a (click)="faq()"><img src="images/admicon-faq.png">Faq's</a></li>
 
-                <li class="dropdown">   <a href="javascript:void(0)" class="dropdown-toggle" type="button" data-toggle="dropdown"> <img src="images/admicon-demo.png">Demo  <span class="caret"></span></a>
+                <!--<li class="dropdown">   <a href="javascript:void(0)" class="dropdown-toggle" type="button" data-toggle="dropdown"> <img src="images/admicon-demo.png">Demo  <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                      <li><a href="javascript:void(0)"><img src="images/admicon-demo.png">Demo1</a></li>
                         <li><a href="javascript:void(0)"><img src="images/admicon-demo.png">Demo2</a></li>
@@ -78,10 +78,10 @@
 
                 </ul>
 
-                </li>
+                </li>-->
                 <li ><a [routerLink]="['/dealerlist']"><img src="images/admicon-dealers.png">Dealers</a></li>
-                <li ><a [routerLink]="['/merbershippackagelist']"><img src="images/admicon-managemembershippackage.png">Manage Membership Package</a></li>
-                <li ><a [routerLink]="['/auctionlist']"><img src="images/admicon-manageaution.png">Manage Auction</a></li>
+               <!-- <li ><a [routerLink]="['/merbershippackagelist']"><img src="images/admicon-managemembershippackage.png">Manage Membership Package</a></li>-->
+
                 <li ><a [routerLink]="['/membershiporderreport']"><img src="images/admicon-membershiporderreport.png">Membership Order Report</a></li>
 
                 <li ><a [routerLink]="['/carlist']"><img src="images/admicon-manageinventory.png">Manage Inventory</a></li>

@@ -45,10 +45,16 @@ export class AppCustomerheader implements OnInit  {
     customerimage:any;
     @ViewChild('modalclose')
     private modalclose:any;
+    private customerlistmessage: any;
+    private dealerlist: any;
+    private messageaar: Array<any>;
+    private messageaarpub:any;
+    private breaklog1:any;
+    private breaklog:any;
+    datamsg:any;
 
 
-
-    constructor(@Inject(Renderer) private renderer: Renderer,fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router  ) {
+    constructor(@Inject(Renderer) private renderer: Renderer,fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router ) {
 
 //console.log(userdetails);
         this.details12='';
@@ -56,11 +62,33 @@ export class AppCustomerheader implements OnInit  {
         this.coockieData=userdetails;
         this.items = commonservices.getItems();
         this.router=router;
-
+        this.http=http;
         this.userDetails=userdetails.getObject('userdetails');
         this.serverUrl = this.items[0].serverUrl;
        // console.log(userdetails.getObject('userdetails'));
         console.log(this.userDetails.username);
+        this.messageaar=[];
+        this.messageaarpub=[];
+        this.dealerlist=[];
+        this.customerlistmessage=[];
+        this.breaklog1=0;
+        this.breaklog=0;
+        let linkmessage = this.serverUrl+'messagelist';
+        this.http.get(linkmessage)
+            .subscribe(data1 => {
+                this.datamsg = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+               // this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+                //this.pagec=Math.ceil(this.data.length / 10);
+                console.log(' message list ...');
+                console.log(this.datamsg);
+                console.log(this.datamsg.length);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
         if(this.userDetails.filename!=undefined){
             this.customerimage = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.userDetails.filename;
         }
@@ -102,7 +130,77 @@ export class AppCustomerheader implements OnInit  {
             username: [this.userDetails.username],
 
         });
+        let linkcustomer = this.serverUrl+'customerlist';
+        // console.log(link);
+        this.http.get(linkcustomer)
+            .subscribe(data1 => {
+                this.customerlistmessage = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                //this.pagec=Math.ceil(this.data.length / 10);
+                //console.log(' customer list ...');
+                // console.log(this.customerlist);
+                this.makemessagelist();
 
+            }, error => {
+                console.log("Oooops!");
+            });
+
+       let linkdealer = this.serverUrl+'dealerlist';
+        // console.log(link);
+        this.http.get(linkdealer)
+            .subscribe(data1 => {
+                this.dealerlist = data1.json();
+                // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+                //this.pagec=Math.ceil(this.data.length / 10);
+                // console.log(' dealer list ...');
+                //console.log(this.dealerlist);
+                this.makemessagelist();
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+    }
+    private makemessagelist() {
+        // if(this.dealerlist.length>0 && this.customerlist.length>0) {
+        this.messageaar = [];
+        this.messageaarpub=[];
+        var x: any;
+        for (x in this.datamsg) {
+            if(this.datamsg[x].parentid!=0) this.datamsg[x]._id=this.datamsg[x].parentid;
+            if (this.datamsg[x].to == this.userDetails.username) {
+                this.datamsg[x].fromfullname = this.getuserinfo(this.datamsg[x].from);
+                /* this.datamsg[x].userimage = this.getuserimage(this.datamsg[x].from);*/
+                this.messageaar[this.datamsg[x]._id]=(this.datamsg[x]);
+            }
+        }
+
+        for ( var key in this.messageaar ){
+            this.messageaarpub.push(this.messageaar[key]);
+        }
+
+    }
+    private getuserinfo(from:any) {
+        var y:any;
+        for(y in this.customerlistmessage){
+            this.breaklog++;
+
+            if(from==this.customerlistmessage[y].username){
+                return this.customerlistmessage[y].fname+' '+this.customerlistmessage[y].lname+' ( '+this.customerlistmessage[y].username+' ) ';
+            }
+
+        }
+        var z:any;
+        for(z in this.dealerlist){
+            this.breaklog1++;
+
+            if(from==this.dealerlist[z].username){
+                return this.dealerlist[z].fname+' '+this.dealerlist[z].lname+' ( '+this.dealerlist[z].username+' ) ';
+            }
+
+        }
+
+        return '';
 
     }
     handleUpload(data: any): void {

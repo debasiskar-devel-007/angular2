@@ -19,7 +19,7 @@
 
             <div class="col-lg-6 col-md-12 col-sm-12 col-xs-12 cusdashboardblock1innerright">
                 <div class="badgelists">
-                    <a href = "javascript:void(0)" [routerLink]="['/mailinbox']"><span class = "badge">3</span><img src="images/admicon-message.png">Messages</a>
+                    <a href = "javascript:void(0)" [routerLink]="['/mailinbox']"><span class = "badge">{{messageaarpub.length}}</span><img src="images/admicon-message.png">Messages</a>
                     <a href = "#"><span class = "badge">1</span><img src="images/admicon-notification.png">Notifications</a>
                     <a href = "#"><span class = "badge">5</span><img src="images/admicon-newcustomer.png">New Customers</a>
                 </div>
@@ -69,6 +69,8 @@
                 <li><a><img src="images/admicon-sharemedia.png">Share Media</a></li>
                 <li><a><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
                 <li><a [routerLink]="['/dealerfaq']"><img src="images/admicon-faq.png">Faq's</a></li>
+                <li><a [routerLink]="['/editprefference']"><img src="images/editprefference.png">Edit Prefference</a></li>
+                <li><a [routerLink]="['/editfinance']"><img src="images/editfinance.png">Edit Finance</a></li>
             </ul>
         </div>
 

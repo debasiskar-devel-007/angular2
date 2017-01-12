@@ -117,7 +117,7 @@ export class AppFreemembershipviews {
         //console.log(adminid);
 
         let link= this.serverUrl+'deletecustomebyid';
-        let ids={id:item._id};
+        let ids={id:'586a517cc595bfab27dfc4e0'};
         this.http.post(link,ids)
             .subscribe(data1 => {
                 // this.data = data1.json();

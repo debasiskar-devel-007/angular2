@@ -9,7 +9,7 @@ import {Headers,Http} from "@angular/http";
 import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
-
+declare var $: any;
 
 @Component({
     selector: 'my-app',
@@ -45,6 +45,10 @@ export class AppSharemedia{
     userdetails:any;
     bannerdata:any;
     bannerfilesrc:any;
+    dataarr:any;
+    username:any;
+    details12:any;
+
     //sharemediaModal:any;
     @ViewChild('all_m')
     private allMElementRef:any;
@@ -60,19 +64,73 @@ export class AppSharemedia{
         this.messages = appcomponent.getMessages();
         this.serverUrl = this.items[0].serverUrl;
         //this.userInfo=userInfo;
+        this.details12=[];
+        this.data=[];
+
         this.userdetails=userInfo.getObject('userdetails');
+        this.username=this.userdetails.username;
+        console.log(this.userdetails.userrole);
+        console.log(this.userdetails.id);
+        if(this.userdetails.userrole=='affiliate'){
+            let idss = {id: this.userdetails.id};
+            this.http.post(this.serverUrl + 'editaffiliate', idss)
+                .subscribe(data2 => {
+                    this.details12 = data2.json()[0];
+                console.log('affiliatedetails')
+                console.log(this.details12)
+                    //this.username=this.details12.dealereusername;
+
+
+                }, error => {
+                    console.log("Oooops!");
+                });
+        }
+        //console.log();
         let link='';
         if(this.userdetails.userrole=='admin')link = this.serverUrl+'sharemedialist';
-        if(this.userdetails.userrole=='dealer')link = this.serverUrl+'sharemedialistdealer';
+        if(this.userdetails.userrole=='dealer' || this.userdetails.userrole=='affiliate')link = this.serverUrl+'sharemedialistdealer';
         this.p=1;
+        this.dataarr=[];
         this.orderbyquery='priority';
         this.orderbytype=-1;
         this.http.get(link)
             .subscribe(data1 => {
-                this.data = data1.json();
+                this.dataarr = data1.json();
+
+                var x:any;
+                for(x in this.dataarr){
+                    if(this.userdetails.userrole=='admin'){
+                        console.log(this.userdetails.userrole);
+
+                        this.dataarr[x].urllink=this.dataarr[x].url;
+                        console.log(this.dataarr[x].urllink);
+                    }
+                    if(this.userdetails.userrole=='dealer'){
+                        console.log(this.userdetails.userrole);
+                        this.dataarr[x].urllink='http://'+this.username+'.probidauto.com/#/'+this.dataarr[x].url;
+                        console.log(this.dataarr[x].urllink);
+                    }
+                    if(this.userdetails.userrole=='affiliate'){
+
+                                this.dataarr[x].urllink='http://'+this.userdetails.dealereusername+'.probidauto.com/#/'+this.dataarr[x].url+'/'+this.userdetails.id;
+
+
+                        console.log(this.userdetails.userrole);
+
+                        console.log(this.dataarr[x].urllink);
+                    }
+                    this.data.push(this.dataarr[x]);
+
+                }
+                console.log('Share media');
+                console.log(this.data);
+                //<a href="probid.influxiq.com/customersignup"><img src="bannerfilesrc+banner.filename}}" height="{{itembannersize.height}}" width="{{itembannersize.width}}"></a>
               //  console.log(this.data);
                 this.sharefilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
+
+
+
                 this.pagec=Math.ceil(this.data.length / 10);
 
             }, error => {
@@ -85,6 +143,12 @@ export class AppSharemedia{
                 this.bannerdata = data2.json();
 
                 this.bannerfilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
+
+             /*  new Clipboard('.clipboardb', {
+                    text: function(trigger) {
+                        return trigger.getAttribute('clipval');
+                    }
+                });*/
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
               //  this.pagec=Math.ceil(this.data.length / 10);
 
@@ -183,17 +247,39 @@ export class AppSharemedia{
     }
 
     bannerModal(mediaid:any){
+
         //let shareid=sharemediaid;
        // $('#sharemediaModal').myModal('show');
        // sharemediaModal.open();
       //  $('#sharemediaModal').modal('show');
         //alert(mediaid);
         this.mediaid=mediaid;
+
         this.renderer.invokeElementMethod(this.allMElementRef.nativeElement, 'click', []);
         //sharemediaModal.open();
+      /*  let timeoutId = setTimeout(() => {
+            //console.log('hello');
+            new Clipboard('.clipboardb', {
+                text: function(trigger) {
+                    return trigger.getAttribute('clipval');
+                }
+            });
+
+        }, 3000);*/
+    }
+    getgrabcode(src:any,imagname:any,imgheight:any,imgwidth:any){
+        return '<a href="probid.influxiq.com/customersignup"><img src="'+src+imagname+'" height="'+imgheight+'" width="'+imgwidth+'"></a>';
+
     }
 
-
+    getgrab(ev:any){
+        console.log('good news');
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+      var htm=  $(target).parent().prev().text();
+        //alert(htm);
+        $('#commonclip').attr('clipval',htm);
+        $('#commonclip').click();
+    }
 
 }
 

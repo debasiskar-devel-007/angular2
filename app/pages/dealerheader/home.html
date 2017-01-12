@@ -11,7 +11,7 @@
             </div>
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 cusdashboardblock1innerright cusdashboardblock1innerrightsml">
                 <div class="badgelists">
-                    <a [routerLink]="['/mailinbox']"><span class = "badge">3</span><img src="images/admicon-message.png">Messages</a>
+                    <a [routerLink]="['/mailinbox']"><span class = "badge">{{messageaarpub.length}}</span><img src="images/admicon-message.png">Messages</a>
                     <a href = "#"><span class = "badge">1</span><img src="images/admicon-notification.png">Notifications</a>
                     <a href = "#"><span class = "badge">5</span><img src="images/admicon-newcustomer.png">New Customers</a>
                 </div>
@@ -53,7 +53,16 @@
             <!--<img src="images/demomenu.png" alt="" style="display: block; margin: 0 auto;"/>-->
             <ul>
                 <li><a><img src="images/admicon-managecustomer.png">Manage Customer Portal</a></li>
-                <li><a><img src="images/admicon-broadcastprefer.png">Manage Broadcast Preferences</a></li>
+
+
+
+                <li class="dropdown"> <a href="javascript:void(0)" class="dropdown-toggle" type="button" data-toggle="dropdown"><img src="images/admicon-broadcastprefer.png">Manage Broadcast <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a [routerLink]="['/managesocialaccounts']"><img src="images/admicon-package.png">Manage Social Accounts</a></li>
+                        <li><a [routerLink]="['/openchannelmanagementlist']"><img src="images/admicon-managecustomer.png">Open Channel Management</a></li>
+                        <li><a [routerLink]="['/managepostslist']"><img src="images/admicon-managecustomer.png">Manage Post</a></li>
+                    </ul>
+                </li>
                 <li><a [routerLink]="['/manageopencontract']" ><img src="images/admicon-opencontact.png">Manage Open Contract</a></li>
                   <li><a [routerLink]="['/dealerauctionlist']"><img src="images/admicon-manageaution.png">Manage Auctions</a></li>
 
@@ -69,7 +78,8 @@
                 <!--<li><a [routerlink]="['/affiliatelist']"><img src="images/admicon-subscription.png">Manage Affiliate</a></li>-->
                 <li><a [routerLink]="['/sharemedia']"><img src="images/admicon-sharemedia.png">Share Media</a></li>
                 <li><a [routerLink]="['/affiliatelist']"><img src="images/admicon-manageaffiliate.png">Manage Affiliate</a></li>
-                <li><a (click)="opensupportticket()"><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
+                <li><a [routerLink]="['/jobticketinbox']"><img src="images/admicon-supporttickets.png">Support Tickets</a></li>
+                <!--(click)="opensupportticket()"-->
                 <li><a [routerLink]="['/faq']"><img src="images/admicon-faq.png">Faq's</a></li>
                 <li><a [routerLink]="['/dealerfaq']"><img src="images/admicon-myfaq.png">My Faq's</a></li>
                 <li><a [routerLink]="['/auctioninventoryview']"><img src="images/admicon-auctioninventoryview.png">Auction Inventory View</a></li>
@@ -82,6 +92,7 @@
                 <li><a [routerLink]="['/addretailcommission']"><img src="images/admicon-package.png">Retail Commission</a></li>
                <!-- <li><a [routerLink]="['/manageopencontract']"><img src="images/admicon-package.png">Manage Open Contract</a></li>-->
                 <li><a [routerLink]="['/dealercustomerlist']"><img src="images/admicon-package.png">Customer List</a></li>
+                <li><a [routerLink]="['/affiliatereport']"><img src="images/admicon-subscription.png">Affiliate Report</a></li>
             </ul>
         </div>
     </div>

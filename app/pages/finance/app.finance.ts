@@ -57,6 +57,7 @@ export class AppFinance implements OnInit {
     private autoyeararr:Array<any>;
     randstring:any;
     err:any;
+    private dealerusername:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
@@ -64,7 +65,7 @@ export class AppFinance implements OnInit {
         this.http=http;
         this.router=router;
         this.appcomponent=appcomponent;
-        this.commonservices=commonservices;
+         this.commonservices=commonservices;
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
         this.customerinfo=customerInfo.getObject('customerInfo');
@@ -90,7 +91,7 @@ export class AppFinance implements OnInit {
 
         var parts = location.hostname.split('.');
         var sndleveldomain = parts[0];
-
+        this.dealerusername=sndleveldomain;
         let ids = {username: sndleveldomain};
         this.http.post(this.serverUrl + 'editdealerbyusername', ids)
             .subscribe(data => {
@@ -126,6 +127,7 @@ export class AppFinance implements OnInit {
 
 
         this.customersignupform = fb.group({
+            dealerusername:[this.dealerusername],
             username: [this.customerinfo.username, Validators.required],
             fname: [this.customerinfo.fname, Validators.required],
             mname: [''],

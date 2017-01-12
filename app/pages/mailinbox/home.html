@@ -86,7 +86,7 @@
                                                     <table class="table table-hover table-striped">
                                                         <tbody>
 
-                                                        <tr *ngFor="let msg of messageaarpub|filter:query|paginate: { itemsPerPage: 10, currentPage: p }">
+                                                        <tr *ngFor="let msg of messageaarpub|filter:query|orderBy:orderbyquerymailinbox:orderbytypemailinbox|paginate: { itemsPerPage: 10, currentPage: p }">
                                                             <td><input type="checkbox"></td>
                                                             <td class="mailbox-star"><a href="javascript:void(0)"  [routerLink]="['/readmessage',msg._id]"><span class="glyphicon glyphicon-star-empty text-yellow"></span></a></td>
                                                             <td class="mailbox-name"><a href="javascript:void(0)"  [routerLink]="['/readmessage',msg._id]"><b>{{msg.fromfullname}}</b></a></td>
@@ -99,7 +99,7 @@
                                                         </tbody>
                                                     </table>
                                                     <!-- /.table -->
-                                                    <div class="col-lg-12 col-md-12 paginationwrapper">
+                                                    <div class="col-lg-12 col-md-12 paginationwrapper paginationwrapperbold">
                                                         <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
                                                     </div>
                                                 </div>

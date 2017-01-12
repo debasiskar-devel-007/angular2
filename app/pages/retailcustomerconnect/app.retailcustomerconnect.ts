@@ -77,6 +77,7 @@ export class AppRetailcustomerconnect implements OnInit {
     websiteurl:any;
     email:any;
     query:any;
+    private dealerusername:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,customerInfo:CookieService,router: Router,appcomponent:AppComponent,elementRef: ElementRef  ) {
         //table_textbox
@@ -114,7 +115,7 @@ export class AppRetailcustomerconnect implements OnInit {
 
         var parts = location.hostname.split('.');
         var sndleveldomain = parts[0];
-
+        this.dealerusername=sndleveldomain;
         let ids = {username: sndleveldomain};
         this.http.post(this.serverUrl + 'editdealerbyusername', ids)
             .subscribe(data => {
@@ -173,6 +174,7 @@ export class AppRetailcustomerconnect implements OnInit {
         });
 
         this.customersignupupdateform = fb.group({
+            dealerusername:[this.dealerusername],
             username: [this.customerinfo.username, Validators.required],
             send_mail: ['', Validators.required],
             retail_calculator: ['', Validators.required],
@@ -381,7 +383,7 @@ export class AppRetailcustomerconnect implements OnInit {
                 .subscribe(data => {
                     var userdet={username:this.customersignupform.value.username,useremail:this.customersignupform.value.email,userrole:'customer',userfullname:this.customersignupform.value.fname+' '+this.customersignupform.value.lname};
                     this.userInfo.putObject('userdetails', userdet);
-                    this.customerInfo.putObject('customerInfo',this.customersignupupdateform.value);
+                    //this.customerInfo.putObject('customerInfo',this.customersignupupdateform.value);
                     console.log(this.customersignupupdateform.value);
                     if(this.customersignupupdateform.value.qualify_finance==1){
                         this.router.navigate(['/finance']);

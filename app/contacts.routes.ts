@@ -115,6 +115,22 @@ import {AppFreeinvitedealercustomerlist} from "./pages/freeinvitedealercustomerl
 import {AppFreecustomercreditcard} from "./pages/freecustomercreditcard/app.freecustomercreditcard";
 import {AppFreemembershipviews} from "./pages/freemembershipviews/app.freemembershipviews";
 import {AppMailboxsend} from "./pages/mailboxsend/app.mailboxsend";
+import {AppEditprefference} from "./pages/editprefference/app.editprefference";
+import {AppEditfinance} from "./pages/editfinance/app.editfinance";
+import {AppWritemailcustomer} from "./pages/writemailcustomer/app.writemailcustomer";
+import {AppAddjobticket} from "./pages/addjobticket/app.addjobticket";
+import {AppJobticketsend} from "./pages/jobticketsend/app.jobticketsend";
+import {AppJobticketinbox} from "./pages/jobticketinbox/app.jobticketinbox";
+import {AppReadjobticket} from "./pages/readjobticket/app.readjobticket";
+import {AppCustomeractivitylist} from "./pages/customeractivitylist/app.customeractivitylist";
+import {AppAffiliatereport} from "./pages/affiliatereport/app.affiliatereport";
+import {AppManagesocialaccounts} from "./pages/managesocialaccounts/app.managesocialaccounts";
+import {AppAddopenchannelmanagement} from "./pages/addopenchannelmanagement/app.addopenchannelmanagement";
+import {AppOpenchannelmanagementlist} from "./pages/openchannelmanagementlist/app.openchannelmanagementlist";
+import {AppEditopenchannelmanagement} from "./pages/editopenchannelmanagement/app.editopenchannelmanagement";
+import {AppAddmanageposts} from "./pages/addmanageposts/app.addmanageposts";
+import {AppManagepostslist} from "./pages/managepostslist/app.managepostslist";
+import {AppEditmanageposts} from "./pages/editmanageposts/app.editmanageposts";
 
 //alert(window.location.hostname);
 
@@ -153,7 +169,7 @@ const appRoutes: Routes = [
     { path: 'dealerfooter',component:AppDealerfooter,outlet:'dealerfooter'},
     { path: 'dealerheader',component: AppDealerheader,outlet:'dealerheader'},
     { path: 'dealerdashboard',component: AppDealerdashboard},
-    { path: 'customersignup',component: AppCustomersignup},
+    { path: 'customersignup/:id',component: AppCustomersignup},
     { path: 'customercreditcard',component: AppCustomercreditcard},
     { path: 'adminlogin',component: AppAdminlogin},
     { path: 'customerlogin',component: AppCustomerlogin},
@@ -256,6 +272,22 @@ const appRoutes: Routes = [
     { path: 'freecustomercreditcard/:randomstring', component: AppFreecustomercreditcard},
     { path: 'freemembershipviews', component: AppFreemembershipviews},
     { path: 'mailboxsend', component: AppMailboxsend},
+    { path: 'editprefference', component: AppEditprefference},
+    { path: 'editfinance', component: AppEditfinance},
+    { path: 'writemailcustomer/:user', component: AppWritemailcustomer},
+    { path: 'addjobticket', component: AppAddjobticket},
+    { path: 'jobticketsend', component: AppJobticketsend},
+    { path: 'jobticketinbox', component: AppJobticketinbox},
+    { path: 'readjobticket/:id', component: AppReadjobticket},
+    { path: 'customeractivitylist', component: AppCustomeractivitylist},
+    { path: 'affiliatereport', component: AppAffiliatereport},
+    { path: 'managesocialaccounts', component: AppManagesocialaccounts},
+    { path: 'addopenchannelmanagement', component: AppAddopenchannelmanagement},
+    { path: 'openchannelmanagementlist', component: AppOpenchannelmanagementlist},
+    { path: 'editopenchannelmanagement/:id', component: AppEditopenchannelmanagement},
+    { path: 'addmanageposts', component: AppAddmanageposts},
+    { path: 'managepostslist', component: AppManagepostslist},
+    { path: 'editmanageposts/:id', component: AppEditmanageposts},
 
 
 

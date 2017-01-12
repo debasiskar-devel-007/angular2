@@ -49,6 +49,8 @@ export class AppMailboxsend {
     private datab:any;
     private messageaarpub:any;
     private sendmessageaarpub:any;
+    orderbyquerymailinbox:any;
+    orderbytypemailinbox:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.router=router;
@@ -61,6 +63,8 @@ export class AppMailboxsend {
         this.serverUrl = this.items[0].serverUrl;
         let link = this.serverUrl+'bannerlist';
         this.p=1;
+        this.orderbyquerymailinbox='addedon';
+        this.orderbytypemailinbox=-1;
         this.userInfo=userInfo.getObject('userdetails');
         this.orderbyquery='bannername';
         this.orderbytype=-1;

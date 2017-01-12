@@ -54,6 +54,10 @@ export class AppRecentbidagreement{
     private carmileagelist:any;
     private colorlist:any;
     private auctionlistarr:any;
+    private customprofiledetails:any;
+    private customerfile:any;
+    private itemrsvpcar:any;
+    private carbodystylelist:any;
 
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent ,private _sanitizer: DomSanitizer ) {
@@ -170,7 +174,12 @@ export class AppRecentbidagreement{
             }, error => {
                 console.log("Oooops!");
             });
-
+        this.http.get(this.serverUrl+'carbodystylelist')
+            .subscribe(data => {
+                this.carbodystylelist=data.json();
+            }, error => {
+                console.log("Oooops!");
+            });
 
         this.http.get(this.serverUrl+'carlist')
             .subscribe(data1 => {
@@ -270,6 +279,46 @@ export class AppRecentbidagreement{
                                 //console.log(this.carlistarr[x].carlogolist);
                                 return (this.carlistarr[x].model);
                             }
+                            if (val1=='enginetype'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].enginetype);
+                            }
+                            if (val1=='drive'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].drive);
+                            }
+                            if (val1=='cylinder'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].cylinder);
+                            }
+                            if (val1=='fuel'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].fuel);
+                            }
+                            if (val1=='vin'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].vin);
+                            }
+                            if (val1=='seats'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].seats);
+                            }
+                            if (val1=='gear_type'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return (this.carlistarr[x].gear_type);
+                            }
+                            if (val1=='carbodystyle'){
+                                //console.log(this.carlistarr[x]);
+                                //console.log(this.carlistarr[x].carlogolist);
+                                return this.getbodystyle(this.carlistarr[x]);
+                            }
                             if (val1=='year'){
                                 //console.log(this.carlistarr[x]);
                                 //console.log(this.carlistarr[x].carlogolist);
@@ -338,6 +387,46 @@ export class AppRecentbidagreement{
                         //console.log(this.carlistarr[x]);
                         //console.log(this.carlistarr[x].carlogolist);
                         return this.getcaryear(this.carlistarr[x]);
+                    }
+                    if (val1=='enginetype'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].enginetype);
+                    }
+                    if (val1=='drive'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].drive);
+                    }
+                    if (val1=='cylinder'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].cylinder);
+                    }
+                    if (val1=='fuel'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].fuel);
+                    }
+                    if (val1=='vin'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].vin);
+                    }
+                    if (val1=='seats'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].seats);
+                    }
+                    if (val1=='gear_type'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return (this.carlistarr[x].gear_type);
+                    }
+                    if (val1=='carbodystyle'){
+                        //console.log(this.carlistarr[x]);
+                        //console.log(this.carlistarr[x].carlogolist);
+                        return this.getbodystyle(this.carlistarr[x]);
                     }
                     if (val1=='image'){
                         if(typeof (this.carlistarr[x].filename)!='undefined')
@@ -413,6 +502,15 @@ export class AppRecentbidagreement{
         var y:any;
         for(y in this.carautoyearlist){
             if(this.carautoyearlist[y]._id==val.carautoyearlist) return this.carautoyearlist[y].year;
+        }
+        return 'N/A';
+    }
+    getbodystyle(val:any){
+        //console.log(val);
+        //carlogolist
+        var t:any;
+        for(t in this.carbodystylelist){
+            if(this.carbodystylelist[t]._id==val.carbodystylelist) return this.carbodystylelist[t].name;
         }
         return 'N/A';
     }
@@ -538,9 +636,34 @@ export class AppRecentbidagreement{
     }
 
 
+    viewprofile(itemrsvp:any){
+        console.log('Customer Profile ');
+        console.log(itemrsvp);
+        // var customprofiledetails=[];
+        this.customerfile='images/logo_61.png';
+        let customerusername = itemrsvp; // (+) converts string 'id' to a number
+        let ids={username: itemrsvp.customerusername};
+        this.http.post(this.serverUrl+'editdcustomerbyusername',ids)
+            .subscribe(data => {
+                this.customprofiledetails = data.json()[0];
+                if(typeof(this.customprofiledetails.filename)!='undefined'){
+                    this.customerfile='http://probidbackend.influxiq.com/uploadedfiles/sharelinks/'+this.customprofiledetails.filename;
+                }
+                $('#userprofileModal').modal('show');
+                console.log('customer details');
+                console.log(this.customprofiledetails);
+            })
 
 
+    }
 
+    viewdetails(item:any){
+        this.itemrsvpcar=item;
+        console.log('Car Info');
+        console.log(this.itemrsvpcar);
+        console.log(this.itemrsvpcar.inventoryid);
+        $('#viewdetailsModal1').modal('show');
+    }
 
 
 }

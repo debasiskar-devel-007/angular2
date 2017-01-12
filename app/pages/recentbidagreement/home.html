@@ -11,7 +11,7 @@
                                     <div class="searchbox">
                                         <input placeholder="Search by Make, Model, Auction, Year, Keyword">
                                     </div>
-                                </li>
+                                 </li>
                             </ul>
                         </div>
 
@@ -57,32 +57,32 @@
                                                         <td><span>Wholesale:</span></td>
                                                         <td>{{getcardetails(itemrsvp.inventoryid,'price')}}</td>
                                                     </tr>
-                                                    <tr>
+                                                    <!--<tr>
                                                         <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                    </tr>
+                                                    </tr>-->
                                                     </tbody>
                                                 </table>
                                             </div>
                                             <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
-                                                <ul class="list-inline">
-                                                    <li>
+                                                 <ul class="list-inline">
+                                                     <li>
                                                         <div class="imgouter">
                                                             <div class="imgwrapper" [innerHtml]="getcustomerdetails(itemrsvp.customerusername,'image')">
 
-                                                            </div>
-                                                        </div>
-                                                        <div class="btnwrapper">
-                                                            <button class="btnedit" type="button" value="Edit">View Profile</button>
-                                                        </div>
+                                                               </div>
+                                                         </div>
+                                                         <div class="btnwrapper">
+                                                            <button class="btnedit" (click)="viewprofile(itemrsvp)" type="button" value="Edit">View Profile</button>
+                                                         </div>
                                                     </li>
-                                                    <li>
+                                                     <li>
                                                         <div class="imgouter">
                                                             <div class="imgwrapper" [innerHtml]="getcardetails(itemrsvp.inventoryid,'image')">
-                                                                <!--<img src="images/auctionimg_1.jpg">-->
+                                                                  <!--<img src="images/auctionimg_1.jpg">-->
                                                             </div>
                                                         </div>
                                                         <div class="btnwrapper">
-                                                            <button class="btnedit" type="button" value="Edit">View Inventory</button>
+                                                            <button  (click)="viewdetails(itemrsvp)" class="btnedit" type="button" value="Edit">View Inventory</button>
                                                         </div>
                                                     </li>
                                                 </ul>
@@ -137,6 +137,180 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="userprofileModal" class="modal fade  matchespopupnew2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Customer Profile</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper" *ngIf="customprofiledetails">
+
+                    <table width="100%" border="0" class="profiletable1">
+                        <tr>
+                            <td width="30%">
+                                <!--  <img src="http://bootstrap.gallery/everestv2/img/user1.jpg"  alt="#" class="popprofileimg"/>-->
+                                <img src="{{customerfile}}"  alt="#" class="popprofileimg"/>
+                            </td>
+
+
+                            <td width="70%" align="left" valign="middle">
+                                Name: <strong>{{customprofiledetails.fname}} {{customprofiledetails.lname}}</strong>
+                                <br/><br/>
+                                Address: <strong>{{customprofiledetails.address}} , {{customprofiledetails.city}} , {{customprofiledetails.state}} ,{{customprofiledetails.zip}}</strong>
+
+
+
+                            </td>
+
+                        </tr>
+
+
+
+
+                        <tr>
+                            <td align="left" valign="middle">Phone:</td>
+                            <td align="left" valign="middle">{{customprofiledetails.phone}}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="middle">Email:</td>
+                            <td align="left" valign="middle">{{customprofiledetails.email}}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="middle">Member Since:</td>
+                            <td align="left" valign="middle">{{commonservices.convertunixtodate(customprofiledetails.added_on)}}</td>
+                            <!--<span [innerHtml]="commonservices.convertunixtodate(itemrs.added_on)"></span>-->
+                        </tr>
+
+
+
+                    </table>
+
+
+                </div>
+            </div>
+            <div class="modal-footer modelfooter">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="viewdetailsModal1" class="modal fade  matchespopupnew2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Inventory Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper">
+
+                    <div class="customerdashboard_block2_right detailpopupnew1" *ngIf="itemrsvpcar">
+                        <!--{{getcardetails(itemrsvpcar.inventoryid,'image')}}-->
+                        <div class="detailsimgnew" [innerHtml]="getcardetails(itemrsvpcar.inventoryid,'image')">/</div>
+
+                        <!-- <img src="http://pluginelectrichybrids.com/wp-content/uploads/2014/07/2015-Audi-Q5-Hybrid-front-view.jpg"  alt="#" class="detailsimgnew"/>-->
+
+                        <div class="cdblock2topbg1"><h3>Details <span>Glossary</span></h3></div>
+
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="middle">Make:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'make')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Model:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'model')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Year:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'year')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Miles:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'mileage')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Color:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'color')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Wholesale:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'price')}}                        </td>
+                            </tr>
+
+
+
+
+
+
+                            <tr>
+                                <td align="left" valign="middle">Body Style:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'carbodystyle')}} </td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Vin:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'vin')}} </td>
+                            </tr>
+
+
+
+
+                            <tr>
+                                <td align="left" valign="middle">Engine Type:        </td>
+                                <td align="right" valign="middle">       {{getcardetails(itemrsvpcar.inventoryid,'enginetype')}} </td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Drive:    </td>
+                                <td align="right" valign="middle">    {{getcardetails(itemrsvpcar.inventoryid,'drive')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Cylinder:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'cylinder')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Fuel:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'fuel')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Seats:    </td>
+                                <td align="right" valign="middle">   {{getcardetails(itemrsvpcar.inventoryid,'seats')}}</td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Gear Type:    </td>
+                                <td align="right" valign="middle">{{getcardetails(itemrsvpcar.inventoryid,'gear_type')}}</td>
+                            </tr>
+
+
+                        </table>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer modelfooter">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
             </div>
         </div>
     </div>

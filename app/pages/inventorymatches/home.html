@@ -110,14 +110,14 @@
                                     </div>
                                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 inventorysinglelistblock3col3">
                                         <div class="actionbtns">
-                                            <a><button class="btnsend" (click)="rsvpModalopen(itemiventorymatch,inventoryusers)" type="button" value="Edit">Send RSVP</button></a>	<a><button class="btnedit" type="button" value="Edit">Contact</button></a>
+                                            <a><button class="btnsend" (click)="rsvpModalopen(itemiventorymatch,inventoryusers)" type="button" value="Edit">Send RSVP</button></a>	<a><button [routerLink]="['/writemailcustomer',inventoryusers.username]" class="btnedit" type="button" value="Edit">Contact</button></a>
                                          </div>
                                     </div>
                                 </div>
                                 <div class="row inventorysinglelistblock4 inventorymatchusers1">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
                                         <div class="actionbtns">
-                                            <a><button class="btnset" type="button" value="Edit">Set the retail price</button></a>	<a><button class="btnsend" type="button" value="Edit">Send Info</button></a>
+                                            <a><button class="btnset" type="button" value="Edit">Set the retail price</button></a>	<a><button class="btnsend" type="button" (click)="sendinfo(itemiventorymatch,inventoryusers)" value="Edit">Send Info</button></a>
                                         </div>
                                     </div>
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col2 inventorysinglelistblock3col22">
@@ -456,7 +456,7 @@
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-default btnclosepopup2" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-default btnclosepopup2 rsvpcl" data-dismiss="modal">Close</button>
 
                     </div>
                 </div>
@@ -470,3 +470,44 @@
 
 
     </div>
+
+<div id="sendinfoModal" class="modal fade carlogomodalbox msgmodalnew">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modelheader">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Info</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper">
+
+                    Info send successfully !
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="rsvpsendModal" class="modal fade carlogomodalbox msgmodalnew">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modelheader">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">RSVP</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper">
+
+                    Rsvp send successfully !
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>S

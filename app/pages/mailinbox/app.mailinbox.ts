@@ -40,6 +40,8 @@ export class AppMailinbox {
     appcomponent:AppComponent;
     tempdata:Array<any>;
     sharefilesrc:any;
+    orderbyquerymailinbox:any;
+    orderbytypemailinbox:any;
     private customerlist: any;
     private dealerlist: any;
     private messageaar: Array<any>;
@@ -61,6 +63,8 @@ export class AppMailinbox {
         this.serverUrl = this.items[0].serverUrl;
         let link = this.serverUrl+'bannerlist';
         this.p=1;
+        this.orderbyquerymailinbox='addedon';
+        this.orderbytypemailinbox=-1;
         this.userInfo=userInfo.getObject('userdetails');
         this.orderbyquery='bannername';
         this.orderbytype=-1;

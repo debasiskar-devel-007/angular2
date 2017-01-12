@@ -47,7 +47,8 @@
                                     </div>
                                     <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
                                         <h2>{{item.name}}</h2>
-                                        <p><input type="text" placeholder="{{item.url}}"></p>
+                                        <!--<p><input type="text" placeholder="{{item.url}}"></p>-->
+                                        <p><input type="text" placeholder="{{item.urllink}}"></p>
                                         <h3>Advance Options</h3>
                                         <ul class="list-inline">
                                             <li>
@@ -64,7 +65,11 @@
                                           <!--  <li><a>  <button class="btnsend" type="button">Copy Link</button></a></li>-->
                                             <li><a>  <!--<button class="btn btn-default" type="button" ngIIclipboard [cbContent]="text">copy</button>--></a></li>
                                           <!-- <li><a><button (click)="sharemediaModal.open()" class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>-->
-                                           <li><a><button (click)="bannerModal(item._id)" class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
+                                           <li>
+                                               <a><button (click)="bannerModal(item._id)" class="btnedit" type="button" value="Edit">Grab Banner</button></a>
+                                               <a><button [attr.clipval]="item.urllink"  class="btnedit clipboardb" type="button" value="Copy To ClipBoard">Copy To ClipBoard</button></a>
+                                               <!--<a><button [attr.clipval]="'http://'+username+'.probidauto.com/#/'+item.url"  class="btnedit clipboardb" type="button" value="Copy To ClipBoard">Copy To ClipBoard</button></a>-->
+                                           </li>
 
 
                                         </ul>
@@ -75,140 +80,7 @@
                                 </div>
                             </div>
 
-                            <!--row end-->
 
-                            <!--row start-->
-  <!--                          <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist">
-                                <div class="row">
-                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 sharelinkssinglelistleft">
-                                        <div class="sharelinksimgwarpper">
-                                            <img src="images/signup_leftimg2.jpg">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
-                                        <h2>Home</h2>
-                                        <p><input type="text" placeholder="www.google.com"></p>
-                                        <h3>Advance Options</h3>
-                                        <ul class="list-inline">
-                                            <li>
-                                                <div>
-                                                    <span class='st_email_large' displayText='Email'></span>
-                                                    <span class='st_facebook_large' displayText='Facebook'></span>
-                                                    <span class='st_twitter_large' displayText='Tweet'></span>
-                                                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
-                                                    <span class='st_pinterest_large' displayText='Pinterest'></span>
-                                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
-                                                </div>
-                                            </li>
-                                            <li><a><button class="btnsend" type="button" value="Edit">Copy Links</button></a></li>
-                                            <li><a><button class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                        <p>www.google.com</p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            &lt;!&ndash;row end&ndash;&gt;
-                            &lt;!&ndash;row start&ndash;&gt;
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist">
-                                <div class="row">
-                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 sharelinkssinglelistleft">
-                                        <div class="sharelinksimgwarpper">
-                                            <img src="images/signup_leftimg2.jpg">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
-                                        <h2>Home</h2>
-                                        <p><input type="text" placeholder="www.google.com"></p>
-                                        <h3>Advance Options</h3>
-                                        <ul class="list-inline">
-                                            <li>
-                                                <div>
-                                                    <span class='st_email_large' displayText='Email'></span>
-                                                    <span class='st_facebook_large' displayText='Facebook'></span>
-                                                    <span class='st_twitter_large' displayText='Tweet'></span>
-                                                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
-                                                    <span class='st_pinterest_large' displayText='Pinterest'></span>
-                                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
-                                                </div>
-                                            </li>
-                                            <li><a><button class="btnsend" type="button" value="Edit">Copy Links</button></a></li>
-                                            <li><a><button class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                        <p>www.google.com</p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            &lt;!&ndash;row end&ndash;&gt;
-                            &lt;!&ndash;row start&ndash;&gt;
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist">
-                                <div class="row">
-                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 sharelinkssinglelistleft">
-                                        <div class="sharelinksimgwarpper">
-                                            <img src="images/signup_leftimg2.jpg">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
-                                        <h2>Home</h2>
-                                        <p><input type="text" placeholder="www.google.com"></p>
-                                        <h3>Advance Options</h3>
-                                        <ul class="list-inline">
-                                            <li>
-                                                <div>
-                                                    <span class='st_email_large' displayText='Email'></span>
-                                                    <span class='st_facebook_large' displayText='Facebook'></span>
-                                                    <span class='st_twitter_large' displayText='Tweet'></span>
-                                                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
-                                                    <span class='st_pinterest_large' displayText='Pinterest'></span>
-                                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
-                                                </div>
-                                            </li>
-                                            <li><a><button class="btnsend" type="button" value="Edit">Copy Links</button></a></li>
-                                            <li><a><button class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                        <p>www.google.com</p>
-
-                                    </div>
-                                </div>
-                            </div>
-                            &lt;!&ndash;row end&ndash;&gt;
-                            &lt;!&ndash;row start&ndash;&gt;
-                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 sharelinkssinglelist">
-                                <div class="row">
-                                    <div class="col-xl-4 col-lg-4 col-md-5 col-sm-12 col-xs-12 sharelinkssinglelistleft">
-                                        <div class="sharelinksimgwarpper">
-                                            <img src="images/signup_leftimg2.jpg">
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-8 col-lg-8 col-md-7 col-sm-12 col-xs-12 sharelinkssinglelistright">
-                                        <h2>Home</h2>
-                                        <p><input type="text" placeholder="www.google.com"></p>
-                                        <h3>Advance Options</h3>
-                                        <ul class="list-inline">
-                                            <li>
-                                                <div>
-                                                    <span class='st_email_large' displayText='Email'></span>
-                                                    <span class='st_facebook_large' displayText='Facebook'></span>
-                                                    <span class='st_twitter_large' displayText='Tweet'></span>
-                                                    <span class='st_linkedin_large' displayText='LinkedIn'></span>
-                                                    <span class='st_pinterest_large' displayText='Pinterest'></span>
-                                                    <span class='st_sharethis_large' displayText='ShareThis'></span>
-                                                </div>
-                                            </li>
-                                            <li><a><button class="btnsend" type="button" value="Edit">Copy Links</button></a></li>
-                                            <li><a><button class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                        <p>www.google.com</p>
-
-                                    </div>
-                                </div>
-                            </div>-->
-                            <!--row end-->
 
                         </div>
                     </div>
@@ -247,89 +119,28 @@
 
                             <div class="sharebanner_textarea" *ngFor="let itembannersize of banner.bannersizedetails1">
                                <div *ngIf="itembannersize._id==banner.bannersize">
-                                <textarea readonly="readonly"><a href="probid.influxiq.com/customersignup"><img src="{{bannerfilesrc}}{{banner.filename}}" height="{{itembannersize.height}}" width="{{itembannersize.width}}"></a></textarea>
-                            </div>
+                                <textarea class="textare1" readonly="readonly"><a href="probid.influxiq.com/customersignup"><img src="{{bannerfilesrc}}{{banner.filename}}" height="{{itembannersize.height}}" width="{{itembannersize.width}}"></a></textarea>
+
+                                   <div class="sharebanner_btnwrapper">
+
+
+                                       <input (click)="getgrab($event)"   type="button" value="Grab Code" class="grabcodebanner">
 
                             </div>
 
-                             <div class="sharebanner_btnwrapper">
 
-                                 <input type="button" value="Grab Code" class="grabcodebanner">
-                             </div>
+                                </div>
+
+                            </div>
+
+
+                            <!-- [attr.clipval]="getgrabcode(bannerfilesrc,banner.filename,itembannersize.height,itembannersize.width)"-->
                         </div>
 
                     </div>
                     <div *ngIf="bannerdata==0">No Banner Found !</div>
 
-                    <!--<div class="sharebanner_wrapper">
 
-                        <div class="sharebanner_wrapper_banner"><img src="http://www.gettyimages.pt/gi-resources/images/Homepage/Hero/PT/PT_hero_42_153645159.jpg" alt="#"></div>
-
-                        <div class="sharebanner_wrapper_bannertext">
-
-                            <label><span>Banner Name:</span> Banner 1</label>
-
-                            <label><span>Banner Size:</span> 23</label>
-
-                        </div>
-
-                        <div class="clearfix"></div>
-
-
-                        <div class="sharebanner_textarea">
-                            <textarea></textarea>
-                            <input type="button" value="Grab Code" class="grabcodebanner">
-                        </div>
-
-
-                    </div>
-                    <div class="sharebanner_wrapper">
-
-                        <div class="sharebanner_wrapper_banner"><img src="http://www.hd-wallpapersdownload.com/script/bulk-upload/desktop-free-images-nature-dowload.jpg" alt="#"></div>
-
-                        <div class="sharebanner_wrapper_bannertext">
-
-                            <label><span>Banner Name:</span> Banner 1</label>
-
-                            <label><span>Banner Size:</span> 23</label>
-
-                        </div>
-
-                        <div class="clearfix"></div>
-
-
-                        <div class="sharebanner_textarea">
-                            <textarea></textarea>
-                            <input type="button" value="Grab Code" class="grabcodebanner">
-                        </div>
-
-
-                    </div>
-                    <div class="sharebanner_wrapper">
-
-                        <div class="sharebanner_wrapper_banner"><img src="http://cf.broadsheet.ie/wp-content/uploads/2016/04/tracyjohnsonhummingbirds8.jpg" alt="#"></div>
-
-                        <div class="sharebanner_wrapper_bannertext">
-
-                            <label><span>Banner Name:</span> Banner 1</label>
-
-                            <label><span>Banner Size:</span> 23</label>
-
-                        </div>
-
-                        <div class="clearfix"></div>
-
-
-                        <div class="sharebanner_textarea">
-                            <textarea></textarea>
-
-
-                            <input type="button" value="Grab Code" class="grabcodebanner">
-
-                        </div>
-
-
-                    </div>-->
 
                 </modal-content>
                 <modal-footer class="modelfooter">
@@ -345,3 +156,4 @@
     <button #all_m (click)="sharemediaModal.open()" class="btnedit hide" type="button" value="Edit">Grab Banner</button>
 </div>
 
+<button clipval=""  class="btnedit clipboardb hide" id="commonclip" type="button" value="Copy To ClipBoard">Copy To ClipBoard</button>

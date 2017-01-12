@@ -84,7 +84,13 @@
             <div class="col-lg-12">
                 <div class="cusdashboardblock3">
                     <h2>Customer Activities</h2>
-                    <div class="cusactivediv">
+                    <div class="cusactivediv" *ngFor="let customeractivityitem of customeractivity">
+                        <h2><span>{{customeractivityitem.activity_content}} at {{timeConverter(customeractivityitem.added_on)}}</span> </h2>
+                    </div>
+                   <!-- <div class="cusactivediv">
+                        <h2><span>Customer John Doe submited a new RSVP 14 hours back.</span></h2>
+                    </div>-->
+                    <!--<div class="cusactivediv">
                         <h2><span>Customer John Doe submited a new RSVP 14 hours back.</span></h2>
                     </div>
                     <div class="cusactivediv">
@@ -92,16 +98,10 @@
                     </div>
                     <div class="cusactivediv">
                         <h2><span>Customer John Doe submited a new RSVP 14 hours back.</span></h2>
-                    </div>
-                    <div class="cusactivediv">
-                        <h2><span>Customer John Doe submited a new RSVP 14 hours back.</span></h2>
-                    </div>
-                    <div class="cusactivediv">
-                        <h2><span>Customer John Doe submited a new RSVP 14 hours back.</span></h2>
-                    </div>
+                    </div>-->
                     <div class="clearfix"></div>
                     <div class="cusdashboardblock3links">
-                        <a>Filter By Activity</a><a>Sort By Time </a>
+                        <a [routerLink]="['/customeractivitylist']">View All</a><!--<a>Sort By Time </a>-->
                     </div>
                 </div>
             </div>
@@ -119,15 +119,18 @@
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <ul class="inboxlists">
-                                <li *ngFor="let msg of messageaarpub|filter:query">
+                                <li class="inboxlists-li" *ngFor="let msg of messageaarpub|filter:query|orderBy:orderbyquery:orderbytype" >
                                     <div class="imgwrapper">
                                        <!-- <img src="images/inboximgleft.jpg">-->
-                                        <img src="{{userfilesrc}}">
+                                        <img src="{{msg.userimage}}">
                                     </div>
-                                    <p>{{msg.subject}}</p>
+                                    <p class="msgclass">{{msg.subject}}</p>
+                                    <!--<p class="msgclass">jkhjhkhjhhhjjkhkjhjkhkjhkjhkjhkjhkjhkjhkj kjhhjk hhgkjhkuhkjh kjhhkjhkuhuj kjhkjhkjhkjhkjhkhkj khkjhkhkjhkjhkjhkjhkjhkjhkj kjmnhkjhkjhkjhkjhkjn kjhkjhkjhkjhkhjkhkhjhkjhk</p>-->
                                     <span class="btnreply">
                         <a [routerLink]="['/readmessage',msg._id]">Reply</a>
                        </span>
+
+                                <div class="clearfix"></div>
                                 </li>
                                 <!--<li>
                                     <div class="imgwrapper"><img src="images/inboximgleft.jpg"></div>
@@ -140,7 +143,7 @@
 
                             <div class="searchbox">
                                 <div class = "input-group">
-                                    <input [(ngModel)]="query" type = "text" class = "form-control input-lg"><span class = "input-group-btn"><a href="writemail.html"><button [routerLink]="['/writemail']" class = "btn btn-default btnnewmsg" type = "button">New message</button></a>             </span>
+                                    <input [(ngModel)]="query" type = "text" class = "form-control input-lg"><span class = "input-group-btn"><a [routerLink]="['/writemail']"><button  class = "btn btn-default btnnewmsg" type = "button">New message</button></a>             </span>
                                 </div><!-- /input-group -->
                             </div>
                         </div>
@@ -649,14 +652,14 @@
                                         </div>
                                         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 inventorysinglelistblock3col3">
                                             <div class="actionbtns">
-                                                <a><button class="btnsend" type="button" value="Edit">Send RSVP</button></a>	<a><button class="btnedit" type="button" value="Edit">Contact</button></a>
+                                                <a><button (click)="rsvpModalopen(itemiventorymatch,inventoryusers)"  class="btnsend" type="button" value="Edit">Send RSVP</button></a>	<a><button [routerLink]="['/writemailcustomer',inventoryusers.username]" class="btnedit" type="button" value="Edit">Contact</button></a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row inventorysinglelistblock4 inventorymatchusers1">
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
                                             <div class="actionbtns">
-                                                <a><button class="btnset" type="button" value="Edit">Set the retail price</button></a>	<a><button class="btnsend" type="button" value="Edit">Send Info</button></a>
+                                                <a><button class="btnset" type="button" value="Edit">Set the retail price</button></a>	<a><button (click)="sendinfo(itemiventorymatch,inventoryusers)" class="btnsend" type="button" value="Edit">Send Info</button></a>
                                             </div>
                                         </div>
                                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col2 inventorysinglelistblock3col22">
@@ -887,14 +890,14 @@
                                                     <td><span>Wholesale:</span></td>
                                                     <td>{{getcardetails(itemrsvp.inventoryid,'price')}}</td>
                                                 </tr>
-                                                <tr>
+                                               <!-- <tr>
                                                     <td colspan="2"><div  class="viewdetail"><a href="" target="_blank">View Details</a></div></td>
-                                                </tr>
+                                                </tr>-->
                                                 </tbody>
                                             </table>
                                         </div>
-                                        <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
-                                            <ul class="list-inline">
+                                          <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
+                                             <ul class="list-inline">
                                                 <li>
                                                     <div class="imgouter">
                                                         <div class="imgwrapper" [innerHtml]="getcustomerdetails(itemrsvp.customerusername,'image')">
@@ -902,7 +905,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="btnwrapper">
-                                                        <button class="btnedit" type="button" value="Edit">View Profile</button>
+                                                        <button (click)="viewprofile(itemrsvp)" class="btnedit" type="button" value="Edit">View Profile</button>
                                                     </div>
                                                 </li>
                                                 <li>
@@ -912,7 +915,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="btnwrapper">
-                                                        <button class="btnedit" type="button" value="Edit">View Inventory</button>
+                                                        <button  (click)="viewdetails(itemrsvp)" class="btnedit" type="button" value="Edit">View Inventory</button>
                                                     </div>
                                                 </li>
                                             </ul>
@@ -1067,7 +1070,7 @@
                 <div class="postauctioncctivityblock">
                     <div class="postauctioncctivityheader customeractivity">
                         <h2><span>Customer</span> Social Share</h2>
-                        <ul class="list-inline">
+                         <ul class="list-inline">
                             <li>
                                 <div class="addbtnwrapper2">
                                     <!---<a><button class="btn btn-link viewallblack" type="button" value="view all">View All</button></a>--->
@@ -1114,963 +1117,322 @@
 
 
 
+</div>
+
+<div id="userprofileModal" class="modal fade  matchespopupnew2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Customer Profile</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper" *ngIf="customprofiledetails">
+
+                    <table width="100%" border="0" class="profiletable1">
+                        <tr>
+                            <td width="30%">
+                              <!--  <img src="http://bootstrap.gallery/everestv2/img/user1.jpg"  alt="#" class="popprofileimg"/>-->
+                                <img src="{{customerfile}}"  alt="#" class="popprofileimg"/>
+                            </td>
+
+
+                            <td width="70%" align="left" valign="middle">
+                                Name: <strong>{{customprofiledetails.fname}} {{customprofiledetails.lname}}</strong>
+                                <br/><br/>
+                      Address: <strong>{{customprofiledetails.address}} , {{customprofiledetails.city}} , {{customprofiledetails.state}} ,{{customprofiledetails.zip}}</strong>
+
+
+
+                            </td>
+
+                        </tr>
 
 
 
 
+                        <tr>
+                            <td align="left" valign="middle">Phone:</td>
+                            <td align="left" valign="middle">{{customprofiledetails.phone}}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="middle">Email:</td>
+                            <td align="left" valign="middle">{{customprofiledetails.email}}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="middle">Member Since:</td>
+                            <td align="left" valign="middle">{{commonservices.convertunixtodate(customprofiledetails.added_on)}}</td>
+                            <!--<span [innerHtml]="commonservices.convertunixtodate(itemrs.added_on)"></span>-->
+                        </tr>
 
 
-<!--<div class="page-wrapper">
-    <div class="blockmaininner">
-        <div class="row">
-            <div class="col-lg-12">
-                <h1 class="pageheader"><span>Your</span> Dashboard</h1>
+
+                    </table>
+
+
+                </div>
+            </div>
+            <div class="modal-footer modelfooter">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
             </div>
         </div>
-        &lt;!&ndash; /.row &ndash;&gt;
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="block1box">
-                    <div class="row eqWrap">
-                        <div class="col-lg-4 col-md-2 col-sm-2 col-xs-3 block1box1 vcenter">
-                            <div class="block1boxleftimgwrapper">
-                                <img src="images/block1box-icon1.png">
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-10 col-sm-10 col-xs-9 block1box1 vcenter">
-                            <h4>Total Auction Wins :</h4>
-                            <h5>$123,000 / <span>75</span></h5>
-                        </div>
+    </div>
+</div>
+<div id="viewdetailsModal1" class="modal fade  matchespopupnew2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Inventory Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper">
+
+                    <div class="customerdashboard_block2_right detailpopupnew1" *ngIf="itemrsvpcar">
+                    <!--{{getcardetails(itemrsvpcar.inventoryid,'image')}}-->
+                       <div class="detailsimgnew"  [innerHtml]="getcardetails(itemrsvpcar.inventoryid,'image')">/</div>
+
+                       <!-- <img src="http://pluginelectrichybrids.com/wp-content/uploads/2014/07/2015-Audi-Q5-Hybrid-front-view.jpg"  alt="#" class="detailsimgnew"/>-->
+
+                        <div class="cdblock2topbg1"><h3>Details <span>Glossary</span></h3></div>
+
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="middle">Make:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'make')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Model:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'model')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Year:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'year')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Miles:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'mileage')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Color:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'color')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Wholesale:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'price')}}                        </td>
+                            </tr>
+
+
+
+
+
+
+                            <tr>
+                                <td align="left" valign="middle">Body Style:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'carbodystyle')}} </td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Vin:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'vin')}} </td>
+                            </tr>
+
+
+
+
+                            <tr>
+                                <td align="left" valign="middle">Engine Type:        </td>
+                                <td align="right" valign="middle">       {{getcardetails(itemrsvpcar.inventoryid,'enginetype')}} </td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Drive:    </td>
+                                <td align="right" valign="middle">    {{getcardetails(itemrsvpcar.inventoryid,'drive')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Cylinder:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'cylinder')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Fuel:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'fuel')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Seats:    </td>
+                                <td align="right" valign="middle">   {{getcardetails(itemrsvpcar.inventoryid,'seats')}}</td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Gear Type:    </td>
+                                <td align="right" valign="middle">{{getcardetails(itemrsvpcar.inventoryid,'gear_type')}}</td>
+                            </tr>
+
+
+                        </table>
+
+
+
                     </div>
+
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="block1box">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-2 col-sm-2 col-xs-3 block1box1 vcenter">
-                            <div class="block1boxleftimgwrapper">
-                                <img src="images/block1box-icon2.png">
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-10 col-sm-10 col-xs-9 block1box1 vcenter">
-                            <h4>Total Customer Count :</h4>
-                            <h5>412</h5>
-                            <div class="btnview">
-                                <a><span>View Customers</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="block1box">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-2 col-sm-2 col-xs-3 block1box1 vcenter">
-                            <div class="block1boxleftimgwrapper">
-                                <img src="images/block1box-icon3.png">
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-10 col-sm-10 col-xs-9 block1box1 vcenter">
-                            <h4>Total RSVP to Date :</h4>
-                            <h5>3345</h5>
-                            <div class="btnview">
-                                <a><span>View RSVPs</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="block1box">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-2 col-sm-2 col-xs-3 block1box1 vcenter">
-                            <div class="block1boxleftimgwrapper">
-                                <img src="images/block1box-icon4.png">
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-10 col-sm-10 col-xs-9 block1box1 vcenter">
-                            <h4>Next Auction Date :</h4>
-                            <h5>24th August</h5>
-                            <div class="btnview">
-                                <a><span>View Auctions</span></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="modal-footer modelfooter">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="cusdashboardblock3">
-                    <h2>Customer Activities</h2>
-                    <div class="cusactivediv">
-                        <h2><span>Customer John Doe submited a new RSVP 14 hours back.</span></h2>
+    </div>
+</div>
+
+
+
+<div id="rsvpModal" class="modal fade  matchespopup">
+    <div class="modal-dialog  ">
+        <div class="modal-content">
+            <div class="modal-header" *ngIf="userinformation">
+                <div class="container-fluid">
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"><h2><!--Match{{inventory.length}}--></h2></div>
+                    <div class="col-lg-6 col-md-6 col-sm-3 col-xs-3">
+                        <div class="progress_wrapper">
+                            <div class="progress">
+                                <div class="progress-bar progress-bar-success" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" [style.width]="userinformation.inventorymatchval+'%'"> </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="cusactivediv">
-                        <h2><span>Customer John Doe submited a new RSVP 14 hours back.</span></h2>
+                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3"> <h2>{{userinformation.inventorymatchval}}%</h2></div>
+
+
+                </div>
+            </div>
+            <div class="match_tablewrapper">
+                <div class="row-eq-height">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="userinformation">
+                        <div class="match_user_banner">
+                            <table width="100%" border="0">
+                                <tr>
+                                    <td align="center" valign="middle" width="152"><div class="match_user_div">
+                                        <!--  <img src="http://bootstrap.gallery/everestv2/img/user1.jpg">-->
+                                        <img src="{{userinformation.userimage}}">
+                                    </div></td>
+                                    <td align="center" valign="middle"><h6>{{userinformation.fname}} {{userinformation.lname}}</h6></td>
+                                </tr>
+                            </table>
+
+
+
+                        </div>
+
+
+
+
+
+
                     </div>
-                    <div class="cusactivediv">
-                        <h2><span>Customer John Doe submited a new RSVP 14 hours back.</span></h2>
-                    </div>
-                    <div class="cusactivediv">
-                        <h2><span>Customer John Doe submited a new RSVP 14 hours back.</span></h2>
-                    </div>
-                    <div class="cusactivediv">
-                        <h2><span>Customer John Doe submited a new RSVP 14 hours back.</span></h2>
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="inventory" >
+                        <div class="match_car_banner">
+                            <table width="100%" border="0">
+
+                                <tr>
+                                    <td align="center" valign="middle" width="152"><div class="match_car_div">
+                                        <!-- <img src="http://www.pngpix.com/wp-content/uploads/2016/06/PNGPIX-COM-Renault-Megane-RS-Yellow-Car-PNG-Image-500x279.png">-->
+                                        <img src="{{sharefilesrc}}{{inventory.filename}}">
+                                    </div></td>
+                                    <td align="center" valign="middle">
+
+
+                                        <!-- <img src="https://static1.squarespace.com/static/56b0c302356fb0b51c2b951a/58222014c534a56b7c9299ad/582220263e00be7d112e9844/1480532836047/auctionzip+logo.png" class="auctionlogoimg">-->
+                                        <img src="{{sharefilesrc}}{{inventory.auctiondata[0].filename}}" class="auctionlogoimg">
+
+                                        <!--<img src="http://sac.flipkart.net/wp-content/uploads/2016/05/renaultlogo.png" class="carlogoimg">-->
+                                        <img src="{{sharefilesrc}}{{getcarlogos(inventory)}}" class="carlogoimg">
+                                        <h5>{{getcarlogo(inventory)}}</h5>
+                                        <!--<h5>Renault Duster</h5>-->
+                                    </td>
+                                </tr>
+                            </table>
+
+
+
+                        </div>
+
+
+
+
+
+
                     </div>
                     <div class="clearfix"></div>
-                    <div class="cusdashboardblock3links">
-                        <a>Filter By Activity</a><a>Sort By Time </a>
-                    </div>
+
                 </div>
+                <h2 class="rsvp_headingtext">Please verify the <span>RSVP</span> amount is what you desire. Once accepted this can not be changed for this customer.</h2>
+
+                <div class="rsvp_formgroup">
+                    <label>Set Retail Commission:</label>
+                    <input type="text" name="text" [(ngModel)]="retailfinalval" class="form-controlrsvp" >
+                    <input type="button" value="Send" (click)="sendrsvp()" class="rsvpsendbtn snd">
+
+                    <div class="clearfix"></div>
+
+                    <span>Calculated as Rule of Opencontract : Rate {{retailc}} with Type {{retailctype}} </span>
+                </div>
+
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default btnclosepopup2 rsvpcl" data-dismiss="modal">Close</button>
+
             </div>
         </div>
-        &lt;!&ndash; /.row &ndash;&gt;
-        <div class="row equal">
-            <div class="col-lg-4 col-md-4">
-                <div class="yourinboxblock">
-                    <div class="yourinboxheader">
-                        <h2>Your Inbox</h2>
-                        <div class="viewall">
-                            <a>View All</a>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-12 col-md-12">
-                            <ul class="inboxlists">
-                                <li>
-                                    <div class="imgwrapper"><img src="images/inboximgleft.jpg"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lobortis sit amet ligula sit amet variu Loreipsum dolor sit amet.</p>
-                                    <span class="btnreply">
-                        <a>Reply</a>
-                       </span>
-                                </li>
-                                <li>
-                                    <div class="imgwrapper"><img src="images/inboximgleft.jpg"></div>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lobortis sit amet ligula sit amet variu Loreipsum dolor sit.</p>
-                                    <span class="btnreply">
-                        <a>Reply</a>
-                       </span>
-                                </li>
-                            </ul>
-
-                            <div class="searchbox">
-                                <div class = "input-group">
-                                    <input type = "text" class = "form-control input-lg">
-
-                                    <span class = "input-group-btn">
-			   <a href="writemail.html">
-                  <button class = "btn btn-default btnnewmsg" type = "button">
-                     New message
-                  </button></a>
-               </span>
-
-                                </div>&lt;!&ndash; /input-group &ndash;&gt;
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <div class="recentrsvpblock">
-                    <div class="recentrsvpheader">
-                        <h2>Your Inbox</h2>
-                    </div>
-                    <div class="recentrsvplists">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                    <div class="inactive"></div>
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Yesterday</span>
-                                <span class="inactive"></span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                    <div class="active"></div>
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Today</span>
-                                <span class="active"></span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                    <div class="inactive"></div>
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>12 March</span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                    <div class="inactive"></div>
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Yesterday</span>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                    <div class="inactive"></div>
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Yesterday</span>
-                                <span class="inactive"></span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                    <div class="active"></div>
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Today</span>
-                                <span class="active"></span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                    <div class="inactive"></div>
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>12 March</span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentrsvpsinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                    <div class="inactive"></div>
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Yesterday</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4">
-                <div class="recentcusblock">
-                    <div class="recentcusheader">
-                        <h2>Recent Customers</h2>
-                    </div>
-                    <div class="recentrsvplists">
-                        <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Yesterday</span>
-                                <span class="inactive"></span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Today</span>
-                                <span class="active"></span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>12 March</span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Yesterday</span>
-                            </div>
-                            <div class="clearfix"></div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Yesterday</span>
-                                <span class="inactive"></span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Today</span>
-                                <span class="active"></span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>12 March</span>
-                            </div>
-                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6 recentcussinglelist">
-                                <div class="imgwrapper">
-                                    <img src="images/inboximgleft.jpg">
-                                </div>
-                                <p>Lorem ipsum.</p>
-                                <span>Yesterday</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        &lt;!&ndash; /.row &ndash;&gt;
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="auctioninventoryblock">
-                    <div class="auctioninventoryheader">
-                        <h2>Auction Inventory Review</h2>
-                    </div>
-                    <div class="auctioninventorylists">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="row">
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 auctioninventorysinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 auctioninventorysinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                      <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 auctioninventorysinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 auctioninventorysinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 auctioninventorysinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 auctioninventorysinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        &lt;!&ndash; /.row &ndash;&gt;
-        &lt;!&ndash; /.row &ndash;&gt;
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="adminlistblock">
-                    <div class="adminlistheader">
-                        <h2><span>Admin</span> listing</h2>
-                        <div class="addbtnwrapper">
-                            <a><button class="addbtn" type="button" value="Add admin" (click)="addadmin()">Add admin</button></a>
-                        </div>
-                    </div>
-                    <div class="adminlistlists table-responsive">
-                        <input [(ngModel)]="query" placeholder="type in search term">
-                        <table class="table table-striped">
-                            <thead>
-                            <tr>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>Email</th>
-                                <th>City</th>
-                                <th>State</th>
-                                <th>Address</th>
-                                <th>Zip</th>
-                                <th>Phone</th>
-                                <th>Status</th>
-                                <th>Action</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr  *ngFor="let item of data|filter:query|paginate: { itemsPerPage: 10, currentPage: p }">
-                                <td>{{item.fname}}</td>
-                                <td>{{item.lname}}</td>
-                                <td>{{item.email}}</td>
-                                <td>{{item.city}}</td>
-                                <td>{{item.state}}</td>
-
-                                <td>{{item.address}}</td>
-                                <td>{{item.zip}}</td>
-                                <td>{{item.phone}}</td>
-                                <td><a href="javascript:void(0)" (click)="changeStatus(item)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>
-                                <td>
-                                    <div class="actionbtns">
-                                        <a [routerLink]="['/editadmin', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
-                                        <a><button class="btndelete" type="button" (click)="deleterow({id:item._id})"  value="Delete">Delete</button></a>
-                                    </div>
-                                </td>
-                            </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-12 col-md-12 paginationwrapper">
-                <span>Page {{p}} of 8</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
-            </div>
-        </div>
-        &lt;!&ndash; /.row &ndash;&gt;
-        <div class="row">
-            <div class="col-lg-12 col-md-12">
-                <div class="inventorymatchblock">
-                    <div class="inventorymatchheader">
-                        <h2><span>Inventory</span> Matches</h2>
-                    </div>
-                    <div class="inventorymatchlists">
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12">
-                                <div class="row">
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorymatchsinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        &lt;!&ndash;<div class="row">
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                <div class="inventorymatchimgouter">
-                                                    <div class="inventorymatchimgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12">
-                                                <h2>Lorem Ipsum</h2>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                            </div>
-                                        </div>&ndash;&gt;
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorymatchsinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorymatchsinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorymatchsinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorymatchsinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorymatchsinglelist">
-                                        <div class="row">
-                                            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left">
-                                                <table class="table">
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><span>Make:</span></td>
-                                                        <td>Renault</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Model:</span></td>
-                                                        <td>Duster</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Year:</span></td>
-                                                        <td>2016</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Miles:</span></td>
-                                                        <td>600</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Color:</span></td>
-                                                        <td>Red</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><span>Wholesale:</span></td>
-                                                        <td>$8,46,999</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td colspan="2" class="viewdetail">View Details</td>
-                                                    </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right">
-                                                <div class="imgouter">
-                                                    <div class="imgwrapper">
-                                                        <img src="images/auctionimg_1.jpg">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        &lt;!&ndash; /.row &ndash;&gt;
     </div>
-</div>-->
-<!-- /#page-wrapper -->
+</div>
+
+<div id="sendinfoModal" class="modal fade carlogomodalbox msgmodalnew">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modelheader">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Info</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper">
+
+                    Info send successfully !
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="rsvpsendModal" class="modal fade carlogomodalbox msgmodalnew">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modelheader">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+               <h4 class="modal-title">RSVP</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper">
+
+                    Rsvp send successfully !
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>

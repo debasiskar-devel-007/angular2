@@ -2251,7 +2251,13 @@ ul.inboxlists{padding:0px; margin:0px;}
 .cdblock2topbg1{ background: #fff url(../images/cd_block2bg1.jpg) repeat-x left bottom;}
 
 .customerdashboard_block2_left h3{ background: rgba(0, 0, 0, 0) url("../images/cd_devider1.jpg") repeat-x scroll left bottom; margin:0px; padding:0px; font-size:18px; color:#1b1b1b; padding:14px;}
-
+.customerdashboard_block2_left .cd_block3_gallery .cd_block3_gallery_smimg img {
+    margin: 0.8%;
+    width: 14.5%;
+    height: 110px;
+    overflow: hidden;
+    cursor: pointer;
+}
 
 .customerdashboard_block2_right{ padding:0px; border-left:solid 1px #a2a4a5;}
 
@@ -2305,7 +2311,7 @@ ul.inboxlists{padding:0px; margin:0px;}
 .cd_block3_gallery_smimg{ margin:26px 0 0 17px;}
 
 .cd_block3_gallery_smimg img{  margin: 0.8%;
-    width: 14.5%; }
+    width: 14.5%; cursor: pointer;}
 
 
 .customerdashboard_block4{ margin:0; padding:0px; padding-top:26px; padding-bottom:0px; margin-left:5px!important; }
@@ -2720,6 +2726,10 @@ ul.inboxlists{padding:0px; margin:0px;}
     display: block;
     float: left;
 }
+.custpro .searchbox {
+    margin-top: 10px;
+
+}
 .yourinboxblock .searchbox input{width: 100%; height: 42px; display: inline-block;
     background: url(images/iconsearch.png) no-repeat;
     background-position: right 11px center;
@@ -2764,7 +2774,7 @@ ul.inboxlists{padding:0px; margin:0px;}
     text-align: center;
     float: none;
     display: block;
-    z-index: 9999999;
+    z-index: 9;
 }
 
 /*.recentrsvpsinglelist .imgwrapper{width: 65px;height: 65px; overflow: hidden; border: 2px solid #c9c9c9; border-radius: 2px; margin: 0 auto !important; position:relative; text-align: center; float: none; display:block;}*/
@@ -4356,12 +4366,12 @@ ul.inboxlists{padding:0px; margin:0px;}
 }
 .page-wrapper-inner .table>tbody>tr>td,  .page-wrapper-inner .table>tfoot>tr>td,  .page-wrapper-inner .table>thead>tr>td {
     vertical-align: middle;
-    padding: 6px 4px !important;
+    padding: 8px 4px !important;
 }
 
 .page-wrapper .table>tbody>tr>td, .page-wrapper .table>tfoot>tr>td, .page-wrapper .table>thead>tr>td {
     vertical-align: middle;
-    padding: 6px 4px !important;
+    padding: 8px 4px !important;
 }
 
 
@@ -7918,7 +7928,58 @@ a:focus, a:hover {
     background-color: #fff;
     float: left;
     padding: 10px;
+    border-bottom:1px solid #ccc;
 }
+
+
+.readmailinboxwrapper .mailbox-read-message:last-child {
+    border-bottom: 0px solid #ccc;
+}
+
+
+.readmailinboxwrapper .mailbox-read-message p{
+    margin: 25px 0 5px !important;
+    width: 100%;
+    float: left;
+    position: relative;
+}
+
+.msgreply{
+    margin: 0px;
+    color: #414141;
+    font-size: 20px;
+    font-family: 'MyriadPro-Regular';
+    margin-top: 5px;
+    margin-bottom: 5px;
+    float: left;
+}
+
+.msgdatewrapper{
+    float: right;
+    position: relative;
+    top: 30px;
+    line-height: 20px;
+    font-size: 19px;
+    margin-right: 10px;
+    width: 98%;
+    text-align: right;
+}
+
+.msgdate{
+    display: inline-block;
+}
+
+.msgdate:nth-of-type(1){
+    margin-right: 10px;
+    float: left;
+    text-transform: capitalize;
+}
+
+.msgquestion{
+    display: inline-block;
+    float: left;
+}
+
 .readmailinboxwrapper .mailbox-attachments{
     margin: 10px;
 }
@@ -8308,7 +8369,7 @@ a:focus, a:hover {
     text-align: center;
     float: none;
     display: block;
-    z-index: 9999999;
+    z-index: 9;
 }
 
 .recentrsvpsinglelist .imgwrapper, .custoomerinfowrapper .recentrsvpsinglelist .imgwrapper {
@@ -8750,6 +8811,33 @@ a:focus, a:hover {
 }
 .addmembershippackage .browsefileblock .browsefileblockimg img{
     max-width: 100%;
+}
+
+.addmembershippackage .browsefileblock .browsefileblockimg {
+    width: 244px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    padding: 4px;
+    height: 180px;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+
+.addcarwrapper .browsefileblock .browsefileblockimgdelete{ position: relative; margin-right: 10px !important; float: left; margin-bottom: 10px;}
+
+.addcarwrapper .browsefileblock .browsefileblockimgdelete a span{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-size: 20px;
+    color: #fff;
+    background: #000;
+    padding: 4px;
+    border-left: 1px solid #fff;
+    border-bottom: 1px solid #fff;
+    cursor: pointer;
 }
 
 .carbodystylelist .imgfilesrc {
@@ -10012,7 +10100,11 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
 .inventorysinglelist_blockdiv:nth-of-type(5){ display: block;}
 .inventorysinglelist_blockdiv:nth-of-type(6){ display: block;}
 
-
+.cusactivediv{display:none;}
+.cusactivediv:nth-of-type(1){ display: block;}
+.cusactivediv:nth-of-type(2){ display: block;}
+.cusactivediv:nth-of-type(3){ display: block;}
+.cusactivediv:nth-of-type(4){ display: block;}
 .opencontract_text {
     text-align: center;
     padding: 8px 8px 5px 8px;
@@ -10160,67 +10252,169 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
 
 .automatchwrapperimglist li:nth-of-type(1n+4) {display: none;}
 
-
-.inventorylistswrapperlistswrap .row span:nth-of-type(3n+3) {clear: both !important;}
-.inventorylistswrapperlistswrap span .inventorysinglelistblockcon .inventorysinglelistblock .infobox .table>tbody>tr>td{
-    vertical-align: middle;
-    padding: 6px 4px !important;
+.box-footer .readmailheadercontrol{
+    margin-top: 20px;
 }
 
-.inventorylistswrapperlistswrap span .inventorysinglelistblockcon .inventorysinglelistblock {
-    height: 310px;
+.readmailheadercontrol i.glyphicon-share-alt{
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
 }
 
-.bs-example {
-    font-family: sans-serif;
-    position: relative;
-    margin: 100px;
+#cke_editor1 {
+    float: left;
+    width:100%;
+    margin-top: 20px;
 }
-.typeahead, .tt-query, .tt-hint {
-    border: 2px solid #CCCCCC;
-    border-radius: 8px;
-    font-size: 22px; /* Set input font size */
-    height: 30px;
-    line-height: 30px;
-    outline: medium none;
-    padding: 8px 12px;
-    width: 396px;
+
+.freecustomercreditcard .creditcardleftblockbottom {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
 }
-.typeahead {
-    background-color: #FFFFFF;
+
+.freecustomercreditcard .signup_body_wrapper .signupmiddleblock .signuprightblock .signupform_wrapper{
+    min-height: 510px !important;
 }
-.typeahead:focus {
-    border: 2px solid #0097CF;
+
+
+/*---writemail css pagination----*/
+
+.paginationwrapperbold span, .paginationwrapperbold span ul li, .paginationwrapperbold span ul li a {
+    color: #000 !important;
+    font-family: 'open_sanssemibold';
+    font-size: 14px;
 }
-.tt-query {
-    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+
+.paginationwrapperbold .ng2-pagination[_ngcontent-axt-12] li[_ngcontent-axt-12] {
+    display: inline-block;
 }
-.tt-hint {
-    color: #999999;
+
+.paginationwrapperbold .ng2-pagination[_ngcontent-axt-12] .disabled[_ngcontent-axt-12] {
+    padding: 0.1875rem 0.625rem;
+    color: #000 !important;
+    cursor: default;
 }
-.tt-menu {
-    background-color: #FFFFFF;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 8px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-    margin-top: 12px;
-    padding: 8px 0;
-    width: 422px;
+.paginationwrapperbold .ng2-pagination[_ngcontent-axt-12] .current[_ngcontent-axt-12] {
+    padding: 0.1875rem 0.625rem;
+    background: #2199e8;
+    color: #fff !important;
+    cursor: default;
 }
-.tt-suggestion {
-    font-size: 22px;  /* Set suggestion dropdown font size */
-    padding: 3px 20px;
+
+.paginationwrapperbold .ng2-pagination[_ngcontent-axt-12] .disabled[_ngcontent-axt-12] {
+    padding: 0.1875rem 0.625rem;
+    color: #000 !important;
+    cursor: default;
 }
-.tt-suggestion:hover {
+
+.paginationwrapperbold .pagination-next {
+    text-indent: -9999px;
+    background: url(images/icon-nextarrownew.png)no-repeat left center !important;
     cursor: pointer;
-    background-color: #0097CF;
-    color: #FFFFFF;
-}
-.tt-suggestion p {
-    margin: 0;
 }
 
+.paginationwrapperbold .pagination-previous {
+    text-indent: -9999px;
+    background: url(images/icon-prevarrownew.png)no-repeat right center !important;
+    cursor: pointer;
+}
+.msgclass{
+    white-space: nowrap;
+    overflow: hidden;
+   /* text-overflow: ellipsis;*/
+    max-width: 200px;
+}
 
-.auctioninventoryreview .inventorylistswrapper span .inventorysinglelist .inventorysinglelistblock{
-    height: 330px;
+/*--social media--*/
+.socialmediablock {
+    background-color: #e2e2e2 !important;
+    height: auto;
+    border-top: 5px solid #47c900;
+    margin-top: 0px;
+    margin-bottom: 30px;
+    /*width: 49% !important;
+    margin-left: 1%;
+    margin-right: 1%;*/
+}
+.socialmediablock1 {
+    border-top: 5px solid #fb4a32 !important;
+}
+
+.socialmediablock h2{
+    border-bottom: 1px solid #c1c3c5;
+    margin: 0px;
+    padding-bottom: 13px;
+    font-family: "open_sanssemibold";
+    font-size: 24px;
+    text-transform: capitalize;
+    padding: 10px;
+}
+.accountinfo{
+    border-top: 1px solid #fff;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    padding: 10px;
+}
+
+.socialimgwrapper{
+    width: 220px;
+    height: 145px;
+    background: #fff;
+    padding: 10px;
+    border-bottom: 1px solid #c6c6c6;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.socialimgwrapper img{
+    width:100%;
+}
+.page-wrapper .accountinfo .table>tbody>tr>td {
+    padding: 1px 4px !important;
+}
+
+.accountinfo .table tr td label{
+    font-family: "MyriadPro-Regular";
+    font-size:14px;
+    color:#6f6f6f;
+    font-weight: normal;
+}
+
+.accountinfo .table tr td span{
+    font-family: "open_sanssemibold";
+    font-size:14px;
+    color:#494949;
+    font-weight: normal !important;
+}
+.accountinfo .table tr:first-child td span{
+    font-size:16px;
+    text-transform: uppercase;
+    color:#fb4a32;
+}
+
+.accountinfo .table tr, .page-wrapper .accountinfo .table tr {
+    border:none !important;
+}
+
+.btnmodify{
+    background-color: #fb4a32 !important;
+    height: 34px !important;
+    color: #fff !important;
+    cursor: pointer !important;
+    -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1) !important;
+    -moz-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1) !important;
+    box-shadow: 0px 1px 0px rgba(4, 4, 4, 1) !important;
+    padding: 8px 8px 8px 8px !important;
+    border: none !important;
+    width: 100px !important;
+    text-align: center !important;
+    margin-top: 10px;
+}
+
+.btnmodify span.glyphicon{
+    color:#fff;
+    font-size: 20px;
 }

@@ -131,15 +131,29 @@ import {AppFreeinvitedealercustomerlist} from "./pages/freeinvitedealercustomerl
 import {AppFreecustomercreditcard} from "./pages/freecustomercreditcard/app.freecustomercreditcard";
 import {AppFreemembershipviews} from "./pages/freemembershipviews/app.freemembershipviews";
 import {AppMailboxsend} from "./pages/mailboxsend/app.mailboxsend";
+import {AppEditprefference} from "./pages/editprefference/app.editprefference";
+import {AppEditfinance} from "./pages/editfinance/app.editfinance";
+import {AppWritemailcustomer} from "./pages/writemailcustomer/app.writemailcustomer";
+import {AppAddjobticket} from "./pages/addjobticket/app.addjobticket";
+import {AppJobticketsend} from "./pages/jobticketsend/app.jobticketsend";
+import {AppJobticketinbox} from "./pages/jobticketinbox/app.jobticketinbox";
+import {AppReadjobticket} from "./pages/readjobticket/app.readjobticket";
+import {AppCustomeractivitylist} from "./pages/customeractivitylist/app.customeractivitylist";
+import {AppAffiliatereport} from "./pages/affiliatereport/app.affiliatereport";
+import {AppManagesocialaccounts} from "./pages/managesocialaccounts/app.managesocialaccounts";
+import {AppAddopenchannelmanagement} from "./pages/addopenchannelmanagement/app.addopenchannelmanagement";
+import {AppOpenchannelmanagementlist} from "./pages/openchannelmanagementlist/app.openchannelmanagementlist";
+import {AppEditopenchannelmanagement} from "./pages/editopenchannelmanagement/app.editopenchannelmanagement";
+import {AppAddmanageposts} from "./pages/addmanageposts/app.addmanageposts";
+import {AppManagepostslist} from "./pages/managepostslist/app.managepostslist";
+import {AppEditmanageposts} from "./pages/editmanageposts/app.editmanageposts";
 //import {Clipboard} from 'clipboard';
-
-
 
 
 @NgModule({
   imports: [ BrowserModule,FormsModule ,ReactiveFormsModule ,routing, HttpModule,
     JsonpModule,ModalModule,PopoverModule,Ng2PaginationModule,CKEditorModule],
-  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerfooter,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppFinance,AppRetailcustomerconnect,AppBannersizelist,AppAddbannersize,AppEditbannersize,AppAddbanner,AppBannerlist,AppEditbanner,AppViewcustomers,AppViewrsvp,AppWritemail,AppReadmessage,AppMailinbox,AppCustomerprofile,AppAddaffiliate,AppAffiliatelist,AppEditaffiliate,AppAffiliatelogin,AppAffiliatefooter,AppAffiliateheader,AppAffiliatedashboard,AppAddmembershippackage,AppMerbershippackagelist,AppAuctionbidding,AppEditmembershippackage,AppPackage,AppAuctionlist,AppAddauction,AppEditauction,AppAddcar,AppCarlist,AppEditcar,AppCustomersignupstep1,AppOrderdetails,AppDealerprofile,AppMembershiporderreport,AppAddpurchasetime,AppPurchasetimelist,AppEditpurchasetime,AppAddbaseprice,AppBasepricelist,AppEditbaseprice,AppColorlist,AppAddcolor,AppEditcolor,AppCarlogolist,AppAddcarlogo,AppEditcarlogo,AppAddcarbodystyle,AppCarbodystylelist,AppEditcarbodystyle,AppAddcarautoyear,AppCarautoyearlist,AppEditcarautoyear,AppDealerauctionlist,AppAddcarmileage,AppCarmileagelist,AppEditcarmileage,AppCarfeaturelist,AppAddcarfeature,AppEditcarfeature,AppAuctioininventorydetails,AppAddretailcommission,AppRetailcommissionlist,AppManageopencontract,AppEditopencontract,AppDealercustomerlist,AppInventorymatchedetails,AppDealerpackagepurchase,AppViewbyauctionid,AppFreeinvitedealercustomerlist,AppFreecustomercreditcard,AppFreemembershipviews,AppMailboxsend,UPLOAD_DIRECTIVES],
+  declarations: [ AppComponent ,AppAdminheader,AppAdminfooter,AppAdmindashboard,AppAdminlist,AppAddadmin,AppContact,AppAbout ,AppHome,AppSignup,AppSignupComponents,AppCreditcard,AppDealerlogin,AppDealerheader,AppDealerfooter,AppDealerdashboard,AppCustomersignup,AppCustomercreditcard,AppAdminlogin,AppadminloginComponents,AppCustomerlogin,AppcustomerloginComponents,AppAddfaq,AppFaq,AppEditadmin,searchPipe,OrderBy,AppAddFaqByAdmin,AppEditFaqbyAdmin,AppDealerFaq,AppCustomerheader,AppCustomerfooter,AppCustomerdashboard,AppDealerWebsiteLogin,AppDealerlist,AppAddsharelink,AppAuctioninventoryview,AppInventorymatches,AppPostauctionactivity,AppRecentbidagreement,AppSharemedia,AppEditsharelink,AppUpcomingauctions,AppFinance,AppRetailcustomerconnect,AppBannersizelist,AppAddbannersize,AppEditbannersize,AppAddbanner,AppBannerlist,AppEditbanner,AppViewcustomers,AppViewrsvp,AppWritemail,AppReadmessage,AppMailinbox,AppCustomerprofile,AppAddaffiliate,AppAffiliatelist,AppEditaffiliate,AppAffiliatelogin,AppAffiliatefooter,AppAffiliateheader,AppAffiliatedashboard,AppAddmembershippackage,AppMerbershippackagelist,AppAuctionbidding,AppEditmembershippackage,AppPackage,AppAuctionlist,AppAddauction,AppEditauction,AppAddcar,AppCarlist,AppEditcar,AppCustomersignupstep1,AppOrderdetails,AppDealerprofile,AppMembershiporderreport,AppAddpurchasetime,AppPurchasetimelist,AppEditpurchasetime,AppAddbaseprice,AppBasepricelist,AppEditbaseprice,AppColorlist,AppAddcolor,AppEditcolor,AppCarlogolist,AppAddcarlogo,AppEditcarlogo,AppAddcarbodystyle,AppCarbodystylelist,AppEditcarbodystyle,AppAddcarautoyear,AppCarautoyearlist,AppEditcarautoyear,AppDealerauctionlist,AppAddcarmileage,AppCarmileagelist,AppEditcarmileage,AppCarfeaturelist,AppAddcarfeature,AppEditcarfeature,AppAuctioininventorydetails,AppAddretailcommission,AppRetailcommissionlist,AppManageopencontract,AppEditopencontract,AppDealercustomerlist,AppInventorymatchedetails,AppDealerpackagepurchase,AppViewbyauctionid,AppFreeinvitedealercustomerlist,AppFreecustomercreditcard,AppFreemembershipviews,AppMailboxsend,AppEditprefference,AppEditfinance,AppWritemailcustomer,AppAddjobticket,AppJobticketsend,AppJobticketinbox,AppReadjobticket,AppCustomeractivitylist,AppAffiliatereport,AppManagesocialaccounts,AppAddopenchannelmanagement,AppOpenchannelmanagementlist,AppEditopenchannelmanagement,AppAddmanageposts,AppManagepostslist,AppEditmanageposts,UPLOAD_DIRECTIVES],
   providers: [
     appRoutingProviders,CookieService
   ],

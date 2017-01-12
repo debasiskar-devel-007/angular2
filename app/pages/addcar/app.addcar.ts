@@ -23,6 +23,7 @@ export class AppAddcar implements OnInit {
     //dealerloginform: FormGroup;
     private zone: NgZone;
     private basicOptions: Object;
+    private additionalprogress: number = 0;
     private progress: number = 0;
     private response: any = {};
     myModal :ModalModule;
@@ -48,6 +49,9 @@ export class AppAddcar implements OnInit {
     private listcarautomileage:any;
     private basepricelist:any;
     private featurelist:any;
+    private response1:any;
+    additionalfilenamearr:any;
+    additionaluploadedfilesrcarr:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent  ) {
         this.ckeditorContent = '';
@@ -59,7 +63,16 @@ export class AppAddcar implements OnInit {
         this.items = commonservices.getItems();
         this.serverUrl = this.items[0].serverUrl;
         this.userInfo=userInfo.getObject('userdetails');
-console.log(this.userInfo);
+        this.auctionlist=[];
+        this.carlogolist=[];
+        this.colorlist=[];
+        this.carbodystylelist=[];
+        this.carautoyearlist=[];
+        this.listcarautomileage=[];
+        this.basepricelist=[];
+        this.featurelist=[];
+        this.additionalfilenamearr=[];
+        this.additionaluploadedfilesrcarr=[];
         this.serverUrl = this.items[0].serverUrl;
 
         this.http.get(this.serverUrl+'auctionlist')
@@ -130,6 +143,7 @@ console.log(this.userInfo);
             is_active: [''],
             priority: ['', Validators.required],
             filename: ['', Validators.required],
+            additionalfilename: ['', Validators.required],
             carlogolist: ['', Validators.required],
             model: ['', Validators.required],
             carautoyearlist: ['', Validators.required],
@@ -183,6 +197,28 @@ console.log(this.userInfo);
             }
         });
     }
+    additionalhandleUpload(data: any): void
+    {
+
+        //console.log(data.progress.percent);
+        this.zone.run(() => {
+            this.response1 = data;
+            this.additionalprogress = data.progress.percent ;
+            if(data.progress.percent==100){
+                console.log(data.response);
+                //console.log(data.response.json());
+                //console.log(data.response.filename);
+
+                if(typeof (data.response)!='undefined') {
+                    this.additionalfilenamearr.push(data.response);
+                    this.addcarform.patchValue({additionalfilename: this.additionalfilenamearr});
+                    this.additionaluploadedfilesrcarr.push("http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + data.response);
+                }
+            }
+        });
+        console.log(this.additionalfilenamearr);
+
+    }
 
     onChange(event:any){
         //alert(99);
@@ -190,13 +226,21 @@ console.log(this.userInfo);
         this.addcarform.patchValue({notes: this.ckeditorContent})
 
     }
+    deleteimage(ev:any){
+        var target = ev.target || ev.srcElement || ev.originalTarget;
+        var arrindex = this.additionalfilenamearr.indexOf(target.value);
+        this.additionalfilenamearr.splice(arrindex, 1);
+        this.additionaluploadedfilesrcarr.splice(arrindex, 1);
+        this.addcarform.patchValue({additionalfilename: this.additionalfilenamearr});
+        console.log(this.additionalfilenamearr);
+    }
 
     submitform1(){
-console.log(111);
+        console.log(111);
         let x:any;
         for(x in this.addcarform.controls){
             this.addcarform.controls[x].markAsTouched();
-           // console.log(333);
+            // console.log(333);
 
         }
         this.addcarform.markAsDirty();
@@ -213,7 +257,7 @@ console.log(111);
             console.log(submitdata);
             this.http.post(link,submitdata)
                 .subscribe(data => {
-                     this.router.navigateByUrl('/carlist(adminheader:adminheader//adminfooter:adminfooter)');
+                    this.router.navigateByUrl('/carlist(adminheader:adminheader//adminfooter:adminfooter)');
 
                 }, error => {
                     console.log("Oooops!");
@@ -222,7 +266,7 @@ console.log(111);
     }
 
 
- 
+
 
 }
 

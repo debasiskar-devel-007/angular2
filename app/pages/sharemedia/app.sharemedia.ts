@@ -144,11 +144,11 @@ export class AppSharemedia{
 
                 this.bannerfilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
 
-             /*  new Clipboard('.clipboardb', {
+               new Clipboard('.clipboardb', {
                     text: function(trigger) {
                         return trigger.getAttribute('clipval');
                     }
-                });*/
+                });
                 // this.router.navigateByUrl('/adminlist(adminheader:adminheader//adminfooter:adminfooter)')
               //  this.pagec=Math.ceil(this.data.length / 10);
 
@@ -257,7 +257,7 @@ export class AppSharemedia{
 
         this.renderer.invokeElementMethod(this.allMElementRef.nativeElement, 'click', []);
         //sharemediaModal.open();
-      /*  let timeoutId = setTimeout(() => {
+        let timeoutId = setTimeout(() => {
             //console.log('hello');
             new Clipboard('.clipboardb', {
                 text: function(trigger) {
@@ -265,7 +265,7 @@ export class AppSharemedia{
                 }
             });
 
-        }, 3000);*/
+        }, 3000);
     }
     getgrabcode(src:any,imagname:any,imgheight:any,imgwidth:any){
         return '<a href="probid.influxiq.com/customersignup"><img src="'+src+imagname+'" height="'+imgheight+'" width="'+imgwidth+'"></a>';

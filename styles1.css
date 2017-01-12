@@ -102,8 +102,20 @@
 
 .auctionbidding_block1_left_box_left  .auction_sm_bigcar{ width:100%;}
 
-.auctionbidding_block1_left_box_left  .ab_scar{ background:#fff; width:19%; padding:1px; float:left; margin:4px 0.5%;}
-.auctionbidding_block1_left_box_left  .ab_scar img{ width:100%;}
+/*.auctionbidding_block1_left_box_left  .ab_scar{ background:#fff; width:19%; padding:1px; float:left; margin:4px 0.5%;}*/
+/*.auctionbidding_block1_left_box_left  .ab_scar img{ width:100%;}*/
+.auctionbidding_block1_left_box_left .ab_scar {
+    background: #fff;
+    padding: 1px;
+    float: left;
+    height: 59px;
+    overflow: hidden;
+    width: 78px;
+}
+.auctionbidding_block1_left_box_left .ab_scar img {
+    width: auto;
+    height: 100%;
+}
 
 .auctionbidding_block1_left_box_right{ background:#e2e2e2; padding:0px 0 10px 0!important; margin: 0!important;}
 .auctionbidding_block1_left_box_right .nav-tabs li{ width:50%;}

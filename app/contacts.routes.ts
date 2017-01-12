@@ -131,6 +131,7 @@ import {AppEditopenchannelmanagement} from "./pages/editopenchannelmanagement/ap
 import {AppAddmanageposts} from "./pages/addmanageposts/app.addmanageposts";
 import {AppManagepostslist} from "./pages/managepostslist/app.managepostslist";
 import {AppEditmanageposts} from "./pages/editmanageposts/app.editmanageposts";
+import {AppOngoingauctions} from "./pages/ongoingauctions/app.ongoingauctions";
 
 //alert(window.location.hostname);
 
@@ -219,7 +220,7 @@ const appRoutes: Routes = [
     { path: 'affiliateheader', component:AppAffiliateheader,outlet:'affiliateheader'},
     { path: 'affiliatefooter', component:AppAffiliatefooter,outlet:'affiliatefooter'},
     { path: 'affiliatedashboard', component:AppAffiliatedashboard},
-    { path: 'auctionbidding', component:AppAuctionbidding},
+    { path: 'auctionbidding/:id', component:AppAuctionbidding},
     { path: 'addmembershippackage', component: AppAddmembershippackage},
     { path: 'merbershippackagelist', component: AppMerbershippackagelist},
     { path: 'editmembershippackage/:id', component: AppEditmembershippackage},
@@ -288,6 +289,7 @@ const appRoutes: Routes = [
     { path: 'addmanageposts', component: AppAddmanageposts},
     { path: 'managepostslist', component: AppManagepostslist},
     { path: 'editmanageposts/:id', component: AppEditmanageposts},
+    { path: 'ongoingauctions', component: AppOngoingauctions},
 
 
 

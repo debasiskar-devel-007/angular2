@@ -2455,6 +2455,14 @@
 
 
 @media(max-width:1199px) {
+    .auctionbidding_block1_left_box_left .auction_sm_bigcar {
+        width: 468px;
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        float: none;
+    }
+
     .auctioninventoryblock .inventorylistswrapper span:nth-of-type(2n+2){
         clear: both;}
 
@@ -2831,7 +2839,9 @@
         display: block;
         font-weight: normal;
     }
-
+    .auctionbidding_block1_left_box_left .auction_sm_bigcar {
+        width: 100%;
+    }
 }
 
 

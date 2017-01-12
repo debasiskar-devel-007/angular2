@@ -130,7 +130,8 @@ export class AppCustomerdashboard {
                         console.log('userid');
                         console.log(this.userDetails);
                         let linkv1 = this.serverUrl + 'getrsvpbydealeridforuser';
-                        let var11 = {dealerid: this.dealerid, customerid: this.userDetails.username};
+                       /* let var11 = {dealerid: this.dealerid, customerid: this.userDetails.username};*/
+                        let var11 = {dealerid: this.details12.dealerusername, customerid: this.userDetails.username};
                         this.http.post(linkv1, var11)
                             .subscribe(data1 => {
 
@@ -745,7 +746,8 @@ export class AppCustomerdashboard {
             .subscribe(data => {
 
                 let linkv1 = this.serverUrl + 'getrsvpbydealeridforuser';
-                let var11 = {dealerid: this.dealerid, customerid: this.userDetails.username};
+              /*  let var11 = {dealerid: this.dealerid, customerid: this.userDetails.username};*/
+                let var11 = {dealerid: this.details12.dealerusername, customerid: this.userDetails.username};
                 this.http.post(linkv1, var11)
                     .subscribe(data1 => {
 
@@ -808,7 +810,7 @@ export class AppCustomerdashboard {
 
                         this.rsvplist = data1.json();
                         this.rsvplistarr = this.rsvplist;
-                      //  console.log('rsvp list .. ');
+                       // console.log('rsvp list .. ');
                        // console.log(this.rsvplist);
                         //this.pagec=Math.ceil(this.rsvplistarr.length / 9);
 

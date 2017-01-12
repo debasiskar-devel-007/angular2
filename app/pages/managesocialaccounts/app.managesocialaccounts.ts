@@ -9,6 +9,7 @@ import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 
 declare var $: any;
+declare var FB: any;
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
@@ -37,6 +38,7 @@ export class AppManagesocialaccounts {
     private breaklog1:any;
     private breaklog:any;
     datamsg:any;
+    accesstokenarr:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userdetails:CookieService,router: Router  ) {
        // this.uploadedfilesrc='';
@@ -153,6 +155,18 @@ export class AppManagesocialaccounts {
         return '';
 
     }
+   /* private updatedealerwithfbinfo(previousaccesstoken:any,profileid:any){
+        this.http.get('https://graph.facebook.com/oauth/access_token?client_id=310938685967600&client_secret=7a1d6091509dcc9ecd81a468d3d49226&grant_type=fb_exchange_token&fb_exchange_token='+previousaccesstoken)
+            .subscribe(data => {
+                this.accesstokenarr=data.json();
+
+                console.log(this.accesstokenarr);
+
+            }, error => {
+                console.log("Oooops!");
+            });
+
+    }*/
     connectfacebook(){
         alert(6);
         FB.getLoginStatus(function(response:any) {
@@ -160,7 +174,20 @@ export class AppManagesocialaccounts {
                 console.log('Logged in.');
                 console.log(response.authResponse);
                 console.log(response.authResponse.accessToken);
-                FB.api('/me/feed', 'post', {message: 'Hello, world!'});
+                //FB.api('/me/feed', 'post', {message: 'Hello, world!'});
+               // var profileid=updatedealerwithfbinfo(response.authResponse.userID,response.authResponse.accessToken);
+
+                $.ajax({url: 'https://graph.facebook.com/oauth/access_token?client_id=310938685967600&client_secret=7a1d6091509dcc9ecd81a468d3d49226&grant_type=fb_exchange_token&fb_exchange_token='+response.authResponse.accessToken, success: function(result:any){
+                    console.log(result);
+                    var result = result.split('&');
+                    var token=( result[0].replace('access_token=','') );
+                    var userid=response.authResponse.userID;
+                    console.log(userid);
+                    console.log(token);
+                }});
+
+
+
             }
             else {
                 alert(7);

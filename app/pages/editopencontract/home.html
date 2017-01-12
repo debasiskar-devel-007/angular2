@@ -1,0 +1,509 @@
+<div class="page-wrapper addbannersize addadmin">
+    <div class="blockmaininner">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="pageheader"><span>Edit Open</span>  Contract</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+
+
+
+
+
+
+
+
+
+<div class="new_adminblockwrapper">
+    <form novalidate [formGroup]="addbannersizeformnew"   name="addsharelinkformnew"  class="form-inline">
+
+
+
+    <div class="retail_formwrapperblock2">
+
+        <div class="formgroupnew1">
+            <select class="form-control3" [formControl]="addbannersizeformnew.controls['commissiontypen']" name="commissiontype" >
+                <option value="" selected="selected"><span class="errormsgtxt">Select Commission Type</span></option>
+                <option value="Flat">Flat</option>
+                <option value="Percentage">Percentage</option>
+            </select>
+            <span  *ngIf ="addbannersizeformnew.controls['commissiontypen'].touched && !addbannersizeformnew.controls['commissiontypen'].valid" class="help-inline spanalign"><span class="errormsgtxt">Commission type is Required ! </span><img src="images/iconquestion.png"></span>
+        </div>
+        <div class="formgroupnew1 ">
+            <input [formControl]="addbannersizeformnew.controls['commissionn']" type="text" name="commission" class="form-controlnew" placeholder="Commission"/>
+            <span *ngIf ="addbannersizeformnew.controls['commissionn'].touched && !addbannersizeformnew.controls['commissionn'].valid" class="help-inline"><span class="errormsgtxt">Commission is Required !</span><img src="images/iconquestion.png"></span>
+        </div>
+        <div class="formgroupnew1 " style="margin-bottom: 0px;">
+            <input [formControl]="addbannersizeformnew.controls['option_name']" type="text" name="commission" class="form-controlnew" placeholder="Option Name"/>
+            <span *ngIf ="addbannersizeformnew.controls['option_name'].touched && !addbannersizeformnew.controls['option_name'].valid" class="help-inline"><span class="errormsgtxt">Commission is Required !</span><img src="images/iconquestion.png"></span>
+        </div>
+        <div class="formgroupnew1 " style="margin-bottom: 0px;">
+            <input [formControl]="addbannersizeformnew.controls['priority']" type="text" name="commission" class="form-controlnew" placeholder="Priority"/>
+            <span *ngIf ="addbannersizeformnew.controls['priority'].touched && !addbannersizeformnew.controls['priority'].valid" class="help-inline"><span class="errormsgtxt">Commission is Required !</span><img src="images/iconquestion.png"></span>
+        </div>
+
+
+        <div class="clearfix"></div>
+
+
+
+        <h3 class="opencontract_text">*The open contract is the set of commission rules applicable for the car retail price. There can be multiple rules matching a car in that case only the rule with the highest priority will be applicable. (Priority eg.: 1=highest, 10=lowest)</h3>
+
+    </div>
+
+
+
+
+        <div class="col-lg-12 col-md-12col-sm-12 col-xs-12 retailformblock1part3innerblock2" style="margin: 0px; padding: 0px; margin-bottom: 20px;">
+            <h3 style="background-color: #272727;">Base Price you are looking to pay (Select Multiple)</h3>
+            <div class="retailformblock1part3innerblock2wrapper" style="min-height: inherit;">
+                <div class="retailformblock1part3innerblock21">
+
+                    <div class="row">
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 re_newtextleft">
+
+                            <div *ngFor="let itemcarprice of basepricelist" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock2single retail_chakblock">
+                                <div *ngIf="itemcarprice.is_active==1">
+                                    <input [formControl]="addbannersizeformnew.controls['base_price']" id="{{itemcarprice._id}}" (change)="updatepricearray($event)" class="bprice" type="checkbox" name="base_price" value="{{itemcarprice._id}}" >
+                                    <label [attr.for]="itemcarprice._id" ></label>
+                                    <span>{{itemcarprice.baseprice}}</span>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 re_newtextright">
+                            <strong style="color: #333;">The base price you are looking...</strong>
+
+                            This is just a range to help us gaze what best inventory to present to you.
+                            We will present many inventory options based on the rest of your choices as well
+
+                        </div>
+
+
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <span *ngIf ="addbannersizeformnew.controls['base_price'].touched && updatepricearr.length==0" class="help-inline newerrorcss2">This is Required !</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row retailformblock1part3">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock1part3innerblock5">
+                <h3 style="background-color: #272727;">Most Popular Colors Options</h3>
+                <div class="retailformblock1part3innerblock5wrapper">
+                    <div class="retailformblock1part3innerblock51 table-responsive">
+                        <table class = "table ">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <div class="rankdiv">Rank</div>
+                                    <div class="colordiv">Color</div>
+                                    <div class="clearfix"></div>
+
+                                </th>
+
+                                <th>
+                                    <div class="rankdiv">Rank</div>
+                                    <div class="colordiv">Color</div>
+                                    <div class="clearfix"></div>
+
+                                </th>
+                                <th>
+                                    <div class="rankdiv">Rank</div>
+                                    <div class="colordiv">Color</div>
+                                    <div class="clearfix"></div>
+
+                                </th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody >
+                            <tr *ngFor="let itemcolorlist of rows let icolor=index " >
+                                <td *ngFor="let colorlistitem of colorlist | slice:(icolor*3):(icolor+1)*3 let icolori=index">
+                                    <div class="rankdiv">
+                                        <strong>Rank1</strong> {{(icolor*3)+(icolori+1)}}
+
+                                    </div>
+
+                                    <div class="colordiv"> <strong>Color1</strong> <div class="radio{{(icolor*3)+(icolori+1)}}"><input [formControl]="addbannersizeformnew.controls['color_opiton']" id="{{colorlistitem._id}}" type="checkbox" name="color_opiton[]" class="color"  (change)="carcolorchange($event)" value="{{colorlistitem._id}}">
+
+                                        <label [attr.for]="colorlistitem._id"><span>{{colorlistitem.color}}</span></label>
+
+
+                                    </div>   </div>  <div class="clearfix"></div>
+                                </td>
+
+
+
+                            </tr>
+
+                            <tr>
+                                <td colspan="3">
+                                    <div class="table_checkbox_wrapper hide">
+                                        <input type="checkbox" id="other1"><label for="other1"><span>Other</span></label>
+                                        <div class="clearfix"></div>
+
+                                        <div class="table_textbox">
+
+
+                                            <input type="text" class="tabel_textarea">
+                                            <input type="button" value="Submit" class="tabel_button">
+
+                                            <div class="clearfix"></div>
+
+                                        </div>
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+                <span *ngIf ="addbannersizeformnew.controls['color_opiton'].touched && colorval.length<1" class="help-inline newerrorcss2">This is Required !</span>
+
+
+            </div>
+        </div>
+
+
+
+        <div class="container-fluid retailformblock2">
+            <div class="container retailformblock2wrapper">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock2wrapper">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-12 col-sm-12 col-xs-12 retailformblock2wrapperinner">
+                                <h3 style="background-color: #272727;">Please select all of the makes that you are interested in</h3>
+                                <div class="retailformblock2wrapperinnerwrapper">
+                                    <div class="retailformblock2wrapperinner1">
+                                        <div class="row">
+                                            <div *ngFor="let itemcarlogo of carlogolist | filter:query">
+                                                <div *ngIf="itemcarlogo.is_active==1"  class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock2single">
+                                                    <div  class="singlelogowrapper logolabel{{itemcarlogo._id}}" >
+                                                        <!-- <img src="images/logocom1.jpg" class="img-responsive">-->
+                                                        <img [attr.logoid]="itemcarlogo._id" id="carlogo{{itemcarlogo._id}}" (click)="clickcarlogo($event)" src="{{carlogosrc}}{{itemcarlogo.logo}}" class="img-responsive">
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Deemphasize a button by making it look like a link while maintaining button behavior -->
+                                <span class="rrrrr" *ngIf ="addbannersizeformnew.controls['upcoming_auction'].touched && upcoming_auctionarr.length<1" class="help-inline newerrorcss5">This is Required !</span>
+
+                                <a href="javascript:void(0)"><button (click)="carlogoModal.open()" type="button" class="btn btn-link text-right pull-right btnviewall hide">View More</button></a>
+
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 retailformblock2wrapperinnerpart2">
+                                <h4 style="background-color: #272727;">Number Listed At Upcoming Auction</h4>
+                                <div class="retailformblock2wrapperinnerpart2wrapper">
+                                    <div class="retailformblock2wrapperinnerpart21">
+                                        <div class="row">
+                                            <div class="col-lg-1 col-md-1 col-sm-1 col-xs-1 imgAbtblock">
+                                                <!--<div class="imgAbt">
+                                                    <img src="images/closehome.png" class="img-responsive">
+                                                </div>-->
+                                            </div>
+                                            <div class="col-lg-11 col-md-11 col-sm-11 col-xs-11 imgAbtblockcontent">
+                                                <p>Clear all</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="form-group">
+                                                <div class="icon-addon addon-lg">
+                                                    <input  type="text" placeholder="research by make" class="form-control form-control_input" id="researchbymakez0">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="retailformblock2wrapperinnerpart21_wrapper"> <div *ngFor="let itemcarlogo1 of carlogolist|filter:query"  class="retailformblock2wrapperinnerpart21 spanclass">
+                                        <div *ngIf="itemcarlogo1.is_active==1">
+
+
+                                            <input [formControl]="addbannersizeformnew.controls['upcoming_auction']" id="{{itemcarlogo1._id}}" type="checkbox" name="upcoming_auction[]" class="upcoming" (change)="upcoming_auctionchange($event)" value="{{itemcarlogo1._id}}">
+                                            <label [attr.for]="itemcarlogo1._id"><span>{{itemcarlogo1.name}}</span><b>(11)</b>
+                                                <div class="clearfix"></div>
+                                            </label>
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+                                    </div>
+
+
+
+
+
+                                    <a href="javascript:void(0)"><button (click)="openmakemodal()" type="button" class="btn btn-link text-left pull-left btnseeall hide">see all makes</button></a>
+                                    <button class="hide openmakemodal" (click)="carlogoModal.open()">kkk</button>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="container-fluid retailformblock3">
+            <div class="container retailformblock3wrapper">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock3wrapper">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock3wrapperinner">
+                                <h3 style="background-color: #272727;">Please select all of the body style that you are interested in</h3>
+                                <div class="retailformblock3wrapperinnerwrapper">
+                                    <div class="retailformblock3wrapperinner1">
+                                        <div class="row">
+     <span *ngFor="let itemcarbodystyle of carbodystylelist  let j=index" >
+<div *ngIf="itemcarbodystyle.is_active==1" class="col-lg-3 col-md-3 col-sm-6 col-xs-12 retailformblock3single">
+
+    <div class="retailformblock3singlewrapper">
+        <div class="row display-table">
+            <div class="col-md-3 display-cell">
+                <div class="retailformblock3singleimg">
+                    <img src="{{carbodystylelogosrc}}{{itemcarbodystyle.logo}}">
+                    <!--<img src="images/carimgf1.png">-->
+                </div>
+            </div>
+            <div class="col-md-9 display-cell">
+                <p>{{itemcarbodystyle.name}}</p>
+            </div>
+            <div class="inputtag">
+                <input id="{{itemcarbodystyle._id}}" [formControl]="addbannersizeformnew.controls['car_body_style']" (change)="updatebodystylearrf($event)" class="bodystyle"  type="checkbox" name="car_body_style" value="{{itemcarbodystyle._id}}" ><label [attr.for]="itemcarbodystyle._id"><span></span></label>
+            </div>
+        </div>
+    </div>
+</div>
+         </span>
+
+
+
+
+                                        </div>
+                                        <span class="rrrrr" *ngIf ="addbannersizeformnew.controls['car_body_style'].touched && updatebodystylearr.length<1" class="help-inline newerrorcss4">This is Required !</span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 retailformblock1part3innerblock3">
+                        <h3 style="background-color: #272727;">Auto Years (Multiple Select)</h3>
+                        <div class="retailformblock1part3innerblock3wrapper">
+                            <div class="retailformblock1part3innerblock31">
+                                <div class="row">
+                   <span *ngFor="let itemcaryear of carautoyearlist let k=index" >
+                    <div *ngIf="itemcaryear.is_active==1" class="col-lg-4 col-md-4 col-sm-6 col-xs-12  retailformblock1part3innerblock3single" style="margin-bottom: 14px;">
+                        <input id="{{itemcaryear._id}}" type="checkbox" [formControl]="addbannersizeformnew.controls['car_auto_year']" name="car_auto_year" class="year" (change)="autoyearchange($event)"value="{{itemcaryear._id}}" >
+                        <label [attr.for]="itemcaryear._id"></label>
+                        <span>{{itemcaryear.year}}</span>
+                    </div>
+                        </span>
+
+
+                                </div>
+                                <span *ngIf ="addbannersizeformnew.controls['car_auto_year'].touched && !addbannersizeformnew.controls['car_auto_year'].valid" class="help-inline newerrorcss7">This is Required !</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 retailformblock1part3innerblock4">
+                        <h3 style="background-color: #272727;">Mileage</h3>
+                        <div class="retailformblock1part3innerblock3wrapper">
+                            <div class="retailformblock1part3innerblock41">
+                                <div class="row">
+                    <span *ngFor="let itemcarmileage of carmileagelist">
+                    <div *ngIf="itemcarmileage.is_active==1" class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock1part3innerblock4single" style="margin-bottom: 14px;">
+
+
+
+                        <input id="{{itemcarmileage._id}}" type="radio" [formControl]="addbannersizeformnew.controls['car_mileage']" name="car_mileage"  value="{{itemcarmileage._id}}" ><label [attr.for]="itemcarmileage._id"></label><span>{{itemcarmileage.mileage}}</span>
+                    </div>
+</span>
+
+                                </div>
+                                <span *ngIf ="addbannersizeformnew.controls['car_mileage'].touched && !addbannersizeformnew.controls['car_mileage'].valid" class="help-inline newerrorcss7">This is Required !</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="  retailformblock4">
+            <div class="retailformblock4mainwrapper">
+                <div class="row">
+                    <div class="container retailformblock4wrapper">
+                        <div class="row">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 retailformblock4wrapperinner">
+                                <h3 style="background-color: #272727;">Please select the most important features: </h3>
+                                <div class="retailformblock4wrapperinnerwrapper">
+                                    <div class="retailformblock4wrapperinner1">
+                                        <div class="row">
+    <span *ngFor="let itemcarfeature of carfeaturelist">
+<div *ngIf="itemcarfeature.is_active==1" class="col-lg-4 col-md-4 col-sm-6 col-xs-12 retailformblock4single">
+    <div class="retailformblock4singlewrapper">
+        <div class="row display-table">
+            <div class="col-md-3 display-cell">
+                 <div class="retailformblock4singlewrapperimg">
+                     <img src="{{carfeaturesrc}}{{itemcarfeature.logo}}" class="img-responsive">
+                 </div>
+            </div>
+            <div class="col-md-9 display-cell">
+                <p>{{itemcarfeature.feature}}</p>
+            </div>
+            <div class="inputtag">
+                <input id="{{itemcarfeature._id}}" class="feature" type="checkbox" [formControl]="addbannersizeformnew.controls['car_feature']" name="car_feature" (change)="updatecarfeaturearray($event)"  value="{{itemcarfeature._id}}"><label [attr.for]="itemcarfeature._id"><span></span></label>
+            </div>
+        </div>
+    </div>
+</div>
+        </span>
+                                            <div class="clearfix"></div>
+                                            <span *ngIf ="addbannersizeformnew.controls['car_feature'].touched && updatecarfeaturearr.length==0" class="help-inline newerrorcss4">This  is Required !</span>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="retailbottomformgroup">
+
+            <input type="button" (click)="updateformsubmit()"  class="bo_btn1" value="SAVE" style="display: block; margin: 20px auto; float: none;"/>
+
+        </div>
+    </form>
+
+</div>
+
+ </div>
+    </div>
+
+<!--
+<modal #contractdetail class="carlogomodalbox">
+    <modal-header class="modelheader">
+        <h1> Contract Detail</h1>
+    </modal-header>
+    <modal-content class="modelcontent">
+
+     <div class="option_popup_wrapper">
+
+         <table width="100%" border="0">
+
+             <tbody>
+
+             <tr>
+                 <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                 <td width="20%" align="left" valign="top"><strong>Option Name</strong></td>
+                 <td width="70%" align="left" valign="top">{{currentcontract.option_name}}</td>
+             </tr>
+              <tr>
+                  <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                  <td width="20%" align="left" valign="top"><strong>Comission Type </strong></td>
+                  <td width="70%" align="left" valign="top">{{currentcontract.commissiontypen}}</td>
+             </tr>
+
+             <tr>
+                 <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                 <td width="20%" align="left" valign="top"><strong>Comission Rate</strong></td>
+                 <td width="70%" align="left" valign="top">{{currentcontract.commissionn}}</td>
+             </tr>
+
+
+             <tr *ngIf="getbasepricelistlabel(currentcontract.base_price)!=''">
+                 <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                 <td width="20%" align="left" valign="top"><strong>Base Price</strong></td>
+                 <td width="70%" align="left" valign="top">{{getbasepricelistlabel(currentcontract.base_price)}}</td>
+             </tr>
+             <tr *ngIf="getcoloroption(currentcontract.color_opiton)!=''">
+                 <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                 <td width="20%" align="left" valign="top"><strong>Color Option</strong></td>
+                 <td width="70%" align="left" valign="top">{{getcoloroption(currentcontract.color_opiton)}}</td>
+             </tr>
+             <tr *ngIf="getmake(currentcontract.upcoming_auction)!=''">
+                 <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                 <td width="20%" align="left" valign="top"><strong>Make</strong></td>
+                 <td width="70%" align="left" valign="top">{{getmake(currentcontract.upcoming_auction)}}</td>
+             </tr>
+
+             <tr *ngIf="getfeature(currentcontract.car_feature)!='' ">
+                 <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span> </b></td>
+                 <td width="20%" align="left" valign="top"><strong>Car Feature</strong></td>
+                 <td width="70%" align="left" valign="top">{{getfeature(currentcontract.car_feature)}}</td>
+             </tr>
+
+             <tr *ngIf="currentcontract.car_mileage!=''">
+                 <td width="10%" align="center" valign="top"><b>   <span class="glyphicon glyphicon-menu-right"></span></b></td>
+                 <td width="20%" align="left" valign="top"><strong>Miles</strong></td>
+                 <td width="70%" align="left" valign="top">{{getmileage(currentcontract.car_mileage)}}</td>
+             </tr>
+
+
+
+
+
+
+
+             </tbody>
+
+
+
+
+         </table>
+
+
+
+
+     </div>
+
+
+
+
+    </modal-content>
+    <modal-footer class="modelfooter">
+        <button class="btn btn-primary btnclose" (click)="contractdetail.close()">close</button>
+    </modal-footer>
+</modal>
+<button class="btn btn-primary btnclose hide cmodalbutton" (click)="contractdetail.open()">close</button>-->

@@ -1,0 +1,162 @@
+<div class="page-wrapper addmembershippackage addadmin">
+    <div class="blockmaininner">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="pageheader"><span>Add</span> Manage Post</h1>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+        <div class="row addsharelinkblock">
+            <div class="col-lg-12 addadminblock">
+                    <div class="signupform_wrapper">
+                        <form novalidate [formGroup]="addmembershippackageform"   name="addmembershippackage"  class="form-inline">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <input [formControl]="addmembershippackageform.controls['title']" name="title"  type="text" class="form-control" placeholder="Title"/>
+                                    <span  *ngIf ="addmembershippackageform.controls['title'].touched && !addmembershippackageform.controls['title'].valid" class="help-inline"><span class="errormsgtxt">Title is Required !</span> <img src="images/iconquestion.png"></span>
+                                </div>
+
+                                <div class="form-group">
+                                    <select  class="form-control3" [formControl]="addmembershippackageform.controls['posttype']" (change)="changepostype($event)" name="posttype" >
+                                        <option value="" selected="selected"><span class="errormsgtxt">Select Post Type</span></option>
+                                        <option *ngFor="let obj1 of posttypelist" [value]="obj1.name">{{obj1.name}}</option>
+                                    </select>
+                                    <span  *ngIf ="addmembershippackageform.controls['posttype'].touched && !addmembershippackageform.controls['posttype'].valid" class="help-inline spanalign"><span class="errormsgtxt">Post Type is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                 <div class="form-group">
+                                    <input [formControl]="addmembershippackageform.controls['priority']" name="priority"  type="text" class="form-control" placeholder="Priority"/>
+                                    <span  *ngIf ="addmembershippackageform.controls['priority'].touched && !addmembershippackageform.controls['priority'].valid" class="help-inline"><span class="errormsgtxt">Priority is Required ! </span><img src="images/iconquestion.png"></span>
+                                </div>
+                                <div class="form-group">
+                                    <input type="hidden" [formControl]="addmembershippackageform.controls['postbody']" name="postbody" class="form-control" placeholder="Filename"/>
+                                    <span *ngIf ="addmembershippackageform.controls['postbody'].touched && !addmembershippackageform.controls['postbody'].valid" class="help-inline"><span class="errormsgtxt">Post Body is Required !</span><img src="images/iconquestion.png"></span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="clearfix"></div>
+                            <div  class="form-group inventoryselectbox hide">
+                                <select  class="form-control3" (change)="patchtinventid($event)"         name="posttype" >
+                                    <option value="" selected="selected"><span class="errormsgtxt">Select Inventory</span></option>
+                                    <option *ngFor="let obj of inventorylist" [selected]="obj.make+' - '+obj.model==details.postbody" [value]="obj.make+' - '+obj.model">{{obj.make}} - {{obj.model}}</option>
+                                </select>
+                               <!-- <span  *ngIf ="addmembershippackageform.controls['posttype'].touched && !addmembershippackageform.controls['posttype'].valid" class="help-inline spanalign"><span class="errormsgtxt">Post Type is Required ! </span><img src="images/iconquestion.png"></span>-->
+                            </div>
+                        <div class="row uploadimage hide">
+                           <div class="col-md-12">
+                               <div class="browsefileblock">
+                                   <span>Upload Image</span>
+                                    <input type="file"
+                                           ngFileSelect
+                                           [options]="basicOptions"
+                                           (onUpload)="handleUpload($event)">
+                                    <!--<div class="responsceclass">
+                                        Response: {{ response | json }}
+                                    </div>-->
+                                    <div *ngIf="progress">
+                                        Uploading: {{ progress }}%
+                                    </div>
+                                    <div *ngIf="uploadedfilesrc" class="browsefileblockimg">
+                                        <img src="{{uploadedfilesrc}}" >
+                                    </div>
+                                </div>
+                           </div>
+                        </div>
+                        <div  class="row  uploadvideo">
+                           <div class="col-md-12">
+                               <div class="browsefileblock">
+                                   <span>Upload Video</span>
+                                    <input type="file"
+                                           ngFileSelect
+                                           [options]="basicOptions"
+                                           (onUpload)="handleUploadvideo($event)">
+                                    <!--<div class="responsceclass">
+                                        Response: {{ response | json }}
+                                    </div>-->
+                                    <div *ngIf="progressvideo">
+                                        Uploading: {{ progressvideo }}%
+                                    </div>
+                                    <div *ngIf="uploadedvideosrc" class="browsefileblockimg">
+                                        <video width="320" height="240" controls>
+                                            <source src="{{uploadedvideosrc}}" type="video/mp4">
+
+                                        </video>
+                                    </div>
+                                </div>
+                           </div>
+                        </div>
+
+
+                        <div class="clearfix"></div>
+                        <div class="row uploadrow">
+                            <div class="col-md-6">
+                                <div class="form-group_chakebox signupcheckbox">
+                                    <input id="checkbox1" type="checkbox" name="is_active" [formControl]="addmembershippackageform.controls['is_active']" value="1"/><label for="checkbox1"></label><span>Is Active?</span>
+                                    <span *ngIf ="addmembershippackageform.controls['is_active'].touched && !addmembershippackageform.controls['is_active'].valid" class="help-inline">You must select checkbox</span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+
+                            <div class="clearfix"></div>
+                            <div class="row uploadrow">
+                                <div class="col-md-6">
+                                    <div class="form-group_chakebox signupcheckbox">
+                                        <input (click)="openchannelchangecheck($event)" id="checkbox2" type="checkbox" name="is_open_channel" [formControl]="addmembershippackageform.controls['is_open_channel']" value="1"/><label for="checkbox2"></label><span>Is Open Channel?</span>
+                                        <!-- <span *ngIf ="addmembershippackageform.controls['open_channel'].touched && !addmembershippackageform.controls['open_channel'].valid" class="help-inline">You must select checkbox</span>-->
+                                        <div class="clearfix"></div>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="form-group_chakebox signupcheckbox1 hide">
+                                <div *ngFor="let itemopenchannel of openchannellist"  class="form-group_chakebox signupcheckbox">
+
+
+
+                                    <input [formControl]="addmembershippackageform.controls['openchannel']" id="{{itemopenchannel._id}}" type="checkbox" class="upcoming" name="openchannel[]" (change)="openchannelchange($event)" value="{{itemopenchannel._id}}">
+                                    <label [attr.for]="itemopenchannel._id"><span>{{itemopenchannel.channelname}}</span>
+                                        <div class="clearfix"></div>
+                                    </label>
+
+
+
+
+                                </div>
+
+
+
+
+
+                            </div>
+                        <!--<div class="form-group">
+                            <input [formControl]="addmembershippackageform.controls['imageurl']" name="imageurl"  type="text" class="form-control" placeholder="Image Url"/>
+                            <span  *ngIf ="addmembershippackageform.controls['imageurl'].touched && !addmembershippackageform.controls['imageurl'].valid" class="help-inline"><span class="errormsgtxt">Image Url is Required ! </span><img src="images/iconquestion.png"></span>
+                        </div>-->
+                        </form>
+                    </div>
+
+
+                <div  class="textcontent hide">
+                <ckeditor
+                        [(ngModel)]="ckeditorContent"
+                        [config]="{uiColor: '#272727'}"
+                        (change)="onChange($event)"
+                        (blur)="onBlur($event)"
+                        debounce="500">
+                </ckeditor></div>
+               <!-- <span *ngIf ="addmembershippackageform.controls['description'].touched && !addmembershippackageform.controls['description'].valid" class="help-inline2"><span class="errormsgtxt">Description  is Required !</span><img src="images/iconquestion.png"></span>-->
+                <div class="col-md-12">
+                    <div class="submitwrap">
+                        <button (click)="submitform1()" type="button" value="Submit" class="subbtn">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+       </div>
+    </div>

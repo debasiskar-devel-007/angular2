@@ -1,0 +1,131 @@
+<div class="page-wrapper page-wrapper-inner">
+    <div class="blockmaininner">
+
+        <div class="inventorylistswrapper">
+<div class="row">
+    <div > <!--*ngFor="let itemiventorymatch of inventorymatcharr|filter:query|orderBy:orderbyqueryinventorymatch:orderbytypeinventorymatch|paginate: { itemsPerPage: 9, currentPage: p };let iinventory=index " class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist"-->
+    <div class="inventorysinglelistblock">
+        <div class="row inventorysinglelistblock_row">
+            <div class="col-lg-4 col-md-6 col-sm-6 col-xs-12 pull-left infobox">
+                <table class="table">
+                    <tbody>
+                    <tr>
+                        <td><span>Make:</span></td>
+                        <td><!--{{getcarlogo(itemiventorymatch)}}-->demo text</td>
+                    </tr>
+                    <tr>
+                        <td><span>Model:</span></td>
+                        <td><!--{{itemiventorymatch.model}}-->demo text</td>
+                    </tr>
+                    <tr>
+                        <td><span>Year:</span></td>
+                        <td><!--{{getcaryear(itemiventorymatch)}}-->demo text</td>
+                    </tr>
+                    <tr>
+                        <td><span>Miles:</span></td>
+                        <td><!--{{getmileage(itemiventorymatch)}}--> demoterxt</td>
+                    </tr>
+                    <tr>
+                        <td><span>Color:</span></td>
+                        <td><!--{{getcolor(itemiventorymatch)}}-->demo text</td>
+                    </tr>
+                    <tr>
+                        <td><span>Wholesale:</span></td>
+                        <td><!--{{itemiventorymatch.est_retail_value}}-->demo text</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <!--<div  class="viewdetail">
+                            <a [routerLink]="['/auctioininventorydetails', itemiventorymatch._id]" >View Details</a>
+                        </div>--></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="col-lg-8 col-md-6 col-sm-6 col-xs-12 pull-right imgbox">
+                <div class="imgouter">
+                    <div class="imgwrapper">
+                        <div class="imgwrapper">
+                         <!--   <img src="{{sharefilesrc}}{{itemiventorymatch.auctiondata[0].filename}}" class="auction_toplogo">
+                            <img src="{{sharefilesrc}}{{itemiventorymatch.filename}}">-->
+
+                            <img src="http://f1.pepst.com/c/D1A5D9/361741/ssc3/home/026/amar.dunia/albums/audi_r8_gt3_spotrs_car_img_1.jpg_480_480_0_64000_0_1_0.jpg" class="auction_toplogo">
+                             <img src="https://www.google.co.in/url?sa=i&rct=j&q=&esrc=s&source=images&cd=&ved=0ahUKEwjKz8-NrYDRAhVGNo8KHelLD3cQjBwIBA&url=https%3A%2F%2Fwww.mojomarketplace.com%2Fwatermarks%2F54b3bc94-16d0-462d-9607-40320a140b28&bvm=bv.142059868,d.c2I&psig=AFQjCNH2kyJI3Ci4uaRc1tihUnhzvG2qCg&ust=1482240178823876&cad=rjt">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="inventorysinglelistblock3"><!--{{itemiventorymatch.userdetails.length}}-->
+        <div class="inventorymatchusers_con" ><!--*ngFor="let inventoryusers of itemiventorymatch.userdetails|orderBy:orderbyqueryinventorymatch:orderbytypeinventorymatch let iinventory=index"-->
+
+        <div class="row inventorymatchusers">
+            <div class="col-lg-2 col-md-12 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
+                <div class="imgouter">
+                    <div class="imgwrapper">
+                     <!--   <img *ngIf="inventoryusers.filename" src="{{sharefilesrc}}{{inventoryusers.filename}}">
+                        <img *ngIf="!inventoryusers.filename" src="images/logo_61.png">  -->
+
+                        <img  src="http://f1.pepst.com/c/D1A5D9/361741/ssc3/home/026/amar.dunia/albums/audi_r8_gt3_spotrs_car_img_1.jpg_480_480_0_64000_0_1_0.jpg">
+                        <img  src="images/logo_61.png">
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 col-md-8 col-sm-8 col-xs-12 inventorysinglelistblock3col2">
+                <h4>Name : <!--{{inventoryusers.fname}} {{inventoryusers.lname}}--> Demo text</h4>
+                <div class="row">
+                    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10 preogressleft">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" >
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;"><span class="progresspercentage"><!--{{inventoryusers.inventorymatchval}}%--> 50%<span></span></span></div>
+            </div>
+            <h3>Matches:</h3>
+           <!-- <h5><span style="display: inline" *ngFor="let inventorychoicematches of inventoryusers.inventorymatchvaluearr">{{inventorychoicematches}}</span></h5>-->
+            <h5><span style="display: inline">Demo text</span></h5>
+            <div>
+                <!--<button type="button" (click)="inventoryModalopen(itemiventorymatch,inventoryusers)" class="btn btn-link">View Match List</button></div>-->
+                <button type="button"  class="btn btn-link">View Match List</button></div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12 inventorysinglelistblock3col3">
+            <div class="actionbtns">
+                <!--<a><button class="btnsend" (click)="rsvpModalopen(itemiventorymatch,inventoryusers)" type="button" value="Edit">Send RSVP</button></a>	<a><button class="btnedit" type="button" value="Edit">Contact</button></a>-->
+                <a><button class="btnsend" type="button" value="Edit">Send RSVP</button></a>	<a><button class="btnedit" type="button" value="Edit">Contact</button></a>
+            </div>
+        </div>
+    </div>
+    <div class="row inventorysinglelistblock4 inventorymatchusers1">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col1">
+            <div class="actionbtns">
+                <a><button class="btnset" type="button" value="Edit">Set the retail price</button></a>	<a><button class="btnsend" type="button" value="Edit">Send Info</button></a>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 inventorysinglelistblock3col2 inventorysinglelistblock3col22">
+            <div class="example">
+                <div>
+                    <label><span>Approved for financing</span></label>
+                </div>
+                <div class="radiobox1box">
+                    <input id="radiobox1box1" type="radio" name="radiobox1box1" value="radiobox1box1"><label for="radiobox1box1"></label>
+                </div>
+                <div class="radiobox2box">
+                    <input id="radiobox1box2" type="radio" name="radiobox1box1" value="radiobox1box2"><label for="radiobox1box2"></label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider4"></div>
+
+</div>
+
+        </div>
+
+        </div>
+
+    </div>

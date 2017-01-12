@@ -1,0 +1,162 @@
+<div class="body-inner">
+    <div class="page-wrapper page-wrapper-inner">
+        <div class="blockmaininner">
+            <!-- .row -->
+            <div class="row">
+                <div class="col-lg-12 col-md-12 mailinbox">
+                    <div class="mailinboxblock">
+                        <div class="mailinboxheader">
+                            <h2><span>Read</span> Job Ticket</h2>
+                        </div>
+                        <div class="mailinboxwrapper">
+                            <!-- Main content -->
+                            <section class="content">
+                                <div class="row row-eq-height">
+                                    <!-- /mailleft.col -->
+                                    <!--<div class="col-md-2 col-sm-3 col-xs-12 mailinboxleft">
+                                        <div class="box box-solid">
+                                            <div class="box-header with-border">
+                                                <h3 class="box-title">Folders</h3>
+                                                <div class="box-tools">
+                                                    <button type="button" class="btn btn-box-tool" class="navbar-toggle" data-toggle="collapse"  data-target="#navbar-collapse-1"><span class="glyphicon glyphicon-minus"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="box-body no-padding navbar-collapse" id="navbar-collapse-1">
+                                                <ul class="nav nav-pills nav-stacked">
+                                                    <li class="active"><a [routerLink]="['/mailinbox']"><span class="glyphicon glyphicon-inbox"></span>Inbox <span class="label label-green pull-right">{{messageaarpub.length}}</span></a></li>
+                                                    &lt;!&ndash;<li><a href="#"><span class="glyphicon glyphicon-star"></span> Starred <span class="label label-yellow pull-right">12</span></a></li>
+                                                    <li><a href="#"><span class="glyphicon glyphicon-bookmark"></span> Important</a></li>&ndash;&gt;
+                                                    <li><a [routerLink]="['/mailboxsend']"><span class="glyphicon glyphicon-envelope"></span> Sent Mail <span class="label label-red pull-right">{{sendmessageaarpub.length}}</span></a></li>
+                                                    &lt;!&ndash;<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Drafts</a></li>
+                                                    <li><a href="#">More <span class="glyphicon glyphicon-chevron-down"></span> </a></li>&ndash;&gt;
+                                                </ul>
+                                            </div>
+                                            &lt;!&ndash; /.box-body &ndash;&gt;
+                                        </div>
+                                    </div>-->
+                                    <!-- /mailleft.col -->
+                                    <!-- /mailright.col -->
+                                    <div class="col-md-10 col-sm-9 col-xs-12 mailinboxright readmailinboxouterwrapper">
+                                        <div class="box box-primary readmailinboxwrapper">
+                                            <div class="box-header with-border">
+                                                <!--<button type="button" class="btn btn-default btn-sm btninputtype"><input type="checkbox"><span class="glyphicon glyphicon-vector-path-square"></span>
+                                                </button>-->
+                                                <button [routerLink]="['/addjobticket']" type="button" class="btn btn-default btn-sm btnwritemail"><span class="glyphicon glyphicon-plus"></span> Add a New Ticket</button>
+                                                <div class="box-tools pull-right">
+                                                    <span class="mailbox-read-time pull-right" *ngIf="currentmessage.length>0">{{commonservices.convertunixtodatetime(currentmessage[0].addedon)}}</span>
+                                                </div>
+                                            </div>
+                                            <!-- /.box-header -->
+                                            <div class="box-body no-padding">
+                                                <div class="mailbox-controls with-border">
+                                                    <div class="pull-left readmailheadercontrol">
+                                                        <button type="button" class="btn replybtn hide"><i class="glyphicon glyphicon-arrow-right"></i> Forward</button>
+
+                                                        <button type="button" (click)="openreply()" class="btn forwardbtn"><i class="glyphicon glyphicon-share-alt"></i> Reply</button>
+                                                       <!-- <button type="button" class="btn trashbtn"><i class="glyphicon glyphicon-trash"></i> Trash</button>-->
+                                                    </div>
+                                                    <!-- /.btn-group -->
+                                                </div>
+                                                <div class="mailbox-read-info">
+                                                    <h5 class="form-control"><span class="span1">From</span> <span *ngIf="currentmessage.length>0"  class="span2">{{currentmessage[0].fromfullname}}</span></h5>
+                                                    <h5 class="form-control"><span class="span1">Subject</span> <span class="span2" *ngIf="currentmessage.length>0">{{currentmessage[0].subject}}</span> </h5>
+                                                </div>
+                                                <!-- /.mailbox-read-info -->
+
+                                                <!-- /.mailbox-controls -->
+                                                <div *ngIf="currentmessage.length>0" class="mailbox-read-message"[innerHtml]="currentmessage[0].body" >
+                                                </div>
+                                                <div class="msgreply">Replies:</div>
+
+                                                <div *ngFor="let msg of replymessages"  >
+                                                    <div class="msgdatewrapper">
+                                                        <span class="msgdate">{{msg.fromfullname}}</span>
+                                                        <span class="msgdate">{{commonservices.convertunixtodatetime(msg.addedon)}}</span>
+                                                    </div>
+                                                    <div class="mailbox-read-message"[innerHtml]="msg.body"></div>
+
+                                                </div>
+
+                                                <!-- /.mailbox-read-message -->
+                                            </div>
+
+                                            <ckeditor *ngIf="replyopen"
+                                                    [(ngModel)]="ckeditorContent"
+                                                    [config]="{uiColor: '#272727'}"                                                                                                     debounce="500">                                                    </ckeditor>
+
+                                            <span  *ngIf ="messgaebodyerror" class="help-inline">Message Body is required ! <img src="images/iconquestion.png"></span>
+                                            <!-- /.box-body -->
+                                            <div class="box-footer">
+
+                                                <div class="pull-left readmailheadercontrol">
+                                                    <button (click)="sendreply()" *ngIf="replyopen" type="button" class="btn replybtn"> Send</button>
+                                                    <button type="button" class="btn replybtn hide"><i class="glyphicon glyphicon-arrow-right"></i> Forward</button>
+
+                                                    <button (click)="openreply()" type="button" class="btn forwardbtn"><i class="glyphicon glyphicon-share-alt"></i> Reply</button>
+                                                    <!-- <button type="button" class="btn trashbtn"><i class="glyphicon glyphicon-trash"></i> Trash</button>-->
+                                                </div>
+
+                                              <!--<ul class="mailbox-attachments clearfix">
+                                                <li>
+                                                  <span class="mailbox-attachment-icon">
+                                                      <i class="fa fa-file-pdf-o"></i></span>
+
+                                                  <div class="mailbox-attachment-info">
+                                                    <a href="#" class="mailbox-attachment-name"><span>Attachment</span> <i class="glyphicon glyphicon-paperclip"></i> Oct2016-report.pdf</a>
+                                                        <span class="mailbox-attachment-size">
+                                                          1,245 KB
+                                                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="glyphicon glyphicon-cloud-download"></i></a>
+                                                        </span>
+                                                  </div>
+                                                </li>
+                                                <li>
+                                                  <span class="mailbox-attachment-icon"><i class="fa fa-file-word-o"></i></span>
+
+                                                  <div class="mailbox-attachment-info">
+                                                    <a href="#" class="mailbox-attachment-name"><span>Attachment</span> <i class="glyphicon glyphicon-paperclip"></i> Test description.docx</a>
+                                                        <span class="mailbox-attachment-size">
+                                                          1,245 KB
+                                                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="glyphicon glyphicon-cloud-download"></i></a>
+                                                        </span>
+                                                  </div>
+                                                </li>
+                                                <li>
+                                                  <span class="mailbox-attachment-icon has-img"><img src="../../../images/adminlogo.png" alt="Attachment"></span>
+
+                                                  <div class="mailbox-attachment-info">
+                                                    <a href="#" class="mailbox-attachment-name"><span>Attachment</span><i class="glyphicon glyphicon-picture"></i> photo1.png</a>
+                                                        <span class="mailbox-attachment-size">
+                                                          2.67 MB
+                                                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="glyphicon glyphicon-cloud-download"></i></a>
+                                                        </span>
+                                                  </div>
+                                                </li>
+                                                <li>
+                                                  <span class="mailbox-attachment-icon has-img"><img src="../../../images/adminlogo.png" alt="Attachment"></span>
+
+                                                  <div class="mailbox-attachment-info">
+                                                    <a href="#" class="mailbox-attachment-name"><span>Attachment</span><i class="glyphicon glyphicon-picture"></i> photo2.png</a>
+                                                        <span class="mailbox-attachment-size">
+                                                          1.9 MB
+                                                          <a href="#" class="btn btn-default btn-xs pull-right"><i class="glyphicon glyphicon-cloud-download"></i></a>
+                                                        </span>
+                                                  </div>
+                                                </li>
+                                              </ul>-->
+                                            </div>
+                                        </div>
+                                        <!-- /. box -->
+                                    </div>
+                                    <!-- /mailright.col -->
+                                </div>
+                            </section>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+    </div>
+</div>
+<!-- /#page-wrapper -->

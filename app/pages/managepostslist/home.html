@@ -1,0 +1,90 @@
+
+<div class="page-wrapper addmembershippackage adminlist">
+    <div class="blockmaininner">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 adminlistmessageblock">
+                <!--<div *ngFor="let item1 of messages">-->
+                <!--<p *ngIf="typeof(messages)!='undefined' " class="bg-success">{{messages.message}}.</p>-->
+                <div [innerHtml]="messages"></div>
+                <!--<p class="bg-warning">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p class="bg-danger">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
+                <!-- </div>-->
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 bannerlistblock">
+                <div class="adminlistblock">
+                    <div class="adminlistheader">
+                        <h2><span>Manage Posts</span> Listing</h2>
+
+                        <ul class="list-inline">
+                            <li><div class="searchbox" ><input [(ngModel)]="query" placeholder="Search "></div></li>
+                            <li><div class="addbtnwrapper">
+                                <a [routerLink]="['/addmanageposts']"><button class="addbtn" type="button" value="Add manage posts">Add Manage Posts</button></a>
+                            </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="adminlistlists" >
+                        <div class=" table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Title <b [ngClass]="getSortClass('title')" (click)="manageSorting('title')" ></b></th>
+                                    <th>Post type<b [ngClass]="getSortClass('posttype')" (click)="manageSorting('posttype')" ></b></th>
+                                    <th>Post Body</th>
+                                    <th>Open Channel</th>
+
+                                    <th>Priority <b [ngClass]="getSortClass('priority')" (click)="manageSorting('priority')" ></b></th>
+                                    <th>Date <b [ngClass]="getSortClass('added_on')" (click)="manageSorting('added_on')" ></b></th>
+                                    <th>Status<b [ngClass]="getSortClass('is_active')" (click)="manageSorting('is_active')" ></b></th>
+
+                                    <th>Action</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr  *ngFor="let item of data|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id">
+                                    <td>{{item.title}}</td>
+                                    <td>{{item.posttype}}</td>
+
+                                    <td>
+                                        <div *ngIf="item.posttype=='Image'" class="imgfilesrc"><img *ngIf="item.postbody" src="{{filesrc}}{{item.postbody}}"></div>
+                                        <div *ngIf="item.posttype=='Video'" class="imgfilesrc"> <video width="192" height="192" controls>
+                                            <source src="{{filesrc}}{{item.postbody}}" type="video/mp4">
+
+                                        </video></div>
+                                        <div *ngIf="item.posttype=='Text' ||item.posttype=='Inventory'" class="panel-body" [innerHTML]="_sanitizer.bypassSecurityTrustHtml(item.postbody)"></div>
+                                    </td>
+                                    <td>{{(item.is_open_channel==1) ? 'Yes' : 'No'}}</td>
+
+                                    <td>{{item.priority}}</td>
+                                    <td [innerHtml]="commonservices.convertunixtodate(item.added_on)"></td>
+                                    <td><a href="javascript:void(0)" (click)="changeStatus(item)"> {{(item.is_active==1) ? 'Active' : 'Blocked'}}</a></td>
+
+
+                                    <td>
+                                        <div class="actionbtns">
+                                            <a [routerLink]="['/editmanageposts', item._id]"><button class="btnedit" type="button" value="Edit">Edit</button></a>
+                                            <a><button class="btndelete" type="button" (click)="deleterow(item)"  value="Delete">Delete</button></a>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 paginationwrapper">
+                <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+</div>
+<!-- /#page-wrapper -->
+

@@ -1,0 +1,78 @@
+
+<div class="page-wrapper adminlist">
+    <div class="blockmaininner">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 adminlistmessageblock">
+                <!--<div *ngFor="let item1 of messages">-->
+                <!--<p *ngIf="typeof(messages)!='undefined' " class="bg-success">{{messages.message}}.</p>-->
+                <div [innerHtml]="messages"></div>
+                <!--<p class="bg-warning">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p class="bg-danger">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
+                <!-- </div>-->
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="adminlistblock">
+                    <div class="adminlistheader">
+                        <h2><span>Customer </span> Actvity</h2>
+                        <ul class="list-inline">
+                            <li> <div class="searchbox"><input style="right: 198px;" [(ngModel)]="query" placeholder="Search "></div></li>
+                            <li>
+                                <div class="addbtnwrapper">
+                                    <!--       <a [routerLink]="['/addaffiliate']"><button class="addbtn" type="button">Add Affiliate</button></a>-->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="adminlistlists">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead>
+                                <tr>
+                                    <th>Customer <b [ngClass]="getSortClass('customerid')" (click)="manageSorting('customerid')" ></b></th>
+                                    <th>Content <b [ngClass]="getSortClass('activity_content')" (click)="manageSorting('activity_content')" ></b></th>
+                                    <th>Type <b [ngClass]="getSortClass('activity_type')" (click)="manageSorting('activity_type')" ></b></th>
+                                    <th>Date Added<b [ngClass]="getSortClass('added_on')" (click)="manageSorting('added_on')" ></b></th>
+
+                                    <!--<th>Status <b [ngClass]="getSortClass('is_active')" (click)="manageSorting('is_active')" ></b></th>--><!--
+                                    <th>Date Added <b [ngClass]="getSortClass('added_on')" (click)="manageSorting('added_on')" ></b></th>-->
+                                   <!-- <th>Action</th>-->
+                                </tr>
+                                </thead>
+                                <tbody>
+                               <!-- <span *ngIf="customerlistarr.length==0" class="noresult noresinventory">No Result Found!</span>-->
+                                <tr  *ngFor="let item of customerlistarr|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id">
+                                    <td>{{item.customername}}</td>
+                                    <td>{{item.activity_content}}</td>
+                                    <td>{{item.activity_type}}</td>
+
+                                    <td>{{timeConverter(item.added_on)}}</td>
+                                    <!--<td>
+                                        <div class="actionbtns">
+
+                                            <a><button class="btndelete" style="width:100%" type="button" (click)="reviewfinance(item)"  value="Delete">Send Invitation</button></a>
+                                           &lt;!&ndash; <a><button class="btndelete" style="width:100%" type="button" (click)="customerdelete(item)"  value="Delete">Delete</button></a>&ndash;&gt;
+
+                                            &lt;!&ndash;<a><button value="update" (click)="customerupdate()"></button></a>&ndash;&gt;
+                                        </div>
+                                    </td>-->
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="customerlistarr.length>0" class="col-lg-12 col-md-12 paginationwrapper">
+                <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+</div>
+<!-- /#page-wrapper -->
+

@@ -1,0 +1,215 @@
+
+<div class="page-wrapper adminlist">
+    <div class="blockmaininner">
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 adminlistmessageblock">
+                <!--<div *ngFor="let item1 of messages">-->
+                    <!--<p *ngIf="typeof(messages)!='undefined' " class="bg-success">{{messages.message}}.</p>-->
+                <div [innerHtml]="messages"></div>
+                    <!--<p class="bg-warning">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    <p class="bg-danger">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>-->
+               <!-- </div>-->
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="adminlistblock">
+                    <div class="adminlistheader">
+                        <h2><span>Affiliate</span> Report</h2>
+                        <ul class="list-inline">
+                            <li> <div class="searchbox"><input style="right: 198px;" [(ngModel)]="query" placeholder="Search "></div></li>
+                            <li>
+                                <div class="addbtnwrapper">
+                             <!--       <a [routerLink]="['/addaffiliate']"><button class="addbtn" type="button">Add Affiliate</button></a>-->
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="adminlistlists">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                            <thead>
+                            <tr>
+                                <th>Affiliate Name <b [ngClass]="getSortClass('affiliatename')" (click)="manageSorting('affiliatename')" ></b></th>
+                                <th>Total Click <b [ngClass]="getSortClass('totalclick')" (click)="manageSorting('totalclick')" ></b></th>
+                                <th>Total Signup <b [ngClass]="getSortClass('totalsignup')" (click)="manageSorting('totalsignup')" ></b></th>
+                                <th>Auction Success</th>
+
+                                <th>Action</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr  *ngFor="let item of cardata|filter:query|orderBy:orderbyquery:orderbytype|paginate: { itemsPerPage: 10, currentPage: p };trackBy:item?._id">
+                                <td>{{item.affiliatename}}</td>
+                                <td>{{item.totalclick}}</td>
+                                <td>{{item.totalsignup}}</td>
+                                <td>{{item.sales}}</td>
+
+                                <td>
+                                    <div class="actionbtns">
+
+                                        <a><button class="btndelete" style="width:100%" type="button" (click)="openclickreport()"  value="Delete">View Click Report</button></a>
+                                        <a><button class="btndelete" style="width:100%" type="button" (click)="opensignupreport()"  value="Delete">View Signup Report</button></a>
+                                       <!-- <a><button class="btndelete" style="width:100%" type="button" (click)="reviewfinance(item)"  value="Delete">View sales Report</button></a>-->
+                                      <!--  <a><button class="btndelete" style="width:100%" type="button" (click)="customerdelete(item)"  value="Delete">Delete</button></a>-->
+
+                                       <!-- <a><button value="update" (click)="customerupdate()"></button></a>-->
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr *ngIf="p==1">
+                                <td>TOTAL</td>
+                                 <td>50</td>
+                                <td>37</td>
+                                <td colspan="2">37/7,32093 USD</td>
+                            </tr>
+                            <tr *ngIf="p==2">
+                                <td>TOTAL</td>
+                                <td>5</td>
+                                <td>4</td>
+                                <td colspan="2">4/47,996 USD</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-12 col-md-12 paginationwrapper">
+               <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+            </div>
+        </div>
+        <!-- /.row -->
+
+    </div>
+</div>
+<!-- /#page-wrapper -->
+
+<div id="affiliateclickModal1" class="modal fade  matchespopupnew2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Affiliate Click Reports</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper">
+
+                    <div class="customerdashboard_block2_right detailpopupnew1">
+                        <!--{{getcardetails(itemrsvpcar.inventoryid,'image')}}-->
+                        <!--<div class="detailsimgnew" [innerHtml]="getcardetails(itemrsvpcar.inventoryid,'image')">/</div>-->
+
+                        <!-- <img src="http://pluginelectrichybrids.com/wp-content/uploads/2014/07/2015-Audi-Q5-Hybrid-front-view.jpg"  alt="#" class="detailsimgnew"/>-->
+
+                        <div class="cdblock2topbg1"><h3>Details </h3></div>
+
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td valign="middle">Customer Name</td>
+
+                                <td valign="middle">Click Time</td>
+
+                            </tr>
+                            <tr>
+                                <td  valign="middle">arata naomi</td>
+                                <td  valign="middle">26 Dec, 2016</td>
+                            </tr>
+                            <tr>
+                                <td  valign="middle">alezando pro</td>
+                                <td  valign="middle">22 Dec, 2016</td>
+                            </tr>
+                            <tr>
+                                <td  valign="middle">tapas sen</td>
+                                <td  valign="middle">26 Nov, 2016</td>
+                            </tr>
+                            <!--<tr>
+                                <td  valign="middle">arata naomi</td>
+                                <td  valign="middle">26 Dec,2016</td>
+                            </tr>
+                            <tr>
+                                <td  valign="middle">arata naomi</td>
+                                <td  valign="middle">26 Dec,2016</td>
+                            </tr>-->
+
+
+
+                        </table>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer modelfooter">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="affiliatesignupModal" class="modal fade  matchespopupnew2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Affiliate Signup Reports</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper">
+
+                    <div class="customerdashboard_block2_right detailpopupnew1">
+                        <!--{{getcardetails(itemrsvpcar.inventoryid,'image')}}-->
+                        <!--<div class="detailsimgnew" [innerHtml]="getcardetails(itemrsvpcar.inventoryid,'image')">/</div>-->
+
+                        <!-- <img src="http://pluginelectrichybrids.com/wp-content/uploads/2014/07/2015-Audi-Q5-Hybrid-front-view.jpg"  alt="#" class="detailsimgnew"/>-->
+
+                        <div class="cdblock2topbg1"><h3>Details </h3></div>
+
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td valign="middle">Customer Name</td>
+
+                                <td valign="middle">Signup Time</td>
+
+                            </tr>
+                            <tr>
+                                <td  valign="middle">Matthew Harris</td>
+                                <td  valign="middle">2 Jan, 2016</td>
+                            </tr>
+                            <tr>
+                                <td  valign="middle">Nicholas Martin</td>
+                                <td  valign="middle">5 Jan, 2016</td>
+                            </tr>
+                            <tr>
+                                <td  valign="middle">kailas pal</td>
+                                <td  valign="middle">8 Jan, 2016</td>
+                            </tr>
+                            <!--<tr>
+                                <td  valign="middle">arata naomi</td>
+                                <td  valign="middle">26 Dec,2016</td>
+                            </tr>
+                            <tr>
+                                <td  valign="middle">arata naomi</td>
+                                <td  valign="middle">26 Dec,2016</td>
+                            </tr>-->
+
+
+
+                        </table>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer modelfooter">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>

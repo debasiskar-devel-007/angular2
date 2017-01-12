@@ -1,0 +1,35 @@
+<link rel="stylesheet" href="http://widgets.edmunds.com/css/tmv/simple-dark.css">
+<style>.tmvwidget{-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px;border-width:1px;width:281px;}.tmvwidget .tmvwidget-header{-webkit-border-top-right-radius:5px;-moz-border-radius-topright:5px;border-top-right-radius:5px;-webkit-border-top-left-radius:5px;-moz-border-radius-topleft:5px;border-top-left-radius:5px;}
+</style>
+<div id="tmvwidget"></div>
+<script type="text/javascript">
+  (function(d, tag, apikey){
+    var tmv = {
+      init: function() {
+        tmv.loadjs('http://widgets.edmunds.com/js/edm/sdk.js', tmv.loadWidget);
+      },
+      loadjs: function(file, callback) {
+        var fjs = d.getElementsByTagName(tag)[0],
+                s = d.createElement(tag);
+        s.onload = s.onreadystatechange = function() {
+          var r = this.readyState;
+          if (!r || r === 'loaded' || r === 'complete') {
+            callback.call();
+            s.onreadystatechange = null;
+          }
+        };
+        s.src = file;
+        fjs.parentNode.insertBefore(s, fjs);
+      },
+      loadWidget: function() {
+        tmv.loadjs('http://widgets.edmunds.com/js/tmv/tmvwidget.js', tmv.initWidget);
+      },
+      initWidget: function() {
+        var widget = new EDM.TMV(apikey, {root: 'tmvwidget', baseClass: 'tmvwidget'});
+        widget.init({"includedMakes":"all","price":"tmv","showVehicles":"USED","zip":"84310"});
+        widget.render();
+      }
+    }
+    tmv.init();
+  }(document, 'script', 'qahfbj296u33sf7qvbmk5ezh'));
+</script>

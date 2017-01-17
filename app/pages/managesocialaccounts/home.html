@@ -2,7 +2,7 @@
     <div class="blockmaininner">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                <h1 class="pageheader"><span>Sicial</span>  Media</h1>
+                <h1 class="pageheader"><span>Social</span>  Media</h1>
             </div>
         </div>
         <div class="row">
@@ -11,32 +11,33 @@
                     <h2>Facebook Account</h2>
                     <div class="addmodify">
                         <img src="images/iconfacebooksml.png">
-                        <a class="btn btn-default btnmodify btnaddsml" (click)="connectfacebook()">Add</a>
+                        <a *ngIf="facebookprofileid==0" class="btn btn-default btnmodify btnaddsml" (click)="connectfacebook()">Add</a>
                     </div>
                     <div class="accountinfo">
                         <div class="row">
                             <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
                                 <div class="socialimgwrapper">
-                                    <img src="images/fbprofile.png">
+                                    <!--<img src="images/fbprofile.png">-->
+                                    <img class="facebookimage" src="">
                                 </div>
                             </div>
-                            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
+                            <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12" >
                                     <table class="table">
                                         <tr>
                                             <td><label>Name</label></td>
-                                            <td><span>David Jones</span></td>
-                                        </tr>
+                                            <td><span class="facebookname"></span></td>
+                                         </tr>
                                         <tr>
                                             <td><label>Address</label></td>
-                                            <td><span>24 DC Lane Saltlake Utah</span></td>
+                                            <td><span >24 DC Lane Saltlake Utah</span></td>
                                         </tr>
                                         <tr>
                                             <td><label>Email</label></td>
-                                            <td><span>devidjones@gmail.com</span></td>
+                                            <td><span class="facebookemail"></span></td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <a class="btn btn-default btnmodify"><img src="images/iconmodifiedsml.png"> Modify</a>
+                                                <a (click)="connectfacebook()" class="btn btn-default btnmodify"><img src="images/iconmodifiedsml.png"> Modify</a>
                                             </td>
                                         </tr>
                                     </table>
@@ -50,32 +51,33 @@
                     <h2>Twitter Account</h2>
                     <div class="addmodify">
                         <img src="images/icontwittersml.png">
-                        <a class="btn btn-default btnmodify btnaddsml" >Add f</a>
+                        <a *ngIf="twitter_auth_token==0" href="http://probiddealer.influxiq.com/twitter/?username={{user}}"  class="btn btn-default btnmodify btnaddsml" >Add f</a>
                     </div>
                     <div class="accountinfo">
                         <div class="row">
                             <div class="col-lg-4 col-md-5 col-sm-5 col-xs-12">
                                 <div class="socialimgwrapper">
-                                    <img src="images/twprofile.png">
+                                    <!--<img class="twitterimage" src="images/twprofile.png">-->
+                                    <img class="twitterimage" src="">
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-7 col-sm-7 col-xs-12">
                                     <table class="table">
                                         <tr>
                                             <td><label>Name</label></td>
-                                            <td><span>David Jones</span></td>
+                                            <td><span class="twitterscrrename"></span></td>
                                         </tr>
                                         <tr>
                                             <td><label>Address</label></td>
-                                            <td><span>24 DC Lane Saltlake Utah</span></td>
+                                            <td><span class="twitterlocation"></span></td>
                                         </tr>
                                         <tr>
-                                            <td><label>Email</label></td>
-                                            <td><span>devidjones@gmail.com</span></td>
+                                            <td><label>Description</label></td>
+                                            <td><span class="twitterdescription"></span></td>
                                         </tr>
                                         <tr>
                                             <td colspan="2">
-                                                <a class="btn btn-default btnmodify"><img src="images/iconmodifiedsml.png"> Modify</a>
+                                                <a href="http://probiddealer.influxiq.com/twitter/?username={{user}}" class="btn btn-default btnmodify"><img src="images/iconmodifiedsml.png"> Modify</a>
                                             </td>
                                         </tr>
                                     </table>
@@ -85,5 +87,18 @@
                 </div>
             </div>
         </div>
+
+        <div class="chakeboxrow_wrapper">
+            <h2>Select Open Channel</h2>
+        <span *ngFor="let itemopenchannel of openchannellist" class="newchakeboxdiv">
+
+   <input id="{{itemopenchannel._id}}" class="feature" type="checkbox"  value="{{itemopenchannel._id}}"><label [attr.for]="itemopenchannel._id"><span></span></label><span>{{itemopenchannel.channelname}}</span>
+
+        </span>
+            <div class="clearfix"></div>
+
+
+        </div>
+
     </div>
 </div>

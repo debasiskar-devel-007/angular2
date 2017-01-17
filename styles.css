@@ -10454,3 +10454,10 @@ background-color: #4c4d4e;  -webkit-box-shadow: 0px 1px 0px rgba(4, 4, 4, 1);  -
 
 
 .ab_upcomingblock_block2 .col-lg-4.col-md-12.col-sm-12.col-xs-12:nth-of-type(1n+4) {display: none;}
+
+
+.auctionbidding_block1_left_box_right .ad_tab_bottomblock h2{float: right !important; width:auto !important;}
+.auctionbidding_block1_left_box_right .ad_tab_bottomblock1 span{margin: 10px 20px; display: block;}
+.auctionbidding_block1_left_box_right .ad_tab_bottomblock1 span button.btnedit{
+    padding: 8px 45px 8px 45px !important;
+}

@@ -42,6 +42,7 @@ export class AppCustomerlogin{
         this.userInfo=userInfo;
         //this.userdetails=userdetails;
         this.userdetails=userInfo.getObject('userdetails');
+        this.package_image ="images/re_logo2.png";
         var parts = location.hostname.split('.');
         var sndleveldomain = parts[0];
 console.log(sndleveldomain);
@@ -50,7 +51,7 @@ console.log(sndleveldomain);
             .subscribe(data => {
                 this.details1 = data.json()[0];
                 console.log(this.details1);
-                if(this.details1.filename) {
+                if(typeof(this.details1.filename)!='undefined') {
                     this.package_image = "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/" + this.details1.filename;
                 }
                 else {
@@ -60,6 +61,7 @@ console.log(sndleveldomain);
             }, error => {
                 console.log("Oooops!");
             });
+
 
         this.customerloginform = fb.group({
 

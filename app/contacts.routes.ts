@@ -132,6 +132,8 @@ import {AppAddmanageposts} from "./pages/addmanageposts/app.addmanageposts";
 import {AppManagepostslist} from "./pages/managepostslist/app.managepostslist";
 import {AppEditmanageposts} from "./pages/editmanageposts/app.editmanageposts";
 import {AppOngoingauctions} from "./pages/ongoingauctions/app.ongoingauctions";
+import {AppOngoingauctionscustomer} from "./pages/ongoingauctionscustomer/app.ongoingauctionscustomer";
+import {AppAuctionbiddingcustomer} from "./pages/auctionbiddingcustomer/app.auctionbiddingcustomer";
 
 //alert(window.location.hostname);
 
@@ -290,6 +292,8 @@ const appRoutes: Routes = [
     { path: 'managepostslist', component: AppManagepostslist},
     { path: 'editmanageposts/:id', component: AppEditmanageposts},
     { path: 'ongoingauctions', component: AppOngoingauctions},
+    { path: 'ongoingauctionscustomer', component: AppOngoingauctionscustomer},
+    { path: 'auctionbiddingcustomer/:id', component: AppAuctionbiddingcustomer},
 
 
 

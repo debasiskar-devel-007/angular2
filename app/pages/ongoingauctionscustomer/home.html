@@ -1,0 +1,312 @@
+<div class="body-inner">
+    <div class="page-wrapper page-wrapper-inner">
+        <div class="blockmaininner">
+            <div class="row" *ngIf="carlistarr.length >0 ">
+                <div class="col-lg-12 col-md-12 recentbidagreementmain">
+                    <div class="inventoryrecentbidblock">
+                        <div class="inventoryrecentbidheader">
+                            <h2><span>Ongoing</span> Options</h2>
+                            <ul class="list-inline">
+                                <li>
+                                    <div class="searchbox">
+                                        <input placeholder="Search by Make, Model, Auction, Year, Keyword">
+                                    </div>
+                                 </li>
+                            </ul>
+                        </div>
+
+                        <div class="inventorylistswrapper">
+                            <div class="row">
+                                <div *ngFor="let itemrsvpcar of rsvplistarr|paginate: { itemsPerPage: 9, currentPage: p };trackBy:itemrsvp?._id" class="col-xl-4 col-lg-4 col-md-6 col-sm-6 col-xs-12 inventorysinglelist">
+                                    <div class="inventorysinglelistblock">
+                                        <!--<div class="row blockheaderinfo">
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 text-left blockname">
+                                                <p><span>Name:</span> {{getcustomerdetails(itemrsvp.customerusername,'name')}}</p>
+                                            </div>
+                                            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-xs-6 text-right blockdate">
+                                                <p><span>Auction Date:</span> {{getcardetails(itemrsvp.inventoryid,'auctiondate')}}</p>
+                                            </div>
+                                        </div>-->
+                                        <div class="row blockcontentinfo">
+                                            <div class="col-lg-5 col-md-6 col-sm-12 col-xs-12 pull-left infobox">
+                                               <!-- <h5>Preferences/Match</h5>
+                                                <div class="divider"></div>-->
+                                                <table class="table">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td><span>Make:</span></td>
+                                                        <td><span>{{getcardetails(itemrsvpcar.inventoryid,'make')}}</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Model:</span></td>
+                                                        <td>{{getcardetails(itemrsvpcar.inventoryid,'model')}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Year:</span></td>
+                                                        <td>{{getcardetails(itemrsvpcar.inventoryid,'year')}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Miles:</span></td>
+                                                        <td>{{getcardetails(itemrsvpcar.inventoryid,'mileage')}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Color:</span></td>
+                                                        <td>{{getcardetails(itemrsvpcar.inventoryid,'color')}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><span>Wholesale:</span></td>
+                                                        <td>{{getcardetails(itemrsvpcar.inventoryid,'price')}} </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td colspan="2">
+                                                           <!-- <div class="btnwrapper">
+                                                                <button class="viewdetail" [routerLink]="['/auctionbidding',itemrsvpcar.inventoryid]" type="button" value="Edit">Bid Now</button>
+                                                            </div>-->
+                                                            <div  class="viewdetail"><a  [routerLink]="['/auctionbiddingcustomer',itemrsvpcar.inventoryid]" >Bid Now</a></div></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                            <div class="col-lg-7 col-md-6 col-sm-12 col-xs-12 pull-right imgbox">
+                                                <div class="imgouter">
+
+
+                                                    <div class="imgwrapper"><img src="{{getcardetails(itemrsvpcar.inventoryid,'auctionimage')}}" class="auction_toplogo">
+                                                        <img src="{{getcardetails(itemrsvpcar.inventoryid,'image')}}">
+
+                                                    </div>
+                                                </div>
+                                                <!--<div class="clearfix">&nbsp;</div>
+                                                <div class="btnwrapper">
+                                                    <button class="btnedit" [routerLink]="['/auctionbidding',itemrsvpcar.inventoryid]" type="button" value="Edit">Bid Now</button>
+                                                </div>-->
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                   <!-- <div class="inventorysinglelistblock2">
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                <h4>Match %</h4>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-10 col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" [style.width]="getmatchpercentageval(itemrsvp.inventoryid,itemrsvp.customerusername)">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-xs-2" style="padding-left:0px;">
+                                                <span class="progresspercentage">{{getmatchpercentageval(itemrsvp.inventoryid,itemrsvp.customerusername)}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12 customerstatus">
+                                                <ul class="example list-inline">
+                                                    <li>
+                                                        <label><span>Customer</span></label>
+                                                    </li>
+
+                                                    <li class="chakebox1box">
+                                                        <input disabled="disabled"  id="{{itemrsvp._id+itemrsvp.inventoryid}}" [attr.checked]="getrsvpapprovalstatus(itemrsvp.status,1) ? true :null  " type="radio" name="{{itemrsvp._id+itemrsvp.inventoryid}}" value="chakebox1box1"><label [attr.for]="itemrsvp._id+itemrsvp.inventoryid">Approved</label>
+                                                    </li>
+                                                    <li class="chakebox2box">
+                                                        <input disabled="disabled" [attr.checked]="getrsvpapprovalstatus(itemrsvp.status,2) ? true : null " id="{{itemrsvp._id}}"  type="radio" name="{{itemrsvp._id}}" value="chakebox1box2"><label [attr.for]="itemrsvp._id">Disapproved</label>
+                                                    </li>
+
+                                                    <li class="chakebox3box">
+                                                        <input disabled="disabled" [attr.checked]="getrsvpapprovalstatus(itemrsvp.status,0) ? true : null" id="{{itemrsvp._id+'-'+itemrsvp.inventoryid}}" type="radio" name="{{itemrsvp._id+'-'+itemrsvp.inventoryid}}" value="chakebox1box3"><label [attr.for]="itemrsvp._id+'-'+itemrsvp.inventoryid">Pending</label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div class="col-lg-12 col-md-12 paginationwrapper">
+                            <span>Page {{p}} of {{pagec}}</span> <pagination-controls (pageChange)="p = $event" style="display: inline-block"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="userprofileModal" class="modal fade  matchespopupnew2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">Customer Profile</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper" *ngIf="customprofiledetails">
+
+                    <table width="100%" border="0" class="profiletable1">
+                        <tr>
+                            <td width="30%">
+                                <!--  <img src="http://bootstrap.gallery/everestv2/img/user1.jpg"  alt="#" class="popprofileimg"/>-->
+                                <img src="{{customerfile}}"  alt="#" class="popprofileimg"/>
+                            </td>
+
+
+                            <td width="70%" align="left" valign="middle">
+                                Name: <strong>{{customprofiledetails.fname}} {{customprofiledetails.lname}}</strong>
+                                <br/><br/>
+                                Address: <strong>{{customprofiledetails.address}} , {{customprofiledetails.city}} , {{customprofiledetails.state}} ,{{customprofiledetails.zip}}</strong>
+
+
+
+                            </td>
+
+                        </tr>
+
+
+
+
+                        <tr>
+                            <td align="left" valign="middle">Phone:</td>
+                            <td align="left" valign="middle">{{customprofiledetails.phone}}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="middle">Email:</td>
+                            <td align="left" valign="middle">{{customprofiledetails.email}}</td>
+                        </tr>
+
+                        <tr>
+                            <td align="left" valign="middle">Member Since:</td>
+                            <td align="left" valign="middle">{{commonservices.convertunixtodate(customprofiledetails.added_on)}}</td>
+                            <!--<span [innerHtml]="commonservices.convertunixtodate(itemrs.added_on)"></span>-->
+                        </tr>
+
+
+
+                    </table>
+
+
+                </div>
+            </div>
+            <div class="modal-footer modelfooter">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="viewdetailsModal1" class="modal fade  matchespopupnew2">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4>Inventory Details</h4>
+            </div>
+            <div class="modal-body">
+                <div class="option_poup_wrapper">
+
+                    <div class="customerdashboard_block2_right detailpopupnew1" *ngIf="itemrsvpcar">
+                        <!--{{getcardetails(itemrsvpcar.inventoryid,'image')}}-->
+                        <div class="detailsimgnew" [innerHtml]="getcardetails(itemrsvpcar.inventoryid,'image')">/</div>
+
+                        <!-- <img src="http://pluginelectrichybrids.com/wp-content/uploads/2014/07/2015-Audi-Q5-Hybrid-front-view.jpg"  alt="#" class="detailsimgnew"/>-->
+
+                        <div class="cdblock2topbg1"><h3>Details <span>Glossary</span></h3></div>
+
+
+                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                            <tr>
+                                <td align="left" valign="middle">Make:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'make')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Model:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'model')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Year:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'year')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Miles:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'mileage')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Color:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'color')}}                        </td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Wholesale:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'price')}}                        </td>
+                            </tr>
+
+
+
+
+
+
+                            <tr>
+                                <td align="left" valign="middle">Body Style:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'carbodystyle')}} </td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Vin:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'vin')}} </td>
+                            </tr>
+
+
+
+
+                            <tr>
+                                <td align="left" valign="middle">Engine Type:        </td>
+                                <td align="right" valign="middle">       {{getcardetails(itemrsvpcar.inventoryid,'enginetype')}} </td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Drive:    </td>
+                                <td align="right" valign="middle">    {{getcardetails(itemrsvpcar.inventoryid,'drive')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Cylinder:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'cylinder')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Fuel:    </td>
+                                <td align="right" valign="middle"> {{getcardetails(itemrsvpcar.inventoryid,'fuel')}}</td>
+                            </tr>
+
+
+                            <tr>
+                                <td align="left" valign="middle">Seats:    </td>
+                                <td align="right" valign="middle">   {{getcardetails(itemrsvpcar.inventoryid,'seats')}}</td>
+                            </tr>
+                            <tr>
+                                <td align="left" valign="middle">Gear Type:    </td>
+                                <td align="right" valign="middle">{{getcardetails(itemrsvpcar.inventoryid,'gear_type')}}</td>
+                            </tr>
+
+
+                        </table>
+
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer modelfooter">
+                <button class="btn btn-primary btnclose" data-dismiss="modal" aria-hidden="true">close</button>
+            </div>
+        </div>
+    </div>
+</div>

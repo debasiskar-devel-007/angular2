@@ -51,7 +51,7 @@ export class AppFaq {
         this.userInfo=userdetails.getObject('userdetails');
         let link='';
         if(this.userInfo.userrole=='admin') link = this.serverUrl + 'faqlist';
-        if(this.userInfo.userrole=='dealer') link = this.serverUrl + 'systemfaqlist';
+        if(this.userInfo.userrole=='dealer' || this.userInfo.userrole=='customer') link = this.serverUrl + 'systemfaqlist';
         this.orderbyquery='added_on';
         this.orderbytype=-1;
         this.http.get(link)

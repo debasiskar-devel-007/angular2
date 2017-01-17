@@ -10,6 +10,7 @@ import {AppCommonservices} from  '../../services/app.commonservices'
 import {CookieService} from 'angular2-cookie/core';
 import {AppComponent} from "../home/app.component";
 declare var $: any;
+declare var Clipboard: any;
 
 @Component({
     selector: 'my-app',
@@ -48,6 +49,7 @@ export class AppSharemedia{
     dataarr:any;
     username:any;
     details12:any;
+    textarealink:any;
 
     //sharemediaModal:any;
     @ViewChild('all_m')
@@ -76,9 +78,18 @@ export class AppSharemedia{
             this.http.post(this.serverUrl + 'editaffiliate', idss)
                 .subscribe(data2 => {
                     this.details12 = data2.json()[0];
-                console.log('affiliatedetails')
-                console.log(this.details12)
+                //console.log('affiliatedetails')
+               // console.log(this.details12)
                     //this.username=this.details12.dealereusername;
+                    if(this.userdetails.userrole=='admin'){
+                        this.textarealink='http://probidtech.influxiq.com/customersignup'
+                    }
+                    if(this.userdetails.userrole=='dealer'){
+                        this.textarealink='http://'+this.username+'.probidauto.com/#/customersignup';
+                    }
+                    if(this.userdetails.userrole=='admin'){
+                        this.textarealink='http://'+this.userdetails.dealereusername+'.probidauto.com/#/customersignup';
+                    }
 
 
                 }, error => {
@@ -145,7 +156,7 @@ export class AppSharemedia{
                 this.bannerfilesrc="http://probidbackend.influxiq.com/uploadedfiles/sharelinks/";
 
                new Clipboard('.clipboardb', {
-                    text: function(trigger) {
+                    text: function(trigger:any) {
                         return trigger.getAttribute('clipval');
                     }
                 });
@@ -254,13 +265,13 @@ export class AppSharemedia{
       //  $('#sharemediaModal').modal('show');
         //alert(mediaid);
         this.mediaid=mediaid;
-
+console.log(this.mediaid);
         this.renderer.invokeElementMethod(this.allMElementRef.nativeElement, 'click', []);
         //sharemediaModal.open();
         let timeoutId = setTimeout(() => {
             //console.log('hello');
             new Clipboard('.clipboardb', {
-                text: function(trigger) {
+                text: function(trigger:any) {
                     return trigger.getAttribute('clipval');
                 }
             });
@@ -279,6 +290,26 @@ export class AppSharemedia{
         //alert(htm);
         $('#commonclip').attr('clipval',htm);
         $('#commonclip').click();
+
+        $("#grabb").tooltip('show');
+        setTimeout(function() {
+            $("#grabb").tooltip('hide');
+        }, 2000);
+
+    }
+
+  /*  $('.grab').tooltip({
+    trigger: 'click',
+    placement: 'bottom'
+});*/
+
+
+    tootltrip(){
+       // $("#tool").removeClass('hide');
+        $("#tool").tooltip('show');
+        setTimeout(function() {
+            $("#tool").tooltip('hide');
+        }, 1000);
     }
 
 }

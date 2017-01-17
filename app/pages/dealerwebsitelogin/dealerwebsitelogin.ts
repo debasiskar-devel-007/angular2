@@ -61,8 +61,11 @@ export class AppDealerWebsiteLogin{
 
                             var res=data.json();
                             if(res.length>0){
-                                console.log();
-                                var userdet={id:res[0]._id,username:res[0].username,useremail:res[0].email,userrole:'dealer',userfullname:res[0].fname+' '+res[0].lname}
+                                var filename= 'images/logo_61.png';
+                                if(res[0].filename!='undefined'){
+                                    filename=res[0].filename;
+                                }
+                                var userdet={id:res[0]._id,username:res[0].username,useremail:res[0].email,userrole:'dealer',userfullname:res[0].fname+' '+res[0].lname,filename:filename}
 
                                 console.log('Login successfully');
                                 this.userdetails.putObject('userdetails', userdet);

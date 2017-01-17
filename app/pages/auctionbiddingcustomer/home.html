@@ -1,6 +1,4 @@
 
-
-
     <div class="container-fluid auctionbidding_body">
 
         <div class="auctionbidding_block1">
@@ -14,22 +12,18 @@
                     </div>
 
                     <div class="auctionbidding_block1_left_box">
-                        <div class="row ">
+                        <div class="row">
                             <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12 auctionbidding_block1_left_box_left">
 
                                 <div class="auction_bd_bigcar">
-                                    <img  src="{{uploadedfilesrc1}}" alt="#" class="bigimag">
-                                  <!--  <img src="images/auction_bd__bigcar.jpg" alt="#">-->
-                                </div>
+                                    <img src="{{uploadedfilesrc1}}"  alt="#"></div>
 
                                 <div class="auction_sm_bigcar">
-                                   <!-- <span><img (click)="imageshow(uploadedfilesrc1)"  src="{{uploadedfilesrc1}}" alt="#"></span>
-                                    <span *ngFor="let adcarimage of uploadedadditionalfilearr">-->
-                          <!--  <img (click)="imageshow(adcarimage)"   src="{{adcarimage}}" alt="#">-->
-                                <!--</span>-->
                                     <div class="ab_scar"><img (click)="imageshow(uploadedfilesrc1)"  src="{{uploadedfilesrc1}}" alt="#"></div>
                                     <div *ngFor="let adcarimage of uploadedadditionalfilearr" class="ab_scar"><img (click)="imageshow(adcarimage)"   src="{{adcarimage}}" alt="#"></div>
-                                   <!-- <div  class="ab_scar"><img src="images/auction_bd__car3.jpg" alt="#"></div>
+                                    <!--<div class="ab_scar"><img src="images/auction_bd__car1.jpg" alt="#"></div>
+                                    <div class="ab_scar"><img src="images/auction_bd__car2.jpg" alt="#"></div>
+                                    <div class="ab_scar"><img src="images/auction_bd__car3.jpg" alt="#"></div>
                                     <div class="ab_scar"><img src="images/auction_bd__car4.jpg" alt="#"></div>
                                     <div class="ab_scar"><img src="images/auction_bd__car5.jpg" alt="#"></div>-->
 
@@ -40,135 +34,69 @@
                             <div class="col-lg-7 col-md-12 col-sm-12 col-xs-12 auctionbidding_block1_left_box_right">
 
 
-                                <ul class="nav nav-tabs">
-                                    <li class="active"><a data-toggle="tab" href="#menu1">Auction</a></li>
-                                    <li><a data-toggle="tab" href="#menu2">Coustmer INFO</a></li>
 
 
-                                </ul>
-
-                                <div class="tab-content">
-                                    <div id="menu1" class="tab-pane fade in active">
-
-                                        <div class="auctionbidding_tabtop1">
-                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ad_toptable">
-                                                <tr>
-                                                    <td width="9%">
-                                                       <!-- <img src="images/auctionbidding_tab1img.jpg" alt="#">-->
-                                                        <img src="{{getauction(auctionid,'image')}}" alt="#">
-                                                    </td>
-                                                    <td width="91%">{{getauction(auctionid,'name')}} / {{getcarlogo(carlogolist)}} / {{model}}<span [innerHtml]="commonservices.currenttime()"></span></td>
-
-                                                </tr>
-                                            </table>
 
 
-                                            <h4>Lorem Ipsum is simply dummy text of the printing</h4>
+                                <div class="auctionbidding_tabtop1">
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ad_toptable">
+                                        <tr>
+                                            <td width="9%"><img src="{{getauction(auctionid,'image')}}" alt="#"></td>
+                                            <td width="91%">{{getauction(auctionid,'name')}} / {{getcarlogo(carlogolist)}} / {{model}}           <span [innerHtml]="commonservices.currenttime()"></span></td>
 
-                                            <ul class="bidd">
-                                                <li><span>robert patinson</span>   $17000</li>
-                                                <li><span>Jack Smit</span>  $198000</li>                                                                      <li><span>David Jones</span>   $20520</li>
-                                                <li><span>Jason Stratham</span>   $21000</li>
+                                        </tr>
+                                    </table>
 
 
-                                            </ul>
 
 
-                                            <div class="ad_tab_bottomblock ad_tab_bottomblock1">
-                                                <span>
-                                                <button (click)="bidnow()" class="btnedit" type="button" value="Edit">Bid Now</button>
+                                    <ul class="auctionbidding2ul">
 
-                                                    <h2><strong>Bidding ends at:</strong>   {{getauction(auctionid,'auctiondate')}}   <!--<span>06:55</span>--></h2></span>
-                                                    <h3>Asking Bid   $ 18800</h3>
+                                        <li>You have total 9 bids to this auction already</li>
 
+                                        <li>Your last bid was at $5,000</li>
+
+                                        <li>Current bid is $5,200</li>
+                                        <li>Dealer retail Price :  4,800</li>
+
+                                    </ul>
+
+
+                                    <div class="ad_tab_bottomblock">
+                                        <h2><strong>Bidding ends at:</strong>   {{getauction(auctionid,'auctiondate')}}  <!-- <span>06:55</span>--></h2>
+
+
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="auctionbidding2_devider"></div>
+
+                                    <div class="row auctionbidding2row">
+
+                                        <div class="row row-eq-height">
+                                            <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 auctionbidding2_tabblock_left"> BID FOR
+                                                <span> $ 5,300 </span> </div>
+                                            <div class="col-lg-8 col-md-8 col-sm-12 col-xs-12 auctionbidding2_tabblock_right">
+
+                                                <h2>Set Max Bid</h2>
+
+                                                <input type="text" placeholder="$" class="auctionbidding2_input bid">
+
+                                                <h6>Current Max bid :  <span>Not set yet</span></h6>
+
+                                                <input type="submit" (click)="sendsetmax()"  class="auctionbidding2_btn" value="Submit">
                                                 <div class="clearfix"></div>
                                             </div>
 
+                                            <div class="clearfix"></div>
                                         </div>
-
-
-
                                     </div>
-                                    <div id="menu2" class="tab-pane fade">
-
-                                        <div class="auctionbidding_tabtop1">
-                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ad_toptable">
-                                                <tr>
-                                                    <td width="9%"><img src="images/auctionbidding_tab1img.jpg" alt="#"></td>
-                                                    <td width="91%">Lorem Autos Washington DC Lane 2            <span>08:26  PM</span></td>
-
-                                                </tr>
-                                            </table>
-
-
-                                            <table width="100%" border="0" cellspacing="0" cellpadding="0" class="ad_toptable_profile">
-                                                <tr>
-                                                    <td width="130px"><img src="images/auctionbidding_pimg1.png" alt="#"></td>
-                                                    <td>
-                                                        <div class="ad_profile_div">
-
-                                                            <ul>
-                                                                <li><span>Name        :</span><strong>David Jones</strong></li>
-                                                                <li><span>Address    :</span>24 DC Lane Saltlake Utah</li>
-                                                                <li><span>Phone       : </span>00 000 000 00</li>
-                                                                <li><span>Email       :</span>loremipsum@gmail.com</li>
-                                                                <li><span>Active Bid :</span>$ 19200</li>
-                                                                <li><span>Retail margin :</span>12 %  </li>
-
-                                                            </ul>
-
-
-
-                                                        </div>
-
-                                                        <img src="images/ab_on.png" alt="#" class="ad_profile_st">
-                                                        <div class="clearfix"></div>
-
-                                                    </td>
-                                                </tr>
-
-                                                <tr>
-                                                    <td width="130px"><img src="images/auctionbidding_pimg2.png" alt="#"></td>
-                                                    <td>
-                                                        <div class="ad_profile_div">
-
-                                                            <ul>
-                                                                <li><span>Name        :</span><strong>David Jones</strong></li>
-                                                                <li><span>Address    :</span>24 DC Lane Saltlake Utah</li>
-                                                                <li><span>Phone       : </span>00 000 000 00</li>
-                                                                <li><span>Email       :</span>loremipsum@gmail.com</li>
-                                                                <li><span>Active Bid :</span>$ 19200</li>
-                                                                <li><span>Retail margin :</span>12 %  </li>
-
-                                                            </ul>
-
-
-
-                                                        </div>
-
-                                                        <img src="images/ab_off.png" alt="#" class="ad_profile_st">
-                                                        <div class="clearfix"></div>
-
-                                                    </td>
-                                                </tr>
-                                            </table>
-
-
-
-                                            <div class="ad_tab_bottomblock">
-                                                <h2><strong>Bidding ends at:</strong>   12-07-2015    <span>06:55</span></h2>
-                                                <h3>Asking Bid   $ 18800</h3>
-
-                                                <div class="clearfix"></div>
-                                            </div>
-
-                                        </div>
-
-
-                                    </div>
-
 
                                 </div>
+
+
+
+
 
 
 
@@ -181,7 +109,7 @@
                     </div>
 
 
-                    <div class="auctionbidding_upcomingblock">
+                 <!--   <div class="auctionbidding_upcomingblock">
                         <h2>Upcoming auctions</h2>
 
 
@@ -203,32 +131,90 @@
 
 
                         <div class="ab_upcomingblock_block2">
+                            <div class="ab_upcomingblock_block2">
 
-                            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" *ngFor="let itemrsvp of rsvplistarr;trackBy:itemrsvp?._id">
+                                <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" *ngFor="let itemrsvp of rsvplistarr;trackBy:itemrsvp?._id">
+
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td>
+                                                <img src="{{getcardetails(itemrsvp.inventoryid,'image')}}" alt="#">
+                                                &lt;!&ndash; <img src="images/auctionbidding_car1.jpg" alt="#">&ndash;&gt;
+                                            </td>
+                                            <td class="ab_tdcontain">{{getcardetails(itemrsvp.inventoryid,'auctionname')}}<br>
+                                                {{getcardetails(itemrsvp.inventoryid,'make')}}
+                                                &lt;!&ndash; <span>October 14  05:30 PM</span>&ndash;&gt;
+
+                                                <br>
+                                                {{getcardetails(itemrsvp.inventoryid,'model')}}
+                                                &lt;!&ndash; <span>October 14  05:30 PM</span>&ndash;&gt;
+                                                <span>{{getcardetails(itemrsvp.inventoryid,'auctiondate')}}</span>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <a href="javascript:void(0)" class="ad_wishlistbtn">Add to watch list</a>
+                                </div>
+
+                                &lt;!&ndash;<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td><img src="images/auctionbidding_car2.jpg" alt="#"></td>
+                                            <td class="ab_tdcontain">Run # 123<br>
+
+                                                2007 Lorem Ipsum is <br>
+                                                simply dummy text
+                                                <span>October 14  05:30 PM</span>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <a href="javascript:void(0)" class="ad_wishlistbtn">Add to watch list</a>
+                                </div>
+                                div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+
+                                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                        <tr>
+                                            <td><img src="images/auctionbidding_car3.jpg" alt="#"></td>
+                                            <td class="ab_tdcontain">Run # 123<br>
+
+                                                2007 Lorem Ipsum is <br>
+                                                simply dummy text
+                                                <span>October 14  05:30 PM</span>
+
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <a href="javascript:void(0)" class="ad_wishlistbtn">Add to watch list</a>
+                                </div>&ndash;&gt;
+
+
+                                <div class="clearfix"></div>
+                            </div>
+
+                            &lt;!&ndash;<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
-                                        <td>
-                                            <a  [routerLink]="['/auctionbidding',itemrsvp.inventoryid]"><img src="{{getcardetails(itemrsvp.inventoryid,'image')}}" alt="#"></a>
-                                           <!-- <img src="images/auctionbidding_car1.jpg" alt="#">-->
-                                        </td>
-                                        <td class="ab_tdcontain">{{getcardetails(itemrsvp.inventoryid,'auctionname')}}<br>
-                                            {{getcardetails(itemrsvp.inventoryid,'make')}}
-                                            <!-- <span>October 14  05:30 PM</span>-->
+                                        <td><img src="images/auctionbidding_car1.jpg" alt="#"></td>
+                                        <td class="ab_tdcontain">Run # 122<br>
 
-                                           <br>
-                                            {{getcardetails(itemrsvp.inventoryid,'model')}}
-                                           <!-- <span>October 14  05:30 PM</span>-->
-                                            <span>{{getcardetails(itemrsvp.inventoryid,'auctiondate')}}</span>
+                                            2007 Lorem Ipsum is <br>
+                                            simply dummy text
+                                            <span>October 14  05:30 PM</span>
 
                                         </td>
                                     </tr>
                                 </table>
 
                                 <a href="javascript:void(0)" class="ad_wishlistbtn">Add to watch list</a>
-                            </div>
+                            </div>&ndash;&gt;
 
-                            <!--<div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                           &lt;!&ndash; <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
@@ -245,7 +231,7 @@
 
                                 <a href="javascript:void(0)" class="ad_wishlistbtn">Add to watch list</a>
                             </div>
-                            div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
+                            <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12">
 
                                 <table width="100%" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
@@ -261,19 +247,19 @@
                                 </table>
 
                                 <a href="javascript:void(0)" class="ad_wishlistbtn">Add to watch list</a>
-                            </div>-->
+                            </div>&ndash;&gt;
 
 
                             <div class="clearfix"></div>
                         </div>
 
 
-                    </div>
+                    </div>-->
 
 
                 </div>
                 <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12 auctionbidding_block1_right">
-                    <div class="auctionbiddingblock2topbg1"><h3>Lot #{{id}}   Details <span>Glossary</span></h3></div>
+                    <div class="auctionbiddingblock2topbg1"><h3>Lot #{{id}} Details <span>Glossary</span></h3></div>
                     <div class="customerdashboard_block2 auctionbidding_block2table" style="border:none;">
 
 
@@ -409,7 +395,7 @@
                         </table>
                     </div>
 
-                    <div class="auctionbiddingblock2topbg2"><h3>Sale Information</h3></div>
+                <!--    <div class="auctionbiddingblock2topbg2"><h3>Sale Information</h3></div>
                     <div class="customerdashboard_block2 auctionbidding_block2table" style="border:none;">
 
 
@@ -441,7 +427,7 @@
                             </tr>
 
                         </table>
-                    </div>
+                    </div>-->
 
 
                 </div>
@@ -452,7 +438,7 @@
         </div>
 
 
-        <div class="auctionbidding_block2">
+      <!--  <div class="auctionbidding_block2">
             <h2>My Auctions</h2>
 
 
@@ -491,7 +477,7 @@
                                     <span class="ad_auction_detail">
     Name :<b>David Jones  </b>
     <br>
-
+ 
 Active Bidding :<b>$ 18900</b>
     </span>
 
@@ -532,7 +518,7 @@ Active Bidding :<b>$ 18900</b>
                                     <span class="ad_auction_detail">
     Name :<b>David Jones  </b>
     <br>
-
+ 
 Active Bidding :<b>$ 18900</b>
     </span>
 
@@ -573,7 +559,7 @@ Active Bidding :<b>$ 18900</b>
                                     <span class="ad_auction_detail">
     Name :<b>David Jones  </b>
     <br>
-
+ 
 Active Bidding :<b>$ 18900</b>
     </span>
 
@@ -599,11 +585,8 @@ Active Bidding :<b>$ 18900</b>
 
 
 
-        </div>
+        </div>-->
     </div>
-
-
-
 
     <div id="customersetmaxbidModal" class="modal fade carlogomodalbox msgmodalnew">
         <div class="modal-dialog">

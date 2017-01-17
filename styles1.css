@@ -290,7 +290,7 @@
 
 .auctionbidding_tabtop1 ul li{ margin-bottom:6px; font-size:14px; color:#424242;   font-family: "open_sansregular";}
 
-.auctionbidding_tabtop1 ul li span{ display:inline-block; width:100px;}
+.auctionbidding_tabtop1 ul li span{ display:inline-block; width:120px;}
 
 .ad_tab_bottomblock{ margin-top:10px;}
 
@@ -1032,3 +1032,49 @@
 .chat_footer a{ width: 28px; display: block; float:  left; margin-right: 1px;}
 
 .chat_footer input{ width: 76px; height: 23px; float: right; background: #fff; border: none; cursor: pointer; text-align: center;  font-family: 'open_sansregular'; text-transform: uppercase; color: #313030; font-size: 14px;}
+
+
+
+.auctionbiddingcustomer_td{width: 50%!important; padding: 10px!important; padding-bottom: 0px!important; float: left; border: solid 1px #fff; margin: 8px 0!important;}
+
+.auctionbiddingcustomer_td td{ width: 50%; height: 80px;  }
+
+.auctionbiddingcustomer_td:last-of-type{ border: none;}
+.auctionbiddingblock2topbg1 h3 label{ font-weight: normal;}
+.auctionbiddingblock2topbg1 h3{ display: block;}
+.div1label{ width: 50%; float: left;}
+
+
+.chakeboxrow_wrapper{ background-color: #e2e2e2 !important; padding: 20px;     margin-left: 15px;
+    margin-right: 15px;
+}
+
+.chakeboxrow_wrapper .newchakeboxdiv{ display: inline-block; float: left; padding: 14px; font-family: 'open_sansregular';  font-size:14px; color: #000;}
+
+.chakeboxrow_wrapper .newchakeboxdiv input{ margin-right: 5px;}
+
+.chakeboxrow_wrapper h2{border-bottom: 1px solid #c1c3c5;
+    margin: 0px;
+
+    font-family: "open_sanssemibold";
+    font-size: 24px;
+    text-transform: capitalize;
+    padding: 0 0 14px 0;
+}
+
+@media screen and (max-width:1199px){
+
+    .auctionbiddingcustomer_td{width: 100%!important; padding: 10px!important; padding-bottom: 0px!important; float: none; border: solid 1px #fff; margin: 8px 0!important;}
+
+    .auctionbiddingcustomer_td td{ width: 50%; height: auto;  }
+
+    .auctionbiddingcustomer_td:last-of-type{ border-bottom: solid 1px #fff;}
+
+
+
+}
+
+@media screen and (max-width:600px){
+    .auctionbiddingblock2topbg1{ height: 110px;}
+
+}

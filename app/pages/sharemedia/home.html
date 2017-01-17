@@ -67,7 +67,10 @@
                                           <!-- <li><a><button (click)="sharemediaModal.open()" class="btnedit" type="button" value="Edit">Grab Banner</button></a></li>-->
                                            <li>
                                                <a><button (click)="bannerModal(item._id)" class="btnedit" type="button" value="Edit">Grab Banner</button></a>
-                                               <a><button [attr.clipval]="item.urllink"  class="btnedit clipboardb" type="button" value="Copy To ClipBoard">Copy To ClipBoard</button></a>
+
+                                              <!-- <a><button  data-toggle="tooltip" id="tool" title="Copied"    class="btnedit clipboardb clip hide" type="button" value="Copy To ClipBoard"></button></a>-->
+                                               <a><button (click)="tootltrip()"   [attr.clipval]="item.urllink"  class="btnedit clipboardb" type="button" value="Copy To ClipBoard">Copy To ClipBoard</button></a>
+                                               <a style="margin-left:200px;margin-bottom:220px;" data-placement="left;" href="#" data-toggle="tooltip" id="tool" class="tip-top" title="Link Copied"></a>
                                                <!--<a><button [attr.clipval]="'http://'+username+'.probidauto.com/#/'+item.url"  class="btnedit clipboardb" type="button" value="Copy To ClipBoard">Copy To ClipBoard</button></a>-->
                                            </li>
 
@@ -119,12 +122,12 @@
 
                             <div class="sharebanner_textarea" *ngFor="let itembannersize of banner.bannersizedetails1">
                                <div *ngIf="itembannersize._id==banner.bannersize">
-                                <textarea class="textare1" readonly="readonly"><a href="probid.influxiq.com/customersignup"><img src="{{bannerfilesrc}}{{banner.filename}}" height="{{itembannersize.height}}" width="{{itembannersize.width}}"></a></textarea>
+                                <textarea class="textare1" readonly="readonly"><a href="{{textarealink}}"><img src="{{bannerfilesrc}}{{banner.filename}}" height="{{itembannersize.height}}" width="{{itembannersize.width}}"></a></textarea>
 
                                    <div class="sharebanner_btnwrapper">
 
-
-                                       <input (click)="getgrab($event)"   type="button" value="Grab Code" class="grabcodebanner">
+                                       <a style="margin-left:225px;margin-top:20px;" href="#" data-placement="right" data-toggle="tooltip" id="grabb"  title="Code Copied" ></a>
+                                       <input (click)="getgrab($event)"    type="button" value="Grab Code" class="grabcodebanner grab">
 
                             </div>
 

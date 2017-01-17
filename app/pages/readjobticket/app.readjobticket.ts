@@ -178,7 +178,12 @@ export class AppReadjobticket implements OnInit, OnDestroy{
         this.http.post(link,submitdata)
             .subscribe(data => {
                 // /this.data1.response = data.json();
-                this.router.navigateByUrl('/jobticketinbox(dealerheader:dealerheader//dealerfooter:dealerfooter)')
+                if(this.userInfo.userrole=='dealer'){
+                    this.router.navigateByUrl('/jobticketinbox(dealerheader:dealerheader//dealerfooter:dealerfooter)');
+                }
+                if(this.userInfo.userrole=='admin'){
+                    this.router.navigateByUrl('/jobticketinbox(adminheader:adminheader//adminfooter:adminfooter)');
+                }
 
             }, error => {
                 console.log("Oooops!");

@@ -124,6 +124,21 @@ url:any
         return  month+'/'+dt.getDate()+'/'+dt.getFullYear()+' '+dt.getHours()+' : '+dt.getMinutes()+' : '+dt.getSeconds() ;
 
     }
+    currenttime() {
+        var dt = new Date();
+        var hours = dt.getHours();
+        var minutes = dt.getMinutes();
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+         minutes = minutes < 10 ? 0+ minutes : minutes;
+        var strTime = hours + ':' + minutes + ' ' + ampm;
+        return strTime;
+      /*  var dt = new Date();
+       // var month = dt.getMonth()+1;
+        return  dt.getHours()+' : '+dt.getMinutes();*/
+
+    }
 
 
     /*getrandomString(length:any, chars:any) {

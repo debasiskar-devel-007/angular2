@@ -15,11 +15,11 @@ declare var $: any;
 @Component({
     selector: 'my-app',
     //template: '<h1>Welcome to my First Angular 2 App </h1>'
-    templateUrl:'app/pages/auctionbidding/home.html',
+    templateUrl:'app/pages/auctionbiddingcustomer/home.html',
     providers: [AppCommonservices]
     //directives: [FORM_DIRECTIVES, REACTIVE_FORM_DIRECTIVES]
 })
-export class AppAuctionbidding implements OnInit, OnDestroy {
+export class AppAuctionbiddingcustomer implements OnInit, OnDestroy {
     // /@ViewChild(Modal) modal;
     //dealerloginform: FormGroup;
     myModal :ModalModule;
@@ -80,7 +80,9 @@ export class AppAuctionbidding implements OnInit, OnDestroy {
      rsvplistarr:any;
      carlistarr:any;
     filesrc:any;
-     userfullname:any;
+     auctionname:any;
+     auctionimage:any;
+     auctiondate:any;
 
     constructor(fb: FormBuilder , http:Http ,commonservices: AppCommonservices,userInfo:CookieService,router: Router,appcomponent:AppComponent,private route: ActivatedRoute,private _sanitizer: DomSanitizer   ) {
         this.router=router;
@@ -185,10 +187,20 @@ export class AppAuctionbidding implements OnInit, OnDestroy {
                     this.gear_type=this.details.gear_type;
                     this.trinted_window=this.details.trinted_window;
                     this.digital_display=this.details.digital_display;
-                   // console.log('auction id');
+                    console.log('auction id');
+                    console.log(this.details);
                     this.auctionid=this.details.auctionid[0];
-                   // console.log(this.auctionid);
-                   // console.log('Inventory Details');
+                    /* this.auctionname=this.details.auctiondata[0].name;
+                    this.auctiondate=this.details.auctiondata[0].auction_date;
+                    if(typeof(this.details.auctiondata[0].filename)!='undefined')
+                        this.auctionimage=this.filesrc+this.details.auctiondata[0].filename;
+                    else this.auctionimage='images/logo_61.png';*/
+
+
+
+                    console.log('Auction Id');
+                    console.log(this.auctionid);
+
                   //  console.log(this.details.additionalfilename);
                     var x:any;
                     for(x in this.details.additionalfilename){
@@ -206,17 +218,17 @@ export class AppAuctionbidding implements OnInit, OnDestroy {
             // In a real app: dispatch action to load the details here.
         });
 
-        this.http.get(this.serverUrl+'auctionlist')
+      /*  this.http.get(this.serverUrl+'auctionlist')
             .subscribe(data => {
                 this.auctionlist=data.json();
             }, error => {
                 console.log("Oooops!");
-            });
+            });*/
 
 
 
-        let linkv1 = this.serverUrl+'getrsvpbydealerid';
-        let var11={dealerid:this.userInfo.username};
+        let linkv1 = this.serverUrl+'getrsvpbycustomerusername';
+        let var11={customerusername:this.userInfo.username};
         this.http.post(linkv1,var11)
             .subscribe(data1 => {
 
@@ -495,13 +507,13 @@ export class AppAuctionbidding implements OnInit, OnDestroy {
             if(this.auctionlist[p]._id==val)
                 if(type=='name')
                 return this.auctionlist[p].name;
-            if(type=='auctiondate')
-            //  return 11;
+                if(type=='auctiondate')
+                  //  return 11;
                 return this.auctionlist[p].auction_date;
                 if(type=='image')
                 return "http://probidbackend.influxiq.com/uploadedfiles/sharelinks/"+this.auctionlist[p].filename;
         }
-        return 'N/A';
+       // return 'N/A';
     }
     getmileage(val:any){
         var z:any;
@@ -527,9 +539,9 @@ export class AppAuctionbidding implements OnInit, OnDestroy {
     imageshow(imagesrs:any){
         $('.bigimag').attr('src',imagesrs);
     }
-bidnow(){
-    this.userfullname=this.userInfo.userfullname;
-    $('.bidd').append('<li><span>'+this.userfullname+'</span>   $22800</li>');
+sendsetmax(){
+    if($('.bid').val()!='')
+    $('#customersetmaxbidModal').modal('show');
 }
 }
 

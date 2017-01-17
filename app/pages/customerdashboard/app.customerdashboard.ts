@@ -127,8 +127,8 @@ export class AppCustomerdashboard {
                         //console.log('Dealer details');
                         //console.log(this.details1);
                         this.dealerid = this.details1._id;
-                        console.log('userid');
-                        console.log(this.userDetails);
+                      //  console.log('userid');
+                       // console.log(this.userDetails);
                         let linkv1 = this.serverUrl + 'getrsvpbydealeridforuser';
                        /* let var11 = {dealerid: this.dealerid, customerid: this.userDetails.username};*/
                         let var11 = {dealerid: this.details12.dealerusername, customerid: this.userDetails.username};
@@ -137,9 +137,9 @@ export class AppCustomerdashboard {
 
                                 this.rsvplist = data1.json();
                                 this.rsvplistarr = this.rsvplist;
-                                console.log('rsvp list .. ');
+                               // console.log('rsvp list .. ');
                                 console.log(this.rsvplist);
-                                //this.pagec=Math.ceil(this.rsvplistarr.length / 9);
+                               // //this.pagec=Math.ceil(this.rsvplistarr.length / 9);
 
 
                             }, error => {
@@ -182,7 +182,7 @@ export class AppCustomerdashboard {
 
                         let link = '';
                         link = this.serverUrl + 'getinventoryfordealer?dealerid=' + this.dealerid;
-                        console.log('link ===' + link);
+                      //  console.log('link ===' + link);
                         this.http.get(link)
                             .subscribe(data1 => {
                                 this.data = data1.json();
@@ -198,8 +198,8 @@ export class AppCustomerdashboard {
                                     }
                                 }
 
-                                 console.log('dealer data');
-                                 console.log(this.cardata);
+                               //  console.log('dealer data');
+                                // console.log(this.cardata);
 
                                 let timeoutId = setInterval(() => {
                                     //alert($('.inventorysinglelistblockcon').length);
@@ -244,7 +244,7 @@ export class AppCustomerdashboard {
                 //console.log(data);
                 this.carlogolist = data.json();
 
-                console.log(this.carlogolist);
+               // console.log(this.carlogolist);
 
 
             }, error => {
@@ -287,7 +287,7 @@ export class AppCustomerdashboard {
         this.http.get(this.serverUrl + 'carlist')
             .subscribe(data1 => {
                 this.carlistarr = data1.json();
-                console.log(this.data);
+                //console.log(this.data);
 
             }, error => {
                 console.log("Oooops!");
@@ -295,7 +295,7 @@ export class AppCustomerdashboard {
         this.http.get(this.serverUrl + 'auctionlist')
             .subscribe(data1 => {
                 this.auctionlistarr = data1.json();
-                console.log(this.data);
+               // console.log(this.data);
 
             }, error => {
                 console.log("Oooops!");
@@ -439,8 +439,8 @@ export class AppCustomerdashboard {
 
                             if (val1 == 'addcarimage') {
                                 //console.log(this.carlistarr[x]);
-                                console.log('car list image');
-                                console.log(this.carlistarr[x].additionalfilename);
+                               // console.log('car list image');
+                               // console.log(this.carlistarr[x].additionalfilename);
                                 return this.carlistarr[x].additionalfilename;
 
                             }
@@ -896,8 +896,8 @@ alert(222);
     }
 
     imageshow(imagesrc:any,imagename:any,ev:any){
-        console.log(imagesrc);
-        console.log(imagename);
+       // console.log(imagesrc);
+      //  console.log(imagename);
         var target = ev.target || ev.srcElement || ev.originalTarget;
         //console.log($(target).parent().parent().prev().find('img').attr('src'));
         //$(target).parent().parent().prev().find('img').attr('src',imagesrc+imagename);
